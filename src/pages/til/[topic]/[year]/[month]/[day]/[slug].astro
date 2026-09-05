@@ -1,7 +1,5 @@
 ---
-import BaseLayout from '../../../../../../layouts/BaseLayout.astro'
 import { getTilEntries } from '../../../../../../lib/content'
-import { formatDate } from '../../../../../../lib/dates'
 
 export async function getStaticPaths() {
   const entries = await getTilEntries()
@@ -12,15 +10,18 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props
+const target = `${entry.url}/`
 ---
 
-<BaseLayout title={entry.title} description={entry.description} canonical={entry.url}>
-  <article class="article-shell">
-    <header class="article-header">
-      <p class="date">{entry.topic} - {formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</p>
-      <h1 class="article-title">{entry.title}</h1>
-      <p class="lede">{entry.description}</p>
-    </header>
-    <div class="prose" set:html={entry.html} />
-  </article>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Redirecting to {entry.title}</title>
+  </head>
+  <body>
+    <a href={target}>Redirecting to {entry.title}</a>
+  </body>
+</html>
