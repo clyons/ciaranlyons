@@ -1,0 +1,132 @@
+name: Orphan Commit Check
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  check-orphans:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Check for orphaned commits on merged branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_REPO: ${{ github.repository }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            if [ "$HEAD_REPO" != "$BASE_REPO" ]; then
+              echo "PR branch is from fork $HEAD_REPO; base repository branch cleanup does not apply."
+              exit 0
+            fi
+          else
+            PR_NUMBER=$(gh pr list \
+              --state merged \
+              --head "$HEAD_BRANCH" \
+              --json number,mergedAt \
+              --limit 20 \
+              --jq 'sort_by(.mergedAt) | last | .number // empty')
+
+            if [ -z "$PR_NUMBER" ]; then
+              echo "No merged PR found for branch $HEAD_BRANCH; no orphan check needed."
+              exit 0
+            fi
+
+            HEAD_SHA=$(gh pr view "$PR_NUMBER" --json commits --jq '.commits[-1].oid // empty')
+            if [ -z "$HEAD_SHA" ]; then
+              echo "::warning::Could not determine merged PR head for PR #$PR_NUMBER; skipping orphan check."
+              exit 0
+            fi
+
+            echo "Checking branch $HEAD_BRANCH against merged PR #$PR_NUMBER head $HEAD_SHA."
+          fi
+
+          git fetch origin +refs/heads/main:refs/remotes/origin/main
+
+          # Fetch the branch ref if it still exists (may already be auto-deleted)
+          BRANCH_REF="refs/remotes/origin/$HEAD_BRANCH"
+          git fetch origin "+refs/heads/$HEAD_BRANCH:$BRANCH_REF" 2>/dev/null || {
+            echo "Branch already deleted — no orphans possible."
+            exit 0
+          }
+
+          CURRENT_SHA=$(git rev-parse "$BRANCH_REF")
+          if [ "$CURRENT_SHA" = "$HEAD_SHA" ]; then
+            echo "No orphaned commits. Branch still points at merged PR head."
+            exit 0
+          fi
+
+          if ! git cat-file -e "$HEAD_SHA^{commit}" 2>/dev/null; then
+            git fetch origin "$HEAD_SHA" 2>/dev/null || true
+          fi
+
+          if git cat-file -e "$HEAD_SHA^{commit}" 2>/dev/null; then
+            # Find commits added to the branch after the PR head that was merged.
+            # Exclude origin/main too, because a branch may be reset/rebased onto
+            # the squash-merge commit, which is already safely reachable.
+            ORPHANS=$(git log "$BRANCH_REF" --not "$HEAD_SHA" origin/main --oneline 2>/dev/null || true)
+          else
+            echo "::warning::Merged PR head $HEAD_SHA is unavailable; branch may have been force-pushed after merge."
+            ORPHANS=$(git log "$BRANCH_REF" --not origin/main --oneline 2>/dev/null || true)
+          fi
+
+          if [ -z "$ORPHANS" ]; then
+            echo "No orphaned commits. Branch has no commits beyond the merged PR head."
+            exit 0
+          fi
+
+          ORPHAN_COUNT=$(echo "$ORPHANS" | wc -l | tr -d ' ')
+          echo "::warning::Found $ORPHAN_COUNT orphaned commit(s) on $HEAD_BRANCH"
+          echo "$ORPHANS"
+
+          gh label create orphaned-work \
+            --description "Commits left on a branch after PR merge" \
+            --color FBCA04 \
+            --force
+
+          # Open an issue
+          BODY=$(cat <<EOF2
+          ## Orphaned commits detected
+
+          PR #$PR_NUMBER merged branch \`$HEAD_BRANCH\`, but **$ORPHAN_COUNT commit(s)** were found after the merged PR head \`$HEAD_SHA\`.
+
+          These commits were likely pushed after the PR was squash-merged, or the branch was rewritten after merge.
+
+          ### Orphaned commits
+
+          \`\`\`
+          $ORPHANS
+          \`\`\`
+
+          ### Action required
+
+          1. Review each orphaned commit to determine if the work is needed.
+          2. If needed, cherry-pick onto a new branch and open a new PR.
+          3. If not needed, no action required — the branch will be cleaned up.
+
+          ---
+          *Detected by orphan-check workflow on PR #$PR_NUMBER*
+          EOF2
+          )
+
+          gh issue create \
+            --title "Orphaned commits on $HEAD_BRANCH (PR #$PR_NUMBER)" \
+            --body "$BODY" \
+            --label "orphaned-work"
