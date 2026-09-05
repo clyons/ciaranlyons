@@ -141,7 +141,7 @@ export async function getTilEntries(): Promise<TilEntry[]> {
         tags: asArray(data.tags),
         body,
         html,
-        url: `/til/${topic}/${year}/${month}/${day}/${slug}`,
+        url: `/til/${year}/${month}/${day}/${slug}`,
       }
     }),
   )

@@ -10,7 +10,7 @@ tags:
   - animation
 ---
 
-Via [Simon Willison](https://til.simonwillison.net/llms/blender-coding-agents-macos), I learned that LLMs are now very good at Blender. That makes sense: geometry, materials, and motion are ultimately math and code, and Blender has an extensive [Python API](https://docs.blender.org/api/current/index.html).
+Via [Simon Willison](https://til.simonwillison.net/llms/blender-coding-agents-macos) and others, I learned that LLMs are now very good at Blender. That makes sense: geometry, materials, and motion are ultimately math and code, and Blender has an extensive [Python API](https://docs.blender.org/api/current/index.html).
 
 I needed an experiment, so I asked GPT-5.6 Sol:
 

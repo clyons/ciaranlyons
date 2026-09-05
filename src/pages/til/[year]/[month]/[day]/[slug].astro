@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import { getTilEntries } from '../../../../../lib/content'
+import { formatDate } from '../../../../../lib/dates'
+
+export async function getStaticPaths() {
+  const entries = await getTilEntries()
+  return entries.map((entry) => ({
+    params: { year: entry.year, month: entry.month, day: entry.day, slug: entry.slug },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+---
+
+<BaseLayout title={entry.title} description={entry.description} canonical={entry.url}>
+  <article class="article-shell">
+    <header class="article-header">
+      <p class="date">{entry.topic} - {formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+      <h1 class="article-title">{entry.title}</h1>
+      <p class="lede">{entry.description}</p>
+    </header>
+    <div class="prose" set:html={entry.html} />
+  </article>
+</BaseLayout>

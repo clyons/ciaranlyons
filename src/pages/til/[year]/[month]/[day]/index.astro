@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import { getTilEntries } from '../../../../../lib/content'
+import { formatDate } from '../../../../../lib/dates'
+
+export async function getStaticPaths() {
+  const entries = await getTilEntries()
+  const keys = [...new Set(entries.map((entry) => `${entry.year}/${entry.month}/${entry.day}`))]
+  return keys.map((key) => {
+    const [year, month, day] = key.split('/')
+    return { params: { year, month, day }, props: { year, month, day, entries: entries.filter((entry) => entry.year === year && entry.month === month && entry.day === day) } }
+  })
+}
+
+const { year, month, day, entries } = Astro.props
+const label = formatDate(`${year}-${month}-${day}`, { month: 'long', day: 'numeric', year: 'numeric' })
+---
+
+<BaseLayout title={`TIL: ${label}`} description={`TIL entries from ${label}.`}>
+  <section class="section">
+    <p class="section-kicker">TIL Archive</p>
+    <h1 class="page-title">{label}</h1>
+  </section>
+  <section class="section">
+    <div class="archive-list">
+      {entries.map((entry) => (
+        <a class="row-link" href={entry.url}>
+          <div>
+            <h2>{entry.title}</h2>
+            <p>{entry.topic} - {entry.description}</p>
+          </div>
+          <span class="arrow" aria-hidden="true">-></span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

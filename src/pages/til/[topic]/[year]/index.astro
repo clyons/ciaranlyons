@@ -1,36 +1,28 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro'
 import { getTilEntries } from '../../../../lib/content'
-import { formatDate } from '../../../../lib/dates'
 
 export async function getStaticPaths() {
   const entries = await getTilEntries()
   const keys = [...new Set(entries.map((entry) => `${entry.topic}/${entry.year}`))]
   return keys.map((key) => {
     const [topic, year] = key.split('/')
-    return { params: { topic, year }, props: { topic, year, entries: entries.filter((entry) => entry.topic === topic && entry.year === year) } }
+    return { params: { topic, year }, props: { year } }
   })
 }
 
-const { topic, year, entries } = Astro.props
+const { year } = Astro.props
+const target = `/til/${year}/`
 ---
 
-<BaseLayout title={`TIL: ${topic} / ${year}`} description={`TIL entries about ${topic} from ${year}.`}>
-  <section class="section">
-    <p class="section-kicker">TIL Topic</p>
-    <h1 class="page-title">{topic} / {year}</h1>
-  </section>
-  <section class="section">
-    <div class="archive-list">
-      {entries.map((entry) => (
-        <a class="row-link" href={entry.url}>
-          <div>
-            <h2>{entry.title}</h2>
-            <p>{entry.description}</p>
-          </div>
-          <span class="date">{formatDate(entry.date, { month: 'short', day: 'numeric' })}</span>
-        </a>
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Redirecting</title>
+  </head>
+  <body>
+    <a href={target}>Redirecting</a>
+  </body>
+</html>
