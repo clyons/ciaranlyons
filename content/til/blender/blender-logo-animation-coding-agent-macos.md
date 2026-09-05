@@ -32,10 +32,12 @@ The biggest visual improvement came from the backdrop. The curved wall used in a
 
 The final animation uses a restrained camera arc, a circular moving light, a diffuse metallic reflection, and a cyclorama that cycles through four PQ brand colours.
 
+<video src="positive-intelligence-logo-cinematic-v4.mp4" autoplay muted loop playsinline controls poster="cinematic-v4-keyframes.png" aria-label="Eight-second Positive Intelligence logo animation rendered in Blender"></video>
+
 ![Keyframes from the final PQ logo animation](cinematic-v4-keyframes.png)
 
 The repo lives at [clyons/gpt-5-6-sol-blender-positive-intelligence-logo](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo).
 
-The useful code trail is the [initial render script](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence.py), the [first animation script](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence_animation.py), and the cinematic iterations: [v2](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence_cinematic_v2.py), [v3](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence_cinematic_v3.py), and [final v4](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence_cinematic_v4.py).
+Scripts: [initial render](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence.py), [first animation](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence_animation.py), [v2](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence_cinematic_v2.py), [v3](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence_cinematic_v3.py), and [v4](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/work/render_positive_intelligence_cinematic_v4.py).
 
-The final artifacts are the [eight-second MP4](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/outputs/positive-intelligence-logo-cinematic-v4.mp4) and the editable [Blender file](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/outputs/positive-intelligence-logo-cinematic-v4.blend).
+Files: [MP4](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/outputs/positive-intelligence-logo-cinematic-v4.mp4) and [Blender project](https://github.com/clyons/gpt-5-6-sol-blender-positive-intelligence-logo/blob/main/outputs/positive-intelligence-logo-cinematic-v4.blend).
