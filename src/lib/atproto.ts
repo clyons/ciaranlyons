@@ -42,7 +42,7 @@ export async function getNotes(limit = 30): Promise<NoteEntry[]> {
         const date = item.post?.record?.createdAt ?? ''
         const id = rkeyFromUri(uri)
         const { year, month, day } = dateParts(date)
-        return { id, text, date, year, month, day, uri, url: `/notes/${year}/${month}/${day}/${id}` }
+        return { id, text, date, year, month, day, uri, media: [], url: `/notes/${year}/${month}/${day}/${id}` }
       })
       .filter((note) => note.id && note.text && note.date)
 

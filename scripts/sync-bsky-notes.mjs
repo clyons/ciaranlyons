@@ -3,7 +3,9 @@ import path from 'node:path'
 import process from 'node:process'
 
 const publicApi = 'https://public.api.bsky.app/xrpc'
+const blobApi = 'https://bsky.social/xrpc/com.atproto.sync.getBlob'
 const contentDir = path.join(process.cwd(), 'content', 'notes')
+const publicDir = path.join(process.cwd(), 'public')
 
 function usage() {
   console.log(`Usage: node scripts/sync-bsky-notes.mjs [--dry-run] [--overwrite] [--limit N] [--actor HANDLE]`)
@@ -48,6 +50,10 @@ function postUrl(uri) {
   return match ? `https://bsky.app/profile/${match[1]}/post/${match[2]}` : ''
 }
 
+function didFromUri(uri) {
+  return uri.match(/^at:\/\/([^/]+)\//)?.[1] ?? ''
+}
+
 function sliceUtf8(text, start, end) {
   return Buffer.from(text, 'utf8').subarray(start, end).toString('utf8')
 }
@@ -77,6 +83,69 @@ function quoteYaml(value) {
   return JSON.stringify(String(value ?? ''))
 }
 
+function mediaExtension(mimeType) {
+  if (mimeType === 'video/mp4') return 'mp4'
+  if (mimeType === 'image/jpeg') return 'jpg'
+  if (mimeType === 'image/png') return 'png'
+  if (mimeType === 'image/webp') return 'webp'
+  if (mimeType === 'image/gif') return 'gif'
+  return mimeType?.split('/').pop()?.replace(/[^a-z0-9]/gi, '').toLowerCase() || 'bin'
+}
+
+function blobCid(blob) {
+  return blob?.ref?.$link ?? blob?.ref?.link ?? blob?.cid ?? ''
+}
+
+function mediaFromEmbed(embed) {
+  if (!embed) return []
+  if (embed.$type === 'app.bsky.embed.recordWithMedia') return mediaFromEmbed(embed.media)
+
+  if (embed.$type === 'app.bsky.embed.video') {
+    const cid = blobCid(embed.video)
+    if (!cid) return []
+    return [{
+      type: 'video',
+      cid,
+      mimeType: embed.video?.mimeType ?? 'video/mp4',
+      alt: embed.alt ?? '',
+      width: embed.aspectRatio?.width,
+      height: embed.aspectRatio?.height,
+    }]
+  }
+
+  if (embed.$type === 'app.bsky.embed.images') {
+    return (embed.images ?? []).map((image) => {
+      const cid = blobCid(image.image)
+      if (!cid) return null
+      return {
+        type: 'image',
+        cid,
+        mimeType: image.image?.mimeType ?? 'image/jpeg',
+        alt: image.alt ?? '',
+        width: image.aspectRatio?.width,
+        height: image.aspectRatio?.height,
+      }
+    }).filter(Boolean)
+  }
+
+  return []
+}
+
+async function downloadBlob({ did, cid, destination, dryRun }) {
+  if (dryRun) return
+
+  const url = new URL(blobApi)
+  url.searchParams.set('did', did)
+  url.searchParams.set('cid', cid)
+
+  const response = await fetch(url, { redirect: 'follow' })
+  if (!response.ok) throw new Error(`Blob download failed for ${cid}: ${response.status}`)
+
+  const bytes = Buffer.from(await response.arrayBuffer())
+  await mkdir(path.dirname(destination), { recursive: true })
+  await writeFile(destination, bytes)
+}
+
 async function existingNoteIds() {
   await mkdir(contentDir, { recursive: true })
   const files = await readdir(contentDir)
@@ -102,21 +171,40 @@ function noteFromFeedItem(item) {
   const id = rkeyFromUri(post.uri)
   const date = record.createdAt
   const fileDate = date.slice(0, 10)
+  const { year, month, day } = {
+    year: fileDate.slice(0, 4),
+    month: fileDate.slice(5, 7),
+    day: fileDate.slice(8, 10),
+  }
   const file = path.join(contentDir, `${fileDate}-${id}.md`)
+  const mediaDir = path.join(publicDir, 'notes', year, month, day, id)
+  const media = mediaFromEmbed(record.embed).map((item, index) => {
+    const extension = mediaExtension(item.mimeType)
+    const filename = `${item.type}-${index + 1}-${item.cid}.${extension}`
+    return {
+      ...item,
+      src: `/notes/${year}/${month}/${day}/${id}/${filename}`,
+      file: path.join(mediaDir, filename),
+    }
+  })
 
   return {
     id,
     date,
+    did: didFromUri(post.uri),
     uri: post.uri,
     cid: post.cid,
     originalUrl: postUrl(post.uri),
     text: textWithExpandedLinks(record),
+    media,
     file,
   }
 }
 
 function noteMarkdown(note) {
-  return `---\nid: ${quoteYaml(note.id)}\ndate: ${quoteYaml(note.date)}\nsource: bluesky\nuri: ${quoteYaml(note.uri)}\ncid: ${quoteYaml(note.cid)}\noriginalUrl: ${quoteYaml(note.originalUrl)}\n---\n\n${note.text.trim()}\n`
+  const media = note.media.map(({ file, ...item }) => item)
+  const mediaFrontmatter = media.length > 0 ? `\nmedia: ${JSON.stringify(media)}` : ''
+  return `---\nid: ${quoteYaml(note.id)}\ndate: ${quoteYaml(note.date)}\nsource: bluesky\nuri: ${quoteYaml(note.uri)}\ncid: ${quoteYaml(note.cid)}\noriginalUrl: ${quoteYaml(note.originalUrl)}${mediaFrontmatter}\n---\n\n${note.text.trim()}\n`
 }
 
 async function fetchFeed({ actor, limit }) {
@@ -154,6 +242,12 @@ async function main() {
     }
 
     if (!options.dryRun) {
+      await Promise.all(note.media.map((item) => downloadBlob({
+        did: note.did,
+        cid: item.cid,
+        destination: item.file,
+        dryRun: options.dryRun,
+      })))
       await writeFile(note.file, noteMarkdown(note), 'utf8')
       written += 1
     }

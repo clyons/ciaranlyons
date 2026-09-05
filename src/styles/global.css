@@ -312,6 +312,31 @@ img {
   background: #201d19;
 }
 
+.note-media {
+  display: grid;
+  gap: 18px;
+  margin: 0 0 1.35em;
+}
+
+.note-media-item {
+  margin: 0;
+}
+
+.note-media img,
+.note-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 8px;
+  background: #201d19;
+}
+
+.note-media video {
+  max-height: 78svh;
+  object-fit: contain;
+}
+
 .prose code {
   background: var(--code);
   border-radius: 4px;
