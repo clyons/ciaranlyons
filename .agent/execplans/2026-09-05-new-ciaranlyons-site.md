@@ -29,6 +29,7 @@ The repository contains the agent starter kit and no application runtime. The ne
 ## Surprises & Discoveries
 
 - `ciaranlyons.com` does not currently resolve through the public ATProto handle resolver, so DID and Standard.site publication verification are environment-backed instead of hard-coded.
+- The starter-kit PR quality workflow used Node 20, but Astro 7 requires Node `>=22.12.0`; CI now uses Node 22 and `package.json` declares that engine floor.
 
 ## Decision Log
 
