@@ -22,6 +22,37 @@ const { note } = Astro.props
     </header>
     <div class="prose">
       <blockquote>{note.text}</blockquote>
+      {note.media.length > 0 && (
+        <div class="note-media">
+          {note.media.map((media) => (
+            <figure class="note-media-item">
+              {media.type === 'video' ? (
+                <video
+                  controls
+                  muted
+                  playsinline
+                  autoplay
+                  loop
+                  preload="metadata"
+                  aria-label={media.alt || 'Bluesky video'}
+                  style={media.width && media.height ? `aspect-ratio: ${media.width} / ${media.height};` : undefined}
+                >
+                  <source src={media.src} type={media.mimeType || 'video/mp4'} />
+                </video>
+              ) : (
+                <img
+                  src={media.src}
+                  alt={media.alt || ''}
+                  width={media.width}
+                  height={media.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+            </figure>
+          ))}
+        </div>
+      )}
       <p class="date">{formatDate(note.date, { month: 'long', day: 'numeric', year: 'numeric' })}</p>
       <p><a href={originalPostUrl(note)}>Original ATProto post</a></p>
     </div>

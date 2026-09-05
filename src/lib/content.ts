@@ -48,7 +48,18 @@ export interface NoteEntry {
   uri?: string
   source?: 'bluesky' | 'local'
   originalUrl?: string
+  media: NoteMedia[]
   url: string
+}
+
+export interface NoteMedia {
+  type: 'image' | 'video'
+  src: string
+  mimeType?: string
+  alt?: string
+  width?: number
+  height?: number
+  cid?: string
 }
 
 export interface ProjectEntry {
@@ -68,6 +79,38 @@ function asString(value: unknown, fallback = ''): string {
 
 function asArray(value: unknown): string[] {
   return Array.isArray(value) ? value.map((item) => String(item)) : []
+}
+
+function asNumber(value: unknown): number | undefined {
+  return typeof value === 'number' && Number.isFinite(value) ? value : undefined
+}
+
+function asRecord(value: unknown): Record<string, unknown> {
+  return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {}
+}
+
+function asNoteMedia(value: unknown): NoteMedia[] {
+  if (!Array.isArray(value)) return []
+
+  const parsed: NoteMedia[] = []
+  for (const item of value) {
+    const media = asRecord(item)
+    const type = media.type === 'video' ? 'video' : media.type === 'image' ? 'image' : undefined
+    const src = asString(media.src)
+    if (!type || !src) continue
+
+    parsed.push({
+      type,
+      src,
+      mimeType: asString(media.mimeType) || undefined,
+      alt: asString(media.alt) || undefined,
+      width: asNumber(media.width),
+      height: asNumber(media.height),
+      cid: asString(media.cid) || undefined,
+    })
+  }
+
+  return parsed
 }
 
 function sortByDateDesc<T extends { date: string }>(items: T[]): T[] {
@@ -193,6 +236,7 @@ export async function getLocalNotes(): Promise<NoteEntry[]> {
         uri: asString(data.uri) || undefined,
         source,
         originalUrl: asString(data.originalUrl) || undefined,
+        media: asNoteMedia(data.media),
         url: datedPath('/notes', date, id),
       }
     }),
