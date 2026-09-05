@@ -1,5 +1,5 @@
 import { getNotes } from './atproto'
-import { getProjects, getTilEntries, getWriting } from './content'
+import { getProjects, getTilEntries, getWriting, noteTitle } from './content'
 
 export interface SearchItem {
   type: 'Writing' | 'Note' | 'Project' | 'TIL'
@@ -27,7 +27,7 @@ export async function getSearchItems(): Promise<SearchItem[]> {
     })),
     ...notes.map((item) => ({
       type: 'Note' as const,
-      title: item.text.slice(0, 72),
+      title: noteTitle(item),
       description: item.text,
       url: item.url,
       date: item.date,
