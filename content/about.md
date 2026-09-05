@@ -1,4 +1,4 @@
-I build things that last and grow. In the past, websites and communities; lately, teams and companies; every day, mental fitness.
+I build things that last and grow. In the past, websites and communities; lately, teams.
 
 I'm currently Chief Operating Officer at [Positive Intelligence](https://www.positiveintelligence.com/), the leading online mental fitness training company founded by Stanford lecturer Shirzad Chamine. We've engaged more than 1 million participants in discovering how they self-sabotage and building mental muscles to maximize both performance and happiness.
 
@@ -22,11 +22,11 @@ Organic/Content Marketing - +50% leads YoY
 
 ### Gold Lion at Cannes
 
-Project Silverline, 2013. See [LinkedIn](https://www.linkedin.com/in/ciaranlyons) for the historical role context.
+Project Silverline, 2013
 
 ## Case Studies
 
-### [Project Silverline: Connecting Seniors Through Technology](https://stevebackprojects.com/singtel)
+### [Project Silverline: Connecting Seniors Through Technology](https://www.campaignasia.com/article/singtel-csr-initiative-refurbishes-iphones-for-seniors/318689)
 
 Product / Mobile Apps
 
@@ -43,3 +43,9 @@ Leveraging app automation platform Zapier to create an automated data analysis w
 Automation / Email Marketing
 
 Using Mailchimp's automation features to educate more than 25,000 students during the launch of the How to Become a Morning Person email course.
+
+## Say Hello
+
+I'm always happy to connect.
+
+[Email](mailto:hello@ciaranlyons.com) / [LinkedIn](https://www.linkedin.com/in/ciaranlyons) / [GitHub](https://github.com/clyons/)
