@@ -44,7 +44,10 @@ export interface NoteEntry {
   year: string
   month: string
   day: string
+  cid?: string
   uri?: string
+  source?: 'bluesky' | 'local'
+  originalUrl?: string
   url: string
 }
 
@@ -170,14 +173,15 @@ export async function getAbout() {
   return readMarkdownFile(path.join(contentRoot, 'about.md'))
 }
 
-export async function getFallbackNotes(): Promise<NoteEntry[]> {
+export async function getLocalNotes(): Promise<NoteEntry[]> {
   const files = await fg('notes/*.md', { cwd: contentRoot, absolute: true })
   const entries = await Promise.all(
     files.map(async (file) => {
       const { data, body } = await readMarkdownFile(file)
-      const id = path.basename(file, '.md')
+      const id = asString(data.id, path.basename(file, '.md'))
       const date = asString(data.date)
       const { year, month, day } = dateParts(date)
+      const source: NoteEntry['source'] = asString(data.source) === 'bluesky' ? 'bluesky' : 'local'
       return {
         id,
         text: body,
@@ -185,12 +189,22 @@ export async function getFallbackNotes(): Promise<NoteEntry[]> {
         year,
         month,
         day,
+        cid: asString(data.cid) || undefined,
         uri: asString(data.uri) || undefined,
+        source,
+        originalUrl: asString(data.originalUrl) || undefined,
         url: datedPath('/notes', date, id),
       }
     }),
   )
   return sortByDateDesc(entries)
+}
+
+export const getFallbackNotes = getLocalNotes
+
+export function noteTitle(note: Pick<NoteEntry, 'text'>): string {
+  const firstLine = note.text.split(/\r?\n/).find((line) => line.trim())?.trim() ?? 'Note'
+  return firstLine.length > 72 ? `${firstLine.slice(0, 69)}...` : firstLine
 }
 
 export function getTilTopics(entries: TilEntry[]) {

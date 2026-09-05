@@ -12,6 +12,7 @@
     "build": "astro check && astro build && node scripts/write-well-known.mjs",
     "preview": "astro preview",
     "check": "astro check",
+    "notes:sync": "node scripts/sync-bsky-notes.mjs",
     "secrets:publish": "tsx scripts/publish-1password-secrets.ts",
     "secrets:refresh": "tsx scripts/refresh-1password-secrets.ts"
   },

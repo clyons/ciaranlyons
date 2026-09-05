@@ -1,4 +1,4 @@
-import { getFallbackNotes, type NoteEntry } from './content'
+import { getLocalNotes, type NoteEntry } from './content'
 import { dateParts } from './content'
 
 const publicApi = 'https://public.api.bsky.app/xrpc'
@@ -21,6 +21,9 @@ function rkeyFromUri(uri: string): string {
 }
 
 export async function getNotes(limit = 30): Promise<NoteEntry[]> {
+  const localNotes = await getLocalNotes()
+  if (localNotes.length > 0) return localNotes.slice(0, limit)
+
   const handle = import.meta.env.ATPROTO_HANDLE || 'ciaranlyons.com'
   const url = new URL(`${publicApi}/app.bsky.feed.getAuthorFeed`)
   url.searchParams.set('actor', handle)
@@ -43,13 +46,14 @@ export async function getNotes(limit = 30): Promise<NoteEntry[]> {
       })
       .filter((note) => note.id && note.text && note.date)
 
-    return notes.length > 0 ? notes : getFallbackNotes()
+    return notes
   } catch {
-    return getFallbackNotes()
+    return []
   }
 }
 
 export function originalPostUrl(note: NoteEntry): string {
+  if (note.originalUrl) return note.originalUrl
   if (!note.uri) return 'https://bsky.app/profile/ciaranlyons.com'
   const [, did, rkey] = note.uri.match(/^at:\/\/([^/]+)\/app\.bsky\.feed\.post\/(.+)$/) ?? []
   return did && rkey ? `https://bsky.app/profile/${did}/post/${rkey}` : 'https://bsky.app/profile/ciaranlyons.com'
