@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { getNotes } from '../../lib/atproto'
+import { formatDate } from '../../lib/dates'
 
 const notes = await getNotes(50)
 ---
@@ -14,7 +15,7 @@ const notes = await getNotes(50)
     <div class="archive-list">
       {notes.map((note) => (
         <a class="note-row" href={note.url}>
-          <span class="date">{new Date(note.date).toLocaleDateString('en', { month: 'short', day: '2-digit', year: 'numeric' })}</span>
+          <span class="date">{formatDate(note.date, { month: 'short', day: '2-digit', year: 'numeric' })}</span>
           <p>{note.text}</p>
         </a>
       ))}

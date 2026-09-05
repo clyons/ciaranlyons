@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro'
 import { getNotes } from '../../../../lib/atproto'
+import { formatDate } from '../../../../lib/dates'
 
 export async function getStaticPaths() {
   const notes = await getNotes(50)
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { year, month, notes } = Astro.props
-const label = new Date(`${year}-${month}-01T00:00:00Z`).toLocaleDateString('en', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+const label = formatDate(`${year}-${month}-01`, { month: 'long', year: 'numeric' })
 ---
 
 <BaseLayout title={`Notes: ${label}`} description={`Notes from ${label}.`}>
@@ -24,7 +25,7 @@ const label = new Date(`${year}-${month}-01T00:00:00Z`).toLocaleDateString('en',
     <div class="archive-list">
       {notes.map((note) => (
         <a class="note-row" href={note.url}>
-          <span class="date">{new Date(note.date).toLocaleDateString('en', { month: 'short', day: '2-digit' })}</span>
+          <span class="date">{formatDate(note.date, { month: 'short', day: '2-digit' })}</span>
           <p>{note.text}</p>
         </a>
       ))}
