@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import { getNotes, originalPostUrl } from '../../../../../lib/atproto'
+
+export async function getStaticPaths() {
+  const notes = await getNotes(50)
+  return notes.map((note) => ({
+    params: { year: note.year, month: note.month, day: note.day, id: note.id },
+    props: { note },
+  }))
+}
+
+const { note } = Astro.props
+---
+
+<BaseLayout title="Note" description={note.text} canonical={note.url}>
+  <article class="article-shell">
+    <header class="article-header">
+      <p class="section-kicker">Ciaran Lyons</p>
+      <h1 class="article-title">@ciaranlyons.com</h1>
+    </header>
+    <div class="prose">
+      <blockquote>{note.text}</blockquote>
+      <p class="date">{new Date(note.date).toLocaleDateString('en', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+      <p><a href={originalPostUrl(note)}>Original ATProto post</a></p>
+    </div>
+  </article>
+</BaseLayout>

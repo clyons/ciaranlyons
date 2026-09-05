@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Search" description="Search writing, notes, projects, and TIL entries.">
+  <section class="section">
+    <p class="section-kicker">Search</p>
+    <h1 class="page-title">Search</h1>
+  </section>
+  <section class="section">
+    <label class="visually-hidden" for="site-search">Search the site</label>
+    <input class="search-input" id="site-search" type="search" placeholder="Search writing, notes, TIL, projects" />
+    <div class="archive-list" id="search-results" aria-live="polite"></div>
+  </section>
+  <script>
+    interface SearchItem {
+      type: string
+      title: string
+      description: string
+      url: string
+    }
+
+    const input = document.querySelector<HTMLInputElement>('#site-search')
+    const results = document.querySelector<HTMLElement>('#search-results')
+    const response = await fetch('/search.json')
+    const items = await response.json() as SearchItem[]
+
+    function render(query: string) {
+      if (!results) return
+      const q = query.toLowerCase().trim()
+      const matches = q
+        ? items.filter((item: SearchItem) => `${item.type} ${item.title} ${item.description}`.toLowerCase().includes(q))
+        : items.slice(0, 12)
+
+      results.replaceChildren(...matches.map((item: SearchItem) => {
+        const link = document.createElement('a')
+        link.className = 'search-result'
+        link.href = item.url
+
+        const body = document.createElement('div')
+        const type = document.createElement('p')
+        type.className = 'type-label'
+        type.textContent = item.type
+        const title = document.createElement('h3')
+        title.textContent = item.title
+        const description = document.createElement('p')
+        description.textContent = item.description
+        body.append(type, title, description)
+
+        const arrow = document.createElement('span')
+        arrow.className = 'arrow'
+        arrow.setAttribute('aria-hidden', 'true')
+        arrow.textContent = '->'
+
+        link.append(body, arrow)
+        return link
+      }))
+    }
+
+    input?.addEventListener('input', () => render(input.value))
+    render('')
+  </script>
+</BaseLayout>

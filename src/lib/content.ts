@@ -1,0 +1,208 @@
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
+import fg from 'fast-glob'
+import matter from 'gray-matter'
+import { renderMarkdown } from './markdown'
+
+const contentRoot = path.join(process.cwd(), 'content')
+
+export interface WritingEntry {
+  slug: string
+  year: string
+  month: string
+  day: string
+  title: string
+  description: string
+  date: string
+  updated?: string
+  standardUri?: string
+  body: string
+  html: string
+  url: string
+}
+
+export interface TilEntry {
+  topic: string
+  slug: string
+  year: string
+  month: string
+  day: string
+  title: string
+  description: string
+  date: string
+  updated?: string
+  tags: string[]
+  body: string
+  html: string
+  url: string
+}
+
+export interface NoteEntry {
+  id: string
+  text: string
+  date: string
+  year: string
+  month: string
+  day: string
+  uri?: string
+  url: string
+}
+
+export interface ProjectEntry {
+  slug: string
+  title: string
+  description: string
+  url: string
+  meta?: string
+}
+
+function asString(value: unknown, fallback = ''): string {
+  if (value instanceof Date) return value.toISOString().slice(0, 10)
+  if (typeof value === 'string') return value
+  if (typeof value === 'number') return String(value)
+  return fallback
+}
+
+function asArray(value: unknown): string[] {
+  return Array.isArray(value) ? value.map((item) => String(item)) : []
+}
+
+function sortByDateDesc<T extends { date: string }>(items: T[]): T[] {
+  return items.sort((a, b) => b.date.localeCompare(a.date))
+}
+
+export function dateParts(date: string) {
+  const [year = 'undated', month = '00', day = '00'] = date.slice(0, 10).split('-')
+  return { year, month, day }
+}
+
+function datedPath(base: string, date: string, slug: string) {
+  const { year, month, day } = dateParts(date)
+  return `${base}/${year}/${month}/${day}/${slug}`
+}
+
+async function readMarkdownFile(file: string) {
+  const raw = await readFile(file, 'utf8')
+  const parsed = matter(raw)
+  return {
+    data: parsed.data,
+    body: parsed.content.trim(),
+    html: renderMarkdown(parsed.content),
+  }
+}
+
+export async function getWriting(): Promise<WritingEntry[]> {
+  const files = await fg('writing/*.md', { cwd: contentRoot, absolute: true })
+  const entries = await Promise.all(
+    files.map(async (file) => {
+      const { data, body, html } = await readMarkdownFile(file)
+      const slug = path.basename(file, '.md')
+      const date = asString(data.date)
+      const { year, month, day } = dateParts(date)
+      return {
+        slug,
+        year,
+        month,
+        day,
+        title: asString(data.title, slug),
+        description: asString(data.description),
+        date,
+        updated: asString(data.updated) || undefined,
+        standardUri: asString(data.standardUri) || undefined,
+        body,
+        html,
+        url: datedPath('/writing', date, slug),
+      }
+    }),
+  )
+  return sortByDateDesc(entries)
+}
+
+export async function getTilEntries(): Promise<TilEntry[]> {
+  const files = await fg('til/**/*.md', { cwd: contentRoot, absolute: true })
+  const entries = await Promise.all(
+    files.map(async (file) => {
+      const relative = path.relative(path.join(contentRoot, 'til'), file)
+      const [topic, filename] = relative.split(path.sep)
+      const { data, body, html } = await readMarkdownFile(file)
+      const slug = path.basename(filename, '.md')
+      const date = asString(data.date)
+      const { year, month, day } = dateParts(date)
+      return {
+        topic,
+        slug,
+        year,
+        month,
+        day,
+        title: asString(data.title, slug),
+        description: asString(data.description),
+        date,
+        updated: asString(data.updated) || undefined,
+        tags: asArray(data.tags),
+        body,
+        html,
+        url: `/til/${topic}/${year}/${month}/${day}/${slug}`,
+      }
+    }),
+  )
+  return sortByDateDesc(entries)
+}
+
+export async function getProjects(): Promise<ProjectEntry[]> {
+  const files = await fg('projects/*.md', { cwd: contentRoot, absolute: true })
+  const entries = await Promise.all(
+    files.map(async (file) => {
+      const { data } = await readMarkdownFile(file)
+      const slug = path.basename(file, '.md')
+      return {
+        slug,
+        title: asString(data.title, slug),
+        description: asString(data.description),
+        url: asString(data.url, `/projects#${slug}`),
+        meta: asString(data.meta) || undefined,
+      }
+    }),
+  )
+  return entries.sort((a, b) => a.title.localeCompare(b.title))
+}
+
+export async function getAbout() {
+  return readMarkdownFile(path.join(contentRoot, 'about.md'))
+}
+
+export async function getFallbackNotes(): Promise<NoteEntry[]> {
+  const files = await fg('notes/*.md', { cwd: contentRoot, absolute: true })
+  const entries = await Promise.all(
+    files.map(async (file) => {
+      const { data, body } = await readMarkdownFile(file)
+      const id = path.basename(file, '.md')
+      const date = asString(data.date)
+      const { year, month, day } = dateParts(date)
+      return {
+        id,
+        text: body,
+        date,
+        year,
+        month,
+        day,
+        uri: asString(data.uri) || undefined,
+        url: datedPath('/notes', date, id),
+      }
+    }),
+  )
+  return sortByDateDesc(entries)
+}
+
+export function getTilTopics(entries: TilEntry[]) {
+  const topics = new Map<string, { topic: string; count: number; latest: string }>()
+  for (const entry of entries) {
+    const current = topics.get(entry.topic)
+    if (current) {
+      current.count += 1
+      if (entry.date > current.latest) current.latest = entry.date
+    } else {
+      topics.set(entry.topic, { topic: entry.topic, count: 1, latest: entry.date })
+    }
+  }
+  return [...topics.values()].sort((a, b) => b.count - a.count || a.topic.localeCompare(b.topic))
+}

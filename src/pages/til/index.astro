@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getTilEntries, getTilTopics } from '../../lib/content'
+
+const til = await getTilEntries()
+const topics = getTilTopics(til)
+---
+
+<BaseLayout title="TIL" description="Things Ciaran Lyons has figured out and does not want to figure out twice.">
+  <section class="section">
+    <p class="section-kicker">Project</p>
+    <h1 class="page-title">TIL</h1>
+    <p class="lede">Things I've figured out and don't want to figure out twice.</p>
+  </section>
+  <section class="section">
+    <label class="visually-hidden" for="til-search">Search TILs</label>
+    <input class="search-input" id="til-search" type="search" placeholder="Search TILs" data-til-search />
+  </section>
+  <section class="section split">
+    <div>
+      <p class="section-kicker">{til.length} TILs</p>
+      <h2 class="list-title">Recent</h2>
+      <div class="archive-list" data-til-results>
+        {til.map((entry) => (
+          <a class="row-link" href={entry.url} data-search-text={`${entry.title} ${entry.description} ${entry.topic} ${entry.tags.join(' ')}`}>
+            <div>
+              <h3>{entry.title}</h3>
+              <p>{entry.topic} - {new Date(entry.date).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+            </div>
+            <span class="arrow" aria-hidden="true">-></span>
+          </a>
+        ))}
+      </div>
+    </div>
+    <aside>
+      <p class="section-kicker">Topics</p>
+      <div class="archive-list">
+        {topics.map((topic) => (
+          <a class="topic-row" href={`/til/${topic.topic}`}>
+            <h3>{topic.topic}</h3>
+            <span class="date">{topic.count}</span>
+          </a>
+        ))}
+      </div>
+    </aside>
+  </section>
+  <script>
+    const input = document.querySelector<HTMLInputElement>('[data-til-search]')
+    const rows = [...document.querySelectorAll<HTMLElement>('[data-search-text]')]
+    input?.addEventListener('input', () => {
+      const query = input.value.toLowerCase().trim()
+      for (const row of rows) {
+        const text = row.getAttribute('data-search-text')?.toLowerCase() ?? ''
+        row.toggleAttribute('hidden', query !== '' && !text.includes(query))
+      }
+    })
+  </script>
+</BaseLayout>

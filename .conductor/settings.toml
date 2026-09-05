@@ -1,5 +1,14 @@
 "$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
 
 [scripts]
-setup = "bash scripts/conductor-setup.sh"
+setup = "bash scripts/conductor-setup.sh && npm install"
 run_mode = "concurrent"
+
+[scripts.run.dev]
+command = "npm run dev -- --host 127.0.0.1 --port $CONDUCTOR_PORT"
+default = true
+icon = "play"
+
+[scripts.run.build]
+command = "npm run build"
+icon = "check-circle"

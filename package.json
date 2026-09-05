@@ -1,0 +1,26 @@
+{
+  "name": "ciaranlyons",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "lint": "astro check",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "secrets:publish": "tsx scripts/publish-1password-secrets.ts",
+    "secrets:refresh": "tsx scripts/refresh-1password-secrets.ts"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^7.3.1",
+    "fast-glob": "^3.3.3",
+    "gray-matter": "^4.0.3",
+    "marked": "^14.1.4",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3"
+  }
+}
