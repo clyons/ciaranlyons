@@ -4,20 +4,26 @@ Context for Claude Code when working in this repository.
 
 ## What This Is
 
-<!-- Describe your project here -->
+CiaranLyons.com is the canonical home for Ciaran Lyons on the web: writing, notes, projects, and a Git-backed TIL project.
 
 ## Architecture
 
-<!-- Describe your architecture here -->
+Static-first Astro site with Markdown content in `content/`.
+
+- Writing lives at `/writing` and is designed to connect to Standard.site records.
+- Notes live at `/notes` and are fetched from public ATProto records when `@ciaranlyons.com` resolves, falling back to local Markdown notes.
+- TIL lives under `/til` as Markdown files grouped by topic.
+- Projects and About are site-native Markdown/Git content.
+- RSS and search are generated at build time.
+- Date-bearing public URLs are folder-addressable: `/writing/YYYY/MM/DD/slug`, `/notes/YYYY/MM/DD/id`, and `/til/topic/YYYY/MM/DD/slug`.
 
 ## Commands
 
 ```bash
-# Add your project's key commands here, for example:
-# npm run dev       # Start development server
-# npm run build     # Production build
-# npm run test      # Run tests
-# npm run lint      # Lint
+npm run dev       # Start development server
+npm run build     # Type-check and build the static site
+npm run preview   # Preview the built site
+npm run check     # Astro type/content check
 ```
 
 ## Git Workflow

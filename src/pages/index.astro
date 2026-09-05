@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { getNotes } from '../lib/atproto'
+import { getProjects, getWriting } from '../lib/content'
+
+const [writing, notes, projects] = await Promise.all([getWriting(), getNotes(5), getProjects()])
+const selectedWriting = writing.slice(0, 2)
+const selectedProjects = projects.slice(0, 3)
+---
+
+<BaseLayout>
+  <section class="hero" aria-labelledby="home-title">
+    <h1 id="home-title">Ciaran Lyons</h1>
+    <div class="hero-copy">
+      <p class="dek">I build things that last and grow.</p>
+      <p class="lede">Websites, communities and now businesses.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="writing-title">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">Selected Writing</p>
+        <h2 id="writing-title">Arguments with permanent addresses.</h2>
+      </div>
+      <a href="/writing">All writing</a>
+    </div>
+    <div class="archive-list">
+      {selectedWriting.map((item) => (
+        <a class="row-link" href={item.url}>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+          <span class="date">{new Date(item.date).toLocaleDateString('en', { month: 'long', year: 'numeric' })}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="notes-title">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">Notes</p>
+        <h2 id="notes-title">Short-form work with owned URLs.</h2>
+      </div>
+      <a href="/notes">All notes</a>
+    </div>
+    <div class="archive-list">
+      {notes.slice(0, 4).map((note) => (
+        <a class="note-row" href={note.url}>
+          <span class="date">{new Date(note.date).toLocaleDateString('en', { month: 'short', day: '2-digit' })}</span>
+          <p>{note.text}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="projects-title">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">Selected Projects</p>
+        <h2 id="projects-title">Built things, experiments, and durable notes.</h2>
+      </div>
+      <a href="/projects">All projects</a>
+    </div>
+    <div class="archive-list">
+      {selectedProjects.map((project) => (
+        <a class="project-row" href={project.url}>
+          <div>
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+          </div>
+          <span class="arrow" aria-hidden="true">-></span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

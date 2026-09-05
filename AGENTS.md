@@ -54,3 +54,23 @@ Every substantial PR should include:
 - The ExecPlan path (for example `.agent/execplans/2026-02-13-feature-name.md`)
 - A short "what changed" summary
 - Validation evidence (build, tests, or explicit `N/A` with reason)
+
+## TIL Publishing
+
+When Ciaran says "TIL this", treat it as a publishing operation for `content/til`.
+
+1. Find or create the appropriate topic directory under `content/til/<topic>`.
+2. Create one Markdown document at `content/til/<topic>/<slug>.md`.
+3. Use concise frontmatter: `title`, `description`, `date`, `updated`, and `tags`.
+4. Preserve the useful factual detail, commands, code, error messages, links, and gotchas.
+5. Keep the entry short. Do not inflate a TIL into an essay.
+6. Add relevant primary-source links when available.
+7. Open a focused diff or PR for review.
+
+Published TIL URLs are date-foldered for hackability:
+
+```text
+/til/<topic>/<YYYY>/<MM>/<DD>/<slug>
+```
+
+Do not move existing TIL files or change slugs unless Ciaran explicitly asks for a URL migration.

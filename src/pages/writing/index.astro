@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getWriting } from '../../lib/content'
+
+const writing = await getWriting()
+---
+
+<BaseLayout title="Writing" description="Essays and durable writing by Ciaran Lyons.">
+  <section class="section">
+    <p class="section-kicker">Writing</p>
+    <h1 class="page-title">Writing</h1>
+  </section>
+  <section class="section">
+    <div class="archive-list">
+      {writing.map((item) => (
+        <a class="row-link" href={item.url}>
+          <div>
+            <h2>{item.title}</h2>
+            <p>{item.description}</p>
+          </div>
+          <span class="date">{new Date(item.date).toLocaleDateString('en', { month: 'long', year: 'numeric' })}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -71,7 +71,7 @@ jobs:
         if: steps.node-project.outputs.present == 'true'
         uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Install dependencies
         if: steps.node-project.outputs.present == 'true'

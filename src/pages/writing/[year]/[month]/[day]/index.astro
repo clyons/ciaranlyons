@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import { getWriting } from '../../../../../lib/content'
+
+export async function getStaticPaths() {
+  const entries = await getWriting()
+  const days = [...new Set(entries.map((entry) => `${entry.year}-${entry.month}-${entry.day}`))]
+  return days.map((key) => {
+    const [year, month, day] = key.split('-')
+    return {
+      params: { year, month, day },
+      props: { year, month, day, entries: entries.filter((entry) => entry.year === year && entry.month === month && entry.day === day) },
+    }
+  })
+}
+
+const { year, month, day, entries } = Astro.props
+const label = new Date(`${year}-${month}-${day}T00:00:00Z`).toLocaleDateString('en', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+---
+
+<BaseLayout title={`Writing: ${label}`} description={`Writing from ${label}.`}>
+  <section class="section">
+    <p class="section-kicker">Writing</p>
+    <h1 class="page-title">{label}</h1>
+  </section>
+  <section class="section">
+    <div class="archive-list">
+      {entries.map((entry) => (
+        <a class="row-link" href={entry.url}>
+          <div>
+            <h2>{entry.title}</h2>
+            <p>{entry.description}</p>
+          </div>
+          <span class="arrow" aria-hidden="true">-></span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

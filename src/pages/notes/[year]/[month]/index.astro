@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro'
+import { getNotes } from '../../../../lib/atproto'
+
+export async function getStaticPaths() {
+  const notes = await getNotes(50)
+  const months = [...new Set(notes.map((note) => `${note.year}-${note.month}`))]
+  return months.map((key) => {
+    const [year, month] = key.split('-')
+    return { params: { year, month }, props: { year, month, notes: notes.filter((note) => note.year === year && note.month === month) } }
+  })
+}
+
+const { year, month, notes } = Astro.props
+const label = new Date(`${year}-${month}-01T00:00:00Z`).toLocaleDateString('en', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+---
+
+<BaseLayout title={`Notes: ${label}`} description={`Notes from ${label}.`}>
+  <section class="section">
+    <p class="section-kicker">Notes</p>
+    <h1 class="page-title">{label}</h1>
+  </section>
+  <section class="section">
+    <div class="archive-list">
+      {notes.map((note) => (
+        <a class="note-row" href={note.url}>
+          <span class="date">{new Date(note.date).toLocaleDateString('en', { month: 'short', day: '2-digit' })}</span>
+          <p>{note.text}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

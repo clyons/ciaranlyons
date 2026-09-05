@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { getTilEntries } from '../../../lib/content'
+
+export async function getStaticPaths() {
+  const entries = await getTilEntries()
+  const topics = [...new Set(entries.map((entry) => entry.topic))]
+  return topics.map((topic) => ({
+    params: { topic },
+    props: { topic, entries: entries.filter((entry) => entry.topic === topic) },
+  }))
+}
+
+const { topic, entries } = Astro.props
+---
+
+<BaseLayout title={`TIL: ${topic}`} description={`TIL entries about ${topic}.`}>
+  <section class="section">
+    <p class="section-kicker">TIL Topic</p>
+    <h1 class="page-title">{topic}</h1>
+  </section>
+  <section class="section">
+    <div class="archive-list">
+      {entries.map((entry) => (
+        <a class="row-link" href={entry.url}>
+          <div>
+            <h2>{entry.title}</h2>
+            <p>{entry.description}</p>
+          </div>
+          <span class="date">{new Date(entry.date).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
