@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro'
 import { getTilEntries } from '../../../../lib/content'
+import { formatDate } from '../../../../lib/dates'
 
 export async function getStaticPaths() {
   const entries = await getTilEntries()
@@ -27,7 +28,7 @@ const { topic, year, entries } = Astro.props
             <h2>{entry.title}</h2>
             <p>{entry.description}</p>
           </div>
-          <span class="date">{new Date(entry.date).toLocaleDateString('en', { month: 'short', day: 'numeric' })}</span>
+          <span class="date">{formatDate(entry.date, { month: 'short', day: 'numeric' })}</span>
         </a>
       ))}
     </div>

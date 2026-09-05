@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
 import { getWriting } from '../../../../../lib/content'
+import { formatDate } from '../../../../../lib/dates'
 
 export async function getStaticPaths() {
   const writing = await getWriting()
@@ -21,7 +22,7 @@ const { entry } = Astro.props
 >
   <article class="article-shell">
     <header class="article-header">
-      <p class="date">{new Date(entry.date).toLocaleDateString('en', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+      <p class="date">{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</p>
       <h1 class="article-title">{entry.title}</h1>
       <p class="lede">{entry.description}</p>
     </header>

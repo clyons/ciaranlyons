@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { getNotes } from '../lib/atproto'
 import { getProjects, getWriting } from '../lib/content'
+import { formatDate } from '../lib/dates'
 
 const [writing, notes, projects] = await Promise.all([getWriting(), getNotes(5), getProjects()])
 const selectedWriting = writing.slice(0, 2)
@@ -32,7 +33,7 @@ const selectedProjects = projects.slice(0, 3)
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </div>
-          <span class="date">{new Date(item.date).toLocaleDateString('en', { month: 'long', year: 'numeric' })}</span>
+          <span class="date">{formatDate(item.date, { month: 'long', year: 'numeric' })}</span>
         </a>
       ))}
     </div>
@@ -49,7 +50,7 @@ const selectedProjects = projects.slice(0, 3)
     <div class="archive-list">
       {notes.slice(0, 4).map((note) => (
         <a class="note-row" href={note.url}>
-          <span class="date">{new Date(note.date).toLocaleDateString('en', { month: 'short', day: '2-digit' })}</span>
+          <span class="date">{formatDate(note.date, { month: 'short', day: '2-digit' })}</span>
           <p>{note.text}</p>
         </a>
       ))}

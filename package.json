@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "lint": "astro check",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && node scripts/write-well-known.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "secrets:publish": "tsx scripts/publish-1password-secrets.ts",

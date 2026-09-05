@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
 import { getNotes, originalPostUrl } from '../../../../../lib/atproto'
+import { formatDate } from '../../../../../lib/dates'
 
 export async function getStaticPaths() {
   const notes = await getNotes(50)
@@ -21,7 +22,7 @@ const { note } = Astro.props
     </header>
     <div class="prose">
       <blockquote>{note.text}</blockquote>
-      <p class="date">{new Date(note.date).toLocaleDateString('en', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+      <p class="date">{formatDate(note.date, { month: 'long', day: 'numeric', year: 'numeric' })}</p>
       <p><a href={originalPostUrl(note)}>Original ATProto post</a></p>
     </div>
   </article>
