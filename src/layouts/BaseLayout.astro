@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import { socialLinks } from '../lib/socials'
 
 interface Props {
   title?: string
@@ -67,7 +68,13 @@ const pageTitle = title === 'Ciaran Lyons' ? title : `${title} - Ciaran Lyons`
         <span>@ciaranlyons.com</span>
         <nav aria-label="Footer navigation">
           <a href="/feed.xml">RSS</a>
-          <a href="https://bsky.app/profile/ciaranlyons.com">ATProto</a>
+          {
+            socialLinks.map((link) => (
+              <a href={link.href} rel="me">
+                {link.label}
+              </a>
+            ))
+          }
         </nav>
       </footer>
     </div>
