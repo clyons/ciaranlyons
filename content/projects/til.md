@@ -1,6 +1,6 @@
 ---
 title: TIL
-description: Things I've figured out and don't want to figure out twice.
+description: Small fixes and notes I expect to need again.
 url: /til
-meta: 2 notes
+meta: 2 entries
 ---

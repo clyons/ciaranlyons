@@ -1,6 +1,6 @@
 ---
 title: CiaranLyons.com
-description: The owned home for writing, notes, projects, and durable URLs.
+description: "This site: writing, notes, projects, and TILs under my own domain."
 url: /
-meta: Astro, Markdown, ATProto, Standard.site
+meta: Astro, Markdown, ATProto, RSS
 ---

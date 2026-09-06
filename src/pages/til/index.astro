@@ -7,11 +7,11 @@ const til = await getTilEntries()
 const topics = getTilTopics(til)
 ---
 
-<BaseLayout title="TIL" description="Things Ciaran Lyons has figured out and does not want to figure out twice.">
+<BaseLayout title="TIL" description="Practical notes from Ciaran Lyons.">
   <section class="section">
-    <p class="section-kicker">Project</p>
+    <p class="section-kicker">TIL</p>
     <h1 class="page-title">TIL</h1>
-    <p class="lede">Things I've figured out and don't want to figure out twice.</p>
+    <p class="lede">Small fixes and notes I expect to need again.</p>
   </section>
   <section class="section">
     <label class="visually-hidden" for="til-search">Search TILs</label>
@@ -19,7 +19,7 @@ const topics = getTilTopics(til)
   </section>
   <section class="section split">
     <div>
-      <p class="section-kicker">{til.length} TILs</p>
+      <p class="section-kicker">{til.length} entries</p>
       <h2 class="list-title">Recent</h2>
       <div class="archive-list" data-til-results>
         {til.map((entry) => (
