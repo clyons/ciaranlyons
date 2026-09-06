@@ -1,10 +1,10 @@
-I build things that last and grow. In the past, websites and communities; lately, teams.
+I build systems that help small teams do better work.
 
 I'm currently Chief Operating Officer at [Positive Intelligence](https://www.positiveintelligence.com/), the leading online mental fitness training company founded by Stanford lecturer Shirzad Chamine. We've engaged more than 1 million participants in discovering how they self-sabotage and building mental muscles to maximize both performance and happiness.
 
 Before stepping into operations, I spent a decade in growth and marketing, leading SEO and content at [I Will Teach You To Be Rich](https://www.iwillteachyoutoberich.com/), driving international growth at [Sticker Mule](https://www.stickermule.com/), and building data-driven systems through my consultancy [Quantify](https://www.linkedin.com/in/ciaranlyons). Along the way, I picked up a Gold Lion at Cannes and taught digital marketing at [General Assembly](https://www.generalassemb.ly/instructors/ciaran-lyons/6314).
 
-I'm particularly interested in how systems thinking and automation can multiply the impact of small teams.
+I'm especially interested in systems thinking, automation, and the places where small improvements compound.
 
 ## Background
 
@@ -46,6 +46,6 @@ Using Mailchimp's automation features to educate more than 25,000 students durin
 
 ## Say Hello
 
-I'm always happy to connect.
+Email is best.
 
 [Email](mailto:hello@ciaranlyons.com) / [LinkedIn](https://www.linkedin.com/in/ciaranlyons) / [GitHub](https://github.com/clyons/)
