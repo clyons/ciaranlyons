@@ -14,7 +14,7 @@ Create CiaranLyons.com's real `site.standard.publication` record and the matchin
 - [x] (2026-09-06 03:57Z) Confirmed that the local environment provides `BSKY_HANDLE` and `BSKY_APP_PASSWORD` by name only; no secret values were read or logged.
 - [x] (2026-09-06 03:59Z) Added compatibility for the existing BSKY environment variable names.
 - [x] (2026-09-06 03:59Z) Published the Standard.site publication and Writing document using the local app password.
-- [ ] Commit the returned document URI, merge the PR, deploy with the public publication URI, and verify the live endpoints.
+- [x] (2026-09-06 04:04Z) Merged PR #20, deployed the site with the public publication URI, and verified the live endpoints.
 
 ## Surprises & Discoveries
 
@@ -32,7 +32,7 @@ Create CiaranLyons.com's real `site.standard.publication` record and the matchin
 
 ## Outcomes & Retrospective
 
-The real publication and document records now exist on Ciaran's PDS. The returned document URI has been written to the Markdown source. The remaining work is to validate, merge the source metadata, deploy the static verification endpoint, and verify the public domain.
+The real publication and document records now exist on Ciaran's PDS. PR #20 added the document URI to Markdown and the existing credential-name compatibility. The merged build was deployed to `clyons/resume` `gh-pages` as `c59a022`; the live domain now verifies both the publication and document relationships.
 
 ## Context and Orientation
 
@@ -85,6 +85,13 @@ Document URI: `at://did:plc:bi2irbzgh2fzqvuuewkju2xf/site.standard.document/3mut
 - The static build completed with 31 pages and emitted the exact publication endpoint plus matching publication/document links in the Writing page.
 - Public PDS reads confirmed the publication URL is `https://ciaranlyons.com` and the document path is `/writing/2026/08/08/on-ownership`, referencing the publication URI above.
 
+2026-09-06 04:04Z live verification:
+
+- PR #20 merged as `b5a4ca2e19e927df61c30505fc53bd26c9c4e064` after all required checks passed.
+- `c59a022 Publish Standard.site verification` deployed the generated build to `clyons/resume` `gh-pages`.
+- `https://ciaranlyons.com/.well-known/site.standard.publication` returns the exact publication URI above.
+- `https://ciaranlyons.com/writing/2026/08/08/on-ownership` contains exact `site.standard.publication` and `site.standard.document` links for the URIs above.
+
 Do not include the app password.
 
 ## Interfaces and Dependencies
@@ -97,3 +104,4 @@ Do not include the app password.
 
 - 2026-09-06: Created continuation ExecPlan for live Standard.site publication and deployment.
 - 2026-09-06: Published the real Standard.site publication and the `on-ownership` document record.
+- 2026-09-06: Merged PR #20 and deployed/verified Standard.site production metadata.
