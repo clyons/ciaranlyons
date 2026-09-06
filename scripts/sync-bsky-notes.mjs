@@ -54,31 +54,6 @@ function didFromUri(uri) {
   return uri.match(/^at:\/\/([^/]+)\//)?.[1] ?? ''
 }
 
-function sliceUtf8(text, start, end) {
-  return Buffer.from(text, 'utf8').subarray(start, end).toString('utf8')
-}
-
-function textWithExpandedLinks(record) {
-  const text = record.text ?? ''
-  const facets = [...(record.facets ?? [])].sort((a, b) => (a.index?.byteStart ?? 0) - (b.index?.byteStart ?? 0))
-  let cursor = 0
-  let output = ''
-
-  for (const facet of facets) {
-    const start = facet.index?.byteStart
-    const end = facet.index?.byteEnd
-    if (!Number.isInteger(start) || !Number.isInteger(end) || start < cursor || end < start) continue
-
-    const link = facet.features?.find((feature) => feature?.$type === 'app.bsky.richtext.facet#link')
-    output += sliceUtf8(text, cursor, start)
-    output += link?.uri ?? sliceUtf8(text, start, end)
-    cursor = end
-  }
-
-  output += sliceUtf8(text, cursor, Buffer.byteLength(text, 'utf8'))
-  return output
-}
-
 function quoteYaml(value) {
   return JSON.stringify(String(value ?? ''))
 }
@@ -195,7 +170,8 @@ function noteFromFeedItem(item) {
     uri: post.uri,
     cid: post.cid,
     originalUrl: postUrl(post.uri),
-    text: textWithExpandedLinks(record),
+    text: record.text,
+    facets: record.facets ?? [],
     media,
     file,
   }
@@ -204,7 +180,7 @@ function noteFromFeedItem(item) {
 function noteMarkdown(note) {
   const media = note.media.map(({ file, ...item }) => item)
   const mediaFrontmatter = media.length > 0 ? `\nmedia: ${JSON.stringify(media)}` : ''
-  return `---\nid: ${quoteYaml(note.id)}\ndate: ${quoteYaml(note.date)}\nsource: bluesky\nuri: ${quoteYaml(note.uri)}\ncid: ${quoteYaml(note.cid)}\noriginalUrl: ${quoteYaml(note.originalUrl)}${mediaFrontmatter}\n---\n\n${note.text.trim()}\n`
+  return `---\nid: ${quoteYaml(note.id)}\ndate: ${quoteYaml(note.date)}\nsource: bluesky\nuri: ${quoteYaml(note.uri)}\ncid: ${quoteYaml(note.cid)}\noriginalUrl: ${quoteYaml(note.originalUrl)}\nfacets: ${JSON.stringify(note.facets)}${mediaFrontmatter}\n---\n\n${note.text.trim()}\n`
 }
 
 async function fetchFeed({ actor, limit }) {

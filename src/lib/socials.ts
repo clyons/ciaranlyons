@@ -15,4 +15,8 @@ export const socialLinks = [
     label: 'Bluesky',
     href: 'https://bsky.app/profile/ciaranlyons.com',
   },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/clyons',
+  },
 ] as const

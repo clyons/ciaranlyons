@@ -296,6 +296,15 @@ img {
   white-space: pre-wrap;
 }
 
+.note-row > .date {
+  justify-self: end;
+  align-self: start;
+}
+
+.note-rich-text a {
+  text-decoration-color: currentColor;
+}
+
 .arrow {
   color: var(--accent);
   justify-self: end;

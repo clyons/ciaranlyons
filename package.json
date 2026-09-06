@@ -13,6 +13,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "notes:sync": "node scripts/sync-bsky-notes.mjs",
+    "standard:publish": "node scripts/publish-standard-site.mjs",
     "secrets:publish": "tsx scripts/publish-1password-secrets.ts",
     "secrets:refresh": "tsx scripts/refresh-1password-secrets.ts"
   },
