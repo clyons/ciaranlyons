@@ -10,7 +10,8 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props
-const target = `${entry.url}/`
+const target = entry.url
+const canonicalTarget = new URL(target, Astro.site ?? new URL('https://ciaranlyons.com'))
 ---
 
 <!doctype html>
@@ -18,7 +19,7 @@ const target = `${entry.url}/`
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="refresh" content={`0; url=${target}`} />
-    <link rel="canonical" href={target} />
+    <link rel="canonical" href={canonicalTarget} />
     <title>Redirecting to {entry.title}</title>
   </head>
   <body>
