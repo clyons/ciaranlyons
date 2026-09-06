@@ -9,12 +9,12 @@ const selectedWriting = writing.slice(0, 2)
 const selectedProjects = projects.slice(0, 3)
 ---
 
-<BaseLayout description="Ciaran Lyons writes about operations, systems, automation, and the owned web.">
+<BaseLayout description="Ciaran Lyons writes about operations, growth, teams, companies, and mental fitness.">
   <section class="hero" aria-labelledby="home-title">
     <h1 id="home-title">Ciaran Lyons</h1>
     <div class="hero-copy">
-      <p class="dek">Systems, teams, and useful experiments.</p>
-      <p class="lede">COO at Positive Intelligence. Previously growth, SEO, automation, and community.</p>
+      <p class="dek">Operations, growth, and the systems behind better work.</p>
+      <p class="lede">I build things that last and grow. In the past, websites and communities; lately, teams and companies; every day, mental fitness. 🧠💪</p>
     </div>
   </section>
 
@@ -22,7 +22,7 @@ const selectedProjects = projects.slice(0, 3)
     <div class="section-heading">
       <div>
         <p class="section-kicker">Writing</p>
-        <h2 id="writing-title">Longer pieces on work, systems, and ownership.</h2>
+        <h2 id="writing-title">Essays on operating, building, and deciding.</h2>
       </div>
       <a href="/writing">All writing</a>
     </div>
@@ -43,15 +43,15 @@ const selectedProjects = projects.slice(0, 3)
     <div class="section-heading">
       <div>
         <p class="section-kicker">Notes</p>
-        <h2 id="notes-title">Short posts, saved here too.</h2>
+        <h2 id="notes-title">Recent notes.</h2>
       </div>
       <a href="/notes">All notes</a>
     </div>
     <div class="archive-list">
       {notes.slice(0, 4).map((note) => (
         <a class="note-row" href={note.url}>
-          <span class="date">{formatDate(note.date, { month: 'short', day: '2-digit' })}</span>
           <p>{note.text}</p>
+          <span class="date">{formatDate(note.date, { month: 'long', day: 'numeric' })}</span>
         </a>
       ))}
     </div>
@@ -61,7 +61,7 @@ const selectedProjects = projects.slice(0, 3)
     <div class="section-heading">
       <div>
         <p class="section-kicker">Projects</p>
-        <h2 id="projects-title">Selected work and useful experiments.</h2>
+        <h2 id="projects-title">Selected work.</h2>
       </div>
       <a href="/projects">All projects</a>
     </div>

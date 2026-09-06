@@ -1,4 +1,4 @@
-I build systems that help small teams do better work.
+I build things that last and grow. In the past, websites and communities; lately, teams and companies; every day, mental fitness. 🧠💪
 
 I'm currently Chief Operating Officer at [Positive Intelligence](https://www.positiveintelligence.com/), the leading online mental fitness training company founded by Stanford lecturer Shirzad Chamine. We've engaged more than 1 million participants in discovering how they self-sabotage and building mental muscles to maximize both performance and happiness.
 
