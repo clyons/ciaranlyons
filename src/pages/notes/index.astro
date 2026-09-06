@@ -16,8 +16,8 @@ const notes = await getNotes(50)
     <div class="archive-list">
       {notes.map((note) => (
         <a class="note-row" href={note.url}>
-          <span class="date">{formatDate(note.date, { month: 'short', day: '2-digit', year: 'numeric' })}</span>
           <p>{note.text}</p>
+          <span class="date">{formatDate(note.date, { month: 'long', day: 'numeric' })}</span>
         </a>
       ))}
     </div>
