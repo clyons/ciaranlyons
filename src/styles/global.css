@@ -382,6 +382,27 @@ img {
   box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
 }
 
+.about-socials {
+  margin-top: clamp(40px, 7vw, 72px);
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline);
+}
+
+.about-socials h2 {
+  margin: 0 0 18px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  color: var(--muted);
+}
+
 .site-footer {
   display: flex;
   justify-content: space-between;
@@ -393,7 +414,8 @@ img {
 
 .site-footer nav {
   display: flex;
-  gap: 18px;
+  flex-wrap: wrap;
+  gap: 12px 18px;
 }
 
 .visually-hidden {

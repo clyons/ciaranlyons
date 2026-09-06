@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { getAbout } from '../lib/content'
+import { socialLinks } from '../lib/socials'
 
 const about = await getAbout()
 ---
@@ -12,5 +13,17 @@ const about = await getAbout()
       <h1 class="article-title">About Ciaran</h1>
     </header>
     <div class="prose" set:html={about.html} />
+    <section class="about-socials" aria-labelledby="about-socials-heading">
+      <h2 id="about-socials-heading">Elsewhere</h2>
+      <nav class="social-links" aria-label="Social profiles">
+        {
+          socialLinks.map((link) => (
+            <a href={link.href} rel="me">
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </section>
   </article>
 </BaseLayout>
