@@ -1,4 +1,5 @@
 ---
+standardUri: "at://did:plc:bi2irbzgh2fzqvuuewkju2xf/site.standard.document/3mut4aq5csu2e"
 title: On Ownership
 description: Own the outcome, not the method.
 date: 2026-08-08

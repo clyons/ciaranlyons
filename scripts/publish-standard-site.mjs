@@ -182,7 +182,7 @@ async function findPublicationUri(pds, did) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2))
-  const handle = process.env.ATPROTO_HANDLE?.trim() || 'ciaranlyons.com'
+  const handle = process.env.ATPROTO_HANDLE?.trim() || process.env.BSKY_HANDLE?.trim() || 'ciaranlyons.com'
   const entries = await loadWriting(options.slug)
   const { did, pds } = await resolveIdentity(handle)
   let publicationUri = options.publicationUri || await findPublicationUri(pds, did)
@@ -193,7 +193,7 @@ async function main() {
     return
   }
 
-  const password = process.env.ATPROTO_APP_PASSWORD
+  const password = process.env.ATPROTO_APP_PASSWORD || process.env.BSKY_APP_PASSWORD
   if (!password) throw new Error('Missing ATPROTO_APP_PASSWORD (use a revocable ATProto app password)')
   const session = await createSession(pds, handle, password)
   if (!session.accessJwt) throw new Error('PDS session did not return an access token')
