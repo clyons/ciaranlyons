@@ -18,7 +18,8 @@ const {
 
 const site = Astro.site ?? new URL('https://ciaranlyons.com')
 const canonicalUrl = new URL(canonical, site)
-const profileImageUrl = new URL('/images/ciaran-profile.jpeg', site)
+const assetVersion = '20260906'
+const profileImageUrl = new URL(`/images/ciaran-profile.jpeg?v=${assetVersion}`, site)
 const pageTitle = title === 'Ciaran Lyons' ? title : `${title} - Ciaran Lyons`
 ---
 
@@ -30,8 +31,8 @@ const pageTitle = title === 'Ciaran Lyons' ? title : `${title} - Ciaran Lyons`
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href={`/favicon.png?v=${assetVersion}`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`/apple-touch-icon.png?v=${assetVersion}`} />
     <link rel="alternate" type="application/rss+xml" title="Ciaran Lyons" href="/feed.xml" />
     {standardDocumentUri && <link rel="site.standard.document" href={standardDocumentUri} />}
     <!-- Google Tag Manager -->
