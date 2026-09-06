@@ -26,7 +26,7 @@ Writing entries remain Markdown-authored in this repository. Publish their inter
 ATPROTO_APP_PASSWORD='…' npm run standard:publish
 ```
 
-The command creates or updates the publication record and each Writing document record, saving the document URI as `standardUri` in the Markdown front matter. It requires a revocable ATProto app password; never commit it. After the first publish, set the printed `STANDARD_SITE_PUBLICATION_AT_URI` and the account `ATPROTO_DID` in the deployment environment, then deploy. Confirm production with:
+The command creates or updates the publication record and each Writing document record, saving the document URI as `standardUri` in the Markdown front matter. It accepts either `ATPROTO_HANDLE`/`ATPROTO_APP_PASSWORD` or the existing `BSKY_HANDLE`/`BSKY_APP_PASSWORD` names. Never commit the app password. After the first publish, set the printed `STANDARD_SITE_PUBLICATION_AT_URI` and the account `ATPROTO_DID` in the deployment environment, then deploy. Confirm production with:
 
 ```bash
 curl -fsSL https://ciaranlyons.com/.well-known/site.standard.publication
