@@ -667,7 +667,7 @@ img {
   .prose ul,
   .prose ol,
   .prose blockquote {
-    width: 20rem;
+    width: 100%;
     max-width: 20rem;
   }
 }
