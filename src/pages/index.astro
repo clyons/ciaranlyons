@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import { getNotes } from '../lib/atproto'
 import { getProjects, getWriting } from '../lib/content'
 import { formatDate } from '../lib/dates'
+import { renderRichText } from '../lib/rich-text'
 
 const [writing, notes, projects] = await Promise.all([getWriting(), getNotes(5), getProjects()])
 const selectedWriting = writing.slice(0, 2)
@@ -49,10 +50,12 @@ const selectedProjects = projects.slice(0, 3)
     </div>
     <div class="archive-list">
       {notes.slice(0, 4).map((note) => (
-        <a class="note-row" href={note.url}>
-          <p>{note.text}</p>
-          <span class="date">{formatDate(note.date, { month: 'long', day: 'numeric' })}</span>
-        </a>
+        <article class="note-row">
+          <p set:html={renderRichText(note.text, note.facets)} />
+          <a class="date" href={note.url} aria-label={`Read note from ${formatDate(note.date, { month: 'long', day: 'numeric' })}`}>
+            {formatDate(note.date, { month: 'long', day: 'numeric' })}
+          </a>
+        </article>
       ))}
     </div>
   </section>

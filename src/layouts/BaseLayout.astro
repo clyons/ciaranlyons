@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css'
-import { socialLinks } from '../lib/socials'
 
 interface Props {
   title?: string
@@ -21,6 +20,7 @@ const canonicalUrl = new URL(canonical, site)
 const assetVersion = '20260906'
 const profileImageUrl = new URL(`/images/ciaran-profile.jpeg?v=${assetVersion}`, site)
 const pageTitle = title === 'Ciaran Lyons' ? title : `${title} - Ciaran Lyons`
+const standardPublicationUri = import.meta.env.STANDARD_SITE_PUBLICATION_AT_URI
 ---
 
 <!doctype html>
@@ -34,6 +34,7 @@ const pageTitle = title === 'Ciaran Lyons' ? title : `${title} - Ciaran Lyons`
     <link rel="icon" type="image/png" sizes="48x48" href={`/favicon.png?v=${assetVersion}`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`/apple-touch-icon.png?v=${assetVersion}`} />
     <link rel="alternate" type="application/rss+xml" title="Ciaran Lyons" href="/feed.xml" />
+    {standardPublicationUri && <link rel="site.standard.publication" href={standardPublicationUri} />}
     {standardDocumentUri && <link rel="site.standard.document" href={standardDocumentUri} />}
     <!-- Google Tag Manager -->
     <script is:inline>
@@ -73,16 +74,10 @@ const pageTitle = title === 'Ciaran Lyons' ? title : `${title} - Ciaran Lyons`
         <slot />
       </main>
       <footer class="site-footer">
-        <span>ciaranlyons.com</span>
+        <span>© Ciaran Lyons</span>
         <nav aria-label="Footer navigation">
           <a href="/feed.xml">RSS</a>
-          {
-            socialLinks.map((link) => (
-              <a href={link.href} rel="me">
-                {link.label}
-              </a>
-            ))
-          }
+          <a href="https://bsky.app/profile/ciaranlyons.com" rel="me">@ciaranlyons.com</a>
         </nav>
       </footer>
     </div>

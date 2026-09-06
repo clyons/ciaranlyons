@@ -48,4 +48,4 @@ Using Mailchimp's automation features to educate more than 25,000 students durin
 
 Email is best.
 
-[Email](mailto:hello@ciaranlyons.com) / [LinkedIn](https://www.linkedin.com/in/ciaranlyons) / [GitHub](https://github.com/clyons/)
+[Email](mailto:hello@ciaranlyons.com)

@@ -3,6 +3,7 @@ import path from 'node:path'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
 import { renderMarkdown } from './markdown'
+import type { RichTextFacet, RichTextFacetFeature } from './rich-text'
 
 const contentRoot = path.join(process.cwd(), 'content')
 
@@ -48,6 +49,7 @@ export interface NoteEntry {
   uri?: string
   source?: 'bluesky' | 'local'
   originalUrl?: string
+  facets: RichTextFacet[]
   media: NoteMedia[]
   url: string
 }
@@ -111,6 +113,38 @@ function asNoteMedia(value: unknown): NoteMedia[] {
   }
 
   return parsed
+}
+
+function asRichTextFeature(value: unknown): RichTextFacetFeature | undefined {
+  const feature = asRecord(value)
+  const type = asString(feature.$type)
+  if (!type) return undefined
+
+  return {
+    $type: type,
+    uri: asString(feature.uri) || undefined,
+    did: asString(feature.did) || undefined,
+    tag: asString(feature.tag) || undefined,
+  }
+}
+
+function asRichTextFacets(value: unknown): RichTextFacet[] {
+  if (!Array.isArray(value)) return []
+
+  return value.flatMap((item) => {
+    const facet = asRecord(item)
+    const index = asRecord(facet.index)
+    const byteStart = asNumber(index.byteStart)
+    const byteEnd = asNumber(index.byteEnd)
+    if (byteStart === undefined || byteEnd === undefined) return []
+
+    return [{
+      index: { byteStart, byteEnd },
+      features: Array.isArray(facet.features)
+        ? facet.features.map(asRichTextFeature).filter((feature): feature is RichTextFacetFeature => Boolean(feature))
+        : [],
+    }]
+  })
 }
 
 function sortByDateDesc<T extends { date: string }>(items: T[]): T[] {
@@ -236,6 +270,7 @@ export async function getLocalNotes(): Promise<NoteEntry[]> {
         uri: asString(data.uri) || undefined,
         source,
         originalUrl: asString(data.originalUrl) || undefined,
+        facets: asRichTextFacets(data.facets),
         media: asNoteMedia(data.media),
         url: datedPath('/notes', date, id),
       }
