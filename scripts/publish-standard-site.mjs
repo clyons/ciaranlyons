@@ -1,6 +1,8 @@
-import { readFile, writeFile } from 'node:fs/promises'
+import { createHash, randomUUID } from 'node:crypto'
+import { readFile, rename, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
+import { pathToFileURL } from 'node:url'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
 
@@ -8,6 +10,8 @@ const publicApi = 'https://public.api.bsky.app/xrpc'
 const publicationCollection = 'site.standard.publication'
 const documentCollection = 'site.standard.document'
 const siteUrl = 'https://ciaranlyons.com'
+const requestTimeoutMs = 10_000
+const maxJsonBytes = 2 * 1024 * 1024
 
 function usage() {
   console.log('Usage: node scripts/publish-standard-site.mjs [--dry-run] [--slug SLUG] [--publication-uri AT_URI]')
@@ -67,24 +71,45 @@ function atUriParts(uri, collection) {
   return { repo: match[1], collection: match[2], rkey: match[3] }
 }
 
-async function fetchJson(url, init) {
-  const response = await fetch(url, init)
-  if (!response.ok) {
-    const text = await response.text()
-    throw new Error(`${response.status} ${response.statusText}: ${text}`)
+async function readBoundedText(response, maximumBytes) {
+  const declaredLength = Number(response.headers.get('content-length'))
+  if (Number.isFinite(declaredLength) && declaredLength > maximumBytes) throw new Error(`Response exceeds ${maximumBytes} bytes`)
+  if (!response.body) throw new Error('Response body is missing')
+  const chunks = []
+  let total = 0
+  for await (const chunk of response.body) {
+    const bytes = Buffer.from(chunk)
+    total += bytes.byteLength
+    if (total > maximumBytes) throw new Error(`Response exceeds ${maximumBytes} bytes`)
+    chunks.push(bytes)
   }
-  return response.json()
+  return Buffer.concat(chunks, total).toString('utf8')
+}
+
+async function fetchJson(url, init = {}) {
+  const response = await fetch(url, { ...init, signal: AbortSignal.timeout(requestTimeoutMs) })
+  const text = await readBoundedText(response, maxJsonBytes)
+  if (!response.ok) {
+    throw new Error(`${response.status} ${response.statusText}: ${text.slice(0, 500)}`)
+  }
+  try {
+    return JSON.parse(text)
+  } catch {
+    throw new Error(`Invalid JSON response from ${new URL(url).origin}`)
+  }
 }
 
 async function resolveIdentity(handle) {
   const identity = await fetchJson(`${publicApi}/com.atproto.identity.resolveHandle?handle=${encodeURIComponent(handle)}`)
   const did = identity.did
-  if (!did) throw new Error(`Could not resolve a DID for ${handle}`)
+  if (typeof did !== 'string' || !/^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$/.test(did)) throw new Error(`Could not resolve a valid DID for ${handle}`)
 
   const didDocument = await fetchJson(`https://plc.directory/${encodeURIComponent(did)}`)
   const pds = didDocument.service?.find((service) => service.id === '#atproto_pds')?.serviceEndpoint
   if (typeof pds !== 'string') throw new Error(`Could not resolve a PDS for ${did}`)
-  return { did, pds: pds.replace(/\/$/, '') }
+  const pdsUrl = new URL(pds)
+  if (pdsUrl.protocol !== 'https:' || pdsUrl.username || pdsUrl.password) throw new Error(`PDS for ${did} must be an HTTPS origin`)
+  return { did, pds: pdsUrl.origin }
 }
 
 async function createSession(pds, handle, password) {
@@ -103,14 +128,6 @@ async function listRecords(pds, did, collection) {
   return fetchJson(url)
 }
 
-async function createRecord(pds, token, repo, collection, record) {
-  return fetchJson(`${pds}/xrpc/com.atproto.repo.createRecord`, {
-    method: 'POST',
-    headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
-    body: JSON.stringify({ repo, collection, record }),
-  })
-}
-
 async function putRecord(pds, token, repo, collection, rkey, record) {
   return fetchJson(`${pds}/xrpc/com.atproto.repo.putRecord`, {
     method: 'POST',
@@ -119,7 +136,21 @@ async function putRecord(pds, token, repo, collection, rkey, record) {
   })
 }
 
-function addStandardUri(raw, uri) {
+export function deterministicRkey(prefix, identity) {
+  return `${prefix}-${createHash('sha256').update(identity).digest('hex').slice(0, 32)}`
+}
+
+async function writeFileAtomically(destination, contents) {
+  const temporary = path.join(path.dirname(destination), `.${path.basename(destination)}.${randomUUID()}.tmp`)
+  try {
+    await writeFile(temporary, contents, { encoding: 'utf8', mode: 0o600 })
+    await rename(temporary, destination)
+  } finally {
+    await rm(temporary, { force: true })
+  }
+}
+
+export function addStandardUri(raw, uri) {
   const field = `standardUri: ${JSON.stringify(uri)}`
   if (/^standardUri:\s*.*$/m.test(raw)) return raw.replace(/^standardUri:\s*.*$/m, field)
   if (!raw.startsWith('---\n')) throw new Error('Writing entries must have YAML front matter')
@@ -185,7 +216,15 @@ async function main() {
   const handle = process.env.ATPROTO_HANDLE?.trim() || process.env.BSKY_HANDLE?.trim() || 'ciaranlyons.com'
   const entries = await loadWriting(options.slug)
   const { did, pds } = await resolveIdentity(handle)
+  const expectedDid = process.env.ATPROTO_DID?.trim()
+  if (!options.dryRun && !expectedDid) throw new Error('Missing ATPROTO_DID; refusing to submit credentials without an expected identity')
+  if (expectedDid && expectedDid !== did) throw new Error(`Resolved DID does not match ATPROTO_DID for ${handle}`)
   let publicationUri = options.publicationUri || await findPublicationUri(pds, did)
+
+  if (publicationUri) {
+    const parts = atUriParts(publicationUri, publicationCollection)
+    if (!parts || parts.repo !== did) throw new Error(`Invalid publication URI: ${publicationUri}`)
+  }
 
   if (options.dryRun) {
     console.log(`${publicationUri ? 'would-use' : 'would-create'} publication ${publicationUri ?? siteUrl}`)
@@ -197,10 +236,12 @@ async function main() {
   if (!password) throw new Error('Missing ATPROTO_APP_PASSWORD (use a revocable ATProto app password)')
   const session = await createSession(pds, handle, password)
   if (!session.accessJwt) throw new Error('PDS session did not return an access token')
+  if (session.did !== did) throw new Error('Authenticated session DID does not match the validated identity')
 
   if (!publicationUri) {
-    const result = await createRecord(pds, session.accessJwt, did, publicationCollection, publicationRecord())
-    publicationUri = result.uri
+    const rkey = deterministicRkey('publication', siteUrl)
+    const result = await putRecord(pds, session.accessJwt, did, publicationCollection, rkey, publicationRecord())
+    publicationUri = result.uri ?? `at://${did}/${publicationCollection}/${rkey}`
     console.log(`created publication ${publicationUri}`)
     console.log(`Set STANDARD_SITE_PUBLICATION_AT_URI=${publicationUri} in the deployment environment before deploying.`)
   } else {
@@ -220,15 +261,20 @@ async function main() {
       await putRecord(pds, session.accessJwt, did, documentCollection, parts.rkey, record)
       console.log(`updated document ${entry.standardUri} (${entry.slug})`)
     } else {
-      const result = await createRecord(pds, session.accessJwt, did, documentCollection, record)
-      documentUri = result.uri
-      await writeFile(entry.file, addStandardUri(entry.raw, documentUri), 'utf8')
+      const rkey = deterministicRkey('document', documentPath(entry))
+      const result = await putRecord(pds, session.accessJwt, did, documentCollection, rkey, record)
+      documentUri = result.uri ?? `at://${did}/${documentCollection}/${rkey}`
+      await writeFileAtomically(entry.file, addStandardUri(entry.raw, documentUri))
       console.log(`created document ${documentUri} (${entry.slug})`)
     }
   }
 }
 
-main().catch((error) => {
-  console.error(error.message)
-  process.exit(1)
-})
+const entrypoint = process.argv[1] ? pathToFileURL(path.resolve(process.argv[1])).href : ''
+
+if (import.meta.url === entrypoint) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : 'Standard.site publication failed')
+    process.exit(1)
+  })
+}

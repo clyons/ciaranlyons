@@ -56,6 +56,10 @@ function renderFacet(text: string, facet: RichTextFacet): string {
   return escapeHtml(text)
 }
 
+function isUtf8Boundary(bytes: Buffer, index: number): boolean {
+  return index === 0 || index === bytes.length || (bytes[index] & 0b1100_0000) !== 0b1000_0000
+}
+
 /**
  * Renders ATProto rich text from the record's UTF-8 byte ranges. Facet ranges
  * are deliberately not inferred from post text: the record is authoritative.
@@ -77,6 +81,8 @@ export function renderRichText(text: string, facets: RichTextFacet[] = []): stri
       || start < cursor
       || end < start
       || end > bytes.length
+      || !isUtf8Boundary(bytes, start)
+      || !isUtf8Boundary(bytes, end)
     ) continue
 
     parts.push(escapeHtml(bytes.subarray(cursor, start).toString('utf8')))

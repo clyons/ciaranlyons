@@ -22,7 +22,7 @@ const { entry } = Astro.props
 >
   <article class="article-shell">
     <header class="article-header">
-      <p class="date">{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+      <p><time class="date" datetime={entry.date}>{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>
       <h1 class="article-title">{entry.title}</h1>
       <p class="lede">{entry.description}</p>
     </header>

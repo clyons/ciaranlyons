@@ -20,7 +20,7 @@ const writing = await getWriting()
             <h2>{item.title}</h2>
             <p>{item.description}</p>
           </div>
-          <span class="date">{formatDate(item.date, { month: 'long', year: 'numeric' })}</span>
+          <time class="date" datetime={item.date}>{formatDate(item.date, { month: 'long', year: 'numeric' })}</time>
         </a>
       ))}
     </div>

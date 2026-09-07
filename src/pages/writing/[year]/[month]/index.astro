@@ -32,7 +32,7 @@ const label = formatDate(`${year}-${month}-01`, { month: 'long', year: 'numeric'
             <h2>{entry.title}</h2>
             <p>{entry.description}</p>
           </div>
-          <span class="date">{formatDate(entry.date, { month: 'long', day: 'numeric' })}</span>
+          <time class="date" datetime={entry.date}>{formatDate(entry.date, { month: 'long', day: 'numeric' })}</time>
         </a>
       ))}
     </div>

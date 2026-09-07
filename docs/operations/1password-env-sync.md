@@ -22,7 +22,7 @@ This design supports two flows in a fresh repo:
   - `dev:mental-fitness-coaching`
   - `dev:my-next-app`
 
-`<repo-name>` should default to the basename of the git repo root, with a CLI override.
+This repository defaults to `dev:ciaranlyons`; use `--item` to target another item explicitly.
 
 ## File Model
 
@@ -91,10 +91,10 @@ Expected behavior:
 9. Do not delete unknown existing fields from the 1Password item unless an explicit `--prune` mode is requested.
 10. Write a JSON report to `.context/`.
 
-Recommended flags:
+Supported flags:
 
 - `--item <name>`
-- `--env-file <path>` repeatable
+- `--vault <name-or-id>` (or `OP_VAULT`)
 - `--dry-run`
 - `--prune`
 - `--output <path>`
@@ -121,11 +121,9 @@ Expected behavior:
 7. Create missing target files if needed.
 8. Write a JSON report to `.context/`.
 
-Recommended flags:
+Supported flags:
 
 - `--item <name>`
-- `--env-local <path>`
-- `--env-cli <path>`
 - `--dry-run`
 - `--output <path>`
 
@@ -152,17 +150,7 @@ Routing rule:
 
 This is the cleanest option for mixed repos.
 
-### Fallback: default to `.env.local`
-
-If you do not want prefixes:
-
-- write all fields to `.env.local` by default
-- send only obvious admin keys to `.env.cli` using generic suffix heuristics such as:
-  - `_TOKEN`
-  - `_PAT`
-  - `_PERSONAL_API_KEY`
-
-This is less precise and should only be used when item structure cannot be changed.
+Unprefixed and built-in 1Password fields are ignored during refresh so item metadata cannot accidentally become an environment variable.
 
 ## 1Password Item Shape
 
@@ -254,7 +242,7 @@ This repo uses 1Password as the source of truth for developer secrets.
 - Refresh local env files from 1Password:
   - `npm run secrets:refresh`
 
-The 1Password item name defaults to `dev:<repo-name>`.
+The 1Password item name defaults to `dev:ciaranlyons` in this repository.
 
 Both commands support `--dry-run`.
 

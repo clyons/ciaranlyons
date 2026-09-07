@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { year, month, day } = Astro.props
-const target = `/til/${year}/${month}/${day}`
+const target = `/til/${year}/${month}/${day}/`
 const canonicalTarget = new URL(target, Astro.site ?? new URL('https://ciaranlyons.com'))
 ---
 

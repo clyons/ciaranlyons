@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro'
-import { getNotes } from '../../../lib/atproto'
+import { getAllNotes } from '../../../lib/atproto'
 import { formatDate } from '../../../lib/dates'
 
 export async function getStaticPaths() {
-  const notes = await getNotes(50)
+  const notes = await getAllNotes()
   const years = [...new Set(notes.map((note) => note.year))]
   return years.map((year) => ({ params: { year }, props: { year, notes: notes.filter((note) => note.year === year) } }))
 }
@@ -22,7 +22,7 @@ const { year, notes } = Astro.props
       {notes.map((note) => (
         <a class="note-row" href={note.url}>
           <p>{note.text}</p>
-          <span class="date">{formatDate(note.date, { month: 'long', day: 'numeric' })}</span>
+          <time class="date" datetime={note.date}>{formatDate(note.date, { month: 'long', day: 'numeric' })}</time>
         </a>
       ))}
     </div>

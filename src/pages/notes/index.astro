@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { getNotes } from '../../lib/atproto'
+import { getAllNotes } from '../../lib/atproto'
 import { formatDate } from '../../lib/dates'
 import { renderRichText } from '../../lib/rich-text'
 
-const notes = await getNotes(50)
+const notes = await getAllNotes()
 ---
 
 <BaseLayout title="Notes" description="Short notes from Ciaran Lyons.">
@@ -16,12 +16,12 @@ const notes = await getNotes(50)
   <section class="section">
     <div class="archive-list">
       {notes.map((note) => (
-        <article class="note-row">
+        <div class="note-row">
           <p set:html={renderRichText(note.text, note.facets)} />
           <a class="date" href={note.url} aria-label={`Read note from ${formatDate(note.date, { month: 'long', day: 'numeric' })}`}>
-            {formatDate(note.date, { month: 'long', day: 'numeric' })}
+            <time datetime={note.date}>{formatDate(note.date, { month: 'long', day: 'numeric' })}</time>
           </a>
-        </article>
+        </div>
       ))}
     </div>
   </section>

@@ -21,13 +21,21 @@ const assetVersion = '20260906'
 const profileImageUrl = new URL(`/images/ciaran-profile.jpeg?v=${assetVersion}`, site)
 const pageTitle = title === 'Ciaran Lyons' ? title : `${title} - Ciaran Lyons`
 const standardPublicationUri = import.meta.env.STANDARD_SITE_PUBLICATION_AT_URI
-const pathname = Astro.url.pathname
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/'
 const navItems = [
-  { href: '/about', label: 'About' },
-  { href: '/writing', label: 'Writing' },
-  { href: '/notes', label: 'Notes' },
-  { href: '/projects', label: 'Projects' },
+  { href: '/about/', match: '/about', label: 'About' },
+  { href: '/writing/', match: '/writing', label: 'Writing' },
+  { href: '/notes/', match: '/notes', label: 'Notes' },
+  { href: '/projects/', match: '/projects', label: 'Projects' },
 ]
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ciaran Lyons',
+  url: site.toString(),
+  image: profileImageUrl.toString(),
+  sameAs: ['https://bsky.app/profile/ciaranlyons.com'],
+}
 ---
 
 <!doctype html>
@@ -60,20 +68,6 @@ const navItems = [
         }
       })()
     </script>
-    <!-- Google Tag Manager -->
-    <script is:inline>
-      ;(function (w, d, s, l, i) {
-        w[l] = w[l] || []
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
-        var f = d.getElementsByTagName(s)[0]
-        var j = d.createElement(s)
-        var dl = l != 'dataLayer' ? '&l=' + l : ''
-        j.async = true
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
-        f.parentNode.insertBefore(j, f)
-      })(window, document, 'script', 'dataLayer', 'GTM-TJDNFN6S')
-    </script>
-    <!-- End Google Tag Manager -->
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -82,6 +76,12 @@ const navItems = [
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="1200" />
     <meta property="og:image:alt" content="Portrait of Ciaran Lyons" />
+    <meta property="og:site_name" content="Ciaran Lyons" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={profileImageUrl} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -90,7 +90,7 @@ const navItems = [
         <a class="brand" href="/">Ciaran Lyons</a>
         <nav class="nav" aria-label="Primary navigation">
           {navItems.map((item) => (
-            <a href={item.href} aria-current={pathname.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>
+            <a href={item.href} aria-current={pathname === item.match || pathname.startsWith(`${item.match}/`) ? 'page' : undefined}>{item.label}</a>
           ))}
           <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color scheme" title="Toggle color scheme">
             <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true">
