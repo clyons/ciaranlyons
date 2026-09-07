@@ -2,7 +2,9 @@
 
 This repository owns the build, deployment, and verification of CiaranLyons.com. Cloudflare Pages is the hosting target; no generated artifact is copied to another repository.
 
-For the complete TIL lifecycle—including optional demo and Bluesky Note publishing—see [Publish a TIL](./publish-til.md).
+For the contributor and agent guardrails that enforce this workflow, see [Deployments in the repository guide](../../AGENTS.md#deployments-inviolate). For the complete TIL lifecycle—including optional demo and Bluesky Note publishing—see [Publish a TIL](./publish-til.md).
+
+The checked-in workflows are the executable contract: [production](../../.github/workflows/deploy-production.yml) deploys every `main` push, while [preview](../../.github/workflows/deploy-preview.yml) is manually dispatched for a requested non-`main` branch.
 
 ## One-time setup
 
@@ -10,7 +12,7 @@ Complete these steps before the first production merge. They are account configu
 
 1. In Cloudflare, create a **Pages → Direct Upload** project named `ciaranlyons`. Do not connect the GitHub repository in Cloudflare; GitHub Actions is the single deploy controller.
 2. Attach `ciaranlyons.com` to that Pages project and complete Cloudflare's required DNS verification. Configure `www.ciaranlyons.com` only if it is needed, and redirect it to the canonical apex domain with a Cloudflare Redirect Rule.
-3. Create a dedicated Cloudflare API token that can upload to the `ciaranlyons` Pages project. Save it as the GitHub repository Actions secret `CLOUDFLARE_API_TOKEN`. Save the Cloudflare account ID as `CLOUDFLARE_ACCOUNT_ID`. Do not use a broad personal API key.
+3. Create a dedicated Cloudflare API token that can upload to the `ciaranlyons` Pages project. Save it as the GitHub repository Actions secret `CLOUDFLARE_API_TOKEN`. Save the Cloudflare account ID as `CLOUDFLARE_ACCOUNT_ID`. Do not use a broad personal API key. These are deployment credentials, not local developer environment values; do not add them to `.env*` files or the 1Password developer-env sync.
 4. In GitHub, create the `production` environment. Add these environment secrets there, not as repository-wide secrets:
    - `ATPROTO_DID`
    - `STANDARD_SITE_PUBLICATION_AT_URI`
