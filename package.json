@@ -16,6 +16,7 @@
     "test:ui": "playwright test",
     "test:ui:update": "playwright test --update-snapshots",
     "notes:sync": "node scripts/sync-bsky-notes.mjs",
+    "links:sync": "node scripts/sync-feedly-links.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
     "standard:publish": "node scripts/publish-standard-site.mjs",
     "secrets:publish": "tsx scripts/publish-1password-secrets.ts",

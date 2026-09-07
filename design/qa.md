@@ -39,3 +39,37 @@ READY — two concrete defects were fixed. No publishing architecture, routes, c
 ## External links
 
 Most external links returned HTTP 200. LinkedIn returned 999 and General Assembly/Positive Intelligence returned 403 to automated requests; those services commonly block automated clients, so this is not treated as a broken visitor-facing link.
+
+## Feedly Links preview — 2026-09-07
+
+Prototype: local static build on the `clyons/feedly-stars-to-til` branch
+
+Source of truth: `.agent/execplans/2026-09-07-feedly-starred-links.md` plus the recorded visual/content/interaction theses.
+
+### Verdict
+
+READY FOR PREVIEW — the collection is intentionally populated with three clearly labeled mock Feedly stars. No real Feedly or ATproto write has occurred.
+
+### Visual conformance
+
+- ✓ The collection uses the site's existing serif/mono editorial system, orange accent, flat rules, and cardless layout.
+- ✓ Desktop uses a two-column date/content ledger; mobile collapses cleanly into a single reading column.
+- ✓ The Links introduction has one typographic focal point and restrained source/count context.
+- ✓ Source attribution, local context, and outbound reading actions are visually distinct without competing card chrome.
+- ✓ Dark mode inherits the existing color tokens; motion is limited to established link transitions and a two-pixel outbound-callout lift.
+
+### Behavior and requirements
+
+- ✓ Links is present and active in primary navigation; all six controls remain on one visible row at 320px and 390px.
+- ✓ Title and “Notes & details” open the durable local permalink; “Read at…” opens the original target.
+- ✓ Search filters title, source, author, and tags and exposes an explicit empty state.
+- ✓ Year/month/day archives, Links RSS, combined RSS, and site search use local permalinks.
+- ✓ Mock content is labeled on the index and detail pages so reviewers cannot mistake it for a real import.
+
+### Accessibility sanity
+
+- ✓ Each page has one `h1`, labelled primary navigation, a keyboard-focusable skip link, and visible global focus styles.
+- ✓ Search has an accessible label and result count; Link rows remain semantic articles with ordinary anchors.
+- ✓ Reduced-motion preferences collapse transitions through the existing global rule.
+- ✓ The live filter-result count uses a polite status region for screen-reader feedback.
+- Manual follow-up: automated checks do not replace a full screen-reader pass before production launch.

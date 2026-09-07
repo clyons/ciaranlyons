@@ -1,0 +1,26 @@
+---
+import LinkList from '../../../../components/LinkList.astro'
+import BaseLayout from '../../../../layouts/BaseLayout.astro'
+import { getLinks } from '../../../../lib/content'
+import { formatDate } from '../../../../lib/dates'
+
+export async function getStaticPaths() {
+  const links = await getLinks()
+  const keys = [...new Set(links.map((entry) => `${entry.year}/${entry.month}`))]
+  return keys.map((key) => {
+    const [year, month] = key.split('/')
+    return { params: { year, month }, props: { year, month, links: links.filter((entry) => entry.year === year && entry.month === month) } }
+  })
+}
+
+const { year, month, links } = Astro.props
+const label = formatDate(`${year}-${month}-01`, { month: 'long', year: 'numeric' })
+---
+
+<BaseLayout title={`Links: ${label}`} description={`Links saved in ${label}.`} sectionFeed={{ href: '/links/feed.xml', title: 'Ciaran Lyons — Links' }}>
+  <section class="section">
+    <p class="section-kicker"><a href={`/links/${year}/`}>Links · {year}</a></p>
+    <h1 class="page-title">{label}</h1>
+  </section>
+  <section class="section links-archive"><LinkList links={links} /></section>
+</BaseLayout>

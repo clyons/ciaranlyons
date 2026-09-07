@@ -1,0 +1,33 @@
+---
+import type { LinkEntry } from '../lib/content'
+import { formatDate } from '../lib/dates'
+
+interface Props {
+  links: LinkEntry[]
+}
+
+const { links } = Astro.props
+---
+
+<div class="link-list">
+  {links.map((entry) => {
+    const hostname = new URL(entry.targetUrl).hostname.replace(/^www\./, '')
+    const attribution = [entry.sourceTitle ?? hostname, entry.author].filter(Boolean).join(' · ')
+    return (
+      <article class="link-row" data-search-text={`${entry.title} ${entry.description} ${attribution} ${entry.tags.join(' ')}`}>
+        <div class="link-row__date">
+          <time datetime={entry.savedAt ?? entry.date}>{formatDate(entry.date, { month: 'short', day: 'numeric', year: 'numeric' })}</time>
+        </div>
+        <div class="link-row__body">
+          <p class="link-source">{attribution}</p>
+          <h2><a href={entry.url}>{entry.title}</a></h2>
+          {entry.description && <p class="link-summary">{entry.description}</p>}
+          <div class="link-actions">
+            <a href={entry.url}>Notes &amp; details</a>
+            <a href={entry.targetUrl} rel="external">Read at {hostname} <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+    )
+  })}
+</div>

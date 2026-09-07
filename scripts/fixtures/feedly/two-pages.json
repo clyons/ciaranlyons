@@ -1,0 +1,69 @@
+{
+  "streamId": "user/mock-account/tag/global.saved",
+  "pages": [
+    {
+      "id": "user/mock-account/tag/global.saved",
+      "continuation": "mock-page-2",
+      "items": [
+        {
+          "id": "mock-entry-design-engineering",
+          "mock": true,
+          "title": "Design engineering in the age of AI",
+          "canonicalUrl": "https://example.com/design-engineering?utm_source=feedly#notes",
+          "published": 1787227200000,
+          "author": "Mina Park",
+          "origin": { "title": "Future Practice" },
+          "summary": { "content": "<p>Why the strongest product teams are collapsing the distance between <strong>design</strong> and implementation.</p>" },
+          "tags": [
+            { "id": "user/mock-account/tag/global.saved", "actionTimestamp": 1788186600000 },
+            { "id": "user/mock-account/tag/design", "label": "Design" }
+          ],
+          "feedlyUrl": "https://feedly.com/i/entry/mock-entry-design-engineering"
+        },
+        {
+          "id": "mock-entry-local-first",
+          "mock": true,
+          "title": "A local-first case for keeping your own archive",
+          "alternate": [{ "href": "https://example.org/local-first-archive", "type": "text/html" }],
+          "published": 1787908500000,
+          "author": "Iris Bell",
+          "origin": { "title": "Small Systems" },
+          "summary": { "content": "An argument for durable files, boring formats, and software that continues to work offline." },
+          "tags": [{ "id": "user/mock-account/tag/global.saved" }]
+        },
+        {
+          "id": "mock-entry-unsafe",
+          "title": "Unsafe mock entry",
+          "canonicalUrl": "javascript:alert(1)",
+          "tags": [{ "id": "user/mock-account/tag/global.saved", "actionTimestamp": 1788186600000 }]
+        }
+      ]
+    },
+    {
+      "id": "user/mock-account/tag/global.saved",
+      "items": [
+        {
+          "id": "mock-entry-atproto",
+          "mock": true,
+          "title": "AT Protocol records are bigger than social posts",
+          "canonicalUrl": "https://example.net/atproto-records",
+          "published": 1787227200000,
+          "author": "Theo Marsh",
+          "origin": { "title": "Protocol Notes" },
+          "summary": { "content": "A practical tour of repositories, collections, records, and application-specific Lexicons." },
+          "tags": [
+            { "id": "user/mock-account/tag/global.saved", "actionTimestamp": 1787337900000 },
+            { "id": "user/mock-account/tag/atproto", "label": "ATproto" }
+          ]
+        },
+        {
+          "id": "mock-entry-design-duplicate",
+          "title": "Duplicate representation",
+          "canonicalUrl": "https://example.com/design-engineering",
+          "published": 1787227200000,
+          "tags": [{ "id": "user/mock-account/tag/global.saved", "actionTimestamp": 1787337900000 }]
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
-import { assertUnique, optionalHttpUrl, validateDate, validateSegment, validateTopic, webUrl } from './content-validation'
+import { assertUnique, optionalHttpUrl, validateDate, validateSegment, validateTimestamp, validateTopic, webUrl } from './content-validation'
 import { renderMarkdown } from './markdown'
 import type { RichTextFacet, RichTextFacetFeature } from './rich-text'
 
@@ -36,6 +36,30 @@ export interface TilEntry {
   tags: string[]
   body: string
   html: string
+  url: string
+}
+
+export interface LinkEntry {
+  slug: string
+  title: string
+  description: string
+  date: string
+  savedAt?: string
+  dateSource: 'saved' | 'published' | 'imported'
+  publishedAt?: string
+  targetUrl: string
+  sourceTitle?: string
+  author?: string
+  feedlyId: string
+  feedlyUrl?: string
+  tags: string[]
+  mock: boolean
+  standardUri?: string
+  body: string
+  html: string
+  year: string
+  month: string
+  day: string
   url: string
 }
 
@@ -250,6 +274,68 @@ let tilPromise: Promise<TilEntry[]> | undefined
 export function getTilEntries(): Promise<TilEntry[]> {
   tilPromise ??= loadTilEntries()
   return tilPromise
+}
+
+async function loadLinks(): Promise<LinkEntry[]> {
+  const files = await fg('links/*.md', { cwd: contentRoot, absolute: true })
+  const loaded = await Promise.all(files.map(async (file) => {
+    const { data, body, html } = await readMarkdownFile(file)
+    const source = path.relative(process.cwd(), file)
+    const slug = validateSegment(path.basename(file, '.md'), source, 'slug')
+    const date = validateDate(data.date, source)
+    const savedAt = data.savedAt ? validateTimestamp(asString(data.savedAt), source, 'savedAt') : undefined
+    const publishedAt = data.publishedAt ? validateTimestamp(asString(data.publishedAt), source, 'publishedAt') : undefined
+    const rawDateSource = asString(data.dateSource)
+    if (!['saved', 'published', 'imported'].includes(rawDateSource)) {
+      throw new Error(`${source}: dateSource must be saved, published, or imported`)
+    }
+    const feedlyId = asString(data.feedlyId)
+    if (!feedlyId) throw new Error(`${source}: feedlyId is required`)
+    const targetUrl = optionalHttpUrl(data.targetUrl, source, 'targetUrl')
+    if (!targetUrl) throw new Error(`${source}: targetUrl is required`)
+    const { year, month, day } = dateParts(date)
+    return {
+      entry: {
+        slug,
+        title: asString(data.title, slug),
+        description: asString(data.description),
+        date,
+        savedAt,
+        dateSource: rawDateSource as LinkEntry['dateSource'],
+        publishedAt,
+        targetUrl,
+        sourceTitle: asString(data.sourceTitle) || undefined,
+        author: asString(data.author) || undefined,
+        feedlyId,
+        feedlyUrl: optionalHttpUrl(data.feedlyUrl, source, 'feedlyUrl'),
+        tags: asArray(data.tags),
+        mock: data.mock === true,
+        standardUri: asString(data.standardUri) || undefined,
+        body,
+        html,
+        year,
+        month,
+        day,
+        url: datedPath('/links', date, slug),
+      } satisfies LinkEntry,
+      source,
+    }
+  }))
+
+  assertUnique(loaded, ({ entry }) => entry.feedlyId, ({ source }) => source)
+  assertUnique(loaded, ({ entry }) => entry.url, ({ source }) => source)
+  assertUnique(loaded, ({ entry }) => entry.targetUrl, ({ source }) => source)
+  return loaded.map(({ entry }) => entry).sort((a, b) => {
+    const byDate = (b.savedAt ?? b.date).localeCompare(a.savedAt ?? a.date)
+    return byDate || a.slug.localeCompare(b.slug)
+  })
+}
+
+let linksPromise: Promise<LinkEntry[]> | undefined
+
+export function getLinks(): Promise<LinkEntry[]> {
+  linksPromise ??= loadLinks()
+  return linksPromise
 }
 
 async function loadProjects(): Promise<ProjectEntry[]> {

@@ -1,8 +1,8 @@
 import { getAllNotes } from './atproto'
-import { getProjects, getTilEntries, getWriting, noteTitle } from './content'
+import { getLinks, getProjects, getTilEntries, getWriting, noteTitle } from './content'
 
 export interface SearchItem {
-  type: 'Writing' | 'Note' | 'Project' | 'TIL'
+  type: 'Writing' | 'Note' | 'Link' | 'Project' | 'TIL'
   title: string
   description: string
   content?: string
@@ -11,9 +11,10 @@ export interface SearchItem {
 }
 
 export async function getSearchItems(): Promise<SearchItem[]> {
-  const [writing, notes, projects, til] = await Promise.all([
+  const [writing, notes, links, projects, til] = await Promise.all([
     getWriting(),
     getAllNotes(),
+    getLinks(),
     getProjects(),
     getTilEntries(),
   ])
@@ -34,6 +35,14 @@ export async function getSearchItems(): Promise<SearchItem[]> {
       content: item.text,
       url: item.url,
       date: item.date,
+    })),
+    ...links.map((item) => ({
+      type: 'Link' as const,
+      title: item.title,
+      description: item.description,
+      content: [item.sourceTitle, item.author, item.tags.join(' '), new URL(item.targetUrl).hostname, item.body].filter(Boolean).join(' '),
+      url: item.url,
+      date: item.savedAt ?? item.date,
     })),
     ...projects.map((item) => ({
       type: 'Project' as const,

@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import { getLinks } from '../../../../../lib/content'
+import { formatDate } from '../../../../../lib/dates'
+
+export async function getStaticPaths() {
+  const links = await getLinks()
+  return links.map((entry) => ({
+    params: { year: entry.year, month: entry.month, day: entry.day, slug: entry.slug },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+const hostname = new URL(entry.targetUrl).hostname.replace(/^www\./, '')
+const source = entry.sourceTitle ?? hostname
+---
+
+<BaseLayout
+  title={entry.title}
+  description={entry.description || `A link saved from ${source}.`}
+  canonical={entry.url}
+  standardDocumentUri={entry.standardUri}
+  sectionFeed={{ href: '/links/feed.xml', title: 'Ciaran Lyons — Links' }}
+>
+  <article class="article-shell link-detail">
+    <header class="article-header">
+      {entry.mock && <p class="preview-data">Preview data · Mock Feedly star</p>}
+      <p class="link-source"><a href="/links/">Links</a> · Saved <time datetime={entry.savedAt ?? entry.date}>{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>
+      <h1 class="article-title">{entry.title}</h1>
+      {entry.description && <p class="lede">{entry.description}</p>}
+    </header>
+    <a class="link-destination" href={entry.targetUrl} rel="external">
+      <span>
+        <span class="link-destination__label">Read the original</span>
+        <strong>{source}{entry.author ? ` · ${entry.author}` : ''}</strong>
+        <span class="link-destination__host">{hostname}</span>
+      </span>
+      <span class="link-destination__arrow" aria-hidden="true">↗</span>
+    </a>
+    {entry.body && <div class="prose link-commentary" set:html={entry.html} />}
+    <footer class="link-detail__footer">
+      <p class="meta">Saved from Feedly{entry.tags.length ? ` · ${entry.tags.join(' · ')}` : ''}</p>
+      {entry.publishedAt && <p class="meta">Originally published <time datetime={entry.publishedAt}>{formatDate(entry.publishedAt, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>}
+    </footer>
+  </article>
+</BaseLayout>

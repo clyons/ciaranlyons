@@ -5,6 +5,7 @@ const coreRoutes = [
   ['about', '/about/'],
   ['writing', '/writing/'],
   ['notes', '/notes/'],
+  ['links', '/links/'],
   ['projects', '/projects/'],
   ['til', '/til/'],
 ] as const
@@ -61,7 +62,7 @@ test('primary navigation keeps every control on one visible row at mobile widths
     await page.goto('/')
 
     const controls = page.locator('nav[aria-label="Primary navigation"] a, nav[aria-label="Primary navigation"] button')
-    await expect(controls).toHaveCount(5)
+    await expect(controls).toHaveCount(6)
     const layout = await controls.evaluateAll((elements) => ({
       viewport: { width: window.innerWidth, height: window.innerHeight },
       bounds: elements.map((element) => {
@@ -84,10 +85,32 @@ for (const path of ['/writing/', '/notes/', '/projects/', '/til/']) {
   })
 }
 
+test('links use one divider between tools and the first result', async ({ page }) => {
+  await page.goto('/links/')
+  await expect(page.locator('.links-archive .link-row').first()).toHaveCSS('border-top-width', '0px')
+})
+
+test('links support local context, outbound reading, filtering, and canonical metadata', async ({ page }) => {
+  await page.goto('/links/')
+
+  const entry = page.getByRole('article').filter({ hasText: 'Design engineering in the age of AI' })
+  await expect(entry.getByRole('link', { name: 'Notes & details' })).toHaveAttribute('href', /\/links\/2026\/08\/31\/design-engineering/)
+  await expect(entry.getByRole('link', { name: /Read at example\.com/ })).toHaveAttribute('href', 'https://example.com/design-engineering')
+
+  await page.getByRole('searchbox', { name: 'Search links' }).fill('ATproto')
+  await expect(page.getByRole('article')).toHaveCount(1)
+  await expect(page.getByRole('article')).toContainText('AT Protocol records are bigger than social posts')
+
+  await page.goto('/links/2026/08/31/design-engineering-in-the-age-of-ai-950e894a5e/')
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://ciaranlyons.com/links/2026/08/31/design-engineering-in-the-age-of-ai-950e894a5e/')
+  await expect(page.getByRole('link', { name: /Read the original/ })).toHaveAttribute('href', 'https://example.com/design-engineering')
+})
+
 for (const [name, path] of [
   ['home', '/'],
   ['writing', '/writing/'],
   ['notes', '/notes/'],
+  ['links', '/links/'],
   ['projects', '/projects/'],
 ] as const) {
   test(`${name} matches its approved visual baseline`, async ({ page }) => {
