@@ -21,6 +21,13 @@ const assetVersion = '20260906'
 const profileImageUrl = new URL(`/images/ciaran-profile.jpeg?v=${assetVersion}`, site)
 const pageTitle = title === 'Ciaran Lyons' ? title : `${title} - Ciaran Lyons`
 const standardPublicationUri = import.meta.env.STANDARD_SITE_PUBLICATION_AT_URI
+const pathname = Astro.url.pathname
+const navItems = [
+  { href: '/about', label: 'About' },
+  { href: '/writing', label: 'Writing' },
+  { href: '/notes', label: 'Notes' },
+  { href: '/projects', label: 'Projects' },
+]
 ---
 
 <!doctype html>
@@ -60,25 +67,25 @@ const standardPublicationUri = import.meta.env.STANDARD_SITE_PUBLICATION_AT_URI
     <meta property="og:image:alt" content="Portrait of Ciaran Lyons" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <header class="site-header">
         <a class="brand" href="/">Ciaran Lyons</a>
         <nav class="nav" aria-label="Primary navigation">
-          <a href="/about">About</a>
-          <a href="/writing">Writing</a>
-          <a href="/notes">Notes</a>
-          <a href="/projects">Projects</a>
+          {navItems.map((item) => (
+            <a href={item.href} aria-current={pathname.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>
+          ))}
         </nav>
       </header>
-      <main class="page">
+      <main class="page" id="main-content">
         <slot />
       </main>
       <footer class="site-footer">
-        <span>© Ciaran Lyons</span>
         <nav aria-label="Footer navigation">
           <a href="/feed.xml">RSS</a>
           <a href="https://bsky.app/profile/ciaranlyons.com" rel="me">@ciaranlyons.com</a>
         </nav>
+        <span>© Ciaran Lyons</span>
       </footer>
     </div>
   </body>
