@@ -1,10 +1,11 @@
-import { getNotes } from './atproto'
+import { getAllNotes } from './atproto'
 import { getProjects, getTilEntries, getWriting, noteTitle } from './content'
 
 export interface SearchItem {
   type: 'Writing' | 'Note' | 'Project' | 'TIL'
   title: string
   description: string
+  content?: string
   url: string
   date?: string
 }
@@ -12,7 +13,7 @@ export interface SearchItem {
 export async function getSearchItems(): Promise<SearchItem[]> {
   const [writing, notes, projects, til] = await Promise.all([
     getWriting(),
-    getNotes(50),
+    getAllNotes(),
     getProjects(),
     getTilEntries(),
   ])
@@ -22,6 +23,7 @@ export async function getSearchItems(): Promise<SearchItem[]> {
       type: 'Writing' as const,
       title: item.title,
       description: item.description,
+      content: item.body,
       url: item.url,
       date: item.date,
     })),
@@ -29,6 +31,7 @@ export async function getSearchItems(): Promise<SearchItem[]> {
       type: 'Note' as const,
       title: noteTitle(item),
       description: item.text,
+      content: item.text,
       url: item.url,
       date: item.date,
     })),
@@ -42,6 +45,7 @@ export async function getSearchItems(): Promise<SearchItem[]> {
       type: 'TIL' as const,
       title: item.title,
       description: item.description,
+      content: item.body,
       url: item.url,
       date: item.date,
     })),

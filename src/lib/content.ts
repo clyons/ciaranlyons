@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
+import { assertUnique, optionalHttpUrl, validateDate, validateSegment, validateTopic, webUrl } from './content-validation'
 import { renderMarkdown } from './markdown'
 import type { RichTextFacet, RichTextFacetFeature } from './rich-text'
 
@@ -91,7 +92,7 @@ function asRecord(value: unknown): Record<string, unknown> {
   return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {}
 }
 
-function asNoteMedia(value: unknown): NoteMedia[] {
+function asNoteMedia(value: unknown, source: string): NoteMedia[] {
   if (!Array.isArray(value)) return []
 
   const parsed: NoteMedia[] = []
@@ -103,7 +104,7 @@ function asNoteMedia(value: unknown): NoteMedia[] {
 
     parsed.push({
       type,
-      src,
+      src: webUrl(src, source, 'media.src'),
       mimeType: asString(media.mimeType) || undefined,
       alt: asString(media.alt) || undefined,
       width: asNumber(media.width),
@@ -158,7 +159,7 @@ export function dateParts(date: string) {
 
 function datedPath(base: string, date: string, slug: string) {
   const { year, month, day } = dateParts(date)
-  return `${base}/${year}/${month}/${day}/${slug}`
+  return `${base}/${year}/${month}/${day}/${slug}/`
 }
 
 async function readMarkdownFile(file: string) {
@@ -171,13 +172,15 @@ async function readMarkdownFile(file: string) {
   }
 }
 
-export async function getWriting(): Promise<WritingEntry[]> {
+async function loadWriting(): Promise<WritingEntry[]> {
   const files = await fg('writing/*.md', { cwd: contentRoot, absolute: true })
   const entries = await Promise.all(
     files.map(async (file) => {
       const { data, body, html } = await readMarkdownFile(file)
-      const slug = path.basename(file, '.md')
-      const date = asString(data.date)
+      const source = path.relative(process.cwd(), file)
+      const slug = validateSegment(path.basename(file, '.md'), source, 'slug')
+      const date = validateDate(data.date, source)
+      const updated = data.updated ? validateDate(data.updated, source, 'updated') : undefined
       const { year, month, day } = dateParts(date)
       return {
         slug,
@@ -187,7 +190,7 @@ export async function getWriting(): Promise<WritingEntry[]> {
         title: asString(data.title, slug),
         description: asString(data.description),
         date,
-        updated: asString(data.updated) || undefined,
+        updated,
         standardUri: asString(data.standardUri) || undefined,
         body,
         html,
@@ -198,18 +201,28 @@ export async function getWriting(): Promise<WritingEntry[]> {
   return sortByDateDesc(entries)
 }
 
-export async function getTilEntries(): Promise<TilEntry[]> {
-  const files = await fg('til/**/*.md', { cwd: contentRoot, absolute: true })
-  const entries = await Promise.all(
+let writingPromise: Promise<WritingEntry[]> | undefined
+
+export function getWriting(): Promise<WritingEntry[]> {
+  writingPromise ??= loadWriting()
+  return writingPromise
+}
+
+async function loadTilEntries(): Promise<TilEntry[]> {
+  const files = await fg('til/*/*.md', { cwd: contentRoot, absolute: true })
+  const loaded = await Promise.all(
     files.map(async (file) => {
       const relative = path.relative(path.join(contentRoot, 'til'), file)
       const [topic, filename] = relative.split(path.sep)
+      const source = path.relative(process.cwd(), file)
       const { data, body, html } = await readMarkdownFile(file)
-      const slug = path.basename(filename, '.md')
-      const date = asString(data.date)
+      const safeTopic = validateTopic(topic, source)
+      const slug = validateSegment(path.basename(filename, '.md'), source, 'slug')
+      const date = validateDate(data.date, source)
+      const updated = data.updated ? validateDate(data.updated, source, 'updated') : undefined
       const { year, month, day } = dateParts(date)
-      return {
-        topic,
+      const entry = {
+        topic: safeTopic,
         slug,
         year,
         month,
@@ -217,28 +230,39 @@ export async function getTilEntries(): Promise<TilEntry[]> {
         title: asString(data.title, slug),
         description: asString(data.description),
         date,
-        updated: asString(data.updated) || undefined,
+        updated,
         tags: asArray(data.tags),
         body,
         html,
-        url: `/til/${year}/${month}/${day}/${slug}`,
+        url: `/til/${year}/${month}/${day}/${slug}/`,
       }
+      return { entry, source }
     }),
   )
-  return sortByDateDesc(entries)
+  assertUnique(loaded, ({ entry }) => `${entry.date.slice(0, 10)}/${entry.slug}`, ({ source }) => source)
+  return sortByDateDesc(loaded.map(({ entry }) => entry))
 }
 
-export async function getProjects(): Promise<ProjectEntry[]> {
+let tilPromise: Promise<TilEntry[]> | undefined
+
+export function getTilEntries(): Promise<TilEntry[]> {
+  tilPromise ??= loadTilEntries()
+  return tilPromise
+}
+
+async function loadProjects(): Promise<ProjectEntry[]> {
   const files = await fg('projects/*.md', { cwd: contentRoot, absolute: true })
   const entries = await Promise.all(
     files.map(async (file) => {
       const { data } = await readMarkdownFile(file)
-      const slug = path.basename(file, '.md')
+      const source = path.relative(process.cwd(), file)
+      const slug = validateSegment(path.basename(file, '.md'), source, 'slug')
+      const rawUrl = asString(data.url, `/projects/#${slug}`)
       return {
         slug,
         title: asString(data.title, slug),
         description: asString(data.description),
-        url: asString(data.url, `/projects#${slug}`),
+        url: webUrl(rawUrl, source, 'url'),
         meta: asString(data.meta) || undefined,
       }
     }),
@@ -246,17 +270,28 @@ export async function getProjects(): Promise<ProjectEntry[]> {
   return entries.sort((a, b) => a.title.localeCompare(b.title))
 }
 
-export async function getAbout() {
-  return readMarkdownFile(path.join(contentRoot, 'about.md'))
+let projectsPromise: Promise<ProjectEntry[]> | undefined
+
+export function getProjects(): Promise<ProjectEntry[]> {
+  projectsPromise ??= loadProjects()
+  return projectsPromise
 }
 
-export async function getLocalNotes(): Promise<NoteEntry[]> {
+let aboutPromise: ReturnType<typeof readMarkdownFile> | undefined
+
+export function getAbout() {
+  aboutPromise ??= readMarkdownFile(path.join(contentRoot, 'about.md'))
+  return aboutPromise
+}
+
+async function loadLocalNotes(): Promise<NoteEntry[]> {
   const files = await fg('notes/*.md', { cwd: contentRoot, absolute: true })
   const entries = await Promise.all(
     files.map(async (file) => {
       const { data, body } = await readMarkdownFile(file)
-      const id = asString(data.id, path.basename(file, '.md'))
-      const date = asString(data.date)
+      const sourceFile = path.relative(process.cwd(), file)
+      const id = validateSegment(asString(data.id, path.basename(file, '.md')), sourceFile, 'id')
+      const date = validateDate(data.date, sourceFile)
       const { year, month, day } = dateParts(date)
       const source: NoteEntry['source'] = asString(data.source) === 'bluesky' ? 'bluesky' : 'local'
       return {
@@ -269,14 +304,21 @@ export async function getLocalNotes(): Promise<NoteEntry[]> {
         cid: asString(data.cid) || undefined,
         uri: asString(data.uri) || undefined,
         source,
-        originalUrl: asString(data.originalUrl) || undefined,
+        originalUrl: optionalHttpUrl(data.originalUrl, sourceFile, 'originalUrl'),
         facets: asRichTextFacets(data.facets),
-        media: asNoteMedia(data.media),
+        media: asNoteMedia(data.media, sourceFile),
         url: datedPath('/notes', date, id),
       }
     }),
   )
   return sortByDateDesc(entries)
+}
+
+let localNotesPromise: Promise<NoteEntry[]> | undefined
+
+export function getLocalNotes(): Promise<NoteEntry[]> {
+  localNotesPromise ??= loadLocalNotes()
+  return localNotesPromise
 }
 
 export const getFallbackNotes = getLocalNotes

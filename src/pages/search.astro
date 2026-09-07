@@ -9,29 +9,50 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     <p class="lede">Find writing, notes, TILs, and projects.</p>
   </section>
   <section class="section">
-    <label class="visually-hidden" for="site-search">Search the site</label>
-    <input class="search-input" id="site-search" type="search" placeholder="Search the site" />
-    <div class="archive-list" id="search-results" aria-live="polite"></div>
+    <form class="search-form" action="/search/" method="get" role="search">
+      <label class="visually-hidden" for="site-search">Search the site</label>
+      <input class="search-input" id="site-search" name="q" type="search" placeholder="Search the site" autocomplete="off" />
+      <button class="search-button" type="submit">Search</button>
+    </form>
+    <noscript><p class="search-status">Search needs JavaScript. Browse Writing, Notes, Projects, TILs, or the RSS feed instead.</p></noscript>
+    <h2 class="visually-hidden" id="search-results-heading">Search results</h2>
+    <p class="search-status" id="search-status" role="status">Loading search index…</p>
+    <button class="search-retry" id="search-retry" type="button" hidden>Retry loading search</button>
+    <div class="archive-list" id="search-results" aria-labelledby="search-results-heading" aria-busy="true"></div>
   </section>
   <script>
     interface SearchItem {
       type: string
       title: string
       description: string
+      content?: string
       url: string
     }
 
     const input = document.querySelector<HTMLInputElement>('#site-search')
     const results = document.querySelector<HTMLElement>('#search-results')
-    const response = await fetch('/search.json')
-    const items = await response.json() as SearchItem[]
+    const status = document.querySelector<HTMLElement>('#search-status')
+    const retry = document.querySelector<HTMLButtonElement>('#search-retry')
+    const form = document.querySelector<HTMLFormElement>('.search-form')
+    let items: SearchItem[] = []
+
+    const initialQuery = new URLSearchParams(window.location.search).get('q') ?? ''
+    if (input) input.value = initialQuery
+
+    function setStatus(message: string) {
+      if (status) status.textContent = message
+    }
 
     function render(query: string) {
       if (!results) return
       const q = query.toLowerCase().trim()
       const matches = q
-        ? items.filter((item: SearchItem) => `${item.type} ${item.title} ${item.description}`.toLowerCase().includes(q))
+        ? items.filter((item: SearchItem) => `${item.type} ${item.title} ${item.description} ${item.content ?? ''}`.toLowerCase().includes(q))
         : items.slice(0, 12)
+
+      setStatus(q
+        ? `${matches.length} ${matches.length === 1 ? 'result' : 'results'} for “${query.trim()}”.`
+        : `Showing ${matches.length} recent ${matches.length === 1 ? 'item' : 'items'}.`)
 
       results.replaceChildren(...matches.map((item: SearchItem) => {
         const link = document.createElement('a')
@@ -58,7 +79,39 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       }))
     }
 
-    input?.addEventListener('input', () => render(input.value))
-    render('')
+    async function loadIndex() {
+      if (results) results.setAttribute('aria-busy', 'true')
+      if (retry) retry.hidden = true
+      setStatus('Loading search index…')
+      try {
+        const response = await fetch('/search.json')
+        if (!response.ok) throw new Error(`Search index returned ${response.status}`)
+        const payload = await response.json()
+        if (!Array.isArray(payload)) throw new Error('Search index has an unexpected format')
+        items = payload as SearchItem[]
+        render(input?.value ?? '')
+      } catch {
+        results?.replaceChildren()
+        setStatus('Search is temporarily unavailable. You can retry or browse the site sections above.')
+        if (retry) retry.hidden = false
+      } finally {
+        if (results) results.setAttribute('aria-busy', 'false')
+      }
+    }
+
+    input?.addEventListener('input', () => {
+      if (items.length > 0) render(input.value)
+    })
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault()
+      const query = input?.value ?? ''
+      const url = new URL(window.location.href)
+      if (query.trim()) url.searchParams.set('q', query.trim())
+      else url.searchParams.delete('q')
+      window.history.replaceState({}, '', url)
+      if (items.length > 0) render(query)
+    })
+    retry?.addEventListener('click', loadIndex)
+    void loadIndex()
   </script>
 </BaseLayout>

@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro'
-import { getNotes } from '../../../../lib/atproto'
+import { getAllNotes } from '../../../../lib/atproto'
 import { formatDate } from '../../../../lib/dates'
 
 export async function getStaticPaths() {
-  const notes = await getNotes(50)
+  const notes = await getAllNotes()
   const months = [...new Set(notes.map((note) => `${note.year}-${note.month}`))]
   return months.map((key) => {
     const [year, month] = key.split('-')
@@ -26,7 +26,7 @@ const label = formatDate(`${year}-${month}-01`, { month: 'long', year: 'numeric'
       {notes.map((note) => (
         <a class="note-row" href={note.url}>
           <p>{note.text}</p>
-          <span class="date">{formatDate(note.date, { month: 'long', day: 'numeric' })}</span>
+          <time class="date" datetime={note.date}>{formatDate(note.date, { month: 'long', day: 'numeric' })}</time>
         </a>
       ))}
     </div>

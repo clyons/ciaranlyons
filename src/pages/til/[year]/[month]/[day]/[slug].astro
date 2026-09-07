@@ -17,7 +17,7 @@ const { entry } = Astro.props
 <BaseLayout title={entry.title} description={entry.description} canonical={entry.url}>
   <article class="article-shell">
     <header class="article-header">
-      <p class="date">{entry.topic} - {formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+      <p class="date">{entry.topic} - <time datetime={entry.date}>{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>
       <h1 class="article-title">{entry.title}</h1>
       <p class="lede">{entry.description}</p>
     </header>

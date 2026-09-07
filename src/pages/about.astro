@@ -12,13 +12,21 @@ const about = await getAbout()
       <p class="section-kicker">About</p>
       <h1 class="article-title">About Ciaran</h1>
     </header>
-    <img
-      class="about-portrait"
-      src="/images/ciaran-profile.jpeg?v=20260906"
-      alt="Ciaran Lyons"
-      width="1200"
-      height="1200"
-    />
+    <picture>
+      <source
+        type="image/avif"
+        srcset="/images/profile/ciaran-profile-256.avif 256w, /images/profile/ciaran-profile-416.avif 416w"
+        sizes="(max-width: 760px) 144px, 208px"
+      />
+      <img
+        class="about-portrait"
+        src="/images/ciaran-profile.jpeg?v=20260906"
+        alt="Ciaran Lyons"
+        width="1200"
+        height="1200"
+        decoding="async"
+      />
+    </picture>
     <div class="prose" set:html={about.html} />
     <section class="about-socials" aria-labelledby="about-socials-heading">
       <h2 id="about-socials-heading">Elsewhere</h2>

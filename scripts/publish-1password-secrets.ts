@@ -19,15 +19,18 @@ import { execFile } from 'node:child_process'
 import { mkdir, mkdtemp, readFile, realpath, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { promisify } from 'node:util'
 
 const execFileAsync = promisify(execFile)
 
 // Keys that are internal to the shell/OS and should never be published.
 const RESERVED_KEYS = new Set(['PWD', 'SHLVL', '_', 'HOME', 'USER', 'SHELL', 'TERM', 'PATH'])
+const ENV_KEY_PATTERN = /^[A-Za-z_][A-Za-z0-9_]*$/
 
 interface Args {
   item: string
+  vault?: string
   dryRun: boolean
   prune: boolean
   output?: string
@@ -50,6 +53,7 @@ interface OpField {
 }
 
 interface OpItemTemplate {
+  id?: string
   title?: string
   category?: string
   fields?: OpField[]
@@ -61,11 +65,14 @@ function parseArgs(argv: string[]): Args {
   let dryRun = false
   let prune = false
   let output: string | undefined
+  let vault = process.env.OP_VAULT?.trim() || undefined
 
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]
     if (arg === '--item') { item = argv[++i] }
     else if (arg.startsWith('--item=')) { item = arg.slice('--item='.length) }
+    else if (arg === '--vault') { vault = argv[++i] }
+    else if (arg.startsWith('--vault=')) { vault = arg.slice('--vault='.length) }
     else if (arg === '--dry-run') { dryRun = true }
     else if (arg === '--prune') { prune = true }
     else if (arg === '--output') { output = argv[++i] }
@@ -73,7 +80,10 @@ function parseArgs(argv: string[]): Args {
     else { throw new Error(`Unknown argument: ${arg}`) }
   }
 
-  return { item, dryRun, prune, output }
+  if (!item) throw new Error('--item requires a non-empty value')
+  if (vault === '') throw new Error('--vault requires a non-empty value')
+  if (output === '') throw new Error('--output requires a non-empty value')
+  return { item, vault, dryRun, prune, output }
 }
 
 async function resolveEnvPath(relativePath: string): Promise<string> {
@@ -83,7 +93,12 @@ async function resolveEnvPath(relativePath: string): Promise<string> {
 
 async function parseEnvFile(path: string): Promise<Record<string, string>> {
   let content: string
-  try { content = await readFile(path, 'utf8') } catch { return {} }
+  try {
+    content = await readFile(path, 'utf8')
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return {}
+    throw error
+  }
 
   const result: Record<string, string> = {}
   for (const line of content.split('\n')) {
@@ -92,6 +107,7 @@ async function parseEnvFile(path: string): Promise<Record<string, string>> {
     const eq = trimmed.indexOf('=')
     if (eq < 1) continue
     const key = trimmed.slice(0, eq).trim()
+    if (!ENV_KEY_PATTERN.test(key)) throw new Error(`Invalid environment key in ${path}: ${key}`)
     if (RESERVED_KEYS.has(key)) continue
     let value = trimmed.slice(eq + 1)
     // Strip surrounding quotes if present
@@ -104,14 +120,26 @@ async function parseEnvFile(path: string): Promise<Record<string, string>> {
   return result
 }
 
-async function readItem(item: string): Promise<OpItemTemplate | undefined> {
+function isItemNotFound(error: unknown): boolean {
+  const candidate = error as { stderr?: string; message?: string }
+  return /(?:isn't an item|not found|does not exist)/i.test(`${candidate.stderr ?? ''}\n${candidate.message ?? ''}`)
+}
+
+export async function readItem(
+  item: string,
+  runner: typeof execFileAsync = execFileAsync,
+  vault?: string,
+): Promise<OpItemTemplate | undefined> {
   try {
-    const { stdout } = await execFileAsync('op', ['item', 'get', item, '--format', 'json'], {
+    const args = ['item', 'get', item, '--format', 'json']
+    if (vault) args.push('--vault', vault)
+    const { stdout } = await runner('op', args, {
       maxBuffer: 10 * 1024 * 1024,
     })
     return JSON.parse(stdout) as OpItemTemplate
-  } catch {
-    return undefined
+  } catch (error) {
+    if (isItemNotFound(error)) return undefined
+    throw error
   }
 }
 
@@ -131,7 +159,7 @@ function buildCreateTemplate(item: string, fields: Record<string, string>): OpIt
   }
 }
 
-function mergeFieldsIntoTemplate(
+export function mergeFieldsIntoTemplate(
   existing: OpItemTemplate,
   fields: Record<string, string>,
   prune: boolean,
@@ -194,6 +222,10 @@ async function main() {
 
   const upserted = Object.keys(fields).sort()
 
+  if (args.prune && upserted.length === 0) {
+    throw new Error('Refusing --prune because no managed environment fields were loaded')
+  }
+
   console.log(`Item: ${args.item}`)
   console.log(`Mode: ${args.dryRun ? 'DRY RUN' : 'LIVE'}`)
   console.log(`Fields to publish: ${upserted.length}`)
@@ -209,13 +241,15 @@ async function main() {
   }
 
   if (!args.dryRun) {
-    const existing = await readItem(args.item)
+    const existing = await readItem(args.item, execFileAsync, args.vault)
 
     if (!existing) {
       console.log(`\nCreating item: ${args.item}`)
       const template = buildCreateTemplate(args.item, fields)
       await withTemplateFile(template, async (path) => {
-        await execFileAsync('op', ['item', 'create', '--template', path])
+        const createArgs = ['item', 'create', '--template', path]
+        if (args.vault) createArgs.push('--vault', args.vault)
+        await execFileAsync('op', createArgs)
       })
       summary.created = true
     } else {
@@ -223,7 +257,7 @@ async function main() {
       if (upserted.length > 0 || args.prune) {
         const template = mergeFieldsIntoTemplate(existing, fields, args.prune)
         await withTemplateFile(template, async (path) => {
-          await execFileAsync('op', ['item', 'edit', args.item, '--template', path])
+          await execFileAsync('op', ['item', 'edit', existing.id || args.item, '--template', path])
         })
       }
     }
@@ -234,7 +268,11 @@ async function main() {
   if (args.output) await writeJson(args.output, summary)
 }
 
-main().catch((error) => {
-  console.error('Secret publish failed:', error)
-  process.exit(1)
-})
+const entrypoint = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : ''
+
+if (import.meta.url === entrypoint) {
+  main().catch((error) => {
+    console.error(`Secret publish failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    process.exit(1)
+  })
+}

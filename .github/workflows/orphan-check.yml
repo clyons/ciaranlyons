@@ -17,9 +17,10 @@ jobs:
     if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Check for orphaned commits on merged branch
         env:
@@ -30,6 +31,7 @@ jobs:
           HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
           HEAD_BRANCH: ${{ github.event.pull_request.head.ref || github.ref_name }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          EVENT_AFTER: ${{ github.event.after }}
         run: |
           if [ "$EVENT_NAME" = "pull_request" ]; then
             if [ "$HEAD_REPO" != "$BASE_REPO" ]; then
@@ -60,14 +62,20 @@ jobs:
 
           git fetch origin +refs/heads/main:refs/remotes/origin/main
 
-          # Fetch the branch ref if it still exists (may already be auto-deleted)
-          BRANCH_REF="refs/remotes/origin/$HEAD_BRANCH"
-          git fetch origin "+refs/heads/$HEAD_BRANCH:$BRANCH_REF" 2>/dev/null || {
-            echo "Branch already deleted — no orphans possible."
-            exit 0
-          }
+          if [ "$EVENT_NAME" = "push" ]; then
+            CURRENT_SHA="$EVENT_AFTER"
+            git cat-file -e "$CURRENT_SHA^{commit}" 2>/dev/null || git fetch origin "$CURRENT_SHA"
+            CHECK_REF="$CURRENT_SHA"
+          else
+            BRANCH_REF="refs/remotes/origin/$HEAD_BRANCH"
+            git fetch origin "+refs/heads/$HEAD_BRANCH:$BRANCH_REF" 2>/dev/null || {
+              echo "Branch already deleted — no orphans possible."
+              exit 0
+            }
+            CURRENT_SHA=$(git rev-parse "$BRANCH_REF")
+            CHECK_REF="$BRANCH_REF"
+          fi
 
-          CURRENT_SHA=$(git rev-parse "$BRANCH_REF")
           if [ "$CURRENT_SHA" = "$HEAD_SHA" ]; then
             echo "No orphaned commits. Branch still points at merged PR head."
             exit 0
@@ -81,10 +89,10 @@ jobs:
             # Find commits added to the branch after the PR head that was merged.
             # Exclude origin/main too, because a branch may be reset/rebased onto
             # the squash-merge commit, which is already safely reachable.
-            ORPHANS=$(git log "$BRANCH_REF" --not "$HEAD_SHA" origin/main --oneline 2>/dev/null || true)
+            ORPHANS=$(git log "$CHECK_REF" --not "$HEAD_SHA" origin/main --oneline 2>/dev/null || true)
           else
             echo "::warning::Merged PR head $HEAD_SHA is unavailable; branch may have been force-pushed after merge."
-            ORPHANS=$(git log "$BRANCH_REF" --not origin/main --oneline 2>/dev/null || true)
+            ORPHANS=$(git log "$CHECK_REF" --not origin/main --oneline 2>/dev/null || true)
           fi
 
           if [ -z "$ORPHANS" ]; then

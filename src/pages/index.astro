@@ -25,7 +25,7 @@ const selectedProjects = projects.slice(0, 3)
         <p class="section-kicker">Writing</p>
         <h2 id="writing-title">Essays on operating, building, and deciding.</h2>
       </div>
-      <a href="/writing">All writing</a>
+      <a href="/writing/">All writing</a>
     </div>
     <div class="archive-list">
       {selectedWriting.map((item) => (
@@ -34,7 +34,7 @@ const selectedProjects = projects.slice(0, 3)
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </div>
-          <span class="date">{formatDate(item.date, { month: 'long', year: 'numeric' })}</span>
+          <time class="date" datetime={item.date}>{formatDate(item.date, { month: 'long', year: 'numeric' })}</time>
         </a>
       ))}
     </div>
@@ -46,16 +46,16 @@ const selectedProjects = projects.slice(0, 3)
         <p class="section-kicker">Notes</p>
         <h2 id="notes-title">Recent notes.</h2>
       </div>
-      <a href="/notes">All notes</a>
+      <a href="/notes/">All notes</a>
     </div>
     <div class="archive-list">
       {notes.slice(0, 4).map((note) => (
-        <article class="note-row">
+        <div class="note-row">
           <p set:html={renderRichText(note.text, note.facets)} />
           <a class="date" href={note.url} aria-label={`Read note from ${formatDate(note.date, { month: 'long', day: 'numeric' })}`}>
-            {formatDate(note.date, { month: 'long', day: 'numeric' })}
+            <time datetime={note.date}>{formatDate(note.date, { month: 'long', day: 'numeric' })}</time>
           </a>
-        </article>
+        </div>
       ))}
     </div>
   </section>
@@ -66,7 +66,7 @@ const selectedProjects = projects.slice(0, 3)
         <p class="section-kicker">Projects</p>
         <h2 id="projects-title">Selected work.</h2>
       </div>
-      <a href="/projects">All projects</a>
+      <a href="/projects/">All projects</a>
     </div>
     <div class="archive-list">
       {selectedProjects.map((project) => (

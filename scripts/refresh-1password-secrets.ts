@@ -15,11 +15,20 @@
  */
 
 import { execFile } from 'node:child_process'
-import { access, appendFile, mkdir, readFile, realpath, writeFile } from 'node:fs/promises'
-import { dirname, resolve } from 'node:path'
+import { access, appendFile, mkdir, mkdtemp, readFile, realpath, rm, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { dirname, join, resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { promisify } from 'node:util'
 
 const execFileAsync = promisify(execFile)
+const ENV_KEY_PATTERN = /^[A-Za-z_][A-Za-z0-9_]*$/
+
+type CommandRunner = (file: string, args: string[]) => Promise<void>
+
+const runCommand: CommandRunner = async (file, args) => {
+  await execFileAsync(file, args)
+}
 
 interface Args {
   item: string
@@ -62,6 +71,8 @@ function parseArgs(argv: string[]): Args {
     }
   }
 
+  if (!item) throw new Error('--item requires a non-empty value')
+  if (output === '') throw new Error('--output requires a non-empty value')
   return { item, dryRun, output }
 }
 
@@ -90,18 +101,27 @@ async function readOpItem(item: string): Promise<{ local: Record<string, string>
     fields?: Array<{ label?: string; value?: string }>
   }
 
+  return routeOpFields(parsed.fields ?? [])
+}
+
+export function routeOpFields(fields: Array<{ label?: string; value?: string }>): { local: Record<string, string>; cli: Record<string, string> } {
   const local: Record<string, string> = {}
   const cli: Record<string, string> = {}
+  const seenLabels = new Set<string>()
 
-  for (const field of parsed.fields ?? []) {
+  for (const field of fields) {
     if (!field.label || typeof field.value !== 'string') continue
+    if (!field.label.startsWith('local.') && !field.label.startsWith('cli.')) continue
+    if (seenLabels.has(field.label)) throw new Error(`Duplicate 1Password field label: ${field.label}`)
+    seenLabels.add(field.label)
+    const key = field.label.startsWith('local.')
+      ? field.label.slice('local.'.length)
+      : field.label.slice('cli.'.length)
+    if (!ENV_KEY_PATTERN.test(key)) throw new Error(`Invalid environment key in 1Password field: ${field.label}`)
     if (field.label.startsWith('local.')) {
-      local[field.label.slice('local.'.length)] = field.value
+      local[key] = field.value
     } else if (field.label.startsWith('cli.')) {
-      cli[field.label.slice('cli.'.length)] = field.value
-    } else {
-      // Unprefixed fields fall back to .env.local
-      local[field.label] = field.value
+      cli[key] = field.value
     }
   }
 
@@ -111,7 +131,8 @@ async function readOpItem(item: string): Promise<{ local: Record<string, string>
 async function ensureFileExists(path: string): Promise<void> {
   try {
     await access(path)
-  } catch {
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
     await mkdir(dirname(path), { recursive: true })
     await writeFile(path, '', 'utf8')
   }
@@ -120,7 +141,8 @@ async function ensureFileExists(path: string): Promise<void> {
 async function readEnvFileIfPresent(path: string): Promise<string> {
   try {
     return await readFile(path, 'utf8')
-  } catch {
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
     return ''
   }
 }
@@ -130,10 +152,34 @@ function escapeForSedReplacement(s: string): string {
   return s.replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/&/g, '\\&')
 }
 
-async function upsertEnvFile(
+export async function replaceEnvLine(
+  path: string,
+  key: string,
+  formatted: string,
+  runner: CommandRunner = runCommand,
+): Promise<void> {
+  const temporaryDirectory = await mkdtemp(join(tmpdir(), 'ciaranlyons-env-sed-'))
+  const scriptPath = join(temporaryDirectory, 'replace.sed')
+  const script = `s|^${key}=.*|${escapeForSedReplacement(formatted)}|\n`
+
+  try {
+    await writeFile(scriptPath, script, { encoding: 'utf8', mode: 0o600 })
+    const sedArgs = process.platform === 'darwin'
+      ? ['-i', '', '-f', scriptPath, path]
+      : ['-i', '-f', scriptPath, path]
+    await runner('sed', sedArgs)
+  } finally {
+    await rm(temporaryDirectory, { recursive: true, force: true })
+  }
+}
+
+export async function upsertEnvFile(
   path: string,
   updates: Record<string, string>,
 ): Promise<{ updated: string[]; added: string[] }> {
+  for (const key of Object.keys(updates)) {
+    if (!ENV_KEY_PATTERN.test(key)) throw new Error(`Invalid environment key: ${key}`)
+  }
   await ensureFileExists(path)
   const original = await readFile(path, 'utf8')
   const lines = original === '' ? [] : original.split('\n')
@@ -150,9 +196,7 @@ async function upsertEnvFile(
   for (const [key, value] of Object.entries(updates)) {
     const formatted = `${key}=${formatEnvValue(value)}`
     if (presentKeys.has(key)) {
-      const script = `s|^${key}=.*|${escapeForSedReplacement(formatted)}|`
-      const sedArgs = process.platform === 'darwin' ? ['-i', '', script, path] : ['-i', script, path]
-      await execFileAsync('sed', sedArgs)
+      await replaceEnvLine(path, key, formatted)
       updated.push(key)
     } else {
       // Ensure we don't merge onto the last line if the file lacks a trailing newline
@@ -218,7 +262,12 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error('Secret refresh failed:', error)
-  process.exit(1)
-})
+const entrypoint = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : ''
+
+if (import.meta.url === entrypoint) {
+  main().catch((error) => {
+    const message = error instanceof Error ? error.message : 'Unknown error'
+    console.error(`Secret refresh failed: ${message}`)
+    process.exit(1)
+  })
+}

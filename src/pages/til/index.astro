@@ -37,7 +37,7 @@ const topics = getTilTopics(til)
       <p class="section-kicker">Topics</p>
       <div class="archive-list">
         {topics.map((topic) => (
-          <a class="topic-row" href={`/til/${topic.topic}`}>
+          <a class="topic-row" href={`/til/${topic.topic}/`}>
             <h3>{topic.topic}</h3>
             <span class="date">{topic.count}</span>
           </a>

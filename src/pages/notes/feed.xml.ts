@@ -1,11 +1,11 @@
 import type { APIRoute } from 'astro'
 import { getNotes } from '../../lib/atproto'
 import { noteTitle } from '../../lib/content'
-import { renderFeed } from '../../lib/feeds'
+import { renderFeed, requireSiteUrl } from '../../lib/feeds'
 
 export const GET: APIRoute = async ({ site }) => {
   const notes = await getNotes(50)
-  return new Response(renderFeed('Ciaran Lyons - Notes', 'Short notes from Ciaran Lyons.', site!.toString(), notes.map((item) => ({
+  return new Response(renderFeed('Ciaran Lyons - Notes', 'Short notes from Ciaran Lyons.', requireSiteUrl(site), notes.map((item) => ({
     title: noteTitle(item),
     description: item.text,
     link: item.url,
