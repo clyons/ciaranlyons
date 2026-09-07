@@ -55,6 +55,14 @@ Every substantial PR should include:
 - A short "what changed" summary
 - Validation evidence (build, tests, or explicit `N/A` with reason)
 
+## Cloudflare MCP
+
+- For Cloudflare account, zone, DNS, SSL/TLS, redirect-rule, or related configuration work, use the configured `cloudflare` MCP server instead of asking for API tokens or relying on manual dashboard steps.
+- The `cloudflare` server is authenticated user-wide with OAuth, including `dns.read` and `dns.write`. Never print, copy, or commit its credentials.
+- Use the `cloudflare-docs` MCP server when current Cloudflare product or API documentation is needed.
+- For changes to `ciaranlyons.com`, resolve the account and zone through the MCP, inspect the current state before writing, make the smallest required change, and read the result back to verify it.
+- If the server is unavailable or reports an authentication error, first check whether the current Conductor session predates the latest OAuth authorization. Ask for a Conductor restart before initiating another login.
+
 ## TIL Publishing
 
 When Ciaran says "TIL this", treat it as a publishing operation for `content/til`.
