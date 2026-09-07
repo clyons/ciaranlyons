@@ -22,7 +22,8 @@ The work originates from the full-site review completed on 2026-09-06. The accep
 - [x] (2026-09-07 03:06Z) Completed P2 search, accessibility, performance, privacy, metadata, URL normalization, and sitemap improvements.
 - [x] (2026-09-07 03:08Z) Completed local end-to-end validation and production smoke diagnostics; the final origin-routing checks remain deployment-dependent.
 - [x] (2026-09-07 19:35Z) Reconciled the remediation with ten newer `origin/main` commits, preserving the editorial redesign, theme toggle, current content, TIL workflow, and latest-note URL handling.
-- [ ] Publish the reviewed branch, pass required PR checks, merge it, and verify the resulting production deployment.
+- [x] (2026-09-07 22:04Z) Published the remediation in PR #34, passed required checks, merged it, and verified the later production deployment with the eight-check smoke suite.
+- [x] (2026-09-07 22:19Z) Corrected the `www` HTTPS-to-HTTP redirect, enabled a conservative six-month HSTS policy, and verified the Cloudflare setting plus production response headers.
 
 ## Surprises & Discoveries
 
@@ -44,6 +45,10 @@ The work originates from the full-site review completed on 2026-09-06. The accep
   Evidence: Cloudflare nameservers are authoritative, apex A records resolve to `104.21.88.232` and `172.67.153.191`, and the HTTPS response includes `server: cloudflare` plus a `cf-ray` header while proxying GitHub Pages.
 - Observation: Cloudflare's zone-wide redirect fixes plaintext entry requests but does not rewrite the GitHub Pages origin's `Location` header on an already-HTTPS slashless request.
   Evidence: After `always_use_https` changed from `off` to `on`, `http://ciaranlyons.com/` and `/feed.xml` returned `301` locations using HTTPS, while the currently deployed `https://ciaranlyons.com/about` still returned `301 Location: http://ciaranlyons.com/about/`. The implemented trailing-slash links avoid this path after deployment; `/about/` already returns `200` over HTTPS.
+- Observation: The 2026-09-07 HSTS preflight found that all three proxied hostnames complete validated TLS, but `https://www.ciaranlyons.com/` still redirects to `http://ciaranlyons.com/` at the origin.
+  Evidence: Cloudflare MCP returned an active/full zone, `always_use_https=on`, SSL mode `full`, active certificate status, and proxied records for the apex, `www`, and `email`. Public TLS verification succeeded for all three hosts; the apex returned `200`, `email` returned `404`, and `www` returned `301 Location: http://ciaranlyons.com/`. Correct the `www` redirect before enabling HSTS.
+- Observation: Cloudflare's zone-level HSTS setting emits the header on each proxied hostname's HTTPS response even when `includeSubDomains` is disabled.
+  Evidence: After the update, the apex, `www`, and `email` responses each returned `Strict-Transport-Security: max-age=15552000`; `www` now redirects directly to the HTTPS apex. `includeSubDomains` remains absent, so an apex policy does not automatically bind other subdomains that have not independently contacted Cloudflare over HTTPS.
 
 ## Decision Log
 
@@ -52,6 +57,9 @@ The work originates from the full-site review completed on 2026-09-06. The accep
   Date/Author: 2026-09-07 / Codex
 - Decision: Do not enable HSTS in the same initial mutation.
   Rationale: HSTS persists in browsers and has broader subdomain/certificate consequences. First enforce redirects and verify all relevant hostnames; evaluate HSTS as a separate reviewed step.
+  Date/Author: 2026-09-07 / Codex
+- Decision: After correcting the `www` downgrade redirect, enable HSTS with a six-month `max-age` (`15552000` seconds), without `includeSubDomains` or preload, and preserve `nosniff=off`.
+  Rationale: Cloudflare recommends starting at six months and increasing to twelve after confirming stability. Leaving `includeSubDomains` and preload off avoids binding mail and future subdomains to the apex policy; preserving `nosniff` keeps this change limited to transport security.
   Date/Author: 2026-09-07 / Codex
 - Decision: Keep complete route-generation datasets separate from presentation/feed limits.
   Rationale: A display limit must never decide whether a canonical static page exists.
@@ -83,7 +91,7 @@ The work originates from the full-site review completed on 2026-09-06. The accep
 
 ## Outcomes & Retrospective
 
-All P0–P2 implementation milestones are complete. Cloudflare `always_use_https` is enabled, so plaintext entry requests are redirected at the edge. Content and ATProto inputs now cross explicit validation/sanitization boundaries; complete note snapshots drive routes and search; operational network reads are bounded; media is MIME/size/CID verified; Standard.site writes are deterministic and atomic; 1Password paths distinguish absence from operational failures; CI is pinned and least-privilege; production builds are clean and can require valid identity records; search/accessibility/metadata/profile delivery are improved; GTM is removed; URLs are trailing-slash normalized; and a sitemap is generated. After reconciliation with the latest main branch, the suite passes 28 focused tests, type/Astro checks are clean, the build emits all 40 current pages plus a sitemap, feed/search artifacts validate, dry runs recognize both current notes, and the dependency audit is clean. Final production smoke remains deployment-dependent; the canonical trailing-slash route, feeds, and both identity records already pass.
+All P0–P2 repository implementation milestones are complete and deployed. Cloudflare `always_use_https` is enabled, so plaintext entry requests are redirected at the edge. Content and ATProto inputs now cross explicit validation/sanitization boundaries; complete note snapshots drive routes and search; operational network reads are bounded; media is MIME/size/CID verified; Standard.site writes are deterministic and atomic; 1Password paths distinguish absence from operational failures; CI is pinned and least-privilege; production builds are clean and can require valid identity records; search/accessibility/metadata/profile delivery are improved; GTM is removed; URLs are trailing-slash normalized; and a sitemap is generated. The suite passed 28 focused tests, type/Astro checks were clean, the build emitted all 40 reviewed pages plus a sitemap, feed/search artifacts validated, dry runs recognized both reviewed notes, and the dependency audit was clean. PR #34 merged and the current production deployment passes the eight-check smoke suite. The separately approved transport follow-up corrected the `www` downgrade redirect and enabled a six-month HSTS policy without subdomain inheritance or preload; MCP readback and production headers confirm the intended state.
 
 ## Context and Orientation
 
@@ -134,6 +142,10 @@ Decide and document the analytics privacy model before loading GTM. Add only acc
 
 Run all local checks from a clean install, exercise every high-risk script in dry-run/mocked modes, inspect representative generated HTML/XML/JSON, and smoke-test production transport, canonical routes, redirects, feeds, search, assets, and `.well-known` records. Record every command and outcome here. Verify each feature branch contains only its intended commits before its PR is merged.
 
+### Milestone 7 — Enable HSTS after transport preflight
+
+Inventory every proxied hostname and validate its TLS certificate and redirect behavior. Correct the `www` redirect so HTTPS never emits an HTTP location. Re-read `always_use_https`, SSL mode/status, and `security_header` through Cloudflare MCP. Then enable HSTS with `max_age=15552000`, `include_subdomains=false`, `preload=false`, and the existing `nosniff=false`. Re-read the setting and verify representative HTTPS responses include exactly `Strict-Transport-Security: max-age=15552000` while the complete production smoke suite still passes. Do not enable `includeSubDomains` or preload in this milestone.
+
 ## Concrete Steps
 
 From the repository root, the baseline and recurring validation commands are:
@@ -153,12 +165,15 @@ For the initial Cloudflare milestone, use MCP read operations to discover the zo
 
 Expected result: plaintext requests redirect to an `https://` location; extensionless HTTPS normalization never emits an `http://` location; trailing-slash HTTPS and feeds remain successful. Re-read the Cloudflare setting via MCP and record the returned value.
 
+For the separately approved HSTS milestone, first ensure the apex, `www`, and other proxied hostnames complete validated TLS and no HTTPS response redirects to HTTP. Correct the `www` redirect at Cloudflare, then update only the `security_header` zone setting with the policy recorded above. Confirm with an MCP readback and uncached header probes before considering the milestone complete.
+
 Add focused test commands as their harnesses are introduced. At minimum, tests must cover more than 50 notes, mixed note sources, impossible dates, duplicate TIL identity, hostile Markdown/URLs, traversal identifiers, split UTF-8 facets, stalled/oversized responses, CID mismatch, 1Password auth/not-found/prune distinctions, secret-log redaction, and interrupted publication writes.
 
 ## Validation and Acceptance
 
 - All HTTP requests for `ciaranlyons.com` redirect to HTTPS, and no tested HTTPS route redirects to HTTP.
 - Cloudflare reports zone-wide HTTPS redirection enabled; HSTS remains unchanged unless separately reviewed and approved.
+- After the separately approved HSTS milestone, Cloudflare reports HSTS enabled with `max_age=15552000`, `include_subdomains=false`, `preload=false`, and `nosniff=false`; representative HTTPS responses emit that policy and never redirect to HTTP.
 - No local hook kills an arbitrary listener or waits without a timeout.
 - Secret values never appear in command arguments, logs, errors, reports, or committed files.
 - Every sync/publish destination is confined to its declared root and written atomically.
@@ -174,7 +189,7 @@ Add focused test commands as their harnesses are introduced. At minimum, tests m
 
 ## Idempotence and Recovery
 
-All read-only discovery and validation commands are safe to repeat. Enabling `always_use_https` is an idempotent Cloudflare setting update; recovery is to set the same setting back to its recorded prior value if verification shows an unexpected break. Do not change DNS proxy state, SSL mode, HSTS, certificates, or unrelated rules as part of the initial mutation.
+All read-only discovery and validation commands are safe to repeat. Enabling `always_use_https` is an idempotent Cloudflare setting update; recovery is to set the same setting back to its recorded prior value if verification shows an unexpected break. Do not change DNS proxy state, SSL mode, certificates, or unrelated rules as part of the initial mutation. The later HSTS update is also idempotent, but browsers retain a learned policy for its advertised max-age: setting `max_age=0` stops future retention but cannot immediately erase policy already cached by every visitor. Keep HTTPS available throughout the six-month policy window.
 
 Repository changes should use validation-before-write, same-directory temporary files, atomic rename, and deterministic identities so interrupted commands can be rerun. Tests must use temporary directories and fake credentials. Never overwrite `.env.local`; preserve the repository's required targeted edit/append policy. Never reuse a branch after its PR merges.
 
@@ -195,6 +210,11 @@ Repository changes should use validation-before-write, same-directory temporary 
 - 2026-09-07 19:22Z Cloudflare authorization and mutation: the exact active zone exposed `#zone_settings:read` and `#zone_settings:edit`; `GET settings/always_use_https` returned `off`; `PATCH {"value":"on"}` returned HTTP 200; and the confirming read returned `on` with modification time `2026-09-07T19:22:10.955657Z`. No other zone setting was changed and HSTS remains outside this scope.
 - 2026-09-07 19:22Z post-change production smoke: plaintext root and feed now return `301` to their HTTPS equivalents; canonical `/about/`, the feed, and both `.well-known` identity records return `200`. The deployed slashless `/about` still returns an origin-generated plaintext location and `sitemap-index.xml` remains `404`; both correspond to completed repository changes awaiting deployment.
 - 2026-09-07 19:35Z latest-main reconciliation: fetched `origin/main` at `8afefdb`, ten commits beyond the original base. Conflict resolution retained the new editorial palette/layout, two-state theme toggle, TIL copy and publishing documentation, current note/TIL content, and latest-note URL stripping. It reapplied trailing-slash navigation, metadata/privacy/accessibility/search hardening, and schema-backed content validation. `npm run lint`, `npx tsc --noEmit`, `npm test` (28/28), and `npm run build` (40 pages plus sitemap) passed; all feeds and the sitemap passed `xmllint`; `search.json` contained eight items; both publishing dry runs reconciled current records; and the production dependency audit reported zero vulnerabilities.
+- 2026-09-07 22:04Z deployment verification: PR #34 was merged at `c5e0fb4`; the later production deployment for current `main` completed successfully, and `npm run smoke:production` passed all eight checks including HTTPS redirects, the canonical route, feeds, sitemap, and both identity records.
+- 2026-09-07 22:14Z HSTS preflight: Cloudflare MCP confirmed the active/full zone, `always_use_https=on`, SSL mode `full`, active certificate status, and HSTS disabled. The apex, `www`, and `email` proxied hosts all passed public certificate verification. The apex returned `200` and `email` returned `404`, but `www` redirected HTTPS to an HTTP apex URL, so HSTS was not yet changed.
+- 2026-09-07 22:17Z redirect prerequisite: added enabled dynamic redirect rule `www_to_apex_https` (`fc27ada11cdb44828cce101c02270e5a`) to the existing ruleset without modifying the canonical trailing-slash rule. HTTPS and plaintext `www` probes for root, path, and query-string requests all returned `301` directly to the equivalent HTTPS apex URL.
+- 2026-09-07 22:19Z HSTS execution: MCP readback reconfirmed `always_use_https=on`, SSL mode `full`, active certificate status, no validation errors, editable security headers, and an initial HSTS value of disabled/zero. The exact `security_header` update returned HTTP 200 and read back `enabled=true`, `max_age=15552000`, `include_subdomains=false`, `preload=false`, and `nosniff=false` with modification time `2026-09-07T22:19:21.396848Z`. Apex, `www`, and `email` HTTPS responses emitted `Strict-Transport-Security: max-age=15552000`; all tested redirect locations used HTTPS; and `npm run smoke:production` passed 8/8.
+- 2026-09-07 22:20Z orphan housekeeping: closed issue #31 as completed after confirming orphan commit `ad9b083` and recovered PR #32 commit `a126104` have the same stable patch ID (`085e02e03d4a77752d743fc8ac092ce166047f79`).
 
 ## Interfaces and Dependencies
 
@@ -215,3 +235,6 @@ Repository changes should use validation-before-write, same-directory temporary 
 - 2026-09-07: Completed all repository-controlled P1/P2 milestones, expanded automated coverage, normalized routes, generated a sitemap, hardened CI/deployment and operational tooling, and recorded the final external Cloudflare blocker.
 - 2026-09-07: Reauthorized Cloudflare MCP with the minimum required zone-setting scopes, enabled `always_use_https`, confirmed the setting, and verified plaintext production requests redirect to HTTPS. Remaining production smoke failures require deployment of the completed repository changes.
 - 2026-09-07: Reconciled ten newer main-branch commits without reverting their design, theme, content, note-routing, or publishing-workflow changes, and repeated the complete validation suite successfully.
+- 2026-09-07: Recorded successful merge/deployment verification and began the separately approved HSTS milestone with a conservative six-month policy and an explicit `www` redirect prerequisite.
+- 2026-09-07: Completed the HSTS milestone after adding and verifying an HTTPS-only `www` redirect; enabled the six-month policy through Cloudflare MCP and confirmed it through MCP readback plus production headers.
+- 2026-09-07: Closed resolved orphan issue #31 after proving the work was recovered byte-for-byte in PR #32.
