@@ -13,6 +13,8 @@
     "build": "node scripts/clean-dist.mjs && astro check && astro build && node scripts/write-well-known.mjs",
     "preview": "astro preview",
     "check": "astro check",
+    "test:ui": "playwright test",
+    "test:ui:update": "playwright test --update-snapshots",
     "notes:sync": "node scripts/sync-bsky-notes.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
     "standard:publish": "node scripts/publish-standard-site.mjs",
@@ -31,6 +33,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/node": "^22.15.3",
     "@types/sanitize-html": "2.16.1",
     "tsx": "4.23.13"

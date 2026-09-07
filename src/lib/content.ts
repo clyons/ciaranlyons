@@ -72,6 +72,7 @@ export interface ProjectEntry {
   emphasis?: string
   url: string
   meta?: string
+  order?: number
 }
 
 function asString(value: unknown, fallback = ''): string {
@@ -266,10 +267,11 @@ async function loadProjects(): Promise<ProjectEntry[]> {
         emphasis: asString(data.emphasis) || undefined,
         url: webUrl(rawUrl, source, 'url'),
         meta: asString(data.meta) || undefined,
+        order: asNumber(data.order),
       }
     }),
   )
-  return entries.sort((a, b) => a.title.localeCompare(b.title))
+  return entries.sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER) || a.title.localeCompare(b.title))
 }
 
 let projectsPromise: Promise<ProjectEntry[]> | undefined

@@ -103,7 +103,7 @@ const structuredData = {
           </button>
         </nav>
       </header>
-      <main class="page" id="main-content">
+      <main class="page" id="main-content" tabindex="-1">
         <slot />
       </main>
       <footer class="site-footer">
@@ -150,6 +150,7 @@ const structuredData = {
           document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
             button.setAttribute('aria-label', action)
             button.setAttribute('title', action)
+            button.setAttribute('aria-pressed', String(activeTheme === 'dark'))
           })
         }
         const toggleTheme = () => {
