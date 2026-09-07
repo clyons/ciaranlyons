@@ -8,6 +8,8 @@ Production currently serves through the GitHub Pages repository:
 clyons/resume
 ```
 
+For the complete TIL lifecycle—including optional demo and Bluesky Note publishing—see [Publish a TIL](./publish-til.md).
+
 Deploy flow:
 
 1. Build this repository with `npm run build`.
