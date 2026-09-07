@@ -14,6 +14,7 @@ Give the existing site a warm, editorial light palette based only on the supplie
 - [x] (2026-09-07 17:28Z) Read the requested theme-toggle article and created this implementation plan.
 - [x] (2026-09-07 17:31Z) Applied the light and dark token sets, header control, and client-side preference behavior.
 - [x] (2026-09-07 17:32Z) Ran Astro checks, a production build, generated-HTML inspection, and whitespace validation.
+- [x] (2026-09-07 17:59Z) Hardened theme initialization and control binding for pre-paint class application, multiple controls, and Astro page swaps; reran checks and production build.
 - [ ] Browser-rendered visual verification is pending because the local browser connector returned a workspace metadata error before it could attach.
 
 ## Surprises & Discoveries
@@ -37,6 +38,8 @@ Give the existing site a warm, editorial light palette based only on the supplie
 The existing page layout, typography, and content structure are unchanged. The shared style system now uses the warm reference palette in light mode and a paired high-contrast dark palette. The header includes a compact sun/moon action that follows system preferences until the visitor makes an explicit adjustment, then removes that adjustment when they return to the system-resolved color scheme.
 
 The static production output contains both initialization and interaction scripts along with the accessible control. Astro type checking and the complete build pass with no diagnostics. Browser-rendered visual inspection could not run because the local browser connector did not receive its required workspace metadata; this is an environment/tooling limitation rather than a site validation failure.
+
+Follow-up hardening adds the resolved `dark` class before rendering, while retaining the `data-theme` hook. The runtime now manages every `data-theme-toggle` control rather than assuming one header button, guards against duplicate listeners, and reruns its binding after Astro's `astro:after-swap` event. The existing responsive header remains a single control that works at desktop and mobile widths; this multi-control binding also supports a future distinct mobile control without JavaScript changes.
 
 ## Context and Orientation
 
@@ -89,6 +92,7 @@ The source edits are additive and can be re-run without data migration. Clearing
 - 2026-09-07 17:30Z: `npm run check` completed with 0 errors, 0 warnings, and 0 hints across 46 files.
 - 2026-09-07 17:31Z: `npm run build` completed successfully, generated 31 static pages, and reran `astro check` with 0 diagnostics.
 - 2026-09-07 17:31Z: generated `dist/index.html` contains `ciaranlyons-theme`, the `theme-toggle` button, and both `data-theme` scripts; `git diff --check` returned no whitespace errors.
+- 2026-09-07 17:59Z: `npm run check` returned 0 diagnostics; `npm run build` produced 31 pages; generated `dist/index.html` contains the early `dark` class toggle, `data-theme-toggle`, the guarded binder, and `astro:after-swap` listener.
 - Browser connector attempt: unavailable because the workspace omitted the connector's required `sandboxPolicy` metadata.
 
 ## Interfaces and Dependencies
@@ -102,3 +106,4 @@ The source edits are additive and can be re-run without data migration. Clearing
 
 - 2026-09-07: Created plan from template and documented the reference-only palette scope and reversible two-state behavior.
 - 2026-09-07: Implemented the palette and theme control; recorded build validation and the browser-connector limitation.
+- 2026-09-07: Added pre-paint `dark` class synchronization and Astro-navigation-safe, multi-control theme binding after reviewing Militza Maury's implementation.
