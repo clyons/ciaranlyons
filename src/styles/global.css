@@ -259,16 +259,15 @@ img {
   border-left: 1px solid var(--hairline);
 }
 
-.latest-note .date {
-  display: block;
-  margin-top: 26px;
-}
-
 .latest-note-copy {
   margin-top: 22px;
   font-family: var(--serif);
   font-size: clamp(1.23rem, 1.8vw, 1.72rem);
   line-height: 1.28;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
 }
 
 .latest-note-copy p {
@@ -277,9 +276,28 @@ img {
   overflow-wrap: anywhere;
 }
 
-.latest-note .text-link {
-  display: inline-block;
+.latest-note-copy a,
+.note-row a,
+.prose a {
+  overflow-wrap: anywhere;
+}
+
+.latest-note-footer {
   margin-top: 24px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.latest-note-footer .date,
+.latest-note-footer .text-link {
+  margin: 0;
+}
+
+.latest-note-footer .date {
+  flex: 0 1 auto;
+  text-align: right;
 }
 
 .featured-essay {
