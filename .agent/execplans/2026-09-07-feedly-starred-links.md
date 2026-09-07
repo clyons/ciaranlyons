@@ -30,7 +30,7 @@ The completed result is observable by:
 - [x] (2026-09-07 22:38Z) Added Link index/detail/date archives, primary navigation, section and combined feeds, search, responsive editorial styling, and browser coverage.
 - [x] (2026-09-07 22:44Z) Extended explicit Standard.site publishing to Writing, Links, or both; retained Writing as the default; preserved/uploaded publication icon metadata; and completed a credential-free Links dry run. No mock records were published.
 - [x] (2026-09-07 22:50Z) Completed visual and interaction QA against the mock backfill at desktop and mobile widths. All 44 Playwright checks passed after intentional baseline updates.
-- [ ] Push the exact validated feature commit, publish an isolated preview deployment, smoke-test the public preview, and record its URL.
+- [ ] Re-dispatch the repository-owned Cloudflare Pages preview workflow after rebasing onto the deployment architecture merged to `main`, smoke-test its branch URL, and record the run.
 - [ ] Production follow-up: obtain a supported Feedly token/export, audit and import the real history, remove mock entries, and explicitly publish reviewed Standard.site records. This is outside the mock-preview scope and requires real account data.
 
 ## Surprises & Discoveries
@@ -128,6 +128,8 @@ The site now exposes the collection through `/links/`, stable year/month/day/det
 The Standard.site publisher now supports `--type writing|links|all`, preserves Writing as its default, maps Links to their local canonical paths, and reuses or uploads the publication icon. A public, credential-free dry run resolved Ciaran's existing publication and planned three Link documents. No mock Standard.site record, Bluesky post, or Bluesky bookmark was created.
 
 The remaining production dependency is real Feedly acquisition. Current official API access restrictions and OPML limitations still apply, and no real token/export was available in this workspace. The preview therefore proves the entire import, content, navigation, feed/search, and ATproto-dry-run pipeline without claiming a historical account backfill.
+
+During implementation, `main` gained repository-owned GitHub Actions deployments to Cloudflare Pages. The feature branch was rebased onto that deployment contract, and the final preview is therefore requested through `.github/workflows/deploy-preview.yml` rather than an artifact-copy branch. Record the successful workflow run and Cloudflare branch URL here after dispatch.
 
 ## Context and Orientation
 
@@ -432,6 +434,16 @@ Primary/current references reviewed:
 
 Store transient probe responses and backfill audit reports only in `.context/`, which is gitignored. Commit small redacted structural fixtures under `scripts/fixtures/feedly/`. Never paste real tokens, cookies, raw private annotations, or full Feedly exports into this plan.
 
+Final mock-preview validation evidence:
+
+- `npm test`: 44 passed after rebasing onto the repository deployment-contract tests.
+- `npm run lint`: 75 Astro files, 0 errors, 0 warnings, 0 hints.
+- `npx tsc --noEmit`: exited 0.
+- production-shaped `npm run build` with required public ATproto identity values: 49 pages, including all Link routes and feeds.
+- `npm run test:ui`: 44 passed across desktop and mobile projects.
+- `npm run standard:publish -- --dry-run --type all --slug design-engineering-in-the-age-of-ai-950e894a5e`: resolved the existing publication and planned exactly one Link document.
+- Temporary branch-preview smoke before the repository-owned workflow landed: Link index, stylesheet, and representative detail page returned HTTP 200; at 390px the search filtered 3 results to 1, six primary-navigation controls fit, and document width remained 390px with no horizontal overflow. Replace this with final Cloudflare Pages evidence after the official workflow completes.
+
 ## Interfaces and Dependencies
 
 Add this content interface in `src/lib/content.ts` (exact optionality may be refined by fixture evidence without changing its meaning):
@@ -512,3 +524,4 @@ No credential is required for a normal static build, local content read, fixture
 
 - 2026-09-07: Created the plan after repository inspection and current Feedly/ATproto research. Chose a dedicated local Links type, a supported-API/file acquisition boundary, save-date semantics, non-destructive import, Standard.site document publication, and no automatic Bluesky bookmark/feed writes.
 - 2026-09-07: Implemented the fixture-driven importer, three visibly mocked Link records, full site surfaces, editorial design and responsive navigation, Standard.site Link publication support, tests, screenshots, and operator documentation. Recorded that real Feedly/ATproto writes remain a production follow-up rather than part of the mock preview.
+- 2026-09-07: Built and smoke-tested an interim branch-backed preview after Cloudflare connector authentication and employer-scoped Vercel credentials ruled out those direct hosts. While implementation was in progress, `main` gained a repository-owned Cloudflare Pages workflow; rebased the feature onto that contract so the final preview can use the sole approved deploy controller.
