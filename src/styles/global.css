@@ -135,10 +135,10 @@ img {
 }
 
 .home-intro {
-  padding: clamp(72px, 10vw, 126px) 0 clamp(50px, 6vw, 72px);
+  padding: clamp(72px, 10vw, 126px) 0 clamp(58px, 7vw, 78px);
   display: grid;
-  grid-template-columns: minmax(0, 1.78fr) minmax(250px, 0.92fr);
-  gap: clamp(42px, 7vw, 86px);
+  grid-template-columns: minmax(0, 1.8fr) minmax(250px, 1fr);
+  gap: clamp(12px, 1.2vw, 16px);
   align-items: center;
 }
 
@@ -146,7 +146,7 @@ img {
   max-width: 780px;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(4rem, 7.4vw, 7.15rem);
+  font-size: clamp(4rem, 7vw, 7.15rem);
   font-weight: 650;
   line-height: 0.91;
   letter-spacing: -0.045em;
@@ -168,7 +168,7 @@ img {
 }
 
 .latest-note {
-  padding: 8px 0 8px clamp(28px, 4vw, 48px);
+  padding: 8px 0 8px clamp(28px, 3vw, 36px);
   border-left: 1px solid var(--hairline);
 }
 
@@ -198,10 +198,11 @@ img {
 .featured-essay {
   width: min(var(--max), calc(100% - (2 * var(--gutter))));
   margin-inline: auto;
-  padding: clamp(40px, 5vw, 58px) clamp(36px, 4.7vw, 60px);
+  min-height: 342px;
+  padding: clamp(36px, 3.5vw, 44px) clamp(32px, 3.8vw, 44px) clamp(44px, 5vw, 58px);
   display: grid;
   grid-template-columns: minmax(0, 1.28fr) minmax(270px, 0.86fr);
-  gap: clamp(38px, 6vw, 72px);
+  gap: clamp(38px, 5vw, 60px);
   color: var(--paper-ink);
   background: var(--paper);
 }
@@ -250,11 +251,15 @@ img {
 }
 
 .home-projects {
-  padding: clamp(64px, 8vw, 94px) 0 clamp(80px, 10vw, 118px);
+  padding: clamp(64px, 8vw, 94px) 0 clamp(90px, 11.5vw, 128px);
 }
 
 .home-projects .section-heading {
   margin-bottom: 20px;
+}
+
+.home-projects .project-row {
+  padding-block: 34px;
 }
 
 .section {
@@ -438,8 +443,13 @@ img {
 .project-action {
   align-self: center;
   color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: none;
 }
 
 .row-link:hover,
@@ -779,4 +789,3 @@ img {
     font-size: 3.5rem;
   }
 }
-
