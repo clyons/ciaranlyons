@@ -1,0 +1,97 @@
+name: Deploy preview site
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Branch to preview (for example, development or feature/my-change)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: pages-preview-${{ inputs.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy requested preview
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start deployment timer
+        id: timing
+        run: echo "started_at=$(date +%s)" >> "$GITHUB_OUTPUT"
+
+      - name: Check out trusted workflow helper
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Normalize preview branch
+        id: preview-ref
+        env:
+          PREVIEW_REF: ${{ inputs.ref }}
+        run: node scripts/preview-ref.mjs "$PREVIEW_REF"
+
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ steps.preview-ref.outputs.branch }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      - name: Build preview artifact
+        env:
+          REQUIRE_WELL_KNOWN: "false"
+        run: npm run build
+
+      - name: Upload preview artifact to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=ciaranlyons --branch=${{ steps.preview-ref.outputs.branch }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish preview links
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+          ALIAS_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
+        run: |
+          {
+            echo "## Preview deployment"
+            echo
+            echo "- Immutable URL: ${DEPLOYMENT_URL:-not reported}"
+            echo "- Branch URL: ${ALIAS_URL:-not reported}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Record preview deployment duration
+        if: always()
+        env:
+          STARTED_AT: ${{ steps.timing.outputs.started_at }}
+        run: |
+          finished_at=$(date +%s)
+          elapsed_seconds=$((finished_at - STARTED_AT))
+          {
+            echo "## Preview deployment timing"
+            echo
+            echo "- Elapsed checkout-to-result time: ${elapsed_seconds}s"
+            echo "- Use the first successful preview for this branch as its baseline and investigate substantial later regressions."
+          } >> "$GITHUB_STEP_SUMMARY"
