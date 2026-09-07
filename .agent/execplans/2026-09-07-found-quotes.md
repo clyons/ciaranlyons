@@ -23,7 +23,7 @@ Found Quotes are curation, not Ciaran's authored Writing and not ephemeral Notes
 - [x] (2026-09-07 23:36Z) Implemented the archive, date archives, quote permalink, Writing collection, home-page treatment, footer discovery, search, feeds, and sitemap integration.
 - [x] (2026-09-07 23:36Z) Added the authoring runbook and repository instructions, plus clearly labelled fictional preview fixtures requested for design review.
 - [x] (2026-09-07 23:38Z) Completed automated checks and desktop/mobile visual QA in both light and dark themes.
-- [ ] Push the focused branch and complete a GitHub Actions preview deployment.
+- [x] (2026-09-07 23:45Z) Pushed `clyons/add-found-quotes-content` and completed GitHub Actions preview run `34170972375`; the branch and immutable previews passed live smoke checks.
 
 ## Surprises & Discoveries
 
@@ -111,7 +111,7 @@ Found Quotes are curation, not Ciaran's authored Writing and not ephemeral Notes
 
 ## Outcomes & Retrospective
 
-The complete feature is ready for a branch preview. Found Quotes are a distinct but intentionally secondary editorial stream: durable and searchable like Writing and TIL, concise like Notes, and explicit that the words belong to someone else. Writing composes ordered groups of canonical quote records; its title, description, selection, and framing are Ciaran's contribution, while each Found Quote remains the single correction point for quoted text and provenance.
+The complete feature is deployed to a branch preview. Found Quotes are a distinct but intentionally secondary editorial stream: durable and searchable like Writing and TIL, concise like Notes, and explicit that the words belong to someone else. Writing composes ordered groups of canonical quote records; its title, description, selection, and framing are Ciaran's contribution, while each Found Quote remains the single correction point for quoted text and provenance.
 
 The implementation includes all date archives and permalinks, a conditional home module, footer navigation, dedicated and combined RSS, search and sitemap integration, semantic quote markup, Standard.site expansion for collection Writing, authoring documentation, automated coverage, and responsive visual baselines. The primary navigation and Notes/ATProto contracts remain unchanged. Three fictional quotes and one fictional Writing collection are deliberately retained for the requested preview and visibly labelled; replacing or removing them is the only content gate before a production PR could be merge-ready.
 
@@ -287,6 +287,7 @@ If the home-page composition becomes too dense, remove only the conditional home
 - Mock and direction artifacts: `design/found-quotes-mock.html`, `design/found-quotes-directions.md`, and `design/context.md`.
 - Implementation QA: `design/qa.md`; local review captures are stored under `.context/design/`, and committed archive baselines live under `tests/ui/site.spec.ts-snapshots/`.
 - Post-implementation evidence before deployment: `npm test` passed 42 tests; `npm run check` reported 0 diagnostics across 75 files; `npm run build` generated 53 pages; `npm run test:ui:update` passed 46 desktop/mobile checks. Generated search, RSS, sitemap, and Writing HTML were inspected directly.
+- Preview deployment: GitHub Actions run `34170972375` completed successfully in 60 seconds. Cloudflare reported immutable URL `https://14fa4e7b.ciaranlyons.pages.dev` and branch URL `https://clyons-add-found-quotes-cont.ciaranlyons.pages.dev`. Live smoke checks returned HTTP 200 for `/`, `/found-quotes/`, the sample quote permalink, the sample collection Writing, `/found-quotes/feed.xml`, and `/search.json`, with expected quote and collection text present.
 
 ## Interfaces and Dependencies
 

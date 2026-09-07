@@ -4,7 +4,7 @@ Source of truth: `design/context.md`, `design/found-quotes-directions.md`, and `
 
 ## Final verdict
 
-READY FOR PREVIEW — the selected Editorial Ledger direction is implemented across the archive, permalink, home page, and collection Writing. The branch intentionally contains fictional records labelled `Preview content`; those records are not approved production content and must be removed or replaced before merge.
+PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented across the archive, permalink, home page, and collection Writing at `https://clyons-add-found-quotes-cont.ciaranlyons.pages.dev/found-quotes/`. The branch intentionally contains fictional records labelled `Preview content`; those records are not approved production content and must be removed or replaced before merge.
 
 ## Direction match
 
@@ -30,6 +30,7 @@ READY FOR PREVIEW — the selected Editorial Ledger direction is implemented acr
 - `npm run build`: 53 pages generated, including archive/date/detail routes, both feeds, search, and sitemap entries.
 - `npm run test:ui:update`: 46 passed in desktop and mobile projects; Found Quotes baselines were added and existing baselines updated for the new footer/home content.
 - Generated `search.json`, `feed.xml`, `found-quotes/feed.xml`, Writing HTML, and sitemap XML were inspected for the mock quote records and collection expansion.
+- GitHub Actions preview run `34170972375` succeeded; live archive, permalink, collection Writing, feed, search, and homepage checks all returned HTTP 200.
 
 ## Captures
 
