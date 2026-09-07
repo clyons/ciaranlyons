@@ -69,6 +69,7 @@ export interface ProjectEntry {
   slug: string
   title: string
   description: string
+  emphasis?: string
   url: string
   meta?: string
 }
@@ -262,6 +263,7 @@ async function loadProjects(): Promise<ProjectEntry[]> {
         slug,
         title: asString(data.title, slug),
         description: asString(data.description),
+        emphasis: asString(data.emphasis) || undefined,
         url: webUrl(rawUrl, source, 'url'),
         meta: asString(data.meta) || undefined,
       }

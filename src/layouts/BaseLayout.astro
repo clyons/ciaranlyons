@@ -51,6 +51,23 @@ const structuredData = {
     <link rel="alternate" type="application/rss+xml" title="Ciaran Lyons" href="/feed.xml" />
     {standardPublicationUri && <link rel="site.standard.publication" href={standardPublicationUri} />}
     {standardDocumentUri && <link rel="site.standard.document" href={standardDocumentUri} />}
+    <script is:inline>
+      ;(() => {
+        const storageKey = 'ciaranlyons-theme'
+        const root = document.documentElement
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+        try {
+          const savedTheme = window.localStorage.getItem(storageKey)
+          const resolvedTheme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme
+          root.dataset.theme = resolvedTheme
+          root.classList.toggle('dark', resolvedTheme === 'dark')
+        } catch {
+          root.dataset.theme = systemTheme
+          root.classList.toggle('dark', systemTheme === 'dark')
+        }
+      })()
+    </script>
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -75,18 +92,100 @@ const structuredData = {
           {navItems.map((item) => (
             <a href={item.href} aria-current={pathname === item.match || pathname.startsWith(`${item.match}/`) ? 'page' : undefined}>{item.label}</a>
           ))}
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color scheme" title="Toggle color scheme">
+            <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+            </svg>
+            <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.4 15.1A8.5 8.5 0 0 1 8.9 3.6 8.5 8.5 0 1 0 20.4 15.1Z" />
+            </svg>
+          </button>
         </nav>
       </header>
       <main class="page" id="main-content">
         <slot />
       </main>
       <footer class="site-footer">
-        <span>© Ciaran Lyons</span>
         <nav aria-label="Footer navigation">
           <a href="/feed.xml">RSS</a>
           <a href="https://bsky.app/profile/ciaranlyons.com" rel="me">@ciaranlyons.com</a>
         </nav>
+        <span>© Ciaran Lyons</span>
       </footer>
     </div>
+    <script is:inline>
+      ;(() => {
+        if (window.__ciaranThemeToggleInitialized) {
+          window.__ciaranBindThemeToggles?.()
+          return
+        }
+
+        window.__ciaranThemeToggleInitialized = true
+
+        const storageKey = 'ciaranlyons-theme'
+        const root = document.documentElement
+        const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+        const systemTheme = () => (media.matches ? 'dark' : 'light')
+        const savedTheme = () => {
+          try {
+            const value = window.localStorage.getItem(storageKey)
+            return value === 'light' || value === 'dark' ? value : null
+          } catch {
+            return null
+          }
+        }
+        const setTheme = (theme) => {
+          root.dataset.theme = theme
+          root.classList.toggle('dark', theme === 'dark')
+          updateToggles()
+        }
+        const updateToggles = () => {
+          const activeTheme = root.dataset.theme === 'dark' ? 'dark' : 'light'
+          const nextTheme = activeTheme === 'dark' ? 'light' : 'dark'
+          const isSystemTheme = !savedTheme()
+          const action = nextTheme === systemTheme() && !isSystemTheme ? `Return to system ${nextTheme} mode` : `Switch to ${nextTheme} mode`
+
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            button.setAttribute('aria-label', action)
+            button.setAttribute('title', action)
+          })
+        }
+        const toggleTheme = () => {
+          const activeTheme = root.dataset.theme === 'dark' ? 'dark' : 'light'
+          const nextTheme = activeTheme === 'dark' ? 'light' : 'dark'
+
+          try {
+            if (nextTheme === systemTheme()) {
+              window.localStorage.removeItem(storageKey)
+            } else {
+              window.localStorage.setItem(storageKey, nextTheme)
+            }
+          } catch {
+            // Keep the current-session change when storage is unavailable.
+          }
+
+          setTheme(nextTheme)
+        }
+        const bindThemeToggles = () => {
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            if (button.dataset.themeToggleBound) return
+            button.dataset.themeToggleBound = 'true'
+            button.addEventListener('click', toggleTheme)
+          })
+
+          setTheme(savedTheme() ?? systemTheme())
+        }
+
+        media.addEventListener('change', () => {
+          if (!savedTheme()) setTheme(systemTheme())
+        })
+
+        window.__ciaranBindThemeToggles = bindThemeToggles
+        bindThemeToggles()
+        document.addEventListener('astro:after-swap', bindThemeToggles)
+      })()
+    </script>
   </body>
 </html>

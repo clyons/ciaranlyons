@@ -21,6 +21,8 @@ The work originates from the full-site review completed on 2026-09-06. The accep
 - [x] (2026-09-07 03:06Z) Completed P1 trust-boundary, publishing determinism, media integrity, secrets, deployment, CI, and test hardening.
 - [x] (2026-09-07 03:06Z) Completed P2 search, accessibility, performance, privacy, metadata, URL normalization, and sitemap improvements.
 - [x] (2026-09-07 03:08Z) Completed local end-to-end validation and production smoke diagnostics; the final origin-routing checks remain deployment-dependent.
+- [x] (2026-09-07 19:35Z) Reconciled the remediation with ten newer `origin/main` commits, preserving the editorial redesign, theme toggle, current content, TIL workflow, and latest-note URL handling.
+- [ ] Publish the reviewed branch, pass required PR checks, merge it, and verify the resulting production deployment.
 
 ## Surprises & Discoveries
 
@@ -75,10 +77,13 @@ The work originates from the full-site review completed on 2026-09-06. The accep
 - Decision: Complete the accepted P0–P2 repository remediation on the current `full-site-review-swarm` branch after Ciaran explicitly authorized all milestones.
   Rationale: Every change belongs to the single named full-site remediation outcome, and no unrelated work has been added.
   Date/Author: 2026-09-07 / Codex
+- Decision: Treat the latest `origin/main` visual/content behavior as authoritative during reconciliation, then reapply only remediation guarantees that remain relevant.
+  Rationale: Main advanced by ten commits after remediation began. Preserving its editorial redesign, light/dark theme behavior, new note/TIL content, TIL runbook, and note-preview parsing prevents this broad hardening PR from reverting newer product work.
+  Date/Author: 2026-09-07 / Codex
 
 ## Outcomes & Retrospective
 
-All P0–P2 implementation milestones are complete. Cloudflare `always_use_https` is enabled, so plaintext entry requests are redirected at the edge. Content and ATProto inputs now cross explicit validation/sanitization boundaries; complete note snapshots drive routes and search; operational network reads are bounded; media is MIME/size/CID verified; Standard.site writes are deterministic and atomic; 1Password paths distinguish absence from operational failures; CI is pinned and least-privilege; production builds are clean and can require valid identity records; search/accessibility/metadata/profile delivery are improved; GTM is removed; URLs are trailing-slash normalized; and a sitemap is generated. The suite passes 28 focused tests, type/Astro checks are clean, the build emits 31 pages plus a sitemap, feed/search artifacts validate, dry runs succeed, and the dependency audit is clean. Final production smoke is intentionally still red for the origin's slashless redirect and the new sitemap until these repository changes deploy; the canonical trailing-slash route, feeds, and both identity records pass.
+All P0–P2 implementation milestones are complete. Cloudflare `always_use_https` is enabled, so plaintext entry requests are redirected at the edge. Content and ATProto inputs now cross explicit validation/sanitization boundaries; complete note snapshots drive routes and search; operational network reads are bounded; media is MIME/size/CID verified; Standard.site writes are deterministic and atomic; 1Password paths distinguish absence from operational failures; CI is pinned and least-privilege; production builds are clean and can require valid identity records; search/accessibility/metadata/profile delivery are improved; GTM is removed; URLs are trailing-slash normalized; and a sitemap is generated. After reconciliation with the latest main branch, the suite passes 28 focused tests, type/Astro checks are clean, the build emits all 40 current pages plus a sitemap, feed/search artifacts validate, dry runs recognize both current notes, and the dependency audit is clean. Final production smoke remains deployment-dependent; the canonical trailing-slash route, feeds, and both identity records already pass.
 
 ## Context and Orientation
 
@@ -189,6 +194,7 @@ Repository changes should use validation-before-write, same-directory temporary 
 - 2026-09-07 03:09Z final CI-equivalent pass: `npm ci --ignore-scripts`, `npm run lint`, `npx tsc --noEmit`, `npm test` (28/28), `npm run build` (31 pages plus sitemap), and `git diff --check` all succeeded.
 - 2026-09-07 19:22Z Cloudflare authorization and mutation: the exact active zone exposed `#zone_settings:read` and `#zone_settings:edit`; `GET settings/always_use_https` returned `off`; `PATCH {"value":"on"}` returned HTTP 200; and the confirming read returned `on` with modification time `2026-09-07T19:22:10.955657Z`. No other zone setting was changed and HSTS remains outside this scope.
 - 2026-09-07 19:22Z post-change production smoke: plaintext root and feed now return `301` to their HTTPS equivalents; canonical `/about/`, the feed, and both `.well-known` identity records return `200`. The deployed slashless `/about` still returns an origin-generated plaintext location and `sitemap-index.xml` remains `404`; both correspond to completed repository changes awaiting deployment.
+- 2026-09-07 19:35Z latest-main reconciliation: fetched `origin/main` at `8afefdb`, ten commits beyond the original base. Conflict resolution retained the new editorial palette/layout, two-state theme toggle, TIL copy and publishing documentation, current note/TIL content, and latest-note URL stripping. It reapplied trailing-slash navigation, metadata/privacy/accessibility/search hardening, and schema-backed content validation. `npm run lint`, `npx tsc --noEmit`, `npm test` (28/28), and `npm run build` (40 pages plus sitemap) passed; all feeds and the sitemap passed `xmllint`; `search.json` contained eight items; both publishing dry runs reconciled current records; and the production dependency audit reported zero vulnerabilities.
 
 ## Interfaces and Dependencies
 
@@ -208,3 +214,4 @@ Repository changes should use validation-before-write, same-directory temporary 
 - 2026-09-07: Completed repository-local P0 fixes and added seven regression tests; Cloudflare HTTPS enforcement remains pending authorization.
 - 2026-09-07: Completed all repository-controlled P1/P2 milestones, expanded automated coverage, normalized routes, generated a sitemap, hardened CI/deployment and operational tooling, and recorded the final external Cloudflare blocker.
 - 2026-09-07: Reauthorized Cloudflare MCP with the minimum required zone-setting scopes, enabled `always_use_https`, confirmed the setting, and verified plaintext production requests redirect to HTTPS. Remaining production smoke failures require deployment of the completed repository changes.
+- 2026-09-07: Reconciled ten newer main-branch commits without reverting their design, theme, content, note-routing, or publishing-workflow changes, and repeated the complete validation suite successfully.

@@ -1,6 +1,7 @@
 ---
 title: TIL
-description: Small fixes and notes I expect to need again.
+description: I'm writing it down to remember it now.
+emphasis: now
 url: /til/
-meta: 2 entries
+meta: 3 entries
 ---
