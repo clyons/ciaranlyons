@@ -1,0 +1,25 @@
+---
+import FoundQuote from '../../../../../components/FoundQuote.astro'
+import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import { foundQuoteDescription, foundQuoteTitle, getFoundQuotes } from '../../../../../lib/content'
+
+export async function getStaticPaths() {
+  const quotes = await getFoundQuotes()
+  return quotes.map((quote) => ({
+    params: { year: quote.year, month: quote.month, day: quote.day, slug: quote.slug },
+    props: { quote },
+  }))
+}
+
+const { quote } = Astro.props
+---
+
+<BaseLayout title={foundQuoteTitle(quote)} description={foundQuoteDescription(quote)} canonical={quote.url} feedUrl="/found-quotes/feed.xml" feedTitle="Ciaran Lyons - Found Quotes">
+  <article class="article-shell found-quote-detail">
+    <header class="article-header">
+      <p class="section-kicker">Found Quote</p>
+      <h1 class="visually-hidden">{foundQuoteTitle(quote)}</h1>
+    </header>
+    <FoundQuote quote={quote} context="detail" />
+  </article>
+</BaseLayout>

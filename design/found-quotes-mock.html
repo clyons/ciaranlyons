@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Found Quotes — design mock</title>
+    <style>
+      :root {
+        --bg: #f8f7f4;
+        --ink: #151312;
+        --muted: #625d58;
+        --hairline: #c8c2bb;
+        --accent: #e94a1a;
+        --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Baskerville, Georgia, serif;
+        --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); }
+      a { color: inherit; text-underline-offset: .2em; }
+      .shell { width: min(1120px, calc(100% - 10.5rem)); margin: 0 auto; }
+      header { min-height: 80px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--hairline); }
+      .brand { font: 2rem/1 var(--serif); text-decoration: none; }
+      nav { display: flex; align-items: center; gap: 36px; font-size: .92rem; }
+      nav a { text-decoration: none; }
+      .theme { font-size: 1.35rem; }
+      main { padding: 78px 0 110px; }
+      .preview { margin: 0 0 18px; color: var(--accent); font: 600 .7rem/1.4 var(--mono); letter-spacing: .11em; text-transform: uppercase; }
+      h1 { margin: 0; font: 650 6.2rem/.9 var(--serif); letter-spacing: -.045em; }
+      .lede { max-width: 40rem; margin: 20px 0 68px; color: var(--muted); font: 1.35rem/1.48 var(--serif); }
+      .quotes { border-top: 1px solid var(--hairline); }
+      figure { margin: 0; padding: 50px 0 46px; border-bottom: 1px solid var(--hairline); }
+      blockquote { max-width: 900px; margin: 0; font: 400 clamp(2.3rem, 4.2vw, 4rem)/1.08 var(--serif); letter-spacing: -.025em; text-wrap: balance; }
+      blockquote::before { content: "“"; color: var(--accent); margin-left: -.55em; }
+      figcaption { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: baseline; margin-top: 30px; }
+      .credit { font: 1.08rem/1.5 var(--serif); }
+      cite { color: var(--muted); }
+      .date { color: var(--muted); font: 600 .72rem/1.4 var(--mono); letter-spacing: .105em; text-transform: uppercase; }
+      footer { display: flex; justify-content: space-between; gap: 20px; padding: 38px 0 52px; border-top: 1px solid var(--hairline); color: var(--muted); font: .98rem/1.5 var(--serif); }
+      footer div { display: flex; gap: 32px; }
+      @media (max-width: 760px) {
+        .shell { width: calc(100% - 2rem); }
+        header { min-height: 116px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 10px; }
+        nav { width: 100%; justify-content: space-between; gap: 0; font-size: .86rem; }
+        main { padding: 58px 0 80px; }
+        h1 { font-size: 3.4rem; }
+        .lede { margin-bottom: 46px; font-size: 1.2rem; }
+        figure { padding: 36px 0 34px; }
+        blockquote { font-size: 2.05rem; text-wrap: pretty; }
+        blockquote::before { margin-left: 0; }
+        figcaption { grid-template-columns: 1fr; gap: 14px; }
+        footer { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="shell">
+      <a class="brand" href="#">Ciaran Lyons</a>
+      <nav aria-label="Primary navigation">
+        <a href="#">About</a><a href="#">Writing</a><a href="#">Notes</a><a href="#">Projects</a><span class="theme">☼</span>
+      </nav>
+    </header>
+    <main class="shell">
+      <p class="preview">Design mock · sample content</p>
+      <h1>Found Quotes</h1>
+      <p class="lede">Things other people said that I want to remember.</p>
+      <section class="quotes" aria-label="Found Quotes examples">
+        <figure>
+          <blockquote>Good systems make the important work easier to see and the unnecessary work harder to justify.</blockquote>
+          <figcaption><span class="credit">— Example attribution, <cite>Placeholder source for design review</cite></span><a class="date" href="#">September 7, 2026</a></figcaption>
+        </figure>
+        <figure>
+          <blockquote>A useful quotation does not finish the thought. It gives the thought somewhere new to begin.</blockquote>
+          <figcaption><span class="credit">— Example attribution, <cite>Placeholder source for design review</cite></span><a class="date" href="#">September 5, 2026</a></figcaption>
+        </figure>
+        <figure>
+          <blockquote>The things worth keeping are often small enough to carry in a sentence.</blockquote>
+          <figcaption><span class="credit">— Example attribution, <cite>Placeholder source for design review</cite></span><a class="date" href="#">August 28, 2026</a></figcaption>
+        </figure>
+      </section>
+    </main>
+    <footer class="shell"><div><a href="#">Found Quotes</a><a href="#">RSS</a><a href="#">@ciaranlyons.com</a></div><span>© Ciaran Lyons</span></footer>
+  </body>
+</html>

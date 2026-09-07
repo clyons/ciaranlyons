@@ -1,0 +1,35 @@
+---
+import type { FoundQuoteEntry } from '../lib/content'
+import { formatDate } from '../lib/dates'
+
+interface Props {
+  quote: FoundQuoteEntry
+  context?: 'archive' | 'detail' | 'home' | 'writing'
+}
+
+const { quote, context = 'archive' } = Astro.props
+const dateLabel = formatDate(quote.date, { month: 'long', day: 'numeric', year: 'numeric' })
+---
+
+<figure class:list={['found-quote', `found-quote--${context}`]}>
+  {quote.preview && <p class="preview-label">Preview content</p>}
+  <blockquote cite={quote.sourceUrl}>
+    <p>{quote.text}</p>
+  </blockquote>
+  <figcaption>
+    <span class="found-quote-credit">
+      <span aria-hidden="true">— </span>{quote.attribution},{' '}
+      <cite>
+        {quote.sourceUrl ? <a href={quote.sourceUrl}>{quote.source}</a> : quote.source}
+      </cite>
+      {quote.via && (
+        <span class="found-quote-via">
+          {' '}via {quote.viaUrl ? <a href={quote.viaUrl}>{quote.via}</a> : quote.via}
+        </span>
+      )}
+    </span>
+    <a class="date" href={quote.url} aria-label={`Open found quote from ${quote.attribution}, added ${dateLabel}`}>
+      <time datetime={quote.date}>{dateLabel}</time>
+    </a>
+  </figcaption>
+</figure>

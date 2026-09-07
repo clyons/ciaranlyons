@@ -1,0 +1,28 @@
+---
+import FoundQuote from '../../../components/FoundQuote.astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { getFoundQuotes } from '../../../lib/content'
+
+export async function getStaticPaths() {
+  const quotes = await getFoundQuotes()
+  const years = [...new Set(quotes.map((quote) => quote.year))]
+  return years.map((year) => ({
+    params: { year },
+    props: { year, quotes: quotes.filter((quote) => quote.year === year) },
+  }))
+}
+
+const { year, quotes } = Astro.props
+---
+
+<BaseLayout title={`Found Quotes: ${year}`} description={`Found Quotes added in ${year}.`} feedUrl="/found-quotes/feed.xml" feedTitle="Ciaran Lyons - Found Quotes">
+  <section class="section">
+    <p class="section-kicker">Found Quotes</p>
+    <h1 class="page-title">{year}</h1>
+  </section>
+  <section class="section found-quotes-section">
+    <div class="found-quotes-list">
+      {quotes.map((quote) => <FoundQuote quote={quote} />)}
+    </div>
+  </section>
+</BaseLayout>

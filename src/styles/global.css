@@ -139,6 +139,13 @@ img {
   margin-inline: auto;
 }
 
+.home-found-quotes {
+  width: min(var(--max), calc(100% - (2 * var(--gutter))));
+  margin-inline: auto;
+  padding: clamp(64px, 8vw, 94px) 0;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
 .site-header {
   min-height: 80px;
   display: flex;
@@ -434,6 +441,7 @@ img {
 }
 
 .section-kicker,
+.preview-label,
 .date,
 .meta,
 .type-label,
@@ -450,6 +458,11 @@ img {
 
 .section-kicker {
   margin: 0;
+}
+
+.preview-label {
+  margin: 0 0 18px;
+  color: var(--accent-dark);
 }
 
 .text-link {
@@ -555,6 +568,125 @@ img {
 .project-action {
   justify-self: end;
   align-self: start;
+}
+
+.found-quotes-section {
+  padding-top: 0;
+}
+
+.found-quotes-list {
+  display: grid;
+}
+
+.found-quote {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(38px, 5vw, 54px) 0 clamp(36px, 4.5vw, 50px);
+  border-top: 1px solid var(--hairline);
+}
+
+.found-quote:first-child {
+  border-top: 0;
+}
+
+.found-quote blockquote {
+  max-width: 58rem;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(2.35rem, 4.2vw, 4rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.found-quote blockquote p {
+  margin: 0;
+  white-space: pre-line;
+}
+
+.found-quote blockquote p::before {
+  content: "“";
+  margin-left: -0.52em;
+  color: var(--accent);
+}
+
+.found-quote figcaption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: baseline;
+  margin-top: clamp(24px, 3vw, 32px);
+}
+
+.found-quote-credit {
+  min-width: 0;
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.found-quote-credit cite,
+.found-quote-via {
+  color: var(--muted);
+}
+
+.found-quote .date {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.found-quote-detail {
+  width: min(920px, calc(100% - (2 * var(--gutter))));
+}
+
+.found-quote-detail .article-header {
+  margin-bottom: 0;
+}
+
+.found-quote--detail {
+  padding-top: 18px;
+}
+
+.writing-found-quotes {
+  margin-top: clamp(58px, 8vw, 86px);
+  padding-top: clamp(34px, 5vw, 52px);
+  border-top: 1px solid var(--hairline);
+}
+
+.writing-found-quotes > h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 650;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.found-quote--writing blockquote {
+  font-size: clamp(1.85rem, 3.2vw, 2.8rem);
+  text-wrap: pretty;
+}
+
+.home-found-quotes .section-heading {
+  margin-bottom: 0;
+}
+
+.home-found-quotes .found-quote {
+  padding-bottom: 0;
+}
+
+.home-found-quotes .found-quote blockquote {
+  font-size: clamp(2.1rem, 3.8vw, 3.65rem);
+}
+
+.empty-state {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 1.2rem;
 }
 
 .project-action {
@@ -905,6 +1037,31 @@ img {
   .search-result,
   .split {
     grid-template-columns: 1fr;
+  }
+
+  .found-quote {
+    padding: 34px 0 32px;
+  }
+
+  .found-quote blockquote,
+  .home-found-quotes .found-quote blockquote {
+    font-size: clamp(1.9rem, 8.2vw, 2.25rem);
+    line-height: 1.1;
+    text-wrap: pretty;
+  }
+
+  .found-quote blockquote p::before {
+    margin-left: 0;
+  }
+
+  .found-quote figcaption {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .found-quote .date {
+    justify-self: start;
+    text-align: left;
   }
 
   .section-heading {

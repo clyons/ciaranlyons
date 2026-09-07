@@ -7,10 +7,42 @@ const coreRoutes = [
   ['notes', '/notes/'],
   ['projects', '/projects/'],
   ['til', '/til/'],
+  ['found quotes', '/found-quotes/'],
 ] as const
 
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' })
+})
+
+test('Found Quotes are discoverable without changing primary navigation', async ({ page }) => {
+  await page.goto('/found-quotes/')
+
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Found Quotes' })).toHaveCount(0)
+  await expect(page.getByRole('navigation', { name: 'Footer navigation' }).getByRole('link', { name: 'Found Quotes' })).toHaveAttribute('href', '/found-quotes/')
+  await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveAttribute('href', '/found-quotes/feed.xml')
+})
+
+test('Found Quote archive and permalink preserve quotation semantics', async ({ page }) => {
+  await page.goto('/found-quotes/')
+
+  await expect(page.locator('.found-quotes-list figure')).toHaveCount(3)
+  await expect(page.locator('.found-quotes-list blockquote')).toHaveCount(3)
+  await expect(page.locator('.found-quotes-list blockquote').first()).toHaveAttribute('cite', 'https://example.com/')
+  await expect(page.locator('.found-quotes-list figcaption').first().locator('cite')).toContainText('Placeholder source for design review')
+
+  await page.goto('/found-quotes/2026/09/07/good-systems/')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Found quote from Example attribution')
+  await expect(page.locator('article blockquote')).toHaveCount(1)
+  await expect(page.locator('article figcaption')).toContainText('Example attribution')
+})
+
+test('Writing collections render Found Quotes once in authored order', async ({ page }) => {
+  await page.goto('/writing/2026/09/06/found-quotes-on-keeping/')
+
+  const quotes = page.locator('.writing-found-quotes blockquote')
+  await expect(quotes).toHaveCount(2)
+  await expect(quotes.nth(0)).toContainText('A useful quotation')
+  await expect(quotes.nth(1)).toContainText('The things worth keeping')
 })
 
 test.describe('site structure and keyboard access', () => {
@@ -89,6 +121,7 @@ for (const [name, path] of [
   ['writing', '/writing/'],
   ['notes', '/notes/'],
   ['projects', '/projects/'],
+  ['found-quotes', '/found-quotes/'],
 ] as const) {
   test(`${name} matches its approved visual baseline`, async ({ page }) => {
     await page.goto(path)

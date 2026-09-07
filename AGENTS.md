@@ -94,3 +94,7 @@ Published TIL URLs are date-foldered for hackability:
 The topic is source-file taxonomy, not part of the canonical URL. Follow the complete [TIL publishing runbook](docs/operations/publish-til.md), including the automated post-merge production deployment and public verification.
 
 Do not move existing TIL files or change slugs unless Ciaran explicitly asks for a URL migration.
+
+## Found Quote Publishing
+
+When Ciaran says "Found quote this" or asks to save a found quote, create exactly one Markdown file under `content/found-quotes/<slug>.md` and follow [the Found Quote publishing runbook](docs/operations/publish-found-quote.md). Preserve the supplied wording, require attribution and a human-readable source, and never invent missing provenance. A deliberate collection of Found Quotes is a Writing entry whose ordered `foundQuotes` front-matter list references existing quote slugs; do not copy the quote bodies into the Writing file. Open a focused diff or PR for review.
