@@ -14,7 +14,10 @@ Finish the already implemented dark editorial redesign on `codex/dark-editorial-
 - [x] (2026-09-07 16:13Z) Rendered all required routes in production-preview Chromium and generated the six PNGs plus desktop contact sheet.
 - [x] (2026-09-07 16:14Z) Corrected all P0-P2 homepage visual differences found in the mock comparison.
 - [x] (2026-09-07 16:14Z) Re-rendered, tested the required navigation and states, and completed dependency, type, and 31-route build validation.
-- [ ] Commit the focused changes and update PR #23 with this plan and validation evidence.
+- [x] (2026-09-07 16:16Z) Committed the focused QA changes as `83ddab8`, updated PR #23 with evidence, and marked it ready for review.
+- [x] (2026-09-07 16:20Z) Replaced duplicate internal-page labels with concise editorial propositions and reduced the mobile featured-essay title scale.
+- [x] (2026-09-07 16:28Z) Re-rendered the updated mobile and desktop pages from the production preview; `npm run check` and the 31-page build pass.
+- [ ] Commit the editorial follow-up and update PR #23.
 
 ## Surprises & Discoveries
 
@@ -39,10 +42,15 @@ Finish the already implemented dark editorial redesign on `codex/dark-editorial-
 - Decision: Rebalance the home grid, featured panel, and project-row spacing while preserving the shared site architecture.
   Rationale: Chromium comparison showed an extra headline line, an oversized featured panel, and project-row controls that did not match the approved hierarchy.
   Date/Author: 2026-09-07 / Codex
+- Decision: Use editorial propositions for archive and utility page headings rather than repeating each route’s navigation label.
+  Rationale: This carries the homepage’s point of view into the internal pages, makes each page scannable by its actual purpose, and avoids redundant kicker/headline pairs.
+  Date/Author: 2026-09-07 / Codex
 
 ## Outcomes & Retrospective
 
-Design verdict: pass. The completed homepage matches the approved dark editorial hierarchy, including a two-line desktop proposition, compact latest-note column, parchment panel, two arrow-led project rows, and footer rhythm. Supporting pages render consistently, the About portrait loads, and no P0-P2 visual or functional defects remain.
+Design verdict: pass. The featured essay title now stays on one balanced mobile line. Internal entry pages carry the home page’s editorial point of view without repeating their navigation label as both kicker and headline. Their responsive headline scale prioritizes readable wrapping over oversized display type.
+
+P3 observations: none deferred.
 
 P3 observations: no changes deferred. Type rendering will vary slightly by platform because the system serif/sans fallbacks are intentionally used.
 
@@ -85,6 +93,7 @@ The capture script will use Playwright’s Chromium browser with 1024px and 390p
 - `npm ci`: completed with 0 vulnerabilities reported.
 - `npm run check`: 0 errors, 0 warnings, 0 hints.
 - `npm run build`: completed successfully with 31 pages built.
+- Follow-up production-preview captures: `.context/site-qa/final-home-390.png`, `.context/site-qa/final-writing-390.png`, `.context/site-qa/final-notes-390.png`, `.context/site-qa/final-projects-390.png`, `.context/site-qa/final-about-390.png`, `.context/site-qa/final-search-390.png`, and `.context/site-qa/final-writing-1024.png`.
 - Production-preview Playwright QA: verified route responses, no horizontal overflow, no browser console errors, desktop/mobile nav, hover/focus/skip-link behavior, featured essay, latest note, RSS, and both project targets.
 
 ## Interfaces and Dependencies
@@ -96,4 +105,6 @@ The capture script will use Playwright’s Chromium browser with 1024px and 390p
 ## Change Log
 
 - 2026-09-07: Created the QA ExecPlan and documented the worktree/browser constraints.
-- 2026-09-07: Adjusted the homepage excerpt, project controls, and responsive editorial geometry; captured and verified the final production-preview site.
+- 2026-09-07: Adjusted the homepage excerpt, project controls, and responsive editorial geometry; captured and verified the production-preview site.
+- 2026-09-07: Replaced duplicated internal page labels with editorial propositions and reduced the mobile featured-essay heading scale.
+- 2026-09-07: Validated the editorial follow-up in production preview at 390px and 1024px.
