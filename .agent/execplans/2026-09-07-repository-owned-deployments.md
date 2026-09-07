@@ -18,6 +18,7 @@ The observable result is a successful `Deploy production site` workflow on a mer
 - [x] (2026-09-07 20:42Z) Replaced the old deployment documentation, updated the TIL publishing instructions, and removed the GitHub Pages-only `public/CNAME` and `public/.nojekyll` files.
 - [x] (2026-09-07 20:42Z) Validated the workflows, tests, lint, and clean build; recorded the local build timing below.
 - [x] (2026-09-07 22:00Z) Rebuilt the current `origin/main` revision (`a5dcedb`) in an isolated worktree and uploaded it to production to synchronize Pages with the canonical source. Lint, 28 tests, production build, and post-upload smoke tests passed.
+- [x] (2026-09-07) Reviewed the completed deployment work for discoverability and operator safety. Linked the runbooks, added repository-wide agent deployment guardrails, and clarified that TIL topics are source taxonomy rather than URL segments.
 
 ## Surprises & Discoveries
 
@@ -48,7 +49,7 @@ The observable result is a successful `Deploy production site` workflow on a mer
 
 ## Outcomes & Retrospective
 
-The repository has a reviewed-but-not-yet-merged automatic production path on every push to `main`, manually requested non-`main` branch previews, production-only identity values, timing summaries, and regression tests for that contract. The prior artifact-copy procedure and GitHub Pages marker files are gone.
+The repository has a reviewed-but-not-yet-merged automatic production path on every push to `main`, manually requested non-`main` branch previews, production-only identity values, timing summaries, and regression tests for that contract. The runbooks and `AGENTS.md` now link to the same guardrails, so routine deployments, previews, credential handling, recovery, and TIL publication begin with the repository-owned workflow. The prior artifact-copy procedure and GitHub Pages marker files are gone.
 
 The required one-time Cloudflare project, custom-domain, GitHub Environment, and Actions secret setup is complete. The custom domain is active and the one-off synchronization upload took 20 seconds (following a 10-second local install/lint/test/build validation run); production smoke tests passed. The first merge-triggered Actions run remains the automation baseline to record in GitHub after this branch merges.
 
@@ -123,3 +124,4 @@ If a production deployment or smoke check fails, do not copy artifacts to the ol
 
 - 2026-09-07: Created the plan from template and recorded the selected deployment architecture.
 - 2026-09-07: Implemented repository-owned Cloudflare Pages production and preview workflows, timing instrumentation, validation tests, and migration documentation.
+- 2026-09-07: Added post-implementation documentation and agent-instruction cross-links, deployment guardrails, and the canonical TIL URL clarification.

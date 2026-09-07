@@ -63,6 +63,16 @@ Every substantial PR should include:
 - For changes to `ciaranlyons.com`, resolve the account and zone through the MCP, inspect the current state before writing, make the smallest required change, and read the result back to verify it.
 - If the server is unavailable or reports an authentication error, first check whether the current Conductor session predates the latest OAuth authorization. Ask for a Conductor restart before initiating another login.
 
+## Deployments (INVIOLATE)
+
+Read the [deployment runbook](docs/operations/deploy.md) before changing deployment behavior, requesting a preview, responding to a failed release, or altering related secrets. This repository is the sole source of deployment artifacts for CiaranLyons.com; GitHub Actions is the sole deploy controller for its Cloudflare Pages project.
+
+1. For an ordinary site change, validate the source PR and merge it to `main`. The **Deploy production site** workflow then builds, deploys, and smoke-tests production. Never upload `dist/` manually or copy it to another repository.
+2. Feature branches do not deploy automatically. Request a preview only through **Actions → Deploy preview site → Run workflow**, using the workflow definition from `main` and a non-`main` branch. Do not add a branch-push preview trigger unless Ciaran explicitly requests that policy change.
+3. Treat a failed production smoke test as a failed release. Fix and merge a new commit, or revert the offending `main` commit to roll back; do not revive an artifact-copy deployment path.
+4. Keep `ATPROTO_DID` and `STANDARD_SITE_PUBLICATION_AT_URI` scoped to GitHub's `production` environment. Keep `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as GitHub Actions secrets. Never print, commit, or place deployment credentials in local `.env` files or 1Password developer-env sync.
+5. Deployment workflow or secret-boundary changes require an ExecPlan. Update the [deployment runbook](docs/operations/deploy.md) and retain or extend the workflow-contract tests in `scripts/deploy-workflows.test.mjs`; run the relevant validation before requesting review.
+
 ## TIL Publishing
 
 When Ciaran says "TIL this", treat it as a publishing operation for `content/til`.
@@ -78,7 +88,9 @@ When Ciaran says "TIL this", treat it as a publishing operation for `content/til
 Published TIL URLs are date-foldered for hackability:
 
 ```text
-/til/<topic>/<YYYY>/<MM>/<DD>/<slug>
+/til/<YYYY>/<MM>/<DD>/<slug>
 ```
+
+The topic is source-file taxonomy, not part of the canonical URL. Follow the complete [TIL publishing runbook](docs/operations/publish-til.md), including the automated post-merge production deployment and public verification.
 
 Do not move existing TIL files or change slugs unless Ciaran explicitly asks for a URL migration.

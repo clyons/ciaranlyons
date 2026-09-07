@@ -253,4 +253,5 @@ Both commands support `--dry-run`.
 
 - This pattern is optimized for local development, not CI.
 - For CI or non-interactive automation, prefer a service account or another non-interactive secret source.
+- GitHub Actions deployment credentials and production-environment identity values are not developer-env values. Keep them in their documented GitHub secret scopes; see the [deployment runbook](./deploy.md).
 - If you want zero friction during normal development, run `secrets:refresh` once and let the app use local env files afterward instead of calling `op` for every command.
