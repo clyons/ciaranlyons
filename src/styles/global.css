@@ -23,7 +23,8 @@
   color: var(--ink);
 }
 
-:root[data-theme='dark'] {
+:root[data-theme='dark'],
+:root.dark {
   color-scheme: dark;
   --bg: #171514;
   --bg-deep: #100f0e;
@@ -41,7 +42,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
+  :root:not([data-theme]):not(.dark) {
     color-scheme: dark;
     --bg: #171514;
     --bg-deep: #100f0e;

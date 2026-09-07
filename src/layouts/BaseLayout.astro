@@ -51,9 +51,12 @@ const navItems = [
 
         try {
           const savedTheme = window.localStorage.getItem(storageKey)
-          root.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme
+          const resolvedTheme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme
+          root.dataset.theme = resolvedTheme
+          root.classList.toggle('dark', resolvedTheme === 'dark')
         } catch {
           root.dataset.theme = systemTheme
+          root.classList.toggle('dark', systemTheme === 'dark')
         }
       })()
     </script>
@@ -89,7 +92,7 @@ const navItems = [
           {navItems.map((item) => (
             <a href={item.href} aria-current={pathname.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>
           ))}
-          <button class="theme-toggle" type="button" aria-label="Toggle color scheme" title="Toggle color scheme">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color scheme" title="Toggle color scheme">
             <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="12" r="4" />
               <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
@@ -113,12 +116,16 @@ const navItems = [
     </div>
     <script is:inline>
       ;(() => {
+        if (window.__ciaranThemeToggleInitialized) {
+          window.__ciaranBindThemeToggles?.()
+          return
+        }
+
+        window.__ciaranThemeToggleInitialized = true
+
         const storageKey = 'ciaranlyons-theme'
         const root = document.documentElement
-        const button = document.querySelector('.theme-toggle')
         const media = window.matchMedia('(prefers-color-scheme: dark)')
-
-        if (!button) return
 
         const systemTheme = () => (media.matches ? 'dark' : 'light')
         const savedTheme = () => {
@@ -129,22 +136,23 @@ const navItems = [
             return null
           }
         }
-        const updateButton = () => {
+        const setTheme = (theme) => {
+          root.dataset.theme = theme
+          root.classList.toggle('dark', theme === 'dark')
+          updateToggles()
+        }
+        const updateToggles = () => {
           const activeTheme = root.dataset.theme === 'dark' ? 'dark' : 'light'
           const nextTheme = activeTheme === 'dark' ? 'light' : 'dark'
           const isSystemTheme = !savedTheme()
           const action = nextTheme === systemTheme() && !isSystemTheme ? `Return to system ${nextTheme} mode` : `Switch to ${nextTheme} mode`
-          button.setAttribute('aria-label', action)
-          button.setAttribute('title', action)
-        }
-        const setTheme = (theme) => {
-          root.dataset.theme = theme
-          updateButton()
-        }
 
-        updateButton()
-
-        button.addEventListener('click', () => {
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            button.setAttribute('aria-label', action)
+            button.setAttribute('title', action)
+          })
+        }
+        const toggleTheme = () => {
           const activeTheme = root.dataset.theme === 'dark' ? 'dark' : 'light'
           const nextTheme = activeTheme === 'dark' ? 'light' : 'dark'
 
@@ -159,11 +167,24 @@ const navItems = [
           }
 
           setTheme(nextTheme)
-        })
+        }
+        const bindThemeToggles = () => {
+          document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+            if (button.dataset.themeToggleBound) return
+            button.dataset.themeToggleBound = 'true'
+            button.addEventListener('click', toggleTheme)
+          })
+
+          setTheme(savedTheme() ?? systemTheme())
+        }
 
         media.addEventListener('change', () => {
           if (!savedTheme()) setTheme(systemTheme())
         })
+
+        window.__ciaranBindThemeToggles = bindThemeToggles
+        bindThemeToggles()
+        document.addEventListener('astro:after-swap', bindThemeToggles)
       })()
     </script>
   </body>
