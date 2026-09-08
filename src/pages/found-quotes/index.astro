@@ -9,13 +9,14 @@ const hasPreviewContent = quotes.some((quote) => quote.preview)
 
 <BaseLayout
   title="Found Quotes"
-  description="Found Quotes by Ciaran Lyons."
+  description="Things that smarter folks than Ciaran Lyons have said."
   feedUrl="/found-quotes/feed.xml"
   feedTitle="Ciaran Lyons - Found Quotes"
 >
   <section class="section">
     {hasPreviewContent && <p class="preview-label">Design preview · sample content</p>}
     <h1 class="page-title">Found Quotes</h1>
+    <p class="lede">Things that smarter folks than I have said.</p>
   </section>
   <section class="section found-quotes-section">
     {quotes.length > 0 ? (
