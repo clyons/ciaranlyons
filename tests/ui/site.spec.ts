@@ -114,6 +114,38 @@ test('projects are ordered and use the approved site card copy', async ({ page }
   await expect(projects.nth(1)).toContainText('This site: writing, notes & various projects.')
 })
 
+test('note permalinks render as native posts rather than quotations', async ({ page }) => {
+  await page.goto('/notes/2026/09/07/3mux7jv5ze52c/')
+
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('New TIL: two-state dark mode toggles.')
+  await expect(page.locator('article blockquote')).toHaveCount(0)
+  await expect(page.locator('.note-rich-text')).toContainText('I keep returning to @lea.verou.me’s argument')
+  await expect(page.getByRole('link', { name: '@lea.verou.me' })).toHaveAttribute('href', /bsky\.app\/profile\/did%3Aplc%3Aeagnfcoqnbtzpkglrtej6ayg/)
+  await expect(page.getByRole('link', { name: /TIL Two-state dark mode toggles/ })).toHaveAttribute('href', '/til/2026/09/07/two-state-dark-mode-toggles/')
+  await expect(page.locator('.note-rich-text')).toContainText('https://ciaranlyons.com/til/2026/09/07/two-state-dark-mode-toggles')
+  await expect(page.locator('.note-post-footer time')).toHaveAttribute('datetime', '2026-09-07T19:10:39.594Z')
+  const blueskySyndication = page.getByRole('link', { name: 'Also on Bluesky' })
+  await expect(blueskySyndication).toHaveAttribute('href', 'https://bsky.app/profile/did:plc:bi2irbzgh2fzqvuuewkju2xf/post/3mux7jv5ze52c')
+  await expect(blueskySyndication).toHaveAttribute('rel', 'syndication')
+
+  await page.goto('/notes/2026/09/05/3musjyx5omc2i/')
+  await expect(page.locator('article blockquote')).toHaveCount(0)
+  const video = page.locator('.note-media video')
+  const linkedTil = page.getByRole('link', { name: /TIL Animating a logo in Blender with a coding agent/ })
+  await expect(linkedTil).toHaveAttribute('href', '/til/2026/09/05/blender-logo-animation-coding-agent-macos/')
+  await expect(video).toBeVisible()
+  expect(await video.evaluate((element) => element.compareDocumentPosition(document.querySelector('.note-content-references')!) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy()
+})
+
+test('note detail matches its approved visual baseline', async ({ page }) => {
+  await page.goto('/notes/2026/09/07/3mux7jv5ze52c/')
+  await expect(page).toHaveScreenshot('note-detail.png', {
+    animations: 'disabled',
+    fullPage: true,
+    caret: 'hide',
+  })
+})
+
 test('primary navigation keeps every control on one visible row at mobile widths', async ({ page }) => {
   for (const width of [390, 320]) {
     await page.setViewportSize({ width, height: 844 })
