@@ -7,6 +7,12 @@ export function requiredString(value: unknown, source: string, field: string): s
   return value.trim()
 }
 
+export function optionalBoolean(value: unknown, source: string, field: string): boolean | undefined {
+  if (value === undefined || value === null) return undefined
+  if (typeof value !== 'boolean') throw new Error(`${source}: ${field} must be a boolean`)
+  return value
+}
+
 export function validateDate(value: unknown, source: string, field = 'date'): string {
   const raw = value instanceof Date
     ? value.toISOString().slice(0, 10)

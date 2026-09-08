@@ -1,11 +1,18 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { assertUnique, optionalHttpUrl, optionalUniqueSubstring, requiredString, validateDate, validateSegment, validateTimestamp, validateTopic, webUrl } from './content-validation.ts'
+import { assertUnique, optionalBoolean, optionalHttpUrl, optionalUniqueSubstring, requiredString, validateDate, validateSegment, validateTimestamp, validateTopic, webUrl } from './content-validation.ts'
 
 test('required strings are trimmed and reject empty values', () => {
   assert.equal(requiredString('  source title  ', 'entry.md', 'source'), 'source title')
   assert.throws(() => requiredString('   ', 'entry.md', 'source'), /entry\.md: source must be a non-empty string/)
   assert.throws(() => requiredString(undefined, 'entry.md', 'source'), /non-empty string/)
+})
+
+test('optional booleans accept a boolean or an omitted value', () => {
+  assert.equal(optionalBoolean(true, 'entry.md', 'featured'), true)
+  assert.equal(optionalBoolean(false, 'entry.md', 'featured'), false)
+  assert.equal(optionalBoolean(undefined, 'entry.md', 'featured'), undefined)
+  assert.throws(() => optionalBoolean('true', 'entry.md', 'featured'), /entry\.md: featured must be a boolean/)
 })
 
 test('dates require real calendar values', () => {

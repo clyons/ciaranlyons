@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
-import { assertUnique, optionalHttpUrl, optionalUniqueSubstring, requiredString, validateDate, validateSegment, validateTimestamp, validateTopic, webUrl } from './content-validation'
+import { assertUnique, optionalBoolean, optionalHttpUrl, optionalUniqueSubstring, requiredString, validateDate, validateSegment, validateTimestamp, validateTopic, webUrl } from './content-validation'
 import { renderMarkdown } from './markdown'
 import { sortFoundQuotesByPublicationAndSourceDate } from './found-quotes'
 import type { RichTextFacet, RichTextFacetFeature } from './rich-text'
@@ -20,6 +20,7 @@ export interface WritingEntry {
   description: string
   date: string
   updated?: string
+  featured: boolean
   standardUri?: string
   foundQuoteSlugs: string[]
   body: string
@@ -234,7 +235,7 @@ async function readMarkdownFile(file: string) {
 
 async function loadWriting(): Promise<WritingEntry[]> {
   const files = await fg('writing/*.md', { cwd: contentRoot, absolute: true })
-  const entries = await Promise.all(
+  const loaded = await Promise.all(
     files.map(async (file) => {
       const { data, body, html } = await readMarkdownFile(file)
       const source = path.relative(process.cwd(), file)
@@ -243,23 +244,31 @@ async function loadWriting(): Promise<WritingEntry[]> {
       const updated = data.updated ? validateDate(data.updated, source, 'updated') : undefined
       const { year, month, day } = dateParts(date)
       return {
-        slug,
-        year,
-        month,
-        day,
-        title: asString(data.title, slug),
-        description: asString(data.description),
-        date,
-        updated,
-        standardUri: asString(data.standardUri) || undefined,
-        foundQuoteSlugs: asUniqueSegments(data.foundQuotes, source, 'foundQuotes'),
-        body,
-        html,
-        url: datedPath('/writing', date, slug),
+        entry: {
+          slug,
+          year,
+          month,
+          day,
+          title: asString(data.title, slug),
+          description: asString(data.description),
+          date,
+          updated,
+          featured: optionalBoolean(data.featured, source, 'featured') ?? false,
+          standardUri: asString(data.standardUri) || undefined,
+          foundQuoteSlugs: asUniqueSegments(data.foundQuotes, source, 'foundQuotes'),
+          body,
+          html,
+          url: datedPath('/writing', date, slug),
+        } satisfies WritingEntry,
+        source,
       }
     }),
   )
-  return sortByDateDesc(entries)
+  const featured = loaded.filter(({ entry }) => entry.featured)
+  if (featured.length > 1) {
+    throw new Error(`Only one Writing entry can be featured: ${featured.map(({ source }) => source).join(', ')}`)
+  }
+  return sortByDateDesc(loaded.map(({ entry }) => entry))
 }
 
 let writingPromise: Promise<WritingEntry[]> | undefined

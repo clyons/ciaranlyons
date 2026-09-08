@@ -14,8 +14,12 @@ const topics = getTilTopics(til)
     <p class="lede">I’m writing it down to remember it <em>now</em>.</p>
   </section>
   <section class="section">
-    <label class="visually-hidden" for="til-search">Search TILs</label>
-    <input class="search-input" id="til-search" type="search" placeholder="Search TILs" data-til-search />
+    <form class="search-form links-search-form til-search-form" action="/search/" method="get" role="search" aria-label="Search TILs">
+      <label class="visually-hidden" for="til-search">Search TILs</label>
+      <input class="search-input" id="til-search" name="q" type="search" placeholder="Search TILs" />
+      <input name="type" type="hidden" value="TIL" />
+      <button class="search-button" type="submit">Search</button>
+    </form>
   </section>
   <section class="section split">
     <div>
@@ -23,7 +27,7 @@ const topics = getTilTopics(til)
       <h2 class="list-title">Recent</h2>
       <div class="archive-list" data-til-results>
         {til.map((entry) => (
-          <a class="row-link" href={entry.url} data-search-text={`${entry.title} ${entry.description} ${entry.topic} ${entry.tags.join(' ')}`}>
+          <a class="row-link" href={entry.url}>
             <div>
               <h3>{entry.title}</h3>
               <p>{entry.topic} - {formatDate(entry.date, { month: 'short', day: 'numeric', year: 'numeric' })}</p>
@@ -45,15 +49,4 @@ const topics = getTilTopics(til)
       </div>
     </aside>
   </section>
-  <script>
-    const input = document.querySelector<HTMLInputElement>('[data-til-search]')
-    const rows = [...document.querySelectorAll<HTMLElement>('[data-search-text]')]
-    input?.addEventListener('input', () => {
-      const query = input.value.toLowerCase().trim()
-      for (const row of rows) {
-        const text = row.getAttribute('data-search-text')?.toLowerCase() ?? ''
-        row.toggleAttribute('hidden', query !== '' && !text.includes(query))
-      }
-    })
-  </script>
 </BaseLayout>
