@@ -31,7 +31,9 @@ The completed result is observable by:
 - [x] (2026-09-07 22:44Z) Extended explicit Standard.site publishing to Writing, Links, or both; retained Writing as the default; preserved/uploaded publication icon metadata; and completed a credential-free Links dry run. No mock records were published.
 - [x] (2026-09-07 22:50Z) Completed visual and interaction QA against the mock backfill at desktop and mobile widths. All 44 Playwright checks passed after intentional baseline updates.
 - [x] (2026-09-07 23:13Z) Rebased onto the repository deployment architecture, ran the repository-owned Cloudflare Pages preview workflow successfully in 1m8s, and smoke-tested the stable branch URL at desktop and 390px.
-- [ ] Production follow-up: obtain a supported Feedly token/export, audit and import the real history, remove mock entries, and explicitly publish reviewed Standard.site records. This is outside the mock-preview scope and requires real account data.
+- [x] (2026-09-07 23:23Z) Used Ciaran's explicitly authorized logged-in Chrome session for a one-time, local-only export through Feedly's paginated stream endpoint. The gitignored mode-0600 export contains 2,633 unique Feedly entries across 27 pages, terminates without another continuation, and contains no persisted browser token, cookie, or authorization header.
+- [x] (2026-09-07 23:27Z) Dry-ran the real export. The importer planned 2,626 writes, skipped seven normalized-URL duplicates, rejected none, and revealed that the web stream response supplies save time as a top-level `actionTimestamp`; updated the parser and regression coverage accordingly.
+- [ ] Production follow-up: review and import the real history, remove mock entries, and explicitly publish reviewed Standard.site records. The private-to-public promotion remains outside the mock-preview scope and requires explicit review.
 
 ## Surprises & Discoveries
 
@@ -46,6 +48,9 @@ The completed result is observable by:
 
 - Observation: Feedly article metadata distinguishes the canonical publisher URL from internal `originId`, and saved-board tag objects can carry an `actionTimestamp`.
   Evidence: The official Article JSON guide says to prefer `canonicalUrl`, then `alternate.href`, and not to assume `originId` is a URL. Its tag examples include `actionTimestamp`, which is the best available saved date.
+
+- Observation: Ciaran's authenticated `global.saved` stream returns a top-level `actionTimestamp` on every item rather than placing the timestamp on the matching tag object.
+  Evidence: The complete 2,633-item browser-session export contained `actionTimestamp` on all 2,633 items; all saved tag objects contained only `id` and `label`. A dry run before adapting the parser therefore marked every eligible entry with `date-fallback:published`.
 
 - Observation: The repository already materializes remote Bluesky content into local Markdown with bounded responses, safe destination checks, atomic writes, dry-run behavior, and skip-on-rerun semantics.
   Evidence: `scripts/sync-bsky-notes.mjs` provides the local precedent. Feedly ingestion should share its safety properties without coupling the two sources.
@@ -76,11 +81,11 @@ The completed result is observable by:
   Date/Author: 2026-09-07 / Codex
 
 - Decision: Separate acquisition from normalization by supporting both the Feedly API and a JSON-file input containing the same stream response shape.
-  Rationale: Current official API access may not be available to a personal account. A file adapter lets the parser, content model, site, and tests remain useful if Feedly provides an account export or a supported backup produces article JSON. It also makes fixture-driven tests possible. Scraping undocumented authenticated web endpoints is not an acceptable fallback.
+  Rationale: Current official API access may not be available to a personal account. A file adapter lets the parser, content model, site, and tests remain useful if Feedly provides an account export or a supported backup produces article JSON. It also makes fixture-driven tests possible. For this account, Ciaran explicitly authorized a one-time local browser-session export against Feedly's stream endpoint after supported self-service options proved unavailable; the ephemeral web token remained in memory and the raw response remains gitignored rather than becoming a product dependency.
   Date/Author: 2026-09-07 / Codex
 
 - Decision: Use the Feedly save action timestamp as `date` and `savedAt` when present; retain the publisher timestamp separately as `publishedAt`.
-  Rationale: The collection records when Ciaran curated the link, while the original article's date remains useful attribution. If the relevant Feedly tag has no `actionTimestamp`, the importer must mark the date source and use a documented deterministic fallback rather than silently pretending the publisher date is the save date.
+  Rationale: The collection records when Ciaran curated the link, while the original article's date remains useful attribution. Read the stream item's top-level `actionTimestamp` first, then the relevant saved tag's timestamp for documented API-shaped payloads. If neither exists, the importer must mark the date source and use a documented deterministic fallback rather than silently pretending the publisher date is the save date.
   Date/Author: 2026-09-07 / Codex
 
 - Decision: Use a readable title slug with a short hash of Feedly's immutable entry ID in every generated filename and permalink.
@@ -127,7 +132,7 @@ The site now exposes the collection through `/links/`, stable year/month/day/det
 
 The Standard.site publisher now supports `--type writing|links|all`, preserves Writing as its default, maps Links to their local canonical paths, and reuses or uploads the publication icon. A public, credential-free dry run resolved Ciaran's existing publication and planned three Link documents. No mock Standard.site record, Bluesky post, or Bluesky bookmark was created.
 
-The remaining production dependency is real Feedly acquisition. Current official API access restrictions and OPML limitations still apply, and no real token/export was available in this workspace. The preview therefore proves the entire import, content, navigation, feed/search, and ATproto-dry-run pipeline without claiming a historical account backfill.
+Real Feedly acquisition is now complete as a one-time local, gitignored export: 2,633 unique entries across 27 continuation pages. A no-write audit plans 2,626 Link files, skips seven duplicate normalized destinations, and rejects none. The authenticated stream shape exposed a top-level save action timestamp on every item; the importer now preserves it with regression coverage. No real entry has yet been promoted from the private export into Git-tracked public content, and no real Standard.site record has been written. That reviewable private-to-public step remains the production follow-up.
 
 During implementation, `main` gained repository-owned GitHub Actions deployments to Cloudflare Pages. The feature branch was rebased onto that deployment contract, and the final preview was requested through `.github/workflows/deploy-preview.yml` rather than an artifact-copy branch.
 

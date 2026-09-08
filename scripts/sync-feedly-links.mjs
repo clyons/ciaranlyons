@@ -97,6 +97,8 @@ export function stableLinkSlug(title, feedlyId) {
 }
 
 function savedTimestamp(item, streamId) {
+  const streamActionTimestamp = isoTimestamp(item?.actionTimestamp)
+  if (streamActionTimestamp) return streamActionTimestamp
   if (!Array.isArray(item.tags)) return undefined
   const tag = item.tags.find((candidate) => candidate?.id === streamId)
     ?? item.tags.find((candidate) => typeof candidate?.id === 'string' && candidate.id.endsWith('/tag/global.saved'))

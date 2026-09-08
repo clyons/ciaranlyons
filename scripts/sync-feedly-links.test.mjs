@@ -29,6 +29,21 @@ test('Feedly items map save dates, metadata, sanitized excerpts, and stable slug
   assert.equal(first.link.slug, stableLinkSlug('A useful link', 'entry-one'))
 })
 
+test('authenticated saved-stream items use their top-level action timestamp', () => {
+  const result = linkFromFeedlyItem({
+    id: 'web-session-entry',
+    title: 'Saved in the web app',
+    canonicalUrl: 'https://example.com/web-session',
+    actionTimestamp: Date.parse('2026-09-06T14:30:00Z'),
+    published: Date.parse('2025-01-01T00:00:00Z'),
+    tags: [{ id: 'user/test/tag/global.saved', label: 'Read later' }],
+  }, { streamId: 'user/test/tag/global.saved' })
+
+  assert.equal(result.link.savedAt, '2026-09-06T14:30:00.000Z')
+  assert.equal(result.link.date, '2026-09-06')
+  assert.equal(result.link.dateSource, 'saved')
+})
+
 test('missing save timestamps use an explicit deterministic fallback', () => {
   const fromPublished = linkFromFeedlyItem({ id: 'published', title: 'Published', canonicalUrl: 'https://example.com/p', published: Date.parse('2026-08-02T00:00:00Z') })
   assert.equal(fromPublished.link.dateSource, 'published')
