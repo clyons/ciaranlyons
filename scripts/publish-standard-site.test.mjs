@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { addStandardUri, deterministicRkey, publicationRecord, standardDocumentRecord } from './publish-standard-site.mjs'
+import { addStandardUri, deterministicRkey, expandedWritingText, publicationRecord, standardDocumentRecord } from './publish-standard-site.mjs'
 
 test('Standard.site record keys are stable and path-specific', () => {
   assert.equal(
@@ -37,4 +37,32 @@ test('Publication metadata preserves an uploaded icon reference', () => {
   const icon = { $type: 'blob', ref: { $link: 'bafytest' }, mimeType: 'image/jpeg', size: 123 }
   assert.deepEqual(publicationRecord(icon).icon, icon)
   assert.match(publicationRecord().description, /curated links/)
+})
+
+test('Standard.site Writing text expands Found Quotes in authored order', () => {
+  const entry = {
+    source: 'content/writing/collection.md',
+    body: 'A short **introduction**.',
+    foundQuoteSlugs: ['second', 'first'],
+  }
+  const quotes = [
+    { slug: 'first', text: 'First thought.', attribution: 'First Person', source: 'First Work' },
+    { slug: 'second', text: 'Second thought.', attribution: 'Second Person', source: 'Second Work' },
+  ]
+
+  assert.equal(
+    expandedWritingText(entry, quotes),
+    'A short introduction.\n\nFound quotes\n\nSecond thought.\n— Second Person, Second Work\n\nFirst thought.\n— First Person, First Work',
+  )
+})
+
+test('ordinary Standard.site Writing text remains unchanged', () => {
+  assert.equal(expandedWritingText({ source: 'content/writing/plain.md', body: 'Plain **Writing**.', foundQuoteSlugs: [] }, []), 'Plain Writing.')
+})
+
+test('Standard.site Writing expansion rejects missing Found Quotes', () => {
+  assert.throws(
+    () => expandedWritingText({ source: 'content/writing/broken.md', body: 'Intro.', foundQuoteSlugs: ['missing'] }, []),
+    /content\/writing\/broken\.md: foundQuotes references missing quote slug missing/,
+  )
 })

@@ -7,6 +7,8 @@ interface Props {
   canonical?: string
   standardDocumentUri?: string
   sectionFeed?: { href: string; title: string }
+  feedUrl?: string
+  feedTitle?: string
 }
 
 const {
@@ -15,6 +17,8 @@ const {
   canonical = Astro.url.pathname,
   standardDocumentUri,
   sectionFeed,
+  feedUrl = '/feed.xml',
+  feedTitle = 'Ciaran Lyons',
 } = Astro.props
 
 const site = Astro.site ?? new URL('https://ciaranlyons.com')
@@ -51,7 +55,7 @@ const structuredData = {
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" sizes="48x48" href={`/favicon.png?v=${assetVersion}`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`/apple-touch-icon.png?v=${assetVersion}`} />
-    <link rel="alternate" type="application/rss+xml" title="Ciaran Lyons" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title={feedTitle} href={feedUrl} />
     {sectionFeed && <link rel="alternate" type="application/rss+xml" title={sectionFeed.title} href={sectionFeed.href} />}
     {standardPublicationUri && <link rel="site.standard.publication" href={standardPublicationUri} />}
     {standardDocumentUri && <link rel="site.standard.document" href={standardDocumentUri} />}

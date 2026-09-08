@@ -1,0 +1,58 @@
+---
+import type { FoundQuoteEntry } from '../lib/content'
+
+interface Props {
+  quote: FoundQuoteEntry
+  context?: 'archive' | 'detail' | 'home' | 'writing'
+  scale?: 'display' | 'reading'
+}
+
+const { quote, context = 'archive', scale = 'display' } = Astro.props
+const paragraphs = quote.text.split(/\n\s*\n/).map((text) => ({
+  text,
+  isElision: text === '[…]',
+  emphasizedParts: quote.emphasis && text.includes(quote.emphasis) ? text.split(quote.emphasis) : undefined,
+}))
+---
+
+<figure class:list={['found-quote', `found-quote--${context}`, scale === 'reading' && 'found-quote--reading']}>
+  {quote.preview && <p class="preview-label">Preview content</p>}
+  <blockquote cite={quote.sourceUrl}>
+    {paragraphs.map((paragraph) => (
+      <p class:list={[paragraph.isElision && 'found-quote-elision']}>
+        {paragraph.isElision ? (
+          <Fragment>
+            <span aria-hidden="true">[…]</span>
+            <span class="visually-hidden">Quoted passage omitted.</span>
+          </Fragment>
+        ) : paragraph.emphasizedParts ? (
+          <Fragment>
+            {paragraph.emphasizedParts[0]}<em>{quote.emphasis}</em>{paragraph.emphasizedParts[1]}
+          </Fragment>
+        ) : paragraph.text}
+      </p>
+    ))}
+  </blockquote>
+  <figcaption>
+    <span class="found-quote-credit">
+      <span aria-hidden="true">— </span>{quote.attribution},{' '}
+      <cite>
+        {quote.sourceUrl ? <a href={quote.sourceUrl}>{quote.source}</a> : quote.source}
+      </cite>
+      {quote.via && (
+        <span class="found-quote-via">
+          {' '}via {quote.viaUrl ? <a href={quote.viaUrl}>{quote.via}</a> : quote.via}
+        </span>
+      )}
+    </span>
+    <a
+      class="found-quote-permalink"
+      href={quote.url}
+      rel="bookmark"
+      title="Permalink"
+      aria-label={`Permalink to found quote from ${quote.attribution}`}
+    >
+      <span aria-hidden="true">#</span>
+    </a>
+  </figcaption>
+</figure>

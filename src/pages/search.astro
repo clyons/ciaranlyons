@@ -2,11 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
-<BaseLayout title="Search" description="Search writing, notes, links, projects, and TIL entries.">
+<BaseLayout title="Search" description="Search writing, notes, links, projects, TIL entries, and Found Quotes.">
   <section class="section">
     <p class="section-kicker">Search</p>
     <h1 class="page-title">Search</h1>
-    <p class="lede">Search writing, notes, links, TILs, and projects.</p>
+    <p class="lede">Search writing, notes, links, TILs, projects, and Found Quotes.</p>
   </section>
   <section class="section">
     <form class="search-form" action="/search/" method="get" role="search">
@@ -14,7 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       <input class="search-input" id="site-search" name="q" type="search" placeholder="Search the site" autocomplete="off" />
       <button class="search-button" type="submit">Search</button>
     </form>
-    <noscript><p class="search-status">Search needs JavaScript. Browse Writing, Notes, Links, Projects, TILs, or the RSS feed instead.</p></noscript>
+    <noscript><p class="search-status">Search needs JavaScript. Browse Writing, Notes, Links, Projects, TILs, Found Quotes, or the RSS feed instead.</p></noscript>
     <h2 class="visually-hidden" id="search-results-heading">Search results</h2>
     <p class="search-status" id="search-status" role="status">Loading search index…</p>
     <button class="search-retry" id="search-retry" type="button" hidden>Retry loading search</button>

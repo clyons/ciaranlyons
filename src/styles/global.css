@@ -139,6 +139,13 @@ img {
   margin-inline: auto;
 }
 
+.home-found-quotes {
+  width: min(var(--max), calc(100% - (2 * var(--gutter))));
+  margin-inline: auto;
+  padding: clamp(64px, 8vw, 94px) 0;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
 .site-header {
   min-height: 80px;
   display: flex;
@@ -438,6 +445,7 @@ img {
 }
 
 .section-kicker,
+.preview-label,
 .date,
 .meta,
 .type-label,
@@ -454,6 +462,11 @@ img {
 
 .section-kicker {
   margin: 0;
+}
+
+.preview-label {
+  margin: 0 0 18px;
+  color: var(--accent-dark);
 }
 
 .text-link {
@@ -564,6 +577,159 @@ img {
 .project-action {
   justify-self: end;
   align-self: start;
+}
+
+.found-quotes-section {
+  padding-top: 0;
+}
+
+.found-quotes-list {
+  display: grid;
+}
+
+.found-quote {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(38px, 5vw, 54px) 0 clamp(36px, 4.5vw, 50px);
+  border-top: 1px solid var(--hairline);
+}
+
+.found-quote:first-child {
+  border-top: 0;
+}
+
+.found-quote blockquote {
+  max-width: 58rem;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(2.35rem, 4.2vw, 4rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.found-quote blockquote p {
+  margin: 0;
+  white-space: pre-line;
+}
+
+.found-quote blockquote p + p {
+  margin-top: 0.55em;
+}
+
+.found-quote blockquote .found-quote-elision {
+  margin: clamp(16px, 2.1vw, 27px) 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.4em;
+  line-height: 1;
+  letter-spacing: 0.12em;
+}
+
+.found-quote blockquote .found-quote-elision + p {
+  margin-top: 0;
+}
+
+.found-quote blockquote p:first-child::before {
+  content: "“";
+  margin-left: -0.52em;
+  color: var(--accent);
+}
+
+.found-quote--reading {
+  padding-top: clamp(30px, 4vw, 42px);
+  padding-bottom: clamp(28px, 3.8vw, 40px);
+}
+
+.found-quote--reading blockquote {
+  max-width: 48rem;
+  font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
+}
+
+.found-quote--reading blockquote p + p {
+  margin-top: 0.48em;
+}
+
+.found-quote figcaption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: baseline;
+  margin-top: clamp(24px, 3vw, 32px);
+}
+
+.found-quote-credit {
+  min-width: 0;
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.found-quote-credit cite,
+.found-quote-via {
+  color: var(--muted);
+}
+
+.found-quote-permalink {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  justify-self: end;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.found-quote-detail {
+  width: min(920px, calc(100% - (2 * var(--gutter))));
+}
+
+.found-quote-detail .article-header {
+  margin-bottom: 0;
+}
+
+.found-quote--detail {
+  padding-top: 18px;
+}
+
+.writing-found-quotes {
+  margin-top: clamp(58px, 8vw, 86px);
+  padding-top: clamp(34px, 5vw, 52px);
+  border-top: 1px solid var(--hairline);
+}
+
+.found-quote--writing blockquote {
+  font-size: clamp(1.85rem, 3.2vw, 2.8rem);
+  text-wrap: pretty;
+}
+
+.home-found-quotes .section-heading {
+  margin-bottom: 0;
+}
+
+.home-found-quotes .found-quote {
+  padding-bottom: 0;
+}
+
+.home-found-quotes .found-quote blockquote {
+  font-size: clamp(2.1rem, 3.8vw, 3.65rem);
+}
+
+.empty-state {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 1.2rem;
 }
 
 .project-action {
@@ -784,6 +950,154 @@ img {
   font-size: clamp(3.4rem, 7.4vw, 6.5rem);
 }
 
+.note-detail {
+  width: min(920px, calc(100% - (2 * var(--gutter))));
+}
+
+.note-detail .article-header {
+  margin-bottom: clamp(22px, 3vw, 34px);
+}
+
+.note-post {
+  border-top: 1px solid var(--hairline);
+}
+
+.note-rich-text {
+  max-width: 52rem;
+  padding: clamp(30px, 4.8vw, 52px) 0 clamp(38px, 5.5vw, 62px);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.85rem, 3.4vw, 3.15rem);
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+.note-rich-text p {
+  margin: 0;
+}
+
+.note-rich-text p + p {
+  margin-top: 0.92em;
+}
+
+.note-rich-text a {
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 0.055em;
+}
+
+.note-rich-text .note-standalone-link {
+  font-size: 0.66em;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: wrap;
+}
+
+.note-content-references {
+  margin: 0 0 clamp(38px, 5.5vw, 62px);
+}
+
+.note-content-reference {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 24px;
+  align-items: center;
+  padding: 22px 2px 24px;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  color: var(--ink);
+  font-family: var(--serif);
+  text-decoration: none;
+}
+
+.note-content-reference + .note-content-reference {
+  border-top: 0;
+}
+
+.note-content-reference .type-label {
+  grid-column: 1 / -1;
+  color: var(--accent-dark);
+}
+
+.note-content-reference-copy {
+  display: grid;
+  gap: 5px;
+}
+
+.note-content-reference-copy strong {
+  font-size: clamp(1.45rem, 2.5vw, 2.15rem);
+  font-weight: 650;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.note-content-reference-copy > span {
+  max-width: 40rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.3vw, 1.13rem);
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.note-content-reference-arrow {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.note-content-reference:hover .note-content-reference-arrow {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.note-media {
+  display: grid;
+  gap: 18px;
+  margin: 0 0 clamp(38px, 5.5vw, 62px);
+}
+
+.note-media-item {
+  margin: 0;
+}
+
+.note-media img,
+.note-media video {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border-radius: 2px;
+  background: var(--bg-deep);
+}
+
+.note-media video {
+  max-height: 78svh;
+  object-fit: contain;
+}
+
+.note-post-footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--hairline);
+}
+
+.note-syndication-link {
+  flex: 0 0 auto;
+}
+
+.note-syndication-link span {
+  display: inline-block;
+  transition: transform 160ms ease;
+}
+
+.note-syndication-link:hover span {
+  transform: translate(2px, -2px);
+}
+
 .about-portrait {
   display: block;
   width: clamp(9rem, 22vw, 13rem);
@@ -836,9 +1150,7 @@ img {
   white-space: pre-wrap;
 }
 
-.prose video,
-.note-media img,
-.note-media video {
+.prose video {
   display: block;
   width: 100%;
   margin: 0;
@@ -848,21 +1160,6 @@ img {
 
 .prose video {
   margin-bottom: 1.35em;
-}
-
-.note-media {
-  display: grid;
-  gap: 18px;
-  margin: 0 0 1.35em;
-}
-
-.note-media-item {
-  margin: 0;
-}
-
-.note-media video {
-  max-height: 78svh;
-  object-fit: contain;
 }
 
 .prose code {
@@ -1102,6 +1399,38 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .found-quote {
+    padding: 34px 0 32px;
+  }
+
+  .found-quote blockquote,
+  .home-found-quotes .found-quote blockquote {
+    font-size: clamp(1.9rem, 8.2vw, 2.25rem);
+    line-height: 1.1;
+    text-wrap: pretty;
+  }
+
+  .found-quote--reading blockquote {
+    font-size: clamp(1.4rem, 6vw, 1.7rem);
+    line-height: 1.24;
+    letter-spacing: -0.008em;
+  }
+
+  .found-quote--reading {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  .found-quote blockquote p:first-child::before {
+    margin-left: 0;
+  }
+
+  .found-quote figcaption {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: start;
+  }
+
   .section-heading {
     display: grid;
   }
@@ -1134,6 +1463,21 @@ img {
   .link-detail__footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .note-rich-text {
+    font-size: clamp(1.7rem, 7.4vw, 2.15rem);
+    line-height: 1.19;
+  }
+
+  .note-post-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .note-content-reference {
+    padding-block: 19px 21px;
   }
 
   .site-footer {

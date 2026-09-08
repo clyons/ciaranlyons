@@ -1,8 +1,8 @@
 import { getAllNotes } from './atproto'
-import { getLinks, getProjects, getTilEntries, getWriting, noteTitle } from './content'
+import { foundQuoteTitle, getFoundQuotes, getLinks, getProjects, getTilEntries, getWriting, noteTitle, resolveFoundQuotes } from './content'
 
 export interface SearchItem {
-  type: 'Writing' | 'Note' | 'Link' | 'Project' | 'TIL'
+  type: 'Writing' | 'Note' | 'Link' | 'Project' | 'TIL' | 'Found Quote'
   title: string
   description: string
   content?: string
@@ -11,12 +11,13 @@ export interface SearchItem {
 }
 
 export async function getSearchItems(): Promise<SearchItem[]> {
-  const [writing, notes, links, projects, til] = await Promise.all([
+  const [writing, notes, links, projects, til, foundQuotes] = await Promise.all([
     getWriting(),
     getAllNotes(),
     getLinks(),
     getProjects(),
     getTilEntries(),
+    getFoundQuotes(),
   ])
 
   return [
@@ -24,7 +25,11 @@ export async function getSearchItems(): Promise<SearchItem[]> {
       type: 'Writing' as const,
       title: item.title,
       description: item.description,
-      content: item.body,
+      content: [
+        item.body,
+        ...resolveFoundQuotes(item.foundQuoteSlugs, foundQuotes, `content/writing/${item.slug}.md`)
+          .map((quote) => `${quote.text} ${quote.attribution} ${quote.source}`),
+      ].join(' '),
       url: item.url,
       date: item.date,
     })),
@@ -57,6 +62,14 @@ export async function getSearchItems(): Promise<SearchItem[]> {
       content: item.body,
       url: item.url,
       date: item.date,
+    })),
+    ...foundQuotes.map((quote) => ({
+      type: 'Found Quote' as const,
+      title: foundQuoteTitle(quote),
+      description: `${quote.attribution} — ${quote.source}`,
+      content: `${quote.text} ${quote.attribution} ${quote.source} ${quote.via ?? ''} ${quote.tags.join(' ')}`,
+      url: quote.url,
+      date: quote.date,
     })),
   ]
 }

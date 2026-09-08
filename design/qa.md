@@ -1,42 +1,43 @@
-# Site Quality Assurance
+# Found Quotes Design QA
 
-Prototype: https://ciaranlyons.com
-
-Source of truth: `pasted_text_2026-09-06_00-16-44.txt` (Next Rev brief)
+Source of truth: `design/context.md`, `design/found-quotes-directions.md`, and `design/found-quotes-mock.html`.
 
 ## Final verdict
 
-READY — two concrete defects were fixed. No publishing architecture, routes, content, or global navigation were restructured.
+PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented across the archive, permalink, home page, and collection-Writing capability at `https://clyons-add-found-quotes-cont.ciaranlyons.pages.dev/found-quotes/`. The archive now contains Ciaran's 19 supplied quotations; the fictional records and mock Writing collection have been removed, and no `Preview content` labels remain.
 
-## Requirements and behavior
+## Direction match
 
-- ✓ Primary navigation remains About, Writing, Notes, and Projects. TIL was not added.
-- ✓ The global footer only presents RSS and the primary `@ciaranlyons.com` identity.
-- ✓ About → Elsewhere contains the existing Bluesky, LinkedIn, Instagram, Facebook, and GitHub profiles.
-- ✓ All 31 generated HTML pages contain a canonical link; all canonical routes returned a successful live response.
-- ✓ All four RSS feeds, both ATProto/Standard.site well-known endpoints, and the expected 404 response were verified live.
-- ✓ All generated local `href`/`src` targets resolve in `dist/`.
+- ✓ Full quotations, not generic cards, are the visual focus.
+- ✓ The existing serif, mono metadata, orange accent, background, and hairline tokens are reused in both themes.
+- ✓ Attribution and source remain secondary but readable; a quiet `#` marker provides each internal permalink without elevating the collection date.
+- ✓ The Writing collection capability preserves Ciaran's introduction first and expands canonical quotes afterward in authored order; no collection is published until Ciaran provides its framing.
+- ✓ Found Quotes remain secondary in the site hierarchy: homepage module and footer link, with no fifth primary-navigation link.
 
-## Defects fixed
+## Responsive and accessibility checks
 
-1. Legacy topic-path TIL redirects emitted relative canonical URLs with trailing-slash variants. Their canonical links now use the existing absolute date-based canonical URLs without changing redirect destinations or public permalink structure.
-2. On viewports at or below 320px wide, article prose had a fixed `20rem` width inside a narrower container. It now uses `width: 100%` with the same `20rem` maximum, preventing clipped horizontal overflow.
+- ✓ Archive, detail, home, and collection Writing were visually inspected at 1280px and 390px.
+- ✓ Archive was visually inspected in light and dark themes.
+- ✓ Programmatic overflow checks at 320px, 390px, and 1024px reported `scrollWidth === clientWidth`.
+- ✓ Every checked page has one H1; archive records use `<figure>`, `<blockquote>`, and `<figcaption>`.
+- ✓ Attribution sits outside `<blockquote>` and the cited work—not the speaker—is inside `<cite>`.
+- ✓ Source and permalink links are independently focusable; mobile primary navigation retains its five-control, single-row contract.
 
-## Accessibility and presentation sanity
+## Automated evidence
 
-- ✓ All generated `<img>` elements include `alt` attributes.
-- ✓ Global keyboard focus styles and reduced-motion handling are present.
-- ✓ Code-block styles retain horizontal scrolling. The current TIL corpus has no fenced Markdown code blocks to render-test.
-- ✓ Light mode is intentional (`color-scheme: light`); no dark-mode behavior is advertised.
-- Manual follow-up: browser automation was unavailable in this session, so screen-reader behavior and device rendering should receive a normal manual spot check before a major visual change.
+- `npm test`: 42 passed.
+- `npm run check`: 0 errors, 0 warnings, 0 hints across 75 files.
+- `npm run build`: 63 pages generated, including 19 quote permalinks, date archives, both feeds, search, and sitemap entries.
+- `npm run test:ui:update`: 44 passed in desktop and mobile projects; archive, home, and Writing baselines were refreshed for the real content set and removal of the mock Writing entry.
+- Generated `search.json`, `feed.xml`, `found-quotes/feed.xml`, archive HTML, and sitemap XML were inspected for the real quote records and absence of preview fixtures.
+- All 19 source URLs were checked. Current publisher/author pages are used where available; retired Clay Shirky pages use successful Internet Archive captures, and the Frank Chimero record explicitly marks its exact original page as unidentified.
+- GitHub Actions preview run `34173524953` succeeded in 1m6s; the immutable deployment and stable alias both returned HTTP 200 for the homepage, archive, Ben Thompson permalink, dedicated feed, search index, and Writing archive.
 
-## Metadata and performance
+## Captures
 
-- ✓ Content pages expose canonical and Open Graph metadata. The eight legacy redirect documents intentionally omit Open Graph metadata because they immediately redirect.
-- ✓ Production samples: homepage TTFB 93ms / total 93ms; Writing 148ms / 148ms; TIL 162ms / 162ms.
-- ✓ Standard.site publication and Writing-document metadata remain live.
+Implementation review captures are kept in `.context/design/`: `found-quotes-writing-{desktop,mobile}.png`, `found-quote-detail-{desktop,mobile}.png`, and `found-quotes-dark-{desktop,mobile}.png`. Committed Playwright baselines cover the archive in both desktop and mobile projects.
 
-## External links
+## Long-quote follow-up study — 2026-09-08
 
 Most external links returned HTTP 200. LinkedIn returned 999 and General Assembly/Positive Intelligence returned 403 to automated requests; those services commonly block automated clients, so this is not treated as a broken visitor-facing link.
 
@@ -73,3 +74,44 @@ READY FOR PREVIEW — the collection is intentionally populated with three clear
 - ✓ Reduced-motion preferences collapse transitions through the existing global rule.
 - ✓ The live filter-result count uses a polite status region for screen-reader feedback.
 - Manual follow-up: automated checks do not replace a full screen-reader pass before production launch.
+
+## Found Quotes long-quote study
+
+Prototype: `/found-quotes/style-study/`
+
+Source of truth: the follow-up criteria in `design/context.md` and `design/found-quotes-long-style.md`.
+
+Visual:
+
+- ✓ The first three quotes retain the existing display size: 53.76px desktop and approximately 32px mobile.
+- ✓ The Great Silence exemplar shifts to a 35.84px/1.20 reading scale on desktop and 23.4px/1.24 on 390px mobile.
+- ✓ The smaller size still uses the existing serif, orange opening mark, hairlines, attribution treatment, and page shell.
+- ✓ The desktop permalink falls from 17 lines in production to 11 in the study; the 390px treatment falls from 23 to 17.
+- ✓ Reading-tier vertical padding is reduced, and blank-line-separated passages use a compact `0.48em` paragraph gap instead of an empty text line.
+
+Behavior and requirements:
+
+- ✓ The study contains exactly the first four current quotes.
+- ✓ The Great Silence `#` link opens its existing dated permalink, where the same reading treatment appears.
+- ✓ Visible collection dates are removed from quote captions. A compact `#` link with `rel="bookmark"`, a tooltip, and an explicit accessible name preserves the permalink at the right edge.
+- ✓ The Jony Ive quotation's blank-line-separated passage renders as two paragraph elements; the opening quotation mark remains attached only to the first.
+- ✓ The Clay Shirky quotation replaces an ambiguous standalone `...` with editorial `[…]`, rendered compactly and announced to assistive technology as “Quoted passage omitted.”
+- ✓ `waste products` renders as a real `<em>` element, backed by an exact, unique frontmatter substring that fails validation if it drifts from the quote text.
+- ✓ Source and permalink links remain independent and keyboard reachable.
+- ✓ Programmatic overflow checks report zero extra horizontal width at 1280px, 390px, and 320px on both the study and detail pages.
+
+Accessibility sanity:
+
+- ✓ Semantic figure, blockquote, cite, time, and heading structure is retained, with paragraph and emphasis semantics added to the quotation body.
+- ✓ No color or contrast token changes were introduced.
+- Manual screen-reader testing remains outside this visual type study.
+
+Automated evidence:
+
+- `npm test`: 43 passed.
+- `npm run check`: 0 errors, warnings, or hints across 76 files.
+- `npm run build`: 64 pages generated, including the isolated study route.
+- `npm run test:ui:update`: 46 passed across desktop and mobile; the two Found Quotes baselines were refreshed for the intended paragraph, elision, and emphasis treatment.
+- `npm run test:ui`: 46 passed again against the refreshed baselines.
+
+Verdict: READY FOR REVIEW — no high-severity drift or functional blockers found. Classification remains explicit in the mock; approve the visual direction before choosing the production content-tier rule.

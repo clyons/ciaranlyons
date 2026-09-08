@@ -1,5 +1,12 @@
 const safeSegmentPattern = /^[A-Za-z0-9](?:[A-Za-z0-9._~-]*[A-Za-z0-9])?$/
 
+export function requiredString(value: unknown, source: string, field: string): string {
+  if (typeof value !== 'string' || !value.trim()) {
+    throw new Error(`${source}: ${field} must be a non-empty string`)
+  }
+  return value.trim()
+}
+
 export function validateDate(value: unknown, source: string, field = 'date'): string {
   const raw = value instanceof Date
     ? value.toISOString().slice(0, 10)
@@ -52,6 +59,16 @@ export function optionalHttpUrl(value: unknown, source: string, field: string): 
   } catch {
     throw new Error(`${source}: ${field} must be an HTTP(S) URL`)
   }
+}
+
+export function optionalUniqueSubstring(value: unknown, text: string, source: string, field: string): string | undefined {
+  if (value === undefined || value === null || value === '') return undefined
+  const substring = requiredString(value, source, field)
+  const occurrences = text.split(substring).length - 1
+  if (occurrences !== 1) {
+    throw new Error(`${source}: ${field} must occur exactly once in the quote body`)
+  }
+  return substring
 }
 
 export function webUrl(value: unknown, source: string, field: string): string {
