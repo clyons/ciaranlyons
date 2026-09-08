@@ -185,6 +185,11 @@ test('note permalinks render as native posts rather than quotations', async ({ p
   await expect(linkedTil).toHaveAttribute('href', '/til/2026/09/05/blender-logo-animation-coding-agent-macos/')
   await expect(video).toBeVisible()
   expect(await video.evaluate((element) => element.compareDocumentPosition(document.querySelector('.note-content-references')!) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy()
+
+  await page.goto('/notes/2026/09/08/3muy7cork3c24/')
+  const linkedWriting = page.getByRole('link', { name: /Writing Found Quotes: WAGMI/ })
+  await expect(linkedWriting).toHaveAttribute('href', '/writing/2026/09/07/found-quotes-wagmi/')
+  await expect(linkedWriting).toContainText('A handful of quotes about technology and making it better.')
 })
 
 test('note detail matches its approved visual baseline', async ({ page }) => {
