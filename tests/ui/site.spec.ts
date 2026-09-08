@@ -22,7 +22,8 @@ test('About presents the PQ Program reach accurately and stays responsive', asyn
   await page.goto('/about/')
 
   const about = page.locator('.about-profile')
-  await expect(about.getByRole('heading', { level: 1 })).toHaveText('I turn ambitious ideas into systems that grow.')
+  await expect(about.getByRole('heading', { level: 1 })).toHaveText('I build things that last and grow.')
+  await expect(about).not.toContainText('Operator · Builder · Systems thinker')
   await expect(about).toContainText('over 250,000 participants')
   await expect(about).not.toContainText(/(?:1M\+|one million|1 million) participants/i)
   await expect(about.locator('img[alt="Ciaran Lyons"]')).toBeVisible()
@@ -30,6 +31,12 @@ test('About presents the PQ Program reach accurately and stays responsive', asyn
   for (const width of [1280, 390, 320]) {
     await page.setViewportSize({ width, height: 844 })
     expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
+
+    const experience = await about.getByRole('heading', { level: 3, name: 'Experience' }).locator('..').boundingBox()
+    const caseStudies = await about.getByRole('heading', { level: 3, name: 'Case studies' }).locator('..').boundingBox()
+    expect(experience).not.toBeNull()
+    expect(caseStudies).not.toBeNull()
+    expect(caseStudies!.y).toBeGreaterThanOrEqual(experience!.y + experience!.height)
   }
 })
 
