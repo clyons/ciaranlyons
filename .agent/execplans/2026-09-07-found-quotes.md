@@ -25,6 +25,7 @@ Found Quotes are curation, not Ciaran's authored Writing and not ephemeral Notes
 - [x] (2026-09-07 23:38Z) Completed automated checks and desktop/mobile visual QA in both light and dark themes.
 - [x] (2026-09-07 23:45Z) Pushed `clyons/add-found-quotes-content` and completed GitHub Actions preview run `34170972375`; the branch and immutable previews passed live smoke checks.
 - [x] (2026-09-08 00:27Z) Replaced all fictional preview fixtures with Ciaran's 19 real Found Quotes, researched missing provenance, removed the mock collection Writing, and refreshed automated and visual coverage with no preview labels remaining.
+- [x] (2026-09-08 00:31Z) Deployed the real collection in preview run `34173524953` and smoke-tested both the immutable URL and stable branch alias across the homepage, archive, permalink, feed, search data, and Writing archive.
 
 ## Surprises & Discoveries
 

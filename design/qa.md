@@ -4,7 +4,7 @@ Source of truth: `design/context.md`, `design/found-quotes-directions.md`, and `
 
 ## Final verdict
 
-READY FOR REFRESHED PREVIEW — the selected Editorial Ledger direction is implemented across the archive, permalink, home page, and collection-Writing capability at `https://clyons-add-found-quotes-cont.ciaranlyons.pages.dev/found-quotes/`. The archive now contains Ciaran's 19 supplied quotations; the fictional records and mock Writing collection have been removed, and no `Preview content` labels remain.
+PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented across the archive, permalink, home page, and collection-Writing capability at `https://clyons-add-found-quotes-cont.ciaranlyons.pages.dev/found-quotes/`. The archive now contains Ciaran's 19 supplied quotations; the fictional records and mock Writing collection have been removed, and no `Preview content` labels remain.
 
 ## Direction match
 
@@ -31,6 +31,7 @@ READY FOR REFRESHED PREVIEW — the selected Editorial Ledger direction is imple
 - `npm run test:ui:update`: 44 passed in desktop and mobile projects; archive, home, and Writing baselines were refreshed for the real content set and removal of the mock Writing entry.
 - Generated `search.json`, `feed.xml`, `found-quotes/feed.xml`, archive HTML, and sitemap XML were inspected for the real quote records and absence of preview fixtures.
 - All 19 source URLs were checked. Current publisher/author pages are used where available; retired Clay Shirky pages use successful Internet Archive captures, and the Frank Chimero record explicitly marks its exact original page as unidentified.
+- GitHub Actions preview run `34173524953` succeeded in 1m6s; the immutable deployment and stable alias both returned HTTP 200 for the homepage, archive, Ben Thompson permalink, dedicated feed, search index, and Writing archive.
 
 ## Captures
 
