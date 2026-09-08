@@ -38,6 +38,22 @@ test('Found Quote archive and permalink preserve quotation semantics', async ({ 
   await expect(page.locator('article figcaption')).toContainText('Ben Thompson')
 })
 
+test('Found Quote type study gives the long exemplar a reading scale', async ({ page }) => {
+  await page.goto('/found-quotes/style-study/')
+
+  const quotes = page.locator('.found-quotes-list figure')
+  await expect(quotes).toHaveCount(4)
+  await expect(page.locator('.found-quotes-list .found-quote--reading')).toHaveCount(1)
+  for (let index = 0; index < 3; index += 1) {
+    await expect(quotes.nth(index)).not.toHaveClass(/found-quote--reading/)
+  }
+  await expect(quotes.nth(3)).toHaveClass(/found-quote--reading/)
+  await expect(quotes.nth(3)).toContainText('In the Great Silence')
+
+  await page.goto('/found-quotes/2026/09/07/great-silence-and-technological-efficiency/')
+  await expect(page.locator('article .found-quote--reading')).toHaveCount(1)
+})
+
 test.describe('site structure and keyboard access', () => {
   for (const [name, path] of coreRoutes) {
     test(`${name} exposes a labelled primary navigation and one main heading`, async ({ page }) => {

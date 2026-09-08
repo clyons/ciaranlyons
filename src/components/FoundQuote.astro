@@ -5,13 +5,14 @@ import { formatDate } from '../lib/dates'
 interface Props {
   quote: FoundQuoteEntry
   context?: 'archive' | 'detail' | 'home' | 'writing'
+  scale?: 'display' | 'reading'
 }
 
-const { quote, context = 'archive' } = Astro.props
+const { quote, context = 'archive', scale = 'display' } = Astro.props
 const dateLabel = formatDate(quote.date, { month: 'long', day: 'numeric', year: 'numeric' })
 ---
 
-<figure class:list={['found-quote', `found-quote--${context}`]}>
+<figure class:list={['found-quote', `found-quote--${context}`, scale === 'reading' && 'found-quote--reading']}>
   {quote.preview && <p class="preview-label">Preview content</p>}
   <blockquote cite={quote.sourceUrl}>
     <p>{quote.text}</p>

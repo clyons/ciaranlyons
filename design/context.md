@@ -44,3 +44,10 @@ risks:
 - Long quote text or source URLs can overflow narrow screens; verify at 390px and the 320px floor.
 - Standard.site could publish incomplete collection text unless the publisher expands references before authentication and writes.
 - Preview fixtures could be mistaken for approved content; label them in both source and rendered output and keep merge readiness explicit.
+
+follow-up type study (2026-09-08):
+
+- Preserve the existing display scale for short quotations that read as one or two lines at desktop width.
+- Introduce a smaller reading scale for longer quotations so they feel like deliberate excerpts rather than oversized headlines.
+- Review the first four archive entries together; use `great-silence-and-technological-efficiency` as the long-quote exemplar on both the study archive and its permalink.
+- Keep attribution, provenance, dates, semantic markup, colors, and the surrounding page shell unchanged so type scale is the only meaningful variable.

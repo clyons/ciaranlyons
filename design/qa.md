@@ -36,3 +36,38 @@ PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented acro
 ## Captures
 
 Implementation review captures are kept in `.context/design/`: `found-quotes-writing-{desktop,mobile}.png`, `found-quote-detail-{desktop,mobile}.png`, and `found-quotes-dark-{desktop,mobile}.png`. Committed Playwright baselines cover the archive in both desktop and mobile projects.
+
+## Long-quote follow-up study — 2026-09-08
+
+Prototype: `/found-quotes/style-study/`
+
+Source of truth: the follow-up criteria in `design/context.md` and `design/found-quotes-long-style.md`.
+
+Visual:
+
+- ✓ The first three quotes retain the existing display size: 53.76px desktop and approximately 32px mobile.
+- ✓ The Great Silence exemplar shifts to a 35.84px/1.28 reading scale on desktop and 23.4px/1.32 on 390px mobile.
+- ✓ The smaller size still uses the existing serif, orange opening mark, hairlines, attribution treatment, and page shell.
+- ✓ The desktop permalink falls from 17 lines in production to 11 in the study; the 390px treatment falls from 23 to 17.
+
+Behavior and requirements:
+
+- ✓ The study contains exactly the first four current quotes.
+- ✓ The Great Silence date link opens its existing dated permalink, where the same reading treatment appears.
+- ✓ Source and permalink links remain independent and keyboard reachable.
+- ✓ Programmatic overflow checks report zero extra horizontal width at 1280px, 390px, and 320px on both the study and detail pages.
+
+Accessibility sanity:
+
+- ✓ Semantic figure, blockquote, cite, time, and heading structure is unchanged.
+- ✓ No color or contrast token changes were introduced.
+- Manual screen-reader testing remains outside this visual type study.
+
+Automated evidence:
+
+- `npm test`: 42 passed.
+- `npm run check`: 0 errors, warnings, or hints across 76 files.
+- `npm run build`: 64 pages generated, including the isolated study route.
+- `npm run test:ui:update`: 46 passed across desktop and mobile, including the four-item and reading-scale assertions.
+
+Verdict: READY FOR REVIEW — no high-severity drift or functional blockers found. Classification remains explicit in the mock; approve the visual direction before choosing the production content-tier rule.
