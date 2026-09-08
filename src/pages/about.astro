@@ -13,18 +13,17 @@ const about = await getAbout()
     <header class="about-profile__hero">
       <div class="about-profile__hero-copy">
         <p class="section-kicker">About Ciaran</p>
-        <h1>I turn ambitious ideas into systems that grow.</h1>
+        <h1>I build things that last and grow.</h1>
         <p>I’m Ciaran Lyons—an operator and builder working at the intersection of people, systems, and growth.</p>
       </div>
-      <figure class="about-profile__portrait">
+      <div class="about-profile__portrait">
         <AboutPortrait
           class="about-profile__portrait-image"
           sizes="(max-width: 760px) min(78vw, 310px), min(30vw, 360px)"
           loading="eager"
           fetchpriority="high"
         />
-        <figcaption>Operator · Builder · Systems thinker</figcaption>
-      </figure>
+      </div>
     </header>
 
     <section class="about-profile__story" aria-labelledby="about-story-label">
@@ -38,7 +37,7 @@ const about = await getAbout()
         <h2 id="about-evidence-heading">Built across operations, growth, and technology.</h2>
       </header>
 
-      <div class="about-profile__evidence-columns">
+      <div class="about-profile__evidence-flow">
         <section aria-labelledby="about-experience-heading">
           <h3 class="about-profile__subheading" id="about-experience-heading">Experience</h3>
           <ol class="about-profile__history">
@@ -154,18 +153,6 @@ const about = await getAbout()
     object-position: 52% center;
   }
 
-  .about-profile__portrait figcaption {
-    margin-top: 12px;
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: .68rem;
-    font-weight: 600;
-    line-height: 1.45;
-    letter-spacing: .08em;
-    text-align: right;
-    text-transform: uppercase;
-  }
-
   .about-profile__story,
   .about-profile__evidence,
   .about-profile__contact {
@@ -232,11 +219,11 @@ const about = await getAbout()
     text-wrap: balance;
   }
 
-  .about-profile__evidence-columns {
+  .about-profile__evidence-flow {
     margin-top: clamp(54px, 7vw, 82px);
     display: grid;
-    grid-template-columns: minmax(270px, .76fr) minmax(0, 1.3fr);
-    gap: clamp(60px, 9vw, 132px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(72px, 9vw, 112px);
     align-items: start;
   }
 
@@ -259,6 +246,7 @@ const about = await getAbout()
   }
 
   .about-profile__history {
+    max-width: 680px;
     padding-left: 28px;
     border-left: 1px solid var(--hairline);
   }
@@ -313,6 +301,10 @@ const about = await getAbout()
 
   .about-profile__cases li + li {
     margin-top: clamp(34px, 4vw, 50px);
+  }
+
+  .about-profile__cases {
+    max-width: 920px;
   }
 
   .about-profile__cases a {
@@ -458,8 +450,7 @@ const about = await getAbout()
       font-size: clamp(2.55rem, 11.5vw, 3.3rem);
     }
 
-    .about-profile__evidence-columns {
-      grid-template-columns: 1fr;
+    .about-profile__evidence-flow {
       gap: 68px;
     }
 
