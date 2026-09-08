@@ -1,0 +1,33 @@
+---
+interface Props {
+  class?: string
+  loading?: 'eager' | 'lazy'
+  fetchpriority?: 'high' | 'low' | 'auto'
+  sizes: string
+}
+
+const {
+  class: className,
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  sizes,
+} = Astro.props
+---
+
+<picture>
+  <source
+    type="image/avif"
+    srcset="/images/profile/ciaran-profile-416.avif 416w, /images/profile/ciaran-profile-832.avif 832w, /images/profile/ciaran-profile-1200.avif 1200w"
+    {sizes}
+  />
+  <img
+    class={className}
+    src="/images/ciaran-profile.jpeg?v=20260906"
+    alt="Ciaran Lyons"
+    width="1200"
+    height="1200"
+    decoding="async"
+    {loading}
+    {fetchpriority}
+  />
+</picture>
