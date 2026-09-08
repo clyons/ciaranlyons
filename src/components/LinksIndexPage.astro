@@ -37,10 +37,11 @@ const canonical = page === 1 ? '/links/' : `/links/page/${page}/`
     </div>
   </section>
   <section class="section links-tools">
-    <form action="/search/" method="get" role="search">
+    <form class="search-form links-search-form" action="/search/" method="get" role="search" aria-label="Search links">
       <label class="visually-hidden" for="links-search">Search links</label>
-      <input class="search-input" id="links-search" name="q" type="search" placeholder="Search titles, sources, authors, and tags" />
+      <input class="search-input" id="links-search" name="q" type="search" placeholder="Search links" />
       <input name="type" type="hidden" value="Link" />
+      <button class="search-button" type="submit">Search</button>
     </form>
     <nav class="links-years" aria-label="Links by year">
       {years.map((year) => <a href={`/links/${year}/`}>{year}</a>)}

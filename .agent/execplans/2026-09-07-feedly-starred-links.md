@@ -40,6 +40,7 @@ The completed result is observable by:
 - [x] (2026-09-08 04:47Z) Imported the reviewed history locally and removed all mocks. Eight saved Stratechery URLs contained an `access_token`; normalization now strips that key, revealing one additional duplicate. The final set is 2,625 public candidates, eight duplicates, zero rejects, and zero date fallbacks.
 - [x] (2026-09-08 05:54Z) Completed local scale, privacy, interaction, and visual QA after merging the latest social-preview, Found Quote, and internal-link work from `main`. Clean builds on the final architecture completed in 9.93s to 11.22s; the artifact has 6,866 files/57,273,399 bytes, 2,625 Link detail pages, 1,363 Link archive pages, at most 50 rows per archive, and a 2,494,259-byte Pagefind bundle. All 69 unit and 66 Playwright checks pass, including search, social-image verification, desktop/mobile design, and no-JavaScript pagination.
 - [x] (2026-09-08 06:19Z) Promoted the 2,625 reviewed Link metadata files in commit `6818e3c`, incorporated all current `origin/main` work through merge commit `320c192`, and deployed that application/content head through the repository-owned preview workflow. Run 34193980981 completed in 1m27s; the index, page two, Pagefind, and the shared Links social image returned HTTP 200. The prior live 390px check confirmed 50 rows, working next-page navigation, no horizontal overflow, valid social metadata, and bounded search results on the same Links implementation.
+- [x] (2026-09-08 11:54Z) Reviewed the final design against current public link archives and WCAG 2.2/Apple target guidance after confirming the branch already contains the latest `origin/main`. Added an explicit, progressively enhanced Search action; replaced the clipped prompt; expanded Links utility targets to 44×44px; refreshed desktop/mobile baselines; and passed 69 unit, 68 browser, lint, TypeScript, and full-build checks.
 - [ ] ATproto follow-up: after the Link URLs are deployed and an app password is available, publish and verify one Standard.site canary, then use separately observed missing-only batches of at most 100. No Bluesky feed posts or bookmarks are in scope.
 
 ## Surprises & Discoveries
@@ -91,6 +92,9 @@ The completed result is observable by:
 
 - Observation: Adding Links to the primary navigation adds a sixth control at mobile widths.
   Evidence: `tests/ui/site.spec.ts` currently asserts five controls fit on one row at 390px and 320px. The implementation must intentionally adjust and verify the small-screen navigation rather than silently overflow it.
+
+- Observation: The final editorial layout was visually strong, but its dense archive controls relied on spacing rather than comfortable target dimensions.
+  Evidence: Browser measurement at 1280px, 390px, and 320px found year, row-action, and pagination anchors only 14 CSS pixels high. The revised controls measure at least 44×44 CSS pixels at all three widths with no horizontal overflow; the search field's former long placeholder also clipped at desktop width and now has a concise prompt plus visible submit button.
 
 - Observation: The production GitHub Pages repository has only its production `gh-pages` branch and no branch-preview workflow.
   Evidence: Repository and Pages configuration inspection showed `clyons/resume` serving `ciaranlyons.com` directly from `gh-pages`. Preview deployment must use an isolated provider/project rather than pushing a mock artifact to the production repository.
@@ -164,6 +168,10 @@ The completed result is observable by:
   Rationale: A restrained chronological index, strong typographic hierarchy, local “Notes & details” action, and clearly separate publisher action communicate deliberate curation rather than an undifferentiated bookmark dump. Search is the only client-side interaction needed for the preview.
   Date/Author: 2026-09-07 / Codex
 
+- Decision: Preserve the cardless ledger while making retrieval controls explicit and touch-comfortable.
+  Rationale: Current linkblog/archive references support chronological browsing, visible search, attribution, RSS, and stable page URLs. A visible Search button removes an implicit keyboard-only cue, while 44×44px utility targets exceed WCAG 2.2's 24×24px AA minimum and align with the project's higher comfort bar without introducing bookmark-manager chrome.
+  Date/Author: 2026-09-08 / Codex
+
 - Decision: Mark the bundled entries with `mock: true` and show a prominent “Preview data · Mock Feedly stars” label.
   Rationale: The preview must be useful for design and behavior review without implying that invented publishers, authors, dates, or articles came from Ciaran's Feedly account.
   Date/Author: 2026-09-07 / Codex
@@ -185,6 +193,8 @@ Real Feedly acquisition and local import are complete. The gitignored export con
 The scale-hardening architecture is implemented and measured. Static generation remains the approved architecture: Pagefind provides chunked search; all Link collection pages are bounded at 50 rows with static previous/next navigation; search renders at most 12 results; feeds contain the latest 50 Links; and all Link pages share one generated collection social card. The final measured artifact has 6,866 files and is 57,273,399 bytes, with a largest asset of 3,049,958 bytes. Clean builds on the final architecture completed in 9.93s to 11.22s, dramatically below both build-time escalation thresholds. D1 remains an optional future read model rather than a dependency.
 
 The UI keeps the “curated, not collected” editorial thesis at full scale. Desktop and mobile screenshots show the 2,625-Link count, 365 sources, searchable year navigation, and a calm first viewport rather than thousands of rows. All 66 Playwright checks pass, including Pagefind query/filter/history behavior, archive next/previous links, keyboard structure, one-row mobile navigation, and no-JavaScript paging.
+
+The final design review retained that thesis and architecture. A current pattern scan covering Adactio, Daring Fireball, Kottke, Waxy, and Raindrop confirmed that chronological archives, source attribution, search, RSS, and stable page positions remain the useful conventions; Waxy's 2026 archive refresh was the closest modern comparison. The final polish adds a labelled visible Search action and 44×44px year, row-action, and pagination targets. The revised archive has no horizontal overflow at 1280px, 390px, or 320px. Final validation passes 69 unit tests, 68 Playwright tests, Astro lint across 101 files, TypeScript, and a 4,067-page build with 68 verified social previews and 2,662 Pagefind-indexed pages.
 
 Standard.site publication is now operationally resumable. A public, credential-free dry run resolved the existing publication and selected exactly one deterministic missing Link. Live publication has not run: the required order is to approve and deploy the local public pages, then use one explicit canary followed by missing-only batches of at most 100. No Standard.site document, Bluesky post, or Bluesky bookmark was created in this phase.
 

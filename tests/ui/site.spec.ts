@@ -235,6 +235,26 @@ test('links use one divider between tools and the first result', async ({ page }
   await expect(page.locator('.links-archive .link-row').first()).toHaveCSS('border-top-width', '0px')
 })
 
+test('Links utility controls have explicit search and comfortable pointer targets', async ({ page }) => {
+  await page.goto('/links/')
+
+  const search = page.getByRole('search', { name: 'Search links' })
+  await expect(search.getByRole('searchbox', { name: 'Search links' })).toHaveAttribute('placeholder', 'Search links')
+  await expect(search.getByRole('button', { name: 'Search' })).toBeVisible()
+
+  for (const width of [1280, 390, 320]) {
+    await page.setViewportSize({ width, height: 844 })
+    const targets = page.locator('.links-years a, .link-actions a, .archive-pagination__links a')
+    const sizes = await targets.evaluateAll((elements) => elements.map((element) => {
+      const { width, height } = element.getBoundingClientRect()
+      return { width, height }
+    }))
+
+    expect(sizes.every(({ width, height }) => width >= 44 && height >= 44)).toBe(true)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
+  }
+})
+
 test('links keep bounded archive navigation and canonical outbound context', async ({ page }) => {
   await page.goto('/links/')
 
