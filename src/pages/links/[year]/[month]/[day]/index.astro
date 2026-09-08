@@ -1,8 +1,8 @@
 ---
-import LinkList from '../../../../../components/LinkList.astro'
-import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import LinksArchivePage from '../../../../../components/LinksArchivePage.astro'
 import { getLinks } from '../../../../../lib/content'
 import { formatDate } from '../../../../../lib/dates'
+import { paginateLinks } from '../../../../../lib/link-pagination'
 
 export async function getStaticPaths() {
   const links = await getLinks()
@@ -13,14 +13,20 @@ export async function getStaticPaths() {
   })
 }
 
-const { year, month, day, links } = Astro.props
+const { year, month, day, links: allLinks } = Astro.props
 const label = formatDate(`${year}-${month}-${day}`, { month: 'long', day: 'numeric', year: 'numeric' })
+const pagination = paginateLinks(allLinks, 1)
 ---
 
-<BaseLayout title={`Links: ${label}`} description={`Links saved on ${label}.`} sectionFeed={{ href: '/links/feed.xml', title: 'Ciaran Lyons — Links' }}>
-  <section class="section">
-    <p class="section-kicker"><a href={`/links/${year}/${month}/`}>Links · {year}/{month}</a></p>
-    <h1 class="page-title">{label}</h1>
-  </section>
-  <section class="section links-archive"><LinkList links={links} /></section>
-</BaseLayout>
+<LinksArchivePage
+  links={pagination.items}
+  totalItems={pagination.totalItems}
+  page={pagination.page}
+  totalPages={pagination.totalPages}
+  basePath={`/links/${year}/${month}/${day}/`}
+  title={`Links: ${label}`}
+  description={`Links saved on ${label}.`}
+  kickerHref={`/links/${year}/${month}/`}
+  kickerLabel={`Links · ${year}/${month}`}
+  heading={label}
+/>

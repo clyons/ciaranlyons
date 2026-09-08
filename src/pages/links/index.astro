@@ -1,65 +1,10 @@
 ---
-import LinkList from '../../components/LinkList.astro'
-import BaseLayout from '../../layouts/BaseLayout.astro'
+import LinksIndexPage from '../../components/LinksIndexPage.astro'
 import { getLinks } from '../../lib/content'
+import { paginateLinks } from '../../lib/link-pagination'
 
-const links = await getLinks()
-const years = [...new Set(links.map((entry) => entry.year))]
-const sources = new Set(links.map((entry) => entry.sourceTitle ?? new URL(entry.targetUrl).hostname)).size
-const isMockPreview = links.length > 0 && links.every((entry) => entry.mock)
+const allLinks = await getLinks()
+const pagination = paginateLinks(allLinks, 1)
 ---
 
-<BaseLayout
-  title="Links"
-  description="Articles, ideas, and references saved by Ciaran Lyons."
-  sectionFeed={{ href: '/links/feed.xml', title: 'Ciaran Lyons — Links' }}
->
-  <section class="section links-heading">
-    <div>
-      <p class="section-kicker">Curated, not collected</p>
-      <h1 class="page-title">Links</h1>
-    </div>
-    <div class="links-heading__note">
-      {isMockPreview && <p class="preview-data">Preview data · Mock Feedly stars</p>}
-      <p>Articles, ideas, and references I want to find again.</p>
-      <p class="meta">{links.length} links · {sources} sources</p>
-    </div>
-  </section>
-  <section class="section links-tools">
-    <div>
-      <label class="visually-hidden" for="links-search">Search links</label>
-      <input class="search-input" id="links-search" type="search" placeholder="Search titles, sources, authors, and tags" data-links-search />
-    </div>
-    <nav class="links-years" aria-label="Links by year">
-      {years.map((year) => <a href={`/links/${year}/`}>{year}</a>)}
-      <a href="/links/feed.xml">RSS</a>
-    </nav>
-  </section>
-  <section class="section links-archive" aria-labelledby="recent-links">
-    <div class="section-heading">
-      <h2 id="recent-links" class="list-title">Recently saved</h2>
-      <p class="meta" data-links-count role="status" aria-live="polite">{links.length} showing</p>
-    </div>
-    <div data-links-results>
-      <LinkList links={links} />
-    </div>
-    <p class="search-status" data-links-empty hidden>No links match that search.</p>
-  </section>
-  <script>
-    const input = document.querySelector<HTMLInputElement>('[data-links-search]')
-    const rows = [...document.querySelectorAll<HTMLElement>('[data-search-text]')]
-    const count = document.querySelector<HTMLElement>('[data-links-count]')
-    const empty = document.querySelector<HTMLElement>('[data-links-empty]')
-    input?.addEventListener('input', () => {
-      const query = input.value.trim().toLowerCase()
-      let visible = 0
-      for (const row of rows) {
-        const matches = !query || (row.dataset.searchText ?? '').toLowerCase().includes(query)
-        row.hidden = !matches
-        if (matches) visible += 1
-      }
-      if (count) count.textContent = `${visible} showing`
-      if (empty) empty.hidden = visible !== 0
-    })
-  </script>
-</BaseLayout>
+<LinksIndexPage links={pagination.items} {allLinks} page={pagination.page} totalPages={pagination.totalPages} />

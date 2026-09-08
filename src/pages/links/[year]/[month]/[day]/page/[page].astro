@@ -1,0 +1,33 @@
+---
+import LinksArchivePage from '../../../../../../components/LinksArchivePage.astro'
+import { getLinks } from '../../../../../../lib/content'
+import { formatDate } from '../../../../../../lib/dates'
+import { extraLinkPageNumbers, paginateLinks } from '../../../../../../lib/link-pagination'
+
+export async function getStaticPaths() {
+  const links = await getLinks()
+  const keys = [...new Set(links.map((entry) => `${entry.year}/${entry.month}/${entry.day}`))]
+  return keys.flatMap((key) => {
+    const [year, month, day] = key.split('/')
+    const allLinks = links.filter((entry) => entry.year === year && entry.month === month && entry.day === day)
+    return extraLinkPageNumbers(allLinks.length).map((page) => ({ params: { year, month, day, page: String(page) }, props: { year, month, day, allLinks, page } }))
+  })
+}
+
+const { year, month, day, allLinks, page } = Astro.props
+const label = formatDate(`${year}-${month}-${day}`, { month: 'long', day: 'numeric', year: 'numeric' })
+const pagination = paginateLinks(allLinks, page)
+---
+
+<LinksArchivePage
+  links={pagination.items}
+  totalItems={pagination.totalItems}
+  page={pagination.page}
+  totalPages={pagination.totalPages}
+  basePath={`/links/${year}/${month}/${day}/`}
+  title={`Links: ${label}`}
+  description={`Links saved on ${label}.`}
+  kickerHref={`/links/${year}/${month}/`}
+  kickerLabel={`Links · ${year}/${month}`}
+  heading={label}
+/>

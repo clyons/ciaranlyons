@@ -14,11 +14,11 @@ const maxPages = 1_000
 const excerptLength = 320
 
 function usage() {
-  console.log('Usage: node scripts/sync-feedly-links.mjs [--dry-run] [--input FILE] [--stream-id ID] [--limit N] [--report FILE]')
+  console.log('Usage: node scripts/sync-feedly-links.mjs [--dry-run] [--input FILE] [--stream-id ID] [--limit N] [--report FILE] [--csv FILE]')
 }
 
 export function parseFeedlyArgs(argv) {
-  const options = { dryRun: false, input: undefined, streamId: process.env.FEEDLY_STREAM_ID?.trim() || undefined, limit: undefined, report: undefined }
+  const options = { dryRun: false, input: undefined, streamId: process.env.FEEDLY_STREAM_ID?.trim() || undefined, limit: undefined, report: undefined, csv: undefined }
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index]
     if (arg === '--dry-run') options.dryRun = true
@@ -26,6 +26,7 @@ export function parseFeedlyArgs(argv) {
     else if (arg === '--stream-id') options.streamId = argv[++index]
     else if (arg === '--limit') options.limit = Number(argv[++index])
     else if (arg === '--report') options.report = argv[++index]
+    else if (arg === '--csv') options.csv = argv[++index]
     else if (arg === '--help' || arg === '-h') {
       usage()
       process.exit(0)
@@ -34,6 +35,7 @@ export function parseFeedlyArgs(argv) {
   if (options.limit !== undefined && (!Number.isInteger(options.limit) || options.limit < 1)) throw new Error('--limit must be a positive integer')
   if (options.input === '') throw new Error('--input requires a file')
   if (options.report === '') throw new Error('--report requires a file')
+  if (options.csv === '') throw new Error('--csv requires a file')
   return options
 }
 
@@ -42,7 +44,7 @@ export function normalizeTargetUrl(value) {
   if (!['http:', 'https:'].includes(parsed.protocol) || parsed.username || parsed.password) throw new Error('URL must use HTTP(S) without credentials')
   parsed.hash = ''
   for (const key of [...parsed.searchParams.keys()]) {
-    if (/^utm_/i.test(key) || ['fbclid', 'gclid', 'mc_cid', 'mc_eid'].includes(key.toLowerCase())) parsed.searchParams.delete(key)
+    if (/^utm_/i.test(key) || ['access_token', 'fbclid', 'gclid', 'mc_cid', 'mc_eid'].includes(key.toLowerCase())) parsed.searchParams.delete(key)
   }
   return parsed.toString()
 }
@@ -71,7 +73,14 @@ export function selectTargetUrl(item) {
 
 function plainText(value) {
   if (typeof value !== 'string') return ''
-  return sanitizeHtml(value, { allowedTags: [], allowedAttributes: {} }).replace(/\s+/g, ' ').trim()
+  let text = value
+  for (let pass = 0; pass < 3; pass += 1) {
+    const decoded = sanitizeHtml(text, { allowedTags: [], allowedAttributes: {} })
+      .replace(/&amp;(?=(?:#\d+|#x[\da-f]+|[a-z][\da-z]+);)/gi, '&')
+    if (decoded === text) break
+    text = decoded
+  }
+  return text.replace(/\s+/g, ' ').trim()
 }
 
 function truncate(value, maximum = excerptLength) {
@@ -276,6 +285,55 @@ export function planLinkWrites(items, context, existing = { byId: new Map(), byU
   return actions
 }
 
+const reviewCsvColumns = [
+  'status',
+  'status_detail',
+  'saved_at',
+  'published_at',
+  'title',
+  'description',
+  'target_url',
+  'source_title',
+  'author',
+  'tags',
+  'feedly_id',
+  'feedly_url',
+  'local_slug',
+]
+
+function csvCell(value) {
+  const compact = String(value ?? '').replace(/\s+/g, ' ').trim()
+  const neutralized = /^[=+\-@]/.test(compact) ? `'${compact}` : compact
+  return `"${neutralized.replace(/"/g, '""')}"`
+}
+
+export function feedlyReviewCsv(items, actions, context) {
+  if (items.length !== actions.length) throw new Error('CSV review requires one action per source item')
+  const rows = items.map((item, index) => {
+    const action = actions[index]
+    const mapped = action.link ? { link: action.link, warnings: action.warnings } : linkFromFeedlyItem(item, context)
+    const link = mapped.link
+    const status = action.action === 'write' ? 'eligible' : action.action
+    const detail = action.action === 'write' ? (mapped.warnings?.join('|') || 'new') : action.reason
+    return [
+      status,
+      detail,
+      link?.savedAt,
+      link?.publishedAt,
+      link?.title ?? plainText(item?.title),
+      link?.description,
+      link?.targetUrl,
+      link?.sourceTitle,
+      link?.author,
+      link?.tags?.join(' | '),
+      link?.feedlyId ?? action.feedlyId ?? item?.id,
+      link?.feedlyUrl,
+      link?.slug,
+    ].map(csvCell).join(',')
+  })
+  return `${reviewCsvColumns.map(csvCell).join(',')}\r\n${rows.join('\r\n')}\r\n`
+}
+
 async function writeFileAtomically(destination, contents) {
   await mkdir(path.dirname(destination), { recursive: true })
   const temporary = path.join(path.dirname(destination), `.${path.basename(destination)}.${randomUUID()}.tmp`)
@@ -290,6 +348,10 @@ async function writeFileAtomically(destination, contents) {
 async function writeReport(file, report) {
   const destination = path.resolve(file)
   await writeFileAtomically(destination, `${JSON.stringify(report, null, 2)}\n`)
+}
+
+async function writeReviewCsv(file, csv) {
+  await writeFileAtomically(path.resolve(file), csv)
 }
 
 async function main() {
@@ -321,6 +383,7 @@ async function main() {
       : item),
   }
   if (options.report) await writeReport(options.report, summary)
+  if (options.csv) await writeReviewCsv(options.csv, feedlyReviewCsv(source.items, actions, { streamId: source.streamId, importedAt }))
   console.log(`${options.dryRun ? 'dry-run' : 'done'}: ${summary.writes} ${options.dryRun ? 'would write' : 'written'}, ${summary.skips} skipped, ${summary.rejects} rejected, ${summary.total} total`)
 }
 

@@ -12,49 +12,91 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     <form class="search-form" action="/search/" method="get" role="search">
       <label class="visually-hidden" for="site-search">Search the site</label>
       <input class="search-input" id="site-search" name="q" type="search" placeholder="Search the site" autocomplete="off" />
+      <input id="search-type" name="type" type="hidden" disabled />
       <button class="search-button" type="submit">Search</button>
     </form>
     <noscript><p class="search-status">Search needs JavaScript. Browse Writing, Notes, Links, Projects, TILs, Found Quotes, or the RSS feed instead.</p></noscript>
     <h2 class="visually-hidden" id="search-results-heading">Search results</h2>
-    <p class="search-status" id="search-status" role="status">Loading search index…</p>
+    <p class="search-status" id="search-status" role="status" aria-live="polite">Loading search…</p>
     <button class="search-retry" id="search-retry" type="button" hidden>Retry loading search</button>
     <div class="archive-list" id="search-results" aria-labelledby="search-results-heading" aria-busy="true"></div>
+    <nav class="search-pagination" id="search-pagination" aria-label="Search result pages" hidden>
+      <button id="search-previous" type="button">← Previous</button>
+      <span class="meta" id="search-page"></span>
+      <button id="search-next" type="button">Next →</button>
+    </nav>
   </section>
   <script>
-    interface SearchItem {
-      type: string
-      title: string
-      description: string
-      content?: string
+    interface PagefindResultData {
       url: string
+      plain_excerpt: string
+      meta: Record<string, string | undefined>
     }
 
+    interface PagefindHandle {
+      data: () => Promise<PagefindResultData>
+    }
+
+    interface PagefindResponse {
+      results: PagefindHandle[]
+    }
+
+    interface PagefindApi {
+      init: () => Promise<void>
+      search: (query: string | null, options?: { filters?: Record<string, string> }) => Promise<PagefindResponse>
+      debouncedSearch: (query: string | null, options?: { filters?: Record<string, string> }, debounceMs?: number) => Promise<PagefindResponse | null>
+    }
+
+    const resultsPerPage = 12
     const input = document.querySelector<HTMLInputElement>('#site-search')
+    const typeInput = document.querySelector<HTMLInputElement>('#search-type')
     const results = document.querySelector<HTMLElement>('#search-results')
     const status = document.querySelector<HTMLElement>('#search-status')
     const retry = document.querySelector<HTMLButtonElement>('#search-retry')
     const form = document.querySelector<HTMLFormElement>('.search-form')
-    let items: SearchItem[] = []
+    const pagination = document.querySelector<HTMLElement>('#search-pagination')
+    const previous = document.querySelector<HTMLButtonElement>('#search-previous')
+    const next = document.querySelector<HTMLButtonElement>('#search-next')
+    const pageLabel = document.querySelector<HTMLElement>('#search-page')
+    const parameters = new URLSearchParams(window.location.search)
+    const initialQuery = parameters.get('q') ?? ''
+    const typeFilter = parameters.get('type') ?? ''
+    let pagefind: PagefindApi | undefined
+    let handles: PagefindHandle[] = []
+    let currentPage = 1
+    let currentQuery = initialQuery
 
-    const initialQuery = new URLSearchParams(window.location.search).get('q') ?? ''
     if (input) input.value = initialQuery
+    if (typeInput && typeFilter) {
+      typeInput.value = typeFilter
+      typeInput.disabled = false
+    }
 
     function setStatus(message: string) {
       if (status) status.textContent = message
     }
 
-    function render(query: string) {
+    function searchOptions() {
+      return typeFilter ? { filters: { type: typeFilter } } : undefined
+    }
+
+    function updateUrl(query: string) {
+      const url = new URL(window.location.href)
+      if (query.trim()) url.searchParams.set('q', query.trim())
+      else url.searchParams.delete('q')
+      if (typeFilter) url.searchParams.set('type', typeFilter)
+      window.history.replaceState({}, '', url)
+    }
+
+    async function renderPage(page: number) {
       if (!results) return
-      const q = query.toLowerCase().trim()
-      const matches = q
-        ? items.filter((item: SearchItem) => `${item.type} ${item.title} ${item.description} ${item.content ?? ''}`.toLowerCase().includes(q))
-        : items.slice(0, 12)
+      const totalPages = Math.max(1, Math.ceil(handles.length / resultsPerPage))
+      currentPage = Math.min(Math.max(page, 1), totalPages)
+      const start = (currentPage - 1) * resultsPerPage
+      results.setAttribute('aria-busy', 'true')
+      const items = await Promise.all(handles.slice(start, start + resultsPerPage).map((result) => result.data()))
 
-      setStatus(q
-        ? `${matches.length} ${matches.length === 1 ? 'result' : 'results'} for “${query.trim()}”.`
-        : `Showing ${matches.length} recent ${matches.length === 1 ? 'item' : 'items'}.`)
-
-      results.replaceChildren(...matches.map((item: SearchItem) => {
+      results.replaceChildren(...items.map((item) => {
         const link = document.createElement('a')
         link.className = 'search-result'
         link.href = item.url
@@ -62,56 +104,82 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         const body = document.createElement('div')
         const type = document.createElement('p')
         type.className = 'type-label'
-        type.textContent = item.type
+        type.textContent = item.meta.type || 'Site'
         const title = document.createElement('h3')
-        title.textContent = item.title
+        title.textContent = item.meta.title || item.url
         const description = document.createElement('p')
-        description.textContent = item.description
+        description.textContent = item.meta.description || item.plain_excerpt
         body.append(type, title, description)
 
         const arrow = document.createElement('span')
         arrow.className = 'project-action'
         arrow.setAttribute('aria-hidden', 'true')
         arrow.textContent = '→'
-
         link.append(body, arrow)
         return link
       }))
+
+      const scope = typeFilter ? `${typeFilter} ` : ''
+      setStatus(currentQuery.trim()
+        ? `${handles.length} ${scope}${handles.length === 1 ? 'result' : 'results'} for “${currentQuery.trim()}”.`
+        : `Showing ${items.length} of ${handles.length} indexed ${scope}${handles.length === 1 ? 'item' : 'items'}.`)
+      if (pagination && pageLabel && previous && next) {
+        pagination.hidden = handles.length <= resultsPerPage
+        pageLabel.textContent = `Page ${currentPage} of ${totalPages}`
+        previous.disabled = currentPage === 1
+        next.disabled = currentPage === totalPages
+      }
+      results.setAttribute('aria-busy', 'false')
+    }
+
+    async function runSearch(query: string, debounced = false) {
+      if (!pagefind) return
+      currentQuery = query
+      setStatus('Searching…')
+      const response = debounced
+        ? await pagefind.debouncedSearch(query.trim() || null, searchOptions(), 220)
+        : await pagefind.search(query.trim() || null, searchOptions())
+      if (!response) return
+      handles = response.results
+      await renderPage(1)
     }
 
     async function loadIndex() {
       if (results) results.setAttribute('aria-busy', 'true')
       if (retry) retry.hidden = true
-      setStatus('Loading search index…')
+      setStatus('Loading search…')
       try {
-        const response = await fetch('/search.json')
-        if (!response.ok) throw new Error(`Search index returned ${response.status}`)
-        const payload = await response.json()
-        if (!Array.isArray(payload)) throw new Error('Search index has an unexpected format')
-        items = payload as SearchItem[]
-        render(input?.value ?? '')
+        const pagefindPath = '/pagefind/pagefind.js'
+        pagefind = await import(/* @vite-ignore */ pagefindPath) as PagefindApi
+        await pagefind.init()
+        await runSearch(input?.value ?? '')
       } catch {
         results?.replaceChildren()
         setStatus('Search is temporarily unavailable. You can retry or browse the site sections above.')
         if (retry) retry.hidden = false
-      } finally {
         if (results) results.setAttribute('aria-busy', 'false')
       }
     }
 
     input?.addEventListener('input', () => {
-      if (items.length > 0) render(input.value)
+      updateUrl(input.value)
+      void runSearch(input.value, true)
     })
+    input?.addEventListener('focus', () => { void pagefind?.init() })
     form?.addEventListener('submit', (event) => {
       event.preventDefault()
       const query = input?.value ?? ''
-      const url = new URL(window.location.href)
-      if (query.trim()) url.searchParams.set('q', query.trim())
-      else url.searchParams.delete('q')
-      window.history.replaceState({}, '', url)
-      if (items.length > 0) render(query)
+      updateUrl(query)
+      void runSearch(query)
     })
+    previous?.addEventListener('click', () => { void renderPage(currentPage - 1) })
+    next?.addEventListener('click', () => { void renderPage(currentPage + 1) })
     retry?.addEventListener('click', loadIndex)
+    window.addEventListener('popstate', () => {
+      const query = new URLSearchParams(window.location.search).get('q') ?? ''
+      if (input) input.value = query
+      void runSearch(query)
+    })
     void loadIndex()
   </script>
 </BaseLayout>

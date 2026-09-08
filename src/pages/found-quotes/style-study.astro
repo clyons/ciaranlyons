@@ -3,8 +3,13 @@ import FoundQuote from '../../components/FoundQuote.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { getFoundQuotes } from '../../lib/content'
 
-const quotes = (await getFoundQuotes()).slice(0, 4)
 const longQuoteSlug = 'great-silence-and-technological-efficiency'
+const allQuotes = await getFoundQuotes()
+const longQuote = allQuotes.find((quote) => quote.slug === longQuoteSlug)
+const quotes = [
+  ...allQuotes.filter((quote) => quote.slug !== longQuoteSlug).slice(0, 3),
+  ...(longQuote ? [longQuote] : []),
+]
 ---
 
 <BaseLayout

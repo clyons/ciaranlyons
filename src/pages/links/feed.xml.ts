@@ -8,7 +8,7 @@ export const GET: APIRoute = async ({ site }) => {
     'Ciaran Lyons — Links',
     'Articles, ideas, and references saved by Ciaran Lyons.',
     requireSiteUrl(site),
-    links.map((item) => ({
+    links.slice(0, 50).map((item) => ({
       title: item.title,
       description: `${item.description}${item.description ? ' ' : ''}Original: ${item.targetUrl}`,
       link: item.url,

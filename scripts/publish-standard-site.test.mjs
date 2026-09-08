@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { addStandardUri, deterministicRkey, expandedWritingText, publicationRecord, standardDocumentRecord } from './publish-standard-site.mjs'
+import { addStandardUri, deterministicRkey, expandedWritingText, publicationRecord, selectDocuments, standardDocumentRecord } from './publish-standard-site.mjs'
 
 test('Standard.site record keys are stable and path-specific', () => {
   assert.equal(
@@ -37,6 +37,17 @@ test('Publication metadata preserves an uploaded icon reference', () => {
   const icon = { $type: 'blob', ref: { $link: 'bafytest' }, mimeType: 'image/jpeg', size: 123 }
   assert.deepEqual(publicationRecord(icon).icon, icon)
   assert.match(publicationRecord().description, /curated links/)
+})
+
+test('missing-only Standard.site batches are deterministic and capped', () => {
+  const entries = [
+    { path: '/links/z', standardUri: undefined },
+    { path: '/links/a', standardUri: 'at://did:plc:test/site.standard.document/a' },
+    { path: '/links/b', standardUri: undefined },
+    { path: '/links/c', standardUri: undefined },
+  ]
+  assert.deepEqual(selectDocuments(entries, { missingOnly: true, limit: 2 }).map((entry) => entry.path), ['/links/b', '/links/c'])
+  assert.deepEqual(entries.map((entry) => entry.path), ['/links/z', '/links/a', '/links/b', '/links/c'])
 })
 
 test('Standard.site Writing text expands Found Quotes in authored order', () => {

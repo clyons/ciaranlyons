@@ -1,0 +1,13 @@
+---
+title: "How to rescue baby bears trapped in a dumpster"
+description: ""
+date: 2013-06-04
+savedAt: "2013-06-04T01:47:22.630Z"
+dateSource: saved
+publishedAt: "2012-07-27T15:34:37.000Z"
+targetUrl: "http://kottke.org/12/07/how-to-rescue-baby-bears-trapped-in-a-dumpster"
+sourceTitle: "kottke.org"
+author: "Jason Kottke"
+feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_138c9133ac8:32087f:9e04b0a9"
+tags: ["Saved For Later"]
+---

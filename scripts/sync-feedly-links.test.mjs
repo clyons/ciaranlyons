@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { collectFeedlyStream, linkFromFeedlyItem, linkMarkdown, normalizeTargetUrl, planLinkWrites, selectTargetUrl, stableLinkSlug } from './sync-feedly-links.mjs'
+import { collectFeedlyStream, feedlyReviewCsv, linkFromFeedlyItem, linkMarkdown, normalizeTargetUrl, planLinkWrites, selectTargetUrl, stableLinkSlug } from './sync-feedly-links.mjs'
 
 test('target URLs prefer canonical, remove tracking and fragments, and reject unsafe protocols', () => {
-  assert.equal(selectTargetUrl({ canonicalUrl: 'https://EXAMPLE.com:443/post?utm_source=x&keep=1#part' }), 'https://example.com/post?keep=1')
+  assert.equal(selectTargetUrl({ canonicalUrl: 'https://EXAMPLE.com:443/post?utm_source=x&access_token=private&keep=1#part' }), 'https://example.com/post?keep=1')
   assert.equal(selectTargetUrl({ canonicalUrl: 'javascript:alert(1)', alternate: [{ type: 'text/html', href: 'https://example.org/fallback' }] }), 'https://example.org/fallback')
   assert.equal(selectTargetUrl({ alternate: [{ type: 'application/json', href: 'https://example.org/nope' }] }), undefined)
   assert.throws(() => normalizeTargetUrl('https://user:pass@example.com'), /without credentials/)
@@ -27,6 +27,18 @@ test('Feedly items map save dates, metadata, sanitized excerpts, and stable slug
   assert.deepEqual(first.link.tags, ['Design'])
   assert.equal(first.link.slug, second.link.slug)
   assert.equal(first.link.slug, stableLinkSlug('A useful link', 'entry-one'))
+})
+
+test('Feedly text decoding handles nested HTML entities', () => {
+  const result = linkFromFeedlyItem({
+    id: 'nested-entities',
+    title: 'Apple&amp;#39;s update',
+    canonicalUrl: 'https://example.com/nested',
+    summary: { content: 'It&amp;rsquo;s readable.' },
+  }, { importedAt: '2026-09-07T10:00:00Z' })
+
+  assert.equal(result.link.title, "Apple's update")
+  assert.equal(result.link.description, 'It’s readable.')
 })
 
 test('authenticated saved-stream items use their top-level action timestamp', () => {
@@ -67,6 +79,21 @@ test('write planning rejects invalid items and deduplicates IDs and normalized U
     { id: 'three', title: 'Three', canonicalUrl: 'javascript:bad' },
   ], { importedAt: '2026-09-07T10:00:00Z' })
   assert.deepEqual(actions.map((item) => item.action), ['write', 'skip', 'reject'])
+})
+
+test('review CSV is one RFC 4180 row per item and neutralizes spreadsheet formulas', () => {
+  const items = [
+    { id: '=unsafe-id', title: '+Formula, "title"', canonicalUrl: 'https://example.com/one', author: '@author' },
+    { id: 'bad', title: 'Bad', canonicalUrl: 'javascript:bad' },
+  ]
+  const context = { importedAt: '2026-09-07T10:00:00Z' }
+  const actions = planLinkWrites(items, context)
+  const csv = feedlyReviewCsv(items, actions, context)
+  assert.equal(csv.trimEnd().split('\r\n').length, 3)
+  assert.match(csv, /"'\+Formula, ""title"""/)
+  assert.match(csv, /"'@author"/)
+  assert.match(csv, /"'=unsafe-id"/)
+  assert.doesNotMatch(csv, /javascript:bad/)
 })
 
 test('Feedly collection follows continuations and reports repeated cursors', async () => {

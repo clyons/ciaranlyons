@@ -14,7 +14,7 @@ const requestTimeoutMs = 10_000
 const maxJsonBytes = 2 * 1024 * 1024
 
 function usage() {
-  console.log('Usage: node scripts/publish-standard-site.mjs [--dry-run] [--type writing|links|all] [--slug SLUG] [--publication-uri AT_URI]')
+  console.log('Usage: node scripts/publish-standard-site.mjs [--dry-run] [--type writing|links|all] [--slug SLUG] [--missing-only] [--limit N] [--publication-uri AT_URI]')
 }
 
 function parseArgs(argv) {
@@ -22,6 +22,8 @@ function parseArgs(argv) {
     dryRun: false,
     type: 'writing',
     slug: undefined,
+    missingOnly: false,
+    limit: undefined,
     publicationUri: process.env.STANDARD_SITE_PUBLICATION_AT_URI?.trim() || undefined,
   }
 
@@ -30,6 +32,8 @@ function parseArgs(argv) {
     if (arg === '--dry-run') options.dryRun = true
     else if (arg === '--type') options.type = argv[++index]
     else if (arg === '--slug') options.slug = argv[++index]
+    else if (arg === '--missing-only') options.missingOnly = true
+    else if (arg === '--limit') options.limit = Number(argv[++index])
     else if (arg === '--publication-uri') options.publicationUri = argv[++index]
     else if (arg === '--help' || arg === '-h') {
       usage()
@@ -40,6 +44,8 @@ function parseArgs(argv) {
   }
 
   if (!['writing', 'links', 'all'].includes(options.type)) throw new Error('--type must be writing, links, or all')
+  if (options.limit !== undefined && (!Number.isInteger(options.limit) || options.limit < 1)) throw new Error('--limit must be a positive integer')
+  if (options.missingOnly && options.type !== 'links') throw new Error('--missing-only requires --type links')
 
   return options
 }
@@ -271,6 +277,13 @@ async function loadDocuments(type, slug) {
   return entries
 }
 
+export function selectDocuments(entries, { missingOnly = false, limit } = {}) {
+  const selected = [...entries]
+    .sort((a, b) => a.path.localeCompare(b.path))
+    .filter((entry) => !missingOnly || !entry.standardUri)
+  return limit === undefined ? selected : selected.slice(0, limit)
+}
+
 async function loadFoundQuotes() {
   const files = await fg('content/found-quotes/*.md', { cwd: process.cwd(), absolute: true })
   return Promise.all(files.map(async (file) => {
@@ -321,7 +334,9 @@ async function findPublication(pds, did) {
 async function main() {
   const options = parseArgs(process.argv.slice(2))
   const handle = process.env.ATPROTO_HANDLE?.trim() || process.env.BSKY_HANDLE?.trim() || 'ciaranlyons.com'
-  const [entries, quotes] = await Promise.all([loadDocuments(options.type, options.slug), loadFoundQuotes()])
+  const [loadedEntries, quotes] = await Promise.all([loadDocuments(options.type, options.slug), loadFoundQuotes()])
+  const entries = selectDocuments(loadedEntries, options)
+  if (entries.length === 0) throw new Error(options.missingOnly ? 'No Link documents are missing standardUri' : 'No documents selected')
   for (const entry of entries) {
     if (entry.kind === 'writing') expandedWritingText(entry, quotes)
   }
@@ -338,6 +353,7 @@ async function main() {
   }
 
   if (options.dryRun) {
+    console.log(`selected ${entries.length} ${entries.length === 1 ? 'document' : 'documents'}`)
     console.log(`${publicationUri ? 'would-use' : 'would-create'} publication ${publicationUri ?? siteUrl}`)
     for (const entry of entries) console.log(`${entry.standardUri ? 'would-update' : 'would-create'} ${entry.kind} document ${entry.path}`)
     return

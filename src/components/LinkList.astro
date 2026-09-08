@@ -14,7 +14,7 @@ const { links } = Astro.props
     const hostname = new URL(entry.targetUrl).hostname.replace(/^www\./, '')
     const attribution = [entry.sourceTitle ?? hostname, entry.author].filter(Boolean).join(' · ')
     return (
-      <article class="link-row" data-search-text={`${entry.title} ${entry.description} ${attribution} ${entry.tags.join(' ')}`}>
+      <article class="link-row" data-link-row>
         <div class="link-row__date">
           <time datetime={entry.savedAt ?? entry.date}>{formatDate(entry.date, { month: 'short', day: 'numeric', year: 'numeric' })}</time>
         </div>

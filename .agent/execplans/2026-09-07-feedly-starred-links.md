@@ -34,9 +34,13 @@ The completed result is observable by:
 - [x] (2026-09-07 23:23Z) Used Ciaran's explicitly authorized logged-in Chrome session for a one-time, local-only export through Feedly's paginated stream endpoint. The gitignored mode-0600 export contains 2,633 unique Feedly entries across 27 pages, terminates without another continuation, and contains no persisted browser token, cookie, or authorization header.
 - [x] (2026-09-07 23:27Z) Dry-ran the real export. The importer planned 2,626 writes, skipped seven normalized-URL duplicates, rejected none, and revealed that the web stream response supplies save time as a top-level `actionTimestamp`; updated the parser and regression coverage accordingly.
 - [x] (2026-09-08 03:52Z) Measured the real collection's static route shape: 2,626 detail pages, 1,059 day archives, 151 month archives, 14 year archives, and the root index would produce 3,851 Link HTML pages before pagination. Confirmed this remains below Cloudflare Pages' current 20,000-file free-plan limit, while the current all-rows DOM filter and monolithic `search.json` do not remain acceptable at this size.
-- [ ] Harden the static implementation for the real archive before promotion: paginate Link indexes, replace monolithic browser search with Pagefind, cap feeds, and record full-data build, artifact, browser, and preview measurements.
-- [ ] Make Standard.site publication resumable in deliberate missing-only batches, prove a one-record canary, and keep every batch separate from site deployment and Bluesky posting.
-- [ ] Production follow-up: review and import the real history, remove mock entries, and explicitly publish reviewed Standard.site records. The private-to-public promotion remains outside the mock-preview scope and requires explicit review.
+- [x] (2026-09-08 04:03Z) Opened and validated checkpoint PR #41, merged the latest `origin/main` deployment and Found Quotes work into the feature branch, reran 56 unit tests plus lint and TypeScript, and pushed checkpoint merge `e4b7a93` without rewriting the shared branch.
+- [x] (2026-09-08 04:47Z) Hardened the real archive locally: all root/year/month/day collections paginate at 50 rows, feeds cap Links at 50, Pagefind replaces the eager JSON index, search is URL-addressable and bounded to 12 rendered results, and the artifact validator enforces scale limits.
+- [x] (2026-09-08 04:47Z) Added deterministic Standard.site `--missing-only --limit N` selection and proved a credential-free one-document dry run against Ciaran's existing publication. The live canary remains intentionally pending until its local URL is deployed.
+- [x] (2026-09-08 04:47Z) Imported the reviewed history locally and removed all mocks. Eight saved Stratechery URLs contained an `access_token`; normalization now strips that key, revealing one additional duplicate. The final set is 2,625 public candidates, eight duplicates, zero rejects, and zero date fallbacks.
+- [x] (2026-09-08 04:47Z) Completed local scale, privacy, interaction, and visual QA. Two clean production-shaped builds completed in 8.02s and 13.34s; the final artifact has 6,794 files/53,632,735 bytes, 2,625 Link detail pages, 1,363 Link archive pages, at most 50 rows per archive, and a 2,493,244-byte Pagefind bundle. All 64 Playwright checks pass on desktop/mobile, including search and no-JavaScript pagination.
+- [ ] Public promotion checkpoint: commit and push the 2,625 real Link files only after Ciaran confirms that the reviewed private Feedly history may become public, then dispatch the repository-owned preview workflow and smoke-test its stable branch URL.
+- [ ] ATproto follow-up: after the Link URLs are deployed and an app password is available, publish and verify one Standard.site canary, then use separately observed missing-only batches of at most 100. No Bluesky feed posts or bookmarks are in scope.
 
 ## Surprises & Discoveries
 
@@ -62,7 +66,16 @@ The completed result is observable by:
   Evidence: `.github/workflows/deploy-production.yml` and `.github/workflows/deploy-preview.yml` run `npm run build` before `wrangler pages deploy`. The relevant controls are therefore the repository's measured workflow duration and Cloudflare's uploaded file/asset limits. A clean full-data build must be treated as an acceptance measurement, not assumed from the three-record mock build.
 
 - Observation: Pagefind preserves static hosting while moving full-text search to a generated, chunked index.
-  Evidence: Pagefind runs after the static generator, stores its search bundle with the built site, and loads matching index/result chunks on demand. Its published target includes sites with tens of thousands of pages, so the 2,626-Link collection is within the intended shape without introducing an application database.
+  Evidence: Pagefind runs after the static generator, stores its search bundle with the built site, and loads matching index/result chunks on demand. The final local build indexed 2,660 useful pages and 17,530 words into a 2,493,268-byte bundle, so the 2,625-Link collection does not require an application database.
+
+- Observation: Eight Feedly destinations carried a subscriber `access_token` query parameter; stripping it exposed one additional duplicate URL.
+  Evidence: A pre-promotion scan found the exact sensitive key on eight Stratechery destinations. The importer now removes that key alongside known tracking keys, regression coverage asserts the behavior, generated Link files and `dist/` contain no occurrence, and the final accounting changed from 2,626 candidates/seven duplicates to 2,625 candidates/eight duplicates.
+
+- Observation: Reusing a fixed Playwright port can silently test another active Conductor workspace.
+  Evidence: Port 4322 belonged to the `nairobi` workspace, so initial checks loaded its older site. `playwright.config.ts` now derives its default from Conductor's allocated port, permits an explicit `PLAYWRIGHT_PORT` override, and no longer opts into cross-workspace server reuse.
+
+- Observation: Recent Found Quote additions made two pre-existing UI assertions depend on stale collection order and counts.
+  Evidence: The merged `main` content contains 26 quotes, and the newest quote is no longer the 2026-09-07 Ben Thompson example. The type-study route now selects its long reading exemplar explicitly and the semantics test selects the intended quote by content rather than array position.
 
 - Observation: The repository already materializes remote Bluesky content into local Markdown with bounded responses, safe destination checks, atomic writes, dry-run behavior, and skip-on-rerun semantics.
   Evidence: `scripts/sync-bsky-notes.mjs` provides the local precedent. Feedly ingestion should share its safety properties without coupling the two sources.
@@ -92,8 +105,12 @@ The completed result is observable by:
   Rationale: Local files make the collection reviewable, editable, portable, and buildable without Feedly or ATproto availability. This matches the existing Notes materialization architecture.
   Date/Author: 2026-09-07 / Codex
 
-- Decision: Keep Links static for the real backfill; do not add D1 solely because the collection contains 2,626 publishable items.
+- Decision: Keep Links static for the real backfill; do not add D1 solely because the collection contains roughly 2,600 publishable items.
   Rationale: The projected artifact remains well below the current Pages file limit, static files retain the repository's portability and offline build guarantees, and no current reader interaction requires server-side state. Revisit D1 plus a narrowly scoped Pages Function only if online editing/private states or server-side facets become requirements, two representative clean builds exceed 10 minutes, or the artifact approaches 15,000 files. The performance target is under five minutes for the clean production-shaped build plus Pagefind, keeping CI feedback reasonable relative to the current 1m8s mock-preview baseline.
+  Date/Author: 2026-09-08 / Codex
+
+- Decision: Remove an exact `access_token` query key from imported destinations and deduplicate again after normalization.
+  Rationale: A subscriber token is credential material, not a meaningful part of a public canonical URL. Removing it before duplicate comparison prevents publishing secrets and correctly collapses tokenized and non-tokenized versions of the same article. Other unknown query semantics remain preserved.
   Date/Author: 2026-09-08 / Codex
 
 - Decision: Paginate rendered Link collections at 50 entries per page and replace both the Links DOM filter and whole-site `search.json` client search with Pagefind.
@@ -105,7 +122,7 @@ The completed result is observable by:
   Date/Author: 2026-09-08 / Codex
 
 - Decision: Publish Standard.site Link documents through a canary followed by resumable missing-only batches of at most 100 records.
-  Rationale: Deterministic record keys make individual writes idempotent, but a 2,626-record one-shot run is needlessly difficult to observe and recover. Each successful write records `standardUri` locally; subsequent batches select only entries without one. No batch creates `app.bsky.feed.post` or `app.bsky.bookmark` records.
+  Rationale: Deterministic record keys make individual writes idempotent, but a 2,625-record one-shot run is needlessly difficult to observe and recover. Each successful write records `standardUri` locally; subsequent batches select only entries without one. No batch creates `app.bsky.feed.post` or `app.bsky.bookmark` records.
   Date/Author: 2026-09-08 / Codex
 
 - Decision: Separate acquisition from normalization by supporting both the Feedly API and a JSON-file input containing the same stream response shape.
@@ -160,9 +177,15 @@ The site now exposes the collection through `/links/`, stable year/month/day/det
 
 The Standard.site publisher now supports `--type writing|links|all`, preserves Writing as its default, maps Links to their local canonical paths, and reuses or uploads the publication icon. A public, credential-free dry run resolved Ciaran's existing publication and planned three Link documents. No mock Standard.site record, Bluesky post, or Bluesky bookmark was created.
 
-Real Feedly acquisition is now complete as a one-time local, gitignored export: 2,633 unique entries across 27 continuation pages. A no-write audit plans 2,626 Link files, skips seven duplicate normalized destinations, and rejects none. The authenticated stream shape exposed a top-level save action timestamp on every item; the importer now preserves it with regression coverage. No real entry has yet been promoted from the private export into Git-tracked public content, and no real Standard.site record has been written. That reviewable private-to-public step remains the production follow-up.
+Real Feedly acquisition and local import are complete. The gitignored export contains 2,633 unique entries across 27 continuation pages. After stripping known tracking parameters and eight exact subscriber-token parameters, the final audit plans 2,625 public Link files, skips eight duplicate destinations, rejects none, and uses Feedly save time for every eligible item. All three mock files have been removed. The import is idempotent: a repeat dry run plans zero writes and accounts for all 2,633 source items as existing or duplicate.
 
-The real-data scale review changes the remaining implementation order without changing the storage choice. Static generation remains the approved architecture, but the three-record mock interface is not ready to receive 2,626 rows: pagination and Pagefind must land first, and the real-data build must be timed and counted before preview deployment. D1 remains a documented escalation path rather than a dependency. Standard.site publication must likewise move from a canary to missing-only batches instead of one unbounded historical write.
+The scale-hardening architecture is implemented and measured. Static generation remains the approved architecture: Pagefind provides chunked search; all Link collection pages are bounded at 50 rows with static previous/next navigation; search renders at most 12 results; and feeds contain the latest 50 Links. The final measured artifact has 6,794 files and is 53,632,735 bytes, with a largest asset of 3,049,958 bytes. The two clean builds completed in 8.02s and 13.34s, dramatically below the ten-minute escalation threshold. D1 remains an optional future read model rather than a dependency.
+
+The UI keeps the “curated, not collected” editorial thesis at full scale. Desktop and mobile screenshots show the 2,625-Link count, 365 sources, searchable year navigation, and a calm first viewport rather than thousands of rows. All 64 Playwright checks pass, including Pagefind query/filter/history behavior, archive next/previous links, keyboard structure, one-row mobile navigation, and no-JavaScript paging.
+
+Standard.site publication is now operationally resumable. A public, credential-free dry run resolved the existing publication and selected exactly one deterministic missing Link. Live publication has not run: the required order is to approve and deploy the local public pages, then use one explicit canary followed by missing-only batches of at most 100. No Standard.site document, Bluesky post, or Bluesky bookmark was created in this phase.
+
+The only remaining site milestone is the deliberate private-to-public boundary. The 2,625 real Markdown files currently exist only in this local worktree; they have not been pushed to GitHub or Cloudflare. Once Ciaran confirms promotion, commit/push them to PR #41, dispatch the manual preview workflow from `main` for `clyons/feedly-stars-to-til`, and smoke-test the stable branch URL. Production remains out of scope until review and merge.
 
 During implementation, `main` gained repository-owned GitHub Actions deployments to Cloudflare Pages. The feature branch was rebased onto that deployment contract, and the final preview was requested through `.github/workflows/deploy-preview.yml` rather than an artifact-copy branch.
 
@@ -184,7 +207,7 @@ The workflow completed in 1m8s after checkout, lint, unit tests, and a clean bui
 
 This repository is an Astro 7 static site. It reads Markdown from `content/` during the build and generates date-based pages, feeds, and, currently, `search.json`.
 
-The real Feedly export contains 2,633 unique entry IDs. URL normalization leaves 2,626 public candidates and seven duplicate destinations. With the existing archive topology, those candidates imply 2,626 detail pages, 1,059 day archives, 151 month archives, 14 year archives, and one root index: 3,851 Link HTML pages before paginated index variants. This is a valid static workload, but it makes `src/pages/links/index.astro`'s all-row rendering and `src/pages/search.astro`'s eager whole-index download unacceptable. The scale-hardening milestone retains static output while bounding archive documents and generating a Pagefind bundle after Astro builds.
+The real Feedly export contains 2,633 unique entry IDs. Final URL normalization leaves 2,625 public candidates and eight duplicate destinations. The implemented pagination adds static page variants where a collection exceeds 50 entries; the current artifact contains 2,625 Link detail pages and 1,363 Link archive pages, with no archive above 50 rows. Pagefind replaces the former eager `search.json` payload and indexes detail content after Astro builds.
 
 The closest content type is TIL:
 
@@ -353,7 +376,7 @@ Run a complete dry run against the proven Feedly source and write the audit repo
 
 After review, run the real import once. Inspect a representative spread of old/new entries and every warning class. Commit only the generated metadata necessary for public Link posts; do not commit the audit report, token, raw Feedly responses, cookies, or full third-party content.
 
-Run all validation and build output checks, including the scale measurements from Milestone 5. Publish Standard.site documents only after the Git diff is approved and the local Link URLs are deployed: first with `--type links --slug <one-slug>`, then with repeated `--type links --missing-only --limit 100` batches. Verify and record the canary plus each batch's counts; do not create one unbounded 2,626-record operation. Update `docs/operations/import-feedly-links.md` with local browser-session/export handling, CSV review, dry-run/review/import, rerun behavior, file input, pagination/Pagefind behavior, batched Standard.site publication, and recovery. Update the main publishing documentation only where it must mention Links.
+Run all validation and build output checks, including the scale measurements from Milestone 5. Publish Standard.site documents only after the Git diff is approved and the local Link URLs are deployed: first with `--type links --slug <one-slug>`, then with repeated `--type links --missing-only --limit 100` batches. Verify and record the canary plus each batch's counts; do not create one unbounded 2,625-record operation. Update `docs/operations/import-feedly-links.md` with local browser-session/export handling, CSV review, dry-run/review/import, rerun behavior, file input, pagination/Pagefind behavior, batched Standard.site publication, and recovery. Update the main publishing documentation only where it must mention Links.
 
 ## Concrete Steps
 
@@ -396,7 +419,7 @@ Before the live backfill:
       .context/feedly-saved-articles.csv
     wc -l .context/feedly-saved-articles.csv
 
-Expected result: the report and CSV account for 2,633 source items as 2,626 eligible, seven duplicate destinations, and zero rejected; all eligible rows use `dateSource: saved`; the CSV contains 2,634 physical lines including its header; continuation ends naturally; all three artifacts are mode `0600`; no content file changes.
+Expected result: the report and CSV account for 2,633 source items as 2,625 eligible, eight duplicate destinations, and zero rejected; all eligible rows use `dateSource: saved`; the CSV contains one RFC 4180 record per source item plus its header (quoted fields may legitimately contain physical newlines); continuation ends naturally; all three artifacts are mode `0600`; no content file changes. The audit must contain no credential-bearing destination URL.
 
 After reviewing `.context/feedly-links-backfill.json`, perform the local import:
 
@@ -557,10 +580,13 @@ Final mock-preview validation evidence:
 Real-data pre-promotion evidence:
 
 - local browser-session export: 2,633 unique Feedly IDs over 27 continuation pages; final page has no continuation; raw JSON is mode `0600` under `.context/`;
-- review CSV: 2,633 data rows plus one header, 14 metadata-only columns, mode `0600`, no credential markers, and no malformed row shapes;
-- corrected importer dry run: 2,626 would write, seven duplicate destinations skipped, zero rejected, all 2,626 eligible items use `dateSource: saved`, and zero warnings;
-- projected static route shape before pagination: 2,626 details + 1,059 days + 151 months + 14 years + one root index = 3,851 Link HTML pages;
-- regression validation after supporting top-level `actionTimestamp`: `npm test` passed 45 tests and `git diff --check` passed.
+- review CSV: one record for each of 2,633 source items plus one header, 13 metadata-only columns, mode `0600`, no credential markers, and no malformed record shapes;
+- final importer audit: 2,625 eligible, eight duplicate destinations skipped, zero rejected, all eligible items use `dateSource: saved`, and zero warnings;
+- local import: 2,625 real Markdown files, zero mock entries, and a repeat run with zero writes; generated source and `dist/` contain no `access_token`, authorization header, Feedly credential variable, or `fullContent` field;
+- pagination/Pagefind artifact: 2,625 Link details + 1,363 Link archive pages, 50 maximum rows per archive, 50 Links in each feed, 2,709 Pagefind files/2,493,244 bytes, and 6,794 total files/53,632,735 bytes;
+- clean builds: 8.02s and 13.34s wall time, each below the five-minute target and ten-minute escalation threshold; largest asset 3,049,958 bytes;
+- regression validation: `npm test` passed 62 tests, `npm run lint` checked 93 Astro files with zero diagnostics, `npx tsc --noEmit` exited 0, and `npm run test:ui` passed 64 checks after reviewed desktop/mobile snapshot updates;
+- Standard.site dry run: `--type links --missing-only --limit 1` resolved the existing publication and selected exactly one deterministic Link path without credentials or writes.
 
 ## Interfaces and Dependencies
 
@@ -648,3 +674,4 @@ No credential is required for a normal static build, local content read, fixture
 - 2026-09-07: Built and smoke-tested an interim branch-backed preview after Cloudflare connector authentication and employer-scoped Vercel credentials ruled out those direct hosts. While implementation was in progress, `main` gained a repository-owned Cloudflare Pages workflow; rebased the feature onto that contract so the final preview can use the sole approved deploy controller.
 - 2026-09-07: Dispatched the repository-owned preview workflow for `clyons/feedly-stars-to-til`; it completed successfully in 1m8s and published stable and immutable Cloudflare Pages URLs. Verified index, assets, detail, feed, mock labeling, search, navigation, and mobile overflow on the public deployment.
 - 2026-09-08: Recorded the complete 2,633-item acquisition and corrected top-level save timestamps. Reassessed the 2,626 publishable Links as a projected 3,851-page static workload. Kept Astro/Cloudflare Pages and Git-tracked Markdown, added a required pagination/Pagefind/feed-cap/full-build milestone before promotion, defined objective D1 escalation thresholds, added CSV-first review, and changed Standard.site backfill to a canary followed by resumable missing-only batches of at most 100.
+- 2026-09-08: Merged the latest `origin/main` into the checkpoint branch and pushed merge commit `e4b7a93`. Implemented 50-row static pagination, Pagefind search, feed caps, artifact validation, Standard.site missing-only batches, and Conductor-aware Playwright ports. Imported and locally validated 2,625 real Links after stripping eight subscriber-token parameters and collapsing the resulting extra duplicate. Recorded build, artifact, privacy, unit, TypeScript, visual, interaction, and ATproto dry-run evidence. Left public promotion, preview deployment, and live ATproto publication behind their explicit review/deployment boundaries.

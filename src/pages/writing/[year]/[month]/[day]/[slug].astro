@@ -20,6 +20,8 @@ const { entry, embeddedQuotes } = Astro.props
   description={entry.description}
   canonical={entry.url}
   standardDocumentUri={entry.standardUri}
+  pagefindBody
+  pagefind={{ type: 'Writing', year: entry.year, date: entry.date }}
 >
   <article class="article-shell">
     <header class="article-header">

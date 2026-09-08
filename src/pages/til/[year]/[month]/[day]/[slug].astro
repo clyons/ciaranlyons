@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props
 ---
 
-<BaseLayout title={entry.title} description={entry.description} canonical={entry.url}>
+<BaseLayout title={entry.title} description={entry.description} canonical={entry.url} pagefindBody pagefind={{ type: 'TIL', year: entry.year, tags: entry.tags, date: entry.date }}>
   <article class="article-shell">
     <header class="article-header">
       <p class="date">{entry.topic} - <time datetime={entry.date}>{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>

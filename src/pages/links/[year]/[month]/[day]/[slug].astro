@@ -22,6 +22,8 @@ const source = entry.sourceTitle ?? hostname
   canonical={entry.url}
   standardDocumentUri={entry.standardUri}
   sectionFeed={{ href: '/links/feed.xml', title: 'Ciaran Lyons — Links' }}
+  pagefindBody
+  pagefind={{ type: 'Link', year: entry.year, source, tags: entry.tags, date: entry.savedAt ?? entry.date }}
 >
   <article class="article-shell link-detail">
     <header class="article-header">

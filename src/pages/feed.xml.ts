@@ -8,7 +8,7 @@ export const GET: APIRoute = async ({ site }) => {
   const items = [
     ...writing.map((item) => ({ title: item.title, description: item.description, link: item.url, pubDate: item.date })),
     ...notes.map((item) => ({ title: noteTitle(item), description: item.text, link: item.url, pubDate: item.date })),
-    ...links.map((item) => ({ title: `Link: ${item.title}`, description: `${item.description}${item.description ? ' ' : ''}Original: ${item.targetUrl}`, link: item.url, pubDate: item.savedAt ?? item.date })),
+    ...links.slice(0, 50).map((item) => ({ title: `Link: ${item.title}`, description: `${item.description}${item.description ? ' ' : ''}Original: ${item.targetUrl}`, link: item.url, pubDate: item.savedAt ?? item.date })),
     ...til.map((item) => ({ title: `TIL: ${item.title}`, description: item.description, link: item.url, pubDate: item.date })),
     ...foundQuotes.map((quote) => ({ title: foundQuoteTitle(quote), description: `${quote.text} — ${quote.attribution}, ${quote.source}`, link: quote.url, pubDate: quote.date })),
   ].sort((a, b) => (b.pubDate ?? '').localeCompare(a.pubDate ?? ''))
