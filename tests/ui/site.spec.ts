@@ -1,4 +1,7 @@
 import { expect, test } from '@playwright/test'
+import fg from 'fast-glob'
+
+const foundQuoteCount = (await fg('content/found-quotes/*.md')).length
 
 const coreRoutes = [
   ['home', '/'],
@@ -27,10 +30,8 @@ test('Found Quotes are discoverable as a project without changing primary naviga
 test('Found Quote archive and permalink preserve quotation semantics', async ({ page }) => {
   await page.goto('/found-quotes/')
 
-  const quoteFigures = page.locator('.found-quotes-list figure')
-  const quoteBlocks = page.locator('.found-quotes-list blockquote')
-  expect(await quoteFigures.count()).toBeGreaterThan(0)
-  expect(await quoteBlocks.count()).toBe(await quoteFigures.count())
+  await expect(page.locator('.found-quotes-list figure')).toHaveCount(foundQuoteCount)
+  await expect(page.locator('.found-quotes-list blockquote')).toHaveCount(foundQuoteCount)
   await expect(page.locator('.preview-label')).toHaveCount(0)
   const liveQuote = page.locator('.found-quotes-list figure').filter({ hasText: '‘Live’ is the shortcut to FOMO.' })
   await expect(liveQuote).toHaveCount(1)
