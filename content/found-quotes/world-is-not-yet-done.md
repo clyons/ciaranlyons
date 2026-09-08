@@ -1,6 +1,6 @@
 ---
 attribution: Frank Chimero
-source: FrankChimero.com (original page unidentified)
+source: FrankChimero.com
 sourceUrl: https://frankchimero.com/
 date: 2026-09-07
 tags:
