@@ -9,4 +9,4 @@ tags:
   - sustainability
 ---
 
-so far there's been no technology that we've invented that we have not been able to invent a greener version of. So I don't think that right now the technology that we have is necessarily the most compatible with life but because we can always make the Technium more compatible it suggests that the Technium is not inherently incompatible with life, that that compatibility is there, resident; we have not yet expressed it entirely.
+So far there's been no technology that we've invented that we have not been able to invent a greener version of. So I don't think that right now the technology that we have is necessarily the most compatible with life but because we can always make the Technium more compatible it suggests that the Technium is not inherently incompatible with life, that that compatibility is there, resident; we have not yet expressed it entirely.

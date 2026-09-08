@@ -51,6 +51,31 @@ test('Found Quote archive and permalink preserve quotation semantics', async ({ 
   await expect(page.getByRole('link', { name: 'Permalink to found quote from Ben Thompson' })).toHaveAttribute('rel', 'bookmark')
 })
 
+test('home gives the Found Quotes heading room before the first quote rule', async ({ page }) => {
+  await page.goto('/')
+
+  const heading = page.locator('.home-found-quotes .section-heading')
+  expect(Number.parseFloat(await heading.evaluate((element) => getComputedStyle(element).marginBottom))).toBeGreaterThan(0)
+  await expect(page.locator('.home-found-quotes')).toHaveCSS('border-bottom-width', '0px')
+  await expect(heading.getByRole('link')).toHaveCount(0)
+})
+
+test('home foregrounds the pinned Writing entry', async ({ page }) => {
+  await page.goto('/')
+
+  const featuredWriting = page.locator('.featured-essay')
+  await expect(featuredWriting.getByText('Featured writing', { exact: true })).toBeVisible()
+  await expect(featuredWriting.getByRole('heading', { level: 2 })).toHaveText('On Ownership')
+  await expect(featuredWriting.getByRole('link', { name: 'Read the essay' })).toHaveAttribute('href', '/writing/2026/08/08/on-ownership/')
+})
+
+test('Writing collections flow directly into their Found Quotes', async ({ page }) => {
+  await page.goto('/writing/2026/09/07/found-quotes-wagmi/')
+
+  await expect(page.locator('.writing-found-quotes')).toHaveCSS('border-top-width', '0px')
+  await expect(page.locator('.writing-found-quotes')).toHaveCSS('padding-top', '0px')
+})
+
 test('Found Quote type study gives the long exemplar a reading scale', async ({ page }) => {
   await page.goto('/found-quotes/style-study/')
 
@@ -224,6 +249,8 @@ test('note permalinks render as native posts rather than quotations', async ({ p
   const linkedWriting = page.getByRole('link', { name: /Writing Found Quotes: WAGMI/ })
   await expect(linkedWriting).toHaveAttribute('href', '/writing/2026/09/07/found-quotes-wagmi/')
   await expect(linkedWriting).toContainText('A handful of quotes about technology and making it better.')
+  await expect(linkedWriting).toHaveCSS('border-bottom-width', '0px')
+  await expect(page.locator('.note-post-footer')).toHaveCSS('border-top-width', '1px')
 })
 
 test('note detail matches its approved visual baseline', async ({ page }) => {
@@ -266,7 +293,17 @@ for (const path of ['/writing/', '/notes/', '/projects/', '/til/']) {
 
 test('links use one divider between tools and the first result', async ({ page }) => {
   await page.goto('/links/')
+
+  const linksHeader = page.getByRole('heading', { name: 'Links', exact: true }).locator('..')
+  await expect(linksHeader).toHaveAttribute('data-link-count', /^[1-9]\d*$/)
+  await expect(linksHeader).toHaveAttribute('data-source-count', /^[1-9]\d*$/)
+  await expect(page.getByText('Curated, not collected', { exact: true })).toHaveCount(0)
+  await expect(page.getByText(/links · .*sources/i)).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: 'Recently saved' })).toHaveCount(0)
   await expect(page.locator('.links-archive .link-row').first()).toHaveCSS('border-top-width', '0px')
+
+  const toolWidths = await page.locator('.links-tools > *').evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().width))
+  expect(Math.abs(toolWidths[0] - toolWidths[1])).toBeLessThanOrEqual(1)
 })
 
 test('Links utility controls have explicit search and comfortable pointer targets', async ({ page }) => {
@@ -287,6 +324,20 @@ test('Links utility controls have explicit search and comfortable pointer target
     expect(sizes.every(({ width, height }) => width >= 44 && height >= 44)).toBe(true)
     expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
   }
+})
+
+test('TIL search submits a TIL-filtered site search', async ({ page }) => {
+  await page.goto('/til/')
+
+  const search = page.getByRole('search', { name: 'Search TILs' })
+  await expect(search.getByRole('searchbox', { name: 'Search TILs' })).toHaveAttribute('placeholder', 'Search TILs')
+  await expect(search.getByRole('button', { name: 'Search' })).toBeVisible()
+  await search.getByRole('searchbox', { name: 'Search TILs' }).fill('two-state dark mode')
+  await search.getByRole('button', { name: 'Search' }).click()
+
+  await expect(page).toHaveURL(/\/search\/\?q=two-state(?:\+|%20)dark(?:\+|%20)mode&type=TIL/)
+  await expect(page.locator('#search-status')).toContainText('TIL result')
+  await expect(page.locator('#search-results .type-label').first()).toHaveText('TIL')
 })
 
 test('links keep bounded archive navigation and canonical outbound context', async ({ page }) => {

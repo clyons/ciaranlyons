@@ -7,7 +7,7 @@ import { formatDate } from '../lib/dates'
 import { renderRichText } from '../lib/rich-text'
 
 const [writing, notes, projects, foundQuotes] = await Promise.all([getWriting(), getNotes(1), getProjects(), getFoundQuotes()])
-const featuredWriting = writing[0]
+const featuredWriting = writing.find((entry) => entry.featured) ?? writing[0]
 const latestNote = notes[0]
 const latestFoundQuote = foundQuotes[0]
 const showLatestFoundQuote = latestFoundQuote && !featuredWriting?.foundQuoteSlugs.includes(latestFoundQuote.slug)
@@ -44,7 +44,7 @@ const featuredExcerpt = featuredWriting?.body
   {featuredWriting && (
     <section class="featured-essay" aria-labelledby="featured-essay-title">
       <div class="featured-essay-heading">
-        <p class="section-kicker">Latest essay</p>
+        <p class="section-kicker">Featured writing</p>
         <time class="date" datetime={featuredWriting.date}>{formatDate(featuredWriting.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time>
         <h2 id="featured-essay-title">{featuredWriting.title}</h2>
         <p class="featured-dek">{featuredWriting.description}</p>
@@ -60,7 +60,6 @@ const featuredExcerpt = featuredWriting?.body
     <section class="home-found-quotes" aria-labelledby="latest-found-quote-title">
       <div class="section-heading">
         <p class="section-kicker" id="latest-found-quote-title">Latest found quote</p>
-        <a class="text-link" href="/found-quotes/">All found quotes</a>
       </div>
       <FoundQuote quote={latestFoundQuote} context="home" />
     </section>
