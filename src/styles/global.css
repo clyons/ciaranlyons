@@ -462,7 +462,7 @@ img {
 .meta,
 .type-label,
 .text-link,
-.project-action {
+.row-action {
   color: var(--muted);
   font-family: var(--mono);
   font-size: 0.76rem;
@@ -586,7 +586,7 @@ img {
 }
 
 .note-row > .date,
-.project-action {
+.row-action {
   justify-self: end;
   align-self: start;
 }
@@ -734,7 +734,7 @@ img {
   font-size: 1.2rem;
 }
 
-.project-action {
+.row-action {
   align-self: center;
   color: var(--ink);
   font-family: var(--serif);
@@ -1505,7 +1505,7 @@ img {
   }
 
   .note-row > .date,
-  .project-action {
+  .row-action {
     justify-self: start;
   }
 

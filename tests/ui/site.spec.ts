@@ -83,6 +83,19 @@ test('About presents the PQ Program reach accurately and stays responsive', asyn
   }
 })
 
+test('About social links wrap three then two on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/about/')
+
+  const links = page.getByRole('navigation', { name: 'Social profiles' }).getByRole('link')
+  await expect(links).toHaveCount(5)
+  const rows = await links.evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().y))
+
+  expect(new Set(rows.slice(0, 3)).size).toBe(1)
+  expect(new Set(rows.slice(3)).size).toBe(1)
+  expect(rows[3]).toBeGreaterThan(rows[0])
+})
+
 test('Found Quotes are discoverable as a project without changing primary navigation', async ({ page }) => {
   await page.goto('/found-quotes/')
 
@@ -294,6 +307,27 @@ test('home lists every project', async ({ page }) => {
   await expect(foundQuotesProject).toContainText(`${foundQuoteCount} quotations`)
 })
 
+test('internal archive row arrows share the home treatment', async ({ page }) => {
+  await page.goto('/')
+  const homeArrow = page.locator('.home-projects .row-action').first()
+  await expect(homeArrow).toHaveText('→')
+  const homeStyle = await homeArrow.evaluate((element) => {
+    const style = getComputedStyle(element)
+    return { fontFamily: style.fontFamily, fontSize: style.fontSize, lineHeight: style.lineHeight }
+  })
+
+  for (const path of ['/projects/', '/til/', '/til/2026/09/07/', '/writing/2026/09/07/']) {
+    await page.goto(path)
+    const arrow = page.locator('.row-action').first()
+    await expect(arrow).toHaveText('→')
+    await expect(arrow).toHaveAttribute('aria-hidden', 'true')
+    expect(await arrow.evaluate((element) => {
+      const style = getComputedStyle(element)
+      return { fontFamily: style.fontFamily, fontSize: style.fontSize, lineHeight: style.lineHeight }
+    })).toEqual(homeStyle)
+  }
+})
+
 test('note permalinks render as native posts rather than quotations', async ({ page }) => {
   await page.goto('/notes/2026/09/07/3mux7jv5ze52c/')
 
@@ -465,6 +499,8 @@ for (const [name, path] of [
   ['notes', '/notes/'],
   ['projects', '/projects/'],
   ['found-quotes', '/found-quotes/'],
+  ['til', '/til/'],
+  ['writing-day', '/writing/2026/09/07/'],
 ] as const) {
   test(`${name} matches its approved visual baseline`, async ({ page }) => {
     await page.goto(path)
@@ -475,6 +511,17 @@ for (const [name, path] of [
     })
   })
 }
+
+test('search matches its approved visual baseline', async ({ page }) => {
+  await page.goto('/search/?type=Writing&q=Ownership')
+  await expect(page.locator('#search-results .search-result')).toHaveCount(1)
+  await expect(page.locator('#search-status')).toContainText('Writing result')
+  await expect(page).toHaveScreenshot('search.png', {
+    animations: 'disabled',
+    fullPage: true,
+    caret: 'hide',
+  })
+})
 
 test('links matches its approved first-viewport baseline', async ({ page }) => {
   await page.goto('/links/')

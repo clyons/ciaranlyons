@@ -11,7 +11,7 @@ No high-severity visual or rhythm problems found. The home page now has a consis
 | # | area | issue | sev | fix | eff | status |
 |---|---|---|---|---|---|---|
 | 1 | TIL archive rhythm | TIL used the Links-style search control inside a full generic `.section`. Its `58–92px` padding above and below created a noticeably taller empty band than the compact Links tools strip, and visually separated search from both the TIL header and `Recent`/`Topics`. | MED | Extracted a shared compact `archive-tools` class and retained the full-width mobile treatment. | S | Fixed |
-| 2 | Archive affordances | Projects, TIL listings, TIL date archives, and Writing date archives rendered a literal `->`; home project rows and search results use `→`. The ASCII form read as an implementation artifact and was smaller/weaker at a glance. | MED | Replaced the four literal `->` instances with `→`, retaining `aria-hidden`. | S | Fixed |
+| 2 | Archive affordances | Projects, TIL listings, TIL date archives, and Writing date archives rendered a literal `->`; after correcting the glyph, those rows still used an unstyled `.arrow` while Home and search used the larger, centered treatment. | MED | Replaced the ASCII glyphs and consolidated every full-row internal arrow onto the shared `row-action` treatment, retaining `aria-hidden`. | S | Fixed |
 
 ## What should stay
 
