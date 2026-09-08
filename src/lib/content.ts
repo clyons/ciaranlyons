@@ -4,9 +4,10 @@ import fg from 'fast-glob'
 import matter from 'gray-matter'
 import { assertUnique, optionalHttpUrl, optionalUniqueSubstring, requiredString, validateDate, validateSegment, validateTopic, webUrl } from './content-validation'
 import { renderMarkdown } from './markdown'
+import { sortFoundQuotesByPublicationAndSourceDate } from './found-quotes'
 import type { RichTextFacet, RichTextFacetFeature } from './rich-text'
 
-export { foundQuoteDescription, foundQuoteTitle, resolveFoundQuotes } from './found-quotes'
+export { foundQuoteDescription, foundQuoteTitle, resolveFoundQuotes, sortFoundQuotesByPublicationAndSourceDate } from './found-quotes'
 
 const contentRoot = path.join(process.cwd(), 'content')
 
@@ -34,6 +35,7 @@ export interface FoundQuoteEntry {
   text: string
   attribution: string
   source: string
+  sourceDate?: string
   emphasis?: string
   sourceUrl?: string
   via?: string
@@ -254,6 +256,7 @@ async function loadFoundQuotes(): Promise<FoundQuoteEntry[]> {
       const updated = data.updated ? validateDate(data.updated, sourceFile, 'updated') : undefined
       const attribution = requiredString(data.attribution, sourceFile, 'attribution')
       const source = requiredString(data.source, sourceFile, 'source')
+      const sourceDate = data.sourceDate ? validateDate(data.sourceDate, sourceFile, 'sourceDate') : undefined
       const text = requiredString(body, sourceFile, 'quote body')
       const emphasis = optionalUniqueSubstring(data.emphasis, text, sourceFile, 'emphasis')
       const sourceUrl = optionalHttpUrl(data.sourceUrl, sourceFile, 'sourceUrl')
@@ -271,6 +274,7 @@ async function loadFoundQuotes(): Promise<FoundQuoteEntry[]> {
           text,
           attribution,
           source,
+          sourceDate,
           emphasis,
           sourceUrl,
           via,
@@ -287,9 +291,7 @@ async function loadFoundQuotes(): Promise<FoundQuoteEntry[]> {
   )
 
   assertUnique(loaded, ({ entry }) => entry.url, ({ sourceFile }) => sourceFile)
-  return loaded
-    .map(({ entry }) => entry)
-    .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug))
+  return sortFoundQuotesByPublicationAndSourceDate(loaded.map(({ entry }) => entry))
 }
 
 let foundQuotesPromise: Promise<FoundQuoteEntry[]> | undefined

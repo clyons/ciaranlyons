@@ -1,6 +1,7 @@
 ---
 attribution: The New York Times Innovation Report
 source: New York Times Innovation Report, March 24, 2014
+sourceDate: 2014-03-24
 via: The leaked New York Times Innovation Report is one of the key documents of this media age
 viaUrl: https://www.niemanlab.org/2014/05/the-leaked-new-york-times-innovation-report-is-one-of-the-key-documents-of-this-media-age/
 date: 2026-09-07

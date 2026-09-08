@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { foundQuoteDescription, foundQuoteTitle, resolveFoundQuotes } from './found-quotes.ts'
+import { foundQuoteDescription, foundQuoteTitle, resolveFoundQuotes, sortFoundQuotesByPublicationAndSourceDate } from './found-quotes.ts'
 
 const quotes = [
   {
@@ -51,6 +51,24 @@ test('Found Quote descriptions normalize whitespace and stay within meta length'
 
 test('Writing collections resolve Found Quotes in authored order', () => {
   assert.deepEqual(resolveFoundQuotes(['second', 'first'], quotes, 'writing/example.md'), [quotes[1], quotes[0]])
+})
+
+test('Found Quotes sort by collection date, then source date', () => {
+  const sorted = sortFoundQuotesByPublicationAndSourceDate([
+    { slug: 'undated-source', date: '2026-09-07', sourceDate: undefined },
+    { slug: 'older-source', date: '2026-09-07', sourceDate: '2012-05-11' },
+    { slug: 'newer-source', date: '2026-09-07', sourceDate: '2019-03-25' },
+    { slug: 'later-collection', date: '2026-09-08', sourceDate: '2000-01-01' },
+    { slug: 'same-source-date-a', date: '2026-09-07', sourceDate: '2012-05-11' },
+  ])
+
+  assert.deepEqual(sorted.map(({ slug }) => slug), [
+    'later-collection',
+    'newer-source',
+    'older-source',
+    'same-source-date-a',
+    'undated-source',
+  ])
 })
 
 test('Writing collections reject duplicate and missing quote references', () => {

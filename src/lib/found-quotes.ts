@@ -4,6 +4,14 @@ export interface FoundQuoteReference {
   attribution: string
 }
 
+export function sortFoundQuotesByPublicationAndSourceDate<T extends { date: string; sourceDate?: string; slug: string }>(quotes: T[]): T[] {
+  return [...quotes].sort((a, b) =>
+    b.date.localeCompare(a.date)
+    || (b.sourceDate ?? '').localeCompare(a.sourceDate ?? '')
+    || a.slug.localeCompare(b.slug),
+  )
+}
+
 export function foundQuoteTitle(quote: Pick<FoundQuoteReference, 'attribution'>): string {
   return `Found quote from ${quote.attribution}`
 }

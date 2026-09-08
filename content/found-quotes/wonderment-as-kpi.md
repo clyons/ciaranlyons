@@ -1,6 +1,7 @@
 ---
 attribution: Seb Chan
 source: "“Sleep no more: magic, immersive storytelling and the ‘connected’ museum,” Fresh + New(er), May 23, 2012"
+sourceDate: 2012-05-23
 sourceUrl: https://www.freshandnew.org/2012/05/sleep-more-magic-immersive-storytelling/
 date: 2026-09-07
 tags:

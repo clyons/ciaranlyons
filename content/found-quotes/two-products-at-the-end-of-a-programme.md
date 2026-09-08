@@ -1,6 +1,7 @@
 ---
 attribution: Jony Ive
 source: "“The World According to Jony Ive,” Wallpaper*, November 9, 2017"
+sourceDate: 2017-11-09
 sourceUrl: https://www.wallpaper.com/design/jony-ive-apple-park
 date: 2026-09-07
 tags:

@@ -10,6 +10,7 @@ Create one file at `content/found-quotes/<slug>.md`. Use a short, stable, URL-sa
 ---
 attribution: "Person or organization credited with the words"
 source: "Book, article, talk, conversation, or other source"
+sourceDate: 2026-09-07
 sourceUrl: "https://authoritative.example/source"
 emphasis: "Optional exact phrase to render with semantic emphasis"
 via: "Optional place or person through which Ciaran found it"
@@ -23,7 +24,7 @@ tags:
 The exact quotation goes here. Do not add a Markdown blockquote marker.
 ```
 
-The quote body, `attribution`, `source`, and `date` are required. `date` is when the quote entered this collection. `updated`, `sourceUrl`, `emphasis`, `via`, `viaUrl`, and `tags` are optional; `viaUrl` requires `via`.
+The quote body, `attribution`, `source`, and `date` are required. `date` is when the quote entered this collection. `sourceDate`, `updated`, `sourceUrl`, `emphasis`, `via`, `viaUrl`, and `tags` are optional; `viaUrl` requires `via`. Set `sourceDate` only when the original source establishes an exact calendar date; it orders quotes added on the same day without altering their permalinks.
 
 - `attribution` answers who said or wrote the words.
 - `source` identifies where the words originally appeared.
