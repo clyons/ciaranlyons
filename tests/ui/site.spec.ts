@@ -381,6 +381,8 @@ test('TIL search submits a TIL-filtered site search', async ({ page }) => {
   const search = page.getByRole('search', { name: 'Search TILs' })
   await expect(search.getByRole('searchbox', { name: 'Search TILs' })).toHaveAttribute('placeholder', 'Search TILs')
   await expect(search.getByRole('button', { name: 'Search' })).toBeVisible()
+  await expect(search.locator('input[name="type"]')).toHaveValue('TIL')
+  await expect(search.locator('..')).toHaveClass(/archive-tools/)
   await search.getByRole('searchbox', { name: 'Search TILs' }).fill('two-state dark mode')
   await search.getByRole('button', { name: 'Search' }).click()
 

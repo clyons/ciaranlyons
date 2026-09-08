@@ -13,7 +13,7 @@ const topics = getTilTopics(til)
     <h1 class="page-title">TIL</h1>
     <p class="lede">I’m writing it down to remember it <em>now</em>.</p>
   </section>
-  <section class="section">
+  <section class="section archive-tools til-tools">
     <form class="search-form links-search-form til-search-form" action="/search/" method="get" role="search" aria-label="Search TILs">
       <label class="visually-hidden" for="til-search">Search TILs</label>
       <input class="search-input" id="til-search" name="q" type="search" placeholder="Search TILs" />
@@ -32,7 +32,7 @@ const topics = getTilTopics(til)
               <h3>{entry.title}</h3>
               <p>{entry.topic} - {formatDate(entry.date, { month: 'short', day: 'numeric', year: 'numeric' })}</p>
             </div>
-            <span class="arrow" aria-hidden="true">-></span>
+            <span class="arrow" aria-hidden="true">→</span>
           </a>
         ))}
       </div>
