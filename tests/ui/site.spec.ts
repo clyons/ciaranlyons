@@ -14,12 +14,13 @@ test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' })
 })
 
-test('Found Quotes are discoverable without changing primary navigation', async ({ page }) => {
+test('Found Quotes are discoverable as a project without changing primary navigation', async ({ page }) => {
   await page.goto('/found-quotes/')
 
   await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Found Quotes' })).toHaveCount(0)
-  await expect(page.getByRole('navigation', { name: 'Footer navigation' }).getByRole('link', { name: 'Found Quotes' })).toHaveAttribute('href', '/found-quotes/')
   await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveAttribute('href', '/found-quotes/feed.xml')
+  await page.goto('/projects/')
+  await expect(page.locator('.project-row').filter({ hasText: 'Found Quotes' })).toHaveAttribute('href', '/found-quotes/')
 })
 
 test('Found Quote archive and permalink preserve quotation semantics', async ({ page }) => {
@@ -112,6 +113,8 @@ test('projects are ordered and use the approved site card copy', async ({ page }
   await expect(projects.nth(0).getByRole('heading')).toHaveText('TIL')
   await expect(projects.nth(1).getByRole('heading')).toHaveText('ciaranlyons.com')
   await expect(projects.nth(1)).toContainText('This site: writing, notes & various projects.')
+  await expect(projects.nth(2).getByRole('heading')).toHaveText('Found Quotes')
+  await expect(projects.nth(2)).toContainText('Things that smarter folks than I have said.')
 })
 
 test('primary navigation keeps every control on one visible row at mobile widths', async ({ page }) => {
