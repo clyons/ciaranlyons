@@ -78,11 +78,12 @@ test('Found Quote type study gives the long exemplar a reading scale', async ({ 
   await expect(elision.locator('.visually-hidden')).toHaveText('Quoted passage omitted.')
 })
 
-for (const [name, path, archiveLabel, archivePath, currentLabel] of [
-  ['TIL', '/til/2026/09/07/two-state-dark-mode-toggles/', 'TIL', '/til/', 'Two-state dark mode toggles'],
-  ['Writing', '/writing/2026/09/07/found-quotes-wagmi/', 'Writing', '/writing/', 'Found Quotes: WAGMI'],
-  ['Found Quote', '/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/', 'Found Quotes', '/found-quotes/', 'Found quote from Ben Thompson'],
-  ['Note', '/notes/2026/09/07/3mux7jv5ze52c/', 'Notes', '/notes/', 'New TIL: two-state dark mode toggles.'],
+for (const [name, path, archiveLabel, archivePath] of [
+  ['TIL', '/til/2026/09/07/two-state-dark-mode-toggles/', 'TIL', '/til/'],
+  ['Writing', '/writing/2026/09/07/found-quotes-wagmi/', 'Writing', '/writing/'],
+  ['Found Quote', '/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/', 'Found Quotes', '/found-quotes/'],
+  ['Note', '/notes/2026/09/07/3mux7jv5ze52c/', 'Notes', '/notes/'],
+  ['Link', '/links/2026/08/05/markdown-now-has-a-uniform-type-identifer-uti-in-apple-s-version-8741ac4466/', 'Links', '/links/'],
 ] as const) {
   test(`${name} detail links back to its archive with a breadcrumb`, async ({ page }) => {
     await page.goto(path)
@@ -91,7 +92,8 @@ for (const [name, path, archiveLabel, archivePath, currentLabel] of [
     await expect(breadcrumbs).toHaveCount(1)
     const archiveLink = breadcrumbs.getByRole('link', { name: archiveLabel, exact: true })
     await expect(archiveLink).toHaveAttribute('href', archivePath)
-    await expect(breadcrumbs.locator('[aria-current="page"]')).toHaveText(currentLabel)
+    await expect(breadcrumbs).toHaveText(archiveLabel)
+    await expect(breadcrumbs.locator('[aria-current="page"]')).toHaveCount(0)
     await archiveLink.click()
     expect(new URL(page.url()).pathname).toBe(archivePath)
   })

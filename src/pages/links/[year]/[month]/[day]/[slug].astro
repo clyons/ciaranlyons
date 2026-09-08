@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import ArchiveBreadcrumb from '../../../../../components/ArchiveBreadcrumb.astro'
 import { getLinks } from '../../../../../lib/content'
 import { formatDate } from '../../../../../lib/dates'
 
@@ -27,9 +28,10 @@ const source = entry.sourceTitle ?? hostname
   pagefind={{ type: 'Link', year: entry.year, source, tags: entry.tags, date: entry.savedAt ?? entry.date }}
 >
   <article class="article-shell link-detail">
+    <ArchiveBreadcrumb archive="links" />
     <header class="article-header">
       {entry.mock && <p class="preview-data">Preview data · Mock Feedly star</p>}
-      <p class="link-source"><a href="/links/">Links</a> · Saved <time datetime={entry.savedAt ?? entry.date}>{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>
+      <p class="link-source">Saved <time datetime={entry.savedAt ?? entry.date}>{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>
       <h1 class="article-title">{entry.title}</h1>
       {entry.description && <p class="lede">{entry.description}</p>}
     </header>

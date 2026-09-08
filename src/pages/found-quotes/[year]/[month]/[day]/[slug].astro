@@ -1,6 +1,6 @@
 ---
 import FoundQuote from '../../../../../components/FoundQuote.astro'
-import Breadcrumbs from '../../../../../components/Breadcrumbs.astro'
+import ArchiveBreadcrumb from '../../../../../components/ArchiveBreadcrumb.astro'
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
 import { foundQuoteDescription, foundQuoteTitle, getFoundQuotes } from '../../../../../lib/content'
 
@@ -18,7 +18,7 @@ const scale = quote.slug === 'great-silence-and-technological-efficiency' ? 'rea
 
 <BaseLayout title={foundQuoteTitle(quote)} description={foundQuoteDescription(quote)} canonical={quote.url} feedUrl="/found-quotes/feed.xml" feedTitle="Ciaran Lyons - Found Quotes" pagefindBody pagefind={{ type: 'Found Quote', year: quote.year, source: quote.attribution, tags: quote.tags, date: quote.date }}>
   <article class="article-shell found-quote-detail">
-    <Breadcrumbs items={[{ label: 'Found Quotes', href: '/found-quotes/' }, { label: foundQuoteTitle(quote) }]} />
+    <ArchiveBreadcrumb archive="found-quotes" />
     <header class="article-header">
       <p class="section-kicker">Found Quote</p>
       <h1 class="visually-hidden">{foundQuoteTitle(quote)}</h1>

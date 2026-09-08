@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
-import Breadcrumbs from '../../../../../components/Breadcrumbs.astro'
+import ArchiveBreadcrumb from '../../../../../components/ArchiveBreadcrumb.astro'
 import { getAllNotes, originalPostUrl } from '../../../../../lib/atproto'
 import { foundQuoteDescription, foundQuoteTitle, getFoundQuotes, getProjects, getTilEntries, getWriting, noteTitle } from '../../../../../lib/content'
 import { formatDate } from '../../../../../lib/dates'
@@ -59,7 +59,7 @@ const paragraphs = renderRichText(note.text, note.facets)
 
 <BaseLayout title={title} description={note.text} canonical={note.url} pagefindBody pagefind={{ type: 'Note', year: note.year, date: note.date }}>
   <article class="article-shell note-detail">
-    <Breadcrumbs items={[{ label: 'Notes', href: '/notes/' }, { label: title }]} />
+    <ArchiveBreadcrumb archive="notes" />
     <header class="article-header">
       <p class="section-kicker">Note</p>
       <h1 class="visually-hidden">{title}</h1>

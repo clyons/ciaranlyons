@@ -1,0 +1,20 @@
+---
+const archives = {
+  til: { href: '/til/', label: 'TIL' },
+  writing: { href: '/writing/', label: 'Writing' },
+  'found-quotes': { href: '/found-quotes/', label: 'Found Quotes' },
+  notes: { href: '/notes/', label: 'Notes' },
+  links: { href: '/links/', label: 'Links' },
+} as const
+
+interface Props {
+  archive: keyof typeof archives
+}
+
+const { archive }: Props = Astro.props
+const { href, label } = archives[archive]
+---
+
+<nav class="archive-breadcrumb" aria-label="Breadcrumb">
+  <a href={href}>{label}</a>
+</nav>
