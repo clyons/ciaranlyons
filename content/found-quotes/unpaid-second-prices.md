@@ -2,7 +2,7 @@
 attribution: David Cain
 source: "Everything Must Be Paid for Twice"
 sourceUrl: https://www.raptitude.com/2022/01/everything-must-be-paid-for-twice/
-date: 2026-09-07
+date: 2026-09-08
 tags:
   - fulfillment
   - consumption
