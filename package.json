@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "lint": "astro check",
     "test": "node --experimental-strip-types --test scripts/*.test.mjs src/lib/*.test.mjs",
-    "build": "node scripts/clean-dist.mjs && astro check && astro build && node scripts/write-well-known.mjs",
+    "build": "node scripts/clean-dist.mjs && astro check && astro build && node scripts/verify-og-images.mjs && node scripts/write-well-known.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "test:ui": "playwright test",
@@ -30,6 +30,7 @@
     "marked": "^14.1.4",
     "multiformats": "14.0.5",
     "sanitize-html": "2.17.7",
+    "sharp": "0.35.4",
     "typescript": "^5.9.2"
   },
   "devDependencies": {

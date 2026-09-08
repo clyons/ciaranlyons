@@ -58,7 +58,9 @@ Keep the quote text and provenance in the Found Quote files. The Writing page, s
 
 ## Review and publish
 
-Run `npm test`, `npm run check`, `npm run build`, and `npm run test:ui`. Inspect the quote archive, detail permalink, search JSON, `/feed.xml`, and `/found-quotes/feed.xml`. Review the source text and provenance as carefully as the layout.
+Run `npm test`, `npm run check`, `npm run build`, and `npm run test:ui`. The build's social-preview gate must pass. Inspect the quote archive, detail permalink, search JSON, `/feed.xml`, and `/found-quotes/feed.xml`. Review the source text and provenance as carefully as the layout.
+
+Open `dist/og/found-quotes/YYYY/MM/DD/<slug>.png` before merge. Confirm that the quotation remains legible, any truncation is intentional, and the attribution and source are correct. If the quote is part of a new Writing collection, also open `dist/og/writing/YYYY/MM/DD/<writing-slug>.png`. Inspect each built page to confirm its Open Graph and Twitter metadata points to that exact preview. Include the build result and every inspected preview path in the PR validation evidence. Follow the full [content social preview contract](./deploy.md#content-social-previews).
 
 Use a fresh feature branch and open a focused PR that names the ExecPlan when the change is substantial. Ordinary quote changes follow the repository deployment runbook: merge the verified source PR to `main`, let GitHub Actions deploy production, and then verify the public permalink, archive, search, and feeds.
 
