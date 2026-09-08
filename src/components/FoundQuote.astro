@@ -1,6 +1,5 @@
 ---
 import type { FoundQuoteEntry } from '../lib/content'
-import { formatDate } from '../lib/dates'
 
 interface Props {
   quote: FoundQuoteEntry
@@ -9,7 +8,6 @@ interface Props {
 }
 
 const { quote, context = 'archive', scale = 'display' } = Astro.props
-const dateLabel = formatDate(quote.date, { month: 'long', day: 'numeric', year: 'numeric' })
 const paragraphs = quote.text.split(/\n\s*\n/).map((text) => ({
   text,
   isElision: text === '[…]',
@@ -47,8 +45,14 @@ const paragraphs = quote.text.split(/\n\s*\n/).map((text) => ({
         </span>
       )}
     </span>
-    <a class="date" href={quote.url} aria-label={`Open found quote from ${quote.attribution}, added ${dateLabel}`}>
-      <time datetime={quote.date}>{dateLabel}</time>
+    <a
+      class="found-quote-permalink"
+      href={quote.url}
+      rel="bookmark"
+      title="Permalink"
+      aria-label={`Permalink to found quote from ${quote.attribution}`}
+    >
+      <span aria-hidden="true">#</span>
     </a>
   </figcaption>
 </figure>

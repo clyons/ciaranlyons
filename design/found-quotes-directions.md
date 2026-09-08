@@ -6,7 +6,7 @@ Source of truth: `design/context.md`
 
 Principle: The words are the interface. Present one generous full-width quotation at a time, separated by the site's existing hairlines.
 
-Layout: Existing page title and lede, followed by a single-column reading measure. Each entry uses a large serif quotation, a compact attribution/source line, and a separate mono date permalink. The newest quote can appear as a quiet full-width home section between the featured essay and projects.
+Layout: Existing page title and lede, followed by a single-column reading measure. Each entry uses a large serif quotation, a compact attribution/source line, and a quiet `#` permalink marker; dates remain structural metadata rather than visible quote context. The newest quote can appear as a quiet full-width home section between the featured essay and projects.
 
 Components: Semantic quote figure, blockquote, figcaption, source link, permalink, preview-content label, and empty state.
 

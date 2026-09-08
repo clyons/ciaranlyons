@@ -667,9 +667,18 @@ img {
   color: var(--muted);
 }
 
-.found-quote .date {
-  text-align: right;
-  white-space: nowrap;
+.found-quote-permalink {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  justify-self: end;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
 }
 
 .found-quote-detail {
@@ -1100,13 +1109,9 @@ img {
   }
 
   .found-quote figcaption {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .found-quote .date {
-    justify-self: start;
-    text-align: left;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: start;
   }
 
   .section-heading {

@@ -10,7 +10,7 @@ PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented acro
 
 - ✓ Full quotations, not generic cards, are the visual focus.
 - ✓ The existing serif, mono metadata, orange accent, background, and hairline tokens are reused in both themes.
-- ✓ Attribution and source remain secondary but readable; dates are distinct internal permalinks.
+- ✓ Attribution and source remain secondary but readable; a quiet `#` marker provides each internal permalink without elevating the collection date.
 - ✓ The Writing collection capability preserves Ciaran's introduction first and expands canonical quotes afterward in authored order; no collection is published until Ciaran provides its framing.
 - ✓ Found Quotes remain secondary in the site hierarchy: homepage module and footer link, with no fifth primary-navigation link.
 
@@ -54,7 +54,8 @@ Visual:
 Behavior and requirements:
 
 - ✓ The study contains exactly the first four current quotes.
-- ✓ The Great Silence date link opens its existing dated permalink, where the same reading treatment appears.
+- ✓ The Great Silence `#` link opens its existing dated permalink, where the same reading treatment appears.
+- ✓ Visible collection dates are removed from quote captions. A compact `#` link with `rel="bookmark"`, a tooltip, and an explicit accessible name preserves the permalink at the right edge.
 - ✓ The Jony Ive quotation's blank-line-separated passage renders as two paragraph elements; the opening quotation mark remains attached only to the first.
 - ✓ The Clay Shirky quotation replaces an ambiguous standalone `...` with editorial `[…]`, rendered compactly and announced to assistive technology as “Quoted passage omitted.”
 - ✓ `waste products` renders as a real `<em>` element, backed by an exact, unique frontmatter substring that fails validation if it drifts from the quote text.

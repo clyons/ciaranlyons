@@ -31,11 +31,18 @@ test('Found Quote archive and permalink preserve quotation semantics', async ({ 
   await expect(page.locator('.found-quotes-list blockquote').first()).toContainText('Live is the shortcut to FOMO.')
   await expect(page.getByText('The value of a company is the sum of all problems solved.')).toBeVisible()
   await expect(page.getByText('Martin Lorentzon', { exact: false })).toBeVisible()
+  await expect(page.locator('.found-quotes-list time')).toHaveCount(0)
+  const firstPermalink = page.locator('.found-quotes-list figure').first().getByRole('link', { name: 'Permalink to found quote from Ben Thompson' })
+  await expect(firstPermalink).toHaveAttribute('href', '/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/')
+  await expect(firstPermalink).toHaveAttribute('rel', 'bookmark')
+  await expect(firstPermalink.locator('[aria-hidden="true"]')).toHaveText('#')
 
   await page.goto('/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Found quote from Ben Thompson')
   await expect(page.locator('article blockquote')).toHaveCount(1)
   await expect(page.locator('article figcaption')).toContainText('Ben Thompson')
+  await expect(page.locator('article time')).toHaveCount(0)
+  await expect(page.getByRole('link', { name: 'Permalink to found quote from Ben Thompson' })).toHaveAttribute('rel', 'bookmark')
 })
 
 test('Found Quote type study gives the long exemplar a reading scale', async ({ page }) => {

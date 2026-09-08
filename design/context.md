@@ -10,7 +10,7 @@ constraints: Astro 7 static output; root `content/` Markdown; existing serif/san
 
 success:
 
-- `/found-quotes/` makes quotation, attribution, source, collection date, and permalink legible without opening each item.
+- `/found-quotes/` makes quotation, attribution, source, and a quiet permalink affordance legible without opening each item; collection dates remain structural metadata rather than visible quote context.
 - Quote pages and Writing collections use semantic blockquote/citation markup and remain keyboard accessible.
 - A Writing entry can reference quote slugs in order, and broken references fail before build or Standard.site publication.
 - The feature is discoverable from the home page, footer, search, RSS, and sitemap without adding a fifth primary text link.
@@ -52,4 +52,4 @@ follow-up type study (2026-09-08):
 - Review the first four archive entries together; use `great-silence-and-technological-efficiency` as the long-quote exemplar on both the study archive and its permalink.
 - Tighten the reading tier's line height and vertical padding without changing the short-quote display tier.
 - Model blank-line-separated passages as semantic paragraphs with a compact gap, and allow one exact phrase to receive semantic emphasis without enabling arbitrary quote-body HTML.
-- Keep attribution, provenance, dates, colors, and the surrounding page shell unchanged.
+- Keep attribution, provenance, colors, and the surrounding page shell unchanged. Retain dates in content, URLs, archives, sorting, and feeds, but represent the on-page permalink with a compact `#` anchor instead of visible date text.
