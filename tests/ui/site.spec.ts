@@ -30,10 +30,12 @@ test('About presents the PQ Program reach accurately and stays responsive', asyn
   await expect(about.locator('img[alt="Ciaran Lyons"]')).toBeVisible()
   await expect(about.locator('.about-profile__portrait picture')).toHaveCSS('border-top-width', '1px')
 
-  for (const width of [1280, 390, 320]) {
+  for (const width of [1280, 760, 576, 430, 390, 375, 359, 320]) {
     await page.setViewportSize({ width, height: 844 })
     expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
 
+    const hero = await about.locator('.about-profile__hero').boundingBox()
+    const portrait = await about.locator('.about-profile__portrait picture').boundingBox()
     const evidenceHeading = await about.getByRole('heading', { level: 2, name: 'Built across operations, growth, and technology.' }).boundingBox()
     const experience = await about.locator('.about-profile__history').boundingBox()
     const caseStudies = await about.locator('.about-profile__cases').boundingBox()
@@ -52,6 +54,20 @@ test('About presents the PQ Program reach accurately and stays responsive', asyn
     expect(caseCopy).not.toBeNull()
     expect(contactHeading).not.toBeNull()
     expect(email).not.toBeNull()
+    expect(hero).not.toBeNull()
+    expect(portrait).not.toBeNull()
+
+    if (width <= 760) {
+      expect(Math.abs(portrait!.x + portrait!.width - hero!.x - hero!.width)).toBeLessThan(1)
+      expect(portrait!.width).toBeLessThanOrEqual(448)
+      if (width <= 480) {
+        expect(Math.abs(portrait!.x - hero!.x)).toBeLessThan(1)
+        expect(Math.abs(portrait!.width - hero!.width)).toBeLessThan(1)
+      }
+      expect(portrait!.x).toBeGreaterThanOrEqual(0)
+      expect(portrait!.x + portrait!.width).toBeLessThanOrEqual(width)
+    }
+
     expect(Math.abs(experience!.x - evidenceHeading!.x)).toBeLessThan(1)
     expect(caseStudies!.y).toBeGreaterThanOrEqual(experience!.y + experience!.height)
     expect(Math.abs(caseStudies!.x - evidenceHeading!.x)).toBeLessThan(1)
