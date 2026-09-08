@@ -1,43 +1,481 @@
 ---
+import AboutPortrait from '../components/AboutPortrait.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { getAbout } from '../lib/content'
+import { aboutCaseStudies, aboutHistory } from '../lib/about-profile'
 import { socialLinks } from '../lib/socials'
 
 const about = await getAbout()
 ---
 
-<BaseLayout title="About" description="About Ciaran Lyons.">
-  <article class="article-shell">
-    <header class="article-header">
-      <h1 class="article-title">About Ciaran</h1>
+<BaseLayout title="About" description="About Ciaran Lyons: operator, builder, and systems thinker.">
+  <article class="about-profile">
+    <header class="about-profile__hero">
+      <div class="about-profile__hero-copy">
+        <p class="section-kicker">About Ciaran</p>
+        <h1>I turn ambitious ideas into systems that grow.</h1>
+        <p>I’m Ciaran Lyons—an operator and builder working at the intersection of people, systems, and growth.</p>
+      </div>
+      <figure class="about-profile__portrait">
+        <AboutPortrait
+          class="about-profile__portrait-image"
+          sizes="(max-width: 760px) min(78vw, 310px), min(30vw, 360px)"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <figcaption>Operator · Builder · Systems thinker</figcaption>
+      </figure>
     </header>
-    <picture>
-      <source
-        type="image/avif"
-        srcset="/images/profile/ciaran-profile-256.avif 256w, /images/profile/ciaran-profile-416.avif 416w"
-        sizes="(max-width: 760px) 144px, 208px"
-      />
-      <img
-        class="about-portrait"
-        src="/images/ciaran-profile.jpeg?v=20260906"
-        alt="Ciaran Lyons"
-        width="1200"
-        height="1200"
-        decoding="async"
-      />
-    </picture>
-    <div class="prose" set:html={about.html} />
-    <section class="about-socials" aria-labelledby="about-socials-heading">
-      <h2 id="about-socials-heading">Elsewhere</h2>
-      <nav class="social-links" aria-label="Social profiles">
-        {
-          socialLinks.map((link) => (
-            <a href={link.href} rel="me">
-              {link.label}
-            </a>
-          ))
-        }
-      </nav>
+
+    <section class="about-profile__story" aria-labelledby="about-story-label">
+      <p class="section-kicker" id="about-story-label">The work</p>
+      <div class="about-profile__story-copy" set:html={about.html} />
+    </section>
+
+    <section class="about-profile__evidence" aria-labelledby="about-evidence-heading">
+      <header class="about-profile__section-heading">
+        <p class="section-kicker">Experience &amp; selected work</p>
+        <h2 id="about-evidence-heading">Built across operations, growth, and technology.</h2>
+      </header>
+
+      <div class="about-profile__evidence-columns">
+        <section aria-labelledby="about-experience-heading">
+          <h3 class="about-profile__subheading" id="about-experience-heading">Experience</h3>
+          <ol class="about-profile__history">
+            {aboutHistory.map((item) => (
+              <li>
+                <h4>{item.href ? <a href={item.href}>{item.organization}</a> : item.organization}</h4>
+                <p>{item.role}</p>
+                <span>{item.result}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section aria-labelledby="about-work-heading">
+          <h3 class="about-profile__subheading" id="about-work-heading">Case studies</h3>
+          <ol class="about-profile__cases">
+            {aboutCaseStudies.map((study, index) => (
+              <li>
+                <a href={study.href}>
+                  <span class="about-profile__case-number">0{index + 1}</span>
+                  <span class="about-profile__case-copy">
+                    <span class="meta">{study.discipline}</span>
+                    <strong>{study.title}</strong>
+                    <span>{study.description}</span>
+                  </span>
+                  <span class="about-profile__case-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </div>
+    </section>
+
+    <section class="about-profile__contact" aria-labelledby="about-contact-heading">
+      <div>
+        <p class="section-kicker">Say hello</p>
+        <h2 id="about-contact-heading">Email is best.</h2>
+      </div>
+      <div class="about-profile__contact-details">
+        <a class="about-profile__email" href="mailto:hello@ciaranlyons.com">
+          hello@ciaranlyons.com <span aria-hidden="true">↗</span>
+        </a>
+        <nav aria-label="Social profiles">
+          {socialLinks.map((link) => <a href={link.href} rel="me">{link.label}</a>)}
+        </nav>
+      </div>
     </section>
   </article>
 </BaseLayout>
+
+<style>
+  .about-profile {
+    --about-width: min(var(--max), calc(100% - (2 * var(--gutter))));
+  }
+
+  .about-profile__hero {
+    width: var(--about-width);
+    min-height: min(700px, calc(100svh - 80px));
+    margin-inline: auto;
+    padding: clamp(58px, 7vw, 88px) 0 clamp(54px, 6vw, 76px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.32fr) minmax(290px, .58fr);
+    gap: clamp(48px, 7vw, 92px);
+    align-items: center;
+  }
+
+  .about-profile__hero-copy {
+    animation: about-copy-in 720ms both cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .about-profile__hero h1 {
+    max-width: 760px;
+    margin: 24px 0 28px;
+    font-family: var(--serif);
+    font-size: clamp(4.15rem, 7.2vw, 7rem);
+    font-weight: 650;
+    line-height: .88;
+    letter-spacing: -.052em;
+    text-wrap: balance;
+  }
+
+  .about-profile__hero-copy > p:last-child {
+    max-width: 620px;
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 1.85vw, 1.72rem);
+    line-height: 1.32;
+    text-wrap: balance;
+  }
+
+  .about-profile__portrait {
+    min-width: 0;
+    margin: 0;
+    transform: translate(24px, 18px);
+    animation: about-image-in 860ms 80ms both cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .about-profile__portrait :global(picture) {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--bg-deep);
+  }
+
+  :global(.about-profile__portrait-image) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 52% center;
+  }
+
+  .about-profile__portrait figcaption {
+    margin-top: 12px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: .68rem;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: .08em;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .about-profile__story,
+  .about-profile__evidence,
+  .about-profile__contact {
+    width: var(--about-width);
+    margin-inline: auto;
+  }
+
+  .about-profile__story {
+    padding: clamp(58px, 8vw, 96px) 0 clamp(72px, 9vw, 112px);
+    display: grid;
+    grid-template-columns: minmax(140px, .32fr) minmax(0, 1fr);
+    gap: clamp(38px, 7vw, 104px);
+  }
+
+  .about-profile__story-copy {
+    max-width: 760px;
+  }
+
+  .about-profile__story-copy :global(p) {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: clamp(1.16rem, 1.4vw, 1.32rem);
+    line-height: 1.62;
+  }
+
+  .about-profile__story-copy :global(p:first-child) {
+    color: var(--ink);
+    font-size: clamp(1.8rem, 2.8vw, 2.65rem);
+    line-height: 1.25;
+    letter-spacing: -.018em;
+    text-wrap: pretty;
+  }
+
+  .about-profile__story-copy :global(p + p) {
+    margin-top: 1.25em;
+  }
+
+  .about-profile__story-copy :global(a) {
+    text-decoration-color: var(--accent);
+  }
+
+  .about-profile__evidence {
+    padding: clamp(68px, 8vw, 104px) 0 clamp(78px, 9vw, 116px);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .about-profile__section-heading {
+    display: grid;
+    grid-template-columns: minmax(140px, .32fr) minmax(0, 1fr);
+    gap: clamp(38px, 7vw, 104px);
+    align-items: start;
+  }
+
+  .about-profile__section-heading h2,
+  .about-profile__contact h2 {
+    max-width: 770px;
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(2.7rem, 4.2vw, 4.35rem);
+    font-weight: 650;
+    line-height: .96;
+    letter-spacing: -.038em;
+    text-wrap: balance;
+  }
+
+  .about-profile__evidence-columns {
+    margin-top: clamp(54px, 7vw, 82px);
+    display: grid;
+    grid-template-columns: minmax(270px, .76fr) minmax(0, 1.3fr);
+    gap: clamp(60px, 9vw, 132px);
+    align-items: start;
+  }
+
+  .about-profile__subheading {
+    margin: 0 0 30px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: .75rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .about-profile__history,
+  .about-profile__cases {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .about-profile__history {
+    padding-left: 28px;
+    border-left: 1px solid var(--hairline);
+  }
+
+  .about-profile__history li {
+    position: relative;
+  }
+
+  .about-profile__history li + li {
+    margin-top: 38px;
+  }
+
+  .about-profile__history li::before {
+    position: absolute;
+    top: .58rem;
+    left: -32px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    content: '';
+  }
+
+  .about-profile__history h4 {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.45rem, 2vw, 1.9rem);
+    font-weight: 650;
+    line-height: 1.08;
+    letter-spacing: -.022em;
+    text-wrap: balance;
+  }
+
+  .about-profile__history p {
+    margin: 7px 0 9px;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.42;
+  }
+
+  .about-profile__history span,
+  .about-profile__case-number {
+    color: var(--accent-dark);
+    font-family: var(--mono);
+    font-size: .69rem;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: .075em;
+    text-transform: uppercase;
+  }
+
+  .about-profile__cases li + li {
+    margin-top: clamp(34px, 4vw, 50px);
+  }
+
+  .about-profile__cases a {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    gap: 18px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .about-profile__case-copy {
+    min-width: 0;
+    display: grid;
+  }
+
+  .about-profile__case-copy strong {
+    max-width: 620px;
+    margin: 9px 0 10px;
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 2.7vw, 2.85rem);
+    font-weight: 650;
+    line-height: 1;
+    letter-spacing: -.03em;
+    text-wrap: balance;
+  }
+
+  .about-profile__case-copy > span:last-child {
+    max-width: 590px;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.47;
+  }
+
+  .about-profile__case-arrow {
+    align-self: center;
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    transition: color 180ms ease, transform 180ms ease;
+  }
+
+  .about-profile__cases a:hover .about-profile__case-arrow {
+    color: var(--accent);
+    transform: translate(4px, -4px);
+  }
+
+  .about-profile__contact {
+    padding: clamp(66px, 8vw, 100px) 0 clamp(76px, 9vw, 112px);
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(280px, 1fr);
+    gap: clamp(48px, 8vw, 112px);
+    align-items: end;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .about-profile__contact .section-kicker {
+    margin-bottom: 20px;
+  }
+
+  .about-profile__contact-details {
+    display: grid;
+    justify-items: start;
+    gap: 28px;
+  }
+
+  .about-profile__email {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent-dark);
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2vw, 1.75rem);
+    font-weight: 650;
+  }
+
+  .about-profile__contact nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+    color: var(--muted);
+    font-family: var(--serif);
+  }
+
+  .about-profile__contact nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @keyframes about-copy-in {
+    from { opacity: 0; transform: translateY(24px); }
+  }
+
+  @keyframes about-image-in {
+    from { opacity: 0; clip-path: inset(0 0 100% 0); }
+    to { opacity: 1; clip-path: inset(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-profile__hero-copy,
+    .about-profile__portrait {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .about-profile__hero {
+      min-height: 0;
+      padding-top: 50px;
+      padding-bottom: 34px;
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .about-profile__hero h1 {
+      font-size: clamp(3.25rem, 15vw, 4.2rem);
+    }
+
+    .about-profile__portrait {
+      width: min(78vw, 310px);
+      justify-self: end;
+      transform: translateX(var(--gutter));
+    }
+
+    .about-profile__story,
+    .about-profile__section-heading {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .about-profile__story-copy :global(p:first-child) {
+      font-size: clamp(1.65rem, 7vw, 2rem);
+    }
+
+    .about-profile__story-copy :global(p) {
+      font-size: 1.08rem;
+      line-height: 1.58;
+    }
+
+    .about-profile__section-heading h2,
+    .about-profile__contact h2 {
+      font-size: clamp(2.55rem, 11.5vw, 3.3rem);
+    }
+
+    .about-profile__evidence-columns {
+      grid-template-columns: 1fr;
+      gap: 68px;
+    }
+
+    .about-profile__cases a {
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .about-profile__case-arrow {
+      display: none;
+    }
+
+    .about-profile__contact {
+      grid-template-columns: 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+  }
+</style>

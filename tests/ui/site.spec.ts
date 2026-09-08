@@ -18,6 +18,21 @@ test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' })
 })
 
+test('About presents the PQ Program reach accurately and stays responsive', async ({ page }) => {
+  await page.goto('/about/')
+
+  const about = page.locator('.about-profile')
+  await expect(about.getByRole('heading', { level: 1 })).toHaveText('I turn ambitious ideas into systems that grow.')
+  await expect(about).toContainText('over 250,000 participants')
+  await expect(about).not.toContainText(/(?:1M\+|one million|1 million) participants/i)
+  await expect(about.locator('img[alt="Ciaran Lyons"]')).toBeVisible()
+
+  for (const width of [1280, 390, 320]) {
+    await page.setViewportSize({ width, height: 844 })
+    expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
+  }
+})
+
 test('Found Quotes are discoverable as a project without changing primary navigation', async ({ page }) => {
   await page.goto('/found-quotes/')
 
@@ -387,6 +402,7 @@ test('Links archives remain navigable without JavaScript', async ({ browser }) =
 
 for (const [name, path] of [
   ['home', '/'],
+  ['about', '/about/'],
   ['writing', '/writing/'],
   ['notes', '/notes/'],
   ['projects', '/projects/'],
