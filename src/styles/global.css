@@ -611,7 +611,7 @@ img {
 }
 
 .found-quote blockquote .found-quote-elision {
-  margin: 0.5em 0 0.45em;
+  margin: 0.5em 0;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 0.4em;
