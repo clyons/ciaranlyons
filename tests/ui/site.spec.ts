@@ -99,6 +99,18 @@ for (const [name, path, archiveLabel, archivePath] of [
   })
 }
 
+for (const [name, path] of [
+  ['Found Quote', '/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/'],
+  ['Note', '/notes/2026/09/07/3mux7jv5ze52c/'],
+] as const) {
+  test(`${name} detail does not repeat its archive label as a kicker`, async ({ page }) => {
+    await page.goto(path)
+
+    await expect(page.locator('article > .article-header')).toHaveCount(0)
+    await expect(page.locator('article > .section-kicker')).toHaveCount(0)
+  })
+}
+
 test.describe('site structure and keyboard access', () => {
   for (const [name, path] of coreRoutes) {
     test(`${name} exposes a labelled primary navigation and one main heading`, async ({ page }) => {
