@@ -39,7 +39,7 @@ The completed result is observable by:
 - [x] (2026-09-08 04:47Z) Added deterministic Standard.site `--missing-only --limit N` selection and proved a credential-free one-document dry run against Ciaran's existing publication. The live canary remains intentionally pending until its local URL is deployed.
 - [x] (2026-09-08 04:47Z) Imported the reviewed history locally and removed all mocks. Eight saved Stratechery URLs contained an `access_token`; normalization now strips that key, revealing one additional duplicate. The final set is 2,625 public candidates, eight duplicates, zero rejects, and zero date fallbacks.
 - [x] (2026-09-08 04:47Z) Completed local scale, privacy, interaction, and visual QA. Two clean production-shaped builds completed in 8.02s and 13.34s; the final artifact has 6,794 files/53,632,735 bytes, 2,625 Link detail pages, 1,363 Link archive pages, at most 50 rows per archive, and a 2,493,244-byte Pagefind bundle. All 64 Playwright checks pass on desktop/mobile, including search and no-JavaScript pagination.
-- [ ] Public promotion checkpoint: commit and push the 2,625 real Link files only after Ciaran confirms that the reviewed private Feedly history may become public, then dispatch the repository-owned preview workflow and smoke-test its stable branch URL.
+- [x] (2026-09-08 05:10Z) Promoted the 2,625 reviewed Link metadata files in commit `6818e3c`, pushed PR #41, and deployed the branch through the repository-owned preview workflow. Run 34189466575 completed in 1m30s; the index, page two, a representative detail, both feeds, and Pagefind returned HTTP 200, while a live 390px check confirmed 50 rows, working next-page navigation, no horizontal overflow, and bounded search results.
 - [ ] ATproto follow-up: after the Link URLs are deployed and an app password is available, publish and verify one Standard.site canary, then use separately observed missing-only batches of at most 100. No Bluesky feed posts or bookmarks are in scope.
 
 ## Surprises & Discoveries
@@ -185,7 +185,7 @@ The UI keeps the “curated, not collected” editorial thesis at full scale. De
 
 Standard.site publication is now operationally resumable. A public, credential-free dry run resolved the existing publication and selected exactly one deterministic missing Link. Live publication has not run: the required order is to approve and deploy the local public pages, then use one explicit canary followed by missing-only batches of at most 100. No Standard.site document, Bluesky post, or Bluesky bookmark was created in this phase.
 
-The only remaining site milestone is the deliberate private-to-public boundary. The 2,625 real Markdown files currently exist only in this local worktree; they have not been pushed to GitHub or Cloudflare. Once Ciaran confirms promotion, commit/push them to PR #41, dispatch the manual preview workflow from `main` for `clyons/feedly-stars-to-til`, and smoke-test the stable branch URL. Production remains out of scope until review and merge.
+The reviewed archive is now on PR #41 and on the branch-scoped Cloudflare preview. Workflow run 34189466575 completed in 1m30s using the trusted workflow from `main`. The stable branch preview and immutable deployment are recorded below. Public smoke checks returned HTTP 200 for the index, page two, a representative detail, both feeds, and the Pagefind runtime. A real browser at 390px rendered 50 rows without overflow, followed next-page navigation, and returned a bounded Link-filtered search result. Production remains out of scope until review and merge.
 
 During implementation, `main` gained repository-owned GitHub Actions deployments to Cloudflare Pages. The feature branch was rebased onto that deployment contract, and the final preview was requested through `.github/workflows/deploy-preview.yml` rather than an artifact-copy branch.
 
@@ -193,15 +193,15 @@ Stable branch preview:
 
     https://clyons-feedly-stars-to-til.ciaranlyons.pages.dev/links/
 
-Immutable deployment:
+Latest immutable deployment:
 
-    https://2d2f45fa.ciaranlyons.pages.dev/links/
+    https://b7cc864a.ciaranlyons.pages.dev/links/
 
-Workflow evidence:
+Latest workflow evidence:
 
-    https://github.com/clyons/ciaranlyons/actions/runs/34169202394
+    https://github.com/clyons/ciaranlyons/actions/runs/34189466575
 
-The workflow completed in 1m8s after checkout, lint, unit tests, and a clean build. Production was not deployed.
+The full-data workflow completed in 1m30s after checkout, lint, 62 unit tests, a clean 4,065-page build, Pagefind indexing, and Cloudflare upload. Production was not deployed. The earlier 1m8s mock deployment remains useful as a baseline but is superseded by this real-data preview.
 
 ## Context and Orientation
 
@@ -587,6 +587,7 @@ Real-data pre-promotion evidence:
 - clean builds: 8.02s and 13.34s wall time, each below the five-minute target and ten-minute escalation threshold; largest asset 3,049,958 bytes;
 - regression validation: `npm test` passed 62 tests, `npm run lint` checked 93 Astro files with zero diagnostics, `npx tsc --noEmit` exited 0, and `npm run test:ui` passed 64 checks after reviewed desktop/mobile snapshot updates;
 - Standard.site dry run: `--type links --missing-only --limit 1` resolved the existing publication and selected exactly one deterministic Link path without credentials or writes.
+- Cloudflare preview: workflow run 34189466575 succeeded in 1m30s; the stable and immutable deployments served the Links index, pagination, detail, feeds, and Pagefind with HTTP 200, and live 390px navigation/search checks passed without overflow.
 
 ## Interfaces and Dependencies
 
@@ -675,3 +676,4 @@ No credential is required for a normal static build, local content read, fixture
 - 2026-09-07: Dispatched the repository-owned preview workflow for `clyons/feedly-stars-to-til`; it completed successfully in 1m8s and published stable and immutable Cloudflare Pages URLs. Verified index, assets, detail, feed, mock labeling, search, navigation, and mobile overflow on the public deployment.
 - 2026-09-08: Recorded the complete 2,633-item acquisition and corrected top-level save timestamps. Reassessed the 2,626 publishable Links as a projected 3,851-page static workload. Kept Astro/Cloudflare Pages and Git-tracked Markdown, added a required pagination/Pagefind/feed-cap/full-build milestone before promotion, defined objective D1 escalation thresholds, added CSV-first review, and changed Standard.site backfill to a canary followed by resumable missing-only batches of at most 100.
 - 2026-09-08: Merged the latest `origin/main` into the checkpoint branch and pushed merge commit `e4b7a93`. Implemented 50-row static pagination, Pagefind search, feed caps, artifact validation, Standard.site missing-only batches, and Conductor-aware Playwright ports. Imported and locally validated 2,625 real Links after stripping eight subscriber-token parameters and collapsing the resulting extra duplicate. Recorded build, artifact, privacy, unit, TypeScript, visual, interaction, and ATproto dry-run evidence. Left public promotion, preview deployment, and live ATproto publication behind their explicit review/deployment boundaries.
+- 2026-09-08: Pushed reviewed real Link metadata in `6818e3c` and ran the manual Cloudflare preview workflow from `main` for the feature branch. Run 34189466575 succeeded in 1m30s and published immutable deployment `b7cc864a`; HTTP and live mobile smoke checks passed. Live Standard.site publication remains deferred until the deployed page is reviewed and a revocable app password is supplied.
