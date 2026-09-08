@@ -1,7 +1,7 @@
 ---
 attribution: Jan Chipchase
-source: Further Faster
-sourceUrl: https://web.archive.org/web/20080916155552/http://www.janchipchase.com/blog/archives/2008/01/further_faster.html
+source: Small objects travel further, faster
+sourceUrl: https://web.archive.org/web/20081204151605/http://www.receiver.vodafone.com/small-objects-travel-further-faster
 date: 2026-09-07
 tags:
   - travel
