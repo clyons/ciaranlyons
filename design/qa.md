@@ -128,7 +128,7 @@ READY TO MERGE — the archive retains the approved editorial-ledger direction, 
 
 ### Visual and behavioral conformance
 
-- ✓ The `Curated, not collected` thesis, Links title, count/source context, cardless chronology, source attribution, and split local/outbound actions remain intact.
+- ✓ The Links title, count/source context, cardless chronology, source attribution, and split local/outbound actions remain intact.
 - ✓ Search is now a labelled landmark with a concise visible field prompt and explicit submit button. It remains a GET form that works without JavaScript and preserves the Link type filter.
 - ✓ Year navigation wraps deliberately around the visible Search action rather than compressing or clipping it.
 - ✓ Static previous/next navigation, 50-row archive bounds, 12-result Pagefind rendering, canonical URLs, RSS, and date archives remain unchanged.

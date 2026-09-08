@@ -76,7 +76,7 @@ export async function getOgImageSpecs(): Promise<OgImageSpec[]> {
       path: 'links',
       kind: 'page',
       label: 'Links',
-      title: 'Curated, not collected.',
+      title: 'Links',
       description: 'Articles, ideas, and references I want to find again.',
     },
     {
