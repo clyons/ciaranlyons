@@ -27,6 +27,7 @@ test('About presents the PQ Program reach accurately and stays responsive', asyn
   await expect(about).toContainText('over 250,000 participants')
   await expect(about).not.toContainText(/(?:1M\+|one million|1 million) participants/i)
   await expect(about.locator('img[alt="Ciaran Lyons"]')).toBeVisible()
+  await expect(about.locator('.about-profile__portrait picture')).toHaveCSS('border-top-width', '1px')
 
   for (const width of [1280, 390, 320]) {
     await page.setViewportSize({ width, height: 844 })
@@ -35,17 +36,33 @@ test('About presents the PQ Program reach accurately and stays responsive', asyn
     const evidenceHeading = await about.getByRole('heading', { level: 2, name: 'Built across operations, growth, and technology.' }).boundingBox()
     const experience = await about.locator('.about-profile__history').boundingBox()
     const caseStudies = await about.locator('.about-profile__cases').boundingBox()
+    const timelineMarker = await about.locator('.about-profile__history-marker').first().boundingBox()
+    const caseMarker = await about.locator('.about-profile__case-number').first().boundingBox()
+    const timelineCopy = await about.locator('.about-profile__history-copy').first().boundingBox()
+    const caseCopy = await about.locator('.about-profile__case-copy').first().boundingBox()
     const contactHeading = await about.getByRole('heading', { level: 2, name: 'Email is best.' }).boundingBox()
     const email = await about.locator('.about-profile__email').boundingBox()
     expect(evidenceHeading).not.toBeNull()
     expect(experience).not.toBeNull()
     expect(caseStudies).not.toBeNull()
+    expect(timelineMarker).not.toBeNull()
+    expect(caseMarker).not.toBeNull()
+    expect(timelineCopy).not.toBeNull()
+    expect(caseCopy).not.toBeNull()
     expect(contactHeading).not.toBeNull()
     expect(email).not.toBeNull()
     expect(Math.abs(experience!.x - evidenceHeading!.x)).toBeLessThan(1)
     expect(caseStudies!.y).toBeGreaterThanOrEqual(experience!.y + experience!.height)
     expect(Math.abs(caseStudies!.x - evidenceHeading!.x)).toBeLessThan(1)
+    expect(Math.abs(timelineMarker!.x + (timelineMarker!.width / 2) - caseMarker!.x - (caseMarker!.width / 2))).toBeLessThan(1)
+    expect(Math.abs(timelineCopy!.x - caseCopy!.x)).toBeLessThan(1)
     expect(Math.abs(email!.x - contactHeading!.x)).toBeLessThan(1)
+
+    const [timelineHeadingSize, caseHeadingSize] = await Promise.all([
+      about.locator('.about-profile__history h4').first().evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+      about.locator('.about-profile__case-copy strong').first().evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+    ])
+    expect(Math.abs(timelineHeadingSize - caseHeadingSize)).toBeLessThan(4)
   }
 })
 
