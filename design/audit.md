@@ -11,7 +11,7 @@ goal: Let readers scan recent saves or reliably retrieve one item from a 2,625-l
 
 ## What should stay
 
-- The `Curated, not collected` thesis, large Links title, collection/source count, and chronological ledger create a clear hierarchy without turning the archive into a dashboard.
+- The large Links title, collection/source count, and chronological ledger create a clear hierarchy without turning the archive into a dashboard.
 - Fifty-row static pagination and Pagefind's bounded results keep the browser document and search rendering proportionate to the collection.
 - Local `Notes & details` and external `Read at…` actions correctly distinguish durable site context from the publisher destination.
 - Search, dated archives, RSS, canonical URLs, visible focus, reduced-motion handling, light/dark themes, and the 320px no-overflow floor are already coherent.
