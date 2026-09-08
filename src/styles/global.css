@@ -1007,7 +1007,7 @@ img {
   margin: 0;
 }
 
-.breadcrumbs {
+.archive-breadcrumb {
   margin: 0 0 clamp(20px, 3vw, 32px);
   color: var(--muted);
   font-family: var(--mono);
@@ -1018,34 +1018,8 @@ img {
   text-transform: uppercase;
 }
 
-.breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  align-items: baseline;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.breadcrumbs li {
-  display: inline-flex;
-  min-width: 0;
-  align-items: baseline;
-}
-
-.breadcrumbs li + li::before {
-  content: "/";
-  margin-right: 0.45rem;
-  color: var(--hairline);
-}
-
-.breadcrumbs a {
+.archive-breadcrumb a {
   color: var(--ink);
-}
-
-.breadcrumbs [aria-current="page"] {
-  overflow-wrap: anywhere;
 }
 
 .article-shell {
