@@ -143,8 +143,8 @@ READY TO MERGE — the archive retains the approved editorial-ledger direction, 
 ### Evidence
 
 - `npm test`: 69 passed.
-- `npm run lint`: 0 errors, 0 warnings, 0 hints across 101 files.
+- `npm run lint`: 0 errors, 0 warnings, 0 hints across 102 files after the latest `main` merge.
 - `npx tsc --noEmit`: passed.
 - `npm run build`: 4,067 pages; 68 verified social previews; 2,662 Pagefind-indexed pages.
-- `npm run test:ui`: 68 passed across desktop and mobile after intentional Links baseline updates.
+- `npm run test:ui`: 76 passed across desktop and mobile after intentional Links and merged-breadcrumb baseline updates.
 - Final captures: committed `links-{desktop,mobile}-darwin.png` baselines plus gitignored 320px review capture under `.context/design/`.

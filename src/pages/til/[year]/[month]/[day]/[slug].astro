@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro'
 import { getTilEntries } from '../../../../../lib/content'
 import { formatDate } from '../../../../../lib/dates'
 
@@ -16,6 +17,7 @@ const { entry } = Astro.props
 
 <BaseLayout title={entry.title} description={entry.description} canonical={entry.url} pagefindBody pagefind={{ type: 'TIL', year: entry.year, tags: entry.tags, date: entry.date }}>
   <article class="article-shell">
+    <Breadcrumbs items={[{ label: 'TIL', href: '/til/' }, { label: entry.title }]} />
     <header class="article-header">
       <p class="date">{entry.topic} - <time datetime={entry.date}>{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>
       <h1 class="article-title">{entry.title}</h1>

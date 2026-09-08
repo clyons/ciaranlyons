@@ -77,6 +77,25 @@ test('Found Quote type study gives the long exemplar a reading scale', async ({ 
   await expect(elision.locator('.visually-hidden')).toHaveText('Quoted passage omitted.')
 })
 
+for (const [name, path, archiveLabel, archivePath, currentLabel] of [
+  ['TIL', '/til/2026/09/07/two-state-dark-mode-toggles/', 'TIL', '/til/', 'Two-state dark mode toggles'],
+  ['Writing', '/writing/2026/09/07/found-quotes-wagmi/', 'Writing', '/writing/', 'Found Quotes: WAGMI'],
+  ['Found Quote', '/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/', 'Found Quotes', '/found-quotes/', 'Found quote from Ben Thompson'],
+  ['Note', '/notes/2026/09/07/3mux7jv5ze52c/', 'Notes', '/notes/', 'New TIL: two-state dark mode toggles.'],
+] as const) {
+  test(`${name} detail links back to its archive with a breadcrumb`, async ({ page }) => {
+    await page.goto(path)
+
+    const breadcrumbs = page.getByRole('navigation', { name: 'Breadcrumb' })
+    await expect(breadcrumbs).toHaveCount(1)
+    const archiveLink = breadcrumbs.getByRole('link', { name: archiveLabel, exact: true })
+    await expect(archiveLink).toHaveAttribute('href', archivePath)
+    await expect(breadcrumbs.locator('[aria-current="page"]')).toHaveText(currentLabel)
+    await archiveLink.click()
+    expect(new URL(page.url()).pathname).toBe(archivePath)
+  })
+}
+
 test.describe('site structure and keyboard access', () => {
   for (const [name, path] of coreRoutes) {
     test(`${name} exposes a labelled primary navigation and one main heading`, async ({ page }) => {

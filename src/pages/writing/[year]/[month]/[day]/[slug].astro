@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro'
 import FoundQuote from '../../../../../components/FoundQuote.astro'
 import { getFoundQuotes, getWriting, resolveFoundQuotes } from '../../../../../lib/content'
 import { formatDate } from '../../../../../lib/dates'
@@ -24,6 +25,7 @@ const { entry, embeddedQuotes } = Astro.props
   pagefind={{ type: 'Writing', year: entry.year, date: entry.date }}
 >
   <article class="article-shell">
+    <Breadcrumbs items={[{ label: 'Writing', href: '/writing/' }, { label: entry.title }]} />
     <header class="article-header">
       <p><time class="date" datetime={entry.date}>{formatDate(entry.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>
       <h1 class="article-title">{entry.title}</h1>
