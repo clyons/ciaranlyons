@@ -28,7 +28,7 @@ test('Found Quote archive and permalink preserve quotation semantics', async ({ 
   await expect(page.locator('.found-quotes-list figure')).toHaveCount(19)
   await expect(page.locator('.found-quotes-list blockquote')).toHaveCount(19)
   await expect(page.locator('.preview-label')).toHaveCount(0)
-  await expect(page.locator('.found-quotes-list blockquote').first()).toContainText('Live is the shortcut to FOMO.')
+  await expect(page.locator('.found-quotes-list blockquote').first()).toContainText('‘Live’ is the shortcut to FOMO.')
   await expect(page.getByText('The value of a company is the sum of all problems solved.')).toBeVisible()
   await expect(page.getByText('Martin Lorentzon', { exact: false })).toBeVisible()
   await expect(page.locator('.found-quotes-list time')).toHaveCount(0)
