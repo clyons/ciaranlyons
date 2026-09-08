@@ -1,30 +1,52 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
 import { getAllNotes, originalPostUrl } from '../../../../../lib/atproto'
-import { getTilEntries, noteTitle } from '../../../../../lib/content'
+import { foundQuoteDescription, foundQuoteTitle, getFoundQuotes, getProjects, getTilEntries, getWriting, noteTitle } from '../../../../../lib/content'
 import { formatDate } from '../../../../../lib/dates'
+import { canonicalInternalUrl, isDefined } from '../../../../../lib/internal-links'
 import { renderRichText } from '../../../../../lib/rich-text'
 
 export async function getStaticPaths() {
-  const [notes, tilEntries] = await Promise.all([getAllNotes(), getTilEntries()])
+  const [notes, tilEntries, writing, foundQuotes, projects] = await Promise.all([
+    getAllNotes(),
+    getTilEntries(),
+    getWriting(),
+    getFoundQuotes(),
+    getProjects(),
+  ])
+  const contentReferences = [
+    ...tilEntries.map((entry) => ({ ...entry, type: 'TIL' })),
+    ...writing.map((entry) => ({ ...entry, type: 'Writing' })),
+    ...foundQuotes.map((entry) => ({
+      title: foundQuoteTitle(entry),
+      description: foundQuoteDescription(entry),
+      type: 'Found quote',
+      url: entry.url,
+    })),
+    ...projects.map((entry) => ({ ...entry, type: 'Project' })),
+    ...notes.map((entry) => ({
+      title: noteTitle(entry),
+      description: entry.text.replace(/\s+/g, ' ').trim(),
+      type: 'Note',
+      url: entry.url,
+    })),
+  ]
+  const referenceByUrl = new Map(contentReferences.map((entry) => [canonicalInternalUrl(entry.url), entry]))
+
   return notes.map((note) => ({
     params: { year: note.year, month: note.month, day: note.day, id: note.id },
     props: {
       note,
-      linkedTils: tilEntries.filter((entry) => note.facets.some((facet) => facet.features?.some((feature) => {
-        if (!feature.uri) return false
-        try {
-          const url = new URL(feature.uri)
-          return url.hostname === 'ciaranlyons.com' && `${url.pathname.replace(/\/$/, '')}/` === entry.url
-        } catch {
-          return false
-        }
-      }))),
+      linkedContent: note.facets
+        .flatMap((facet) => facet.features ?? [])
+        .flatMap((feature) => feature.uri ? [referenceByUrl.get(canonicalInternalUrl(feature.uri))] : [])
+        .filter(isDefined)
+        .filter((entry, index, entries) => entries.indexOf(entry) === index),
     },
   }))
 }
 
-const { note, linkedTils } = Astro.props
+const { note, linkedContent } = Astro.props
 const title = noteTitle(note)
 const paragraphs = renderRichText(note.text, note.facets)
   .split(/(?:<br \/>){2,}/)
@@ -77,11 +99,11 @@ const paragraphs = renderRichText(note.text, note.facets)
           ))}
         </div>
       )}
-      {linkedTils.length > 0 && (
+      {linkedContent.length > 0 && (
         <div class="note-content-references">
-          {linkedTils.map((entry) => (
+          {linkedContent.map((entry) => (
             <a class="note-content-reference" href={entry.url}>
-              <span class="type-label">TIL</span>
+              <span class="type-label">{entry.type}</span>
               <span class="note-content-reference-copy">
                 <strong>{entry.title}</strong>
                 <span>{entry.description}</span>
