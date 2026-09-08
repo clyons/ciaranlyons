@@ -19,3 +19,14 @@ test('rich text renders facets aligned to UTF-8 boundaries', () => {
   }])
   assert.match(html, /<a[^>]+>😀<\/a>/)
 })
+
+test('rich text renders Bluesky mentions with a literal DID profile identifier', () => {
+  const text = '@lea.verou.me'
+  const html = renderRichText(text, [{
+    index: { byteStart: 0, byteEnd: Buffer.byteLength(text) },
+    features: [{ $type: 'app.bsky.richtext.facet#mention', did: 'did:plc:eagnfcoqnbtzpkglrtej6ayg' }],
+  }])
+
+  assert.match(html, /href="https:\/\/bsky\.app\/profile\/did:plc:eagnfcoqnbtzpkglrtej6ayg"/)
+  assert.doesNotMatch(html, /did%3Aplc%3A/)
+})

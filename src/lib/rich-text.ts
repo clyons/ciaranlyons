@@ -46,7 +46,10 @@ function renderFacet(text: string, facet: RichTextFacet): string {
   if (linkUrl) return externalAnchor(linkUrl, text)
 
   if (mention?.did?.startsWith('did:')) {
-    return externalAnchor(`https://bsky.app/profile/${encodeURIComponent(mention.did)}`, text)
+    // Bluesky treats a DID as a profile identifier in the URL path. Keep its
+    // namespace separators literal: encoding the colons prevents the profile
+    // route from resolving in the web app.
+    return externalAnchor(`https://bsky.app/profile/${mention.did}`, text)
   }
 
   if (tag?.tag) {
