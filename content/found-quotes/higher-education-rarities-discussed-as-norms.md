@@ -10,6 +10,6 @@ tags:
 
 Life in the college dorm and on the grassy quad are rarities discussed as norms.
 
-...
+[…]
 
 Those of us in the traditional academy could have a hand in shaping that future, but doing so will require us to relax our obsessive focus on elite students, institutions, and faculty. It will require us to stop regarding ourselves as irreplaceable occupiers of sacred roles, and start regarding ourselves as people who do several jobs society needs done, only one of which is creating new knowledge.

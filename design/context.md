@@ -10,7 +10,7 @@ constraints: Astro 7 static output; root `content/` Markdown; existing serif/san
 
 success:
 
-- `/found-quotes/` makes quotation, attribution, source, collection date, and permalink legible without opening each item.
+- `/found-quotes/` makes quotation, attribution, source, and a quiet permalink affordance legible without opening each item; collection dates remain structural metadata rather than visible quote context.
 - Quote pages and Writing collections use semantic blockquote/citation markup and remain keyboard accessible.
 - A Writing entry can reference quote slugs in order, and broken references fail before build or Standard.site publication.
 - The feature is discoverable from the home page, footer, search, RSS, and sitemap without adding a fifth primary text link.
@@ -44,3 +44,12 @@ risks:
 - Long quote text or source URLs can overflow narrow screens; verify at 390px and the 320px floor.
 - Standard.site could publish incomplete collection text unless the publisher expands references before authentication and writes.
 - Preview fixtures could be mistaken for approved content; label them in both source and rendered output and keep merge readiness explicit.
+
+follow-up type study (2026-09-08):
+
+- Preserve the existing display scale for short quotations that read as one or two lines at desktop width.
+- Introduce a smaller reading scale for longer quotations so they feel like deliberate excerpts rather than oversized headlines.
+- Review the first four archive entries together; use `great-silence-and-technological-efficiency` as the long-quote exemplar on both the study archive and its permalink.
+- Tighten the reading tier's line height and vertical padding without changing the short-quote display tier.
+- Model blank-line-separated passages as semantic paragraphs with a compact gap, and allow one exact phrase to receive semantic emphasis without enabling arbitrary quote-body HTML.
+- Keep attribution, provenance, colors, and the surrounding page shell unchanged. Retain dates in content, URLs, archives, sorting, and feeds, but represent the on-page permalink with a compact `#` anchor instead of visible date text.

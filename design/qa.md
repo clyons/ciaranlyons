@@ -10,7 +10,7 @@ PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented acro
 
 - ✓ Full quotations, not generic cards, are the visual focus.
 - ✓ The existing serif, mono metadata, orange accent, background, and hairline tokens are reused in both themes.
-- ✓ Attribution and source remain secondary but readable; dates are distinct internal permalinks.
+- ✓ Attribution and source remain secondary but readable; a quiet `#` marker provides each internal permalink without elevating the collection date.
 - ✓ The Writing collection capability preserves Ciaran's introduction first and expands canonical quotes afterward in authored order; no collection is published until Ciaran provides its framing.
 - ✓ Found Quotes remain secondary in the site hierarchy: homepage module and footer link, with no fifth primary-navigation link.
 
@@ -36,3 +36,44 @@ PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented acro
 ## Captures
 
 Implementation review captures are kept in `.context/design/`: `found-quotes-writing-{desktop,mobile}.png`, `found-quote-detail-{desktop,mobile}.png`, and `found-quotes-dark-{desktop,mobile}.png`. Committed Playwright baselines cover the archive in both desktop and mobile projects.
+
+## Long-quote follow-up study — 2026-09-08
+
+Prototype: `/found-quotes/style-study/`
+
+Source of truth: the follow-up criteria in `design/context.md` and `design/found-quotes-long-style.md`.
+
+Visual:
+
+- ✓ The first three quotes retain the existing display size: 53.76px desktop and approximately 32px mobile.
+- ✓ The Great Silence exemplar shifts to a 35.84px/1.20 reading scale on desktop and 23.4px/1.24 on 390px mobile.
+- ✓ The smaller size still uses the existing serif, orange opening mark, hairlines, attribution treatment, and page shell.
+- ✓ The desktop permalink falls from 17 lines in production to 11 in the study; the 390px treatment falls from 23 to 17.
+- ✓ Reading-tier vertical padding is reduced, and blank-line-separated passages use a compact `0.48em` paragraph gap instead of an empty text line.
+
+Behavior and requirements:
+
+- ✓ The study contains exactly the first four current quotes.
+- ✓ The Great Silence `#` link opens its existing dated permalink, where the same reading treatment appears.
+- ✓ Visible collection dates are removed from quote captions. A compact `#` link with `rel="bookmark"`, a tooltip, and an explicit accessible name preserves the permalink at the right edge.
+- ✓ The Jony Ive quotation's blank-line-separated passage renders as two paragraph elements; the opening quotation mark remains attached only to the first.
+- ✓ The Clay Shirky quotation replaces an ambiguous standalone `...` with editorial `[…]`, rendered compactly and announced to assistive technology as “Quoted passage omitted.”
+- ✓ `waste products` renders as a real `<em>` element, backed by an exact, unique frontmatter substring that fails validation if it drifts from the quote text.
+- ✓ Source and permalink links remain independent and keyboard reachable.
+- ✓ Programmatic overflow checks report zero extra horizontal width at 1280px, 390px, and 320px on both the study and detail pages.
+
+Accessibility sanity:
+
+- ✓ Semantic figure, blockquote, cite, time, and heading structure is retained, with paragraph and emphasis semantics added to the quotation body.
+- ✓ No color or contrast token changes were introduced.
+- Manual screen-reader testing remains outside this visual type study.
+
+Automated evidence:
+
+- `npm test`: 43 passed.
+- `npm run check`: 0 errors, warnings, or hints across 76 files.
+- `npm run build`: 64 pages generated, including the isolated study route.
+- `npm run test:ui:update`: 46 passed across desktop and mobile; the two Found Quotes baselines were refreshed for the intended paragraph, elision, and emphasis treatment.
+- `npm run test:ui`: 46 passed again against the refreshed baselines.
+
+Verdict: READY FOR REVIEW — no high-severity drift or functional blockers found. Classification remains explicit in the mock; approve the visual direction before choosing the production content-tier rule.

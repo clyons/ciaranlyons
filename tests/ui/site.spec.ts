@@ -31,11 +31,45 @@ test('Found Quote archive and permalink preserve quotation semantics', async ({ 
   await expect(page.locator('.found-quotes-list blockquote').first()).toContainText('Live is the shortcut to FOMO.')
   await expect(page.getByText('The value of a company is the sum of all problems solved.')).toBeVisible()
   await expect(page.getByText('Martin Lorentzon', { exact: false })).toBeVisible()
+  await expect(page.locator('.found-quotes-list time')).toHaveCount(0)
+  const firstPermalink = page.locator('.found-quotes-list figure').first().getByRole('link', { name: 'Permalink to found quote from Ben Thompson' })
+  await expect(firstPermalink).toHaveAttribute('href', '/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/')
+  await expect(firstPermalink).toHaveAttribute('rel', 'bookmark')
+  await expect(firstPermalink.locator('[aria-hidden="true"]')).toHaveText('#')
 
   await page.goto('/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Found quote from Ben Thompson')
   await expect(page.locator('article blockquote')).toHaveCount(1)
   await expect(page.locator('article figcaption')).toContainText('Ben Thompson')
+  await expect(page.locator('article time')).toHaveCount(0)
+  await expect(page.getByRole('link', { name: 'Permalink to found quote from Ben Thompson' })).toHaveAttribute('rel', 'bookmark')
+})
+
+test('Found Quote type study gives the long exemplar a reading scale', async ({ page }) => {
+  await page.goto('/found-quotes/style-study/')
+
+  const quotes = page.locator('.found-quotes-list figure')
+  await expect(quotes).toHaveCount(4)
+  await expect(page.locator('.found-quotes-list .found-quote--reading')).toHaveCount(1)
+  for (let index = 0; index < 3; index += 1) {
+    await expect(quotes.nth(index)).not.toHaveClass(/found-quote--reading/)
+  }
+  await expect(quotes.nth(3)).toHaveClass(/found-quote--reading/)
+  await expect(quotes.nth(3)).toContainText('In the Great Silence')
+
+  await page.goto('/found-quotes/2026/09/07/great-silence-and-technological-efficiency/')
+  await expect(page.locator('article .found-quote--reading')).toHaveCount(1)
+  await expect(page.locator('article blockquote em')).toHaveText('waste products')
+
+  await page.goto('/found-quotes/2026/09/07/two-products-at-the-end-of-a-programme/')
+  await expect(page.locator('article blockquote p')).toHaveCount(2)
+
+  await page.goto('/found-quotes/2026/09/07/higher-education-rarities-discussed-as-norms/')
+  await expect(page.locator('article blockquote p')).toHaveCount(3)
+  const elision = page.locator('article blockquote .found-quote-elision')
+  await expect(elision).toHaveCount(1)
+  await expect(elision.locator('[aria-hidden="true"]')).toHaveText('[…]')
+  await expect(elision.locator('.visually-hidden')).toHaveText('Quoted passage omitted.')
 })
 
 test.describe('site structure and keyboard access', () => {

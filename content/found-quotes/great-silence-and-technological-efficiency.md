@@ -2,6 +2,7 @@
 attribution: Karl Schroeder
 source: "“The Deepening Paradox,” November 30, 2011"
 sourceUrl: https://kschroeder.substack.com/p/the-deepening-paradox-updated
+emphasis: waste products
 date: 2026-09-07
 tags:
   - technology
