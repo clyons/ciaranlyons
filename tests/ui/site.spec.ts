@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test'
 import fg from 'fast-glob'
 
 const foundQuoteCount = (await fg('content/found-quotes/*.md')).length
+const tilEntryCount = (await fg('content/til/**/*.md')).length
 
 const coreRoutes = [
   ['home', '/'],
@@ -256,10 +257,12 @@ test('projects are ordered and use the approved site card copy', async ({ page }
 
   const projects = page.locator('.project-row')
   await expect(projects.nth(0).getByRole('heading')).toHaveText('TIL')
+  await expect(projects.nth(0)).toContainText(`${tilEntryCount} entries`)
   await expect(projects.nth(1).getByRole('heading')).toHaveText('ciaranlyons.com')
   await expect(projects.nth(1)).toContainText('This site: writing, notes & various projects.')
   await expect(projects.nth(2).getByRole('heading')).toHaveText('Found Quotes')
   await expect(projects.nth(2)).toContainText('Things that smarter folks than I have said.')
+  await expect(projects.nth(2)).toContainText(`${foundQuoteCount} quotations`)
 })
 
 test('home lists every project', async ({ page }) => {
@@ -269,7 +272,10 @@ test('home lists every project', async ({ page }) => {
   await page.goto('/')
   const projects = page.locator('.home-projects .project-row')
   await expect(projects).toHaveCount(projectCount)
-  await expect(projects.filter({ hasText: 'Found Quotes' })).toHaveCount(1)
+  await expect(projects.filter({ hasText: 'TIL' })).toContainText(`${tilEntryCount} entries`)
+  const foundQuotesProject = projects.filter({ hasText: 'Found Quotes' })
+  await expect(foundQuotesProject).toHaveCount(1)
+  await expect(foundQuotesProject).toContainText(`${foundQuoteCount} quotations`)
 })
 
 test('note permalinks render as native posts rather than quotations', async ({ page }) => {
@@ -381,6 +387,8 @@ test('TIL search submits a TIL-filtered site search', async ({ page }) => {
   const search = page.getByRole('search', { name: 'Search TILs' })
   await expect(search.getByRole('searchbox', { name: 'Search TILs' })).toHaveAttribute('placeholder', 'Search TILs')
   await expect(search.getByRole('button', { name: 'Search' })).toBeVisible()
+  await expect(search.locator('input[name="type"]')).toHaveValue('TIL')
+  await expect(search.locator('..')).toHaveClass(/archive-tools/)
   await search.getByRole('searchbox', { name: 'Search TILs' }).fill('two-state dark mode')
   await search.getByRole('button', { name: 'Search' }).click()
 

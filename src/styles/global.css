@@ -767,12 +767,15 @@ img {
   text-transform: uppercase;
 }
 
+.archive-tools {
+  padding-block: clamp(28px, 4vw, 42px);
+}
+
 .links-tools {
   display: grid;
   grid-template-columns: minmax(280px, 1fr) minmax(0, 1fr);
   gap: 28px;
   align-items: center;
-  padding-block: clamp(28px, 4vw, 42px);
 }
 
 .links-tools form {

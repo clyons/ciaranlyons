@@ -439,20 +439,35 @@ export function getLinks(): Promise<LinkEntry[]> {
 }
 
 async function loadProjects(): Promise<ProjectEntry[]> {
-  const files = await fg('projects/*.md', { cwd: contentRoot, absolute: true })
+  const [files, foundQuotes, tilEntries] = await Promise.all([
+    fg('projects/*.md', { cwd: contentRoot, absolute: true }),
+    getFoundQuotes(),
+    getTilEntries(),
+  ])
   const entries = await Promise.all(
     files.map(async (file) => {
       const { data } = await readMarkdownFile(file)
       const source = path.relative(process.cwd(), file)
       const slug = validateSegment(path.basename(file, '.md'), source, 'slug')
       const rawUrl = asString(data.url, `/projects/#${slug}`)
+      const metaCount = asString(data.metaCount)
+      if (metaCount && metaCount !== 'found-quotes' && metaCount !== 'til') {
+        throw new Error(`${source}: metaCount must be found-quotes or til`)
+      }
+      const collectionMeta = metaCount === 'found-quotes'
+        ? { count: foundQuotes.length, singular: 'quotation', plural: 'quotations' }
+        : metaCount === 'til'
+          ? { count: tilEntries.length, singular: 'entry', plural: 'entries' }
+          : undefined
       return {
         slug,
         title: asString(data.title, slug),
         description: asString(data.description),
         emphasis: asString(data.emphasis) || undefined,
         url: webUrl(rawUrl, source, 'url'),
-        meta: asString(data.meta) || undefined,
+        meta: collectionMeta
+          ? `${collectionMeta.count} ${collectionMeta.count === 1 ? collectionMeta.singular : collectionMeta.plural}`
+          : asString(data.meta) || undefined,
         order: asNumber(data.order),
       }
     }),
