@@ -6,6 +6,24 @@ For the contributor and agent guardrails that enforce this workflow, see [Deploy
 
 The checked-in workflows are the executable contract: [production](../../.github/workflows/deploy-production.yml) deploys every `main` push, while [preview](../../.github/workflows/deploy-preview.yml) is manually dispatched for a requested non-`main` branch.
 
+## Content social previews
+
+Every canonical page has a generated 1200×630 PNG social preview under `/og/`. New Writing, Note, TIL, and Found Quote records receive a page-specific image from their title, description, quotation, attribution, date, and content type during `npm run build`; do not hand-author or copy generated PNG files into `public/`.
+
+Before publishing new content:
+
+1. Run `npm run build`. The build must finish with `Verified <count> page-specific social preview images.` This gate confirms that every rendered `og:image` and `twitter:image` agrees, points to an existing generated PNG, and declares a 1200×630 image.
+2. Open the new content's exact file under `dist/og/<canonical-path-without-trailing-slash>.png`. Confirm that its title or quotation, content label, attribution or description, and date remain readable with no unintended truncation or overlap. A passing dimension check is not a substitute for this visual review.
+3. Inspect the built page's `og:image`, `og:image:alt`, `twitter:image`, and `twitter:image:alt` metadata and confirm that it describes and links to that exact preview.
+4. Include the build result and the preview path in the PR's validation evidence. Correct the generator or content metadata before merge if the card is misleading or visually broken.
+
+Examples:
+
+- Writing: `dist/og/writing/YYYY/MM/DD/<slug>.png`
+- Note: `dist/og/notes/YYYY/MM/DD/<id>.png`
+- TIL: `dist/og/til/YYYY/MM/DD/<slug>.png`
+- Found Quote: `dist/og/found-quotes/YYYY/MM/DD/<slug>.png`
+
 ## One-time setup
 
 Complete these steps before the first production merge. They are account configuration, so keep token values out of the repository and out of local shell history.

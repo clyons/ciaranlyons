@@ -353,6 +353,10 @@ img {
   line-height: 1.2;
 }
 
+.featured-essay .text-link {
+  color: var(--paper-ink);
+}
+
 .featured-essay-summary {
   align-self: end;
   padding: clamp(18px, 3vw, 36px) 0 clamp(2px, 1vw, 12px) clamp(28px, 4vw, 48px);
@@ -367,7 +371,12 @@ img {
 }
 
 .featured-essay a:hover {
-  color: var(--paper-muted);
+  color: var(--paper-ink);
+  text-decoration-thickness: 2px;
+}
+
+.featured-essay a:focus-visible {
+  outline-color: var(--paper-ink);
 }
 
 .home-projects {

@@ -20,7 +20,7 @@ interface Props {
 const { links, totalItems, page, totalPages, basePath, title, description, kickerHref, kickerLabel, heading } = Astro.props
 ---
 
-<BaseLayout title={page === 1 ? title : `${title} — Page ${page}`} description={description} canonical={page === 1 ? basePath : `${basePath}page/${page}/`} sectionFeed={{ href: '/links/feed.xml', title: 'Ciaran Lyons — Links' }}>
+<BaseLayout title={page === 1 ? title : `${title} — Page ${page}`} description={description} canonical={page === 1 ? basePath : `${basePath}page/${page}/`} socialImagePath="/links/" sectionFeed={{ href: '/links/feed.xml', title: 'Ciaran Lyons — Links' }}>
   <section class="section">
     <p class="section-kicker"><a href={kickerHref}>{kickerLabel}</a></p>
     <h1 class="page-title">{heading}</h1>

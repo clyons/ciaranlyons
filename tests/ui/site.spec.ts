@@ -108,6 +108,39 @@ test.describe('site structure and keyboard access', () => {
   })
 })
 
+test('featured essay link remains legible on the orange panel in both themes', async ({ page }) => {
+  await page.goto('/')
+
+  const link = page.getByRole('link', { name: 'Read the essay' })
+  const contrastAgainstPanel = (property = 'color') => link.evaluate((element, property) => {
+    const parseRgb = (color: string) => color.match(/\d+(?:\.\d+)?/gu)!.slice(0, 3).map(Number)
+    const luminance = (color: string) => {
+      const [red, green, blue] = parseRgb(color).map((channel) => {
+        const value = channel / 255
+        return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4
+      })
+      return (0.2126 * red) + (0.7152 * green) + (0.0722 * blue)
+    }
+    const foreground = luminance(getComputedStyle(element).getPropertyValue(property))
+    const background = luminance(getComputedStyle(element.closest('.featured-essay')!).backgroundColor)
+
+    return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05)
+  }, property)
+
+  expect(await contrastAgainstPanel()).toBeGreaterThanOrEqual(4.5)
+  await link.hover()
+  expect(await contrastAgainstPanel()).toBeGreaterThanOrEqual(4.5)
+  await link.focus()
+  expect(await contrastAgainstPanel('outline-color')).toBeGreaterThanOrEqual(3)
+
+  await page.locator('[data-theme-toggle]').click()
+  expect(await contrastAgainstPanel()).toBeGreaterThanOrEqual(4.5)
+  await link.hover()
+  expect(await contrastAgainstPanel()).toBeGreaterThanOrEqual(4.5)
+  await link.focus()
+  expect(await contrastAgainstPanel('outline-color')).toBeGreaterThanOrEqual(3)
+})
+
 test('projects are ordered and use the approved site card copy', async ({ page }) => {
   await page.goto('/projects/')
 
