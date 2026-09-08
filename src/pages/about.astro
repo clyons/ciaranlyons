@@ -43,9 +43,12 @@ const about = await getAbout()
           <ol class="about-profile__history">
             {aboutHistory.map((item) => (
               <li>
-                <h4>{item.href ? <a href={item.href}>{item.organization}</a> : item.organization}</h4>
-                <p>{item.role}</p>
-                <span>{item.result}</span>
+                <span class="about-profile__history-marker" aria-hidden="true" />
+                <div class="about-profile__history-copy">
+                  <h4>{item.href ? <a href={item.href}>{item.organization}</a> : item.organization}</h4>
+                  <p>{item.role}</p>
+                  <span class="about-profile__history-result">{item.result}</span>
+                </div>
               </li>
             ))}
           </ol>
@@ -142,6 +145,7 @@ const about = await getAbout()
     width: 100%;
     aspect-ratio: 3 / 4;
     overflow: hidden;
+    border: 1px solid var(--hairline);
     background: var(--bg-deep);
   }
 
@@ -196,6 +200,8 @@ const about = await getAbout()
   }
 
   .about-profile__evidence {
+    --about-marker-column: 34px;
+    --about-marker-gap: 18px;
     padding: clamp(68px, 8vw, 104px) 0 clamp(78px, 9vw, 116px);
     border-top: 1px solid var(--hairline);
   }
@@ -252,38 +258,51 @@ const about = await getAbout()
   }
 
   .about-profile__history {
+    position: relative;
     max-width: 680px;
     grid-column: 2;
-    padding-left: 28px;
-    border-left: 1px solid var(--hairline);
   }
 
   .about-profile__history li {
     position: relative;
+    display: grid;
+    grid-template-columns: var(--about-marker-column) minmax(0, 1fr);
+    column-gap: var(--about-marker-gap);
+    align-items: start;
   }
 
   .about-profile__history li + li {
     margin-top: 38px;
   }
 
-  .about-profile__history li::before {
+  .about-profile__history::before {
     position: absolute;
-    top: .58rem;
-    left: -32px;
+    top: .8rem;
+    bottom: .8rem;
+    left: calc(var(--about-marker-column) / 2);
+    width: 1px;
+    background: var(--hairline);
+    content: '';
+  }
+
+  .about-profile__history-marker {
+    position: relative;
+    z-index: 1;
     width: 7px;
     height: 7px;
+    margin-top: .72rem;
+    justify-self: center;
     border-radius: 50%;
     background: var(--accent);
-    content: '';
   }
 
   .about-profile__history h4 {
     margin: 0;
     font-family: var(--serif);
-    font-size: clamp(1.45rem, 2vw, 1.9rem);
+    font-size: clamp(1.7rem, 2.5vw, 2.5rem);
     font-weight: 650;
-    line-height: 1.08;
-    letter-spacing: -.022em;
+    line-height: 1.02;
+    letter-spacing: -.028em;
     text-wrap: balance;
   }
 
@@ -295,7 +314,7 @@ const about = await getAbout()
     line-height: 1.42;
   }
 
-  .about-profile__history span,
+  .about-profile__history-result,
   .about-profile__case-number {
     color: var(--accent-dark);
     font-family: var(--mono);
@@ -317,10 +336,15 @@ const about = await getAbout()
 
   .about-profile__cases a {
     display: grid;
-    grid-template-columns: 34px minmax(0, 1fr) auto;
-    gap: 18px;
+    grid-template-columns: var(--about-marker-column) minmax(0, 1fr) auto;
+    column-gap: var(--about-marker-gap);
     color: var(--ink);
     text-decoration: none;
+  }
+
+  .about-profile__case-number {
+    width: 100%;
+    text-align: center;
   }
 
   .about-profile__case-copy {
@@ -425,6 +449,11 @@ const about = await getAbout()
   }
 
   @media (max-width: 760px) {
+    .about-profile__evidence {
+      --about-marker-column: 24px;
+      --about-marker-gap: 12px;
+    }
+
     .about-profile__hero {
       min-height: 0;
       padding-top: 50px;
@@ -478,8 +507,8 @@ const about = await getAbout()
     }
 
     .about-profile__cases a {
-      grid-template-columns: 28px minmax(0, 1fr);
-      gap: 14px;
+      grid-template-columns: var(--about-marker-column) minmax(0, 1fr);
+      column-gap: var(--about-marker-gap);
     }
 
     .about-profile__case-arrow {
