@@ -86,7 +86,7 @@ test('home gives the Found Quotes heading room before the first quote rule', asy
   await page.goto('/')
 
   const heading = page.locator('.home-found-quotes .section-heading')
-  expect(Number.parseFloat(await heading.evaluate((element) => getComputedStyle(element).marginBottom))).toBeGreaterThan(0)
+  await expect(heading).toHaveCSS('margin-bottom', '20px')
   await expect(page.locator('.home-found-quotes')).toHaveCSS('border-bottom-width', '0px')
   await expect(heading.getByRole('link')).toHaveCount(0)
 })
@@ -97,6 +97,7 @@ test('home foregrounds the pinned Writing entry', async ({ page }) => {
   const featuredWriting = page.locator('.featured-essay')
   await expect(featuredWriting.getByText('Featured writing', { exact: true })).toBeVisible()
   await expect(featuredWriting.getByRole('heading', { level: 2 })).toHaveText('On Ownership')
+  await expect(featuredWriting.locator('.featured-essay-summary')).toContainText('To own something is to be responsible for the outcome, not control every turn.')
   await expect(featuredWriting.getByRole('link', { name: 'Read the essay' })).toHaveAttribute('href', '/writing/2026/08/08/on-ownership/')
 })
 
