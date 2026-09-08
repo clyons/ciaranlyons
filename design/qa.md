@@ -1,41 +1,38 @@
-# Site Quality Assurance
+# Found Quotes Design QA
 
-Prototype: https://ciaranlyons.com
-
-Source of truth: `pasted_text_2026-09-06_00-16-44.txt` (Next Rev brief)
+Source of truth: `design/context.md`, `design/found-quotes-directions.md`, and `design/found-quotes-mock.html`.
 
 ## Final verdict
 
-READY — two concrete defects were fixed. No publishing architecture, routes, content, or global navigation were restructured.
+PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented across the archive, permalink, home page, and collection-Writing capability at `https://clyons-add-found-quotes-cont.ciaranlyons.pages.dev/found-quotes/`. The archive now contains Ciaran's 19 supplied quotations; the fictional records and mock Writing collection have been removed, and no `Preview content` labels remain.
 
-## Requirements and behavior
+## Direction match
 
-- ✓ Primary navigation remains About, Writing, Notes, and Projects. TIL was not added.
-- ✓ The global footer only presents RSS and the primary `@ciaranlyons.com` identity.
-- ✓ About → Elsewhere contains the existing Bluesky, LinkedIn, Instagram, Facebook, and GitHub profiles.
-- ✓ All 31 generated HTML pages contain a canonical link; all canonical routes returned a successful live response.
-- ✓ All four RSS feeds, both ATProto/Standard.site well-known endpoints, and the expected 404 response were verified live.
-- ✓ All generated local `href`/`src` targets resolve in `dist/`.
+- ✓ Full quotations, not generic cards, are the visual focus.
+- ✓ The existing serif, mono metadata, orange accent, background, and hairline tokens are reused in both themes.
+- ✓ Attribution and source remain secondary but readable; dates are distinct internal permalinks.
+- ✓ The Writing collection capability preserves Ciaran's introduction first and expands canonical quotes afterward in authored order; no collection is published until Ciaran provides its framing.
+- ✓ Found Quotes remain secondary in the site hierarchy: homepage module and footer link, with no fifth primary-navigation link.
 
-## Defects fixed
+## Responsive and accessibility checks
 
-1. Legacy topic-path TIL redirects emitted relative canonical URLs with trailing-slash variants. Their canonical links now use the existing absolute date-based canonical URLs without changing redirect destinations or public permalink structure.
-2. On viewports at or below 320px wide, article prose had a fixed `20rem` width inside a narrower container. It now uses `width: 100%` with the same `20rem` maximum, preventing clipped horizontal overflow.
+- ✓ Archive, detail, home, and collection Writing were visually inspected at 1280px and 390px.
+- ✓ Archive was visually inspected in light and dark themes.
+- ✓ Programmatic overflow checks at 320px, 390px, and 1024px reported `scrollWidth === clientWidth`.
+- ✓ Every checked page has one H1; archive records use `<figure>`, `<blockquote>`, and `<figcaption>`.
+- ✓ Attribution sits outside `<blockquote>` and the cited work—not the speaker—is inside `<cite>`.
+- ✓ Source and permalink links are independently focusable; mobile primary navigation retains its five-control, single-row contract.
 
-## Accessibility and presentation sanity
+## Automated evidence
 
-- ✓ All generated `<img>` elements include `alt` attributes.
-- ✓ Global keyboard focus styles and reduced-motion handling are present.
-- ✓ Code-block styles retain horizontal scrolling. The current TIL corpus has no fenced Markdown code blocks to render-test.
-- ✓ Light mode is intentional (`color-scheme: light`); no dark-mode behavior is advertised.
-- Manual follow-up: browser automation was unavailable in this session, so screen-reader behavior and device rendering should receive a normal manual spot check before a major visual change.
+- `npm test`: 42 passed.
+- `npm run check`: 0 errors, 0 warnings, 0 hints across 75 files.
+- `npm run build`: 63 pages generated, including 19 quote permalinks, date archives, both feeds, search, and sitemap entries.
+- `npm run test:ui:update`: 44 passed in desktop and mobile projects; archive, home, and Writing baselines were refreshed for the real content set and removal of the mock Writing entry.
+- Generated `search.json`, `feed.xml`, `found-quotes/feed.xml`, archive HTML, and sitemap XML were inspected for the real quote records and absence of preview fixtures.
+- All 19 source URLs were checked. Current publisher/author pages are used where available; retired Clay Shirky pages use successful Internet Archive captures, and the Frank Chimero record explicitly marks its exact original page as unidentified.
+- GitHub Actions preview run `34173524953` succeeded in 1m6s; the immutable deployment and stable alias both returned HTTP 200 for the homepage, archive, Ben Thompson permalink, dedicated feed, search index, and Writing archive.
 
-## Metadata and performance
+## Captures
 
-- ✓ Content pages expose canonical and Open Graph metadata. The eight legacy redirect documents intentionally omit Open Graph metadata because they immediately redirect.
-- ✓ Production samples: homepage TTFB 93ms / total 93ms; Writing 148ms / 148ms; TIL 162ms / 162ms.
-- ✓ Standard.site publication and Writing-document metadata remain live.
-
-## External links
-
-Most external links returned HTTP 200. LinkedIn returned 999 and General Assembly/Positive Intelligence returned 403 to automated requests; those services commonly block automated clients, so this is not treated as a broken visitor-facing link.
+Implementation review captures are kept in `.context/design/`: `found-quotes-writing-{desktop,mobile}.png`, `found-quote-detail-{desktop,mobile}.png`, and `found-quotes-dark-{desktop,mobile}.png`. Committed Playwright baselines cover the archive in both desktop and mobile projects.

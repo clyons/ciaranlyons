@@ -1,0 +1,30 @@
+---
+import FoundQuote from '../../components/FoundQuote.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getFoundQuotes } from '../../lib/content'
+
+const quotes = await getFoundQuotes()
+const hasPreviewContent = quotes.some((quote) => quote.preview)
+---
+
+<BaseLayout
+  title="Found Quotes"
+  description="Things other people said that Ciaran Lyons wants to remember."
+  feedUrl="/found-quotes/feed.xml"
+  feedTitle="Ciaran Lyons - Found Quotes"
+>
+  <section class="section">
+    {hasPreviewContent && <p class="preview-label">Design preview · sample content</p>}
+    <h1 class="page-title">Found Quotes</h1>
+    <p class="lede">Things other people said that I want to remember.</p>
+  </section>
+  <section class="section found-quotes-section">
+    {quotes.length > 0 ? (
+      <div class="found-quotes-list">
+        {quotes.map((quote) => <FoundQuote quote={quote} />)}
+      </div>
+    ) : (
+      <p class="empty-state">No found quotes yet.</p>
+    )}
+  </section>
+</BaseLayout>

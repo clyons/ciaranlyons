@@ -4,7 +4,7 @@ Context for Claude Code when working in this repository.
 
 ## What This Is
 
-CiaranLyons.com is the canonical home for Ciaran Lyons on the web: writing, notes, projects, and a Git-backed TIL project.
+CiaranLyons.com is the canonical home for Ciaran Lyons on the web: writing, notes, found quotes, projects, and a Git-backed TIL project.
 
 ## Architecture
 
@@ -12,10 +12,11 @@ Static-first Astro site with Markdown content in `content/`.
 
 - Writing lives at `/writing` and is designed to connect to Standard.site records.
 - Notes live at `/notes` and are fetched from public ATProto records when `@ciaranlyons.com` resolves, falling back to local Markdown notes.
+- Found Quotes live at `/found-quotes` as repository-owned quotations with explicit attribution and provenance. Writing may compose them by slug.
 - TIL lives under `/til` as Markdown files grouped by topic.
 - Projects and About are site-native Markdown/Git content.
 - RSS and search are generated at build time.
-- Date-bearing public URLs are folder-addressable: `/writing/YYYY/MM/DD/slug`, `/notes/YYYY/MM/DD/id`, and `/til/topic/YYYY/MM/DD/slug`.
+- Date-bearing public URLs are folder-addressable: `/writing/YYYY/MM/DD/slug`, `/notes/YYYY/MM/DD/id`, `/found-quotes/YYYY/MM/DD/slug`, and `/til/YYYY/MM/DD/slug`.
 
 ## Commands
 

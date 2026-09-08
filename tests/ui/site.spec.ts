@@ -7,10 +7,35 @@ const coreRoutes = [
   ['notes', '/notes/'],
   ['projects', '/projects/'],
   ['til', '/til/'],
+  ['found quotes', '/found-quotes/'],
 ] as const
 
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' })
+})
+
+test('Found Quotes are discoverable without changing primary navigation', async ({ page }) => {
+  await page.goto('/found-quotes/')
+
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Found Quotes' })).toHaveCount(0)
+  await expect(page.getByRole('navigation', { name: 'Footer navigation' }).getByRole('link', { name: 'Found Quotes' })).toHaveAttribute('href', '/found-quotes/')
+  await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveAttribute('href', '/found-quotes/feed.xml')
+})
+
+test('Found Quote archive and permalink preserve quotation semantics', async ({ page }) => {
+  await page.goto('/found-quotes/')
+
+  await expect(page.locator('.found-quotes-list figure')).toHaveCount(19)
+  await expect(page.locator('.found-quotes-list blockquote')).toHaveCount(19)
+  await expect(page.locator('.preview-label')).toHaveCount(0)
+  await expect(page.locator('.found-quotes-list blockquote').first()).toContainText('Live is the shortcut to FOMO.')
+  await expect(page.getByText('The value of a company is the sum of all problems solved.')).toBeVisible()
+  await expect(page.getByText('Martin Lorentzon', { exact: false })).toBeVisible()
+
+  await page.goto('/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Found quote from Ben Thompson')
+  await expect(page.locator('article blockquote')).toHaveCount(1)
+  await expect(page.locator('article figcaption')).toContainText('Ben Thompson')
 })
 
 test.describe('site structure and keyboard access', () => {
@@ -89,6 +114,7 @@ for (const [name, path] of [
   ['writing', '/writing/'],
   ['notes', '/notes/'],
   ['projects', '/projects/'],
+  ['found-quotes', '/found-quotes/'],
 ] as const) {
   test(`${name} matches its approved visual baseline`, async ({ page }) => {
     await page.goto(path)

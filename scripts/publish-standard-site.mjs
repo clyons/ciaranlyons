@@ -65,6 +65,38 @@ function plainText(markdown) {
     .trim()
 }
 
+function foundQuoteSlugs(value, source) {
+  if (value === undefined || value === null) return []
+  if (!Array.isArray(value)) throw new Error(`${source}: foundQuotes must be an array of quote slugs`)
+
+  const slugs = value.map((item, index) => {
+    if (typeof item !== 'string' || !item.trim()) throw new Error(`${source}: foundQuotes[${index}] must be a non-empty string`)
+    const slug = item.trim()
+    if (!/^[A-Za-z0-9](?:[A-Za-z0-9._~-]*[A-Za-z0-9])?$/.test(slug) || slug === '.' || slug === '..') {
+      throw new Error(`${source}: foundQuotes[${index}] contains characters that are unsafe in a URL path`)
+    }
+    return slug
+  })
+
+  const duplicate = slugs.find((slug, index) => slugs.indexOf(slug) !== index)
+  if (duplicate) throw new Error(`${source}: foundQuotes contains duplicate quote slug ${duplicate}`)
+  return slugs
+}
+
+export function expandedWritingText(entry, quotes) {
+  const framing = plainText(entry.body)
+  if (entry.foundQuoteSlugs.length === 0) return framing
+
+  const quotesBySlug = new Map(quotes.map((quote) => [quote.slug, quote]))
+  const expanded = entry.foundQuoteSlugs.map((slug) => {
+    const quote = quotesBySlug.get(slug)
+    if (!quote) throw new Error(`${entry.source}: foundQuotes references missing quote slug ${slug}`)
+    return `${quote.text}\n— ${quote.attribution}, ${quote.source}`
+  })
+
+  return [framing, 'Found quotes', ...expanded].filter(Boolean).join('\n\n')
+}
+
 function atUriParts(uri, collection) {
   const match = uri.match(/^at:\/\/([^/]+)\/([^/]+)\/([^/]+)$/)
   if (!match || match[2] !== collection) return undefined
@@ -163,17 +195,20 @@ async function loadWriting(slug) {
     const raw = await readFile(file, 'utf8')
     const parsed = matter(raw)
     const entrySlug = path.basename(file, '.md')
+    const source = path.relative(process.cwd(), file)
     const date = asString(parsed.data.date)
-    if (!date) throw new Error(`Missing date in ${path.relative(process.cwd(), file)}`)
+    if (!date) throw new Error(`Missing date in ${source}`)
     return {
       file,
       raw,
+      source,
       slug: entrySlug,
       title: asString(parsed.data.title, entrySlug),
       description: asString(parsed.data.description),
       date: dateTime(date),
       updated: parsed.data.updated ? dateTime(asString(parsed.data.updated)) : undefined,
       standardUri: asString(parsed.data.standardUri) || undefined,
+      foundQuoteSlugs: foundQuoteSlugs(parsed.data.foundQuotes, source),
       body: parsed.content.trim(),
     }
   }))
@@ -181,6 +216,22 @@ async function loadWriting(slug) {
   const selected = slug ? entries.filter((entry) => entry.slug === slug) : entries
   if (selected.length === 0) throw new Error(slug ? `No Writing entry with slug "${slug}"` : 'No Writing entries found')
   return selected
+}
+
+async function loadFoundQuotes() {
+  const files = await fg('content/found-quotes/*.md', { cwd: process.cwd(), absolute: true })
+  return Promise.all(files.map(async (file) => {
+    const raw = await readFile(file, 'utf8')
+    const parsed = matter(raw)
+    const source = path.relative(process.cwd(), file)
+    const text = parsed.content.trim()
+    const attribution = asString(parsed.data.attribution).trim()
+    const citedSource = asString(parsed.data.source).trim()
+    if (!text) throw new Error(`${source}: quote body must be a non-empty string`)
+    if (!attribution) throw new Error(`${source}: attribution must be a non-empty string`)
+    if (!citedSource) throw new Error(`${source}: source must be a non-empty string`)
+    return { slug: path.basename(file, '.md'), text, attribution, source: citedSource }
+  }))
 }
 
 function publicationRecord() {
@@ -193,14 +244,14 @@ function publicationRecord() {
   }
 }
 
-function standardDocumentRecord(entry, publicationUri) {
+function standardDocumentRecord(entry, publicationUri, quotes) {
   return {
     $type: documentCollection,
     site: publicationUri,
     path: documentPath(entry),
     title: entry.title,
     description: entry.description,
-    textContent: plainText(entry.body),
+    textContent: expandedWritingText(entry, quotes),
     publishedAt: entry.date,
     ...(entry.updated ? { updatedAt: entry.updated } : {}),
   }
@@ -214,7 +265,8 @@ async function findPublicationUri(pds, did) {
 async function main() {
   const options = parseArgs(process.argv.slice(2))
   const handle = process.env.ATPROTO_HANDLE?.trim() || process.env.BSKY_HANDLE?.trim() || 'ciaranlyons.com'
-  const entries = await loadWriting(options.slug)
+  const [entries, quotes] = await Promise.all([loadWriting(options.slug), loadFoundQuotes()])
+  for (const entry of entries) expandedWritingText(entry, quotes)
   const { did, pds } = await resolveIdentity(handle)
   const expectedDid = process.env.ATPROTO_DID?.trim()
   if (!options.dryRun && !expectedDid) throw new Error('Missing ATPROTO_DID; refusing to submit credentials without an expected identity')
@@ -252,7 +304,7 @@ async function main() {
   }
 
   for (const entry of entries) {
-    const record = standardDocumentRecord(entry, publicationUri)
+    const record = standardDocumentRecord(entry, publicationUri, quotes)
     const parts = entry.standardUri ? atUriParts(entry.standardUri, documentCollection) : undefined
     let documentUri = entry.standardUri
 

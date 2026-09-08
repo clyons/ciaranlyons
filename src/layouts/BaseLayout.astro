@@ -6,6 +6,8 @@ interface Props {
   description?: string
   canonical?: string
   standardDocumentUri?: string
+  feedUrl?: string
+  feedTitle?: string
 }
 
 const {
@@ -13,6 +15,8 @@ const {
   description = 'Ciaran Lyons writes about operations, systems, automation, and the owned web.',
   canonical = Astro.url.pathname,
   standardDocumentUri,
+  feedUrl = '/feed.xml',
+  feedTitle = 'Ciaran Lyons',
 } = Astro.props
 
 const site = Astro.site ?? new URL('https://ciaranlyons.com')
@@ -48,7 +52,7 @@ const structuredData = {
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" sizes="48x48" href={`/favicon.png?v=${assetVersion}`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`/apple-touch-icon.png?v=${assetVersion}`} />
-    <link rel="alternate" type="application/rss+xml" title="Ciaran Lyons" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title={feedTitle} href={feedUrl} />
     {standardPublicationUri && <link rel="site.standard.publication" href={standardPublicationUri} />}
     {standardDocumentUri && <link rel="site.standard.document" href={standardDocumentUri} />}
     <script is:inline>
@@ -108,6 +112,7 @@ const structuredData = {
       </main>
       <footer class="site-footer">
         <nav aria-label="Footer navigation">
+          <a href="/found-quotes/">Found Quotes</a>
           <a href="/feed.xml">RSS</a>
           <a href="https://bsky.app/profile/ciaranlyons.com" rel="me">@ciaranlyons.com</a>
         </nav>

@@ -2,9 +2,11 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
-import { assertUnique, optionalHttpUrl, validateDate, validateSegment, validateTopic, webUrl } from './content-validation'
+import { assertUnique, optionalHttpUrl, requiredString, validateDate, validateSegment, validateTopic, webUrl } from './content-validation'
 import { renderMarkdown } from './markdown'
 import type { RichTextFacet, RichTextFacetFeature } from './rich-text'
+
+export { foundQuoteDescription, foundQuoteTitle, resolveFoundQuotes } from './found-quotes'
 
 const contentRoot = path.join(process.cwd(), 'content')
 
@@ -18,8 +20,27 @@ export interface WritingEntry {
   date: string
   updated?: string
   standardUri?: string
+  foundQuoteSlugs: string[]
   body: string
   html: string
+  url: string
+}
+
+export interface FoundQuoteEntry {
+  slug: string
+  year: string
+  month: string
+  day: string
+  text: string
+  attribution: string
+  source: string
+  sourceUrl?: string
+  via?: string
+  viaUrl?: string
+  date: string
+  updated?: string
+  tags: string[]
+  preview: boolean
   url: string
 }
 
@@ -84,6 +105,16 @@ function asString(value: unknown, fallback = ''): string {
 
 function asArray(value: unknown): string[] {
   return Array.isArray(value) ? value.map((item) => String(item)) : []
+}
+
+function asUniqueSegments(value: unknown, source: string, field: string): string[] {
+  if (value === undefined || value === null) return []
+  if (!Array.isArray(value)) throw new Error(`${source}: ${field} must be an array of quote slugs`)
+
+  const segments = value.map((item, index) => validateSegment(requiredString(item, source, `${field}[${index}]`), source, `${field}[${index}]`))
+  const duplicate = segments.find((segment, index) => segments.indexOf(segment) !== index)
+  if (duplicate) throw new Error(`${source}: ${field} contains duplicate quote slug ${duplicate}`)
+  return segments
 }
 
 function asNumber(value: unknown): number | undefined {
@@ -194,6 +225,7 @@ async function loadWriting(): Promise<WritingEntry[]> {
         date,
         updated,
         standardUri: asString(data.standardUri) || undefined,
+        foundQuoteSlugs: asUniqueSegments(data.foundQuotes, source, 'foundQuotes'),
         body,
         html,
         url: datedPath('/writing', date, slug),
@@ -208,6 +240,60 @@ let writingPromise: Promise<WritingEntry[]> | undefined
 export function getWriting(): Promise<WritingEntry[]> {
   writingPromise ??= loadWriting()
   return writingPromise
+}
+
+async function loadFoundQuotes(): Promise<FoundQuoteEntry[]> {
+  const files = await fg('found-quotes/*.md', { cwd: contentRoot, absolute: true })
+  const loaded = await Promise.all(
+    files.map(async (file) => {
+      const { data, body } = await readMarkdownFile(file)
+      const sourceFile = path.relative(process.cwd(), file)
+      const slug = validateSegment(path.basename(file, '.md'), sourceFile, 'slug')
+      const date = validateDate(data.date, sourceFile)
+      const updated = data.updated ? validateDate(data.updated, sourceFile, 'updated') : undefined
+      const attribution = requiredString(data.attribution, sourceFile, 'attribution')
+      const source = requiredString(data.source, sourceFile, 'source')
+      const text = requiredString(body, sourceFile, 'quote body')
+      const sourceUrl = optionalHttpUrl(data.sourceUrl, sourceFile, 'sourceUrl')
+      const via = asString(data.via).trim() || undefined
+      const viaUrl = optionalHttpUrl(data.viaUrl, sourceFile, 'viaUrl')
+      if (viaUrl && !via) throw new Error(`${sourceFile}: via is required when viaUrl is present`)
+      const { year, month, day } = dateParts(date)
+
+      return {
+        entry: {
+          slug,
+          year,
+          month,
+          day,
+          text,
+          attribution,
+          source,
+          sourceUrl,
+          via,
+          viaUrl,
+          date,
+          updated,
+          tags: asArray(data.tags),
+          preview: data.preview === true,
+          url: datedPath('/found-quotes', date, slug),
+        },
+        sourceFile,
+      }
+    }),
+  )
+
+  assertUnique(loaded, ({ entry }) => entry.url, ({ sourceFile }) => sourceFile)
+  return loaded
+    .map(({ entry }) => entry)
+    .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug))
+}
+
+let foundQuotesPromise: Promise<FoundQuoteEntry[]> | undefined
+
+export function getFoundQuotes(): Promise<FoundQuoteEntry[]> {
+  foundQuotesPromise ??= loadFoundQuotes()
+  return foundQuotesPromise
 }
 
 async function loadTilEntries(): Promise<TilEntry[]> {

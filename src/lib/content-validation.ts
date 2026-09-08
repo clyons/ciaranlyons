@@ -1,5 +1,12 @@
 const safeSegmentPattern = /^[A-Za-z0-9](?:[A-Za-z0-9._~-]*[A-Za-z0-9])?$/
 
+export function requiredString(value: unknown, source: string, field: string): string {
+  if (typeof value !== 'string' || !value.trim()) {
+    throw new Error(`${source}: ${field} must be a non-empty string`)
+  }
+  return value.trim()
+}
+
 export function validateDate(value: unknown, source: string, field = 'date'): string {
   const raw = value instanceof Date
     ? value.toISOString().slice(0, 10)
