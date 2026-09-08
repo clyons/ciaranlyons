@@ -25,24 +25,17 @@ test('Found Quotes are discoverable without changing primary navigation', async 
 test('Found Quote archive and permalink preserve quotation semantics', async ({ page }) => {
   await page.goto('/found-quotes/')
 
-  await expect(page.locator('.found-quotes-list figure')).toHaveCount(3)
-  await expect(page.locator('.found-quotes-list blockquote')).toHaveCount(3)
-  await expect(page.locator('.found-quotes-list blockquote').first()).toHaveAttribute('cite', 'https://example.com/')
-  await expect(page.locator('.found-quotes-list figcaption').first().locator('cite')).toContainText('Placeholder source for design review')
+  await expect(page.locator('.found-quotes-list figure')).toHaveCount(19)
+  await expect(page.locator('.found-quotes-list blockquote')).toHaveCount(19)
+  await expect(page.locator('.preview-label')).toHaveCount(0)
+  await expect(page.locator('.found-quotes-list blockquote').first()).toContainText('Live is the shortcut to FOMO.')
+  await expect(page.getByText('The value of a company is the sum of all problems solved.')).toBeVisible()
+  await expect(page.getByText('Martin Lorentzon', { exact: false })).toBeVisible()
 
-  await page.goto('/found-quotes/2026/09/07/good-systems/')
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Found quote from Example attribution')
+  await page.goto('/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Found quote from Ben Thompson')
   await expect(page.locator('article blockquote')).toHaveCount(1)
-  await expect(page.locator('article figcaption')).toContainText('Example attribution')
-})
-
-test('Writing collections render Found Quotes once in authored order', async ({ page }) => {
-  await page.goto('/writing/2026/09/06/found-quotes-on-keeping/')
-
-  const quotes = page.locator('.writing-found-quotes blockquote')
-  await expect(quotes).toHaveCount(2)
-  await expect(quotes.nth(0)).toContainText('A useful quotation')
-  await expect(quotes.nth(1)).toContainText('The things worth keeping')
+  await expect(page.locator('article figcaption')).toContainText('Ben Thompson')
 })
 
 test.describe('site structure and keyboard access', () => {

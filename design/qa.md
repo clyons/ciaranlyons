@@ -4,14 +4,14 @@ Source of truth: `design/context.md`, `design/found-quotes-directions.md`, and `
 
 ## Final verdict
 
-PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented across the archive, permalink, home page, and collection Writing at `https://clyons-add-found-quotes-cont.ciaranlyons.pages.dev/found-quotes/`. The branch intentionally contains fictional records labelled `Preview content`; those records are not approved production content and must be removed or replaced before merge.
+READY FOR REFRESHED PREVIEW — the selected Editorial Ledger direction is implemented across the archive, permalink, home page, and collection-Writing capability at `https://clyons-add-found-quotes-cont.ciaranlyons.pages.dev/found-quotes/`. The archive now contains Ciaran's 19 supplied quotations; the fictional records and mock Writing collection have been removed, and no `Preview content` labels remain.
 
 ## Direction match
 
 - ✓ Full quotations, not generic cards, are the visual focus.
 - ✓ The existing serif, mono metadata, orange accent, background, and hairline tokens are reused in both themes.
 - ✓ Attribution and source remain secondary but readable; dates are distinct internal permalinks.
-- ✓ The Writing collection preserves Ciaran's introduction first and expands canonical quotes afterward in authored order.
+- ✓ The Writing collection capability preserves Ciaran's introduction first and expands canonical quotes afterward in authored order; no collection is published until Ciaran provides its framing.
 - ✓ Found Quotes remain secondary in the site hierarchy: homepage module and footer link, with no fifth primary-navigation link.
 
 ## Responsive and accessibility checks
@@ -27,10 +27,10 @@ PREVIEW DEPLOYED — the selected Editorial Ledger direction is implemented acro
 
 - `npm test`: 42 passed.
 - `npm run check`: 0 errors, 0 warnings, 0 hints across 75 files.
-- `npm run build`: 53 pages generated, including archive/date/detail routes, both feeds, search, and sitemap entries.
-- `npm run test:ui:update`: 46 passed in desktop and mobile projects; Found Quotes baselines were added and existing baselines updated for the new footer/home content.
-- Generated `search.json`, `feed.xml`, `found-quotes/feed.xml`, Writing HTML, and sitemap XML were inspected for the mock quote records and collection expansion.
-- GitHub Actions preview run `34170972375` succeeded; live archive, permalink, collection Writing, feed, search, and homepage checks all returned HTTP 200.
+- `npm run build`: 63 pages generated, including 19 quote permalinks, date archives, both feeds, search, and sitemap entries.
+- `npm run test:ui:update`: 44 passed in desktop and mobile projects; archive, home, and Writing baselines were refreshed for the real content set and removal of the mock Writing entry.
+- Generated `search.json`, `feed.xml`, `found-quotes/feed.xml`, archive HTML, and sitemap XML were inspected for the real quote records and absence of preview fixtures.
+- All 19 source URLs were checked. Current publisher/author pages are used where available; retired Clay Shirky pages use successful Internet Archive captures, and the Frank Chimero record explicitly marks its exact original page as unidentified.
 
 ## Captures
 

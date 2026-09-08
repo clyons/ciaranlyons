@@ -24,6 +24,7 @@ Found Quotes are curation, not Ciaran's authored Writing and not ephemeral Notes
 - [x] (2026-09-07 23:36Z) Added the authoring runbook and repository instructions, plus clearly labelled fictional preview fixtures requested for design review.
 - [x] (2026-09-07 23:38Z) Completed automated checks and desktop/mobile visual QA in both light and dark themes.
 - [x] (2026-09-07 23:45Z) Pushed `clyons/add-found-quotes-content` and completed GitHub Actions preview run `34170972375`; the branch and immutable previews passed live smoke checks.
+- [x] (2026-09-08 00:27Z) Replaced all fictional preview fixtures with Ciaran's 19 real Found Quotes, researched missing provenance, removed the mock collection Writing, and refreshed automated and visual coverage with no preview labels remaining.
 
 ## Surprises & Discoveries
 
@@ -50,6 +51,9 @@ Found Quotes are curation, not Ciaran's authored Writing and not ephemeral Notes
 
 - Observation: Writing already provides the editorial apparatus a quote collection needs: a title, description, authored Markdown framing, dated permalink, archive presence, feed entry, search result, and optional Standard.site document record.
   Evidence: `WritingEntry` and `getWriting()` in `src/lib/content.ts`, routes under `src/pages/writing/`, and `scripts/publish-standard-site.mjs`.
+
+- Observation: Two incomplete attributions in the supplied material could be resolved from primary or first-party records: Daniel Ek credits the company-value line to Spotify co-founder Martin Lorentzon, and Letters of Note identifies the Aurora 7 letter's author as Marion Scott Carpenter. Several retired source URLs required current publisher pages, author mirrors, or archived copies of the original pages.
+  Evidence: Spotify's Q1 2025 prepared remarks, Letters of Note's current letter page, and the `sourceUrl` values in `content/found-quotes/`.
 
 ## Decision Log
 
@@ -109,11 +113,15 @@ Found Quotes are curation, not Ciaran's authored Writing and not ephemeral Notes
   Rationale: Ciaran explicitly asked to begin with a mock and carry it through a deployed preview. The `preview: true` marker makes the status visible in the UI, while the runbook and QA record make clear that these fixtures must be removed or replaced with approved real quotations before merge.
   Date/Author: 2026-09-07 / Codex
 
+- Decision (supersedes the temporary fixture decision): Replace the three fictional records with all 19 supplied Found Quotes and remove the fictional collection Writing without creating a replacement collection.
+  Rationale: The supplied quotations are the approved atomic content. A Writing collection needs Ciaran's own title, selection, order, and framing, none of which should be inferred from a raw source list. The Frank Chimero record explicitly says that its original page is unidentified rather than presenting uncertain provenance as fact.
+  Date/Author: 2026-09-07 / Codex
+
 ## Outcomes & Retrospective
 
 The complete feature is deployed to a branch preview. Found Quotes are a distinct but intentionally secondary editorial stream: durable and searchable like Writing and TIL, concise like Notes, and explicit that the words belong to someone else. Writing composes ordered groups of canonical quote records; its title, description, selection, and framing are Ciaran's contribution, while each Found Quote remains the single correction point for quoted text and provenance.
 
-The implementation includes all date archives and permalinks, a conditional home module, footer navigation, dedicated and combined RSS, search and sitemap integration, semantic quote markup, Standard.site expansion for collection Writing, authoring documentation, automated coverage, and responsive visual baselines. The primary navigation and Notes/ATProto contracts remain unchanged. Three fictional quotes and one fictional Writing collection are deliberately retained for the requested preview and visibly labelled; replacing or removing them is the only content gate before a production PR could be merge-ready.
+The implementation includes all date archives and permalinks, a conditional home module, footer navigation, dedicated and combined RSS, search and sitemap integration, semantic quote markup, Standard.site expansion for collection Writing, authoring documentation, automated coverage, and responsive visual baselines. The primary navigation and Notes/ATProto contracts remain unchanged. The preview now contains the 19 supplied real quotations and no fictional fixtures or preview labels. The collection capability remains available, but no Writing collection is published until Ciaran supplies its editorial framing.
 
 ## Context and Orientation
 
@@ -345,3 +353,4 @@ Extend `SearchItem['type']` with the literal `Found Quote`. Existing consumers a
 - 2026-09-07: Added ordered Found Quote references on site-native Notes, detail-only collection rendering, compact archive indicators, broken-reference validation, and correct handling for local Notes without an original ATProto post.
 - 2026-09-07: Superseded the Note-collection design with Writing collections after comparing both roles. Added complete Standard.site text expansion for collection Writing entries and restored Notes to unchanged scope.
 - 2026-09-07: Implemented the selected Editorial Ledger mock through routes, composition, navigation, discovery, publishing documentation, interoperability, tests, and visual QA. Retained explicitly labelled fictional fixtures for the requested preview branch.
+- 2026-09-07: Replaced the mock records with 19 supplied quotations, filled missing attribution and source details conservatively, removed the fictional Writing collection, and refreshed build and visual evidence for the real archive.
