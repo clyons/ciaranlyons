@@ -52,6 +52,17 @@ test('Found Quote type study gives the long exemplar a reading scale', async ({ 
 
   await page.goto('/found-quotes/2026/09/07/great-silence-and-technological-efficiency/')
   await expect(page.locator('article .found-quote--reading')).toHaveCount(1)
+  await expect(page.locator('article blockquote em')).toHaveText('waste products')
+
+  await page.goto('/found-quotes/2026/09/07/two-products-at-the-end-of-a-programme/')
+  await expect(page.locator('article blockquote p')).toHaveCount(2)
+
+  await page.goto('/found-quotes/2026/09/07/higher-education-rarities-discussed-as-norms/')
+  await expect(page.locator('article blockquote p')).toHaveCount(3)
+  const elision = page.locator('article blockquote .found-quote-elision')
+  await expect(elision).toHaveCount(1)
+  await expect(elision.locator('[aria-hidden="true"]')).toHaveText('[…]')
+  await expect(elision.locator('.visually-hidden')).toHaveText('Quoted passage omitted.')
 })
 
 test.describe('site structure and keyboard access', () => {

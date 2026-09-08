@@ -50,4 +50,6 @@ follow-up type study (2026-09-08):
 - Preserve the existing display scale for short quotations that read as one or two lines at desktop width.
 - Introduce a smaller reading scale for longer quotations so they feel like deliberate excerpts rather than oversized headlines.
 - Review the first four archive entries together; use `great-silence-and-technological-efficiency` as the long-quote exemplar on both the study archive and its permalink.
-- Keep attribution, provenance, dates, semantic markup, colors, and the surrounding page shell unchanged so type scale is the only meaningful variable.
+- Tighten the reading tier's line height and vertical padding without changing the short-quote display tier.
+- Model blank-line-separated passages as semantic paragraphs with a compact gap, and allow one exact phrase to receive semantic emphasis without enabling arbitrary quote-body HTML.
+- Keep attribution, provenance, dates, colors, and the surrounding page shell unchanged.

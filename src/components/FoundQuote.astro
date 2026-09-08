@@ -10,12 +10,30 @@ interface Props {
 
 const { quote, context = 'archive', scale = 'display' } = Astro.props
 const dateLabel = formatDate(quote.date, { month: 'long', day: 'numeric', year: 'numeric' })
+const paragraphs = quote.text.split(/\n\s*\n/).map((text) => ({
+  text,
+  isElision: text === '[…]',
+  emphasizedParts: quote.emphasis && text.includes(quote.emphasis) ? text.split(quote.emphasis) : undefined,
+}))
 ---
 
 <figure class:list={['found-quote', `found-quote--${context}`, scale === 'reading' && 'found-quote--reading']}>
   {quote.preview && <p class="preview-label">Preview content</p>}
   <blockquote cite={quote.sourceUrl}>
-    <p>{quote.text}</p>
+    {paragraphs.map((paragraph) => (
+      <p class:list={[paragraph.isElision && 'found-quote-elision']}>
+        {paragraph.isElision ? (
+          <Fragment>
+            <span aria-hidden="true">[…]</span>
+            <span class="visually-hidden">Quoted passage omitted.</span>
+          </Fragment>
+        ) : paragraph.emphasizedParts ? (
+          <Fragment>
+            {paragraph.emphasizedParts[0]}<em>{quote.emphasis}</em>{paragraph.emphasizedParts[1]}
+          </Fragment>
+        ) : paragraph.text}
+      </p>
+    ))}
   </blockquote>
   <figcaption>
     <span class="found-quote-credit">

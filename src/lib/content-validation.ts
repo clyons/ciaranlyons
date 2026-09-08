@@ -49,6 +49,16 @@ export function optionalHttpUrl(value: unknown, source: string, field: string): 
   }
 }
 
+export function optionalUniqueSubstring(value: unknown, text: string, source: string, field: string): string | undefined {
+  if (value === undefined || value === null || value === '') return undefined
+  const substring = requiredString(value, source, field)
+  const occurrences = text.split(substring).length - 1
+  if (occurrences !== 1) {
+    throw new Error(`${source}: ${field} must occur exactly once in the quote body`)
+  }
+  return substring
+}
+
 export function webUrl(value: unknown, source: string, field: string): string {
   if (typeof value !== 'string' || !value) throw new Error(`${source}: ${field} must be a site path or HTTP(S) URL`)
   if (value.startsWith('/') && !value.startsWith('//')) return value

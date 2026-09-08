@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { assertUnique, optionalHttpUrl, requiredString, validateDate, validateSegment, validateTopic, webUrl } from './content-validation.ts'
+import { assertUnique, optionalHttpUrl, optionalUniqueSubstring, requiredString, validateDate, validateSegment, validateTopic, webUrl } from './content-validation.ts'
 
 test('required strings are trimmed and reject empty values', () => {
   assert.equal(requiredString('  source title  ', 'entry.md', 'source'), 'source title')
@@ -23,6 +23,19 @@ test('route segments and topics reject reserved or unsafe values', () => {
 test('outbound URLs allow only HTTP and HTTPS', () => {
   assert.equal(optionalHttpUrl('https://bsky.app/profile/test', 'entry.md', 'originalUrl'), 'https://bsky.app/profile/test')
   assert.throws(() => optionalHttpUrl('javascript:alert(1)', 'entry.md', 'originalUrl'), /HTTP\(S\)/)
+})
+
+test('optional emphasis must identify one exact quote substring', () => {
+  assert.equal(optionalUniqueSubstring('waste products', 'A search for waste products.', 'quote.md', 'emphasis'), 'waste products')
+  assert.equal(optionalUniqueSubstring(undefined, 'A quote.', 'quote.md', 'emphasis'), undefined)
+  assert.throws(
+    () => optionalUniqueSubstring('missing', 'A quote.', 'quote.md', 'emphasis'),
+    /quote\.md: emphasis must occur exactly once in the quote body/,
+  )
+  assert.throws(
+    () => optionalUniqueSubstring('repeat', 'repeat and repeat', 'quote.md', 'emphasis'),
+    /quote\.md: emphasis must occur exactly once in the quote body/,
+  )
 })
 
 test('site links permit rooted paths but reject protocol-relative URLs', () => {

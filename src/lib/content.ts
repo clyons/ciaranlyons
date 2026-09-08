@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
-import { assertUnique, optionalHttpUrl, requiredString, validateDate, validateSegment, validateTopic, webUrl } from './content-validation'
+import { assertUnique, optionalHttpUrl, optionalUniqueSubstring, requiredString, validateDate, validateSegment, validateTopic, webUrl } from './content-validation'
 import { renderMarkdown } from './markdown'
 import type { RichTextFacet, RichTextFacetFeature } from './rich-text'
 
@@ -34,6 +34,7 @@ export interface FoundQuoteEntry {
   text: string
   attribution: string
   source: string
+  emphasis?: string
   sourceUrl?: string
   via?: string
   viaUrl?: string
@@ -254,6 +255,7 @@ async function loadFoundQuotes(): Promise<FoundQuoteEntry[]> {
       const attribution = requiredString(data.attribution, sourceFile, 'attribution')
       const source = requiredString(data.source, sourceFile, 'source')
       const text = requiredString(body, sourceFile, 'quote body')
+      const emphasis = optionalUniqueSubstring(data.emphasis, text, sourceFile, 'emphasis')
       const sourceUrl = optionalHttpUrl(data.sourceUrl, sourceFile, 'sourceUrl')
       const via = asString(data.via).trim() || undefined
       const viaUrl = optionalHttpUrl(data.viaUrl, sourceFile, 'viaUrl')
@@ -269,6 +271,7 @@ async function loadFoundQuotes(): Promise<FoundQuoteEntry[]> {
           text,
           attribution,
           source,
+          emphasis,
           sourceUrl,
           via,
           viaUrl,

@@ -14,12 +14,14 @@ Flow:
       ├─ short quote source/date links → existing destinations
       └─ Great Silence date link → long-quote permalink
 
-The prototype keeps the current serif family, orange opening mark, attribution hierarchy, rules, spacing, and page shell. Only the quote measure, size, line height, letter spacing, and wrapping mode change for the reading treatment.
+The prototype keeps the current serif family, orange opening mark, attribution hierarchy, rules, and page shell. The reading treatment adjusts the quote measure, size, line height, letter spacing, wrapping mode, and vertical padding. Blank-line-separated passages are modeled as semantic paragraphs with a compact paragraph gap rather than an empty line.
 
 ## Proposed reading scale
 
-- Desktop: `clamp(1.75rem, 2.8vw, 2.4rem)` at `1.28` line height, capped at a 48rem measure.
-- Mobile: `clamp(1.4rem, 6vw, 1.7rem)` at `1.32` line height.
+- Desktop: `clamp(1.75rem, 2.8vw, 2.4rem)` at `1.2` line height, capped at a 48rem measure.
+- Mobile: `clamp(1.4rem, 6vw, 1.7rem)` at `1.24` line height.
+- Reading-scale block padding is reduced, and paragraph breaks use a `0.48em` gap.
+- A standalone `[…]` marks editor-elided material as a muted, compact separator. Genuine ellipses belonging to the quoted speaker remain ordinary inline `…` characters.
 - Classification is deliberately explicit in this mock. If the direction is approved, implementation should use a stable editorial field or documented length tier rather than browser-side line measurement, which would shift by viewport and font loading.
 
 ## Acceptance check

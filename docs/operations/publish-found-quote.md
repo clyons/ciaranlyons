@@ -11,6 +11,7 @@ Create one file at `content/found-quotes/<slug>.md`. Use a short, stable, URL-sa
 attribution: "Person or organization credited with the words"
 source: "Book, article, talk, conversation, or other source"
 sourceUrl: "https://authoritative.example/source"
+emphasis: "Optional exact phrase to render with semantic emphasis"
 via: "Optional place or person through which Ciaran found it"
 viaUrl: "https://optional.example/discovery-path"
 date: 2026-09-07
@@ -22,13 +23,16 @@ tags:
 The exact quotation goes here. Do not add a Markdown blockquote marker.
 ```
 
-The quote body, `attribution`, `source`, and `date` are required. `date` is when the quote entered this collection. `updated`, `sourceUrl`, `via`, `viaUrl`, and `tags` are optional; `viaUrl` requires `via`.
+The quote body, `attribution`, `source`, and `date` are required. `date` is when the quote entered this collection. `updated`, `sourceUrl`, `emphasis`, `via`, `viaUrl`, and `tags` are optional; `viaUrl` requires `via`.
 
 - `attribution` answers who said or wrote the words.
 - `source` identifies where the words originally appeared.
+- `emphasis` identifies one exact, case-sensitive phrase in the quotation to render as `<em>` without enabling arbitrary Markdown or HTML.
 - `via` records where Ciaran encountered the quote; it is not a substitute for the original source.
 
 Preserve the exact words and punctuation. Prefer an authoritative source URL when one exists. Do not silently repair or modernize quoted text, and do not invent attribution or provenance. If a later correction is necessary, change the canonical quote file and set `updated` to the correction date.
+
+Separate source paragraphs with one blank line. When Ciaran deliberately removes material between quoted passages, put `[…]` on its own line between blank lines. The brackets distinguish an editorial elision from an ellipsis that belongs to the speaker; the renderer announces the omission and presents it as a compact separator.
 
 The generated permalink is `/found-quotes/YYYY/MM/DD/<slug>/`. Do not change a published slug or date without treating it as a URL migration.
 
