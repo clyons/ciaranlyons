@@ -611,12 +611,16 @@ img {
 }
 
 .found-quote blockquote .found-quote-elision {
-  margin: 0.5em 0;
+  margin: clamp(16px, 2.1vw, 27px) 0;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 0.4em;
   line-height: 1;
   letter-spacing: 0.12em;
+}
+
+.found-quote blockquote .found-quote-elision + p {
+  margin-top: 0;
 }
 
 .found-quote blockquote p:first-child::before {
