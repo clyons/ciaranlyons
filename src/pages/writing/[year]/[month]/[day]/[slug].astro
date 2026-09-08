@@ -29,12 +29,11 @@ const { entry, embeddedQuotes } = Astro.props
     </header>
     <div class="prose" set:html={entry.html} />
     {embeddedQuotes.length > 0 && (
-      <section class="writing-found-quotes" aria-labelledby="writing-found-quotes-title">
-        <h2 id="writing-found-quotes-title">Found quotes</h2>
+      <div class="writing-found-quotes">
         <div class="found-quotes-list">
           {embeddedQuotes.map((quote) => <FoundQuote quote={quote} context="writing" />)}
         </div>
-      </section>
+      </div>
     )}
   </article>
 </BaseLayout>
