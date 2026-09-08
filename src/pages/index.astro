@@ -17,7 +17,10 @@ const latestNoteParagraphs = latestNote?.text.trim().split(/\r?\n\s*\r?\n/) ?? [
 if (standaloneUrl.test(latestNoteParagraphs.at(-1)?.trim() ?? '')) latestNoteParagraphs.pop()
 
 const latestNotePreview = latestNoteParagraphs.join('\n\n')
-const featuredExcerpt = featuredWriting?.body.split(/\n\s*\n/)[1]?.split(/(?<=\.)\s+/)[0] ?? featuredWriting?.description
+const featuredExcerpt = featuredWriting?.body
+  .split(/\n\s*\n/)
+  .find((paragraph) => paragraph.trim())
+  ?.split(/(?<=\.)\s+/)[0] ?? featuredWriting?.description
 ---
 
 <BaseLayout description="Ciaran Lyons writes about operations, growth, teams, companies, and mental fitness.">
