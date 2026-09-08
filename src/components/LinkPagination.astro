@@ -1,0 +1,26 @@
+---
+import { LINKS_PER_PAGE, linkArchivePageUrl } from '../lib/link-pagination'
+
+interface Props {
+  basePath: string
+  page: number
+  totalPages: number
+  totalItems: number
+}
+
+const { basePath, page, totalPages, totalItems } = Astro.props
+const start = totalItems === 0 ? 0 : (page - 1) * LINKS_PER_PAGE + 1
+const end = Math.min(page * LINKS_PER_PAGE, totalItems)
+---
+
+<nav class="archive-pagination" aria-label="Links pages">
+  <p class="meta">Showing {start}–{end} of {totalItems} · Page {page} of {totalPages}</p>
+  <div class="archive-pagination__links">
+    {page > 1
+      ? <a rel="prev" href={linkArchivePageUrl(basePath, page - 1)} aria-label={`Previous Links page, page ${page - 1}`}>← Previous</a>
+      : <span aria-hidden="true">← Previous</span>}
+    {page < totalPages
+      ? <a rel="next" href={linkArchivePageUrl(basePath, page + 1)} aria-label={`Next Links page, page ${page + 1}`}>Next →</a>
+      : <span aria-hidden="true">Next →</span>}
+  </div>
+</nav>

@@ -39,6 +39,44 @@ Implementation review captures are kept in `.context/design/`: `found-quotes-wri
 
 ## Long-quote follow-up study — 2026-09-08
 
+Most external links returned HTTP 200. LinkedIn returned 999 and General Assembly/Positive Intelligence returned 403 to automated requests; those services commonly block automated clients, so this is not treated as a broken visitor-facing link.
+
+## Feedly Links preview — 2026-09-07
+
+Prototype: local static build on the `clyons/feedly-stars-to-til` branch
+
+Source of truth: `.agent/execplans/2026-09-07-feedly-starred-links.md` plus the recorded visual/content/interaction theses.
+
+### Verdict
+
+READY FOR PREVIEW — the collection is intentionally populated with three clearly labeled mock Feedly stars. No real Feedly or ATproto write has occurred.
+
+### Visual conformance
+
+- ✓ The collection uses the site's existing serif/mono editorial system, orange accent, flat rules, and cardless layout.
+- ✓ Desktop uses a two-column date/content ledger; mobile collapses cleanly into a single reading column.
+- ✓ The Links introduction has one typographic focal point and restrained source/count context.
+- ✓ Source attribution, local context, and outbound reading actions are visually distinct without competing card chrome.
+- ✓ Dark mode inherits the existing color tokens; motion is limited to established link transitions and a two-pixel outbound-callout lift.
+
+### Behavior and requirements
+
+- ✓ Links is present and active in primary navigation; all six controls remain on one visible row at 320px and 390px.
+- ✓ Title and “Notes & details” open the durable local permalink; “Read at…” opens the original target.
+- ✓ Search filters title, source, author, and tags and exposes an explicit empty state.
+- ✓ Year/month/day archives, Links RSS, combined RSS, and site search use local permalinks.
+- ✓ Mock content is labeled on the index and detail pages so reviewers cannot mistake it for a real import.
+
+### Accessibility sanity
+
+- ✓ Each page has one `h1`, labelled primary navigation, a keyboard-focusable skip link, and visible global focus styles.
+- ✓ Search has an accessible label and result count; Link rows remain semantic articles with ordinary anchors.
+- ✓ Reduced-motion preferences collapse transitions through the existing global rule.
+- ✓ The live filter-result count uses a polite status region for screen-reader feedback.
+- Manual follow-up: automated checks do not replace a full screen-reader pass before production launch.
+
+## Found Quotes long-quote study
+
 Prototype: `/found-quotes/style-study/`
 
 Source of truth: the follow-up criteria in `design/context.md` and `design/found-quotes-long-style.md`.
@@ -77,3 +115,36 @@ Automated evidence:
 - `npm run test:ui`: 46 passed again against the refreshed baselines.
 
 Verdict: READY FOR REVIEW — no high-severity drift or functional blockers found. Classification remains explicit in the mock; approve the visual direction before choosing the production content-tier rule.
+
+## Links production-readiness review — 2026-09-08
+
+Prototype: local static build on `clyons/feedly-stars-to-til`
+
+Source of truth: `.agent/execplans/2026-09-07-feedly-starred-links.md`, `design/research.md`, and `design/audit.md`.
+
+### Verdict
+
+READY TO MERGE — the archive retains the approved editorial-ledger direction, and the two final usability findings are fixed with no high-severity drift remaining.
+
+### Visual and behavioral conformance
+
+- ✓ The `Curated, not collected` thesis, Links title, count/source context, cardless chronology, source attribution, and split local/outbound actions remain intact.
+- ✓ Search is now a labelled landmark with a concise visible field prompt and explicit submit button. It remains a GET form that works without JavaScript and preserves the Link type filter.
+- ✓ Year navigation wraps deliberately around the visible Search action rather than compressing or clipping it.
+- ✓ Static previous/next navigation, 50-row archive bounds, 12-result Pagefind rendering, canonical URLs, RSS, and date archives remain unchanged.
+
+### Responsive and accessibility sanity
+
+- ✓ Year, Link-row action, and archive-pagination targets measure at least 44×44 CSS pixels at 1280px, 390px, and 320px.
+- ✓ All three measured widths report `scrollWidth === clientWidth`.
+- ✓ Visible focus, semantic search/navigation landmarks, keyboard access, reduced-motion handling, and light/dark theme behavior remain covered.
+- Manual follow-up: automated checks and visual inspection do not replace a full screen-reader pass.
+
+### Evidence
+
+- `npm test`: 69 passed.
+- `npm run lint`: 0 errors, 0 warnings, 0 hints across 102 files after the latest `main` merge.
+- `npx tsc --noEmit`: passed.
+- `npm run build`: 4,067 pages; 68 verified social previews; 2,662 Pagefind-indexed pages.
+- `npm run test:ui`: 76 passed across desktop and mobile after intentional Links and merged-breadcrumb baseline updates.
+- Final captures: committed `links-{desktop,mobile}-darwin.png` baselines plus gitignored 320px review capture under `.context/design/`.

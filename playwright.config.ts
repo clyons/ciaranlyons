@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
-const port = 4322
+const conductorPort = Number(process.env.CONDUCTOR_PORT)
+const port = Number(process.env.PLAYWRIGHT_PORT ?? (Number.isInteger(conductorPort) ? conductorPort + 1 : 4322))
 
 export default defineConfig({
   testDir: './tests/ui',

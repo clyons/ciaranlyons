@@ -1,0 +1,13 @@
+---
+title: "LayUp Is Now Adobe Comp CC and It Launches Today"
+description: "Last October, on stage at the annual Adobe Max conference, I debuted a collaboration between Adobe and myself called Project LayUp, a new iPad app for designers. Today, that app officially launches in the App Store under a new name: Adobe Comp CC. Read the company’s official release for the app is here. Adobe…"
+date: 2015-04-01
+savedAt: "2015-04-01T04:21:59.566Z"
+dateSource: saved
+publishedAt: "2015-03-30T16:12:08.000Z"
+targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/5DrPmq9sgHw/"
+sourceTitle: "Subtraction.com + Feed"
+author: "Khoi"
+feedlyId: "W6x/zjhbqhEccmIKZsU/x3Fadiq+SIpAJ7IXNcnq+9k=_14c6b765ae5:91a1f:1e08765d"
+tags: ["Saved For Later"]
+---

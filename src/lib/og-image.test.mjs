@@ -8,6 +8,10 @@ test('ogImagePath maps canonical paths to static PNG routes', () => {
   assert.equal(ogImagePath('/writing/2026/08/08/on-ownership/'), '/og/writing/2026/08/08/on-ownership.png')
 })
 
+test('Link routes can share the bounded collection social image', () => {
+  assert.equal(ogImagePath('/links/'), '/og/links.png')
+})
+
 test('wrapText clamps long copy and adds an ellipsis', () => {
   const lines = wrapText('one two three four five six seven eight nine ten eleven twelve', 150, 30, 2)
   assert.equal(lines.length, 2)

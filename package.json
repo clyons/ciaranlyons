@@ -10,12 +10,14 @@
     "dev": "astro dev",
     "lint": "astro check",
     "test": "node --experimental-strip-types --test scripts/*.test.mjs src/lib/*.test.mjs",
-    "build": "node scripts/clean-dist.mjs && astro check && astro build && node scripts/verify-og-images.mjs && node scripts/write-well-known.mjs",
+    "build": "node scripts/clean-dist.mjs && astro check && astro build && node scripts/verify-og-images.mjs && pagefind --site dist && node scripts/write-well-known.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "test:ui": "playwright test",
     "test:ui:update": "playwright test --update-snapshots",
     "notes:sync": "node scripts/sync-bsky-notes.mjs",
+    "links:sync": "node scripts/sync-feedly-links.mjs",
+    "links:validate-artifact": "node scripts/validate-links-artifact.mjs",
     "smoke:production": "node scripts/smoke-production.mjs",
     "standard:publish": "node scripts/publish-standard-site.mjs",
     "secrets:publish": "tsx scripts/publish-1password-secrets.ts",
@@ -37,6 +39,7 @@
     "@playwright/test": "^1.63.0",
     "@types/node": "^22.15.3",
     "@types/sanitize-html": "2.16.1",
+    "pagefind": "1.5.2",
     "tsx": "4.23.13"
   }
 }

@@ -57,7 +57,7 @@ const paragraphs = renderRichText(note.text, note.facets)
   }))
 ---
 
-<BaseLayout title={title} description={note.text} canonical={note.url}>
+<BaseLayout title={title} description={note.text} canonical={note.url} pagefindBody pagefind={{ type: 'Note', year: note.year, date: note.date }}>
   <article class="article-shell note-detail">
     <Breadcrumbs items={[{ label: 'Notes', href: '/notes/' }, { label: title }]} />
     <header class="article-header">

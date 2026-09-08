@@ -2,7 +2,7 @@
 
 This repository owns the build, deployment, and verification of CiaranLyons.com. Cloudflare Pages is the hosting target; no generated artifact is copied to another repository.
 
-For the contributor and agent guardrails that enforce this workflow, see [Deployments in the repository guide](../../AGENTS.md#deployments-inviolate). For the complete TIL lifecycle—including optional demo and Bluesky Note publishing—see [Publish a TIL](./publish-til.md).
+For the contributor and agent guardrails that enforce this workflow, see [Deployments in the repository guide](../../AGENTS.md#deployments-inviolate). For the complete TIL lifecycle—including optional demo and Bluesky Note publishing—see [Publish a TIL](./publish-til.md). For the curated Links workflow, see [Import Feedly saved articles](./import-feedly-links.md).
 
 The checked-in workflows are the executable contract: [production](../../.github/workflows/deploy-production.yml) deploys every `main` push, while [preview](../../.github/workflows/deploy-preview.yml) is manually dispatched for a requested non-`main` branch.
 
@@ -74,13 +74,20 @@ After a successful production release and smoke test, remove the old host's cust
 
 ## Standard.site publishing
 
-Writing entries remain Markdown-authored in this repository. Publish their interoperable Standard.site records explicitly, not as a side effect of a site build:
+Writing and Link entries remain Markdown-authored in this repository. Publish their interoperable Standard.site records explicitly, not as a side effect of a site build. The default remains Writing-only:
 
 ```bash
 ATPROTO_DID='did:plc:…' ATPROTO_APP_PASSWORD='…' npm run standard:publish
 ```
 
-The command resolves the handle over public HTTPS endpoints and requires the result to match `ATPROTO_DID` before it submits credentials. It creates or updates deterministic publication and Writing document records, then atomically saves each document URI as `standardUri` in Markdown front matter. It accepts either `ATPROTO_HANDLE`/`ATPROTO_APP_PASSWORD` or the existing `BSKY_HANDLE`/`BSKY_APP_PASSWORD` names. Never commit the app password. After the first publish, update `STANDARD_SITE_PUBLICATION_AT_URI` in the GitHub `production` environment before the next merge, then confirm production with:
+Select Links or both content types explicitly:
+
+```bash
+npm run standard:publish -- --dry-run --type links
+npm run standard:publish -- --dry-run --type all
+```
+
+The command resolves the handle over public HTTPS endpoints and requires the result to match `ATPROTO_DID` before it submits credentials. It creates or updates deterministic publication and document records, then atomically saves each document URI as `standardUri` in Markdown front matter. It accepts either `ATPROTO_HANDLE`/`ATPROTO_APP_PASSWORD` or the existing `BSKY_HANDLE`/`BSKY_APP_PASSWORD` names. It does not create Bluesky posts or bookmarks. Never commit the app password. After the first publish, update `STANDARD_SITE_PUBLICATION_AT_URI` in the GitHub `production` environment before the next merge, then confirm production with:
 
 ```bash
 curl -fsSL https://ciaranlyons.com/.well-known/site.standard.publication

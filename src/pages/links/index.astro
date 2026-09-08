@@ -1,0 +1,10 @@
+---
+import LinksIndexPage from '../../components/LinksIndexPage.astro'
+import { getLinks } from '../../lib/content'
+import { paginateLinks } from '../../lib/link-pagination'
+
+const allLinks = await getLinks()
+const pagination = paginateLinks(allLinks, 1)
+---
+
+<LinksIndexPage links={pagination.items} {allLinks} page={pagination.page} totalPages={pagination.totalPages} />

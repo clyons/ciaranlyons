@@ -5,7 +5,7 @@ import { getProjects } from '../lib/content'
 const projects = await getProjects()
 ---
 
-<BaseLayout title="Projects" description="Selected projects by Ciaran Lyons.">
+<BaseLayout title="Projects" description="Selected projects by Ciaran Lyons." pagefindBody pagefind={{ type: 'Project' }}>
   <section class="section">
     <h1 class="page-title">Projects</h1>
     <p class="lede">Work, tools, and small systems worth keeping around.</p>

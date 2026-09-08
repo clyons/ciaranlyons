@@ -1,0 +1,15 @@
+---
+import LinksIndexPage from '../../../components/LinksIndexPage.astro'
+import { getLinks } from '../../../lib/content'
+import { extraLinkPageNumbers, paginateLinks } from '../../../lib/link-pagination'
+
+export async function getStaticPaths() {
+  const allLinks = await getLinks()
+  return extraLinkPageNumbers(allLinks.length).map((page) => ({ params: { page: String(page) }, props: { allLinks, page } }))
+}
+
+const { allLinks, page } = Astro.props
+const pagination = paginateLinks(allLinks, page)
+---
+
+<LinksIndexPage links={pagination.items} {allLinks} page={pagination.page} totalPages={pagination.totalPages} />

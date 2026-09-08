@@ -6,25 +6,39 @@ interface Props {
   title?: string
   description?: string
   canonical?: string
+  socialImagePath?: string
   standardDocumentUri?: string
+  sectionFeed?: { href: string; title: string }
   feedUrl?: string
   feedTitle?: string
+  pagefindBody?: boolean
+  pagefind?: {
+    type: string
+    year?: string
+    source?: string
+    tags?: string[]
+    date?: string
+  }
 }
 
 const {
   title = 'Ciaran Lyons',
   description = 'Ciaran Lyons writes about operations, systems, automation, and the owned web.',
   canonical = Astro.url.pathname,
+  socialImagePath,
   standardDocumentUri,
+  sectionFeed,
   feedUrl = '/feed.xml',
   feedTitle = 'Ciaran Lyons',
+  pagefindBody = false,
+  pagefind,
 } = Astro.props
 
 const site = Astro.site ?? new URL('https://ciaranlyons.com')
 const canonicalUrl = new URL(canonical, site)
 const assetVersion = '20260906'
 const profileImageUrl = new URL(`/images/ciaran-profile.jpeg?v=${assetVersion}`, site)
-const socialImageUrl = new URL(ogImagePath(canonicalUrl.pathname), site)
+const socialImageUrl = new URL(ogImagePath(socialImagePath ?? canonicalUrl.pathname), site)
 const pageTitle = title === 'Ciaran Lyons' ? title : `${title} - Ciaran Lyons`
 const socialImageAlt = title === 'Ciaran Lyons' ? 'Ciaran Lyons — I build things that last and grow.' : `${title} — Ciaran Lyons`
 const standardPublicationUri = import.meta.env.STANDARD_SITE_PUBLICATION_AT_URI
@@ -33,6 +47,7 @@ const navItems = [
   { href: '/about/', match: '/about', label: 'About' },
   { href: '/writing/', match: '/writing', label: 'Writing' },
   { href: '/notes/', match: '/notes', label: 'Notes' },
+  { href: '/links/', match: '/links', label: 'Links' },
   { href: '/projects/', match: '/projects', label: 'Projects' },
 ]
 const structuredData = {
@@ -51,11 +66,17 @@ const structuredData = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={description} data-pagefind-meta={pagefind ? 'description[content]' : undefined} />
+    {pagefind && <meta content={pagefind.type} data-pagefind-meta="type[content]" data-pagefind-filter="type[content]" />}
+    {pagefind?.year && <meta content={pagefind.year} data-pagefind-filter="year[content]" />}
+    {pagefind?.source && <meta content={pagefind.source} data-pagefind-meta="source[content]" data-pagefind-filter="source[content]" />}
+    {pagefind?.date && <meta content={pagefind.date} data-pagefind-meta="date[content]" />}
+    {pagefind?.tags?.map((tag) => <meta content={tag} data-pagefind-filter="tag[content]" />)}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" sizes="48x48" href={`/favicon.png?v=${assetVersion}`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`/apple-touch-icon.png?v=${assetVersion}`} />
     <link rel="alternate" type="application/rss+xml" title={feedTitle} href={feedUrl} />
+    {sectionFeed && <link rel="alternate" type="application/rss+xml" title={sectionFeed.title} href={sectionFeed.href} />}
     {standardPublicationUri && <link rel="site.standard.publication" href={standardPublicationUri} />}
     {standardDocumentUri && <link rel="site.standard.document" href={standardDocumentUri} />}
     <script is:inline>
@@ -112,7 +133,7 @@ const structuredData = {
           </button>
         </nav>
       </header>
-      <main class="page" id="main-content" tabindex="-1">
+      <main class="page" id="main-content" tabindex="-1" data-pagefind-body={pagefindBody || undefined}>
         <slot />
       </main>
       <footer class="site-footer">

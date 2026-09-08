@@ -24,6 +24,18 @@ export function validateDate(value: unknown, source: string, field = 'date'): st
   return raw
 }
 
+export function validateTimestamp(value: unknown, source: string, field: string): string {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(value) || !Number.isFinite(Date.parse(value))) {
+    throw new Error(`${source}: ${field} must be a valid RFC 3339 timestamp`)
+  }
+  try {
+    validateDate(value.slice(0, 10), source, field)
+  } catch {
+    throw new Error(`${source}: ${field} must be a valid RFC 3339 timestamp`)
+  }
+  return value
+}
+
 export function validateSegment(value: string, source: string, field: string): string {
   if (!safeSegmentPattern.test(value) || value === '.' || value === '..') {
     throw new Error(`${source}: ${field} contains characters that are unsafe in a URL path`)

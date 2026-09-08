@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { addStandardUri, deterministicRkey, expandedWritingText } from './publish-standard-site.mjs'
+import { addStandardUri, deterministicRkey, expandedWritingText, publicationRecord, selectDocuments, standardDocumentRecord } from './publish-standard-site.mjs'
 
 test('Standard.site record keys are stable and path-specific', () => {
   assert.equal(
@@ -19,6 +19,35 @@ test('Standard.site URI front matter updates are idempotent', () => {
   const twice = addStandardUri(once, 'at://did:plc:test/site.standard.document/key')
   assert.equal(once, twice)
   assert.equal((once.match(/^standardUri:/gm) ?? []).length, 1)
+})
+
+test('Link documents publish their local path and only local page text', () => {
+  const record = standardDocumentRecord({
+    path: '/links/2026/09/07/example-link-abc123',
+    title: 'Example link',
+    description: 'A short description.',
+    body: 'My commentary.',
+    date: '2026-09-07T12:00:00.000Z',
+  }, 'at://did:plc:test/site.standard.publication/key')
+  assert.equal(record.path, '/links/2026/09/07/example-link-abc123')
+  assert.equal(record.textContent, 'A short description.\n\nMy commentary.')
+})
+
+test('Publication metadata preserves an uploaded icon reference', () => {
+  const icon = { $type: 'blob', ref: { $link: 'bafytest' }, mimeType: 'image/jpeg', size: 123 }
+  assert.deepEqual(publicationRecord(icon).icon, icon)
+  assert.match(publicationRecord().description, /curated links/)
+})
+
+test('missing-only Standard.site batches are deterministic and capped', () => {
+  const entries = [
+    { path: '/links/z', standardUri: undefined },
+    { path: '/links/a', standardUri: 'at://did:plc:test/site.standard.document/a' },
+    { path: '/links/b', standardUri: undefined },
+    { path: '/links/c', standardUri: undefined },
+  ]
+  assert.deepEqual(selectDocuments(entries, { missingOnly: true, limit: 2 }).map((entry) => entry.path), ['/links/b', '/links/c'])
+  assert.deepEqual(entries.map((entry) => entry.path), ['/links/z', '/links/a', '/links/b', '/links/c'])
 })
 
 test('Standard.site Writing text expands Found Quotes in authored order', () => {

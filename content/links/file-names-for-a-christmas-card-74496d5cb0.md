@@ -1,0 +1,13 @@
+---
+title: "File names for a Christmas card."
+description: "I really wish I had thought of/done this first… [Via Creative Review]"
+date: 2015-12-24
+savedAt: "2015-12-24T03:18:59.918Z"
+dateSource: saved
+publishedAt: "2015-12-24T02:51:35.000Z"
+targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/NGxYDVOEWM8/file-name-christmas-card.html"
+sourceTitle: "dullneon.com - random notes, links and pixels"
+author: "Jaffry Jalal"
+feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_151d1e64fda:de47e6:e47a7aef"
+tags: ["Saved For Later"]
+---

@@ -14,20 +14,26 @@ const requestTimeoutMs = 10_000
 const maxJsonBytes = 2 * 1024 * 1024
 
 function usage() {
-  console.log('Usage: node scripts/publish-standard-site.mjs [--dry-run] [--slug SLUG] [--publication-uri AT_URI]')
+  console.log('Usage: node scripts/publish-standard-site.mjs [--dry-run] [--type writing|links|all] [--slug SLUG] [--missing-only] [--limit N] [--publication-uri AT_URI]')
 }
 
 function parseArgs(argv) {
   const options = {
     dryRun: false,
+    type: 'writing',
     slug: undefined,
+    missingOnly: false,
+    limit: undefined,
     publicationUri: process.env.STANDARD_SITE_PUBLICATION_AT_URI?.trim() || undefined,
   }
 
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index]
     if (arg === '--dry-run') options.dryRun = true
+    else if (arg === '--type') options.type = argv[++index]
     else if (arg === '--slug') options.slug = argv[++index]
+    else if (arg === '--missing-only') options.missingOnly = true
+    else if (arg === '--limit') options.limit = Number(argv[++index])
     else if (arg === '--publication-uri') options.publicationUri = argv[++index]
     else if (arg === '--help' || arg === '-h') {
       usage()
@@ -36,6 +42,10 @@ function parseArgs(argv) {
       throw new Error(`Unknown argument: ${arg}`)
     }
   }
+
+  if (!['writing', 'links', 'all'].includes(options.type)) throw new Error('--type must be writing, links, or all')
+  if (options.limit !== undefined && (!Number.isInteger(options.limit) || options.limit < 1)) throw new Error('--limit must be a positive integer')
+  if (options.missingOnly && options.type !== 'links') throw new Error('--missing-only requires --type links')
 
   return options
 }
@@ -52,7 +62,7 @@ function dateTime(value) {
   return date.toISOString()
 }
 
-function documentPath(entry) {
+function writingPath(entry) {
   return `/writing/${entry.date.slice(0, 4)}/${entry.date.slice(5, 7)}/${entry.date.slice(8, 10)}/${entry.slug}`
 }
 
@@ -168,6 +178,15 @@ async function putRecord(pds, token, repo, collection, rkey, record) {
   })
 }
 
+async function uploadBlob(pds, token, file) {
+  const bytes = await readFile(file)
+  return fetchJson(`${pds}/xrpc/com.atproto.repo.uploadBlob`, {
+    method: 'POST',
+    headers: { authorization: `Bearer ${token}`, 'content-type': 'image/jpeg' },
+    body: bytes,
+  })
+}
+
 export function deterministicRkey(prefix, identity) {
   return `${prefix}-${createHash('sha256').update(identity).digest('hex').slice(0, 32)}`
 }
@@ -185,11 +204,11 @@ async function writeFileAtomically(destination, contents) {
 export function addStandardUri(raw, uri) {
   const field = `standardUri: ${JSON.stringify(uri)}`
   if (/^standardUri:\s*.*$/m.test(raw)) return raw.replace(/^standardUri:\s*.*$/m, field)
-  if (!raw.startsWith('---\n')) throw new Error('Writing entries must have YAML front matter')
+  if (!raw.startsWith('---\n')) throw new Error('Documents must have YAML front matter')
   return raw.replace(/^---\n/, `---\n${field}\n`)
 }
 
-async function loadWriting(slug) {
+async function loadWriting(slug, allowEmpty = false) {
   const files = await fg('content/writing/*.md', { cwd: process.cwd(), absolute: true })
   const entries = await Promise.all(files.map(async (file) => {
     const raw = await readFile(file, 'utf8')
@@ -210,12 +229,59 @@ async function loadWriting(slug) {
       standardUri: asString(parsed.data.standardUri) || undefined,
       foundQuoteSlugs: foundQuoteSlugs(parsed.data.foundQuotes, source),
       body: parsed.content.trim(),
+      kind: 'writing',
+      path: writingPath({ date, slug: entrySlug }),
     }
   }))
 
   const selected = slug ? entries.filter((entry) => entry.slug === slug) : entries
-  if (selected.length === 0) throw new Error(slug ? `No Writing entry with slug "${slug}"` : 'No Writing entries found')
+  if (selected.length === 0 && !allowEmpty) throw new Error(slug ? `No Writing entry with slug "${slug}"` : 'No Writing entries found')
   return selected
+}
+
+async function loadLinks(slug, allowEmpty = false) {
+  const files = await fg('content/links/*.md', { cwd: process.cwd(), absolute: true })
+  const entries = await Promise.all(files.map(async (file) => {
+    const raw = await readFile(file, 'utf8')
+    const parsed = matter(raw)
+    const entrySlug = path.basename(file, '.md')
+    const date = asString(parsed.data.savedAt) || asString(parsed.data.date)
+    if (!date) throw new Error(`Missing date in ${path.relative(process.cwd(), file)}`)
+    const publishedAt = dateTime(date)
+    return {
+      file,
+      raw,
+      slug: entrySlug,
+      title: asString(parsed.data.title, entrySlug),
+      description: asString(parsed.data.description),
+      date: publishedAt,
+      updated: parsed.data.updated ? dateTime(asString(parsed.data.updated)) : undefined,
+      standardUri: asString(parsed.data.standardUri) || undefined,
+      body: parsed.content.trim(),
+      kind: 'links',
+      path: `/links/${publishedAt.slice(0, 4)}/${publishedAt.slice(5, 7)}/${publishedAt.slice(8, 10)}/${entrySlug}`,
+    }
+  }))
+  const selected = slug ? entries.filter((entry) => entry.slug === slug) : entries
+  if (selected.length === 0 && !allowEmpty) throw new Error(slug ? `No Link entry with slug "${slug}"` : 'No Link entries found')
+  return selected
+}
+
+async function loadDocuments(type, slug) {
+  const groups = []
+  const allowEmpty = type === 'all'
+  if (type === 'writing' || type === 'all') groups.push(await loadWriting(slug, allowEmpty))
+  if (type === 'links' || type === 'all') groups.push(await loadLinks(slug, allowEmpty))
+  const entries = groups.flat()
+  if (entries.length === 0) throw new Error(`No ${type} documents found`)
+  return entries
+}
+
+export function selectDocuments(entries, { missingOnly = false, limit } = {}) {
+  const selected = [...entries]
+    .sort((a, b) => a.path.localeCompare(b.path))
+    .filter((entry) => !missingOnly || !entry.standardUri)
+  return limit === undefined ? selected : selected.slice(0, limit)
 }
 
 async function loadFoundQuotes() {
@@ -234,44 +300,52 @@ async function loadFoundQuotes() {
   }))
 }
 
-function publicationRecord() {
+export function publicationRecord(icon) {
   return {
     $type: publicationCollection,
     url: siteUrl,
     name: 'Ciaran Lyons',
-    description: 'Writing by Ciaran Lyons.',
+    description: 'Writing, notes, and curated links by Ciaran Lyons.',
+    ...(icon ? { icon } : {}),
     preferences: { showInDiscover: true },
   }
 }
 
-function standardDocumentRecord(entry, publicationUri, quotes) {
+export function standardDocumentRecord(entry, publicationUri, quotes = []) {
   return {
     $type: documentCollection,
     site: publicationUri,
-    path: documentPath(entry),
+    path: entry.path ?? writingPath(entry),
     title: entry.title,
     description: entry.description,
-    textContent: expandedWritingText(entry, quotes),
+    textContent: entry.kind === 'writing'
+      ? expandedWritingText(entry, quotes)
+      : plainText([entry.description, entry.body].filter(Boolean).join('\n\n')),
     publishedAt: entry.date,
     ...(entry.updated ? { updatedAt: entry.updated } : {}),
   }
 }
 
-async function findPublicationUri(pds, did) {
+async function findPublication(pds, did) {
   const records = await listRecords(pds, did, publicationCollection)
-  return records.records?.find((item) => item.value?.url?.replace(/\/$/, '') === siteUrl)?.uri
+  return records.records?.find((item) => item.value?.url?.replace(/\/$/, '') === siteUrl)
 }
 
 async function main() {
   const options = parseArgs(process.argv.slice(2))
   const handle = process.env.ATPROTO_HANDLE?.trim() || process.env.BSKY_HANDLE?.trim() || 'ciaranlyons.com'
-  const [entries, quotes] = await Promise.all([loadWriting(options.slug), loadFoundQuotes()])
-  for (const entry of entries) expandedWritingText(entry, quotes)
+  const [loadedEntries, quotes] = await Promise.all([loadDocuments(options.type, options.slug), loadFoundQuotes()])
+  const entries = selectDocuments(loadedEntries, options)
+  if (entries.length === 0) throw new Error(options.missingOnly ? 'No Link documents are missing standardUri' : 'No documents selected')
+  for (const entry of entries) {
+    if (entry.kind === 'writing') expandedWritingText(entry, quotes)
+  }
   const { did, pds } = await resolveIdentity(handle)
   const expectedDid = process.env.ATPROTO_DID?.trim()
   if (!options.dryRun && !expectedDid) throw new Error('Missing ATPROTO_DID; refusing to submit credentials without an expected identity')
   if (expectedDid && expectedDid !== did) throw new Error(`Resolved DID does not match ATPROTO_DID for ${handle}`)
-  let publicationUri = options.publicationUri || await findPublicationUri(pds, did)
+  const existingPublication = await findPublication(pds, did)
+  let publicationUri = options.publicationUri || existingPublication?.uri
 
   if (publicationUri) {
     const parts = atUriParts(publicationUri, publicationCollection)
@@ -279,8 +353,9 @@ async function main() {
   }
 
   if (options.dryRun) {
+    console.log(`selected ${entries.length} ${entries.length === 1 ? 'document' : 'documents'}`)
     console.log(`${publicationUri ? 'would-use' : 'would-create'} publication ${publicationUri ?? siteUrl}`)
-    for (const entry of entries) console.log(`${entry.standardUri ? 'would-update' : 'would-create'} document ${documentPath(entry)}`)
+    for (const entry of entries) console.log(`${entry.standardUri ? 'would-update' : 'would-create'} ${entry.kind} document ${entry.path}`)
     return
   }
 
@@ -290,16 +365,24 @@ async function main() {
   if (!session.accessJwt) throw new Error('PDS session did not return an access token')
   if (session.did !== did) throw new Error('Authenticated session DID does not match the validated identity')
 
+  let publicationIcon = existingPublication?.value?.icon
+  if (!publicationIcon) {
+    const uploaded = await uploadBlob(pds, session.accessJwt, path.join(process.cwd(), 'public', 'images', 'ciaran-profile.jpeg'))
+    if (!uploaded.blob) throw new Error('PDS did not return a publication icon blob reference')
+    publicationIcon = uploaded.blob
+    console.log('uploaded publication icon')
+  }
+
   if (!publicationUri) {
     const rkey = deterministicRkey('publication', siteUrl)
-    const result = await putRecord(pds, session.accessJwt, did, publicationCollection, rkey, publicationRecord())
+    const result = await putRecord(pds, session.accessJwt, did, publicationCollection, rkey, publicationRecord(publicationIcon))
     publicationUri = result.uri ?? `at://${did}/${publicationCollection}/${rkey}`
     console.log(`created publication ${publicationUri}`)
     console.log(`Set STANDARD_SITE_PUBLICATION_AT_URI=${publicationUri} in the deployment environment before deploying.`)
   } else {
     const parts = atUriParts(publicationUri, publicationCollection)
     if (!parts || parts.repo !== did) throw new Error(`Invalid publication URI: ${publicationUri}`)
-    await putRecord(pds, session.accessJwt, did, publicationCollection, parts.rkey, publicationRecord())
+    await putRecord(pds, session.accessJwt, did, publicationCollection, parts.rkey, publicationRecord(publicationIcon))
     console.log(`updated publication ${publicationUri}`)
   }
 
@@ -311,13 +394,13 @@ async function main() {
     if (parts) {
       if (parts.repo !== did) throw new Error(`Document URI belongs to another repository: ${entry.standardUri}`)
       await putRecord(pds, session.accessJwt, did, documentCollection, parts.rkey, record)
-      console.log(`updated document ${entry.standardUri} (${entry.slug})`)
+      console.log(`updated ${entry.kind} document ${entry.standardUri} (${entry.slug})`)
     } else {
-      const rkey = deterministicRkey('document', documentPath(entry))
+      const rkey = deterministicRkey('document', entry.path)
       const result = await putRecord(pds, session.accessJwt, did, documentCollection, rkey, record)
       documentUri = result.uri ?? `at://${did}/${documentCollection}/${rkey}`
       await writeFileAtomically(entry.file, addStandardUri(entry.raw, documentUri))
-      console.log(`created document ${documentUri} (${entry.slug})`)
+      console.log(`created ${entry.kind} document ${documentUri} (${entry.slug})`)
     }
   }
 }

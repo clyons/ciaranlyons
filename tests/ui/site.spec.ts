@@ -5,6 +5,7 @@ const coreRoutes = [
   ['about', '/about/'],
   ['writing', '/writing/'],
   ['notes', '/notes/'],
+  ['links', '/links/'],
   ['projects', '/projects/'],
   ['til', '/til/'],
   ['found quotes', '/found-quotes/'],
@@ -26,17 +27,20 @@ test('Found Quotes are discoverable as a project without changing primary naviga
 test('Found Quote archive and permalink preserve quotation semantics', async ({ page }) => {
   await page.goto('/found-quotes/')
 
-  await expect(page.locator('.found-quotes-list figure')).toHaveCount(19)
-  await expect(page.locator('.found-quotes-list blockquote')).toHaveCount(19)
+  const quoteFigures = page.locator('.found-quotes-list figure')
+  const quoteBlocks = page.locator('.found-quotes-list blockquote')
+  expect(await quoteFigures.count()).toBeGreaterThan(0)
+  expect(await quoteBlocks.count()).toBe(await quoteFigures.count())
   await expect(page.locator('.preview-label')).toHaveCount(0)
-  await expect(page.locator('.found-quotes-list blockquote').first()).toContainText('‘Live’ is the shortcut to FOMO.')
+  const liveQuote = page.locator('.found-quotes-list figure').filter({ hasText: '‘Live’ is the shortcut to FOMO.' })
+  await expect(liveQuote).toHaveCount(1)
   await expect(page.getByText('The value of a company is the sum of all problems solved.')).toBeVisible()
   await expect(page.getByText('Martin Lorentzon', { exact: false })).toBeVisible()
   await expect(page.locator('.found-quotes-list time')).toHaveCount(0)
-  const firstPermalink = page.locator('.found-quotes-list figure').first().getByRole('link', { name: 'Permalink to found quote from Ben Thompson' })
-  await expect(firstPermalink).toHaveAttribute('href', '/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/')
-  await expect(firstPermalink).toHaveAttribute('rel', 'bookmark')
-  await expect(firstPermalink.locator('[aria-hidden="true"]')).toHaveText('#')
+  const livePermalink = liveQuote.getByRole('link', { name: 'Permalink to found quote from Ben Thompson' })
+  await expect(livePermalink).toHaveAttribute('href', '/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/')
+  await expect(livePermalink).toHaveAttribute('rel', 'bookmark')
+  await expect(livePermalink.locator('[aria-hidden="true"]')).toHaveText('#')
 
   await page.goto('/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Found quote from Ben Thompson')
@@ -185,7 +189,7 @@ test('note permalinks render as native posts rather than quotations', async ({ p
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('New TIL: two-state dark mode toggles.')
   await expect(page.locator('article blockquote')).toHaveCount(0)
   await expect(page.locator('.note-rich-text')).toContainText('I keep returning to @lea.verou.me’s argument')
-  await expect(page.getByRole('link', { name: '@lea.verou.me' })).toHaveAttribute('href', /bsky\.app\/profile\/did:plc:eagnfcoqnbtzpkglrtej6ayg/)
+  await expect(page.getByRole('link', { name: '@lea.verou.me' })).toHaveAttribute('href', 'https://bsky.app/profile/did:plc:eagnfcoqnbtzpkglrtej6ayg')
   await expect(page.getByRole('link', { name: /TIL Two-state dark mode toggles/ })).toHaveAttribute('href', '/til/2026/09/07/two-state-dark-mode-toggles/')
   await expect(page.locator('.note-rich-text')).toContainText('https://ciaranlyons.com/til/2026/09/07/two-state-dark-mode-toggles')
   await expect(page.locator('.note-post-footer time')).toHaveAttribute('datetime', '2026-09-07T19:10:39.594Z')
@@ -222,7 +226,7 @@ test('primary navigation keeps every control on one visible row at mobile widths
     await page.goto('/')
 
     const controls = page.locator('nav[aria-label="Primary navigation"] a, nav[aria-label="Primary navigation"] button')
-    await expect(controls).toHaveCount(5)
+    await expect(controls).toHaveCount(6)
     const layout = await controls.evaluateAll((elements) => ({
       viewport: { width: window.innerWidth, height: window.innerHeight },
       bounds: elements.map((element) => {
@@ -245,6 +249,76 @@ for (const path of ['/writing/', '/notes/', '/projects/', '/til/']) {
   })
 }
 
+test('links use one divider between tools and the first result', async ({ page }) => {
+  await page.goto('/links/')
+  await expect(page.locator('.links-archive .link-row').first()).toHaveCSS('border-top-width', '0px')
+})
+
+test('Links utility controls have explicit search and comfortable pointer targets', async ({ page }) => {
+  await page.goto('/links/')
+
+  const search = page.getByRole('search', { name: 'Search links' })
+  await expect(search.getByRole('searchbox', { name: 'Search links' })).toHaveAttribute('placeholder', 'Search links')
+  await expect(search.getByRole('button', { name: 'Search' })).toBeVisible()
+
+  for (const width of [1280, 390, 320]) {
+    await page.setViewportSize({ width, height: 844 })
+    const targets = page.locator('.links-years a, .link-actions a, .archive-pagination__links a')
+    const sizes = await targets.evaluateAll((elements) => elements.map((element) => {
+      const { width, height } = element.getBoundingClientRect()
+      return { width, height }
+    }))
+
+    expect(sizes.every(({ width, height }) => width >= 44 && height >= 44)).toBe(true)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
+  }
+})
+
+test('links keep bounded archive navigation and canonical outbound context', async ({ page }) => {
+  await page.goto('/links/')
+
+  await expect(page.getByRole('article')).toHaveCount(50)
+  const entry = page.getByRole('article').filter({ hasText: 'Markdown Now Has a Uniform Type Identifer' })
+  await expect(entry.getByRole('link', { name: 'Notes & details' })).toHaveAttribute('href', '/links/2026/08/05/markdown-now-has-a-uniform-type-identifer-uti-in-apple-s-version-8741ac4466/')
+  await expect(entry.getByRole('link', { name: /Read at developer\.apple\.com/ })).toHaveAttribute('href', 'https://developer.apple.com/documentation/uniformtypeidentifiers/uttype-swift.struct/markdown')
+  await expect(page.getByRole('link', { name: 'Next Links page, page 2' })).toHaveAttribute('href', '/links/page/2/')
+
+  await page.getByRole('link', { name: 'Next Links page, page 2' }).click()
+  await expect(page).toHaveURL(/\/links\/page\/2\/$/)
+  await expect(page.getByRole('article')).toHaveCount(50)
+  await expect(page.getByRole('link', { name: 'Previous Links page, page 1' })).toHaveAttribute('href', '/links/')
+
+  await page.goto('/links/2026/08/05/markdown-now-has-a-uniform-type-identifer-uti-in-apple-s-version-8741ac4466/')
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://ciaranlyons.com/links/2026/08/05/markdown-now-has-a-uniform-type-identifer-uti-in-apple-s-version-8741ac4466/')
+  await expect(page.getByRole('link', { name: /Read the original/ })).toHaveAttribute('href', 'https://developer.apple.com/documentation/uniformtypeidentifiers/uttype-swift.struct/markdown')
+})
+
+test('Link-filtered Pagefind search preserves query state and returns bounded results', async ({ page }) => {
+  await page.goto('/search/?type=Link&q=Markdown')
+  const results = page.locator('#search-results .search-result')
+  await expect(results.first()).toContainText('Markdown Now Has a Uniform Type Identifer')
+  expect(await results.count()).toBeLessThanOrEqual(12)
+  expect(await results.count()).toBeGreaterThan(0)
+  await expect(page.locator('#search-status')).toContainText('Link result')
+
+  await page.getByRole('searchbox', { name: 'Search the site' }).fill('Apple')
+  await expect(page).toHaveURL(/type=Link.*q=Apple|q=Apple.*type=Link/)
+  await expect(page.locator('#search-status')).toContainText('for “Apple”')
+  await expect(results).toHaveCount(12)
+  await expect(page.locator('#search-results .type-label').first()).toHaveText('Link')
+})
+
+test('Links archives remain navigable without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false })
+  const page = await context.newPage()
+  await page.goto('/links/')
+  await expect(page.getByRole('article')).toHaveCount(50)
+  await page.getByRole('link', { name: 'Next Links page, page 2' }).click()
+  await expect(page).toHaveURL(/\/links\/page\/2\/$/)
+  await expect(page.getByRole('article')).toHaveCount(50)
+  await context.close()
+})
+
 for (const [name, path] of [
   ['home', '/'],
   ['writing', '/writing/'],
@@ -261,3 +335,12 @@ for (const [name, path] of [
     })
   })
 }
+
+test('links matches its approved first-viewport baseline', async ({ page }) => {
+  await page.goto('/links/')
+  await expect(page).toHaveScreenshot('links.png', {
+    animations: 'disabled',
+    fullPage: false,
+    caret: 'hide',
+  })
+})

@@ -70,7 +70,14 @@ export async function getOgImageSpecs(): Promise<OgImageSpec[]> {
       kind: 'page',
       label: 'Search',
       title: 'Search CiaranLyons.com',
-      description: 'Writing, notes, projects, TIL entries, and Found Quotes.',
+      description: 'Writing, notes, links, projects, TIL entries, and Found Quotes.',
+    },
+    {
+      path: 'links',
+      kind: 'page',
+      label: 'Links',
+      title: 'Curated, not collected.',
+      description: 'Articles, ideas, and references I want to find again.',
     },
     {
       path: 'found-quotes/style-study',
