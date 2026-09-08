@@ -1,6 +1,7 @@
 ---
 attribution: Clay Shirky
 source: "“The End of Higher Education’s Golden Age,” January 29, 2014"
+sourceDate: 2014-01-29
 sourceUrl: https://web.archive.org/web/20140131200840id_/http://www.shirky.com/weblog/2014/01/there-isnt-enough-money-to-keep-educating-adults-the-way-were-doing-it/
 date: 2026-09-07
 tags:

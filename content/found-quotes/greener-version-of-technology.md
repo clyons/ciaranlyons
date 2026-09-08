@@ -1,6 +1,7 @@
 ---
 attribution: Kevin Kelly
 source: "“Such a Long Journey — An Interview with Kevin Kelly,” Boing Boing, May 11, 2012"
+sourceDate: 2012-05-11
 sourceUrl: https://boingboing.net/2012/05/11/kk.html
 date: 2026-09-07
 tags:

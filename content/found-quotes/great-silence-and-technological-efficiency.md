@@ -1,6 +1,7 @@
 ---
 attribution: Karl Schroeder
 source: "“The Deepening Paradox,” November 30, 2011"
+sourceDate: 2011-11-30
 sourceUrl: https://kschroeder.substack.com/p/the-deepening-paradox-updated
 emphasis: waste products
 date: 2026-09-07

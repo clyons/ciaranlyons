@@ -1,6 +1,7 @@
 ---
 attribution: Jeff Bezos
 source: In conversation with Jeff Bezos - CEO of the internet, Wired, December 12, 2011
+sourceDate: 2011-12-12
 sourceUrl: https://www.wired.com/story/ceo-of-the-internet/
 date: 2026-09-07
 tags:
