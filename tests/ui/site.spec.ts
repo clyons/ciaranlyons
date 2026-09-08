@@ -32,11 +32,20 @@ test('About presents the PQ Program reach accurately and stays responsive', asyn
     await page.setViewportSize({ width, height: 844 })
     expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
 
-    const experience = await about.getByRole('heading', { level: 3, name: 'Experience' }).locator('..').boundingBox()
-    const caseStudies = await about.getByRole('heading', { level: 3, name: 'Case studies' }).locator('..').boundingBox()
+    const evidenceHeading = await about.getByRole('heading', { level: 2, name: 'Built across operations, growth, and technology.' }).boundingBox()
+    const experience = await about.locator('.about-profile__history').boundingBox()
+    const caseStudies = await about.locator('.about-profile__cases').boundingBox()
+    const contactHeading = await about.getByRole('heading', { level: 2, name: 'Email is best.' }).boundingBox()
+    const email = await about.locator('.about-profile__email').boundingBox()
+    expect(evidenceHeading).not.toBeNull()
     expect(experience).not.toBeNull()
     expect(caseStudies).not.toBeNull()
+    expect(contactHeading).not.toBeNull()
+    expect(email).not.toBeNull()
+    expect(Math.abs(experience!.x - evidenceHeading!.x)).toBeLessThan(1)
     expect(caseStudies!.y).toBeGreaterThanOrEqual(experience!.y + experience!.height)
+    expect(Math.abs(caseStudies!.x - evidenceHeading!.x)).toBeLessThan(1)
+    expect(Math.abs(email!.x - contactHeading!.x)).toBeLessThan(1)
   }
 })
 
