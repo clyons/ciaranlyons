@@ -117,6 +117,16 @@ test('projects are ordered and use the approved site card copy', async ({ page }
   await expect(projects.nth(2)).toContainText('Things that smarter folks than I have said.')
 })
 
+test('home lists every project', async ({ page }) => {
+  await page.goto('/projects/')
+  const projectCount = await page.locator('.project-row').count()
+
+  await page.goto('/')
+  const projects = page.locator('.home-projects .project-row')
+  await expect(projects).toHaveCount(projectCount)
+  await expect(projects.filter({ hasText: 'Found Quotes' })).toHaveCount(1)
+})
+
 test('note permalinks render as native posts rather than quotations', async ({ page }) => {
   await page.goto('/notes/2026/09/07/3mux7jv5ze52c/')
 
