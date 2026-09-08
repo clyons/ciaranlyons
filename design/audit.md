@@ -1,6 +1,7 @@
 # Links archive design audit
 
-target: local `/links/` on `clyons/feedly-stars-to-til`  
+target: local `/links/` on `clyons/feedly-stars-to-til`
+
 goal: Let readers scan recent saves or reliably retrieve one item from a 2,625-link archive without losing the site's calm editorial character.
 
 | # | area | issue | sev | fix | eff | status |
