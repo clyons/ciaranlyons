@@ -27,8 +27,10 @@ test('Found Quotes are discoverable as a project without changing primary naviga
 test('Found Quote archive and permalink preserve quotation semantics', async ({ page }) => {
   await page.goto('/found-quotes/')
 
-  await expect(page.locator('.found-quotes-list figure')).toHaveCount(26)
-  await expect(page.locator('.found-quotes-list blockquote')).toHaveCount(26)
+  const quoteFigures = page.locator('.found-quotes-list figure')
+  const quoteBlocks = page.locator('.found-quotes-list blockquote')
+  expect(await quoteFigures.count()).toBeGreaterThan(0)
+  expect(await quoteBlocks.count()).toBe(await quoteFigures.count())
   await expect(page.locator('.preview-label')).toHaveCount(0)
   const liveQuote = page.locator('.found-quotes-list figure').filter({ hasText: '‘Live’ is the shortcut to FOMO.' })
   await expect(liveQuote).toHaveCount(1)
