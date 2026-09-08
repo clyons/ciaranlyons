@@ -9,3 +9,5 @@ foundQuotes:
   - world-is-not-yet-done
 
 ---
+
+We're all gonna make it.
