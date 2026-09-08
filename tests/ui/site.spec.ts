@@ -166,7 +166,7 @@ test('note permalinks render as native posts rather than quotations', async ({ p
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('New TIL: two-state dark mode toggles.')
   await expect(page.locator('article blockquote')).toHaveCount(0)
   await expect(page.locator('.note-rich-text')).toContainText('I keep returning to @lea.verou.me’s argument')
-  await expect(page.getByRole('link', { name: '@lea.verou.me' })).toHaveAttribute('href', /bsky\.app\/profile\/did%3Aplc%3Aeagnfcoqnbtzpkglrtej6ayg/)
+  await expect(page.getByRole('link', { name: '@lea.verou.me' })).toHaveAttribute('href', /bsky\.app\/profile\/did:plc:eagnfcoqnbtzpkglrtej6ayg/)
   await expect(page.getByRole('link', { name: /TIL Two-state dark mode toggles/ })).toHaveAttribute('href', '/til/2026/09/07/two-state-dark-mode-toggles/')
   await expect(page.locator('.note-rich-text')).toContainText('https://ciaranlyons.com/til/2026/09/07/two-state-dark-mode-toggles')
   await expect(page.locator('.note-post-footer time')).toHaveAttribute('datetime', '2026-09-07T19:10:39.594Z')
@@ -181,6 +181,11 @@ test('note permalinks render as native posts rather than quotations', async ({ p
   await expect(linkedTil).toHaveAttribute('href', '/til/2026/09/05/blender-logo-animation-coding-agent-macos/')
   await expect(video).toBeVisible()
   expect(await video.evaluate((element) => element.compareDocumentPosition(document.querySelector('.note-content-references')!) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy()
+
+  await page.goto('/notes/2026/09/08/3muy7cork3c24/')
+  const linkedWriting = page.getByRole('link', { name: /Writing Found Quotes: WAGMI/ })
+  await expect(linkedWriting).toHaveAttribute('href', '/writing/2026/09/07/found-quotes-wagmi/')
+  await expect(linkedWriting).toContainText('A handful of quotes about technology and making it better.')
 })
 
 test('note detail matches its approved visual baseline', async ({ page }) => {
