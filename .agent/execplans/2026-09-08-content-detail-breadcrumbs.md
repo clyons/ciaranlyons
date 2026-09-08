@@ -17,6 +17,7 @@ Readers who arrive on an individual TIL, Writing entry, Found Quote, Note, or Li
 - [x] (2026-09-08 11:43Z) Rebased onto current `origin/main` and reran repository checks, unit tests, the production build, focused browser validation, and the full UI regression audit.
 - [x] (2026-09-08 12:07Z) Simplified the breadcrumb after review so it renders only the linked archive label, centralized archive metadata, and reran focused validation.
 - [x] (2026-09-08 12:12Z) Rebased over the newly merged Links collection and applied the same non-repeating archive breadcrumb to its detail route.
+- [x] (2026-09-08 12:21Z) Removed the legacy `Note` and `Found Quote` kickers and their empty header wrappers so those labels appear only once.
 
 ## Surprises & Discoveries
 
@@ -45,10 +46,13 @@ Readers who arrive on an individual TIL, Writing entry, Found Quote, Note, or Li
 - Decision: Supersede the two-item breadcrumb with one linked archive label and no current-page item.
   Rationale: The page already presents its own title or Note text immediately below the breadcrumb. Repeating that content adds noise, is especially excessive for generated Note titles, and makes the component API more generic than the site needs. `ArchiveBreadcrumb.astro` now owns the finite archive-label and URL mapping so callers pass only an archive key.
   Date/Author: 2026-09-08 / Codex
+- Decision: Remove the pre-existing singular content-type kicker from Note and Found Quote details.
+  Rationale: Once the linked archive breadcrumb is present, `Notes` followed by `Note` and `Found Quotes` followed by `Found Quote` duplicate the same information. Their headers contained no other visible content, so retaining the wrappers also introduced unnecessary vertical space.
+  Date/Author: 2026-09-08 / Codex
 
 ## Outcomes & Retrospective
 
-Implemented one reusable archive breadcrumb for all five canonical content detail types. TILs, Writing entries, Found Quotes, Notes, and Links now show only a small link to their main archive; detail content is not repeated in the navigation. The component centrally maps each archive key to its label and URL. Projects, About, Search, redirects, and nested date/topic archive pages were intentionally left unchanged because they do not present the same archive/detail navigation gap. Type checks, unit tests, the production build, and all focused desktop/mobile browser checks passed. The unrelated pre-existing full-suite drift is documented under `Surprises & Discoveries` and was not folded into this focused change.
+Implemented one reusable archive breadcrumb for all five canonical content detail types. TILs, Writing entries, Found Quotes, Notes, and Links now show only a small link to their main archive; detail content is not repeated in the navigation. The component centrally maps each archive key to its label and URL. Redundant singular `Note` and `Found Quote` kickers and their empty header spacing were removed. Projects, About, Search, redirects, and nested date/topic archive pages were intentionally left unchanged because they do not present the same archive/detail navigation gap. Type checks, unit tests, the production build, and all focused desktop/mobile browser checks passed. The unrelated pre-existing full-suite drift is documented under `Surprises & Discoveries` and was not folded into this focused change.
 
 ## Context and Orientation
 
@@ -111,6 +115,9 @@ The source edits and test commands are safe to repeat. Snapshot regeneration is 
 - Follow-up validation after rebasing over the Links collection: `npm run lint` checked 102 files with no diagnostics, `npx tsc --noEmit` passed, and all 69 unit tests passed.
 - Follow-up production build: 4,067 pages built, 68 social preview images verified, and Pagefind indexed 2,662 pages.
 - Follow-up focused Playwright run: all 12 archive-breadcrumb and Note-detail snapshot cases passed across desktop and mobile, including the newly discovered Link detail route.
+- Final review correction: Note and Found Quote detail tests assert that neither an article header nor a section kicker remains beneath the archive breadcrumb.
+- Final focused Playwright run: all 16 breadcrumb, duplicate-kicker, and Note-detail snapshot cases passed across desktop and mobile.
+- Final visual review: the Note detail now shows one linked `Notes` label followed directly by the divider and content at both desktop and mobile widths.
 
 ## Interfaces and Dependencies
 
@@ -121,3 +128,4 @@ The source edits and test commands are safe to repeat. Snapshot regeneration is 
 - 2026-09-08: Created the plan from the repository template after auditing all page routes.
 - 2026-09-08: Recorded implementation completion, validation evidence, visual review, and pre-existing UI-suite drift.
 - 2026-09-08: Updated the final design after review to remove repeated current-page content and centralize archive metadata.
+- 2026-09-08: Removed redundant Note and Found Quote kickers after visual review exposed the remaining duplication.
