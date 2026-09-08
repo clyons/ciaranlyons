@@ -1,5 +1,5 @@
 ---
-title: "Found Quotes: Make It Better"
+title: "Found Quotes: WAGMI"
 description: "A handful of quotes about technology and making it better."
 date: 2026-09-07
 foundQuotes:
