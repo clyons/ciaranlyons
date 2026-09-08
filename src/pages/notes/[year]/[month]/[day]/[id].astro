@@ -1,28 +1,51 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
 import { getAllNotes, originalPostUrl } from '../../../../../lib/atproto'
+import { getTilEntries, noteTitle } from '../../../../../lib/content'
 import { formatDate } from '../../../../../lib/dates'
 import { renderRichText } from '../../../../../lib/rich-text'
 
 export async function getStaticPaths() {
-  const notes = await getAllNotes()
+  const [notes, tilEntries] = await Promise.all([getAllNotes(), getTilEntries()])
   return notes.map((note) => ({
     params: { year: note.year, month: note.month, day: note.day, id: note.id },
-    props: { note },
+    props: {
+      note,
+      linkedTils: tilEntries.filter((entry) => note.facets.some((facet) => facet.features?.some((feature) => {
+        if (!feature.uri) return false
+        try {
+          const url = new URL(feature.uri)
+          return url.hostname === 'ciaranlyons.com' && `${url.pathname.replace(/\/$/, '')}/` === entry.url
+        } catch {
+          return false
+        }
+      }))),
+    },
   }))
 }
 
-const { note } = Astro.props
+const { note, linkedTils } = Astro.props
+const title = noteTitle(note)
+const paragraphs = renderRichText(note.text, note.facets)
+  .split(/(?:<br \/>){2,}/)
+  .map((html) => ({
+    html,
+    isStandaloneLink: /^<a [^>]+>https?:\/\/[^<]+<\/a>$/.test(html),
+  }))
 ---
 
-<BaseLayout title="Note" description={note.text} canonical={note.url}>
-  <article class="article-shell">
+<BaseLayout title={title} description={note.text} canonical={note.url}>
+  <article class="article-shell note-detail">
     <header class="article-header">
-      <p class="section-kicker">Ciaran Lyons</p>
-      <h1 class="article-title">@ciaranlyons.com</h1>
+      <p class="section-kicker">Note</p>
+      <h1 class="visually-hidden">{title}</h1>
     </header>
-    <div class="prose">
-      <blockquote class="note-rich-text" set:html={renderRichText(note.text, note.facets)} />
+    <div class="note-post">
+      <div class="note-rich-text">
+        {paragraphs.map((paragraph) => (
+          <p class:list={[paragraph.isStandaloneLink && 'note-standalone-link']} set:html={paragraph.html} />
+        ))}
+      </div>
       {note.media.length > 0 && (
         <div class="note-media">
           {note.media.map((media) => (
@@ -54,8 +77,28 @@ const { note } = Astro.props
           ))}
         </div>
       )}
-      <p><time class="date" datetime={note.date}>{formatDate(note.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time></p>
-      <p><a href={originalPostUrl(note)}>Original ATProto post</a></p>
+      {linkedTils.length > 0 && (
+        <div class="note-content-references">
+          {linkedTils.map((entry) => (
+            <a class="note-content-reference" href={entry.url}>
+              <span class="type-label">TIL</span>
+              <span class="note-content-reference-copy">
+                <strong>{entry.title}</strong>
+                <span>{entry.description}</span>
+              </span>
+              <span class="note-content-reference-arrow" aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+      )}
+      <footer class="note-post-footer">
+        <time class="date" datetime={note.date}>
+          {formatDate(note.date, { month: 'long', day: 'numeric', year: 'numeric' })}
+        </time>
+        <a class="text-link note-syndication-link" href={originalPostUrl(note)} rel="syndication">
+          Also on Bluesky <span aria-hidden="true">↗</span>
+        </a>
+      </footer>
     </div>
   </article>
 </BaseLayout>
