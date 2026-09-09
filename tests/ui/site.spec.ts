@@ -153,6 +153,13 @@ test('Writing collections flow directly into their Found Quotes', async ({ page 
 
   await expect(page.locator('.writing-found-quotes')).toHaveCSS('border-top-width', '0px')
   await expect(page.locator('.writing-found-quotes')).toHaveCSS('padding-top', '0px')
+  await expect(page.locator('.writing-found-quotes')).toHaveCSS('margin-top', '0px')
+
+  const expectedFirstQuotePadding = (page.viewportSize()?.width ?? 0) <= 760 ? '22px' : '30px'
+  await expect(page.locator('.writing-found-quotes .found-quote').first()).toHaveCSS(
+    'padding-top',
+    expectedFirstQuotePadding,
+  )
 })
 
 test('Found Quote type study compares compact, responsive, and reading scales', async ({ page }) => {
