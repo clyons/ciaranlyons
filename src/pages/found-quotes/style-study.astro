@@ -3,12 +3,40 @@ import FoundQuote from '../../components/FoundQuote.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { getFoundQuotes } from '../../lib/content'
 
-const longQuoteSlug = 'great-silence-and-technological-efficiency'
 const allQuotes = await getFoundQuotes()
-const longQuote = allQuotes.find((quote) => quote.slug === longQuoteSlug)
-const quotes = [
-  ...allQuotes.filter((quote) => quote.slug !== longQuoteSlug).slice(0, 3),
-  ...(longQuote ? [longQuote] : []),
+const examples = [
+  {
+    tier: 'compact',
+    label: 'Compact · 31 characters · Display at every width',
+    slug: 'live-is-the-shortcut-to-fomo',
+    scale: 'display',
+  },
+  {
+    tier: 'responsive',
+    label: 'Responsive · 85 characters · Display desktop, reading mobile',
+    slug: 'this-i-saw-this-i-experienced',
+    scale: 'display',
+  },
+  {
+    tier: 'reading',
+    label: 'Reading · 509 characters · Reading at every width',
+    slug: 'great-silence-and-technological-efficiency',
+    scale: 'reading',
+  },
+].map((example) => {
+  const quote = allQuotes.find((candidate) => candidate.slug === example.slug)
+  if (!quote) throw new Error(`Missing Found Quote type-study example: ${example.slug}`)
+  return { ...example, quote }
+}) as Array<{
+  tier: 'compact' | 'responsive' | 'reading'
+  label: string
+  scale: 'display' | 'reading'
+  quote: (typeof allQuotes)[number]
+}>
+const tierSummary = [
+  ['Compact', 'Large everywhere'],
+  ['Responsive', 'Large on desktop; smaller on mobile'],
+  ['Reading', 'Smaller everywhere'],
 ]
 ---
 
@@ -19,15 +47,90 @@ const quotes = [
   feedTitle="Ciaran Lyons - Found Quotes"
 >
   <section class="section">
-    <p class="preview-label">Type study · first four quotes</p>
+    <p class="preview-label">Typography mockup · three lengths</p>
     <h1 class="page-title">Found Quotes</h1>
-    <p class="lede">Things other people said that I want to remember.</p>
+    <p class="lede">Short quotations stay large. Longer passages settle into a reading scale.</p>
   </section>
   <section class="section found-quotes-section">
-    <div class="found-quotes-list">
-      {quotes.map((quote) => (
-        <FoundQuote quote={quote} scale={quote.slug === longQuoteSlug ? 'reading' : 'display'} />
+    <dl class="type-study-key" aria-label="Proposed Found Quote typography tiers">
+      {tierSummary.map(([term, description]) => (
+        <div>
+          <dt>{term}</dt>
+          <dd>{description}</dd>
+        </div>
+      ))}
+    </dl>
+    <div class="found-quotes-list type-study-examples">
+      {examples.map((example) => (
+        <section class:list={['type-study-example', `type-study-example--${example.tier}`]} aria-labelledby={`type-study-${example.tier}`}>
+          <p class="type-study-label" id={`type-study-${example.tier}`}>{example.label}</p>
+          <FoundQuote quote={example.quote} scale={example.scale} />
+        </section>
       ))}
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .type-study-key {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0 0 clamp(48px, 7vw, 76px);
+    padding: 1px;
+    background: var(--hairline);
+  }
+
+  .type-study-key div {
+    padding: 18px 20px;
+    background: var(--bg);
+  }
+
+  .type-study-key dt,
+  .type-study-label {
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: .7rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: .085em;
+    text-transform: uppercase;
+  }
+
+  .type-study-key dd {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-family: var(--serif);
+    line-height: 1.35;
+  }
+
+  .type-study-label {
+    margin: 0 0 14px;
+  }
+
+  .type-study-example :global(.found-quote) {
+    border-top: 1px solid var(--hairline);
+  }
+
+  @media (max-width: 760px) {
+    .type-study-key {
+      grid-template-columns: 1fr;
+      margin-bottom: 44px;
+    }
+
+    .type-study-example--responsive :global(.found-quote),
+    .type-study-example--reading :global(.found-quote) {
+      padding-top: 28px;
+      padding-bottom: 28px;
+    }
+
+    .type-study-example--responsive :global(.found-quote blockquote),
+    .type-study-example--reading :global(.found-quote blockquote) {
+      max-width: 48rem;
+      font-size: clamp(1.5rem, 6.2vw, 1.75rem);
+      line-height: 1.26;
+      letter-spacing: -.008em;
+      text-wrap: pretty;
+    }
+  }
+</style>

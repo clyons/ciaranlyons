@@ -155,17 +155,32 @@ test('Writing collections flow directly into their Found Quotes', async ({ page 
   await expect(page.locator('.writing-found-quotes')).toHaveCSS('padding-top', '0px')
 })
 
-test('Found Quote type study gives the long exemplar a reading scale', async ({ page }) => {
+test('Found Quote type study compares compact, responsive, and reading scales', async ({ page }) => {
   await page.goto('/found-quotes/style-study/')
 
-  const quotes = page.locator('.found-quotes-list figure')
-  await expect(quotes).toHaveCount(4)
+  const examples = page.locator('.type-study-example')
+  const quotes = examples.locator('.found-quote')
+  await expect(quotes).toHaveCount(3)
+  await expect(page.locator('.type-study-example--compact')).toContainText('31 characters')
+  await expect(page.locator('.type-study-example--responsive')).toContainText('85 characters')
+  await expect(page.locator('.type-study-example--reading')).toContainText('509 characters')
   await expect(page.locator('.found-quotes-list .found-quote--reading')).toHaveCount(1)
-  for (let index = 0; index < 3; index += 1) {
-    await expect(quotes.nth(index)).not.toHaveClass(/found-quote--reading/)
+  await expect(quotes.nth(0)).not.toHaveClass(/found-quote--reading/)
+  await expect(quotes.nth(1)).not.toHaveClass(/found-quote--reading/)
+  await expect(quotes.nth(2)).toHaveClass(/found-quote--reading/)
+  await expect(quotes.nth(2)).toContainText('In the Great Silence')
+
+  const fontSizes = await quotes.locator('blockquote').evaluateAll((elements) => (
+    elements.map((element) => Number.parseFloat(getComputedStyle(element).fontSize))
+  ))
+  expect(fontSizes[2]).toBeLessThan(fontSizes[0])
+  if ((page.viewportSize()?.width ?? 0) <= 760) {
+    expect(fontSizes[1]).toBeLessThan(fontSizes[0])
+    expect(fontSizes[1]).toBeGreaterThanOrEqual(24)
+    expect(fontSizes[2]).toBeGreaterThanOrEqual(24)
+  } else {
+    expect(fontSizes[1]).toBe(fontSizes[0])
   }
-  await expect(quotes.nth(3)).toHaveClass(/found-quote--reading/)
-  await expect(quotes.nth(3)).toContainText('In the Great Silence')
 
   await page.goto('/found-quotes/2026/09/07/great-silence-and-technological-efficiency/')
   await expect(page.locator('article .found-quote--reading')).toHaveCount(1)

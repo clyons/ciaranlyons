@@ -15,6 +15,8 @@ After this change, quotation typography will be selected automatically from the 
 - [x] (2026-09-08 23:47Z) Reviewed the Found Quotes ExecPlan, design context, long-quote study, design QA, relevant merged PRs, current renderer, routes, CSS, content lengths, and visual tests.
 - [x] (2026-09-08 23:47Z) Measured every current quotation at 1280px, 390px, and 320px in the archive, plus the home and WAGMI Writing contexts.
 - [x] (2026-09-08 23:47Z) Completed the initial implementation proposal and acceptance criteria in this ExecPlan.
+- [x] (2026-09-09 00:26Z) Built an isolated three-tier mockup at `/found-quotes/style-study/` using representative 31-, 85-, and 509-character production quotes; production renderers remain unchanged.
+- [x] (2026-09-09 00:29Z) Validated the mockup with 70 unit tests, zero Astro diagnostics, a 4,067-page production build, and all 104 desktop/mobile UI tests.
 - [ ] Implement automatic typography tiers and remove explicit route-level scale selection.
 - [ ] Harmonize the display and reading scales across archive, detail, home, and Writing contexts.
 - [ ] Add unit, rendered-line, relative-size, overflow, and visual-regression coverage.
@@ -165,6 +167,7 @@ If a threshold causes a display-tier quote to exceed two rendered lines, first c
 - Current WAGMI display-scale line range: 3–12 lines at 1280px and 5–22 lines at 390px.
 - Current Home latest quote: 91 characters and 3 lines at 1280px, 5 lines at 390px, and 5 lines at 320px.
 - Current Great Silence detail reading size: 32px at 1280px, 21.45px at 390px, and 21.6px at 320px.
+- Review renders: `.context/design/found-quotes-typography-mockup-desktop.png` at 1280px and `.context/design/found-quotes-typography-mockup-mobile.png` at 390px.
 
 ## Interfaces and Dependencies
 
@@ -181,3 +184,4 @@ No new npm package, browser runtime, content field, database, external service, 
 ## Change Log
 
 - 2026-09-08: Created the plan after reviewing Found Quote history and measuring every current quote across archive, detail, Home, and Writing contexts.
+- 2026-09-09: Added the requested three-quote compact/responsive/reading mockup to the existing isolated type-study route.
