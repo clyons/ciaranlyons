@@ -128,17 +128,17 @@ READY TO MERGE — the approved compact, responsive, and reading treatments now 
 
 ### Visual conformance
 
-- ✓ The current collection resolves to 4 compact, 2 responsive, and 22 reading quotes.
+- ✓ The current collection resolves to 4 compact, 4 responsive, and 20 reading quotes.
 - ✓ Compact quotes retain the original display scale: 53.76px at 1280px, 31.98px at 390px, and 30.4px at 320px.
 - ✓ Responsive quotes match display type on desktop and the reading scale on mobile.
 - ✓ Reading quotes use 32px at 1280px, 24.18px at 390px, and the 24px floor at 320px, with a 48rem measure and relaxed `1.2`/`1.26` line height.
-- ✓ Home, archive, compact permalink, reading permalink, and WAGMI Writing baselines match the approved hierarchy. The latest 91-character Home quote correctly uses reading type.
+- ✓ Home, archive, compact permalink, reading permalink, and WAGMI Writing baselines match the approved hierarchy. The latest 91-character Home quote intentionally uses three-line display type on desktop and reading type on mobile.
 - ✓ Light desktop/mobile and dark mobile renders were inspected. The serif, opening mark, hairlines, attribution, and permalink treatments remain coherent.
 
 ### Behavior and requirements
 
 - ✓ A pure server-side helper normalizes whitespace, counts Unicode code points, and treats multiple paragraphs as reading prose.
-- ✓ Every display-sized quote stays within two actual rendered lines at 1280px, 390px, and 320px across the complete collection.
+- ✓ Every display-sized quote stays within three actual rendered lines at 1280px and two at 390px and 320px across the complete collection.
 - ✓ Every WAGMI Found Quote remains at least 1.25 times the surrounding Writing body size at all three reference widths.
 - ✓ All checked archive, Home, Writing, and permalink pages have no horizontal overflow.
 - ✓ Semantic paragraphs, editorial elision, emphasis, source links, and bookmark permalinks are unchanged.
@@ -154,7 +154,8 @@ READY TO MERGE — the approved compact, responsive, and reading treatments now 
 - `npm test`: 71 passed.
 - `npm run lint`: 0 errors, 0 warnings, 0 hints across 104 files.
 - `npx tsc --noEmit`: passed.
-- `npx playwright test tests/ui/site.spec.ts --update-snapshots`: 114 passed across desktop and mobile.
+- `npm run build`: 4,067 pages generated and 68 page-specific social previews verified.
+- `npx playwright test tests/ui/site.spec.ts`: 116 passed across desktop and mobile; affected Home and Found Quotes desktop baselines were refreshed and reviewed.
 - Reviewed baselines: `found-quotes`, `home`, `writing-found-quotes`, `found-quote-compact`, and `found-quote-reading`, each at desktop and mobile sizes.
 - Dark mobile capture: `.context/design/found-quotes-typography-production-dark-mobile.png`.
 

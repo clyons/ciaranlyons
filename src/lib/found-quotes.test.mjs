@@ -52,8 +52,8 @@ test('Found Quote descriptions normalize whitespace and stay within meta length'
 test('Found Quote typography tiers follow normalized text length and paragraph structure', () => {
   assert.equal(foundQuoteTypographyTier('x'.repeat(40)), 'compact')
   assert.equal(foundQuoteTypographyTier('x'.repeat(41)), 'responsive')
-  assert.equal(foundQuoteTypographyTier('x'.repeat(85)), 'responsive')
-  assert.equal(foundQuoteTypographyTier('x'.repeat(86)), 'reading')
+  assert.equal(foundQuoteTypographyTier('x'.repeat(100)), 'responsive')
+  assert.equal(foundQuoteTypographyTier('x'.repeat(101)), 'reading')
   assert.equal(foundQuoteTypographyTier(`  ${'x '.repeat(20)} `), 'compact')
   assert.equal(foundQuoteTypographyTier('😀'.repeat(40)), 'compact')
   assert.equal(foundQuoteTypographyTier('First paragraph.\r\n\r\nSecond paragraph.'), 'reading')

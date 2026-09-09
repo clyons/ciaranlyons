@@ -728,13 +728,13 @@ img {
   --found-quote-padding-top: 18px;
 }
 
-.writing-found-quotes {
-  margin-top: clamp(58px, 8vw, 86px);
-}
-
 .found-quote--writing {
   --found-quote-display-font-size: clamp(1.85rem, 3.2vw, 2.8rem);
   --found-quote-display-text-wrap: pretty;
+}
+
+.writing-found-quotes .found-quote:first-child {
+  --found-quote-padding-top: clamp(22px, 2.4vw, 30px);
 }
 
 .home-found-quotes .found-quote {
