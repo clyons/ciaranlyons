@@ -1,13 +1,14 @@
 ---
 import type { FoundQuoteEntry } from '../lib/content'
+import { foundQuoteTypographyTier } from '../lib/found-quotes'
 
 interface Props {
   quote: FoundQuoteEntry
   context?: 'archive' | 'detail' | 'home' | 'writing'
-  scale?: 'display' | 'reading'
 }
 
-const { quote, context = 'archive', scale = 'display' } = Astro.props
+const { quote, context = 'archive' } = Astro.props
+const tier = foundQuoteTypographyTier(quote.text)
 const paragraphs = quote.text.split(/\n\s*\n/).map((text) => ({
   text,
   isElision: text === '[…]',
@@ -15,7 +16,7 @@ const paragraphs = quote.text.split(/\n\s*\n/).map((text) => ({
 }))
 ---
 
-<figure class:list={['found-quote', `found-quote--${context}`, scale === 'reading' && 'found-quote--reading']}>
+<figure class:list={['found-quote', `found-quote--${context}`, `found-quote--${tier}`]} data-quote-tier={tier}>
   {quote.preview && <p class="preview-label">Preview content</p>}
   <blockquote cite={quote.sourceUrl}>
     {paragraphs.map((paragraph) => (

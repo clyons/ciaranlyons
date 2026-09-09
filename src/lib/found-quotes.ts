@@ -4,6 +4,18 @@ export interface FoundQuoteReference {
   attribution: string
 }
 
+export type FoundQuoteTypographyTier = 'compact' | 'responsive' | 'reading'
+
+export function foundQuoteTypographyTier(text: string): FoundQuoteTypographyTier {
+  const paragraphs = text.trim().split(/\r?\n\s*\r?\n/u).filter((paragraph) => paragraph.trim().length > 0)
+  if (paragraphs.length > 1) return 'reading'
+
+  const characterCount = Array.from(text.replace(/\s+/gu, ' ').trim()).length
+  if (characterCount <= 40) return 'compact'
+  if (characterCount <= 85) return 'responsive'
+  return 'reading'
+}
+
 export function sortFoundQuotesByPublicationAndSourceDate<T extends { date: string; sourceDate?: string; slug: string }>(quotes: T[]): T[] {
   return [...quotes].sort((a, b) =>
     b.date.localeCompare(a.date)
