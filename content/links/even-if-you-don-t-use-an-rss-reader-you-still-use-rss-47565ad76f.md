@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.792Z"
 dateSource: saved
 publishedAt: "2013-03-14T23:57:32.000Z"
 targetUrl: "http://inessential.com/2013/03/14/why_i_love_rss_and_you_do_too"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13d6b5651e0:3207d7:9e04b0a9"
 tags: ["Saved For Later"]

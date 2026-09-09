@@ -5,7 +5,9 @@ date: 2014-05-19
 savedAt: "2014-05-19T04:44:00.049Z"
 dateSource: saved
 publishedAt: "2014-05-16T00:11:04.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/Xgl-I1I3Yjw/"
+targetUrl: "https://www.subtraction.com/2014/05/16/the-new-york-times-innovation-report/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Subtraction.com"
 author: "Khoi"
 feedlyId: "W6x/zjhbqhEccmIKZsU/x3Fadiq+SIpAJ7IXNcnq+9k=_146025e41bf:8f5cd:80819d52"

@@ -6,6 +6,8 @@ savedAt: "2014-01-20T05:41:40.870Z"
 dateSource: saved
 publishedAt: "2014-01-19T15:38:21.000Z"
 targetUrl: "http://www.diabetes24-7.com/?p=1818"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "diabetes 24-7"
 author: "Elizabeth Snouffer"
 feedlyId: "EvcEkIIjAbZPvu9F+ZELUReryH42UVx9MdKIk3qT53o=_143ab27bfce:dac46:3c7915bc"

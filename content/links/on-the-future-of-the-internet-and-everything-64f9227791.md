@@ -6,6 +6,8 @@ savedAt: "2014-01-04T05:44:42.708Z"
 dateSource: saved
 publishedAt: "2014-01-03T18:13:42.000Z"
 targetUrl: "http://www.asymco.com/2014/01/03/on-the-future-of-the-internet-and-everything/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_143595af7f8:d1906bd:d7247628"
 tags: ["Saved For Later"]

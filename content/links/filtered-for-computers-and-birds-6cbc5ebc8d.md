@@ -6,6 +6,8 @@ savedAt: "2015-06-20T06:58:11.752Z"
 dateSource: saved
 publishedAt: "2015-06-19T14:12:00.000Z"
 targetUrl: "http://interconnected.org/home/2015/06/19/filtered"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_14e0bf13a3b:7e481:3db23cd0"

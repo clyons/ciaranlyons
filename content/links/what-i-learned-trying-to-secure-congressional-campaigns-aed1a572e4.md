@@ -6,6 +6,8 @@ savedAt: "2019-06-01T17:02:50.282Z"
 dateSource: saved
 publishedAt: "2019-05-26T09:04:00.000Z"
 targetUrl: "http://idlewords.com/2019/05/what_i_learned_trying_to_secure_congressional_campaigns.htm"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Idle Words"
 feedlyId: "Lrck8yY08pWUK5rKml4vjgGoc6aRcCLuDceNRfqYAeU=_16afc1c009e:12fc11b:d02fd57c"
 tags: ["Saved For Later"]

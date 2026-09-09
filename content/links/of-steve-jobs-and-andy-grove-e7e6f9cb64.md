@@ -6,6 +6,8 @@ savedAt: "2016-04-04T13:39:39.847Z"
 dateSource: saved
 publishedAt: "2016-04-01T14:46:30.000Z"
 targetUrl: "http://kensegall.com/2016/04/of-steve-jobs-and-andy-grove/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog – Observatory"
 author: "ken segall"
 feedlyId: "UUBOkumT0t8g4P2hT8jFeJpzL1fT/INbjMwVjJ4GA4Y=_153d52d419c:1dd2011:7bd7a919"

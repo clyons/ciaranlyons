@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:21.931Z"
 dateSource: saved
 publishedAt: "2011-09-18T17:22:20.000Z"
 targetUrl: "http://quantifiedself.com/2011/09/robin-barooah-i-am-broken-or-i-can-learn/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Quantified Self"
 author: "Alexandra Carmichael"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1327d8f5ce0:320b88:9e04b0a9"

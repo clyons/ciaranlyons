@@ -6,6 +6,8 @@ savedAt: "2019-05-30T22:50:33.997Z"
 dateSource: saved
 publishedAt: "2019-05-30T21:09:00.000Z"
 targetUrl: "https://www.aboveavalon.com/notes/2019/5/30/apples-billion-users"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Above Avalon"
 author: "Neil Cybart"
 feedlyId: "vUHD8hsYt2NaI6s7FoNDO2pIRkBC0LjYbJKGvKFMs7s=_16b0a98506b:d1e052:5de7e37"

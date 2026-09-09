@@ -6,6 +6,8 @@ savedAt: "2025-09-25T15:02:09.517Z"
 dateSource: saved
 publishedAt: "2025-09-22T08:18:44.000Z"
 targetUrl: "http://davetrott.co.uk/2025/09/data-is-not-dictation/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dave Trott's Blog"
 author: "Dave Trott"
 feedlyId: "AiGE+5K3cCPM2aeJjk9Ma0GxixEx+sqAPIxVYlEqNXU=_1997085bc9f:45bb222:d0c06f3b"

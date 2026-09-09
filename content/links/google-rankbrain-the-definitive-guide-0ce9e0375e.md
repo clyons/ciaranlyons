@@ -6,6 +6,8 @@ savedAt: "2018-02-02T04:50:55.387Z"
 dateSource: saved
 publishedAt: "2018-01-09T15:00:41.000Z"
 targetUrl: "https://backlinko.com/google-rankbrain-seo"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Backlinko"
 author: "Brian Dean"
 feedlyId: "b0VvB395IgzcLlwFKTSv4xySBzXlJZh4SfWlSiphgmw=_160dbf70fa5:5b651c:7157a206"

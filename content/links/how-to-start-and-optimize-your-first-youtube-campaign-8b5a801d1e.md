@@ -6,6 +6,8 @@ savedAt: "2014-06-05T01:08:15.634Z"
 dateSource: saved
 publishedAt: "2014-05-29T19:35:10.000Z"
 targetUrl: "http://okdork.com/2014/05/29/how-to-start-and-optimize-your-first-youtube-campaign/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "OkDork.com"
 author: "Eric Siu"
 feedlyId: "SUgi+2Dm9c3jiifHY0m19EDS0Ghy9iA4v9Q/gS4USao=_1464aa85fbe:8c30f1:4bfbc108"

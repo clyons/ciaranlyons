@@ -6,6 +6,8 @@ savedAt: "2017-09-01T00:09:51.583Z"
 dateSource: saved
 publishedAt: "2017-08-30T16:55:17.000Z"
 targetUrl: "http://prostheticknowledge.tumblr.com/post/164792305201/instagif-abhishek-singh-hacked-together-a-digital"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "prosthetic knowledge"
 feedlyId: "QRvOTfJ2w090nuwVvdoLEBV4IDWA5J3Y14E3K06DYSo=_15e34d496f5:b20ca4:ed57ae85"
 tags: ["Saved For Later"]

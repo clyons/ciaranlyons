@@ -5,7 +5,9 @@ date: 2014-02-12
 savedAt: "2014-02-12T10:02:58.682Z"
 dateSource: saved
 publishedAt: "2014-01-28T23:05:11.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/8HuqikO-b2o/74877886466"
+targetUrl: "https://blog.timoni.org/post/74877886466/ive-often-discussed-with-my-partner-erik-how"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_143dbdc38ef:17d0d0:72c69080"
 tags: ["Saved For Later"]

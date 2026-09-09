@@ -5,7 +5,9 @@ date: 2016-12-18
 savedAt: "2016-12-18T03:57:39.507Z"
 dateSource: saved
 publishedAt: "2016-11-27T15:33:35.000Z"
-targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/R1FdNwKeA2s/fontawesome5-kickstarter.html"
+targetUrl: "https://dullneon.com/randomnotes/2016/11/fontawesome5-kickstarter.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "dullneon.com - random notes, links and pixels"
 author: "Jaffry Jalal"
 feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_158a66bbbc6:21e94af:a8b13977"

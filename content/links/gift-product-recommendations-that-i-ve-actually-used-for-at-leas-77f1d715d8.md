@@ -6,6 +6,8 @@ savedAt: "2013-12-13T23:17:36.577Z"
 dateSource: saved
 publishedAt: "2013-12-13T02:38:52.000Z"
 targetUrl: "http://www.marco.org/2013/12/12/gift-guide-actually-used-for-a-year"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_142e9e1c2b6:4e228e:242b6c1b"
 tags: ["Saved For Later"]

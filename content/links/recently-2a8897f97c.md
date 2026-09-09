@@ -6,6 +6,8 @@ savedAt: "2022-07-01T00:32:06.014Z"
 dateSource: saved
 publishedAt: "2022-06-01T00:00:00.000Z"
 targetUrl: "https://macwright.com/2022/06/01/recently.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Tom MacWright"
 author: "Tom MacWright"
 feedlyId: "JUqCNT/p32dFeO4UB4peffKeQFo2JXC5PMiS/15zZUI=_1811f793221:7be808:ac054735"

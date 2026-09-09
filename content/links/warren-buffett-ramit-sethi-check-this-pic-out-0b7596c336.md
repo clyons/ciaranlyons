@@ -6,6 +6,8 @@ savedAt: "2013-07-09T01:49:48.764Z"
 dateSource: saved
 publishedAt: "2013-07-01T12:57:36.000Z"
 targetUrl: "http://feedproxy.google.com/~r/IWillTeachYouToBeRich/~3/H-EmJyzcw9I/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "I Will Teach You To Be Rich"
 author: "Ramit Sethi"
 feedlyId: "WKXuSSMD2jXNRO9ZsSlFWsRDCUqlvcPls0Ai0wpIFP0=_13f9a4fb6e6:36b4d2:25d269e"

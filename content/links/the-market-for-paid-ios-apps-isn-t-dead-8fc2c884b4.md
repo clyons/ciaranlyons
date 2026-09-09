@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.830Z"
 dateSource: saved
 publishedAt: "2013-04-20T03:41:22.000Z"
 targetUrl: "http://www.marco.org/2013/04/19/paid-app-market"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e25882ed0:3207af:9e04b0a9"
 tags: ["Saved For Later"]

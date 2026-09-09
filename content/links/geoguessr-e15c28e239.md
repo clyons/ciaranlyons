@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.861Z"
 dateSource: saved
 publishedAt: "2013-05-10T16:20:00.000Z"
 targetUrl: "http://jane.dallaway.com/geoguessr"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "Jane Dallaway"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e8f3deb80:32078f:9e04b0a9"
 tags: ["Saved For Later"]

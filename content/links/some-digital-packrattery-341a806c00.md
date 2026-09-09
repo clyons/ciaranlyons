@@ -6,6 +6,8 @@ savedAt: "2021-07-19T01:29:03.070Z"
 dateSource: saved
 publishedAt: "2021-06-25T03:57:43.000Z"
 targetUrl: "https://pxlnv.com/blog/some-digital-packrattery/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_17a4155f60a:1359528:2c03cbeb"

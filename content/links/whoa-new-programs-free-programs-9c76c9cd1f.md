@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.425Z"
 dateSource: saved
 publishedAt: "2012-04-03T17:14:49.000Z"
 targetUrl: "http://blog.habitlabs.com/post/20414293272"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Habit Labs"
 author: "ameliagreenhall"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1367933a328:32094c:9e04b0a9"

@@ -6,6 +6,8 @@ savedAt: "2025-02-24T04:02:10.256Z"
 dateSource: saved
 publishedAt: "2025-02-20T11:42:03.000Z"
 targetUrl: "https://maggieappleton.com/2025-02-last-exam/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Maggie Appleton"
 feedlyId: "g1/BDUSpRIYbJTKGjLpJkcU3qlpszGlEVSkVVTCRmmA=_19523cc9b34:45fea6:c32197dc"
 tags: ["Saved For Later"]

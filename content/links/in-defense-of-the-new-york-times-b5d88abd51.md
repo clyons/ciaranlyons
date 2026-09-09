@@ -6,6 +6,8 @@ savedAt: "2015-10-22T02:16:35.400Z"
 dateSource: saved
 publishedAt: "2015-10-21T11:54:40.000Z"
 targetUrl: "https://stratechery.com/2015/in-defense-of-the-new-york-times/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_1508a481b4d:d34818:3534b282"

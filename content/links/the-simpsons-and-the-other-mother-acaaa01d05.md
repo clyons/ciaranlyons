@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.151Z"
 dateSource: saved
 publishedAt: "2011-11-28T22:56:00.000Z"
 targetUrl: "http://journal.neilgaiman.com/2011/11/heres-simpsons-episode-that-im-in.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Neil Gaiman's Journal"
 author: "noreply@blogger.com (Neil)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_133ec645c00:320a9c:9e04b0a9"

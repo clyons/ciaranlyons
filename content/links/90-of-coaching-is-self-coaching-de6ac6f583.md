@@ -6,6 +6,8 @@ savedAt: "2018-11-28T15:07:23.036Z"
 dateSource: saved
 publishedAt: "2018-11-28T09:39:30.000Z"
 targetUrl: "https://feeds.feedblitz.com/~/582613800/0/sethsblog~of-coaching-is-selfcoaching/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Seth Godin's Blog"
 author: "Seth Godin"
 feedlyId: "6GV/GbWOJ6VnCKxInEF8KnvUbqZzRLHHRNcmgK9rnUk=_16759b5494c:3f8890:f7a2ccea"

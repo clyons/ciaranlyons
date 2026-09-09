@@ -6,6 +6,8 @@ savedAt: "2013-08-07T01:05:56.104Z"
 dateSource: saved
 publishedAt: "2013-08-06T03:34:09.000Z"
 targetUrl: "http://www.marco.org/2013/08/05/be-your-own-platform"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_14051c7fb92:3b3fef9:bf4a558a"
 tags: ["Saved For Later"]

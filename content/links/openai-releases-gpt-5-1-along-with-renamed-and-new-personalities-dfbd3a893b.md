@@ -6,6 +6,8 @@ savedAt: "2025-11-13T01:18:14.220Z"
 dateSource: saved
 publishedAt: "2025-11-12T23:09:10.000Z"
 targetUrl: "https://daringfireball.net/2025/11/chatgpt_5-1_with_renamed_and_new_personalities"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_19a7a58eacb:4e5adb:2d1d9f24"

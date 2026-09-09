@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.986Z"
 dateSource: saved
 publishedAt: "2011-10-07T21:54:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/parislemon/~3/lilY8SsSnig/11153796175"
+targetUrl: "https://parislemon.com/post/11153796175/the-rundown"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ParisLemon"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132e060e8c0:320b50:9e04b0a9"
 tags: ["Saved For Later"]

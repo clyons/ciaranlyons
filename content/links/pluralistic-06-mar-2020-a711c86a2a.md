@@ -6,6 +6,8 @@ savedAt: "2020-03-11T13:59:25.390Z"
 dateSource: saved
 publishedAt: "2020-03-06T18:14:37.000Z"
 targetUrl: "https://pluralistic.net/2020/03/06/robolawyers-vs-databrokers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pluralistic: Daily links from Cory Doctorow"
 author: "Cory Doctorow"
 feedlyId: "g6Ngl0v6+a6lryp1OFsHIzI9rOhBxlGuxU8rVAC6Pr0=_170b1146332:afadc5:6717d43a"

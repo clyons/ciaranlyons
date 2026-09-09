@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.000Z"
 dateSource: saved
 publishedAt: "2011-09-28T19:00:07.000Z"
 targetUrl: "http://blog.stackoverflow.com/2011/09/se-podcast-20/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog - Stack Exchange"
 author: "Alex Miller"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132b1687ad8:320b42:9e04b0a9"

@@ -6,6 +6,8 @@ savedAt: "2014-08-29T01:57:44.663Z"
 dateSource: saved
 publishedAt: "2014-08-26T17:52:57.000Z"
 targetUrl: "http://blog.thinkup.com/post/95837873137"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ThinkUp Blog"
 author: "michellej"
 feedlyId: "Vywl5rqqxmIhZ7H/ks9ciHq5VFE/Gii/SdKZXQ4dh+g=_148137cefb3:86c6485:7762fa0c"

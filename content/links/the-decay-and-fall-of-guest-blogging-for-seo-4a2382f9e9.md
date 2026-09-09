@@ -6,6 +6,8 @@ savedAt: "2014-01-21T00:10:05.446Z"
 dateSource: saved
 publishedAt: "2014-01-20T19:51:04.000Z"
 targetUrl: "https://www.mattcutts.com/blog/guest-blogging/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Matt Cutts: Gadgets, Google, and SEO"
 author: "Matt Cutts"
 feedlyId: "wSHxvfj9nomQQXQrn1CogfsGue4xeA0fIeKN+QVyrZw=_143b14360a2:1b599e:3c7915bc"

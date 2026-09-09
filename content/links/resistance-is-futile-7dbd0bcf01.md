@@ -6,6 +6,8 @@ savedAt: "2014-05-16T05:41:29.230Z"
 dateSource: saved
 publishedAt: "2014-05-15T04:00:00.000Z"
 targetUrl: "http://www.qwantz.com/index.php?comic=2628"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dinosaur Comics!"
 feedlyId: "fFtto7+N/44QFL++0k/r4zGk4l7JQuro9bJ5VHQ+OSc=_145ffbe436b:b6762d:4777a980"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2021-07-02T02:18:46.781Z"
 dateSource: saved
 publishedAt: "2021-06-16T10:30:06.000Z"
 targetUrl: "https://popular.info/p/trump-attempted-a-coup-now-there"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Popular Information"
 author: "Judd Legum"
 feedlyId: "dFqchjIq4ZHUxT6KSkENWR+LgJ1GS54dIURCfQmpmE4=_17a146297e4:3b1139:2c03cbeb"

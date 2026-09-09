@@ -6,6 +6,8 @@ savedAt: "2018-04-03T15:35:37.015Z"
 dateSource: saved
 publishedAt: "2018-04-02T16:32:33.000Z"
 targetUrl: "https://blog.cloudflare.com/announcing-1111/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_16287346f52:8e6c19a:9f3b30f2"

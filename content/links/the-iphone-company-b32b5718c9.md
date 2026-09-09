@@ -6,6 +6,8 @@ savedAt: "2013-10-18T00:32:29.808Z"
 dateSource: saved
 publishedAt: "2013-10-17T13:06:46.000Z"
 targetUrl: "http://www.asymco.com/2013/10/17/the-iphone-company/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_141c69ba5e5:136fa1a:b69ceab5"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.439Z"
 dateSource: saved
 publishedAt: "2012-04-06T23:05:19.000Z"
 targetUrl: "http://waxy.org/2012/04/flashback_trojan_creators_scared_of_xcode_users_but_not_norton_antivir/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13689e79b98:32093e:9e04b0a9"
 tags: ["Saved For Later"]

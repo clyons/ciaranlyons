@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.393Z"
 dateSource: saved
 publishedAt: "2012-03-14T20:02:00.000Z"
 targetUrl: "http://interconnected.org/home/2012/03/14/banksy_and_the_six_steps"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13612cd82c0:32096c:9e04b0a9"

@@ -6,6 +6,8 @@ savedAt: "2015-01-02T13:40:49.204Z"
 dateSource: saved
 publishedAt: "2014-12-31T12:41:00.000Z"
 targetUrl: "http://interconnected.org/home/2014/12/31/garam_masala"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_14aa06a0f5a:7f77db:25d61c7c"

@@ -6,6 +6,8 @@ savedAt: "2024-12-22T04:46:06.815Z"
 dateSource: saved
 publishedAt: "2024-12-11T18:21:53.000Z"
 targetUrl: "https://pxlnv.com/linklog/steve-game/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_193b6f6e6ee:905800:d4d0980a"

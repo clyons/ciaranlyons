@@ -6,6 +6,8 @@ savedAt: "2023-09-21T15:01:02.086Z"
 dateSource: saved
 publishedAt: "2023-09-17T17:46:15.010Z"
 targetUrl: "https://web3isgoinggreat.com/single/killer-whales-crypto-reality-show"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Web3 is Going Just Great"
 feedlyId: "5s/N/WVDvYupdmAbBjPqZ+Qve86hAnRZ38EagCkKAp8=_18aa8c7f1c6:18546:10de321a"
 tags: ["Saved For Later"]

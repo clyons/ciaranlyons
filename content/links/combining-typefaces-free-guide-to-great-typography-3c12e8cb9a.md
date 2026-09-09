@@ -6,6 +6,8 @@ savedAt: "2016-05-02T05:28:50.426Z"
 dateSource: saved
 publishedAt: "2016-04-29T17:30:34.000Z"
 targetUrl: "http://blog.typekit.com/2016/04/29/combining-typefaces-free-guide-to-great-typography/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Typekit Blog"
 author: "Tim Brown"
 feedlyId: "BAAZ3MaORungJY+gBlIAXg3qFiqnzcjJkfiGmRrqiFo=_15463129e90:5b6fd4:52c5ef99"

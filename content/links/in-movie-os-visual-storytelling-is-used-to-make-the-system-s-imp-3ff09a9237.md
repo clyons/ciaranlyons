@@ -5,7 +5,9 @@ date: 2014-02-12
 savedAt: "2014-02-12T10:02:59.603Z"
 dateSource: saved
 publishedAt: "2014-01-29T19:39:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/YRMm8_lKKkc/74965548936"
+targetUrl: "https://blog.timoni.org/post/74965548936/in-movie-os-visual-storytelling-is-used-to-make"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_143e0219fcb:cbef3:91883d5b"
 tags: ["Saved For Later"]

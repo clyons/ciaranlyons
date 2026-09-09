@@ -6,6 +6,8 @@ savedAt: "2013-07-11T11:10:39.123Z"
 dateSource: saved
 publishedAt: "2013-07-09T09:41:00.000Z"
 targetUrl: "http://scriptogr.am/ameliagreenhall/post/newsweek-on-qs"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Amelia Greenhall on scriptogr.am"
 feedlyId: "9/FzYvaBKT3Oe5UGFGTHk/MedKsOulkyKhPJcPKkGCw=_13fc40a39f9:36f97b0:b4edca20"
 tags: ["Saved For Later"]

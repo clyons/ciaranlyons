@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.417Z"
 dateSource: saved
 publishedAt: "2012-03-01T16:45:00.000Z"
 targetUrl: "http://cognition.happycog.com/article/dear-branding-agencies"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Cognition by Happy Cog"
 author: "Chris Cashdollar"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_135cf267ae0:320954:9e04b0a9"

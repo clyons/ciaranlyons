@@ -5,7 +5,9 @@ date: 2014-07-09
 savedAt: "2014-07-09T09:47:35.203Z"
 dateSource: saved
 publishedAt: "2014-07-08T12:06:59.000Z"
-targetUrl: "http://feedproxy.google.com/~r/white_african/~3/6vD4NaoIKzs/"
+targetUrl: "https://web.archive.org/web/20140712114206/http://whiteafrican.com:80/2014/07/08/a-brck-journey/?"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "White African"
 author: "hash"
 feedlyId: "ab1jICibR+7r6kBsURYHgGKHF2VfSG8ZMaUtd4UJw64=_14715ee414b:612181:de8f68f2"

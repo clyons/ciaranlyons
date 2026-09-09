@@ -6,6 +6,8 @@ savedAt: "2013-09-21T15:46:58.405Z"
 dateSource: saved
 publishedAt: "2013-09-03T22:04:41.000Z"
 targetUrl: "http://feedproxy.google.com/~r/BothSidesOfTheTable/~3/LQoZY26BkHc/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Both Sides of the Table"
 author: "Mark Suster"
 feedlyId: "7saDh+AX3ShYtqFzfI8VZaySaMTMA3qr8Z9bcohTi6I=_140e5dffd57:25b7eb:5853a28d"

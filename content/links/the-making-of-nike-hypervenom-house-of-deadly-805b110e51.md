@@ -5,7 +5,9 @@ date: 2013-10-15
 savedAt: "2013-10-15T13:10:35.222Z"
 dateSource: saved
 publishedAt: "2013-10-14T11:29:40.000Z"
-targetUrl: "http://bbh-labs.com/the-making-of-nike-hypervenom-house-of-deadly/"
+targetUrl: "https://web.archive.org/web/20131019025730/http://bbh-labs.com:80/the-making-of-nike-hypervenom-house-of-deadly/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "BBH Labs"
 author: "Mel Exon"
 feedlyId: "orMAJ3wj2GjN2XSx2vOpa9l0ufuWmIAAlOqc5Ynn7Qc=_141b6cdbf0d:8c0565:4c6dcf52"

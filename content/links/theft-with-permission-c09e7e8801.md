@@ -6,6 +6,8 @@ savedAt: "2019-06-20T02:37:34.955Z"
 dateSource: saved
 publishedAt: "2019-06-20T01:04:50.000Z"
 targetUrl: "https://pxlnv.com/blog/theft-with-permission/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_16b726a3e2d:4f87b5:b86676c0"

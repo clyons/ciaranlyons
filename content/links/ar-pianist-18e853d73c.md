@@ -6,6 +6,8 @@ savedAt: "2020-01-30T13:57:24.055Z"
 dateSource: saved
 publishedAt: "2020-01-27T23:27:04.000Z"
 targetUrl: "https://www.massivetechnologies.ca/ar-pianist"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_16fe956b554:4b9e926:bb2cd839"

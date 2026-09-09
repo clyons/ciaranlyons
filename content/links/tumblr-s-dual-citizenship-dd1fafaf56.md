@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.938Z"
 dateSource: saved
 publishedAt: "2011-09-20T22:31:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/parislemon/~3/bdHC5127zkY/10456876054"
+targetUrl: "https://parislemon.com/post/10456876054/tumblrs-dual-citizenship"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ParisLemon"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13288f6aca0:320b81:9e04b0a9"
 tags: ["Saved For Later"]

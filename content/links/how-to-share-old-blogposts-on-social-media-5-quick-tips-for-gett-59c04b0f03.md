@@ -5,7 +5,9 @@ date: 2014-10-20
 savedAt: "2014-10-20T13:28:27.703Z"
 dateSource: saved
 publishedAt: "2014-10-01T13:00:34.000Z"
-targetUrl: "http://feedproxy.google.com/~r/bufferapp/~3/PD_0IdjccGE/how-to-share-old-blogposts"
+targetUrl: "https://buffer.com/resources/how-to-share-old-blogposts/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Social"
 author: "Kevan Lee"
 feedlyId: "nw6t1kD4z8/zGdaRug06lzT6Y3MpeXIF8sOX4qBTTvs=_148cb9c7dcb:12b1f06:9f3fb7d0"

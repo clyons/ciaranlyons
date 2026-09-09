@@ -6,6 +6,8 @@ savedAt: "2016-01-08T14:48:48.922Z"
 dateSource: saved
 publishedAt: "2014-12-01T20:00:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/robinsloan/~3/fZFYdNImPFY/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Robin Sloan's blog"
 author: "Robin Sloan"
 feedlyId: "LuJiPqG4DmCGR3xqS/6ft/43OJq3YQzsxVnxWaNwRu8=_1520e6bf9da:36a896d:1ba91209"

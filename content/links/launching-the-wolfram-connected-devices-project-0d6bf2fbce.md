@@ -6,6 +6,8 @@ savedAt: "2014-01-08T10:24:39.272Z"
 dateSource: saved
 publishedAt: "2014-01-06T22:25:04.000Z"
 targetUrl: "http://blog.stephenwolfram.com/2014/01/launching-the-wolfram-connected-devices-project/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stephen Wolfram Blog"
 author: "Stephen Wolfram"
 feedlyId: "n50MNP+NWJLVGXWR4YXL/pRdmEDgO2alTkcs+a4sQ0s=_14369bb9c41:1186468d:d5082bca"

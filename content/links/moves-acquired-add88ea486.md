@@ -5,7 +5,9 @@ date: 2014-04-30
 savedAt: "2014-04-30T01:01:06.667Z"
 dateSource: saved
 publishedAt: "2014-04-25T01:37:19.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/UCAK4KpP5Xw/"
+targetUrl: "https://www.subtraction.com/2014/04/25/moves-acquired/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Subtraction.com"
 author: "Khoi"
 feedlyId: "W6x/zjhbqhEccmIKZsU/x3Fadiq+SIpAJ7IXNcnq+9k=_1459687be9f:164be4:abaa8b76"

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.564Z"
 dateSource: saved
 publishedAt: "2012-05-21T20:29:25.000Z"
 targetUrl: "http://feeds.infosthetics.com/~r/infosthetics/~3/NVSHZ3oRMk4/hans_roslings_shortest_talk_ever.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "information aesthetics"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13771170c88:3208c1:9e04b0a9"
 tags: ["Saved For Later"]

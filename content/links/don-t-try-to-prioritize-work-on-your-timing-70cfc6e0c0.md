@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.404Z"
 dateSource: saved
 publishedAt: "2012-03-20T15:56:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/lessdoing/~3/JlgbJzJvZjU/"
+targetUrl: "http://www.lessdoing.com/2012/03/20/dont-try-to-prioritize-work-on-your-timing/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "The Art of Less Doing"
 author: "ari@lessdoing.com (Ari Meisel)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13630d27280:320961:9e04b0a9"

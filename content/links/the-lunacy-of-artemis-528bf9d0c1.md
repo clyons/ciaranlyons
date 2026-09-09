@@ -6,6 +6,8 @@ savedAt: "2024-05-28T18:43:14.722Z"
 dateSource: saved
 publishedAt: "2024-05-19T16:09:00.000Z"
 targetUrl: "https://idlewords.com/2024/5/the_lunacy_of_artemis.htm"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Idle Words"
 feedlyId: "Lrck8yY08pWUK5rKml4vjgGoc6aRcCLuDceNRfqYAeU=_18f9326712c:3403bab:408b12aa"
 tags: ["Saved For Later"]

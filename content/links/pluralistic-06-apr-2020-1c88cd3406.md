@@ -6,6 +6,8 @@ savedAt: "2020-04-09T03:28:41.353Z"
 dateSource: saved
 publishedAt: "2020-04-06T15:04:18.000Z"
 targetUrl: "https://pluralistic.net/2020/04/06/fill-your-boots/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pluralistic: Daily links from Cory Doctorow"
 author: "Cory Doctorow"
 feedlyId: "g6Ngl0v6+a6lryp1OFsHIzI9rOhBxlGuxU8rVAC6Pr0=_171501528ac:1298aae:7f4666f4"

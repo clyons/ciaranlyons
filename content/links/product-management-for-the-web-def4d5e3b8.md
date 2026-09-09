@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.660Z"
 dateSource: saved
 publishedAt: "2012-07-31T10:59:56.000Z"
 targetUrl: "http://feedproxy.google.com/~r/alistapart/main/~3/xhHQ1YKOz30/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A List Apart: The Full Feed"
 author: "Kristofer Layon"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_138dcb12fe0:320861:9e04b0a9"

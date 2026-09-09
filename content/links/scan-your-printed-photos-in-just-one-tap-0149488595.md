@@ -6,6 +6,8 @@ savedAt: "2017-04-20T00:55:38.736Z"
 dateSource: saved
 publishedAt: "2017-04-19T21:00:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/blogspot/MKuf/~3/2W1a_rU8KPk/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Official Google Blog"
 author: "Xuefeng SongAndroid Software Engineer, Google Photos"
 feedlyId: "SzCknK5yCfKi0NrRCLzY3clkPWypMPSgdsVAzzPiIEk=_15b8828d7f9:2c469bc:9eb87abf"

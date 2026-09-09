@@ -5,7 +5,9 @@ date: 2015-12-02
 savedAt: "2015-12-02T03:35:49.351Z"
 dateSource: saved
 publishedAt: "2015-11-12T08:01:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/blogspot/aDYs/~3/XC5fBvnAKoM/the-glorious-revolution-continues.html"
+targetUrl: "https://adcontrarian.blogspot.com/2015/11/the-glorious-revolution-continues.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "noreply@blogger.com (BOB HOFFMAN)"
 feedlyId: "STA9kR4YS0c9udlR3MNnn8M/wZHDcQZ/74dybeysgks=_150fab68cb4:2677a6:3459d853"

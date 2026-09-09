@@ -6,6 +6,8 @@ savedAt: "2020-01-09T20:37:17.414Z"
 dateSource: saved
 publishedAt: "2020-01-09T04:54:21.000Z"
 targetUrl: "https://daringfireball.net/2020/01/concept_electronics_show"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_16f88ac63f9:90e0d8:fd9c96c2"

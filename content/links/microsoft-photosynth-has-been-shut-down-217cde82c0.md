@@ -6,6 +6,8 @@ savedAt: "2017-02-07T07:55:41.861Z"
 dateSource: saved
 publishedAt: "2017-02-06T19:54:30.000Z"
 targetUrl: "https://blogs.msdn.microsoft.com/photosynth/2017/02/06/microsoft-photosynth-has-been-shut-down/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Photosynth Blog"
 author: "Photosynth Team"
 feedlyId: "CrUevlE3ocjtbV10iI8zCRf95w6JTHgpW+yiUKnufhE=_15a150b26cd:f65f3:7a691b09"

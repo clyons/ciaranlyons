@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.625Z"
 dateSource: saved
 publishedAt: "2012-07-26T17:51:18.000Z"
-targetUrl: "http://binarybonsai.com/layoutengine"
+targetUrl: "https://web.archive.org/web/20120728031306/http://binarybonsai.com:80/layoutengine"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Binary Bonsai"
 author: "Michael Heilemann"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_138c46a01f0:320884:9e04b0a9"

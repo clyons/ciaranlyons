@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.109Z"
 dateSource: saved
 publishedAt: "2011-11-01T21:39:22.000Z"
-targetUrl: "http://feedproxy.google.com/~r/ElectronPlumber/~3/QrwVxTmNPk8/"
+targetUrl: "http://electronplumber.com/affiliate-site-analysis-thisiswhyimbroke-com/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ElectronPlumber"
 author: "El Plumber (admin)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13361127f10:320ad4:9e04b0a9"

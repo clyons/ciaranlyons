@@ -6,6 +6,8 @@ savedAt: "2016-10-25T15:48:33.041Z"
 dateSource: saved
 publishedAt: "2016-10-24T20:36:58.000Z"
 targetUrl: "https://www.jamf.com/blog/debate-over-ibm-confirms-that-macs-are-535-less-expensive-than-pcs/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_157f86f0ff8:191c2a0:30cfcb50"

@@ -6,6 +6,8 @@ savedAt: "2013-12-02T23:36:53.782Z"
 dateSource: saved
 publishedAt: "2013-12-02T23:09:46.000Z"
 targetUrl: "http://www.marco.org/2013/12/02/auto-renewable-subscriptions"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_142b59c86db:acd480a:7fe12541"
 tags: ["Saved For Later"]

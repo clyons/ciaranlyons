@@ -5,7 +5,9 @@ date: 2018-04-18
 savedAt: "2018-04-18T02:32:04.236Z"
 dateSource: saved
 publishedAt: "2018-04-16T05:00:09.000Z"
-targetUrl: "http://feedproxy.google.com/~r/wondermark/~3/r8yK4-BiFYo/"
+targetUrl: "https://wondermark.com/incorporating/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Wondermark"
 author: "David Malki"
 feedlyId: "nBpSCfLmaUzYVGKaIeiLAtujg/CMLlVfwh4qkrBz9EE=_162d32980cc:227b45:bdf8aaf1"

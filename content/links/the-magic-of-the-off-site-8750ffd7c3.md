@@ -6,6 +6,8 @@ savedAt: "2014-03-14T11:17:12.357Z"
 dateSource: saved
 publishedAt: "2014-03-07T18:01:15.000Z"
 targetUrl: "http://www.trueventures.com/2014/03/07/the-magic-of-the-off-site/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "True Ventures"
 author: "Jon"
 feedlyId: "4trp3HuM0OkEvfB1EXe4rug0QUCXTr7GYFjaNGlvUBk=_1449dbd6a26:13bbb7b:2477e7ff"

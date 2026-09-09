@@ -6,6 +6,8 @@ savedAt: "2014-12-30T01:39:16.838Z"
 dateSource: saved
 publishedAt: "2014-12-29T21:30:11.000Z"
 targetUrl: "http://25iq.com/2014/12/28/a-dozen-things-ive-learned-from-steve-jobs-about-business/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_14a97f7af2f:d020ab3:8340a896"

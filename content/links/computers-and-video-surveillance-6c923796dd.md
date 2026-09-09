@@ -6,6 +6,8 @@ savedAt: "2019-06-18T07:54:18.363Z"
 dateSource: saved
 publishedAt: "2019-06-14T17:04:59.000Z"
 targetUrl: "https://www.schneier.com/blog/archives/2019/06/computers_and_video.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "Bruce Schneier"
 feedlyId: "FcF+jG/fcWtyez+xCh3KiSbsF1qkB3k9yaFAvT1QJWM=_16b56f68931:5c65fdb:247b6d24"

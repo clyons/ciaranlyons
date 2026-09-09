@@ -6,6 +6,8 @@ savedAt: "2023-04-12T21:50:44.041Z"
 dateSource: saved
 publishedAt: "2023-04-11T22:36:38.000Z"
 targetUrl: "https://a.wholelottanothing.org/2023/04/11/the-one-good-homekit-capable-wall-switch-you-should-get/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_18772a6e29e:9ba4a68:eca0ac4"

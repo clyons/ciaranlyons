@@ -6,6 +6,8 @@ savedAt: "2025-05-30T19:00:27.698Z"
 dateSource: saved
 publishedAt: "2025-05-30T04:18:01.000Z"
 targetUrl: "https://pxlnv.com/linklog/sky-mac/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_1971f6ed5fa:b4a4df9:b42a9a82"

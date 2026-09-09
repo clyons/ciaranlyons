@@ -6,6 +6,8 @@ savedAt: "2019-09-24T19:56:51.296Z"
 dateSource: saved
 publishedAt: "2019-09-24T15:24:12.000Z"
 targetUrl: "https://roughlydraftedbeta.com/home/2019/9/24/iphone-11-how-apple-makes-tech-of-the-future-affordable"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Roughly Drafted"
 author: "DED"
 feedlyId: "20szjL7CmDu6pC23SyexkKur253YpmrjO9V9rO7M6g4=_16d63ed44ba:15b2c75:69b9f616"

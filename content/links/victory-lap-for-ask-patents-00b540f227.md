@@ -6,6 +6,8 @@ savedAt: "2013-07-23T01:12:11.237Z"
 dateSource: saved
 publishedAt: "2013-07-22T21:27:07.000Z"
 targetUrl: "http://www.joelonsoftware.com/items/2013/07/22.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_140085729bd:37260aa:9ecc31df"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.467Z"
 dateSource: saved
 publishedAt: "2012-04-16T17:36:39.000Z"
-targetUrl: "http://techland.time.com/2012/04/16/apple-ii-forever-a-35th-anniversary-tribute-to-apples-first-iconic-product/"
+targetUrl: "https://web.archive.org/web/20120417042536/http://techland.time.com/2012/04/16/apple-ii-forever-a-35th-anniversary-tribute-to-apples-first-iconic-product/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_136bc3a4c58:320922:9e04b0a9"

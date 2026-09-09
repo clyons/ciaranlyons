@@ -6,6 +6,8 @@ savedAt: "2013-12-18T20:36:52.198Z"
 dateSource: saved
 publishedAt: "2013-12-17T13:24:00.000Z"
 targetUrl: "http://www.asymco.com/2013/12/17/moonshot/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_14300c83a71:58b5f9b:242b6c1b"
 tags: ["Saved For Later"]

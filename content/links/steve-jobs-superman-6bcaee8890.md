@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.027Z"
 dateSource: saved
 publishedAt: "2011-10-10T05:32:50.000Z"
 targetUrl: "http://uncrunched.com/2011/10/09/steve-jobs-superman/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Uncrunched"
 author: "Michael Arrington"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132ec51b3d0:320b27:9e04b0a9"

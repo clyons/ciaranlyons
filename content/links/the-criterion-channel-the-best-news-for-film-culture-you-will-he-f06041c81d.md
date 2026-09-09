@@ -6,6 +6,8 @@ savedAt: "2019-04-09T22:45:51.098Z"
 dateSource: saved
 publishedAt: "2019-04-08T18:23:17.000Z"
 targetUrl: "http://www.davidbordwell.net/blog/2019/04/08/the-criterion-channel-the-best-news-for-film-culture-you-will-hear-today-and-probably-all-year/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Observations on film art"
 author: "bordwellblog"
 feedlyId: "SL4A72aYMe2Z7nziMK/383C/1GCyqKWm7ugU8g9uSm0=_169fe35bae5:5e23492:e0d1a7b0"

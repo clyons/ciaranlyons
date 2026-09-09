@@ -5,7 +5,9 @@ date: 2015-08-21
 savedAt: "2015-08-21T13:03:40.897Z"
 dateSource: saved
 publishedAt: "2015-08-05T12:00:41.000Z"
-targetUrl: "http://feedproxy.google.com/~r/bufferapp/~3/bKs1pxMGvDE/social-media-strategies-email-course"
+targetUrl: "https://buffer.com/resources/social-media-strategies-email-course/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Social"
 author: "Kevan Lee"
 feedlyId: "nw6t1kD4z8/zGdaRug06lzT6Y3MpeXIF8sOX4qBTTvs=_14efdef89cc:7354:960f4d7"

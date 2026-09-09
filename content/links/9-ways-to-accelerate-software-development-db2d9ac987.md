@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.514Z"
 dateSource: saved
 publishedAt: "2012-04-10T15:21:00.000Z"
 targetUrl: "http://blog.assembla.com/assemblablog/tabid/12618/bid/80483/9-Ways-to-Accelerate-Software-Development.aspx"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Assembla Blog"
 author: "Andy Singleton"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1369cd7f360:3208f3:9e04b0a9"

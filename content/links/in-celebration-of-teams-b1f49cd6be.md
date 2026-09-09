@@ -6,6 +6,8 @@ savedAt: "2014-04-07T11:15:28.220Z"
 dateSource: saved
 publishedAt: "2014-03-24T08:40:41.000Z"
 targetUrl: "http://feedproxy.google.com/~r/afromusing/Xafi/~3/ZXTmeA8q8Zs/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Afromusing"
 author: "Juliana Rotich"
 feedlyId: "tBTpGRLf+hP63Se7aopdO0iyO0hq751HweK8os+DLv4=_144f34ee90b:17f6d6:ca45b842"

@@ -6,6 +6,8 @@ savedAt: "2014-02-26T06:17:07.414Z"
 dateSource: saved
 publishedAt: "2014-02-26T04:59:59.000Z"
 targetUrl: "http://daringfireball.net/2014/02/working_backwards"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_1446c9ac8f7:8c80194:d82d74a8"

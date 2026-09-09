@@ -6,6 +6,8 @@ savedAt: "2022-11-09T12:57:37.949Z"
 dateSource: saved
 publishedAt: "2022-11-08T17:21:07.000Z"
 targetUrl: "https://a.wholelottanothing.org/2022/11/08/clever-thoughtful-software-design/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_184586d960a:39f3084:53488cc6"

@@ -5,7 +5,9 @@ date: 2013-08-02
 savedAt: "2013-08-02T00:02:14.734Z"
 dateSource: saved
 publishedAt: "2013-08-01T09:00:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/typepad/sethsmainblog/~3/XDRVX0wD4rQ/sethsblog~Stoogecraft.html"
+targetUrl: "https://seths.blog/2013/08/Stoogecraft/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Seth Godin's Blog on marketing, tribes and respect"
 author: "Seth Godin"
 feedlyId: "6GV/GbWOJ6VnCKxInEF8KnvUbqZzRLHHRNcmgK9rnUk=_14039296030:1f2ab3:1823d237"

@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.887Z"
 dateSource: saved
 publishedAt: "2013-05-13T00:00:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/FunctioningForm/~3/xYTIKmjr9mw/entry.asp"
+targetUrl: "https://www.lukew.com/ff/entry.asp?1721"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "LukeW | Digital Product Design + Strategy"
 author: "info@lukew.com"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e9b2fc800:320775:9e04b0a9"

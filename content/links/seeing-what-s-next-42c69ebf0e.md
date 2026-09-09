@@ -6,6 +6,8 @@ savedAt: "2013-11-19T13:35:22.892Z"
 dateSource: saved
 publishedAt: "2013-11-18T15:02:43.000Z"
 targetUrl: "http://www.asymco.com/2013/11/18/seeing-whats-next-2/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_1426bce19fa:2671411:a6030015"
 tags: ["Saved For Later"]

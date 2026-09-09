@@ -5,7 +5,9 @@ date: 2013-08-12
 savedAt: "2013-08-12T11:30:58.931Z"
 dateSource: saved
 publishedAt: "2013-08-09T09:05:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/typepad/sethsmainblog/~3/Kc7eNrc0M9M/sethsblog~Choosing-to-be-formidable.html"
+targetUrl: "https://seths.blog/2013/08/Choosing-to-be-formidable/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Seth Godin's Blog on marketing, tribes and respect"
 author: "Seth Godin"
 feedlyId: "6GV/GbWOJ6VnCKxInEF8KnvUbqZzRLHHRNcmgK9rnUk=_140625bac3a:5ee1c:a5702782"

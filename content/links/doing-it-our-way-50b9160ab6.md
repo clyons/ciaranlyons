@@ -6,6 +6,8 @@ savedAt: "2013-12-01T15:04:35.302Z"
 dateSource: saved
 publishedAt: "2013-11-21T00:00:00.000Z"
 targetUrl: "http://cognition.happycog.com/article/doing-it-our-way"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Cognition by Happy Cog"
 author: "Greg Hoy"
 feedlyId: "xCzq08rQ2tM2DZYULbAHAp005yitTvFWYAN+i8M4AIA=_1427ba30443:13f52f3:abe3348c"

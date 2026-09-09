@@ -6,6 +6,8 @@ savedAt: "2014-02-12T09:33:04.411Z"
 dateSource: saved
 publishedAt: "2014-02-11T19:58:19.000Z"
 targetUrl: "http://feeds.infosthetics.com/~r/infosthetics/~3/LCF2SpC7eYc/circular_binning_map_of_us_weather_conditions.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "information aesthetics"
 feedlyId: "cpXTqOERZCbU/dYdJpeja/o3rkB3L/8JrhklZ4HJHh0=_14422885887:2b26b1:db6054d5"
 tags: ["Saved For Later"]

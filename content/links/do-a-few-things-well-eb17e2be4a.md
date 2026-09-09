@@ -6,6 +6,8 @@ savedAt: "2013-08-07T11:04:04.666Z"
 dateSource: saved
 publishedAt: "2013-08-07T07:01:00.001Z"
 targetUrl: "http://adcontrarian.blogspot.com/2013/08/do-few-things-well.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "BOB HOFFMAN"
 feedlyId: "STA9kR4YS0c9udlR3MNnn8M/wZHDcQZ/74dybeysgks=_14057daa627:4d9a5f2:e4b08b2f"

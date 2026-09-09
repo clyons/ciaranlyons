@@ -6,6 +6,8 @@ savedAt: "2014-02-19T00:52:15.553Z"
 dateSource: saved
 publishedAt: "2014-02-18T19:14:46.000Z"
 targetUrl: "http://stratechery.com/2014/messaging-mobiles-killer-app/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: stratēchery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_1444685f255:8425e43:2da7bc3c"

@@ -6,6 +6,8 @@ savedAt: "2018-11-07T00:27:53.036Z"
 dateSource: saved
 publishedAt: "2018-11-01T06:00:07.000Z"
 targetUrl: "https://backlinko.com/skyscraper-technique-2-0"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Backlinko"
 author: "Brian Dean"
 feedlyId: "b0VvB395IgzcLlwFKTSv4xySBzXlJZh4SfWlSiphgmw=_166cfc91745:c35689:d42b93be"

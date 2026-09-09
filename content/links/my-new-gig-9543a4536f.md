@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.856Z"
 dateSource: saved
 publishedAt: "2013-05-06T07:01:00.000Z"
 targetUrl: "http://adcontrarian.blogspot.com/2013/05/my-new-gig.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "BOB HOFFMAN"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e78a4b3e0:320794:9e04b0a9"

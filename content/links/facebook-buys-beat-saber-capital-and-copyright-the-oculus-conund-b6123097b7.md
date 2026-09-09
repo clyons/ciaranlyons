@@ -6,6 +6,8 @@ savedAt: "2019-12-02T18:20:15.758Z"
 dateSource: saved
 publishedAt: "2019-12-02T13:11:45.000Z"
 targetUrl: "https://stratechery.com/2019/facebook-buys-beat-saber-capital-and-copyright-the-oculus-conundrum/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson Member Feed"
 author: "Ben Thompson"
 feedlyId: "4eyC3y92T7Xv79ce35lXOwjv/FLEl6+JQ8q1aTTfFsw=_16ec6dcf372:22622b8:69b9f616"

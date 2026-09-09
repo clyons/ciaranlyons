@@ -6,6 +6,8 @@ savedAt: "2015-09-01T08:11:36.918Z"
 dateSource: saved
 publishedAt: "2015-08-31T21:54:00.000Z"
 targetUrl: "http://journal.neilgaiman.com/2015/08/have-i-actually-been-eaten-by-bear.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Neil Gaiman's Journal"
 author: "noreply@blogger.com (Neil Gaiman)"
 feedlyId: "a9kN2m4df/h4YHtVAmKL+Y8OZcKVFJCDFRt8suQ9EcQ=_14f8615f0c9:fe44b56:1cbd0d70"

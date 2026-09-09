@@ -5,7 +5,9 @@ date: 2016-10-20
 savedAt: "2016-10-20T06:00:23.216Z"
 dateSource: saved
 publishedAt: "2016-10-19T18:38:02.000Z"
-targetUrl: "https://www.subtraction.com/2016/10/19/lessons-from-branding-the-clinton-campaign/"
+targetUrl: "https://web.archive.org/web/20161222221031/https://www.subtraction.com/2016/10/19/lessons-from-branding-the-clinton-campaign/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Subtraction.com + Feed"
 author: "Khoi"
 feedlyId: "W6x/zjhbqhEccmIKZsU/x3Fadiq+SIpAJ7IXNcnq+9k=_157de3db143:90f6fd:fa3d823c"

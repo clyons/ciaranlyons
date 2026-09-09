@@ -6,6 +6,8 @@ savedAt: "2018-04-20T16:35:47.962Z"
 dateSource: saved
 publishedAt: "2018-04-19T18:57:20.000Z"
 targetUrl: "http://www.comicsrss.com/preview/nancy"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_162df48d728:45fb8a7:9f3b30f2"

@@ -6,6 +6,8 @@ savedAt: "2016-12-18T03:42:19.418Z"
 dateSource: saved
 publishedAt: "2016-12-12T15:04:08.000Z"
 targetUrl: "http://morning.computer/2016/12/good-morning-britain/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MORNING, COMPUTER"
 author: "Warren Ellis"
 feedlyId: "4zGTQE9/hT3I1yk9ZKrYrUdFhPOlT6hNyyLDpBjWz7w=_158f3945bb3:3978913:36ad7c89"

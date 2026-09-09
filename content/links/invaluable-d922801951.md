@@ -6,6 +6,8 @@ savedAt: "2014-03-18T13:30:49.791Z"
 dateSource: saved
 publishedAt: "2014-03-18T11:26:06.000Z"
 targetUrl: "http://www.asymco.com/2014/03/18/invaluable/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_144d4f6804e:96a122:d8de667f"
 tags: ["Saved For Later"]

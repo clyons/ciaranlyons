@@ -6,6 +6,8 @@ savedAt: "2019-07-12T00:59:46.741Z"
 dateSource: saved
 publishedAt: "2019-07-10T03:37:13.000Z"
 targetUrl: "https://bradfrost.com/blog/link/tracking-polaris-shopify-ux/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Brad Frost"
 author: "Brad Frost"
 feedlyId: "8dsAZcQTX6oFR9Jl55jopaRCFM0xVOu1cexFpOCjHfk=_16bd9f6c75b:56ed610:73d34570"

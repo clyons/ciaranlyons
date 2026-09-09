@@ -5,7 +5,9 @@ date: 2014-02-05
 savedAt: "2014-02-05T05:59:55.830Z"
 dateSource: saved
 publishedAt: "2014-02-05T01:51:53.000Z"
-targetUrl: "http://www.bluecloudsolutions.com/blog/money-apps-turn-1k-200k-portfolio/"
+targetUrl: "https://web.archive.org/web/20140206000802/http://www.bluecloudsolutions.com/blog/money-apps-turn-1k-200k-portfolio/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "stevenf.com"
 feedlyId: "i8brZ/flS0owCpYmPwDAjcFjFa5zvEVnXzpiituCq6Q=_143ffcdd6ec:8bb7103:5e7efe62"
 tags: ["Saved For Later"]

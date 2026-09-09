@@ -6,6 +6,8 @@ savedAt: "2015-04-29T05:01:59.048Z"
 dateSource: saved
 publishedAt: "2015-04-28T15:14:24.000Z"
 targetUrl: "http://blog.mailchimp.com/how-laura-olins-emails-got-her-freelance-work-and-a-book-deal/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MailChimp Email Marketing Blog"
 author: "Rachael"
 feedlyId: "4F1ALvtWHwzGAPEDIpkj66Og5ekrPZRtiJ2D605V9yM=_14d00a988b9:a1ec30d:7af40b3e"

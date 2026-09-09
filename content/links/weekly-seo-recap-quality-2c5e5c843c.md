@@ -5,7 +5,9 @@ date: 2015-12-07
 savedAt: "2015-12-07T13:29:01.331Z"
 dateSource: saved
 publishedAt: "2015-11-20T14:08:53.000Z"
-targetUrl: "https://yoast.com/weekly-seo-recap-47/"
+targetUrl: "https://web.archive.org/web/20161021181144/https://yoast.com/weekly-seo-recap-47/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast • The Art &amp; Science of Website Optimization"
 author: "Joost de Valk"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_1512553d31e:be09f6:1ba91209"

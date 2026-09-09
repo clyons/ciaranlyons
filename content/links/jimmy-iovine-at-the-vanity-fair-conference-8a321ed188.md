@@ -6,6 +6,8 @@ savedAt: "2015-10-11T04:48:46.622Z"
 dateSource: saved
 publishedAt: "2015-10-09T02:04:39.000Z"
 targetUrl: "http://lefsetz.com/wordpress/index.php/archives/2015/10/08/jimmy-iovine-at-the-vanity-fair-conference/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Lefsetz Letter"
 author: "bob"
 feedlyId: "kGCfy85Po0PejZ1NKN+vr5vmFKVqFoB8+p0pg0HW0QI=_1504a5b6886:558ad95:4f18d3b0"

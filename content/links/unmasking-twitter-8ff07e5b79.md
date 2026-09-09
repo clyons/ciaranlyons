@@ -6,6 +6,8 @@ savedAt: "2020-04-06T22:22:03.243Z"
 dateSource: saved
 publishedAt: "2020-03-31T13:36:44.000Z"
 targetUrl: "https://stratechery.com/2020/unmasking-twitter/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_17130d18b72:2097717:f050c342"

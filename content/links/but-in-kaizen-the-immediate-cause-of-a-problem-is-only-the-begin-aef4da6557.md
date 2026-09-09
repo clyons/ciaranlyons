@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.759Z"
 dateSource: saved
 publishedAt: "2013-01-21T10:54:10.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/gXxbelMqwE0/41095635498"
+targetUrl: "https://blog.timoni.org/post/41095635498/but-in-kaizen-the-immediate-cause-of-a-problem-is"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13c5cbe7050:3207fe:9e04b0a9"
 tags: ["Saved For Later"]

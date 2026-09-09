@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.306Z"
 dateSource: saved
 publishedAt: "2012-01-31T18:04:02.000Z"
 targetUrl: "http://www.betabeat.com/2012/01/31/flickr-customer-support-layoff/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13534f00e50:3209c3:9e04b0a9"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2014-05-18
 savedAt: "2014-05-18T13:19:20.236Z"
 dateSource: saved
 publishedAt: "2014-05-14T22:10:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/FUE21oEAChM/3749-i-really-like-jeeps-text-based-7-bars"
+targetUrl: "https://signalvnoise.com/posts/3749-i-really-like-jeeps-text-based-7-bars"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal vs. Noise"
 author: "Jason Fried"
 feedlyId: "7Za/zqY5+X7fYgcQFIcOrkUBr06oZlqE1S903nI1Du8=_145fcd7e80c:54853:80819d52"

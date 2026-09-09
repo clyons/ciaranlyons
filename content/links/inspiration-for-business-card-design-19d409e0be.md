@@ -5,7 +5,9 @@ date: 2014-02-27
 savedAt: "2014-02-27T15:36:28.139Z"
 dateSource: saved
 publishedAt: "2014-02-25T00:13:07.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/nwBKvbVbtj0/inspiration-for-business-card-design"
+targetUrl: "https://www.subtraction.com/2014/02/25/inspiration-for-business-card-design/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Subtraction.com"
 feedlyId: "W6x/zjhbqhEccmIKZsU/x3Fadiq+SIpAJ7IXNcnq+9k=_14466877011:292b918:37f94b6"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2019-10-04T12:54:52.363Z"
 dateSource: saved
 publishedAt: "2019-10-04T12:19:47.000Z"
 targetUrl: "https://pxlnv.com/blog/one-year-after-big-hack/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_16d96ba4ed8:54c348e:ad5391a1"

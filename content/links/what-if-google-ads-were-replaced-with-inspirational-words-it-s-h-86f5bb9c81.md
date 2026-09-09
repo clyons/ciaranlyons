@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.752Z"
 dateSource: saved
 publishedAt: "2013-01-08T02:50:22.000Z"
-targetUrl: "http://amyrobinson.me/2013/01/08/what-if-google-ads-were-replaced-with-inspirational-words-its-happening-to-me/"
+targetUrl: "https://web.archive.org/web/20130112001846/http://amyrobinson.me:80/2013/01/08/what-if-google-ads-were-replaced-with-inspirational-words-its-happening-to-me/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Amy Robinson"
 author: "Amy Robinson"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13c1810d5b0:320805:9e04b0a9"

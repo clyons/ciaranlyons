@@ -5,7 +5,9 @@ date: 2013-07-15
 savedAt: "2013-07-15T07:40:49.903Z"
 dateSource: saved
 publishedAt: "2013-07-15T03:56:09.000Z"
-targetUrl: "http://feedproxy.google.com/~r/white_african/~3/u4uwIJ12Q-E/"
+targetUrl: "http://whiteafrican.com/2013/07/15/designing-a-kenya-shilling-symbol/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "White African"
 author: "HASH"
 feedlyId: "ab1jICibR+7r6kBsURYHgGKHF2VfSG8ZMaUtd4UJw64=_13fe08cb4ba:5aa645:c159ab3d"

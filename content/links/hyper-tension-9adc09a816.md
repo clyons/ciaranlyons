@@ -6,6 +6,8 @@ savedAt: "2025-09-16T01:04:29.245Z"
 dateSource: saved
 publishedAt: "2025-09-10T12:18:03.000Z"
 targetUrl: "https://asymco.com/2025/09/10/hyper-tension/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_199339438b0:56d82f:28049d98"

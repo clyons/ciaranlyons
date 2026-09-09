@@ -6,6 +6,8 @@ savedAt: "2017-12-29T03:45:57.729Z"
 dateSource: saved
 publishedAt: "2017-12-20T11:59:41.000Z"
 targetUrl: "https://yoast.com/meta-description-length/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast • SEO for everyone"
 author: "Joost de Valk"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_16073e7a6bb:3e5edd:3c0bb656"

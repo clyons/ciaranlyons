@@ -6,6 +6,8 @@ savedAt: "2014-04-07T01:02:06.455Z"
 dateSource: saved
 publishedAt: "2014-04-03T16:29:36.000Z"
 targetUrl: "http://www.kalzumeus.com/2014/04/03/fantasy-tarsnap/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Kalzumeus Software"
 author: "Patrick"
 feedlyId: "v33Dovp0SDnkiUJmQahWNbfSa7fMvFu7sCa+1rRNobs=_14528e5917d:2daa0d6:1642a341"

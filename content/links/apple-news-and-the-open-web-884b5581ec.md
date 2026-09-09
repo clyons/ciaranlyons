@@ -6,6 +6,8 @@ savedAt: "2015-06-15T06:49:28.418Z"
 dateSource: saved
 publishedAt: "2015-06-15T04:44:42.000Z"
 targetUrl: "http://bitsplitting.org/2015/06/15/apple-news-and-the-open-web/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bitsplitting.org"
 author: "Daniel Jalkut"
 feedlyId: "iArFEJN54i980lkIXIWQkqsVjbh5DWI3egkJLHhu9v0=_14df589a77b:8053e87:843e64d9"

@@ -5,7 +5,9 @@ date: 2018-02-11
 savedAt: "2018-02-11T13:32:04.396Z"
 dateSource: saved
 publishedAt: "2018-02-11T00:31:43.000Z"
-targetUrl: "https://www.frankchimero.com/writing/everything-easy-is-hard-again/"
+targetUrl: "https://web.archive.org/web/20180211190105/https://frankchimero.com/writing/everything-easy-is-hard-again/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_16182478693:554a124:7157a206"

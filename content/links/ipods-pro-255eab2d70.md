@@ -6,6 +6,8 @@ savedAt: "2019-12-12T20:13:29.169Z"
 dateSource: saved
 publishedAt: "2019-12-12T17:21:12.000Z"
 targetUrl: "http://www.asymco.com/2019/12/12/ipods-pro/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "asymco-admin"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_16efba22484:13bf67e:97b0c8f7"

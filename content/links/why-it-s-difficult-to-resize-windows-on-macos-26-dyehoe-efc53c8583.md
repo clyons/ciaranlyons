@@ -6,6 +6,8 @@ savedAt: "2026-02-04T03:03:56.295Z"
 dateSource: saved
 publishedAt: "2026-01-12T16:27:34.000Z"
 targetUrl: "https://daringfireball.net/2026/01/resizing_windows_macos_26"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_19bb30db608:148118d6:2b98816f"

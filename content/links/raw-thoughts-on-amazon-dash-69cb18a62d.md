@@ -6,6 +6,8 @@ savedAt: "2015-04-08T05:24:41.654Z"
 dateSource: saved
 publishedAt: "2015-04-01T19:06:00.000Z"
 targetUrl: "http://interconnected.org/home/2015/04/01/amazon_dash"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_14c763177f4:2b1fbf:1e08765d"

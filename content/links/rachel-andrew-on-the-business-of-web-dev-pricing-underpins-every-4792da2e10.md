@@ -5,7 +5,9 @@ date: 2013-10-13
 savedAt: "2013-10-13T10:57:18.769Z"
 dateSource: saved
 publishedAt: "2013-09-19T13:00:48.000Z"
-targetUrl: "http://feedproxy.google.com/~r/alistapart/main/~3/Mv_Y5YjCH20/pricing-underpins-everything-you-do"
+targetUrl: "https://alistapart.com/column/pricing-underpins-everything-you-do/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A List Apart: The Full Feed"
 feedlyId: "FNsmsXpIJZ73nL/61kkUaZNBc6L7aqs6H9tYn28GLQg=_14136559cc8:728a2:55498574"
 tags: ["Saved For Later"]

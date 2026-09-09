@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.247Z"
 dateSource: saved
 publishedAt: "2011-12-30T14:58:14.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/EwLa7ThzR2g/design-staff-how-to-interview-a-designer"
+targetUrl: "https://web.archive.org/web/20120108193239/http://www.subtraction.com/2011/12/30/design-staff-how-to-interview-a-designer"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Subtraction.com"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1348f7a7370:3209fe:9e04b0a9"
 tags: ["Saved For Later"]

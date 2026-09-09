@@ -6,6 +6,8 @@ savedAt: "2013-11-11T12:12:00.751Z"
 dateSource: saved
 publishedAt: "2013-11-10T19:00:28.000Z"
 targetUrl: "http://stratechery.com/2013/casting-stones/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: stratēchery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_142437960cb:ba8b84:1cef9449"

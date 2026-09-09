@@ -6,6 +6,8 @@ savedAt: "2015-11-15T06:40:24.666Z"
 dateSource: saved
 publishedAt: "2020-07-29T12:15:00.000Z"
 targetUrl: "https://yoast.com/local-seo-store-locator/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "Arjan Snaterse"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_150f6f4651f:2a0339a:1ba91209"
 tags: ["Saved For Later"]

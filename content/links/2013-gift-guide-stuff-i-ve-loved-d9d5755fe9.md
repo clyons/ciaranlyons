@@ -6,6 +6,8 @@ savedAt: "2013-12-14T16:45:46.684Z"
 dateSource: saved
 publishedAt: "2013-12-13T03:37:27.000Z"
 targetUrl: "http://a.wholelottanothing.org/2013/12/2013-gift-guide-stuff-ive-loved.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta NothingA Whole Lotta Nothing"
 author: "Matt Haughey"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_142ea0b8425:312617:9d0cd311"

@@ -6,6 +6,8 @@ savedAt: "2014-09-03T05:08:42.522Z"
 dateSource: saved
 publishedAt: "2014-09-02T15:41:54.000Z"
 targetUrl: "http://stratechery.com/2014/iphone-6-louis-vuitton-chanel/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_148371f2745:12b363bc:d9f119ac"

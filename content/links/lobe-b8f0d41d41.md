@@ -6,6 +6,8 @@ savedAt: "2018-05-03T15:18:28.682Z"
 dateSource: saved
 publishedAt: "2018-05-02T23:25:26.000Z"
 targetUrl: "https://daringfireball.net/2018/05/lobe"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_1632331e97d:7ef843:3dd877af"

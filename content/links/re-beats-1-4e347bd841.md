@@ -6,6 +6,8 @@ savedAt: "2015-06-27T04:19:27.799Z"
 dateSource: saved
 publishedAt: "2015-06-27T03:10:08.000Z"
 targetUrl: "http://lefsetz.com/wordpress/index.php/archives/2015/06/26/re-beats-1/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Lefsetz Letter"
 author: "bob"
 feedlyId: "kGCfy85Po0PejZ1NKN+vr5vmFKVqFoB8+p0pg0HW0QI=_14e3315faac:8a7e16:46f3bb90"

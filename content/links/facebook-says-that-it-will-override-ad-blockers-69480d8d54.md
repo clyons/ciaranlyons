@@ -6,6 +6,8 @@ savedAt: "2016-08-10T13:30:25.880Z"
 dateSource: saved
 publishedAt: "2016-08-09T22:10:53.000Z"
 targetUrl: "https://newsroom.fb.com/news/2016/08/a-new-way-to-control-the-ads-you-see-on-facebook-and-an-update-on-ad-blocking/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_15671654282:17750e5:f46df4c8"

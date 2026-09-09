@@ -6,6 +6,8 @@ savedAt: "2024-10-01T03:21:12.178Z"
 dateSource: saved
 publishedAt: "2024-09-27T14:00:04.000Z"
 targetUrl: "https://presswatchers.org/2024/09/what-if-the-media-has-the-election-all-wrong/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Press Watch"
 author: "Dan Froomkin"
 feedlyId: "6oL+MpDmZTRwYgPOHKXcY0HyoNEBfW7GDMSVEYn0H3g=_19233c88494:752d1e:d7121dc8"

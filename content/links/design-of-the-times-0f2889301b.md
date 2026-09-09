@@ -6,6 +6,8 @@ savedAt: "2013-09-08T12:35:06.276Z"
 dateSource: saved
 publishedAt: "2013-09-04T13:53:10.000Z"
 targetUrl: "http://www.designer-notes.com/?p=632"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "DESIGNER NOTES"
 author: "Soren Johnson"
 feedlyId: "8payW1ZgmCoaTf1mrHow6sZLu5gWZ0mozUWHsiUpzAI=_140e97fe1da:2ee3710:abe81ab4"

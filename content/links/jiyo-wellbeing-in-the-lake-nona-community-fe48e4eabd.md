@@ -6,6 +6,8 @@ savedAt: "2018-09-13T20:03:12.429Z"
 dateSource: saved
 publishedAt: "2018-08-20T20:35:13.000Z"
 targetUrl: "https://www.nonahoodnews.com/jiyo-wellbeing-lake-nona-community/"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Nonahood News"
 author: "Michael Perez"
 feedlyId: "4kJntBcpQJ1YDupQ+bhPiOFQdzo6jhUgZ/lvLdvSbkU=_1655995f09a:8981487:4c71e4fe"

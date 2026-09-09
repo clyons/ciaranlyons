@@ -5,7 +5,9 @@ date: 2016-07-31
 savedAt: "2016-07-31T04:02:03.248Z"
 dateSource: saved
 publishedAt: "2016-07-30T18:13:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/blogspot/aDYs/~3/QA-Gk_7xhEg/kev-sticks-little-weenie-in-big-mouth.html"
+targetUrl: "https://adcontrarian.blogspot.com/2016/07/kev-sticks-little-weenie-in-big-mouth.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "noreply@blogger.com (BOB HOFFMAN)"
 feedlyId: "STA9kR4YS0c9udlR3MNnn8M/wZHDcQZ/74dybeysgks=_1563d02be19:52d3c2:641ff4cc"

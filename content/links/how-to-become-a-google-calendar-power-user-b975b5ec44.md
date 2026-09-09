@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.182Z"
 dateSource: saved
 publishedAt: "2011-12-05T13:59:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/lessdoing/~3/n1nnTKzTdfk/how-to-become-a-google-calendar-power-user"
+targetUrl: "https://web.archive.org/web/20120726042647/http://www.lessdoing.com:80/2011/12/05/how-to-become-a-google-calendar-power-user/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Art of Less Doing"
 author: "ari@lessdoing.com (Ari Meisel)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1340e853ca0:320a59:9e04b0a9"

@@ -5,7 +5,9 @@ date: 2014-12-30
 savedAt: "2014-12-30T12:11:16.173Z"
 dateSource: saved
 publishedAt: "2014-12-29T17:04:27.000Z"
-targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/XxjweI9JfJQ/quake-oscilloscope.html"
+targetUrl: "https://dullneon.com/randomnotes/2014/12/quake-oscilloscope.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "dullneon.com - random notes, links and pixels"
 author: "Jaffry Jalal"
 feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_14a9701d940:5ad90c6:ff438566"

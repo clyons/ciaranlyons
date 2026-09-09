@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.963Z"
 dateSource: saved
 publishedAt: "2011-09-27T07:00:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/FunctioningForm/~3/A4j4yQt7nK4/entry.asp"
+targetUrl: "https://www.lukew.com/ff/entry.asp?1414"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "LukeW | Digital Product Design + Strategy"
 author: "Luke Wroblewski"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132a9aed580:320b68:9e04b0a9"

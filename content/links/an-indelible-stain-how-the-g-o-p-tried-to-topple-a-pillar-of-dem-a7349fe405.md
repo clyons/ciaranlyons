@@ -6,6 +6,8 @@ savedAt: "2020-12-13T01:56:27.971Z"
 dateSource: saved
 publishedAt: "2020-12-12T18:43:00.000Z"
 targetUrl: "https://www.nytimes.com/2020/12/12/us/politics/trump-lawsuits-electoral-college.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_1765846f757:43d79b:7c281fd8"

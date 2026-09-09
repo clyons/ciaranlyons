@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.799Z"
 dateSource: saved
 publishedAt: "2013-03-21T23:29:37.000Z"
 targetUrl: "http://www.marco.org/2013/03/21/thursday-sandwich"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13d8f4946e8:3207d0:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2015-05-02T09:43:55.057Z"
 dateSource: saved
 publishedAt: "2015-05-01T19:38:04.000Z"
 targetUrl: "http://www.kalzumeus.com/2015/05/01/talking-about-money/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Kalzumeus Software"
 author: "Patrick"
 feedlyId: "v33Dovp0SDnkiUJmQahWNbfSa7fMvFu7sCa+1rRNobs=_14d1164c1cc:30554d2:69c6e04e"

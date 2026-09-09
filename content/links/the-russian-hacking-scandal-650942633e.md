@@ -6,6 +6,8 @@ savedAt: "2017-01-02T07:39:53.343Z"
 dateSource: saved
 publishedAt: "2016-12-11T03:21:00.000Z"
 targetUrl: "http://lefsetz.com/wordpress/2016/12/10/russian-hacking-scandal/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Lefsetz Letter"
 author: "bob"
 feedlyId: "kGCfy85Po0PejZ1NKN+vr5vmFKVqFoB8+p0pg0HW0QI=_158ebec6a86:2477afc:78e603b7"

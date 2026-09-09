@@ -6,6 +6,8 @@ savedAt: "2014-03-17T23:49:16.087Z"
 dateSource: saved
 publishedAt: "2014-03-17T17:19:09.000Z"
 targetUrl: "http://stratechery.com/2014/fivethirtyeight-end-average/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: stratēchery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_144d113130f:3395c64:d8de667f"

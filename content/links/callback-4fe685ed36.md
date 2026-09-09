@@ -6,6 +6,8 @@ savedAt: "2013-08-12T00:53:59.094Z"
 dateSource: saved
 publishedAt: "2013-08-10T23:53:24.000Z"
 targetUrl: "http://pjmedia.com/richardfernandez/2013/08/10/callback/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Belmont Club"
 author: "Richard Fernandez"
 feedlyId: "UMFoq0k+vbI7ziDkExJxKEnFLvZgUuEmcZ207VX7IVs=_1406acc07bd:306f0e5:19888444"

@@ -6,6 +6,8 @@ savedAt: "2018-08-09T12:30:10.147Z"
 dateSource: saved
 publishedAt: "2018-08-08T16:01:42.000Z"
 targetUrl: "https://stratechery.com/2018/free-daily-update-an-interview-with-patreon-ceo-jack-conte-and-memberful-ceo-drew-strojny/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_1651a4ae4a3:377d60e:4c71e4fe"

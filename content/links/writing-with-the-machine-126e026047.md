@@ -6,6 +6,8 @@ savedAt: "2016-05-07T15:48:56.843Z"
 dateSource: saved
 publishedAt: "2016-05-05T16:40:39.000Z"
 targetUrl: "https://www.robinsloan.com/notes/writing-with-the-machine/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Robin's blog"
 feedlyId: "LuJiPqG4DmCGR3xqS/6ft/43OJq3YQzsxVnxWaNwRu8=_15481df9ad8:7c6c61:756cf8ea"
 tags: ["Saved For Later"]

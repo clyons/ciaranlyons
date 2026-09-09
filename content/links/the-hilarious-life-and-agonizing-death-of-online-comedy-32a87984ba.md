@@ -6,6 +6,8 @@ savedAt: "2018-04-17T18:46:45.547Z"
 dateSource: saved
 publishedAt: "2018-04-17T04:33:54.000Z"
 targetUrl: "https://www.theringer.com/2018/3/26/17157020/online-comedy-the-onion-funny-or-die-digital-media"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_162d1e386d9:2f940c4:9f3b30f2"

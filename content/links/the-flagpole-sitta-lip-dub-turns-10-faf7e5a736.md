@@ -6,6 +6,8 @@ savedAt: "2017-04-21T08:36:31.930Z"
 dateSource: saved
 publishedAt: "2017-04-20T18:21:42.000Z"
 targetUrl: "http://waxy.org/2017/04/the-flagpole-sitta-lip-dub-turns-10/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_15b8c9ff419:5c5b8f:afcb5334"

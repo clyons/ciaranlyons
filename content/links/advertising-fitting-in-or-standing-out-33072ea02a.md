@@ -6,6 +6,8 @@ savedAt: "2024-12-08T20:27:00.398Z"
 dateSource: saved
 publishedAt: "2024-12-02T09:15:21.000Z"
 targetUrl: "http://davetrott.co.uk/2024/12/advertising-fitting-in-or-standing-out/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dave Trott's Blog"
 author: "Dave Trott"
 feedlyId: "AiGE+5K3cCPM2aeJjk9Ma0GxixEx+sqAPIxVYlEqNXU=_19386a8d472:1b1e6f0:8d4229b8"

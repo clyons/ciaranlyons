@@ -6,6 +6,8 @@ savedAt: "2024-04-26T03:08:01.278Z"
 dateSource: saved
 publishedAt: "2024-04-23T16:24:21.000Z"
 targetUrl: "https://www.wheresyoured.at/the-men-who-killed-google/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Ed Zitron's Where's Your Ed At"
 author: "Edward Zitron"
 feedlyId: "ajrJnxSj05GSRyBZwLbKeNxw4f8nLYeJ050dhlknJ24=_18f0c2860db:2ab5de4:e56ebecb"

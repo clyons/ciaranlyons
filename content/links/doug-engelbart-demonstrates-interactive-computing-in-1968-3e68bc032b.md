@@ -5,7 +5,9 @@ date: 2013-07-11
 savedAt: "2013-07-11T11:11:55.473Z"
 dateSource: saved
 publishedAt: "2013-07-08T08:15:13.000Z"
-targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/6mHHBdRoE6o/doug-engelbart-1968.html"
+targetUrl: "https://dullneon.com/randomnotes/2013/07/doug-engelbart-1968.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "dullneon.com - random notes, links and pixels"
 author: "Jaffry Jalal"
 feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_13fbd59919a:3625f1:3cc09ce3"

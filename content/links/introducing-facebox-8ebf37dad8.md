@@ -5,7 +5,9 @@ date: 2013-10-06
 savedAt: "2013-10-06T13:49:31.342Z"
 dateSource: saved
 publishedAt: "2013-09-17T19:42:36.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/H1L3KgbjN5Y/introducing-facebox"
+targetUrl: "https://web.archive.org/web/20130920005305/http://www.subtraction.com:80/2013/09/17/introducing-facebox"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Subtraction.com"
 feedlyId: "W6x/zjhbqhEccmIKZsU/x3Fadiq+SIpAJ7IXNcnq+9k=_1412d737e62:7c70:60065435"
 tags: ["Saved For Later"]

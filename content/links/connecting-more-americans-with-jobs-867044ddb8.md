@@ -6,6 +6,8 @@ savedAt: "2017-07-06T01:41:15.925Z"
 dateSource: saved
 publishedAt: "2017-06-20T07:05:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/InsideSearch/~3/V_Mq3cLdZB4/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Search"
 author: "Nick ZakrasekProduct Manager"
 feedlyId: "19c5QM573yxAAMoqmQ2Z7H5FSkcQnoAJHepwGMVcHyI=_15cc491de75:19a23b6:80bfd069"

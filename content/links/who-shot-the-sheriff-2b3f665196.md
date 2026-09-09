@@ -6,6 +6,8 @@ savedAt: "2019-01-07T20:16:53.257Z"
 dateSource: saved
 publishedAt: "2018-12-16T15:37:23.000Z"
 targetUrl: "https://lefsetz.com/wordpress/2018/12/16/who-shot-the-sheriff/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Lefsetz Letter"
 author: "bob"
 feedlyId: "kGCfy85Po0PejZ1NKN+vr5vmFKVqFoB8+p0pg0HW0QI=_167b99b8e43:46e65ed:3a104d3b"

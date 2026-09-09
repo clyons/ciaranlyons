@@ -6,6 +6,8 @@ savedAt: "2015-01-05T09:21:29.589Z"
 dateSource: saved
 publishedAt: "2014-12-31T08:28:55.000Z"
 targetUrl: "http://feedproxy.google.com/~r/FreshNew/~3/aCW0cEqA-Gg/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Fresh &amp; New(er)"
 author: "Seb Chan"
 feedlyId: "uiJdUL45eOTu0oOAmSu+E4bq8PVkWEWfQsW9pIQWbLo=_14a9f8436bf:6c14915:ff438566"

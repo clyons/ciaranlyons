@@ -5,7 +5,9 @@ date: 2014-02-21
 savedAt: "2014-02-21T06:08:29.529Z"
 dateSource: saved
 publishedAt: "2018-02-13T04:21:57.000Z"
-targetUrl: "http://feedproxy.google.com/~r/wondermark/~3/x6MvbUUB-rc/"
+targetUrl: "https://wondermark.com/better-olympic-narratives/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Wondermark"
 author: "David Malki"
 feedlyId: "nBpSCfLmaUzYVGKaIeiLAtujg/CMLlVfwh4qkrBz9EE=_1442ffaf242:5d1ed8:150a65e1"

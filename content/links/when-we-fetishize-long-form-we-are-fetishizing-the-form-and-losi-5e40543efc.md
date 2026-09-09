@@ -5,7 +5,9 @@ date: 2014-02-10
 savedAt: "2014-02-10T11:16:21.053Z"
 dateSource: saved
 publishedAt: "2014-01-27T19:46:38.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/J0dyTkTISIs/74748352621"
+targetUrl: "https://blog.timoni.org/post/74748352621/when-we-fetishize-long-form-we-are-fetishizing"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_143d6170fcd:51fc:db6054d5"
 tags: ["Saved For Later"]

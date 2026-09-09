@@ -6,6 +6,8 @@ savedAt: "2015-01-09T02:15:42.474Z"
 dateSource: saved
 publishedAt: "2015-01-07T11:54:10.000Z"
 targetUrl: "http://stratechery.com/2015/xiaomis-ambition/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: » stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_14ac44312fb:18b0dd3c:d38cab4a"

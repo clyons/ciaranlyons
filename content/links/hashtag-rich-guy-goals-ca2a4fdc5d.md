@@ -6,6 +6,8 @@ savedAt: "2018-12-14T19:51:50.233Z"
 dateSource: saved
 publishedAt: "2018-12-09T05:28:23.000Z"
 targetUrl: "https://a.wholelottanothing.org/2018/12/08/hashtag-rich-guy-goals/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_16791865e32:5d3419:a18b239c"

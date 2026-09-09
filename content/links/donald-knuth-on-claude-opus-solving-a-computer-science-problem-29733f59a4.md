@@ -6,6 +6,8 @@ savedAt: "2026-03-09T17:50:39.064Z"
 dateSource: saved
 publishedAt: "2026-03-08T17:49:08.000Z"
 targetUrl: "https://www-cs-faculty.stanford.edu/~knuth/papers/claude-cycles.pdf"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_19cce98893b:159b1f0:133ca8de"

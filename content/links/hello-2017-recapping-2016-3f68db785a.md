@@ -5,7 +5,9 @@ date: 2017-01-27
 savedAt: "2017-01-27T08:44:56.794Z"
 dateSource: saved
 publishedAt: "2017-01-26T09:37:01.000Z"
-targetUrl: "http://feedproxy.google.com/~r/FreshNew/~3/rAobQ7uAqkQ/"
+targetUrl: "https://www.freshandnew.org/2017/01/2017-recapping-2016/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Fresh &amp; New(er)"
 author: "Seb Chan"
 feedlyId: "uiJdUL45eOTu0oOAmSu+E4bq8PVkWEWfQsW9pIQWbLo=_159da25bdd3:2bda62:d2fcd6e4"

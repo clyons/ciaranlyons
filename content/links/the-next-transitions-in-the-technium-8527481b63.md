@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.313Z"
 dateSource: saved
 publishedAt: "2012-02-03T06:30:49.000Z"
-targetUrl: "http://feedproxy.google.com/~r/kklifestream/~3/JJqseWxhHYg/the_next_transi.php"
+targetUrl: "https://kk.org/thetechnium/the-next-transi/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "KK Lifestream"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13541e879a8:3209bc:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2021-01-04T23:17:28.984Z"
 dateSource: saved
 publishedAt: "2021-01-04T16:42:37.000Z"
 targetUrl: "https://pluralistic.net/2021/01/04/how-to-truth/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pluralistic: Daily links from Cory Doctorow"
 author: "Cory Doctorow"
 feedlyId: "g6Ngl0v6+a6lryp1OFsHIzI9rOhBxlGuxU8rVAC6Pr0=_176ce97692a:4d75ef6:83b8064d"

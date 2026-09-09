@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.376Z"
 dateSource: saved
 publishedAt: "2012-03-04T05:31:58.000Z"
 targetUrl: "http://binarybonsai.com/blog/mcquarrie"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Binary Bonsai"
 author: "Michael Heilemann"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_135dc3160b0:32097d:9e04b0a9"

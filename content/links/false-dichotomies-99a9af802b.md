@@ -5,7 +5,9 @@ date: 2015-03-12
 savedAt: "2015-03-12T11:27:38.104Z"
 dateSource: saved
 publishedAt: "2015-03-07T16:25:13.000Z"
-targetUrl: "http://feedproxy.google.com/~r/IgnoreTheCode/~3/oVUvq-xPxSk/"
+targetUrl: "https://ignorethecode.net/blog/2015/03/07/false_dichotomies/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ignorethecode.net"
 feedlyId: "OOZ/ohF9uC+/WUqK0XVPRWjAsMGfbKeDd5paomAdnmo=_14bf4e88b4f:57d210:3b893bef"
 tags: ["Saved For Later"]

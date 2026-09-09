@@ -6,6 +6,8 @@ savedAt: "2016-06-17T00:17:53.428Z"
 dateSource: saved
 publishedAt: "2016-06-16T16:35:32.000Z"
 targetUrl: "http://www.asymco.com/2016/06/16/state-of-the-ecosystem/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_1555a151b32:d257c8:5e49e1a"

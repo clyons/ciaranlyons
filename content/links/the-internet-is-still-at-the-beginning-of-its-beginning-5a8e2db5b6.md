@@ -6,6 +6,8 @@ savedAt: "2014-07-29T00:16:50.206Z"
 dateSource: saved
 publishedAt: "2014-07-27T16:28:41.000Z"
 targetUrl: "https://medium.com/message/you-are-not-late-b3d76f963142"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_14778abfc3b:3779b01:f38bb8cd"

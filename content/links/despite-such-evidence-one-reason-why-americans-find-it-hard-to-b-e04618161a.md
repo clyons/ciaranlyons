@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.541Z"
 dateSource: saved
 publishedAt: "2012-05-15T16:55:55.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/8GGcmg2WDL0/23109078972"
+targetUrl: "https://blog.timoni.org/post/23109078972/despite-such-evidence-one-reason-why-americans"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_137516d6d78:3208d8:9e04b0a9"
 tags: ["Saved For Later"]

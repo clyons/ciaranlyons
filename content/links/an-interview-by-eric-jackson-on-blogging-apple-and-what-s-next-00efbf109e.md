@@ -6,6 +6,8 @@ savedAt: "2013-09-17T12:02:31.288Z"
 dateSource: saved
 publishedAt: "2013-09-17T07:22:59.000Z"
 targetUrl: "http://www.asymco.com/2013/09/17/an-interview-by-eric-jackson-on-blogging-apple-and-whats-next/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_1412b905467:bd20cf:a64f969e"

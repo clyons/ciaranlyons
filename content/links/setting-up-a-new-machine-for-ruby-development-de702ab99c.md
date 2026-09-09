@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.895Z"
 dateSource: saved
 publishedAt: "2011-09-06T17:55:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/2BAuW4RUf0M/2998-setting-up-a-new-machine-for-ruby-development"
+targetUrl: "https://signalvnoise.com/posts/2998-setting-up-a-new-machine-for-ruby-development"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal vs. Noise"
 author: "David"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1323fe0f520:320bac:9e04b0a9"

@@ -6,6 +6,8 @@ savedAt: "2014-01-30T07:33:25.636Z"
 dateSource: saved
 publishedAt: "2014-01-30T04:17:43.000Z"
 targetUrl: "http://stratechery.com/2014/googles-tasty-lemonade/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: stratēchery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_143e17562c7:18027ff:5e7efe62"

@@ -6,6 +6,8 @@ savedAt: "2022-07-23T17:05:59.574Z"
 dateSource: saved
 publishedAt: "2022-07-22T00:00:00.000Z"
 targetUrl: "https://blog.mollywhite.net/stop-saying-they-shouldnt-have-invested-more-than-they-can-afford-to-lose/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Molly White"
 author: "Molly White"
 feedlyId: "yL/81icmmFA3pO7G2aKfcI7JNLsrmuQU5nPwrqEiR8k=_18228d0dfcd:cb3db:e42e07ce"

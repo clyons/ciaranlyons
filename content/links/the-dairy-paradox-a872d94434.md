@@ -5,7 +5,9 @@ date: 2015-05-25
 savedAt: "2015-05-25T00:37:25.859Z"
 dateSource: saved
 publishedAt: "2015-05-19T02:30:01.000Z"
-targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/hR3niFQRja4/the-dairy-paradox.html"
+targetUrl: "https://dullneon.com/randomnotes/2015/05/the-dairy-paradox.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "dullneon.com - random notes, links and pixels"
 author: "Jaffry Jalal"
 feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_14d6a05fb3e:139a8:2b0425a2"

@@ -5,7 +5,9 @@ date: 2014-03-17
 savedAt: "2014-03-17T08:33:13.700Z"
 dateSource: saved
 publishedAt: "2014-03-14T07:57:16.000Z"
-targetUrl: "http://makerfairesingapore.com/2014/03/14/biotinkering-whats-that/"
+targetUrl: "https://web.archive.org/web/20140324015151/http://makerfairesingapore.com:80/2014/03/14/biotinkering-whats-that/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Singapore Mini Maker Faire"
 author: "megadolen"
 feedlyId: "ONZ/npTBIMC3RAUI1XDeYv8EgO+4vzPTRGa0D1Icjl0=_144bf987493:1b50ccb:5775aa28"

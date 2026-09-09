@@ -5,7 +5,9 @@ date: 2014-01-24
 savedAt: "2014-01-24T03:03:52.552Z"
 dateSource: saved
 publishedAt: "2014-01-13T18:13:33.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/r48zbgXywrc/73220847589"
+targetUrl: "https://blog.timoni.org/post/73220847589/pure-flat-design-doesnt-just-get-rid-of-dead"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_1438d051281:4c73e40:9ed1a26f"
 tags: ["Saved For Later"]

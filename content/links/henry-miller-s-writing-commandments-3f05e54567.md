@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.325Z"
 dateSource: saved
 publishedAt: "2012-02-14T20:51:51.000Z"
 targetUrl: "http://kottke.org/12/02/henry-millers-writing-commandments"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "kottke.org"
 author: "Jason Kottke"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1357da2ba58:3209b0:9e04b0a9"

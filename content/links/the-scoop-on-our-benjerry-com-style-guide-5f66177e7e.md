@@ -5,7 +5,9 @@ date: 2014-03-16
 savedAt: "2014-03-16T07:47:47.674Z"
 dateSource: saved
 publishedAt: "2014-03-05T00:00:00.000Z"
-targetUrl: "http://cognition.happycog.com/article/the-scoop-on-our-benjerry.com-style-guide"
+targetUrl: "https://web.archive.org/web/20140310212522/http://cognition.happycog.com:80/article/the-scoop-on-our-benjerry.com-style-guide"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Cognition by Happy Cog"
 author: "Alison Harshbarger"
 feedlyId: "xCzq08rQ2tM2DZYULbAHAp005yitTvFWYAN+i8M4AIA=_1449933b7e7:ba5f3:3a1395db"

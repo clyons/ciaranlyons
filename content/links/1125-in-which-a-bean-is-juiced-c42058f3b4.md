@@ -5,7 +5,9 @@ date: 2015-05-15
 savedAt: "2015-05-15T13:38:11.283Z"
 dateSource: saved
 publishedAt: "2015-05-15T05:00:03.000Z"
-targetUrl: "http://feedproxy.google.com/~r/wondermark/~3/WOPoKfM6LzM/"
+targetUrl: "https://wondermark.com/c/1125/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Wondermark"
 author: "David Malki"
 feedlyId: "nBpSCfLmaUzYVGKaIeiLAtujg/CMLlVfwh4qkrBz9EE=_14d56af6317:9ae9d:2b0425a2"

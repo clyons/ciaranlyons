@@ -6,6 +6,8 @@ savedAt: "2015-01-29T03:42:47.956Z"
 dateSource: saved
 publishedAt: "2015-01-28T12:59:34.000Z"
 targetUrl: "http://www.asymco.com/2015/01/28/haunted-empire/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_14b30ae7a64:899b347:6b730af7"

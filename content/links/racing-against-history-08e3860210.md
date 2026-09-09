@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.649Z"
 dateSource: saved
 publishedAt: "2012-08-02T00:16:05.000Z"
 targetUrl: "http://feeds.infosthetics.com/~r/infosthetics/~3/CUwewBUZ-N0/racing_against_history.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "information aesthetics"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_138e4b07188:32086c:9e04b0a9"
 tags: ["Saved For Later"]

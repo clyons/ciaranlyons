@@ -6,6 +6,8 @@ savedAt: "2016-08-23T16:43:15.269Z"
 dateSource: saved
 publishedAt: "2016-08-19T18:59:00.000Z"
 targetUrl: "https://prostheticknowledge.tumblr.com/post/149185600081/moco-short-film-from-stiller-studios-celebrates"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "prosthetic knowledge"
 feedlyId: "QRvOTfJ2w090nuwVvdoLEBV4IDWA5J3Y14E3K06DYSo=_156a437ca12:4813e45:e6b2a59c"
 tags: ["Saved For Later"]

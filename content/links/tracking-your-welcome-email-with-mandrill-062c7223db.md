@@ -6,6 +6,8 @@ savedAt: "2013-07-23T00:43:23.778Z"
 dateSource: saved
 publishedAt: "2013-07-22T19:16:51.000Z"
 targetUrl: "http://blog.mailchimp.com/tracking-your-welcome-email-with-mandrill/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MailChimp Email Marketing Blog"
 author: "Nate"
 feedlyId: "4F1ALvtWHwzGAPEDIpkj66Og5ekrPZRtiJ2D605V9yM=_14007def0c1:35dff44:a84e36e5"

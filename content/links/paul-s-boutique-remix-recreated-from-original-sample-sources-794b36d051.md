@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.675Z"
 dateSource: saved
 publishedAt: "2012-09-01T02:42:01.000Z"
 targetUrl: "http://soundcloud.com/ninja-tune/solid-steel-radio-show-31-8-1"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1397fb4d4a8:320852:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.213Z"
 dateSource: saved
 publishedAt: "2011-12-24T17:14:25.000Z"
 targetUrl: "http://www.marco.org/2011/12/24/open-vs-closed-headphones"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1347110f968:320a2a:9e04b0a9"
 tags: ["Saved For Later"]

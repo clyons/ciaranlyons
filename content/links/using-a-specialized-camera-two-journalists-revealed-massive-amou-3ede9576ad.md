@@ -6,6 +6,8 @@ savedAt: "2019-12-14T10:47:10.519Z"
 dateSource: saved
 publishedAt: "2019-12-14T02:14:00.000Z"
 targetUrl: "http://feeds.themorningnews.org/~r/tmn/rss/~3/MJduS0iFB24/texas-methane-super-emitters.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Morning News"
 feedlyId: "hjQrZBpBsFo4Gp0JjiGbmZGbMm880GmFVt7Or1iA7mA=_16f02331d21:5fd483:a02fd466"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2018-08-28
 savedAt: "2018-08-28T03:09:00.821Z"
 dateSource: saved
 publishedAt: "2018-08-24T02:06:06.000Z"
-targetUrl: "http://feedproxy.google.com/~r/wondermark/~3/mgMt2VZswAI/"
+targetUrl: "https://wondermark.com/stix-and-pins/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Wondermark"
 author: "David Malki"
 feedlyId: "nBpSCfLmaUzYVGKaIeiLAtujg/CMLlVfwh4qkrBz9EE=_16569b4864b:d596fc:215b6325"

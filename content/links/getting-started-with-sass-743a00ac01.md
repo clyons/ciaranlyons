@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.150Z"
 dateSource: saved
 publishedAt: "2011-11-29T07:58:07.000Z"
 targetUrl: "http://www.alistapart.com/articles/getting-started-with-sass/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A List Apart: The Full Feed"
 author: "David Demaree"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_133ee54ae98:320a9d:9e04b0a9"

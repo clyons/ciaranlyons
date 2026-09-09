@@ -6,6 +6,8 @@ savedAt: "2013-06-17T10:22:50.849Z"
 dateSource: saved
 publishedAt: "2013-06-14T05:54:00.000Z"
 targetUrl: "http://adcontrarian.blogspot.com/2013/06/half-of-display-ads-not-seen-by-anyone.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "BOB HOFFMAN"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13f413f60c0:1e07e8f:373255cc"

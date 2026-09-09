@@ -6,6 +6,8 @@ savedAt: "2025-05-25T23:30:32.780Z"
 dateSource: saved
 publishedAt: "2025-05-24T21:19:06.000Z"
 targetUrl: "https://pxlnv.com/blog/american-iphone-fantasy/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_197042e8cec:78d2cfe:b42a9a82"

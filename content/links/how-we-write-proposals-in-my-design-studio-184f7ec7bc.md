@@ -6,6 +6,8 @@ savedAt: "2017-04-13T10:07:02.242Z"
 dateSource: saved
 publishedAt: "2017-04-12T00:05:10.000Z"
 targetUrl: "http://www.zeldman.com/2017/04/11/write-proposals-design-studio/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Zeldman on Web &amp; Interaction Design"
 author: "Jeffrey Zeldman"
 feedlyId: "kHwrMU8yulRKCbTpBAsxBlTQkaCJKX19HbOb0XzPi18=_15b5f7b5684:16c4a5:e55a4d93"

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.394Z"
 dateSource: saved
 publishedAt: "2012-03-18T15:13:00.000Z"
 targetUrl: "http://interconnected.org/home/2012/03/18/the_plague"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_136265e5c60:32096b:9e04b0a9"

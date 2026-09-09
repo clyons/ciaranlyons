@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.444Z"
 dateSource: saved
 publishedAt: "2012-04-11T03:53:00.000Z"
 targetUrl: "http://interconnected.org/home/2012/04/11/instagram_as_an_island_economy"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1369f886d60:320939:9e04b0a9"

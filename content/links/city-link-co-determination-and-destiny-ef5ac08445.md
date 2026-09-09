@@ -6,6 +6,8 @@ savedAt: "2015-01-02T13:43:49.423Z"
 dateSource: saved
 publishedAt: "2014-12-30T14:30:00.000Z"
 targetUrl: "http://interconnected.org/home/2014/12/30/city_link"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_14a9bacc9f4:6442bbd:ff438566"

@@ -6,6 +6,8 @@ savedAt: "2015-02-13T14:07:37.804Z"
 dateSource: saved
 publishedAt: "2015-01-13T19:31:41.000Z"
 targetUrl: "http://waxy.org/2015/01/block_with_abandon/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_14ae4eae3c8:72eaa70:113fbbc6"
 tags: ["Saved For Later"]

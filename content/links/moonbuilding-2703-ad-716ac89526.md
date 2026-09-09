@@ -5,7 +5,9 @@ date: 2015-08-14
 savedAt: "2015-08-14T08:58:29.069Z"
 dateSource: saved
 publishedAt: "2015-08-13T10:40:23.000Z"
-targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/Xg70892aI7Q/moonbuilding-2703-ad.html"
+targetUrl: "https://dullneon.com/randomnotes/2015/08/moonbuilding-2703-ad.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "dullneon.com - random notes, links and pixels"
 author: "Jaffry Jalal"
 feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_14f26ab6bcb:c875cb:d8c83505"

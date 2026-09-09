@@ -6,6 +6,8 @@ savedAt: "2018-12-18T02:48:05.761Z"
 dateSource: saved
 publishedAt: "2018-11-19T01:38:32.000Z"
 targetUrl: "http://bradfrost.com/blog/link/css-and-network-performance-css-wizardry-css-architecture-web-performance-optimisation-and-more-by-harry-roberts/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Brad Frost"
 author: "Brad Frost"
 feedlyId: "8dsAZcQTX6oFR9Jl55jopaRCFM0xVOu1cexFpOCjHfk=_16729b502e0:450d247:9dda0303"

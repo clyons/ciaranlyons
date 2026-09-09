@@ -6,6 +6,8 @@ savedAt: "2015-03-21T15:47:56.231Z"
 dateSource: saved
 publishedAt: "2015-03-20T21:10:59.000Z"
 targetUrl: "http://blog.thinkup.com/post/114158857417"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ThinkUp Blog"
 author: "gina"
 feedlyId: "Vywl5rqqxmIhZ7H/ks9ciHq5VFE/Gii/SdKZXQ4dh+g=_14c39139012:34f33e9:24a98465"

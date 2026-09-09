@@ -6,6 +6,8 @@ savedAt: "2014-08-28T23:40:26.725Z"
 dateSource: saved
 publishedAt: "2014-08-28T10:32:39.000Z"
 targetUrl: "http://www.asymco.com/2014/08/28/apparel-is-next/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_1481c4813e5:b32c9f0:d9f119ac"

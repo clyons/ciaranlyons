@@ -5,7 +5,9 @@ date: 2015-02-27
 savedAt: "2015-02-27T00:50:04.500Z"
 dateSource: saved
 publishedAt: "2015-02-25T19:11:37.000Z"
-targetUrl: "http://www.webperformancetoday.com/2015/02/25/google-new-slow-label-web-performance/"
+targetUrl: "https://web.archive.org/web/20150302193820/http://www.webperformancetoday.com/2015/02/25/google-new-slow-label-web-performance/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Web Performance Today"
 author: "Tammy Everts"
 feedlyId: "jb3ceS0kvru5uJ36GQfn097kwu+EBGoD1lVCw1+BzlQ=_14bc23c5a25:37d22c5:e0550d54"

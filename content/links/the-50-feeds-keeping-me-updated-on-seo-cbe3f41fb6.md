@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:21.952Z"
 dateSource: saved
 publishedAt: "2011-09-27T16:50:50.000Z"
 targetUrl: "http://feedproxy.google.com/~r/seo-and-usability/~3/q3F_YrrLjEA/50-feeds-keeping-me-updated-on-seo"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Cardinal Path » Blog"
 author: "Ani Lopez"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132abcbc210:320b73:9e04b0a9"

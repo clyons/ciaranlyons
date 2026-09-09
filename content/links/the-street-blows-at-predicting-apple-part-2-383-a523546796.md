@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.299Z"
 dateSource: saved
 publishedAt: "2012-01-25T17:39:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/parislemon/~3/49tLptL7b44/16470553162"
+targetUrl: "https://parislemon.com/post/16470553162/the-street-blows-at-predicting-apple-part-2383"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ParisLemon"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13515f2fb20:3209ca:9e04b0a9"
 tags: ["Saved For Later"]

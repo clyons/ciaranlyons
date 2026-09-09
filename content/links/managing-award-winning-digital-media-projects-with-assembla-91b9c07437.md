@@ -6,6 +6,8 @@ savedAt: "2013-07-29T02:09:59.585Z"
 dateSource: saved
 publishedAt: "2013-07-17T18:05:00.000Z"
 targetUrl: "http://blog.assembla.com/assemblablog/tabid/12618/bid/100196/Managing-Award-Winning-Digital-Media-Projects-with-Assembla.aspx"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Assembla Blog"
 author: "adam feber"
 feedlyId: "EpCL4l+otoFT7KlLHxXJpaMh3Y7jBxdMIpSWeSSJtQQ=_13fee009263:c52938:d7300ef9"

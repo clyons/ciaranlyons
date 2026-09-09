@@ -6,6 +6,8 @@ savedAt: "2014-03-25T11:01:44.959Z"
 dateSource: saved
 publishedAt: "2014-03-25T01:25:04.000Z"
 targetUrl: "http://worrydream.com/refs/Vannevar%20Bush%20Symposium%20-%20Closing%20Panel.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "stevenf.com"
 feedlyId: "i8brZ/flS0owCpYmPwDAjcFjFa5zvEVnXzpiituCq6Q=_144f52316cc:212a3fb:85969355"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2014-05-14
 savedAt: "2014-05-14T13:55:13.847Z"
 dateSource: saved
 publishedAt: "2014-05-07T04:58:12.000Z"
-targetUrl: "http://feedproxy.google.com/~r/white_african/~3/uE6BJVeIGQA/"
+targetUrl: "https://web.archive.org/web/20140510082959/http://whiteafrican.com:80/2014/05/07/managing-with-trust-and-expectation/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "White African"
 author: "HASH"
 feedlyId: "ab1jICibR+7r6kBsURYHgGKHF2VfSG8ZMaUtd4UJw64=_145d51b470e:74c76a4:c0541d18"

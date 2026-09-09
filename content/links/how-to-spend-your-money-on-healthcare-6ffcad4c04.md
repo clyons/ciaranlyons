@@ -6,6 +6,8 @@ savedAt: "2016-11-27T07:21:44.077Z"
 dateSource: saved
 publishedAt: "2016-11-16T16:42:25.000Z"
 targetUrl: "https://blog.jayparkinsonmd.com/2016/11/16/how-to-spend-your-money-on-healthcare/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dr. Jay Parkinson"
 feedlyId: "MZmMb3sFNxYsEd9MWMZlGLLPRmLQmWeLJKpIHrmu/Tg=_1586e0ce6ce:1e07862:1e99f69f"
 tags: ["Saved For Later"]

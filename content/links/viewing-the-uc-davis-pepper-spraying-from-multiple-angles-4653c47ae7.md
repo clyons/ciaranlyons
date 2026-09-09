@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.128Z"
 dateSource: saved
 publishedAt: "2011-11-21T21:44:51.000Z"
 targetUrl: "http://waxy.org/2011/11/viewing_the_uc_davis_pepper_spraying_from_multiple_angles/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_133c816b438:320ac1:9e04b0a9"
 tags: ["Saved For Later"]

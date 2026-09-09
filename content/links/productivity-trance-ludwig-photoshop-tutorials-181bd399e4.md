@@ -5,7 +5,9 @@ date: 2019-03-17
 savedAt: "2019-03-17T23:08:55.373Z"
 dateSource: saved
 publishedAt: "2019-02-24T09:00:28.000Z"
-targetUrl: "http://feedproxy.google.com/~r/kklifestream/~3/zTp-jhWBS7U/productivity-tranceludwigphotoshop-tutorials"
+targetUrl: "https://kk.org/cooltools/productivity-tranceludwigphotoshop-tutorials/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "KK Lifestream"
 author: "Kevin Kelly"
 feedlyId: "YbpTUPVmlrNlW+Jw8Awdl03e7Pqm9ocNHnTaelcTiBA=_1691ed90be0:7e1ea6:21e7fd56"

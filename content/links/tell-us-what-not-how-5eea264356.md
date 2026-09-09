@@ -6,6 +6,8 @@ savedAt: "2021-07-21T15:09:27.413Z"
 dateSource: saved
 publishedAt: "2021-07-05T08:19:21.000Z"
 targetUrl: "https://davetrott.co.uk/2021/07/tell-me-what-not-how/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dave Trott's Blog"
 author: "Dave Trott"
 feedlyId: "AiGE+5K3cCPM2aeJjk9Ma0GxixEx+sqAPIxVYlEqNXU=_17a75c03398:4c0c5b5:241dd190"

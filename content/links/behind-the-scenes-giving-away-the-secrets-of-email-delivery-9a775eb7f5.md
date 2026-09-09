@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.311Z"
 dateSource: saved
 publishedAt: "2012-01-31T19:05:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/0n8eQTY907w/3096-behind-the-scenes-giving-away-the-secrets-of-email-delivery"
+targetUrl: "https://web.archive.org/web/20140312143422/http://signalvnoise.com:80/posts/3096-behind-the-scenes-giving-away-the-secrets-of-email-delivery"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal vs. Noise"
 author: "Noah"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1353527df60:3209be:9e04b0a9"

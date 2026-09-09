@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.053Z"
 dateSource: saved
 publishedAt: "2011-10-25T08:00:00.000Z"
-targetUrl: "http://joehewitt.com/2011/10/25/airplay-tv"
+targetUrl: "https://web.archive.org/web/20111027170529/http://joehewitt.com:80/2011/10/25/airplay-tv"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Joe Hewitt"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1333a17d400:320b0d:9e04b0a9"
 tags: ["Saved For Later"]

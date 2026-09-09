@@ -5,7 +5,9 @@ date: 2013-09-17
 savedAt: "2013-09-17T04:56:35.673Z"
 dateSource: saved
 publishedAt: "2013-09-16T05:33:22.000Z"
-targetUrl: "http://a.wholelottanothing.org/2013/09/the-mini-maker-faire-kind-of-blew-my-mind.html"
+targetUrl: "https://web.archive.org/web/20130918181814/http://a.wholelottanothing.org:80/2013/09/the-mini-maker-faire-kind-of-blew-my-mind.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta NothingA Whole Lotta Nothing"
 author: "Matt Haughey"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_1412557b4e4:20778a:a2ba22c4"

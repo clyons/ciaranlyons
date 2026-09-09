@@ -6,6 +6,8 @@ savedAt: "2024-07-26T05:30:18.461Z"
 dateSource: saved
 publishedAt: "2024-07-08T10:30:49.000Z"
 targetUrl: "https://popular.info/p/what-trump-doesnt-want-you-to-know"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Popular Information"
 author: "Judd Legum"
 feedlyId: "dFqchjIq4ZHUxT6KSkENWR+LgJ1GS54dIURCfQmpmE4=_19091e8363c:4287cb9:9e1949c6"

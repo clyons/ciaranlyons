@@ -6,6 +6,8 @@ savedAt: "2026-03-30T21:53:23.470Z"
 dateSource: saved
 publishedAt: "2026-03-18T13:00:03.000Z"
 targetUrl: "https://jmason.ie/2026/03/18/130003a.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Justin's Linklog"
 author: "Links"
 feedlyId: "a9zHexj+hMibuNjkllIb+lIAludY0E80OyFQxP9r1kA=_19d010dee8a:30b3b26:7d8a2c4"

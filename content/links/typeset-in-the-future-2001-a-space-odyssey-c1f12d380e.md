@@ -6,6 +6,8 @@ savedAt: "2014-02-01T01:21:06.001Z"
 dateSource: saved
 publishedAt: "2014-01-31T18:05:23.000Z"
 targetUrl: "http://typesetinthefuture.com/2001-a-space-odyssey/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_143e986e5ea:378c9f2:df1a6388"

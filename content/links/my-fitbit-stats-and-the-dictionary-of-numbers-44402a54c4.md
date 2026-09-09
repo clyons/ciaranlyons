@@ -6,6 +6,8 @@ savedAt: "2013-08-05T13:46:35.308Z"
 dateSource: saved
 publishedAt: "2013-08-03T13:21:33.086Z"
 targetUrl: "http://jane.dallaway.com/fitbit-stats-and-dictionary-of-numbers"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "Jane Dallaway"
 feedlyId: "qUgyot0kwbRU9FcU68RvMrey0xu95zSTJKlTZkc9LX8=_1404457179e:183cc74:e4b08b2f"
 tags: ["Saved For Later"]

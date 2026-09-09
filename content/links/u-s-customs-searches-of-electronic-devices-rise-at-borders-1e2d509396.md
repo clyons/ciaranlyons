@@ -6,6 +6,8 @@ savedAt: "2025-09-01T18:51:14.583Z"
 dateSource: saved
 publishedAt: "2025-08-29T05:02:00.000Z"
 targetUrl: "https://pxlnv.com/linklog/us-border-searches-rising/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_198f43b4cd2:388168:8e753777"

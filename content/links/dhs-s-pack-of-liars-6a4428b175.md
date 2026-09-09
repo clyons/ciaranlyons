@@ -6,6 +6,8 @@ savedAt: "2025-12-12T01:26:48.064Z"
 dateSource: saved
 publishedAt: "2025-11-24T16:54:34.000Z"
 targetUrl: "https://presswatchers.org/2025/11/dhss-pack-of-liars/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Press Watch"
 author: "Dan Froomkin"
 feedlyId: "6oL+MpDmZTRwYgPOHKXcY0HyoNEBfW7GDMSVEYn0H3g=_19ab6cb5815:822e72c:3cb6bc74"

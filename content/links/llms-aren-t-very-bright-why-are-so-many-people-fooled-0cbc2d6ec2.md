@@ -6,6 +6,8 @@ savedAt: "2024-04-14T23:49:02.496Z"
 dateSource: saved
 publishedAt: "2024-04-14T13:33:03.000Z"
 targetUrl: "https://garymarcus.substack.com/p/llms-arent-very-bright-why-are-so"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marcus on AI"
 author: "Gary Marcus"
 feedlyId: "kFAqjYLaipcVISewnXpAeH+vVlDc27b5pLiBN1Sg2r4=_18edcd2b2a5:1d1c3d4:e56ebecb"

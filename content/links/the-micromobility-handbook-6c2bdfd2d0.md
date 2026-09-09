@@ -6,6 +6,8 @@ savedAt: "2022-08-05T13:57:37.167Z"
 dateSource: saved
 publishedAt: "2022-07-26T22:33:09.000Z"
 targetUrl: "https://micromobility.io/blog/2022/7/26/the-micromobility-handbook"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog"
 author: "Micromobility Industries"
 feedlyId: "JOfOk5ZVvLpIzc2OlmMyEONvtw5KrUs12j96uOqAi+Y=_182419f1a1a:1a5e0:d2340168"

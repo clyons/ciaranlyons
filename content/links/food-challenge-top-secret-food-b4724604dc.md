@@ -6,6 +6,8 @@ savedAt: "2018-06-13T21:19:37.883Z"
 dateSource: saved
 publishedAt: "2018-06-13T16:14:05.000Z"
 targetUrl: "https://www.nonahoodnews.com/food-challenge-top-secret-food/"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Nonahood News"
 author: "Brielle Rushing"
 feedlyId: "4kJntBcpQJ1YDupQ+bhPiOFQdzo6jhUgZ/lvLdvSbkU=_163fa81e36e:6091ca:3dd877af"

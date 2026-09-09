@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.423Z"
 dateSource: saved
 publishedAt: "2012-04-02T11:52:00.000Z"
 targetUrl: "http://interconnected.org/home/2012/04/02/marx_at_193"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13672e5bb00:32094e:9e04b0a9"

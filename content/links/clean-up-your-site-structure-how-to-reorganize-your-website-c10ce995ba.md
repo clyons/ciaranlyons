@@ -6,6 +6,8 @@ savedAt: "2014-09-01T05:24:27.035Z"
 dateSource: saved
 publishedAt: "2021-01-04T13:00:00.000Z"
 targetUrl: "https://yoast.com/how-to-clean-site-structure/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast"
 author: "Willemien Hallebeek"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_147f8b5120d:78ef9:533951d7"

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.195Z"
 dateSource: saved
 publishedAt: "2012-02-10T00:21:55.000Z"
 targetUrl: "http://www.kickstarter.com/projects/hop/elevation-dock-the-best-dock-for-iphone"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13564a340b8:320a4c:9e04b0a9"
 tags: ["Saved For Later"]

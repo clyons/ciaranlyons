@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.105Z"
 dateSource: saved
 publishedAt: "2011-11-14T16:30:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/InsideSearch/~3/fC-k0ZvJcvo/ten-recent-algorithm-changes.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Inside Search"
 author: "Jake Hubert"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_133a2e9ef40:320ad8:9e04b0a9"

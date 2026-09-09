@@ -5,7 +5,9 @@ date: 2014-06-29
 savedAt: "2014-06-29T11:20:35.803Z"
 dateSource: saved
 publishedAt: "2014-06-23T16:19:28.000Z"
-targetUrl: "http://we-make-money-not-art.com/archives/2014/06/jennifer-lyn-morone-inc.php"
+targetUrl: "https://web.archive.org/web/20140625084522/http://we-make-money-not-art.com/archives/2014/06/jennifer-lyn-morone-inc.php"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "we make money not art"
 author: "Regine"
 feedlyId: "IltLjrTdH09Yznj7ub6o4WvZwDxoYKufx8DVodH1lOc=_146c97b374f:6470ea7:138006ea"

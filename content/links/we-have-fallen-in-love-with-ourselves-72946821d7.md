@@ -5,7 +5,9 @@ date: 2015-06-04
 savedAt: "2015-06-04T09:59:51.682Z"
 dateSource: saved
 publishedAt: "2015-06-04T07:01:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/blogspot/aDYs/~3/fIvti-dxux4/we-have-fallen-in-love-with-ourselves.html"
+targetUrl: "https://adcontrarian.blogspot.com/2015/06/we-have-fallen-in-love-with-ourselves.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "noreply@blogger.com (BOB HOFFMAN)"
 feedlyId: "STA9kR4YS0c9udlR3MNnn8M/wZHDcQZ/74dybeysgks=_14dbd5fb91c:162f4d:d69e6224"

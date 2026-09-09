@@ -5,7 +5,9 @@ date: 2015-11-10
 savedAt: "2015-11-10T04:20:12.081Z"
 dateSource: saved
 publishedAt: "2015-11-09T08:01:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/blogspot/aDYs/~3/aSKPgSD9QJg/maybe-theres-hope.html"
+targetUrl: "https://adcontrarian.blogspot.com/2015/11/maybe-theres-hope.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "noreply@blogger.com (BOB HOFFMAN)"
 feedlyId: "STA9kR4YS0c9udlR3MNnn8M/wZHDcQZ/74dybeysgks=_150eb437546:16994a3:f06caf5"

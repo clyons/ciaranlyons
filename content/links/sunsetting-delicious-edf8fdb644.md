@@ -6,6 +6,8 @@ savedAt: "2014-08-22T06:45:47.340Z"
 dateSource: saved
 publishedAt: "2014-08-22T01:09:27.000Z"
 targetUrl: "https://blog.pinboard.in/2014/08/sunsetting_delicious/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pinboard - bookmarking for introverts"
 author: "maciej@pinboard.in (Maciej Ceglowski)"
 feedlyId: "xmQZKPnsO/3j+KjIM7bazJ9dIjPdN+SP7tSUjZDkXgk=_147fb27cdaa:1c0b07e:d9f119ac"

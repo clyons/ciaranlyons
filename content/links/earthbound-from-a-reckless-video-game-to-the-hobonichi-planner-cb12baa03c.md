@@ -6,6 +6,8 @@ savedAt: "2013-10-11T11:21:26.842Z"
 dateSource: saved
 publishedAt: "2013-09-27T09:44:22.000Z"
 targetUrl: "http://pingmag.jp/2013/09/27/hobonichi-planner-and-earthbound/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "PingMag : Art, Design, Life - from Japan"
 author: "Tom Vincent"
 feedlyId: "FBeUKUk0sbJ9IlTtXd6HAgNVLAbHcHgZXGzPJYgDK9c=_1415ee6856b:954277:ecf6ede9"

@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.622Z"
 dateSource: saved
 publishedAt: "2012-07-19T20:31:24.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/0JQDP0lJ3bA/cassanet"
+targetUrl: "https://web.archive.org/web/20120725073844/http://www.subtraction.com:80/2012/07/19/cassanet"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Subtraction.com"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_138a0f01160:320887:9e04b0a9"
 tags: ["Saved For Later"]

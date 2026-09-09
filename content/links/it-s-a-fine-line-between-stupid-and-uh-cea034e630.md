@@ -6,6 +6,8 @@ savedAt: "2025-03-22T15:05:16.928Z"
 dateSource: saved
 publishedAt: "2025-03-21T19:50:17.000Z"
 targetUrl: "https://www.eod.com/blog/2025/03/its-a-fine-line-between-stupid/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "An Entirely Other Day: Full Feed"
 author: "Greg Knauss"
 feedlyId: "uvDbRD5Gh3Tfgn9/GVGsf9HCtk9TIQ9fmOIXDIpqkSs=_195baa52e94:256493:4bd13c00"

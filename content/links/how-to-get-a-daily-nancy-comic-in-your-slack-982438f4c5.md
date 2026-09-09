@@ -6,6 +6,8 @@ savedAt: "2018-08-10T15:35:57.961Z"
 dateSource: saved
 publishedAt: "2018-08-09T16:14:06.000Z"
 targetUrl: "https://a.wholelottanothing.org/2018/08/09/how-to-get-a-daily-nancy-comic-in-your-slack/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_1651f8acb3e:bb365:7b6a73d9"

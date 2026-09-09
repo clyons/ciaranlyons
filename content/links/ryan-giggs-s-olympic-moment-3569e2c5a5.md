@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.604Z"
 dateSource: saved
 publishedAt: "2012-07-10T12:09:34.000Z"
 targetUrl: "http://feedproxy.google.com/~r/MoreintelligentlifeTotal/~3/pKiQsxmr4SM/ryan-giggss-olympic-moment"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "More Intelligent Life"
 author: "Jasper Rees"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13870cb6430:320899:9e04b0a9"

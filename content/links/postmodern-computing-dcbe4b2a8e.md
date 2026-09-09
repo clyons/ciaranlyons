@@ -6,6 +6,8 @@ savedAt: "2014-04-07T11:06:53.836Z"
 dateSource: saved
 publishedAt: "2014-04-07T08:03:37.000Z"
 targetUrl: "http://www.asymco.com/2014/04/07/postmodern-computing/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "asymco-admin"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_1453b454079:32d0ad3:c0541d18"
 tags: ["Saved For Later"]

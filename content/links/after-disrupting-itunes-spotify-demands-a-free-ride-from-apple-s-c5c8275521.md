@@ -5,7 +5,9 @@ date: 2019-03-15
 savedAt: "2019-03-15T02:26:05.225Z"
 dateSource: saved
 publishedAt: "2019-03-14T14:32:27.000Z"
-targetUrl: "https://roughlydraftedbeta.com/home/2019/3/14/after-disrupting-itunes-spotify-demands-a-free-ride-from-apples-app-store"
+targetUrl: "https://web.archive.org/web/20190722134109/https://roughlydraftedbeta.com/home/2019/3/14/after-disrupting-itunes-spotify-demands-a-free-ride-from-apples-app-store"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Roughly Drafted"
 author: "DED"
 feedlyId: "20szjL7CmDu6pC23SyexkKur253YpmrjO9V9rO7M6g4=_1697cb5e0b8:c0080c:436b139d"

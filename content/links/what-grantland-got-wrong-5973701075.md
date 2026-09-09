@@ -6,6 +6,8 @@ savedAt: "2014-01-25T14:04:24.307Z"
 dateSource: saved
 publishedAt: "2014-01-20T23:46:42.000Z"
 targetUrl: "http://grantland.com/features/what-grantland-got-wrong/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_143b2266a5c:8b9b7:242b6c1b"
 tags: ["Saved For Later"]

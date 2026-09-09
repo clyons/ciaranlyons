@@ -5,7 +5,9 @@ date: 2013-11-01
 savedAt: "2013-11-01T03:18:18.657Z"
 dateSource: saved
 publishedAt: "2013-10-23T00:29:27.000Z"
-targetUrl: "http://feedproxy.google.com/~r/kklifestream/~3/ptoVDrTcz2M/the_pleasures_o.php"
+targetUrl: "https://kk.org/thetechnium/the-pleasures-o/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "KK Lifestream"
 feedlyId: "YbpTUPVmlrNlW+Jw8Awdl03e7Pqm9ocNHnTaelcTiBA=_14201e00008:1f6768:a34056b8"
 tags: ["Saved For Later"]

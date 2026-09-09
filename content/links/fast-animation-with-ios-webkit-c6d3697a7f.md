@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.998Z"
 dateSource: saved
 publishedAt: "2011-10-05T08:00:00.000Z"
-targetUrl: "http://joehewitt.com/2011/10/05/fast-animation-with-ios-webkit"
+targetUrl: "https://web.archive.org/web/20111007132351/http://joehewitt.com/2011/10/05/fast-animation-with-ios-webkit"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Joe Hewitt"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132d318a400:320b44:9e04b0a9"
 tags: ["Saved For Later"]

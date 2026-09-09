@@ -6,6 +6,8 @@ savedAt: "2017-11-07T16:14:33.099Z"
 dateSource: saved
 publishedAt: "2017-11-07T08:17:00.000Z"
 targetUrl: "http://feeds.feedblitz.com/~/487639168/0/sethsblog~Disastorino.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Seth Godin's Blog on marketing, tribes and respect"
 author: "Seth Godin"
 feedlyId: "6GV/GbWOJ6VnCKxInEF8KnvUbqZzRLHHRNcmgK9rnUk=_15f959709b3:d01f61:7157a206"

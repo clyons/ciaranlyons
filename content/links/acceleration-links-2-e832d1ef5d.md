@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.023Z"
 dateSource: saved
 publishedAt: "2011-09-21T17:00:00.000Z"
 targetUrl: "http://blog.assembla.com/assemblablog/tabid/12618/bid/67042/Acceleration-Links-2.aspx"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Assembla Blog"
 author: "adam feber"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1328cedfe80:320b2b:9e04b0a9"

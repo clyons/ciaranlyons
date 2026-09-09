@@ -6,6 +6,8 @@ savedAt: "2018-11-22T13:14:30.793Z"
 dateSource: saved
 publishedAt: "2018-11-15T16:30:24.000Z"
 targetUrl: "https://www.nonahoodnews.com/lake-nona-local-briel-royce-secured-spot-sixth-annual-drive-chip-putt-national-finals-augusta-national-golf-club/"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Nonahood News"
 author: "Michael Perez"
 feedlyId: "4kJntBcpQJ1YDupQ+bhPiOFQdzo6jhUgZ/lvLdvSbkU=_167185c964a:30dff68:88373a59"

@@ -6,6 +6,8 @@ savedAt: "2013-11-14T13:09:21.041Z"
 dateSource: saved
 publishedAt: "2013-11-13T21:02:12.000Z"
 targetUrl: "http://waxy.org/2013/11/remembering_xoxo_2013/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 feedlyId: "58I8gQcY0BgOyYcGBAnzdqNEAzhiXdXrAyLYYUPdeJI=_14253c2dd3d:48a33b:69487ffd"
 tags: ["Saved For Later"]

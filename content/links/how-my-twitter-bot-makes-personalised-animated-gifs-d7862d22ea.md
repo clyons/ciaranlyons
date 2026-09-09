@@ -6,6 +6,8 @@ savedAt: "2016-04-30T05:43:59.560Z"
 dateSource: saved
 publishedAt: "2016-04-27T10:45:00.000Z"
 targetUrl: "http://interconnected.org/home/2016/04/27/making_animated_gifs"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_154571f808e:d5233c:550db82a"

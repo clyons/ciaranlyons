@@ -6,6 +6,8 @@ savedAt: "2018-01-11T17:08:50.111Z"
 dateSource: saved
 publishedAt: "2018-01-11T02:45:06.000Z"
 targetUrl: "https://www.wired.com/story/outlier-tech-clothes/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_160e31f8493:1295537:7157a206"

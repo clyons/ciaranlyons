@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.822Z"
 dateSource: saved
 publishedAt: "2013-03-29T08:20:00.000Z"
 targetUrl: "http://jane.dallaway.com/the-hacked-pacemaker"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 author: "Jane Dallaway"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13db53b5f80:3207b9:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2025-03-17T18:10:58.980Z"
 dateSource: saved
 publishedAt: "2025-02-27T19:33:14.000Z"
 targetUrl: "https://a.wholelottanothing.org/links-for-february-27-2025/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "Matthew Haughey"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_195491fcd64:6505a5:d4d0980a"

@@ -5,7 +5,9 @@ date: 2013-10-30
 savedAt: "2013-10-30T11:07:51.409Z"
 dateSource: saved
 publishedAt: "2013-10-29T05:17:26.000Z"
-targetUrl: "http://feedproxy.google.com/~r/white_african/~3/ITFzVirWZDc/"
+targetUrl: "https://web.archive.org/web/20131109152124/http://whiteafrican.com/2013/10/29/railway-lines-of-internet-connectivity-in-africa/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "White African"
 author: "HASH"
 feedlyId: "ab1jICibR+7r6kBsURYHgGKHF2VfSG8ZMaUtd4UJw64=_14202b37f8b:f10d58:e2f55cb2"

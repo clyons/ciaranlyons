@@ -6,6 +6,8 @@ savedAt: "2025-10-10T15:25:22.438Z"
 dateSource: saved
 publishedAt: "2025-10-08T14:56:55.000Z"
 targetUrl: "https://pressthink.org/2025/10/some-more-personal-news-october-2025/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "PressThink"
 author: "Jay Rosen"
 feedlyId: "/K33ZZuunBcFx21rz9kwJw792Y4/0/lOiNCO7+8f4+E=_199c4ab96cd:2ce2c5:f595628f"

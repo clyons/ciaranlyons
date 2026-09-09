@@ -6,6 +6,8 @@ savedAt: "2013-12-01T15:04:32.447Z"
 dateSource: saved
 publishedAt: "2013-11-15T15:40:44.000Z"
 targetUrl: "http://feedproxy.google.com/~r/creativeapplicationsnet/~3/e6ZYflFDU0I/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "CreativeApplications.Net"
 author: "Filip Visnjic"
 feedlyId: "yGT/FJ/tyrXAqNVHAVINwuMAukksopJ1GEYhYW/NhSY=_1425c76ad27:d3786b:c8dde3fa"

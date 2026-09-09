@@ -6,6 +6,8 @@ savedAt: "2017-10-01T03:48:20.780Z"
 dateSource: saved
 publishedAt: "2017-09-30T16:55:00.000Z"
 targetUrl: "http://interconnected.org/home/2017/09/30/books"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_15ed385af4b:9bf49:9b8472f1"

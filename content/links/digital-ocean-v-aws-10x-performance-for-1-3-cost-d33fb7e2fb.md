@@ -6,6 +6,8 @@ savedAt: "2013-08-12T05:22:08.009Z"
 dateSource: saved
 publishedAt: "2013-08-07T17:08:38.000Z"
 targetUrl: "http://uncrunched.com/2013/08/07/digital-ocean-v-aws-10x-performance-for-13-cost/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Uncrunched"
 author: "Michael Arrington"
 feedlyId: "5l4A31+EKKmtn794o50xP3O+2xVFe1FcBMbET/CMAmk=_14059c0b271:1359:c5ac3f7f"

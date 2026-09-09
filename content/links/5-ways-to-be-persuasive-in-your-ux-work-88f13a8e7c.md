@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.165Z"
 dateSource: saved
 publishedAt: "2011-12-05T08:44:15.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/PL7Y01YWvUQ/13773450278"
+targetUrl: "https://blog.timoni.org/post/13773450278/5-ways-to-be-persuasive-in-your-ux-work"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1340d651318:320a7a:9e04b0a9"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.849Z"
 dateSource: saved
 publishedAt: "2013-05-04T03:18:54.000Z"
-targetUrl: "http://www.npr.org/blogs/thesalt/2013/04/26/179049781/so-jerry-seinfeld-called-us-to-talk-about-coffee"
+targetUrl: "https://web.archive.org/web/20130504122001/http://www.npr.org/blogs/thesalt/2013/04/26/179049781/so-jerry-seinfeld-called-us-to-talk-about-coffee"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e6d8ca530:32079b:9e04b0a9"
 tags: ["Saved For Later"]

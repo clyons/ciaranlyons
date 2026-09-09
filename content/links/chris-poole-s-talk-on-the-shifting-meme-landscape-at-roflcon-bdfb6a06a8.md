@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.563Z"
 dateSource: saved
 publishedAt: "2012-05-11T17:52:14.000Z"
 targetUrl: "http://www.youtube.com/watch?v=O5adlMZFVEA"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1373d078cb0:3208c2:9e04b0a9"
 tags: ["Saved For Later"]

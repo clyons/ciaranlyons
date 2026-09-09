@@ -6,6 +6,8 @@ savedAt: "2013-07-11T06:41:16.534Z"
 dateSource: saved
 publishedAt: "2013-07-10T07:01:00.000Z"
 targetUrl: "http://adcontrarian.blogspot.com/2013/07/let-fools-believe.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "BOB HOFFMAN"
 feedlyId: "STA9kR4YS0c9udlR3MNnn8M/wZHDcQZ/74dybeysgks=_13fc8184f19:77f759:1a8ab682"

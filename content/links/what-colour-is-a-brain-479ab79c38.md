@@ -6,6 +6,8 @@ savedAt: "2019-07-22T19:29:29.739Z"
 dateSource: saved
 publishedAt: "2019-07-22T07:43:42.000Z"
 targetUrl: "http://davetrott.co.uk/2019/07/what-colour-is-a-brain/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dave Trott's Blog"
 author: "trottdave"
 feedlyId: "AiGE+5K3cCPM2aeJjk9Ma0GxixEx+sqAPIxVYlEqNXU=_16c18a62183:36be876:561e4df6"

@@ -6,6 +6,8 @@ savedAt: "2014-05-06T03:41:36.339Z"
 dateSource: saved
 publishedAt: "2014-05-05T22:29:02.000Z"
 targetUrl: "http://stevenf.com/2014/05/05/the-personal-computer-is-dead/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "stevenf.com"
 author: "stevenf"
 feedlyId: "i8brZ/flS0owCpYmPwDAjcFjFa5zvEVnXzpiituCq6Q=_145ce8cf801:558fda9:c0541d18"

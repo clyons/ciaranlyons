@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.099Z"
 dateSource: saved
 publishedAt: "2011-11-11T19:48:00.000Z"
 targetUrl: "http://instagram-engineering.tumblr.com/post/12651721845"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Instagram Engineering"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_133942c2180:320ade:9e04b0a9"
 tags: ["Saved For Later"]

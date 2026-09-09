@@ -6,6 +6,8 @@ savedAt: "2015-10-05T03:49:59.428Z"
 dateSource: saved
 publishedAt: "2015-09-10T19:44:02.000Z"
 targetUrl: "http://www.zeldman.com/2015/09/10/font-face-and-web-performance/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Zeldman on Web &amp; Interaction Design"
 author: "Jeffrey Zeldman"
 feedlyId: "kHwrMU8yulRKCbTpBAsxBlTQkaCJKX19HbOb0XzPi18=_14fb8cce4b5:1fd9d9c:61049dae"

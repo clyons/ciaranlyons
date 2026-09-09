@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:21.942Z"
 dateSource: saved
 publishedAt: "2011-09-20T03:59:05.000Z"
 targetUrl: "http://www.od-eon.com/blogs/calvin/specification-by-example/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Calvin Cheng at Odeon"
 author: "Calvin Cheng"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13284fcaf28:320b7d:9e04b0a9"

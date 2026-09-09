@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.513Z"
 dateSource: saved
 publishedAt: "2012-05-02T17:30:56.000Z"
 targetUrl: "http://www.asymco.com/2012/05/02/5by5-the-critical-path-36-an-interview-with-clayton-christensen/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "asymco"
 author: "Horace Dediu"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1370e9ad080:3208f4:9e04b0a9"

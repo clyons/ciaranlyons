@@ -5,7 +5,9 @@ date: 2015-02-25
 savedAt: "2015-02-25T12:14:07.503Z"
 dateSource: saved
 publishedAt: "2015-02-23T16:14:43.000Z"
-targetUrl: "http://www.ushahidi.com/2015/02/23/story-syria-tracker-child-killing-trends-syria/"
+targetUrl: "https://web.archive.org/web/20150226232342/http://www.ushahidi.com:80/2015/02/23/story-syria-tracker-child-killing-trends-syria/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Ushahidi » Blog"
 author: "Michelle Hamilton-Page"
 feedlyId: "ne/46YKNA7MSBPTQ+6xKV+clksFnvQtmVza4MVeHCpU=_14bba811d78:c91eb4:de01cf22"

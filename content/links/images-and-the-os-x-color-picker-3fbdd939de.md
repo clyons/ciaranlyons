@@ -6,6 +6,8 @@ savedAt: "2014-03-08T13:04:01.880Z"
 dateSource: saved
 publishedAt: "2014-03-06T13:15:21.000Z"
 targetUrl: "http://bjango.com/articles/colorpicker/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bjango Articles"
 author: "Marc Edwards"
 feedlyId: "Cjq1TjudgH/MOHLG9OfALsEoa7I4F4labn/FWez+0tA=_14497de512a:3b752eb:9c6d71ab"

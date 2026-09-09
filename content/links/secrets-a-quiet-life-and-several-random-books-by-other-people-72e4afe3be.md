@@ -6,6 +6,8 @@ savedAt: "2014-01-20T10:11:07.918Z"
 dateSource: saved
 publishedAt: "2014-01-18T16:44:00.000Z"
 targetUrl: "http://journal.neilgaiman.com/2014/01/secrets-quiet-life-and-several-random.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Neil Gaiman's Journal"
 author: "noreply@blogger.com (Neil Gaiman)"
 feedlyId: "a9kN2m4df/h4YHtVAmKL+Y8OZcKVFJCDFRt8suQ9EcQ=_143a6569563:5102b4e:242b6c1b"

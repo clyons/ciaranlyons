@@ -6,6 +6,8 @@ savedAt: "2013-10-26T03:28:50.942Z"
 dateSource: saved
 publishedAt: "2013-10-24T07:29:50.000Z"
 targetUrl: "http://scriptogr.am/ameliagreenhall/post/there-are-three-types-of-fun"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Amelia Greenhall on scriptogr.am"
 feedlyId: "9/FzYvaBKT3Oe5UGFGTHk/MedKsOulkyKhPJcPKkGCw=_141eb24733a:9f013b:1139744c"
 tags: ["Saved For Later"]

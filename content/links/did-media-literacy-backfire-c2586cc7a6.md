@@ -6,6 +6,8 @@ savedAt: "2017-01-09T18:00:57.497Z"
 dateSource: saved
 publishedAt: "2017-01-09T13:13:19.000Z"
 targetUrl: "http://www.zephoria.org/thoughts/archives/2017/01/09/did-media-literacy-backfire.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "danah boyd | apophenia"
 author: "zephoria"
 feedlyId: "smQuvkTAn+VD5ft8Q1fJeA7MfVb5pT/wDf7b37cKDGU=_1598360963c:4fb8e1c:1e99f69f"

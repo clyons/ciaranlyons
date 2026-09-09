@@ -6,6 +6,8 @@ savedAt: "2014-05-30T02:02:56.956Z"
 dateSource: saved
 publishedAt: "2014-05-29T19:05:36.000Z"
 targetUrl: "http://www.gethopscotch.com/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_146495ff4b3:31c75a:4bfbc108"

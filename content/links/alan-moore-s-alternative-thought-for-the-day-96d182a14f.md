@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.250Z"
 dateSource: saved
 publishedAt: "2012-01-01T01:04:50.000Z"
 targetUrl: "http://mrgan.tumblr.com/post/15106582499"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Neven Mrgan's tumbl"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13496cc2b50:3209fb:9e04b0a9"
 tags: ["Saved For Later"]

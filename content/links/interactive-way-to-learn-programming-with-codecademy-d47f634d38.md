@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:21.909Z"
 dateSource: saved
 publishedAt: "2011-08-22T07:01:50.000Z"
 targetUrl: "http://feedproxy.google.com/~r/Webappers/~3/h9HljyxyWTI/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "WebAppers"
 author: "Ray Cheung"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_131f04b9330:320b9e:9e04b0a9"

@@ -5,7 +5,9 @@ date: 2014-05-27
 savedAt: "2014-05-27T05:25:38.487Z"
 dateSource: saved
 publishedAt: "2014-05-27T04:13:21.000Z"
-targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/WXuSocqjszM/world-cup-brazil.html"
+targetUrl: "https://dullneon.com/randomnotes/2014/05/world-cup-brazil.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "dullneon.com - random notes, links and pixels"
 author: "Jaffry Jalal"
 feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_1463be21f68:24f52a:d4ac703f"

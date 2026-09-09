@@ -6,6 +6,8 @@ savedAt: "2014-02-27T15:34:45.651Z"
 dateSource: saved
 publishedAt: "2014-02-25T19:49:09.000Z"
 targetUrl: "http://reagle.org/joseph/2010/conflict/media/gibb-defensive-communication.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_1446aa1b4e1:8ac8e37:57158c7e"

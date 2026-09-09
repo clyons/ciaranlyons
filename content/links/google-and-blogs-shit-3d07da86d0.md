@@ -6,6 +6,8 @@ savedAt: "2015-02-17T10:21:06.442Z"
 dateSource: saved
 publishedAt: "2015-02-16T21:09:56.000Z"
 targetUrl: "http://www.marco.org/2015/02/16/google-and-blogs-shit"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_14b94515d87:1e405094:69c6e04e"
 tags: ["Saved For Later"]

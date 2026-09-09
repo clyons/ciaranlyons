@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.244Z"
 dateSource: saved
 publishedAt: "2012-01-03T00:57:46.000Z"
 targetUrl: "http://metatalk.metafilter.com/21341/68-Best-Post-Contest-Results"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134a1126b10:320a01:9e04b0a9"
 tags: ["Saved For Later"]

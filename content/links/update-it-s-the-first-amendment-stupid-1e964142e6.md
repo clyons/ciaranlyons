@@ -6,6 +6,8 @@ savedAt: "2024-10-27T14:32:34.098Z"
 dateSource: saved
 publishedAt: "2024-10-22T10:30:22.000Z"
 targetUrl: "https://popular.info/p/update-its-the-first-amendment-stupid"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Popular Information"
 author: "Judd Legum"
 feedlyId: "dFqchjIq4ZHUxT6KSkENWR+LgJ1GS54dIURCfQmpmE4=_192b3cc4ab6:497ffae:d7121dc8"

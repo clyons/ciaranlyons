@@ -6,6 +6,8 @@ savedAt: "2015-01-23T12:00:59.497Z"
 dateSource: saved
 publishedAt: "2014-09-24T07:37:02.000Z"
 targetUrl: "http://www.stephenfry.com/2014/09/writing-selfie/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog – Official site of Stephen Fry"
 author: "Stephen Fry"
 feedlyId: "x5BTS70TYjC48JMPtJLuMMQmGz+/fFTQLp6xQNCdmYw=_14b0529ea92:10d0ead5:113fbbc6"

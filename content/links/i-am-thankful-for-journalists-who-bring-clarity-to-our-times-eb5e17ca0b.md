@@ -6,6 +6,8 @@ savedAt: "2021-11-28T22:48:20.817Z"
 dateSource: saved
 publishedAt: "2021-11-24T21:43:54.000Z"
 targetUrl: "https://presswatchers.org/2021/11/i-am-thankful-for-journalists-who-bring-clarity-to-our-times/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Press Watch"
 author: "Dan Froomkin"
 feedlyId: "6oL+MpDmZTRwYgPOHKXcY0HyoNEBfW7GDMSVEYn0H3g=_17d53f0d5cf:15df7e2:2c03cbeb"

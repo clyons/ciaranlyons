@@ -6,6 +6,8 @@ savedAt: "2013-09-23T00:09:42.086Z"
 dateSource: saved
 publishedAt: "2013-09-22T18:41:23.000Z"
 targetUrl: "http://stratechery.com/2013/clayton-christensen-got-wrong/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: stratēchery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_1414704db28:f2f0af:336ac757"

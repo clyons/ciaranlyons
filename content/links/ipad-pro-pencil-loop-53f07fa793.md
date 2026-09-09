@@ -6,6 +6,8 @@ savedAt: "2017-10-14T15:18:12.836Z"
 dateSource: saved
 publishedAt: "2017-10-11T18:10:55.000Z"
 targetUrl: "https://hicksdesign.co.uk/journal/ipad-pro-pencil-loop"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Hicksdesign - Hicks Journal"
 author: "Jon Hicks"
 feedlyId: "V0Hc2HklibF4TjPkDoiqix5VzK3fH2zWCEKD/z+B45k=_15f0cd5e8bb:2f44f0e:4d363ef0"

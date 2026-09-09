@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.590Z"
 dateSource: saved
 publishedAt: "2012-06-15T04:23:13.000Z"
 targetUrl: "https://newtoncircus.basecamphq.com/C183573766"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "FreeMyFeed"
 author: "Ciaran L."
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_137ee617368:3208a7:9e04b0a9"

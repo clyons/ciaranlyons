@@ -6,6 +6,8 @@ savedAt: "2020-05-15T19:12:37.730Z"
 dateSource: saved
 publishedAt: "2020-05-15T14:36:12.000Z"
 targetUrl: "https://www.profgalloway.com/campus-culture-and-istanford/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Prof Galloway"
 author: "Scott Galloway"
 feedlyId: "IuRiY+3NTfAYV5XMJkbDAH8y/yFAWMESHbOYlpzKUqA=_1721931b9ac:1b84a06:e5e7ab15"

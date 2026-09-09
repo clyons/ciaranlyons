@@ -6,6 +6,8 @@ savedAt: "2020-07-30T20:53:51.686Z"
 dateSource: saved
 publishedAt: "2020-07-29T19:40:00.000Z"
 targetUrl: "http://interconnected.org/home/2020/07/29/improving_rss"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_1739bf02817:46dadaa:5d8335f2"
 tags: ["Saved For Later"]

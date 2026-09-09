@@ -6,6 +6,8 @@ savedAt: "2013-07-20T09:52:25.788Z"
 dateSource: saved
 publishedAt: "2013-07-18T13:37:39.000Z"
 targetUrl: "http://www.schneier.com/blog/archives/2013/07/snowdens_dead_m.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "schneier"
 feedlyId: "FcF+jG/fcWtyez+xCh3KiSbsF1qkB3k9yaFAvT1QJWM=_13ff21a0bf2:17a94bb:d7300ef9"

@@ -6,6 +6,8 @@ savedAt: "2026-08-05T23:10:54.754Z"
 dateSource: saved
 publishedAt: "2026-07-06T20:38:43.000Z"
 targetUrl: "https://developer.apple.com/documentation/uniformtypeidentifiers/uttype-swift.struct/markdown"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_19f392aab10:876ac86:aa0620"

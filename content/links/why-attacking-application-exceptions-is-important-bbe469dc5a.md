@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.255Z"
 dateSource: saved
 publishedAt: "2012-01-04T18:44:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/jwA_QPAtbjU/3070-why-attacking-application-exceptions-is-important"
+targetUrl: "https://signalvnoise.com/posts/3070-why-attacking-application-exceptions-is-important"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal vs. Noise"
 author: "Taylor"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134aa08f180:3209f6:9e04b0a9"

@@ -6,6 +6,8 @@ savedAt: "2014-07-02T00:37:46.389Z"
 dateSource: saved
 publishedAt: "2014-07-01T23:00:28.000Z"
 targetUrl: "http://www.zephoria.org/thoughts/archives/2014/07/01/facebook-experiment.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "danah boyd | apophenia"
 author: "zephoria"
 feedlyId: "smQuvkTAn+VD5ft8Q1fJeA7MfVb5pT/wDf7b37cKDGU=_146f42a83ad:3c4e66b:d89185ed"

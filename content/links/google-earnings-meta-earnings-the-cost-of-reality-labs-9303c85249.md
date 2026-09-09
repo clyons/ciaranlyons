@@ -6,6 +6,8 @@ savedAt: "2025-11-03T17:53:45.870Z"
 dateSource: saved
 publishedAt: "2025-11-03T11:00:00.000Z"
 targetUrl: "https://stratechery.com/2025/google-earnings-meta-earnings-the-cost-of-reality-labs/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery"
 author: "Ben Thompson"
 feedlyId: "gcOOra3aSwJjxrFLFosyeSK5dXOeMskdVdbEfELe698=_19a4a00b031:c56f447:799e9f6d"

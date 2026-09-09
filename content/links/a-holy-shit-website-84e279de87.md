@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.153Z"
 dateSource: saved
 publishedAt: "2011-11-30T10:04:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/parislemon/~3/2_SmJtDvQnk/13541078285"
+targetUrl: "https://parislemon.com/post/13541078285/a-holy-shit-website"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ParisLemon"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_133f3ee4a80:320a96:9e04b0a9"
 tags: ["Saved For Later"]

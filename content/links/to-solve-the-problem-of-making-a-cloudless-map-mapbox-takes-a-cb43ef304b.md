@@ -5,7 +5,9 @@ date: 2013-09-21
 savedAt: "2013-09-21T15:31:12.236Z"
 dateSource: saved
 publishedAt: "2013-09-17T21:24:55.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/o6NjGIwJyMs/61528390703"
+targetUrl: "https://blog.timoni.org/post/61528390703/to-solve-the-problem-of-making-a-cloudless-map"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_1412dde080b:10123:816f4dd4"
 tags: ["Saved For Later"]

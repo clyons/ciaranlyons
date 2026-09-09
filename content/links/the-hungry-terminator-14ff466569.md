@@ -6,6 +6,8 @@ savedAt: "2019-12-06T04:10:51.131Z"
 dateSource: saved
 publishedAt: "2019-12-04T23:57:50.000Z"
 targetUrl: "https://www.youtube.com/watch?v=-vBxGt0jx5s"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_16ed35d7c1f:787421:49b12733"

@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.054Z"
 dateSource: saved
 publishedAt: "2011-10-28T01:06:01.000Z"
-targetUrl: "http://justinfrench.com/notebook/sharing-todo-lists-with-ios-5s-reminders-app"
+targetUrl: "https://web.archive.org/web/20120123150711/http://justinfrench.com/notebook/sharing-todo-lists-with-ios-5s-reminders-app"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "JustinFrench.com - notebook"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_133480fe4a8:320b0c:9e04b0a9"
 tags: ["Saved For Later"]

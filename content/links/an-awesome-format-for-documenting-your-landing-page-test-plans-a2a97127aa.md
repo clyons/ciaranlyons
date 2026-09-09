@@ -5,7 +5,9 @@ date: 2013-07-28
 savedAt: "2013-07-28T10:59:29.945Z"
 dateSource: saved
 publishedAt: "2013-07-25T19:46:22.000Z"
-targetUrl: "http://ioninteractive.com/post-click-marketing-blog/testplanning"
+targetUrl: "https://web.archive.org/web/20130823092144/http://ioninteractive.com/post-click-marketing-blog/testplanning"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog - ion interactive - Software &amp; Services Beyond Landing Pages"
 author: "Anna Talerico"
 feedlyId: "itsfP0JXNGUi7LRM4LeFVyjNQkXpSQr4Us8uOxRUmzc=_1401790f7c3:568db6:8ffd8aff"

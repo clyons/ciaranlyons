@@ -6,6 +6,8 @@ savedAt: "2014-08-12T05:02:05.200Z"
 dateSource: saved
 publishedAt: "2014-08-12T03:36:43.000Z"
 targetUrl: "http://feeds.dashes.com/~r/AnilDash/~3/MOk6LxKKI5c/the-semiotics-of-like.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Anil Dash"
 author: "Anil"
 feedlyId: "VEZolJADVxKKVdOBghxvNgLuJ8mgZ9LRDwtSwBj3EUI=_147c8572a7f:2293e9:83925704"

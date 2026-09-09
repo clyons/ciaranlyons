@@ -6,6 +6,8 @@ savedAt: "2016-02-22T12:49:37.229Z"
 dateSource: saved
 publishedAt: "2016-02-22T00:08:46.000Z"
 targetUrl: "http://feedproxy.google.com/~r/davidmalki/~3/-kS-Rw6hyIs/139754996168"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Malkidian Geometry"
 feedlyId: "lSrYJQW9648lwKB37Yf5DKCZp11gKKMZJa6RVv94uRE=_1530651c81a:145dee9:5390941"
 tags: ["Saved For Later"]

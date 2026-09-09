@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.273Z"
 dateSource: saved
 publishedAt: "2012-01-10T16:09:42.000Z"
 targetUrl: "http://news.cnet.com/8301-30685_3-57338496-264/instagram-photo-app-for-android-is-under-way/"
+destinationStatus: unavailable
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134c861d570:3209e4:9e04b0a9"
 tags: ["Saved For Later"]

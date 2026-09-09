@@ -5,7 +5,9 @@ date: 2014-02-19
 savedAt: "2014-02-19T05:31:44.591Z"
 dateSource: saved
 publishedAt: "2014-02-19T02:53:45.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/YoEhmYRicU0/we-dont-sell-saddles-here"
+targetUrl: "https://www.subtraction.com/2014/02/19/we-dont-sell-saddles-here/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Subtraction.com"
 feedlyId: "W6x/zjhbqhEccmIKZsU/x3Fadiq+SIpAJ7IXNcnq+9k=_14448190903:f8b08:5af01630"
 tags: ["Saved For Later"]

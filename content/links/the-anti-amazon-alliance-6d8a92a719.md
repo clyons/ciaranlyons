@@ -6,6 +6,8 @@ savedAt: "2020-05-03T06:20:36.553Z"
 dateSource: saved
 publishedAt: "2020-04-28T14:07:04.000Z"
 targetUrl: "https://stratechery.com/2020/the-anti-amazon-alliance/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_171c121942d:3af4361:87a94c96"

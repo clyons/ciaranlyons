@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.601Z"
 dateSource: saved
 publishedAt: "2012-07-09T15:35:16.000Z"
 targetUrl: "http://www.joelonsoftware.com/items/2012/07/09.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Joel on Software"
 author: "Joel Spolsky"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1386c615b20:32089c:9e04b0a9"

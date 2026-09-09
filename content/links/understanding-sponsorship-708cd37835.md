@@ -6,6 +6,8 @@ savedAt: "2014-01-15T04:44:16.297Z"
 dateSource: saved
 publishedAt: "2014-01-10T10:30:00.000Z"
 targetUrl: "http://feeds.feedblitz.com/~/53994860/0/sethsblog~Understanding-sponsorship.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Seth Godin's Blog on marketing, tribes and respect"
 author: "Seth Godin"
 feedlyId: "6GV/GbWOJ6VnCKxInEF8KnvUbqZzRLHHRNcmgK9rnUk=_1437bd774a3:1f7f148:242b6c1b"

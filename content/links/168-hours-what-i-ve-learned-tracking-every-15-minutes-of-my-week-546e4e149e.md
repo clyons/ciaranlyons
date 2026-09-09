@@ -6,6 +6,8 @@ savedAt: "2018-06-23T15:53:29.077Z"
 dateSource: saved
 publishedAt: "2018-06-18T22:38:16.000Z"
 targetUrl: "https://chrisguillebeau.com/168-hours-time-tracking/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Art of Non-Conformity"
 feedlyId: "ac3jqf95X94fyEmpPOf4kyUwy7Dy+yFcVGMWg4SKPXg=_1641510a3ba:13d806e:2835af05"
 tags: ["Saved For Later"]

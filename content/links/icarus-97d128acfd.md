@@ -6,6 +6,8 @@ savedAt: "2018-02-26T11:51:27.102Z"
 dateSource: saved
 publishedAt: "2018-02-19T16:34:30.000Z"
 targetUrl: "http://lefsetz.com/wordpress/2018/02/19/icarus/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Lefsetz Letter"
 author: "bob"
 feedlyId: "kGCfy85Po0PejZ1NKN+vr5vmFKVqFoB8+p0pg0HW0QI=_161b63451ef:9f8fd7f:7157a206"

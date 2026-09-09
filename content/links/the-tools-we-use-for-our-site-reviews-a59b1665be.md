@@ -6,6 +6,8 @@ savedAt: "2014-02-18T05:39:51.854Z"
 dateSource: saved
 publishedAt: "2014-01-22T14:14:46.000Z"
 targetUrl: "https://yoast.com/site-review-tools/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast"
 author: "Michiel Heijmans"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_143ba555a75:d831ac:686a8204"

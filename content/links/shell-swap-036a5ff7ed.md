@@ -6,6 +6,8 @@ savedAt: "2015-05-17T02:53:33.168Z"
 dateSource: saved
 publishedAt: "2015-05-15T10:01:13.000Z"
 targetUrl: "http://feedproxy.google.com/~r/AeonMagazineEssays/~3/2XHbE9hPAGs/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Aeon Magazine"
 author: "Aeon Video"
 feedlyId: "vosPqSnkbWbuUvDujCDv4p8E+iqsOMNKxKesJfhrGrU=_14d57059875:1fac523:60b25514"

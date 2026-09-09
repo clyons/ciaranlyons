@@ -6,6 +6,8 @@ savedAt: "2014-08-18T05:32:53.305Z"
 dateSource: saved
 publishedAt: "2014-08-14T19:31:51.000Z"
 targetUrl: "http://davidsimon.com/the-endgame-for-american-civic-responsibility-pt-i/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "David Simon"
 author: "David Simon"
 feedlyId: "IzqRhX3DHe9C8XvGXBRM+gD0YTOBLLYb+aAnScgvykk=_147d601c4c5:b12aa:83925704"

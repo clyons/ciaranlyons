@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.360Z"
 dateSource: saved
 publishedAt: "2012-02-29T20:23:36.000Z"
 targetUrl: "http://bustr.me/post/18506640485"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bustr Bensn"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_135cac84140:32098d:9e04b0a9"
 tags: ["Saved For Later"]

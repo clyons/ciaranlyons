@@ -6,6 +6,8 @@ savedAt: "2013-09-09T07:54:54.785Z"
 dateSource: saved
 publishedAt: "2013-09-09T02:44:28.000Z"
 targetUrl: "http://stratechery.com/2013/thinking-about-iphone-pricing/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: stratēchery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_14100a2c34e:71a4b9f:abe81ab4"

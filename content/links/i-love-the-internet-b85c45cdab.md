@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.485Z"
 dateSource: saved
 publishedAt: "2012-04-17T08:41:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/cQ35aOGOaFs/21261045187"
+targetUrl: "https://blog.timoni.org/post/21261045187/i-love-the-internet"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_136bf764160:320910:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2014-04-30T01:03:02.096Z"
 dateSource: saved
 publishedAt: "2014-04-29T17:48:54.000Z"
 targetUrl: "http://waxy.org/2014/04/medium_is_the_message/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 feedlyId: "58I8gQcY0BgOyYcGBAnzdqNEAzhiXdXrAyLYYUPdeJI=_145ae77f158:10fd074:fc6b336a"
 tags: ["Saved For Later"]

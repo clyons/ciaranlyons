@@ -6,6 +6,8 @@ savedAt: "2019-11-17T17:45:06.056Z"
 dateSource: saved
 publishedAt: "2019-11-14T18:26:31.000Z"
 targetUrl: "https://www.nytimes.com/interactive/2019/11/14/magazine/internet-future-dream.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_16e6b2b91dd:2ca3dab:97b0c8f7"

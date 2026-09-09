@@ -6,6 +6,8 @@ savedAt: "2014-06-16T00:53:08.007Z"
 dateSource: saved
 publishedAt: "2014-06-11T18:01:37.000Z"
 targetUrl: "http://feeds.feedblitz.com/~/66170126/0/lessdoing~A-Well-Oiled-Machine"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Art of Less Doing"
 author: "Ari Meisel"
 feedlyId: "NftbM6TDtXms7nFNgRC6VPX/jhFagiDBI6Ti4q5DSB8=_1468c673c42:972a6b:e7b6196"

@@ -6,6 +6,8 @@ savedAt: "2015-10-11T10:38:10.461Z"
 dateSource: saved
 publishedAt: "2015-09-28T10:16:51.000Z"
 targetUrl: "http://www.bunniestudios.com/blog/?p=4484"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "bunnie's blog"
 author: "bunnie"
 feedlyId: "KeYN/pD3DQuFtHVzefdhKlt1i0arP6uDLPhWhW/2x8M=_150138cd81c:1bb74312:98c27739"

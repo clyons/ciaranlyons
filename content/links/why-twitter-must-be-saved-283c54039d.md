@@ -6,6 +6,8 @@ savedAt: "2016-11-09T05:14:55.646Z"
 dateSource: saved
 publishedAt: "2016-11-08T11:54:33.000Z"
 targetUrl: "https://stratechery.com/2016/why-twitter-must-be-saved/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_15843ceef61:a61efa7:18bc4566"

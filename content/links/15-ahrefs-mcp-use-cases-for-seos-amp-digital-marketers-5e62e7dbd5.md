@@ -6,6 +6,8 @@ savedAt: "2025-10-16T00:16:32.220Z"
 dateSource: saved
 publishedAt: "2025-10-13T10:00:01.000Z"
 targetUrl: "https://ahrefs.com/blog/mcp-use-cases/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "SEO Blog by Ahrefs"
 author: "Glen Allsopp"
 feedlyId: "dHyObO0Oetlv/SYn6jDBpsFolafz6sJOOUSYPPWXrHM=_199dd063e38:32c47d1:5133d8fe"

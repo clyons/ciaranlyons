@@ -5,7 +5,9 @@ date: 2013-07-18
 savedAt: "2013-07-18T04:24:15.732Z"
 dateSource: saved
 publishedAt: "2013-07-16T10:55:30.000Z"
-targetUrl: "http://feedproxy.google.com/~r/wondermark/~3/eAu8YMRJK9E/"
+targetUrl: "https://wondermark.com/free-stories-tihyd/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Wondermark"
 author: "David Malki !"
 feedlyId: "nBpSCfLmaUzYVGKaIeiLAtujg/CMLlVfwh4qkrBz9EE=_13fe72174bb:3cafff:17a4f2a7"

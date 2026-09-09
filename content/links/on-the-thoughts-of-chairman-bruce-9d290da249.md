@@ -6,6 +6,8 @@ savedAt: "2013-08-15T12:05:27.622Z"
 dateSource: saved
 publishedAt: "2013-08-06T17:26:04.000Z"
 targetUrl: "http://www.oblomovka.com/wp/2013/08/06/1515/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Danny O'Brien's Oblomovka"
 author: "Danny O'Brien"
 feedlyId: "K6SxbuPGbZFS/K4FuXOFEBskEt5GzU9UrYgaKsYjzwI=_14059ca7b59:13647:4a07829d"

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.468Z"
 dateSource: saved
 publishedAt: "2012-12-30T11:56:02.000Z"
 targetUrl: "http://feedproxy.google.com/~r/MoreintelligentlifeTotal/~3/eBoQsHSEpXc/facebook"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "More Intelligent Life"
 author: "Robert Lane Greene"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13bebab2c50:320921:9e04b0a9"

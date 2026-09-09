@@ -6,6 +6,8 @@ savedAt: "2022-12-10T00:17:51.168Z"
 dateSource: saved
 publishedAt: "2022-12-09T05:41:21.000Z"
 targetUrl: "https://pxlnv.com/blog/twitter-account-limitations/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_184f57e8a83:130b732:4fb599db"

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:21.946Z"
 dateSource: saved
 publishedAt: "2011-09-26T05:20:29.000Z"
 targetUrl: "http://www.marco.org/2011/09/26/gruber-merlin-sxsw-2009"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132a42d5d48:320b79:9e04b0a9"
 tags: ["Saved For Later"]

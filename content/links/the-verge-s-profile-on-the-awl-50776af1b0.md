@@ -6,6 +6,8 @@ savedAt: "2015-07-16T13:06:58.968Z"
 dateSource: saved
 publishedAt: "2015-07-09T17:19:59.000Z"
 targetUrl: "http://www.theverge.com/2015/7/9/8908279/the-awl-profile-choire-sicha-john-herrman-matt-buchanan"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_14e73bfae28:11c788ef:cd74fcc6"
 tags: ["Saved For Later"]

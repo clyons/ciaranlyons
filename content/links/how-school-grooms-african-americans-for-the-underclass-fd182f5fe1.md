@@ -6,6 +6,8 @@ savedAt: "2015-05-01T04:03:29.756Z"
 dateSource: saved
 publishedAt: "2015-04-27T10:00:53.000Z"
 targetUrl: "http://feedproxy.google.com/~r/AeonMagazineEssays/~3/B3n9nnps0mw/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Aeon Magazine"
 author: "D Watkins"
 feedlyId: "vosPqSnkbWbuUvDujCDv4p8E+iqsOMNKxKesJfhrGrU=_14cfa52b98d:31355f6:60b25514"

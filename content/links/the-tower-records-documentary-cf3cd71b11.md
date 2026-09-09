@@ -6,6 +6,8 @@ savedAt: "2015-10-31T07:06:53.495Z"
 dateSource: saved
 publishedAt: "2015-10-23T15:36:33.000Z"
 targetUrl: "http://lefsetz.com/wordpress/index.php/archives/2015/10/23/the-tower-records-documentary/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Lefsetz Letter"
 author: "bob"
 feedlyId: "kGCfy85Po0PejZ1NKN+vr5vmFKVqFoB8+p0pg0HW0QI=_150955b35b6:4a2dcf0:48f117c4"

@@ -6,6 +6,8 @@ savedAt: "2015-09-23T02:26:00.782Z"
 dateSource: saved
 publishedAt: "2015-09-22T12:51:47.000Z"
 targetUrl: "http://www.asymco.com/2015/09/22/soft-underbelly/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_14ff51df5ed:12e7b057:fccac72e"

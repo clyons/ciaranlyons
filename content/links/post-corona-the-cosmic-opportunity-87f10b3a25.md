@@ -6,6 +6,8 @@ savedAt: "2020-05-13T00:47:39.727Z"
 dateSource: saved
 publishedAt: "2020-05-01T14:29:35.000Z"
 targetUrl: "https://www.profgalloway.com/post-corona-the-cosmic-opportunity/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Prof Galloway"
 author: "Scott Galloway"
 feedlyId: "IuRiY+3NTfAYV5XMJkbDAH8y/yFAWMESHbOYlpzKUqA=_171d1456718:549eeb8:87a94c96"

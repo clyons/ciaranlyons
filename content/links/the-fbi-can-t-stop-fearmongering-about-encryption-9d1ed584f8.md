@@ -6,6 +6,8 @@ savedAt: "2017-10-24T02:09:09.826Z"
 dateSource: saved
 publishedAt: "2017-10-23T21:39:49.000Z"
 targetUrl: "https://gizmodo.com/the-fbi-cant-stop-fearmongering-about-encryption-1819772851"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_15f4b2f9122:70fff34:9ac85644"

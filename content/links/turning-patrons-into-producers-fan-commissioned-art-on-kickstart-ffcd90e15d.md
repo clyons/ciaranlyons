@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.568Z"
 dateSource: saved
 publishedAt: "2012-06-08T06:50:15.000Z"
 targetUrl: "http://waxy.org/2012/06/turning_patrons_into_producers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_137cadb8c58:3208bd:9e04b0a9"
 tags: ["Saved For Later"]

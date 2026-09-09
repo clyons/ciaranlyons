@@ -5,7 +5,9 @@ date: 2015-02-17
 savedAt: "2015-02-17T09:59:19.954Z"
 dateSource: saved
 publishedAt: "2015-02-17T08:01:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/blogspot/aDYs/~3/ktSnYvaXc9Y/theres-no-bullshit-like-brand-bullshit.html"
+targetUrl: "https://adcontrarian.blogspot.com/2015/02/theres-no-bullshit-like-brand-bullshit.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "noreply@blogger.com (BOB HOFFMAN)"
 feedlyId: "STA9kR4YS0c9udlR3MNnn8M/wZHDcQZ/74dybeysgks=_14b968e8520:3c9fcce:52ac977d"

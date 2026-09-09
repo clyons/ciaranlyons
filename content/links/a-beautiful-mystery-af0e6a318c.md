@@ -6,6 +6,8 @@ savedAt: "2013-12-23T11:23:09.274Z"
 dateSource: saved
 publishedAt: "2013-11-28T20:21:40.000Z"
 targetUrl: "https://itunes.apple.com/us/app/spark-camera/id649470858"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_142a06d9a64:64c19de:7fe12541"

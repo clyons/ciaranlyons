@@ -6,6 +6,8 @@ savedAt: "2018-12-31T22:55:20.729Z"
 dateSource: saved
 publishedAt: "2018-12-05T21:03:09.000Z"
 targetUrl: "https://breakermag.com/trapped-at-sea-with-cryptos-nouveau-riche/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_16780316425:2d9541:120aac75"

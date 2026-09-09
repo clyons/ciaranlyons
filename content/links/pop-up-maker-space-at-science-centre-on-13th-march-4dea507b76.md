@@ -6,6 +6,8 @@ savedAt: "2014-03-09T07:27:55.980Z"
 dateSource: saved
 publishedAt: "2014-03-06T09:58:02.000Z"
 targetUrl: "http://makerfairesingapore.com/2014/03/06/pop-up-maker-space-at-science-centre-on-13th-march/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Singapore Mini Maker Faire"
 author: "kramanathan"
 feedlyId: "ONZ/npTBIMC3RAUI1XDeYv8EgO+4vzPTRGa0D1Icjl0=_14496d413b2:36e9f7:13e5e5ca"

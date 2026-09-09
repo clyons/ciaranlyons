@@ -6,6 +6,8 @@ savedAt: "2016-01-26T14:25:42.264Z"
 dateSource: saved
 publishedAt: "2016-01-25T16:43:26.000Z"
 targetUrl: "https://trueventures.com/leadership-and-management-wisdom/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "True Ventures"
 author: "True"
 feedlyId: "4trp3HuM0OkEvfB1EXe4rug0QUCXTr7GYFjaNGlvUBk=_15279c24698:3ebc022:70e34146"

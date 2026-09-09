@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.375Z"
 dateSource: saved
 publishedAt: "2012-02-10T15:24:15.000Z"
-targetUrl: "http://binarybonsai.com/blog/when-you-have-to-shoot-shoot"
+targetUrl: "https://web.archive.org/web/20120310060019/http://binarybonsai.com:80/blog/when-you-have-to-shoot-shoot"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Binary Bonsai"
 author: "Michael Heilemann"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13567dd5d18:32097e:9e04b0a9"

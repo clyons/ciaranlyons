@@ -6,6 +6,8 @@ savedAt: "2019-10-16T00:50:06.846Z"
 dateSource: saved
 publishedAt: "2019-10-15T15:56:32.000Z"
 targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/MKx2vFXp1R4/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal v. Noise"
 author: "Wailin Wong"
 feedlyId: "7Za/zqY5+X7fYgcQFIcOrkUBr06oZlqE1S903nI1Du8=_16dd0290755:190e11d:889dc38f"
