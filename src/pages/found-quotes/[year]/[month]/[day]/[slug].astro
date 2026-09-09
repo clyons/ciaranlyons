@@ -13,13 +13,12 @@ export async function getStaticPaths() {
 }
 
 const { quote } = Astro.props
-const scale = quote.slug === 'great-silence-and-technological-efficiency' ? 'reading' : 'display'
 ---
 
 <BaseLayout title={foundQuoteTitle(quote)} description={foundQuoteDescription(quote)} canonical={quote.url} feedUrl="/found-quotes/feed.xml" feedTitle="Ciaran Lyons - Found Quotes" pagefindBody pagefind={{ type: 'Found Quote', year: quote.year, source: quote.attribution, tags: quote.tags, date: quote.date }}>
   <article class="article-shell found-quote-detail">
     <ArchiveBreadcrumb archive="found-quotes" />
     <h1 class="visually-hidden">{foundQuoteTitle(quote)}</h1>
-    <FoundQuote quote={quote} context="detail" scale={scale} />
+    <FoundQuote quote={quote} context="detail" />
   </article>
 </BaseLayout>

@@ -600,9 +600,33 @@ img {
 }
 
 .found-quote {
+  --found-quote-display-font-size: clamp(2.35rem, 4.2vw, 4rem);
+  --found-quote-display-line-height: 1.08;
+  --found-quote-display-letter-spacing: -0.025em;
+  --found-quote-display-measure: 58rem;
+  --found-quote-display-text-wrap: balance;
+  --found-quote-display-padding-top: clamp(38px, 5vw, 54px);
+  --found-quote-display-padding-bottom: clamp(36px, 4.5vw, 50px);
+  --found-quote-display-paragraph-gap: 0.55em;
+  --found-quote-reading-font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+  --found-quote-reading-line-height: 1.2;
+  --found-quote-reading-letter-spacing: -0.012em;
+  --found-quote-reading-measure: 48rem;
+  --found-quote-reading-text-wrap: pretty;
+  --found-quote-reading-padding-top: clamp(30px, 4vw, 42px);
+  --found-quote-reading-padding-bottom: clamp(28px, 3.8vw, 40px);
+  --found-quote-reading-paragraph-gap: 0.48em;
+  --found-quote-font-size: var(--found-quote-display-font-size);
+  --found-quote-line-height: var(--found-quote-display-line-height);
+  --found-quote-letter-spacing: var(--found-quote-display-letter-spacing);
+  --found-quote-measure: var(--found-quote-display-measure);
+  --found-quote-text-wrap: var(--found-quote-display-text-wrap);
+  --found-quote-padding-top: var(--found-quote-display-padding-top);
+  --found-quote-padding-bottom: var(--found-quote-display-padding-bottom);
+  --found-quote-paragraph-gap: var(--found-quote-display-paragraph-gap);
   min-width: 0;
   margin: 0;
-  padding: clamp(38px, 5vw, 54px) 0 clamp(36px, 4.5vw, 50px);
+  padding: var(--found-quote-padding-top) 0 var(--found-quote-padding-bottom);
   border-top: 1px solid var(--hairline);
 }
 
@@ -611,15 +635,15 @@ img {
 }
 
 .found-quote blockquote {
-  max-width: 58rem;
+  max-width: var(--found-quote-measure);
   margin: 0;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: clamp(2.35rem, 4.2vw, 4rem);
+  font-size: var(--found-quote-font-size);
   font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-  text-wrap: balance;
+  line-height: var(--found-quote-line-height);
+  letter-spacing: var(--found-quote-letter-spacing);
+  text-wrap: var(--found-quote-text-wrap);
 }
 
 .found-quote blockquote p {
@@ -628,7 +652,7 @@ img {
 }
 
 .found-quote blockquote p + p {
-  margin-top: 0.55em;
+  margin-top: var(--found-quote-paragraph-gap);
 }
 
 .found-quote blockquote .found-quote-elision {
@@ -651,20 +675,14 @@ img {
 }
 
 .found-quote--reading {
-  padding-top: clamp(30px, 4vw, 42px);
-  padding-bottom: clamp(28px, 3.8vw, 40px);
-}
-
-.found-quote--reading blockquote {
-  max-width: 48rem;
-  font-size: clamp(1.65rem, 2.5vw, 2.2rem);
-  line-height: 1.2;
-  letter-spacing: -0.012em;
-  text-wrap: pretty;
-}
-
-.found-quote--reading blockquote p + p {
-  margin-top: 0.48em;
+  --found-quote-font-size: var(--found-quote-reading-font-size);
+  --found-quote-line-height: var(--found-quote-reading-line-height);
+  --found-quote-letter-spacing: var(--found-quote-reading-letter-spacing);
+  --found-quote-measure: var(--found-quote-reading-measure);
+  --found-quote-text-wrap: var(--found-quote-reading-text-wrap);
+  --found-quote-padding-top: var(--found-quote-reading-padding-top);
+  --found-quote-padding-bottom: var(--found-quote-reading-padding-bottom);
+  --found-quote-paragraph-gap: var(--found-quote-reading-paragraph-gap);
 }
 
 .found-quote figcaption {
@@ -707,24 +725,21 @@ img {
 }
 
 .found-quote--detail {
-  padding-top: 18px;
+  --found-quote-padding-top: 18px;
 }
 
 .writing-found-quotes {
   margin-top: clamp(58px, 8vw, 86px);
 }
 
-.found-quote--writing blockquote {
-  font-size: clamp(1.85rem, 3.2vw, 2.8rem);
-  text-wrap: pretty;
+.found-quote--writing {
+  --found-quote-display-font-size: clamp(1.85rem, 3.2vw, 2.8rem);
+  --found-quote-display-text-wrap: pretty;
 }
 
 .home-found-quotes .found-quote {
-  padding-bottom: 0;
-}
-
-.home-found-quotes .found-quote blockquote {
-  font-size: clamp(2.1rem, 3.8vw, 3.65rem);
+  --found-quote-padding-bottom: 0;
+  --found-quote-display-font-size: clamp(2.1rem, 3.8vw, 3.65rem);
 }
 
 .empty-state {
@@ -1459,25 +1474,27 @@ img {
   }
 
   .found-quote {
-    padding: 34px 0 32px;
+    --found-quote-display-font-size: clamp(1.9rem, 8.2vw, 2.25rem);
+    --found-quote-display-line-height: 1.1;
+    --found-quote-display-text-wrap: pretty;
+    --found-quote-display-padding-top: 34px;
+    --found-quote-display-padding-bottom: 32px;
+    --found-quote-reading-font-size: clamp(1.5rem, 6.2vw, 1.75rem);
+    --found-quote-reading-line-height: 1.26;
+    --found-quote-reading-letter-spacing: -0.008em;
+    --found-quote-reading-padding-top: 28px;
+    --found-quote-reading-padding-bottom: 28px;
   }
 
-  .found-quote blockquote,
-  .home-found-quotes .found-quote blockquote {
-    font-size: clamp(1.9rem, 8.2vw, 2.25rem);
-    line-height: 1.1;
-    text-wrap: pretty;
-  }
-
-  .found-quote--reading blockquote {
-    font-size: clamp(1.35rem, 5.5vw, 1.6rem);
-    line-height: 1.24;
-    letter-spacing: -0.008em;
-  }
-
-  .found-quote--reading {
-    padding-top: 28px;
-    padding-bottom: 28px;
+  .found-quote--responsive {
+    --found-quote-font-size: var(--found-quote-reading-font-size);
+    --found-quote-line-height: var(--found-quote-reading-line-height);
+    --found-quote-letter-spacing: var(--found-quote-reading-letter-spacing);
+    --found-quote-measure: var(--found-quote-reading-measure);
+    --found-quote-text-wrap: var(--found-quote-reading-text-wrap);
+    --found-quote-padding-top: var(--found-quote-reading-padding-top);
+    --found-quote-padding-bottom: var(--found-quote-reading-padding-bottom);
+    --found-quote-paragraph-gap: var(--found-quote-reading-paragraph-gap);
   }
 
   .found-quote blockquote p:first-child::before {

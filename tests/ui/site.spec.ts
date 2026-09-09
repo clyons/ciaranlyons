@@ -161,14 +161,15 @@ test('Found Quote type study compares compact, responsive, and reading scales', 
   const examples = page.locator('.type-study-example')
   const quotes = examples.locator('.found-quote')
   await expect(quotes).toHaveCount(3)
-  await expect(page.locator('.type-study-example--compact')).toContainText('31 characters')
-  await expect(page.locator('.type-study-example--responsive')).toContainText('85 characters')
-  await expect(page.locator('.type-study-example--reading')).toContainText('509 characters')
+  await expect(page.locator('.type-study-example--compact')).toContainText('Up to 40 characters')
+  await expect(page.locator('.type-study-example--responsive')).toContainText('41–85 characters')
+  await expect(page.locator('.type-study-example--reading')).toContainText('Over 85 characters or multiple paragraphs')
+  await expect(page.locator('.found-quotes-list .found-quote--compact')).toHaveCount(1)
+  await expect(page.locator('.found-quotes-list .found-quote--responsive')).toHaveCount(1)
   await expect(page.locator('.found-quotes-list .found-quote--reading')).toHaveCount(1)
-  await expect(quotes.nth(0)).not.toHaveClass(/found-quote--reading/)
-  await expect(quotes.nth(1)).not.toHaveClass(/found-quote--reading/)
-  await expect(quotes.nth(2)).toHaveClass(/found-quote--reading/)
-  await expect(quotes.nth(2)).toContainText('In the Great Silence')
+  await expect(quotes.nth(0)).toHaveAttribute('data-quote-tier', 'compact')
+  await expect(quotes.nth(1)).toHaveAttribute('data-quote-tier', 'responsive')
+  await expect(quotes.nth(2)).toHaveAttribute('data-quote-tier', 'reading')
 
   const fontSizes = await quotes.locator('blockquote').evaluateAll((elements) => (
     elements.map((element) => Number.parseFloat(getComputedStyle(element).fontSize))
@@ -195,6 +196,60 @@ test('Found Quote type study compares compact, responsive, and reading scales', 
   await expect(elision).toHaveCount(1)
   await expect(elision.locator('[aria-hidden="true"]')).toHaveText('[…]')
   await expect(elision.locator('.visually-hidden')).toHaveText('Quoted passage omitted.')
+})
+
+test('Found Quote display typography is limited to two rendered lines', async ({ page }) => {
+  for (const width of [1280, 390, 320]) {
+    await page.setViewportSize({ width, height: 844 })
+    await page.goto('/found-quotes/')
+
+    const displayQuotes = width <= 760
+      ? page.locator('.found-quote[data-quote-tier="compact"]')
+      : page.locator('.found-quote[data-quote-tier="compact"], .found-quote[data-quote-tier="responsive"]')
+    expect(await displayQuotes.count()).toBeGreaterThan(0)
+    const renderedLineCounts = await displayQuotes.evaluateAll((figures) => figures.map((figure) => {
+      const lineTops = new Set<number>()
+      for (const paragraph of figure.querySelectorAll('blockquote p')) {
+        const range = document.createRange()
+        range.selectNodeContents(paragraph)
+        for (const rect of range.getClientRects()) {
+          if (rect.width > 0 && rect.height > 0) lineTops.add(Math.round(rect.top * 2) / 2)
+        }
+      }
+      return lineTops.size
+    }))
+    expect(renderedLineCounts.every((lineCount) => lineCount <= 2)).toBe(true)
+
+    const fontSizes = await page.locator('.found-quote').evaluateAll((figures) => Object.fromEntries(
+      ['compact', 'responsive', 'reading'].map((tier) => {
+        const quote = figures.find((figure) => figure.getAttribute('data-quote-tier') === tier)
+        return [tier, quote ? Number.parseFloat(getComputedStyle(quote.querySelector('blockquote')!).fontSize) : 0]
+      }),
+    ))
+    expect(fontSizes.reading).toBeLessThan(fontSizes.compact)
+    if (width <= 760) {
+      expect(fontSizes.responsive).toBe(fontSizes.reading)
+      expect(fontSizes.reading).toBeGreaterThanOrEqual(24)
+    } else {
+      expect(fontSizes.responsive).toBe(fontSizes.compact)
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
+  }
+})
+
+test('Found Quotes in Writing remain larger than body copy', async ({ page }) => {
+  for (const width of [1280, 390, 320]) {
+    await page.setViewportSize({ width, height: 844 })
+    await page.goto('/writing/2026/09/07/found-quotes-wagmi/')
+
+    const bodySize = await page.locator('.prose p').first().evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize))
+    const quoteSizes = await page.locator('.writing-found-quotes blockquote').evaluateAll((quotes) => (
+      quotes.map((quote) => Number.parseFloat(getComputedStyle(quote).fontSize))
+    ))
+    expect(quoteSizes.length).toBeGreaterThan(0)
+    expect(quoteSizes.every((size) => size >= bodySize * 1.25)).toBe(true)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
+  }
 })
 
 for (const [name, path, archiveLabel, archivePath] of [
@@ -518,6 +573,21 @@ for (const [name, path] of [
   ['writing-day', '/writing/2026/09/07/'],
 ] as const) {
   test(`${name} matches its approved visual baseline`, async ({ page }) => {
+    await page.goto(path)
+    await expect(page).toHaveScreenshot(`${name}.png`, {
+      animations: 'disabled',
+      fullPage: true,
+      caret: 'hide',
+    })
+  })
+}
+
+for (const [name, path] of [
+  ['writing-found-quotes', '/writing/2026/09/07/found-quotes-wagmi/'],
+  ['found-quote-compact', '/found-quotes/2026/09/07/live-is-the-shortcut-to-fomo/'],
+  ['found-quote-reading', '/found-quotes/2026/09/07/great-silence-and-technological-efficiency/'],
+] as const) {
+  test(`${name} matches its approved typography baseline`, async ({ page }) => {
     await page.goto(path)
     await expect(page).toHaveScreenshot(`${name}.png`, {
       animations: 'disabled',

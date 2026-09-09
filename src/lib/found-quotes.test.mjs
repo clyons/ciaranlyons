@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { foundQuoteDescription, foundQuoteTitle, resolveFoundQuotes, sortFoundQuotesByPublicationAndSourceDate } from './found-quotes.ts'
+import { foundQuoteDescription, foundQuoteTitle, foundQuoteTypographyTier, resolveFoundQuotes, sortFoundQuotesByPublicationAndSourceDate } from './found-quotes.ts'
 
 const quotes = [
   {
@@ -47,6 +47,16 @@ test('Found Quote descriptions normalize whitespace and stay within meta length'
 
   const longAttribution = foundQuoteDescription({ text: 'A thought.', attribution: 'A very long attribution '.repeat(20) })
   assert.ok(longAttribution.length <= 160)
+})
+
+test('Found Quote typography tiers follow normalized text length and paragraph structure', () => {
+  assert.equal(foundQuoteTypographyTier('x'.repeat(40)), 'compact')
+  assert.equal(foundQuoteTypographyTier('x'.repeat(41)), 'responsive')
+  assert.equal(foundQuoteTypographyTier('x'.repeat(85)), 'responsive')
+  assert.equal(foundQuoteTypographyTier('x'.repeat(86)), 'reading')
+  assert.equal(foundQuoteTypographyTier(`  ${'x '.repeat(20)} `), 'compact')
+  assert.equal(foundQuoteTypographyTier('😀'.repeat(40)), 'compact')
+  assert.equal(foundQuoteTypographyTier('First paragraph.\r\n\r\nSecond paragraph.'), 'reading')
 })
 
 test('Writing collections resolve Found Quotes in authored order', () => {

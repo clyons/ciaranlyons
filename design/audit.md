@@ -6,11 +6,11 @@ goal: Preserve a calm editorial rhythm across the home page, archives, and repre
 
 ## Result
 
-The cross-site rhythm remains coherent, but the historical Found Quotes type study was never generalized beyond one hard-coded permalink. Long quotations therefore render as oversized display text in archives, Home, and Writing collections. This is the highest-priority remaining harmonization issue.
+The cross-site rhythm is coherent. The remaining Found Quote typography issue is fixed: every renderer now uses one content-derived tier, short quotations retain their display impact, and long passages use a calmer reading scale that remains larger than Writing body copy.
 
 | # | area | issue | sev | fix | eff | status |
 |---|---|---|---|---|---|---|
-| 1 | Found Quote typography | Every archive and Writing quote defaults to display scale; only the Great Silence permalink receives the reading class via a hard-coded slug. Current quotes reach 17 large-text lines on desktop, 28 at 320px, and 22 inside mobile Writing. The one mobile reading exception is only about 17% larger than body copy. | HIGH | Implement the content-derived compact/responsive/reading tiers and rendered-line regression checks in `.agent/execplans/2026-09-08-harmonize-found-quote-typography.md`; keep reading type at least 25% larger than Writing body copy. | M | Proposed |
+| 1 | Found Quote typography | Every archive and Writing quote defaulted to display scale; only the Great Silence permalink received the reading class via a hard-coded slug. Quotes reached 17 large-text lines on desktop, 28 at 320px, and 22 inside mobile Writing. | HIGH | Implemented shared compact/responsive/reading tiers, a 24px mobile reading floor, and rendered-line, size-ratio, and overflow regression checks. | M | Fixed |
 | 2 | TIL archive rhythm | TIL used the Links-style search control inside a full generic `.section`. Its `58–92px` padding above and below created a noticeably taller empty band than the compact Links tools strip, and visually separated search from both the TIL header and `Recent`/`Topics`. | MED | Extracted a shared compact `archive-tools` class and retained the full-width mobile treatment. | S | Fixed |
 | 3 | Archive affordances | Projects, TIL listings, TIL date archives, and Writing date archives rendered a literal `->`; after correcting the glyph, those rows still used an unstyled `.arrow` while Home and search used the larger, centered treatment. | MED | Replaced the ASCII glyphs and consolidated every full-row internal arrow onto the shared `row-action` treatment, retaining `aria-hidden`. | S | Fixed |
 
@@ -26,4 +26,5 @@ The cross-site rhythm remains coherent, but the historical Found Quotes type stu
 
 - Reviewed production-rendered content for Home, About, Writing, Notes, Projects, and TIL, plus committed desktop/mobile baselines for Home, About, Writing, Notes, Links, Projects, Found Quotes, and a Note detail page.
 - Checked the corresponding layout and responsive CSS, archive templates, merged PR history, ExecPlans, and existing UI assertions. Measured all 28 current quotations at 1280px, 390px, and 320px; actual line boxes confirm the scale-selection gap described above.
-- The in-app browser session was unavailable in this environment, so this is a visual/source audit rather than a fresh interactive assistive-technology pass. A manual keyboard and screen-reader pass remains appropriate after the next visual change.
+- Rechecked the final archive, Home, WAGMI Writing entry, compact permalink, and reading permalink against committed desktop/mobile baselines. The 28 current quotations classify as 4 compact, 2 responsive, and 22 reading; no display-sized quote exceeds two rendered lines at 1280px, 390px, or 320px.
+- Automated semantics, keyboard, overflow, and contrast checks pass. A manual screen-reader pass remains appropriate as a separate accessibility check.

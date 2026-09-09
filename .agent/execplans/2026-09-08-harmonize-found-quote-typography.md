@@ -17,10 +17,10 @@ After this change, quotation typography will be selected automatically from the 
 - [x] (2026-09-08 23:47Z) Completed the initial implementation proposal and acceptance criteria in this ExecPlan.
 - [x] (2026-09-09 00:26Z) Built an isolated three-tier mockup at `/found-quotes/style-study/` using representative 31-, 85-, and 509-character production quotes; production renderers remain unchanged.
 - [x] (2026-09-09 00:29Z) Validated the mockup with 70 unit tests, zero Astro diagnostics, a 4,067-page production build, and all 104 desktop/mobile UI tests.
-- [ ] Implement automatic typography tiers and remove explicit route-level scale selection.
-- [ ] Harmonize the display and reading scales across archive, detail, home, and Writing contexts.
-- [ ] Add unit, rendered-line, relative-size, overflow, and visual-regression coverage.
-- [ ] Update the design records with final measured results and complete validation.
+- [x] (2026-09-09 00:46Z) Implemented automatic typography tiers and removed explicit route-level scale selection.
+- [x] (2026-09-09 00:46Z) Harmonized display and reading tokens across archive, detail, Home, and Writing contexts, including the 24px mobile reading floor.
+- [x] (2026-09-09 00:46Z) Added unit, rendered-line, relative-size, overflow, and visual-regression coverage; 114 desktop/mobile UI checks passed while refreshing approved baselines.
+- [x] (2026-09-09 00:46Z) Updated the design and publishing records and completed light/dark visual QA.
 
 ## Surprises & Discoveries
 
@@ -69,7 +69,9 @@ After this change, quotation typography will be selected automatically from the 
 
 ## Outcomes & Retrospective
 
-Planning outcome: the audit identified a generalization gap rather than a need for another isolated font-size adjustment. Implementation and final retrospective remain pending approval.
+The audit correctly identified a generalization gap rather than a need for another isolated font-size adjustment. All 28 current quotes now receive one content-derived tier in every context: 4 compact, 2 responsive, and 22 reading. The approved display scale remains unchanged for short quotes, while long and multi-paragraph passages use sustained-reading typography. The mobile reading floor is 24px, keeping WAGMI quotes at least 1.25 times the surrounding body size.
+
+The stable build-time rule is deliberately paired with rendered-line tests. Character count makes output deterministic and avoids client-side layout shifts; browser measurement verifies that the approximation continues to deliver the promised two-line display result as content, fonts, and layout evolve. No content field, runtime script, slug exception, or dependency was added.
 
 ## Context and Orientation
 
@@ -163,11 +165,17 @@ If a threshold causes a display-tier quote to exceed two rendered lines, first c
 - Relevant ExecPlans reviewed: `.agent/execplans/2026-09-07-found-quotes.md` and `.agent/execplans/2026-09-08-content-detail-breadcrumbs.md`. The latter affects only the detail-page shell and breadcrumb.
 - Relevant design records reviewed: `design/context.md`, `design/found-quotes-directions.md`, `design/found-quotes-long-style.md`, and the Found Quotes sections of `design/qa.md` and `design/audit.md`.
 - Current collection: 28 Found Quote Markdown records, ranging from 31 to 564 normalized characters.
-- Current archive display-scale line range: 1–17 lines at 1280px, 2–24 lines at 390px, and 2–28 lines at 320px. The Great Silence record itself is 13, 23, and 26 archive lines respectively because archive callers never select its reading scale.
-- Current WAGMI display-scale line range: 3–12 lines at 1280px and 5–22 lines at 390px.
-- Current Home latest quote: 91 characters and 3 lines at 1280px, 5 lines at 390px, and 5 lines at 320px.
-- Current Great Silence detail reading size: 32px at 1280px, 21.45px at 390px, and 21.6px at 320px.
+- Pre-implementation archive display-scale line range: 1–17 lines at 1280px, 2–24 lines at 390px, and 2–28 lines at 320px. The Great Silence record itself was 13, 23, and 26 archive lines respectively because archive callers never selected its reading scale.
+- Pre-implementation WAGMI display-scale line range: 3–12 lines at 1280px and 5–22 lines at 390px.
+- Pre-implementation Home latest quote: 91 characters and 3 lines at 1280px, 5 lines at 390px, and 5 lines at 320px.
+- Pre-implementation Great Silence detail reading size: 32px at 1280px, 21.45px at 390px, and 21.6px at 320px.
 - Review renders: `.context/design/found-quotes-typography-mockup-desktop.png` at 1280px and `.context/design/found-quotes-typography-mockup-mobile.png` at 390px.
+- Final collection distribution: 4 compact, 2 responsive, and 22 reading quotes.
+- Final display sizes: 53.76px at 1280px, 31.98px at 390px, and 30.4px at 320px. Final reading sizes: 32px, 24.18px, and 24px respectively.
+- Final display-tier line count: no more than two at 1280px, 390px, or 320px. WAGMI quote/body ratios remain at least 1.25 at each width.
+- Final review baselines: `found-quotes`, `home`, `writing-found-quotes`, `found-quote-compact`, and `found-quote-reading` for desktop and mobile. Dark mobile capture: `.context/design/found-quotes-typography-production-dark-mobile.png`.
+- Final validation: `npm test` passed 71 tests; `npm run lint` reported zero diagnostics across 104 files; `npx tsc --noEmit` passed; `npm run build` generated 4,067 pages and verified 68 social previews; the clean `npx playwright test tests/ui/site.spec.ts` run passed all 114 checks.
+- Presentation-exception search: `rg -n "great-silence-and-technological-efficiency|scale=" src/pages/found-quotes src/components/FoundQuote.astro` returned no matches.
 
 ## Interfaces and Dependencies
 
@@ -185,3 +193,4 @@ No new npm package, browser runtime, content field, database, external service, 
 
 - 2026-09-08: Created the plan after reviewing Found Quote history and measuring every current quote across archive, detail, Home, and Writing contexts.
 - 2026-09-09: Added the requested three-quote compact/responsive/reading mockup to the existing isolated type-study route.
+- 2026-09-09: Shipped the approved automatic tiers into the shared renderer, refactored typography around shared tokens, added collection-wide browser protections and visual baselines, and completed production QA documentation.

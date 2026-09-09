@@ -116,6 +116,48 @@ Automated evidence:
 
 Verdict: READY FOR REVIEW — no high-severity drift or functional blockers found. Classification remains explicit in the mock; approve the visual direction before choosing the production content-tier rule.
 
+## Found Quotes automatic typography production QA — 2026-09-09
+
+Prototype: local production build across `/found-quotes/`, `/found-quotes/style-study/`, compact and reading permalinks, Home, and `/writing/2026/09/07/found-quotes-wagmi/`
+
+Source of truth: `.agent/execplans/2026-09-08-harmonize-found-quote-typography.md` and the approved three-length mockup.
+
+### Verdict
+
+READY TO MERGE — the approved compact, responsive, and reading treatments now come from one automatic rule used by every Found Quote renderer. There are no slug exceptions or client-side line measurements.
+
+### Visual conformance
+
+- ✓ The current collection resolves to 4 compact, 2 responsive, and 22 reading quotes.
+- ✓ Compact quotes retain the original display scale: 53.76px at 1280px, 31.98px at 390px, and 30.4px at 320px.
+- ✓ Responsive quotes match display type on desktop and the reading scale on mobile.
+- ✓ Reading quotes use 32px at 1280px, 24.18px at 390px, and the 24px floor at 320px, with a 48rem measure and relaxed `1.2`/`1.26` line height.
+- ✓ Home, archive, compact permalink, reading permalink, and WAGMI Writing baselines match the approved hierarchy. The latest 91-character Home quote correctly uses reading type.
+- ✓ Light desktop/mobile and dark mobile renders were inspected. The serif, opening mark, hairlines, attribution, and permalink treatments remain coherent.
+
+### Behavior and requirements
+
+- ✓ A pure server-side helper normalizes whitespace, counts Unicode code points, and treats multiple paragraphs as reading prose.
+- ✓ Every display-sized quote stays within two actual rendered lines at 1280px, 390px, and 320px across the complete collection.
+- ✓ Every WAGMI Found Quote remains at least 1.25 times the surrounding Writing body size at all three reference widths.
+- ✓ All checked archive, Home, Writing, and permalink pages have no horizontal overflow.
+- ✓ Semantic paragraphs, editorial elision, emphasis, source links, and bookmark permalinks are unchanged.
+
+### Accessibility sanity
+
+- ✓ The existing figure, blockquote, figcaption, cite, link, heading, and focus behavior remains intact.
+- ✓ Dark mobile reading text measures 16.25:1 against the page background; no color token changed.
+- Manual follow-up: automated semantics and contrast checks do not replace a full screen-reader pass.
+
+### Evidence
+
+- `npm test`: 71 passed.
+- `npm run lint`: 0 errors, 0 warnings, 0 hints across 104 files.
+- `npx tsc --noEmit`: passed.
+- `npx playwright test tests/ui/site.spec.ts --update-snapshots`: 114 passed across desktop and mobile.
+- Reviewed baselines: `found-quotes`, `home`, `writing-found-quotes`, `found-quote-compact`, and `found-quote-reading`, each at desktop and mobile sizes.
+- Dark mobile capture: `.context/design/found-quotes-typography-production-dark-mobile.png`.
+
 ## Links production-readiness review — 2026-09-08
 
 Prototype: local static build on `clyons/feedly-stars-to-til`

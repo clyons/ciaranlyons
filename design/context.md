@@ -53,3 +53,11 @@ follow-up type study (2026-09-08):
 - Tighten the reading tier's line height and vertical padding without changing the short-quote display tier.
 - Model blank-line-separated passages as semantic paragraphs with a compact gap, and allow one exact phrase to receive semantic emphasis without enabling arbitrary quote-body HTML.
 - Keep attribution, provenance, colors, and the surrounding page shell unchanged. Retain dates in content, URLs, archives, sorting, and feeds, but represent the on-page permalink with a compact `#` anchor instead of visible date text.
+
+approved production rule (2026-09-09):
+
+- Classify typography automatically from normalized Unicode character count and authored paragraph structure: `compact` through 40 characters, `responsive` from 41–85, and `reading` above 85 or whenever the quote contains multiple paragraphs.
+- Keep `compact` large at every width. Keep `responsive` large above 760px and switch it to reading type at 760px and below. Use reading type for `reading` at every width.
+- Keep the mobile reading floor at 24px so embedded Found Quotes remain at least 25% larger than Writing body copy.
+- Use build-time classification and CSS only. Do not measure lines in client-side JavaScript, special-case slugs, or require authors to add presentation metadata.
+- Backstop the stable character rule with browser tests that count actual rendered lines across the full collection at 1280px, 390px, and 320px.
