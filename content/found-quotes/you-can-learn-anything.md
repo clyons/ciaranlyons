@@ -10,4 +10,4 @@ tags:
   - education
 ---
 
-Whoever you are, wherever you are, you only have to know one thing, you can learn anything.
+Whoever you are, wherever you are, you only have to know one thing: you can learn anything.
