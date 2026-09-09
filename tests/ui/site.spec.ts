@@ -19,6 +19,77 @@ test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' })
 })
 
+test('document heads expose modern defaults and page-specific social metadata', async ({ page }) => {
+  await page.goto('/')
+
+  await expect(page).toHaveTitle('Ciaran Lyons')
+  await expect(page.locator('meta[name="viewport"]')).toHaveAttribute('content', 'width=device-width')
+  await expect(page.locator('meta[name="color-scheme"]')).toHaveAttribute('content', 'light dark')
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', 'Ciaran Lyons')
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', 'Ciaran Lyons')
+  await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'website')
+  await expect(page.locator('meta[property^="article:"]')).toHaveCount(0)
+  expect(await page.locator('head').evaluate((head) => {
+    const stylesheet = head.querySelector('link[rel="stylesheet"]')
+    const openGraphTitle = head.querySelector('meta[property="og:title"]')
+    return Boolean(stylesheet && openGraphTitle && (stylesheet.compareDocumentPosition(openGraphTitle) & Node.DOCUMENT_POSITION_FOLLOWING))
+  })).toBe(true)
+
+  for (const metadata of [
+    {
+      path: '/writing/2026/09/07/found-quotes-wagmi/',
+      title: 'Found Quotes: WAGMI',
+      publishedTime: '2026-09-07',
+      modifiedTime: undefined,
+      section: 'Writing',
+      tags: [],
+    },
+    {
+      path: '/til/2026/09/07/two-state-dark-mode-toggles/',
+      title: 'Two-state dark mode toggles',
+      publishedTime: '2026-09-07',
+      modifiedTime: undefined,
+      section: 'TIL',
+      tags: ['ux', 'usability', 'dark-mode', 'frontend'],
+    },
+    {
+      path: '/notes/2026/09/07/3mux7jv5ze52c/',
+      title: 'New TIL: two-state dark mode toggles.',
+      publishedTime: '2026-09-07T19:10:39.594Z',
+      modifiedTime: undefined,
+      section: 'Notes',
+      tags: [],
+    },
+    {
+      path: '/found-quotes/2026/09/07/information-wants-to-be-free/',
+      title: 'Found quote from Stewart Brand',
+      publishedTime: '2026-09-07',
+      modifiedTime: '2026-09-08',
+      section: 'Found Quotes',
+      tags: ['information', 'technology'],
+    },
+  ]) {
+    await page.goto(metadata.path)
+
+    await expect(page).toHaveTitle(`${metadata.title} - Ciaran Lyons`)
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', metadata.title)
+    await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', metadata.title)
+    await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'article')
+    await expect(page.locator('meta[property="article:published_time"]')).toHaveAttribute('content', metadata.publishedTime)
+    await expect(page.locator('meta[property="article:section"]')).toHaveAttribute('content', metadata.section)
+
+    if (metadata.modifiedTime) {
+      await expect(page.locator('meta[property="article:modified_time"]')).toHaveAttribute('content', metadata.modifiedTime)
+    } else {
+      await expect(page.locator('meta[property="article:modified_time"]')).toHaveCount(0)
+    }
+
+    expect(await page.locator('meta[property="article:tag"]').evaluateAll((tags) => (
+      tags.map((tag) => tag.getAttribute('content'))
+    ))).toEqual(metadata.tags)
+  }
+})
+
 test('About presents the PQ Program reach accurately and stays responsive', async ({ page }) => {
   await page.goto('/about/')
 

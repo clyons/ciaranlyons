@@ -57,7 +57,16 @@ const paragraphs = renderRichText(note.text, note.facets)
   }))
 ---
 
-<BaseLayout title={title} description={note.text} canonical={note.url} pagefindBody pagefind={{ type: 'Note', year: note.year, date: note.date }}>
+<BaseLayout
+  title={title}
+  description={note.text}
+  canonical={note.url}
+  socialType="article"
+  publishedTime={note.date}
+  articleSection="Notes"
+  pagefindBody
+  pagefind={{ type: 'Note', year: note.year, date: note.date }}
+>
   <article class="article-shell note-detail">
     <ArchiveBreadcrumb archive="notes" />
     <h1 class="visually-hidden">{title}</h1>
