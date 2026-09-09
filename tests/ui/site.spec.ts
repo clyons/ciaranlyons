@@ -138,6 +138,31 @@ test('home gives the Found Quotes heading room before the first quote rule', asy
   await expect(heading.getByRole('link')).toHaveCount(0)
 })
 
+test('home keeps its three-line Found Quote impactful on desktop', async ({ page }) => {
+  await page.goto('/')
+
+  const quote = page.locator('.home-found-quotes .found-quote')
+  await expect(quote).toHaveAttribute('data-quote-tier', 'responsive')
+
+  const fontSize = await quote.locator('blockquote').evaluate((element) => (
+    Number.parseFloat(getComputedStyle(element).fontSize)
+  ))
+  if ((page.viewportSize()?.width ?? 0) <= 760) {
+    expect(fontSize).toBeGreaterThanOrEqual(24)
+    expect(fontSize).toBeLessThan(30)
+  } else {
+    const renderedLineCount = await quote.locator('blockquote p').evaluate((paragraph) => {
+      const range = document.createRange()
+      range.selectNodeContents(paragraph)
+      return new Set(Array.from(range.getClientRects())
+        .filter((rect) => rect.width > 0 && rect.height > 0)
+        .map((rect) => Math.round(rect.top * 2) / 2)).size
+    })
+    expect(renderedLineCount).toBe(3)
+    expect(fontSize).toBeGreaterThanOrEqual(40)
+  }
+})
+
 test('home foregrounds the pinned Writing entry', async ({ page }) => {
   await page.goto('/')
 
@@ -169,8 +194,8 @@ test('Found Quote type study compares compact, responsive, and reading scales', 
   const quotes = examples.locator('.found-quote')
   await expect(quotes).toHaveCount(3)
   await expect(page.locator('.type-study-example--compact')).toContainText('Up to 40 characters')
-  await expect(page.locator('.type-study-example--responsive')).toContainText('41–85 characters')
-  await expect(page.locator('.type-study-example--reading')).toContainText('Over 85 characters or multiple paragraphs')
+  await expect(page.locator('.type-study-example--responsive')).toContainText('41–100 characters')
+  await expect(page.locator('.type-study-example--reading')).toContainText('Over 100 characters or multiple paragraphs')
   await expect(page.locator('.found-quotes-list .found-quote--compact')).toHaveCount(1)
   await expect(page.locator('.found-quotes-list .found-quote--responsive')).toHaveCount(1)
   await expect(page.locator('.found-quotes-list .found-quote--reading')).toHaveCount(1)
@@ -205,7 +230,7 @@ test('Found Quote type study compares compact, responsive, and reading scales', 
   await expect(elision.locator('.visually-hidden')).toHaveText('Quoted passage omitted.')
 })
 
-test('Found Quote display typography is limited to two rendered lines', async ({ page }) => {
+test('Found Quote display typography stays within its responsive line budget', async ({ page }) => {
   for (const width of [1280, 390, 320]) {
     await page.setViewportSize({ width, height: 844 })
     await page.goto('/found-quotes/')
@@ -225,7 +250,8 @@ test('Found Quote display typography is limited to two rendered lines', async ({
       }
       return lineTops.size
     }))
-    expect(renderedLineCounts.every((lineCount) => lineCount <= 2)).toBe(true)
+    const maximumDisplayLines = width <= 760 ? 2 : 3
+    expect(renderedLineCounts.every((lineCount) => lineCount <= maximumDisplayLines)).toBe(true)
 
     const fontSizes = await page.locator('.found-quote').evaluateAll((figures) => Object.fromEntries(
       ['compact', 'responsive', 'reading'].map((tier) => {

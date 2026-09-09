@@ -35,7 +35,7 @@ Preserve the exact words and punctuation. Prefer an authoritative source URL whe
 
 Separate source paragraphs with one blank line. When Ciaran deliberately removes material between quoted passages, put `[…]` on its own line between blank lines. The brackets distinguish an editorial elision from an ellipsis that belongs to the speaker; the renderer announces the omission and presents it as a compact separator.
 
-Typography is automatic. A single-paragraph quote up to 40 Unicode characters stays at display scale; one from 41–85 characters uses display scale on desktop and reading scale on mobile; anything longer or containing multiple paragraphs uses reading scale everywhere. Preserve the source's real paragraph structure, but do not add manual line breaks, presentation frontmatter, or other formatting merely to force a tier.
+Typography is automatic. A single-paragraph quote up to 40 Unicode characters stays at display scale; one from 41–100 characters uses display scale on desktop and reading scale on mobile; anything longer or containing multiple paragraphs uses reading scale everywhere. Preserve the source's real paragraph structure, but do not add manual line breaks, presentation frontmatter, or other formatting merely to force a tier.
 
 The generated permalink is `/found-quotes/YYYY/MM/DD/<slug>/`. Do not change a published slug or date without treating it as a URL migration.
 

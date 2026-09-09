@@ -6,9 +6,9 @@ This repository uses `.agent/PLANS.md` as the governing standard for ExecPlans. 
 
 ## Purpose / Big Picture
 
-Found Quotes should preserve two complementary reading modes everywhere they appear. A quotation that fits within two lines should remain large and impactful. A quotation that runs longer should switch to a smaller, calmer reading scale, especially on narrow screens. In a Writing entry, that smaller scale must still remain visibly larger than Ciaran's surrounding body copy.
+Found Quotes should preserve two complementary reading modes everywhere they appear. A quotation that fits within a short editorial burst—up to three lines on desktop—should remain large and impactful. A quotation that runs longer should switch to a smaller, calmer reading scale, especially on narrow screens. In a Writing entry, that smaller scale must still remain visibly larger than Ciaran's surrounding body copy.
 
-After this change, quotation typography will be selected automatically from the quotation text and paragraph structure. No route or content slug will special-case one quote. The same rule will apply on the Found Quotes archive and date archives, standalone permalinks, the home page, the type-study page, and Found Quotes embedded in Writing. Automated browser checks will fail if a quote assigned the display treatment exceeds two rendered lines at the supported reference widths.
+After this change, quotation typography will be selected automatically from the quotation text and paragraph structure. No route or content slug will special-case one quote. The same rule will apply on the Found Quotes archive and date archives, standalone permalinks, the home page, the type-study page, and Found Quotes embedded in Writing. Automated browser checks will fail if a quote assigned the display treatment exceeds three rendered lines on desktop or two on the supported narrow widths.
 
 ## Progress
 
@@ -21,6 +21,9 @@ After this change, quotation typography will be selected automatically from the 
 - [x] (2026-09-09 00:46Z) Harmonized display and reading tokens across archive, detail, Home, and Writing contexts, including the 24px mobile reading floor.
 - [x] (2026-09-09 00:46Z) Added unit, rendered-line, relative-size, overflow, and visual-regression coverage; 114 desktop/mobile UI checks passed while refreshing approved baselines.
 - [x] (2026-09-09 00:46Z) Updated the design and publishing records and completed light/dark visual QA.
+- [x] (2026-09-09 01:16Z) Reviewed the supplied three-line Home reference and the neighboring 85-, 91-, 93-, 104-, and 108-character production quotes.
+- [x] (2026-09-09 01:16Z) Raised the responsive desktop boundary to 100 characters and updated the tier labels, unit boundaries, rendered-line budget, publishing guidance, and design records.
+- [x] (2026-09-09 01:24Z) Refreshed and inspected the affected Home and archive baselines; 71 unit tests, a 4,067-page build, lint, type checking, and all 116 desktop/mobile UI checks passed.
 
 ## Surprises & Discoveries
 
@@ -45,6 +48,9 @@ After this change, quotation typography will be selected automatically from the 
 - Observation: Only one ExecPlan governs the Found Quotes feature itself. The later breadcrumb ExecPlan touches the quote-detail shell but does not change quotation scale. Later typography changes were recorded in design documents and PR bodies rather than a dedicated ExecPlan.
   Evidence: `.agent/execplans/2026-09-07-found-quotes.md`, `.agent/execplans/2026-09-08-content-detail-breadcrumbs.md`, and merged PR metadata.
 
+- Observation: The supplied Home reference shows the 91-character Khan Academy quote retaining impact at three desktop lines. The next current single-paragraph quote is 93 characters; the following examples jump to 104 and 108 characters.
+  Evidence: `.context/home-progression/video-frames/09.png` in the referenced Charlotte workspace and normalized character counts across `content/found-quotes/*.md`.
+
 ## Decision Log
 
 - Decision: Replace the `scale` prop and slug checks with an automatic, server-rendered typography tier derived from normalized text length and paragraph count.
@@ -67,11 +73,15 @@ After this change, quotation typography will be selected automatically from the 
   Rationale: Character count is a stable build-time input but only an approximation of font metrics and word wrapping. Testing every display-tier quote against actual typography prevents future copy, font, width, or breakpoint changes from silently exceeding two lines.
   Date/Author: 2026-09-08 / Codex
 
+- Decision: Supersede the 85-character responsive ceiling with 100 characters and allow responsive quotes up to three display lines on desktop; keep the 40-character compact boundary and the two-line narrow-screen display budget unchanged.
+  Rationale: The approved 91-character reference is strong at three desktop lines. A 100-character boundary also includes the adjacent 93-character production quote, while the 104- and 108-character passages remain reading-scale. Responsive quotes still switch to reading typography at 760px and below, preserving small-screen legibility.
+  Date/Author: 2026-09-09 / Codex
+
 ## Outcomes & Retrospective
 
-The audit correctly identified a generalization gap rather than a need for another isolated font-size adjustment. All 28 current quotes now receive one content-derived tier in every context: 4 compact, 2 responsive, and 22 reading. The approved display scale remains unchanged for short quotes, while long and multi-paragraph passages use sustained-reading typography. The mobile reading floor is 24px, keeping WAGMI quotes at least 1.25 times the surrounding body size.
+The audit correctly identified a generalization gap rather than a need for another isolated font-size adjustment. All 28 current quotes now receive one content-derived tier in every context: 4 compact, 4 responsive, and 20 reading. The approved display scale remains unchanged for short quotes, including the approved three-line Home example, while long and multi-paragraph passages use sustained-reading typography. The mobile reading floor is 24px, keeping WAGMI quotes at least 1.25 times the surrounding body size.
 
-The stable build-time rule is deliberately paired with rendered-line tests. Character count makes output deterministic and avoids client-side layout shifts; browser measurement verifies that the approximation continues to deliver the promised two-line display result as content, fonts, and layout evolve. No content field, runtime script, slug exception, or dependency was added.
+The stable build-time rule is deliberately paired with rendered-line tests. Character count makes output deterministic and avoids client-side layout shifts; browser measurement verifies that the approximation continues to deliver the promised three-line desktop and two-line narrow-screen display budgets as content, fonts, and layout evolve. No content field, runtime script, slug exception, or dependency was added.
 
 ## Context and Orientation
 
@@ -112,7 +122,7 @@ This milestone succeeds when short quotes remain visually forceful, medium quote
 
 ### Milestone 3: Protect the visual rule and update records
 
-Replace the one-exemplar assertion in `tests/ui/site.spec.ts` with tier-wide checks. At 1280px, 390px, and 320px, count rendered line boxes for every quote receiving display typography and require no more than two lines. Verify long quotes compute smaller than the display reference, retain semantic paragraph and emphasis behavior, and have no horizontal overflow.
+Replace the one-exemplar assertion in `tests/ui/site.spec.ts` with tier-wide checks. At 1280px, count rendered line boxes for every quote receiving display typography and require no more than three lines. At 390px and 320px, require no more than two lines. Verify long quotes compute smaller than the display reference, retain semantic paragraph and emphasis behavior, and have no horizontal overflow.
 
 On the WAGMI Writing page, compare each Found Quote's computed font size with `.prose` and require a ratio of at least 1.25. Add desktop and mobile visual baselines for the WAGMI Writing detail and representative short and long Found Quote permalinks. Refresh the existing Home and Found Quotes archive baselines. Inspect light mode at both standard Playwright viewports and add focused dark-mode computed-style/contrast checks if existing theme coverage does not already exercise the changed tokens.
 
@@ -141,9 +151,9 @@ Before committing or opening a PR, keep the user's unrelated changes to `content
 ## Validation and Acceptance
 
 - A single-paragraph quote of 40 characters or fewer uses display typography at 1280px, 390px, and 320px.
-- A single-paragraph quote of 41–85 characters uses display typography at 1280px and reading typography at 390px and 320px.
-- A quote over 85 characters or containing multiple authored paragraphs uses reading typography at every supported width.
-- Every quote receiving display typography renders in no more than two actual line boxes at 1280px, 390px, and 320px. The test evaluates the complete current collection rather than named fixtures only.
+- A single-paragraph quote of 41–100 characters uses display typography at 1280px and reading typography at 390px and 320px.
+- A quote over 100 characters or containing multiple authored paragraphs uses reading typography at every supported width.
+- Every quote receiving display typography renders in no more than three actual line boxes at 1280px and two at 390px and 320px. The test evaluates the complete current collection rather than named fixtures only.
 - Current short examples such as `live-is-the-shortcut-to-fomo` retain the existing large, impactful treatment.
 - Current long examples such as `great-silence-and-technological-efficiency`, `you-are-not-late`, and `right-to-ignore-you` use reading typography on archives, permalinks, and Writing collections without caller configuration.
 - The latest Home quote follows the same automatic rule; context changes size tokens but not classification logic.
@@ -157,7 +167,7 @@ Before committing or opening a PR, keep the user's unrelated changes to `content
 
 The tier helper, component classes, CSS refactor, documentation, and tests are deterministic source edits and safe to rerun. Snapshot generation overwrites only named Playwright baselines and must be reviewed visually before staging.
 
-If a threshold causes a display-tier quote to exceed two rendered lines, first confirm fonts and viewport match the test configuration. Then lower the relevant global boundary in the pure helper and update its unit tests; do not add a slug exception. If the reading tier approaches Writing body size, adjust the shared reading token and keep the ratio assertion. If implementation is interrupted, restore only files named in this plan or continue from the checked Progress section. Never restore or stage the user's unrelated project-order files.
+If a threshold causes a display-tier quote to exceed the three-line desktop or two-line narrow-screen budget, first confirm fonts and viewport match the test configuration. Then lower the relevant global boundary in the pure helper and update its unit tests; do not add a slug exception. If the reading tier approaches Writing body size, adjust the shared reading token and keep the ratio assertion. If implementation is interrupted, restore only files named in this plan or continue from the checked Progress section. Never restore or stage the user's unrelated project-order files.
 
 ## Artifacts and Notes
 
@@ -170,11 +180,11 @@ If a threshold causes a display-tier quote to exceed two rendered lines, first c
 - Pre-implementation Home latest quote: 91 characters and 3 lines at 1280px, 5 lines at 390px, and 5 lines at 320px.
 - Pre-implementation Great Silence detail reading size: 32px at 1280px, 21.45px at 390px, and 21.6px at 320px.
 - Review renders: `.context/design/found-quotes-typography-mockup-desktop.png` at 1280px and `.context/design/found-quotes-typography-mockup-mobile.png` at 390px.
-- Final collection distribution: 4 compact, 2 responsive, and 22 reading quotes.
+- Final collection distribution: 4 compact, 4 responsive, and 20 reading quotes.
 - Final display sizes: 53.76px at 1280px, 31.98px at 390px, and 30.4px at 320px. Final reading sizes: 32px, 24.18px, and 24px respectively.
-- Final display-tier line count: no more than two at 1280px, 390px, or 320px. WAGMI quote/body ratios remain at least 1.25 at each width.
+- Final display-tier line count: no more than three at 1280px and two at 390px or 320px. WAGMI quote/body ratios remain at least 1.25 at each width.
 - Final review baselines: `found-quotes`, `home`, `writing-found-quotes`, `found-quote-compact`, and `found-quote-reading` for desktop and mobile. Dark mobile capture: `.context/design/found-quotes-typography-production-dark-mobile.png`.
-- Final validation: `npm test` passed 71 tests; `npm run lint` reported zero diagnostics across 104 files; `npx tsc --noEmit` passed; `npm run build` generated 4,067 pages and verified 68 social previews; the clean `npx playwright test tests/ui/site.spec.ts` run passed all 114 checks.
+- Final validation: `npm test` passed 71 tests; `npm run lint` reported zero diagnostics across 104 files; `npx tsc --noEmit` passed; `npm run build` generated 4,067 pages and verified 68 social previews; the clean `npx playwright test tests/ui/site.spec.ts` run passed all 116 checks.
 - Presentation-exception search: `rg -n "great-silence-and-technological-efficiency|scale=" src/pages/found-quotes src/components/FoundQuote.astro` returned no matches.
 
 ## Interfaces and Dependencies
@@ -194,3 +204,4 @@ No new npm package, browser runtime, content field, database, external service, 
 - 2026-09-08: Created the plan after reviewing Found Quote history and measuring every current quote across archive, detail, Home, and Writing contexts.
 - 2026-09-09: Added the requested three-quote compact/responsive/reading mockup to the existing isolated type-study route.
 - 2026-09-09: Shipped the approved automatic tiers into the shared renderer, refactored typography around shared tokens, added collection-wide browser protections and visual baselines, and completed production QA documentation.
+- 2026-09-09: Recalibrated the responsive boundary to include the approved three-line Home example while retaining the narrow-screen reading treatment.

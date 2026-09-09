@@ -8,8 +8,8 @@ const allQuotes = await getFoundQuotes()
 const characterCount = (text: string) => Array.from(text.replace(/\s+/gu, ' ').trim()).length
 const tierDefinitions: Array<{ tier: FoundQuoteTypographyTier; label: string; summary: string }> = [
   { tier: 'compact', label: 'Compact · Up to 40 characters', summary: 'Large everywhere' },
-  { tier: 'responsive', label: 'Responsive · 41–85 characters', summary: 'Large on desktop; smaller on mobile' },
-  { tier: 'reading', label: 'Reading · Over 85 characters or multiple paragraphs', summary: 'Smaller everywhere' },
+  { tier: 'responsive', label: 'Responsive · 41–100 characters', summary: 'Large on desktop; smaller on mobile' },
+  { tier: 'reading', label: 'Reading · Over 100 characters or multiple paragraphs', summary: 'Smaller everywhere' },
 ]
 const examples = tierDefinitions.map((definition) => {
   const candidates = allQuotes

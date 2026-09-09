@@ -12,7 +12,7 @@ export function foundQuoteTypographyTier(text: string): FoundQuoteTypographyTier
 
   const characterCount = Array.from(text.replace(/\s+/gu, ' ').trim()).length
   if (characterCount <= 40) return 'compact'
-  if (characterCount <= 85) return 'responsive'
+  if (characterCount <= 100) return 'responsive'
   return 'reading'
 }
 

@@ -47,7 +47,7 @@ risks:
 
 follow-up type study (2026-09-08):
 
-- Preserve the existing display scale for short quotations that read as one or two lines at desktop width.
+- Preserve the existing display scale for short quotations that read as an impactful burst of up to three lines at desktop width.
 - Introduce a smaller reading scale for longer quotations so they feel like deliberate excerpts rather than oversized headlines.
 - Review the first four archive entries together; use `great-silence-and-technological-efficiency` as the long-quote exemplar on both the study archive and its permalink.
 - Tighten the reading tier's line height and vertical padding without changing the short-quote display tier.
@@ -56,8 +56,8 @@ follow-up type study (2026-09-08):
 
 approved production rule (2026-09-09):
 
-- Classify typography automatically from normalized Unicode character count and authored paragraph structure: `compact` through 40 characters, `responsive` from 41–85, and `reading` above 85 or whenever the quote contains multiple paragraphs.
+- Classify typography automatically from normalized Unicode character count and authored paragraph structure: `compact` through 40 characters, `responsive` from 41–100, and `reading` above 100 or whenever the quote contains multiple paragraphs.
 - Keep `compact` large at every width. Keep `responsive` large above 760px and switch it to reading type at 760px and below. Use reading type for `reading` at every width.
 - Keep the mobile reading floor at 24px so embedded Found Quotes remain at least 25% larger than Writing body copy.
 - Use build-time classification and CSS only. Do not measure lines in client-side JavaScript, special-case slugs, or require authors to add presentation metadata.
-- Backstop the stable character rule with browser tests that count actual rendered lines across the full collection at 1280px, 390px, and 320px.
+- Backstop the stable character rule with browser tests that allow up to three display lines at 1280px and two at 390px and 320px across the full collection.

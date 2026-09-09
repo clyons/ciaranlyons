@@ -20,11 +20,11 @@ The cross-site rhythm is coherent. The remaining Found Quote typography issue is
 - Archive pages share a dependable pattern of title/lede, one divider, then editorial rows. The mobile versions retain the same hierarchy without horizontal overflow.
 - Links has the right retrieval density: a visible search action, search-plus-button sizing that becomes full width on mobile, and year navigation kept adjacent to the control.
 - The About page’s broader section spacing is justified by its long-form narrative and reads well at both desktop and mobile widths.
-- The approved large Found Quote scale should remain unchanged for quotations that occupy no more than two lines at the reference viewport.
+- The approved large Found Quote scale should remain unchanged for quotations that occupy no more than three lines at the desktop reference viewport.
 
 ## Evidence and limits
 
 - Reviewed production-rendered content for Home, About, Writing, Notes, Projects, and TIL, plus committed desktop/mobile baselines for Home, About, Writing, Notes, Links, Projects, Found Quotes, and a Note detail page.
 - Checked the corresponding layout and responsive CSS, archive templates, merged PR history, ExecPlans, and existing UI assertions. Measured all 28 current quotations at 1280px, 390px, and 320px; actual line boxes confirm the scale-selection gap described above.
-- Rechecked the final archive, Home, WAGMI Writing entry, compact permalink, and reading permalink against committed desktop/mobile baselines. The 28 current quotations classify as 4 compact, 2 responsive, and 22 reading; no display-sized quote exceeds two rendered lines at 1280px, 390px, or 320px.
+- Rechecked the final archive, Home, WAGMI Writing entry, compact permalink, and reading permalink against committed desktop/mobile baselines. The 28 current quotations classify as 4 compact, 4 responsive, and 20 reading; no display-sized quote exceeds three rendered lines at 1280px or two at 390px and 320px.
 - Automated semantics, keyboard, overflow, and contrast checks pass. A manual screen-reader pass remains appropriate as a separate accessibility check.
