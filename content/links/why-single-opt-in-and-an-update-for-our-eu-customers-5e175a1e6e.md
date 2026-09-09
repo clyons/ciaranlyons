@@ -6,6 +6,8 @@ savedAt: "2017-11-07T16:14:36.912Z"
 dateSource: saved
 publishedAt: "2017-10-30T11:27:29.000Z"
 targetUrl: "https://blog.mailchimp.com/why-single-opt-in-and-an-update-for-our-eu-customers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MailChimp Email Marketing BlogMailChimp Email Marketing Blog"
 author: "John"
 feedlyId: "4F1ALvtWHwzGAPEDIpkj66Og5ekrPZRtiJ2D605V9yM=_15f6d0e3701:ef4eaa:7157a206"

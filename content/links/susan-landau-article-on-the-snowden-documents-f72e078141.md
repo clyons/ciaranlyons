@@ -6,6 +6,8 @@ savedAt: "2013-08-23T07:01:16.751Z"
 dateSource: saved
 publishedAt: "2013-08-22T11:54:17.000Z"
 targetUrl: "http://www.schneier.com/blog/archives/2013/08/susan_landau_ar.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "schneier"
 feedlyId: "FcF+jG/fcWtyez+xCh3KiSbsF1qkB3k9yaFAvT1QJWM=_140a5f32767:18fdd55:7ee54d47"

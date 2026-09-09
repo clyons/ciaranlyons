@@ -6,6 +6,8 @@ savedAt: "2014-05-31T10:25:04.657Z"
 dateSource: saved
 publishedAt: "2014-05-29T10:33:01.000Z"
 targetUrl: "http://www.riggare.se/2014/05/29/we-need-a-copernican-revolution/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Sara"
 author: "SaraRiggare"
 feedlyId: "23l7vF4yxRYL4rFjKE9msGWca/MKgEtxLenK305lM4A=_1464791a0b9:9dddad:fc6b336a"

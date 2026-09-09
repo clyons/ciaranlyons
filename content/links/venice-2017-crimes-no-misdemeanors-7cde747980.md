@@ -6,6 +6,8 @@ savedAt: "2017-09-12T15:42:28.617Z"
 dateSource: saved
 publishedAt: "2017-09-12T14:08:00.000Z"
 targetUrl: "http://www.davidbordwell.net/blog/2017/09/12/venice-2017-crimes-no-misdemeanors/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Observations on film art"
 author: "bordwellblog"
 feedlyId: "SL4A72aYMe2Z7nziMK/383C/1GCyqKWm7ugU8g9uSm0=_15e766d23ef:441986:4cab23bc"

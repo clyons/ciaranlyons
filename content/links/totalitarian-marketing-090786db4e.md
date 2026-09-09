@@ -5,7 +5,9 @@ date: 2018-11-13
 savedAt: "2018-11-13T14:26:45.724Z"
 dateSource: saved
 publishedAt: "2018-10-22T07:01:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/blogspot/aDYs/~3/Q5ZJ9MDjXxc/totalitarian-marketing.html"
+targetUrl: "https://adcontrarian.blogspot.com/2018/10/totalitarian-marketing.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Ad Contrarian"
 author: "noreply@blogger.com (BOB HOFFMAN)"
 feedlyId: "STA9kR4YS0c9udlR3MNnn8M/wZHDcQZ/74dybeysgks=_1669a9e7b28:1739ced:e18dda41"

@@ -6,6 +6,8 @@ savedAt: "2018-03-09T09:14:53.502Z"
 dateSource: saved
 publishedAt: "2018-03-09T06:04:27.000Z"
 targetUrl: "https://pxlnv.com/blog/surfing-the-insecure-web/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_1620960932e:4c68290:7c9981b6"

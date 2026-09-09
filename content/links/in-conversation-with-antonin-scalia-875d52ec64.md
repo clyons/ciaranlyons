@@ -6,6 +6,8 @@ savedAt: "2013-10-09T03:36:32.703Z"
 dateSource: saved
 publishedAt: "2013-10-08T19:03:20.000Z"
 targetUrl: "http://nymag.com/news/features/antonin-scalia-2013-10/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_1419975c7fb:1759149:f07a5aec"

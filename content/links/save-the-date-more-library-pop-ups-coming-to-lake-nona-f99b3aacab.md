@@ -6,6 +6,8 @@ savedAt: "2019-12-25T03:11:54.492Z"
 dateSource: saved
 publishedAt: "2019-12-19T14:46:12.000Z"
 targetUrl: "http://www.lakenona.com/save-the-date-more-library-pop-ups-coming-to-lake-nona/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Lake Nona"
 author: "Christine Young"
 feedlyId: "EtfZzl0A5Uwj1Swr+DqwLzqfO+jTg/UElX7v+orkrDY=_16f1f3203a0:4b9232:ad5391a1"

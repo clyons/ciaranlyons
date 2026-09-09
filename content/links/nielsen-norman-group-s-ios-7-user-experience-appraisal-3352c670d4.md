@@ -5,7 +5,9 @@ date: 2013-10-15
 savedAt: "2013-10-15T06:14:24.727Z"
 dateSource: saved
 publishedAt: "2013-10-15T02:36:15.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/BDI_dg7ybWY/nielsen-norman-groups-ios-7-user-experience-appraisal"
+targetUrl: "https://www.subtraction.com/2013/10/15/nielsen-norman-groups-ios-7-user-experience-appraisal/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Subtraction.com"
 feedlyId: "W6x/zjhbqhEccmIKZsU/x3Fadiq+SIpAJ7IXNcnq+9k=_141b9ff2224:403ec:97c74c73"
 tags: ["Saved For Later"]

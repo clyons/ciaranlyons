@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.517Z"
 dateSource: saved
 publishedAt: "2012-04-28T00:19:14.000Z"
-targetUrl: "http://natronbaxter.com/everybodys-doing-the-baxter-shuffle"
+targetUrl: "https://web.archive.org/web/20170207093909/http://natronbaxter.com/everybodys-doing-the-baxter-shuffle"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Natron Baxter Applied Gaming"
 author: "Natron Baxter"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_136f650d3d0:3208f0:9e04b0a9"

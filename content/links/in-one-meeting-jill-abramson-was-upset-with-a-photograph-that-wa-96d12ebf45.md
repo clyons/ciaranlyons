@@ -5,7 +5,9 @@ date: 2014-05-16
 savedAt: "2014-05-16T05:28:32.239Z"
 dateSource: saved
 publishedAt: "2014-05-15T18:02:56.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/KaExuKo2VcM/85834329783"
+targetUrl: "https://blog.timoni.org/post/85834329783/in-one-meeting-jill-abramson-was-upset-with-a"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_146010e14a8:9ddc85:80819d52"
 tags: ["Saved For Later"]

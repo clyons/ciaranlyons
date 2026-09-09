@@ -6,6 +6,8 @@ savedAt: "2014-07-02T00:31:52.850Z"
 dateSource: saved
 publishedAt: "2014-06-27T18:36:32.000Z"
 targetUrl: "http://www.zephoria.org/thoughts/archives/2014/06/27/selling-out.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "danah boyd | apophenia"
 author: "zephoria"
 feedlyId: "smQuvkTAn+VD5ft8Q1fJeA7MfVb5pT/wDf7b37cKDGU=_146dea244f6:cad3d00:138006ea"

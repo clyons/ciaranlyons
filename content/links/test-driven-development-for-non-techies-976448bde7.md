@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.967Z"
 dateSource: saved
 publishedAt: "2011-10-04T07:15:37.000Z"
-targetUrl: "http://www.od-eon.com/blogs/calvin/test-driven-development-non-techies/"
+targetUrl: "https://web.archive.org/web/20111012203730/http://od-eon.com/blogs/calvin/test-driven-development-non-techies/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Calvin Cheng at Odeon"
 author: "Calvin Cheng"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132cdc9a5a8:320b64:9e04b0a9"

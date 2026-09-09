@@ -5,7 +5,9 @@ date: 2015-09-13
 savedAt: "2015-09-13T11:34:24.036Z"
 dateSource: saved
 publishedAt: "2015-08-22T00:00:00.000Z"
-targetUrl: "http://thecoredump.org/2015/08/digital-hygiene-for-online-security-and-safety/"
+targetUrl: "https://web.archive.org/web/20150907054800/http://thecoredump.org:80/2015/08/digital-hygiene-for-online-security-and-safety/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Core Dump"
 author: "Nic Lindh"
 feedlyId: "4sq3zcLqx/IqAi9+1P1Fv4xHlMERr7Jj/BYHmnjfvXI=_14f58299642:15c62e6:1cbd0d70"

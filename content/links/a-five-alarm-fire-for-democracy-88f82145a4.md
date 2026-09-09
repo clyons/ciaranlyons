@@ -6,6 +6,8 @@ savedAt: "2024-07-21T17:36:49.825Z"
 dateSource: saved
 publishedAt: "2024-07-02T10:30:51.000Z"
 targetUrl: "https://popular.info/p/a-five-alarm-fire-for-democracy"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Popular Information"
 author: "Judd Legum"
 feedlyId: "dFqchjIq4ZHUxT6KSkENWR+LgJ1GS54dIURCfQmpmE4=_19073049a0b:155a328:9e1949c6"

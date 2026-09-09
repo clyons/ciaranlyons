@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.774Z"
 dateSource: saved
 publishedAt: "2013-02-07T16:00:40.000Z"
-targetUrl: "http://feedproxy.google.com/~r/Quicksprout/~3/aOio-pIH_us/"
+targetUrl: "https://www.quicksprout.com/2013/02/07/how-i-grew-quick-sprout-from-121-311-to-244-923-readers-in-30-days/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Quick Sprout"
 author: "Neil Patel"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13cb5632840:3207e9:9e04b0a9"

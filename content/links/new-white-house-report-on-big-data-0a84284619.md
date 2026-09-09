@@ -6,6 +6,8 @@ savedAt: "2014-05-20T10:13:50.562Z"
 dateSource: saved
 publishedAt: "2014-05-01T17:48:12.000Z"
 targetUrl: "http://www.zephoria.org/thoughts/archives/2014/05/01/white-house-big-data.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "danah boyd | apophenia"
 author: "zephoria"
 feedlyId: "smQuvkTAn+VD5ft8Q1fJeA7MfVb5pT/wDf7b37cKDGU=_145b8ecb364:4080a5c:fc6b336a"

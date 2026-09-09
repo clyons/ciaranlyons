@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:21.985Z"
 dateSource: saved
 publishedAt: "2011-10-07T15:17:53.000Z"
 targetUrl: "http://feedproxy.google.com/~r/MoreintelligentlifeTotal/~3/hhUCTwKmmwI/luck-irish"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "More Intelligent Life"
 author: "Roger Boylan"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132def640e8:320b51:9e04b0a9"

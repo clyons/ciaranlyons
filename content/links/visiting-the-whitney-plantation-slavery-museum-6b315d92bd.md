@@ -6,6 +6,8 @@ savedAt: "2018-11-16T12:44:06.280Z"
 dateSource: saved
 publishedAt: "2018-11-16T05:18:07.000Z"
 targetUrl: "https://a.wholelottanothing.org/2018/11/15/visiting-the-whitney-plantation-slavery-museum/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_1671af49c7c:5c3154:f62093d7"

@@ -6,6 +6,8 @@ savedAt: "2016-12-16T11:04:34.780Z"
 dateSource: saved
 publishedAt: "2016-12-12T12:51:52.000Z"
 targetUrl: "https://www.schneier.com/blog/archives/2016/12/ransomware_meet.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "Bruce Schneier"
 feedlyId: "FcF+jG/fcWtyez+xCh3KiSbsF1qkB3k9yaFAvT1QJWM=_158f31d6c8b:387ea7b:36ad7c89"

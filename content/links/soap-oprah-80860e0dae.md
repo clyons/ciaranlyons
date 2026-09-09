@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.414Z"
 dateSource: saved
 publishedAt: "2012-03-27T07:34:22.000Z"
 targetUrl: "http://davetrott.campaignlive.co.uk/2012/03/27/soap-oprah/"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "davetrott"
 author: "Dave Trott"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1365313b430:320957:9e04b0a9"

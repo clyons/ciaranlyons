@@ -6,6 +6,8 @@ savedAt: "2026-04-13T01:37:44.698Z"
 dateSource: saved
 publishedAt: "2026-04-11T02:19:26.000Z"
 targetUrl: "https://www.bernardleong.com/when-code-gets-cheap-judgment-gets-expensive-the-story-of-building-arrakis-engine/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bernard Leong | AI Strategy &amp; Executive Education"
 author: "Bernard Leong"
 feedlyId: "q/KplyaKps+d9MLJXd2qMMsFa1jjTIIcdbQ+GRCzUsk=_19d7a8f5d76:284301c:21a3885c"

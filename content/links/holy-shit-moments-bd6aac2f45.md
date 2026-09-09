@@ -6,6 +6,8 @@ savedAt: "2015-12-01T11:43:43.401Z"
 dateSource: saved
 publishedAt: "2015-11-02T21:11:37.000Z"
 targetUrl: "http://randsinrepose.com/archives/holy-shit-moments/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_150ca17b427:66749fe:1ba91209"

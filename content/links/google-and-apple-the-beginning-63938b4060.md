@@ -6,6 +6,8 @@ savedAt: "2024-04-25T21:22:34.825Z"
 dateSource: saved
 publishedAt: "2023-11-28T11:50:57.000Z"
 targetUrl: "https://www.asymco.com/2023/11/28/google-and-apple-the-beginning/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_18ece01d68f:1133292:e56ebecb"

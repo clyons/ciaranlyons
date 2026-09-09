@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.212Z"
 dateSource: saved
 publishedAt: "2011-12-23T04:34:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/TheSingaporeIphoneGuide/~3/P9SdUYYp1mw/trafficlah-alerts-you-to-traffic-jams.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "iMerlion: The Singapore iPhone/iPad Guide"
 author: "noreply@blogger.com (Jimmy Yap)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13469326ec0:320a2c:9e04b0a9"

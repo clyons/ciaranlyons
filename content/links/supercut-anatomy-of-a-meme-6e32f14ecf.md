@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.083Z"
 dateSource: saved
 publishedAt: "2011-11-04T07:57:09.000Z"
 targetUrl: "http://waxy.org/2011/11/supercut_anatomy_of_a_meme/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1336d94d008:320aee:9e04b0a9"
 tags: ["Saved For Later"]

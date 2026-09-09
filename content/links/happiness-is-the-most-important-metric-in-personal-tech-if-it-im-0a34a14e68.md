@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.330Z"
 dateSource: saved
 publishedAt: "2012-02-02T21:24:00.000Z"
 targetUrl: "http://bobulate.com/post/16935764396"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bobulate"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1353ff3d980:3209ab:9e04b0a9"
 tags: ["Saved For Later"]

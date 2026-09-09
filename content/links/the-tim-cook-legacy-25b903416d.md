@@ -6,6 +6,8 @@ savedAt: "2016-02-25T02:19:18.159Z"
 dateSource: saved
 publishedAt: "2016-02-23T17:46:32.000Z"
 targetUrl: "https://www.aboveavalon.com/notes/2016/2/23/the-tim-cook-legacy"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Above Avalon"
 author: "Neil Cybart"
 feedlyId: "vUHD8hsYt2NaI6s7FoNDO2pIRkBC0LjYbJKGvKFMs7s=_1530f5482a7:a9cc390:ae8aca10"

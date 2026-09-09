@@ -6,6 +6,8 @@ savedAt: "2020-09-13T18:35:23.904Z"
 dateSource: saved
 publishedAt: "2020-09-11T16:13:22.000Z"
 targetUrl: "https://pluralistic.net/2020/09/11/protocols-of-qanon/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pluralistic: Daily links from Cory Doctorow"
 author: "Cory Doctorow"
 feedlyId: "g6Ngl0v6+a6lryp1OFsHIzI9rOhBxlGuxU8rVAC6Pr0=_1747df77eda:5ab0f2:70edfa5f"

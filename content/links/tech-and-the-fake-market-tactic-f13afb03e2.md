@@ -6,6 +6,8 @@ savedAt: "2017-03-30T06:55:55.891Z"
 dateSource: saved
 publishedAt: "2017-03-01T17:33:44.000Z"
 targetUrl: "http://feeds.dashes.com/~r/AnilDash/~3/E6kMfJCfOq0/tech-and-the-fake-market-tactic.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Anil Dash"
 author: "Anil"
 feedlyId: "VEZolJADVxKKVdOBghxvNgLuJ8mgZ9LRDwtSwBj3EUI=_15b17f98797:aa8c2:5611920a"

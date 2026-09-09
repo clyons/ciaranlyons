@@ -6,6 +6,8 @@ savedAt: "2014-06-02T11:29:24.267Z"
 dateSource: saved
 publishedAt: "2014-05-21T20:36:01.000Z"
 targetUrl: "http://randsinrepose.com/archives/i-think-in-outlines/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_1462081d94c:6f8814c:fc6b336a"

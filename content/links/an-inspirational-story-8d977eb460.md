@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.484Z"
 dateSource: saved
 publishedAt: "2012-04-20T05:19:18.000Z"
 targetUrl: "http://theescapepod.wordpress.com/2012/04/20/an-inspirational-story/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ESCAPOLOGY (the escape pod's blog)"
 author: "theescapepod"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_136ce30abf0:320911:9e04b0a9"

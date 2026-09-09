@@ -6,6 +6,8 @@ savedAt: "2018-12-31T14:56:14.977Z"
 dateSource: saved
 publishedAt: "2018-12-01T15:00:11.000Z"
 targetUrl: "https://www.nonahoodnews.com/city-orlando-orlando-police-department-begin-second-phase-pilot-test-facial-recognition-technology/"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Nonahood News"
 author: "Michael Perez"
 feedlyId: "4kJntBcpQJ1YDupQ+bhPiOFQdzo6jhUgZ/lvLdvSbkU=_1676a6f8d1f:1d2911c:f7a2ccea"

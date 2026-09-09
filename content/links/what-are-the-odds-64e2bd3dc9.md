@@ -6,6 +6,8 @@ savedAt: "2017-09-11T04:27:22.609Z"
 dateSource: saved
 publishedAt: "2017-08-21T08:36:15.000Z"
 targetUrl: "http://davetrott.co.uk/2017/08/what-are-the-odds/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dave Trott's Blog"
 author: "trottdave"
 feedlyId: "AiGE+5K3cCPM2aeJjk9Ma0GxixEx+sqAPIxVYlEqNXU=_15e040a1ff0:24de53f:9cc60c90"

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.539Z"
 dateSource: saved
 publishedAt: "2012-05-18T18:29:44.000Z"
 targetUrl: "http://flyingmeat.com/voodoopad/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_137613665c0:3208da:9e04b0a9"

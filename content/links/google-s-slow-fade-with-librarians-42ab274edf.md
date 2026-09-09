@@ -6,6 +6,8 @@ savedAt: "2015-02-04T22:48:04.368Z"
 dateSource: saved
 publishedAt: "2015-02-02T16:34:42.000Z"
 targetUrl: "https://medium.com/message/googles-slow-fade-with-librarians-fddda838a0b7"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Message — Medium"
 author: "Jessamyn West"
 feedlyId: "joO5RD4GQd+uVvUXO0GCkohNvbxE4UL+d+SLXAEAlDs=_14b4b24e972:1ada38:df62fe0"

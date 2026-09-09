@@ -6,6 +6,8 @@ savedAt: "2025-09-22T15:37:04.179Z"
 dateSource: saved
 publishedAt: "2025-09-20T18:50:49.000Z"
 targetUrl: "https://pxlnv.com/linklog/meta-steak-sauce-demo/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_199687aa97f:38e40b2:d0c06f3b"

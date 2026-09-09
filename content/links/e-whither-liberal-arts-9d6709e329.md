@@ -6,6 +6,8 @@ savedAt: "2013-10-24T01:43:06.481Z"
 dateSource: saved
 publishedAt: "2013-10-23T16:47:36.000Z"
 targetUrl: "http://stratechery.com/2013/whither-liberal-arts/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: stratēchery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_141e63f881a:1ad63e2:b98f0267"

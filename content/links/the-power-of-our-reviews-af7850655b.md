@@ -6,6 +6,8 @@ savedAt: "2014-03-17T08:30:13.810Z"
 dateSource: saved
 publishedAt: "2016-03-23T14:03:41.000Z"
 targetUrl: "https://yoast.com/power-reviews/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast • The Art &amp; Science of Website Optimization"
 author: "Michiel Heijmans"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_144c3ddbb88:287da:36cbe746"

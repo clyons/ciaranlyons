@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.381Z"
 dateSource: saved
 publishedAt: "2012-03-04T07:00:00.000Z"
 targetUrl: "http://thecoredump.org/2012/03/a-good-kind-of-hungry/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Core Dump"
 author: "Nic Lindh"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_135dc81f980:320978:9e04b0a9"

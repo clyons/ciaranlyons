@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.248Z"
 dateSource: saved
 publishedAt: "2012-01-03T23:25:06.000Z"
 targetUrl: "http://ourlittlegreendot.com/post/15262823374"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Little Green Dot"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134a5e3f050:3209fd:9e04b0a9"
 tags: ["Saved For Later"]

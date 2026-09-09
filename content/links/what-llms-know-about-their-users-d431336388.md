@@ -6,6 +6,8 @@ savedAt: "2025-07-05T00:27:22.785Z"
 dateSource: saved
 publishedAt: "2025-06-25T11:04:09.000Z"
 targetUrl: "https://www.schneier.com/blog/archives/2025/06/what-llms-know-about-their-users.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "Bruce Schneier"
 feedlyId: "FcF+jG/fcWtyez+xCh3KiSbsF1qkB3k9yaFAvT1QJWM=_197a6c3bb3c:9f9305c:df0c225f"

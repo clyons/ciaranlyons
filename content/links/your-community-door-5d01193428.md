@@ -6,6 +6,8 @@ savedAt: "2014-10-24T05:23:02.051Z"
 dateSource: saved
 publishedAt: "2014-10-20T19:32:00.000Z"
 targetUrl: "http://blog.codinghorror.com/your-community-door/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Coding Horror"
 author: "Jeff Atwood"
 feedlyId: "qiJUnj53SeRCoyGwVRJe1/1c2WWZdIcRvMuhFVwVflY=_1492f134b1d:21bc2a:855d31b2"

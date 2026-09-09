@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.616Z"
 dateSource: saved
 publishedAt: "2012-07-11T14:00:59.000Z"
 targetUrl: "http://feedproxy.google.com/~r/e27/Kabk/~3/84wg5oBovsw/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "e27"
 author: "Jacky Yap"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1387657c178:32088d:9e04b0a9"

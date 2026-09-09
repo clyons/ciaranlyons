@@ -6,6 +6,8 @@ savedAt: "2016-11-18T06:52:44.125Z"
 dateSource: saved
 publishedAt: "2016-11-17T16:31:52.000Z"
 targetUrl: "http://qz.com/839982/social-media-loves-echo-chambers-but-the-human-brain-helps-create-them/"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_15873219952:69a138:e4599faf"

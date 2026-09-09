@@ -6,6 +6,8 @@ savedAt: "2017-09-28T01:28:16.713Z"
 dateSource: saved
 publishedAt: "2017-09-27T16:00:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/blogspot/MKuf/~3/3uoSC-dIXbU/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Official Google Blog"
 author: "Zeina OweisProduct Manager, G Suite"
 feedlyId: "SzCknK5yCfKi0NrRCLzY3clkPWypMPSgdsVAzzPiIEk=_15ec41a060f:bc40f7:9dbe7464"

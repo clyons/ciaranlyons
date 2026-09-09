@@ -6,6 +6,8 @@ savedAt: "2014-07-23T12:06:42.099Z"
 dateSource: saved
 publishedAt: "2014-07-17T00:00:00.000Z"
 targetUrl: "http://cognition.happycog.com/article/grunt-plugins-reviewed"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Cognition by Happy Cog"
 author: "Cat Farman"
 feedlyId: "xCzq08rQ2tM2DZYULbAHAp005yitTvFWYAN+i8M4AIA=_14745119dd9:1f66cf7:21598536"

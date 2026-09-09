@@ -6,6 +6,8 @@ savedAt: "2025-07-05T16:47:05.930Z"
 dateSource: saved
 publishedAt: "2025-06-30T08:01:24.000Z"
 targetUrl: "https://davetrott.co.uk/2025/06/fish-where-everyone-isnt/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dave Trott's Blog"
 author: "Dave Trott"
 feedlyId: "AiGE+5K3cCPM2aeJjk9Ma0GxixEx+sqAPIxVYlEqNXU=_197bfdce3ea:dc27e94:cfb2748"

@@ -5,7 +5,9 @@ date: 2016-10-05
 savedAt: "2016-10-05T06:50:25.049Z"
 dateSource: saved
 publishedAt: "2016-10-05T01:43:10.000Z"
-targetUrl: "http://clivethompson.net/2016/10/04/the-odd-pleasures-of-reading-proust-on-a-mobile-phone/"
+targetUrl: "https://web.archive.org/web/20161008160927/http://clivethompson.net:80/2016/10/04/the-odd-pleasures-of-reading-proust-on-a-mobile-phone/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Clive Thompson"
 author: "Clive"
 feedlyId: "P0cVNfUmurmd49lPclNmkckDUasQMj8Iy8nJ8bDvmiM=_157928fab64:11487a:297c8405"

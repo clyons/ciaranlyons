@@ -6,6 +6,8 @@ savedAt: "2014-11-07T17:13:40.278Z"
 dateSource: saved
 publishedAt: "2017-04-13T11:42:22.000Z"
 targetUrl: "https://yoast.com/google-analytics-dashboards/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast • SEO for everyone"
 author: "Annelieke van den Berg"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_14957a859b3:76edc31:d38cab4a"

@@ -6,6 +6,8 @@ savedAt: "2021-07-27T03:50:08.428Z"
 dateSource: saved
 publishedAt: "2021-07-18T16:06:16.000Z"
 targetUrl: "https://randsinrepose.com/archives/ask-for-help/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_17aba5eb074:4827d00:16e10088"

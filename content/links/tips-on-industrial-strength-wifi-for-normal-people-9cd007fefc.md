@@ -6,6 +6,8 @@ savedAt: "2019-04-24T14:41:39.465Z"
 dateSource: saved
 publishedAt: "2019-04-19T19:50:06.000Z"
 targetUrl: "https://a.wholelottanothing.org/2019/04/19/tips-on-industrial-strength-wifi-for-normal-people/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_16a3732eb0c:12c5f0d:2b35d9c8"

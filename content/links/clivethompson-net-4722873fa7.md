@@ -5,7 +5,9 @@ date: 2017-07-20
 savedAt: "2017-07-20T03:14:03.520Z"
 dateSource: saved
 publishedAt: "2017-07-19T13:56:22.000Z"
-targetUrl: "http://clivethompson.net/2017/07/19/1106/"
+targetUrl: "https://web.archive.org/web/20170801231748/http://clivethompson.net:80/2017/07/19/1106/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Clive Thompson"
 author: "Clive"
 feedlyId: "P0cVNfUmurmd49lPclNmkckDUasQMj8Iy8nJ8bDvmiM=_15d5b603455:7b759:aca783b8"

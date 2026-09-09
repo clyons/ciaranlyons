@@ -6,6 +6,8 @@ savedAt: "2014-07-15T00:53:57.418Z"
 dateSource: saved
 publishedAt: "2014-07-14T10:41:41.000Z"
 targetUrl: "http://www.asymco.com/2014/07/14/innovation-and-the-future-of-mobile-with-horace-dediu/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "asymco-admin"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_147348f176e:2ec273f:2eba8d18"

@@ -6,6 +6,8 @@ savedAt: "2023-03-14T18:30:04.331Z"
 dateSource: saved
 publishedAt: "2023-03-14T17:40:12.000Z"
 targetUrl: "https://ez.substack.com/p/bank-men-freed"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Ed Zitron's Where's Your Ed At"
 author: "Ed Z"
 feedlyId: "SyR17wWqhy97EmFWhi4pPCZQupFNJwf6xly4PL1XXAs=_186e14f3f38:4928cd:74502776"

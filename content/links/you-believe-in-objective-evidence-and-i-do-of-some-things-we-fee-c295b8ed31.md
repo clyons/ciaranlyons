@@ -5,7 +5,9 @@ date: 2014-02-10
 savedAt: "2014-02-10T11:21:35.894Z"
 dateSource: saved
 publishedAt: "2014-02-04T06:06:38.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/GpWG6BSkXM4/75565888027"
+targetUrl: "https://blog.timoni.org/post/75565888027/you-believe-in-objective-evidence-and-i-do-of"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_143fc52c27a:46e814c:7c33a37b"
 tags: ["Saved For Later"]

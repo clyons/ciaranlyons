@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.956Z"
 dateSource: saved
 publishedAt: "2011-10-02T23:09:00.000Z"
-targetUrl: "http://blog.flocations.com/wit-web-in-travel-thack-wit"
+targetUrl: "https://web.archive.org/web/20111016043618/http://blog.flocations.com:80/wit-web-in-travel-thack-wit"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Flocations"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132c6e5c6e0:320b6f:9e04b0a9"
 tags: ["Saved For Later"]

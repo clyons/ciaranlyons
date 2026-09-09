@@ -6,6 +6,8 @@ savedAt: "2013-12-01T15:04:21.928Z"
 dateSource: saved
 publishedAt: "2013-11-15T17:22:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/blogspot/tRaA/~3/Qk87yX14lw4/sharpen-your-analysis-skills-over_15.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Google Analytics Blog"
 author: "Adam Singer"
 feedlyId: "2VEONAXVz2EUH/mXqwd3jCteDKH3I7HYh0KuiRqvrs4=_1425cc959be:f046c1:c8dde3fa"

@@ -6,6 +6,8 @@ savedAt: "2014-03-17T01:37:22.207Z"
 dateSource: saved
 publishedAt: "2017-03-28T12:00:55.000Z"
 targetUrl: "https://yoast.com/opinion-on-sliders/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast • SEO for everyone"
 author: "Michiel Heijmans"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_1443351631c:dd3ac3:72c69080"

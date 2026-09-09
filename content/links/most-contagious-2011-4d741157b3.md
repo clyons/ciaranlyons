@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.214Z"
 dateSource: saved
 publishedAt: "2011-12-15T10:37:58.000Z"
 targetUrl: "http://wearesocial.net/blog/2011/12/contagious-2011/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "We Are Social"
 author: "Michael Batistich"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134414cc770:320a29:9e04b0a9"

@@ -6,6 +6,8 @@ savedAt: "2015-12-27T05:43:39.264Z"
 dateSource: saved
 publishedAt: "2015-12-27T02:36:46.000Z"
 targetUrl: "https://www.macstories.net/roundups/my-must-have-ios-apps-2015-edition/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_151e1622c5e:3ee6e7d:3534b282"
 tags: ["Saved For Later"]

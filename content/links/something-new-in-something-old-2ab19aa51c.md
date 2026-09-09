@@ -6,6 +6,8 @@ savedAt: "2022-01-02T00:58:25.008Z"
 dateSource: saved
 publishedAt: "2022-01-01T05:12:15.000Z"
 targetUrl: "https://pxlnv.com/blog/something-new-in-something-old/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_17e141016a8:4e9ea94:241dd190"

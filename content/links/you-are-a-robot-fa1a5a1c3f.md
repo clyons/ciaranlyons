@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.951Z"
 dateSource: saved
 publishedAt: "2011-09-26T10:17:38.000Z"
-targetUrl: "http://feedproxy.google.com/~r/kklifestream/~3/vA4Mov2mNOM/you_are_a_robot.php"
+targetUrl: "https://kk.org/thetechnium/you-are-a-robot/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "KK Lifestream"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132a53d69d0:320b74:9e04b0a9"
 tags: ["Saved For Later"]

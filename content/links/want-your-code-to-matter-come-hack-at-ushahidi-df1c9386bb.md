@@ -5,7 +5,9 @@ date: 2013-12-09
 savedAt: "2013-12-09T00:53:35.028Z"
 dateSource: saved
 publishedAt: "2013-12-04T13:43:27.000Z"
-targetUrl: "http://blog.ushahidi.com/2013/12/04/job-senior-developer/"
+targetUrl: "https://web.archive.org/web/20131205030459/http://blog.ushahidi.com/2013/12/04/job-senior-developer/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog | Ushahidi"
 author: "Chris R. Albon"
 feedlyId: "ne/46YKNA7MSBPTQ+6xKV+clksFnvQtmVza4MVeHCpU=_142bde5fd04:d75912f:d5f09881"

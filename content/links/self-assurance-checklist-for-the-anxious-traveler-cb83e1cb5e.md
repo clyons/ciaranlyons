@@ -6,6 +6,8 @@ savedAt: "2014-07-08T11:34:37.128Z"
 dateSource: saved
 publishedAt: "2014-06-26T09:50:00.000Z"
 targetUrl: "http://feeds.feedblitz.com/~/67445486/0/sethsblog~Self-assurance-checklist-for-the-anxious-traveler.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Seth Godin's Blog on marketing, tribes and respect"
 author: "Seth Godin"
 feedlyId: "6GV/GbWOJ6VnCKxInEF8KnvUbqZzRLHHRNcmgK9rnUk=_146d7a691fc:a8881b6:138006ea"

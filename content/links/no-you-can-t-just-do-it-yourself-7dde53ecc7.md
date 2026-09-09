@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.291Z"
 dateSource: saved
 publishedAt: "2012-01-17T18:12:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/lessdoing/~3/K0X5wx1Nk9c/no-you-cant-just-do-it-yourself"
+targetUrl: "https://web.archive.org/web/20130926113433/http://www.lessdoing.com:80/2012/01/17/no-you-cant-just-do-it-yourself/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Art of Less Doing"
 author: "ari@lessdoing.com (Ari Meisel)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134ecde5180:3209d2:9e04b0a9"

@@ -6,6 +6,8 @@ savedAt: "2015-10-12T15:01:54.842Z"
 dateSource: saved
 publishedAt: "2015-10-12T13:51:29.000Z"
 targetUrl: "http://kensegall.com/2015/10/new-apple-watch-ads-a-midcourse-correction/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Observatory » Blog"
 author: "ken segall"
 feedlyId: "UUBOkumT0t8g4P2hT8jFeJpzL1fT/INbjMwVjJ4GA4Y=_1505c642e2c:a6deab1:b18dfa55"

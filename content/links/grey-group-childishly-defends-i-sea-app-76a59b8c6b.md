@@ -6,6 +6,8 @@ savedAt: "2016-06-29T00:26:55.686Z"
 dateSource: saved
 publishedAt: "2016-06-25T01:30:51.000Z"
 targetUrl: "http://arstechnica.com/business/2016/06/ad-firm-it-doesnt-matter-that-migrant-app-doesnt-work-its-the-idea-that-counts/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_155853e414c:23a73cf:85ca5f35"

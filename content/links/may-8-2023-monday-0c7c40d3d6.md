@@ -6,6 +6,8 @@ savedAt: "2023-05-10T20:46:31.922Z"
 dateSource: saved
 publishedAt: "2023-05-09T06:35:23.000Z"
 targetUrl: "https://heathercoxrichardson.substack.com/p/may-8-2023-monday"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Letters from an American"
 author: "Heather Cox Richardson"
 feedlyId: "9G0x3dHpxd8YmcMQagHXiUzltl3HBIRW9xbQLSJ3bsM=_187ff4e54cd:4b5db7a:da597fa8"

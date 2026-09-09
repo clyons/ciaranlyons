@@ -6,6 +6,8 @@ savedAt: "2023-05-12T19:50:55.732Z"
 dateSource: saved
 publishedAt: "2023-05-11T17:24:33.000Z"
 targetUrl: "https://waxy.org/2023/05/the-unhinged-miniature-world-of-bobby-fingers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_1880be17643:5ebc8cb:c51640ac"

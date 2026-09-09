@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.479Z"
 dateSource: saved
 publishedAt: "2012-04-19T14:00:00.000Z"
 targetUrl: "http://blog.massivehealth.com/post/21377192742"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Massive Health"
 author: "azaaza"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_136cae70700:320916:9e04b0a9"

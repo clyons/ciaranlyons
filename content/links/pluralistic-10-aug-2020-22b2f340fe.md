@@ -6,6 +6,8 @@ savedAt: "2020-08-15T00:37:26.128Z"
 dateSource: saved
 publishedAt: "2020-08-10T14:34:39.000Z"
 targetUrl: "https://pluralistic.net/2020/08/10/folksy-monopolists/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pluralistic: Daily links from Cory Doctorow"
 author: "Cory Doctorow"
 feedlyId: "g6Ngl0v6+a6lryp1OFsHIzI9rOhBxlGuxU8rVAC6Pr0=_173d8d6072e:44bc09:e9c9ab36"

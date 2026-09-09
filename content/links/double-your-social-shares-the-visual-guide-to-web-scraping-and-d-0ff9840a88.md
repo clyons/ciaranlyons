@@ -6,6 +6,8 @@ savedAt: "2014-05-05T12:40:57.943Z"
 dateSource: saved
 publishedAt: "2014-05-01T03:37:11.000Z"
 targetUrl: "http://okdork.com/2014/04/30/the-step-by-step-guide-to-10x-growth-for-any-blog/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "OkDork.com"
 author: "Noah Kagan"
 feedlyId: "SUgi+2Dm9c3jiifHY0m19EDS0Ghy9iA4v9Q/gS4USao=_145b5f1af4a:33b622c:85969355"

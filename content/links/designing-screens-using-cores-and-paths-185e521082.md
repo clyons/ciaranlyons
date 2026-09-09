@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.682Z"
 dateSource: saved
 publishedAt: "2012-08-21T05:32:18.000Z"
 targetUrl: "http://www.boxesandarrows.com/view/designing-screens"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Boxes and Arrows"
 author: "Jim Kalbach, Karen Lindemann"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13947aac6d0:32084b:9e04b0a9"

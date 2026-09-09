@@ -6,6 +6,8 @@ savedAt: "2015-06-04T08:46:27.942Z"
 dateSource: saved
 publishedAt: "2015-06-04T01:51:26.000Z"
 targetUrl: "http://lowercasecapital.com/2015/06/03/what-twitter-can-be-2/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_14dbc4835b3:1dfb057:6956f5d6"

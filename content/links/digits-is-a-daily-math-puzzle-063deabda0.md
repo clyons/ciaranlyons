@@ -6,6 +6,8 @@ savedAt: "2023-04-15T03:39:01.437Z"
 dateSource: saved
 publishedAt: "2023-04-14T04:11:03.000Z"
 targetUrl: "https://pxlnv.com/linklog/nyt-digits/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_1877e02b34f:a4dc49f:3c16e4a2"

@@ -6,6 +6,8 @@ savedAt: "2015-09-28T19:20:35.562Z"
 dateSource: saved
 publishedAt: "2015-09-27T13:51:36.000Z"
 targetUrl: "http://whiteafrican.com/2015/09/27/iko-sawa-iko-poa-the-kibo-150cc/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "White African"
 author: "hash"
 feedlyId: "ab1jICibR+7r6kBsURYHgGKHF2VfSG8ZMaUtd4UJw64=_1500f77e6af:1a928ebd:98c27739"

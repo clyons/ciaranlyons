@@ -5,7 +5,9 @@ date: 2014-01-15
 savedAt: "2014-01-15T23:40:27.586Z"
 dateSource: saved
 publishedAt: "2014-01-15T15:10:51.000Z"
-targetUrl: "http://feedproxy.google.com/~r/InsideFacebook/~3/kpVB1WgxbY4/"
+targetUrl: "http://www.insidefacebook.com/2014/01/15/want-a-bunch-of-cheap-facebook-fans-dont-make-this-mistake/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Inside Facebook"
 author: "Alex Houg"
 feedlyId: "lEVTgbYhl8ate7dz07ngkzcJYlu2THIQfxrelib55aA=_14396749fa2:df9624:9ed1a26f"

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.440Z"
 dateSource: saved
 publishedAt: "2012-03-22T15:45:00.000Z"
 targetUrl: "http://cognition.happycog.com/article/the-tech-behind-site-week"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Cognition by Happy Cog"
 author: "Ryan Irelan"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1363b151860:32093d:9e04b0a9"

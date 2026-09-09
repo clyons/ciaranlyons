@@ -6,6 +6,8 @@ savedAt: "2013-09-18T00:56:05.899Z"
 dateSource: saved
 publishedAt: "2013-08-20T16:49:27.000Z"
 targetUrl: "http://practicaltypography.com/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_1409c853e0b:3cfe58e:87abc148"
 tags: ["Saved For Later"]

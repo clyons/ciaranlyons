@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.955Z"
 dateSource: saved
 publishedAt: "2011-09-30T06:24:48.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/t9slnNdHnbc/10840365331"
+targetUrl: "https://blog.timoni.org/post/10840365331/you-can-always-feel-when-productmarket-fit-isnt"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132b901af80:320b70:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2014-05-20T10:15:44.706Z"
 dateSource: saved
 publishedAt: "2014-05-04T16:27:24.000Z"
 targetUrl: "http://randsinrepose.com/archives/very-important-strangers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_145c81181f0:3504761:85969355"

@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.264Z"
 dateSource: saved
 publishedAt: "2012-01-06T08:07:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/Ks-6_Vxu2yM/3073-the-documentation-dilemma"
+targetUrl: "https://signalvnoise.com/posts/3073-the-documentation-dilemma"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal vs. Noise"
 author: "Ryan"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134b20e78a0:3209ed:9e04b0a9"

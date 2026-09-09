@@ -5,7 +5,9 @@ date: 2014-08-02
 savedAt: "2014-08-02T17:51:01.146Z"
 dateSource: saved
 publishedAt: "2014-07-30T01:35:11.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/P9P9aRNNbss/93263516143"
+targetUrl: "https://blog.timoni.org/post/93263516143/when-people-perceive-someone-as-low-in-competence"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_14784ea099b:b8d9:19fd62d"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.826Z"
 dateSource: saved
 publishedAt: "2013-04-09T14:58:45.000Z"
 targetUrl: "http://feedproxy.google.com/~r/IgnoreTheCode/~3/VIrG1-pb1WM/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ignorethecode.net"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13def4e6488:3207b4:9e04b0a9"
 tags: ["Saved For Later"]

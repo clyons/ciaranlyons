@@ -6,6 +6,8 @@ savedAt: "2019-12-10T13:24:50.671Z"
 dateSource: saved
 publishedAt: "2019-12-10T06:35:40.000Z"
 targetUrl: "https://pxlnv.com/linklog/carr-page-brin/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_16eee85b444:17baae:49b12733"

@@ -6,6 +6,8 @@ savedAt: "2013-08-29T07:13:33.820Z"
 dateSource: saved
 publishedAt: "2013-08-28T18:33:14.000Z"
 targetUrl: "http://communities-dominate.blogs.com/brands/2013/08/why.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Communities Dominate Brands"
 author: "Tomi T Ahonen"
 feedlyId: "HPotzTVYhXNzCSu3gQpFqbXTeYuvmgAkokM4D88JknI=_140c63b64bf:54ad56b:7933f5a5"

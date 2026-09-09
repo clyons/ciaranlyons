@@ -5,7 +5,9 @@ date: 2016-05-05
 savedAt: "2016-05-05T17:22:14.176Z"
 dateSource: saved
 publishedAt: "2016-05-05T14:20:45.000Z"
-targetUrl: "http://clivethompson.net/2016/05/05/how-to-discover-a-new-type-of-cloud/"
+targetUrl: "https://web.archive.org/web/20160505182312/http://clivethompson.net/2016/05/05/how-to-discover-a-new-type-of-cloud/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Clive Thompson"
 author: "Clive"
 feedlyId: "P0cVNfUmurmd49lPclNmkckDUasQMj8Iy8nJ8bDvmiM=_15481500f7c:c2869e:80ff33e3"

@@ -5,7 +5,9 @@ date: 2014-09-13
 savedAt: "2014-09-13T11:28:49.226Z"
 dateSource: saved
 publishedAt: "2014-08-27T12:30:36.000Z"
-targetUrl: "http://feedproxy.google.com/~r/bufferapp/~3/W0_7QcfD7cY/authenticity-on-social-media"
+targetUrl: "https://buffer.com/resources/authenticity-on-social-media/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Social"
 author: "Kevan Lee"
 feedlyId: "nw6t1kD4z8/zGdaRug06lzT6Y3MpeXIF8sOX4qBTTvs=_148177f2ada:73473f:feb3a37e"

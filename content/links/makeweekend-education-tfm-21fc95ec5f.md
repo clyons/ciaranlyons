@@ -5,7 +5,9 @@ date: 2013-10-07
 savedAt: "2013-10-07T04:38:10.309Z"
 dateSource: saved
 publishedAt: "2013-09-18T10:54:25.000Z"
-targetUrl: "http://makeweekend.com/makeweekend-education-tfm/"
+targetUrl: "https://web.archive.org/web/20220630160036/https://www.makeweekend.com/makeweekend-education-tfm/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MakeweekendMakeweekend"
 author: "Soo Theng"
 feedlyId: "qGZE+mRYFWgsgVfi09ryUZq8E0aiGtWDsWXOtVQe8b0=_14130f803b2:88df5f:62368a18"

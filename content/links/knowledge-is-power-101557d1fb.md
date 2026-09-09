@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.017Z"
 dateSource: saved
 publishedAt: "2011-10-13T15:44:00.000Z"
 targetUrl: "http://cognition.happycog.com/article/knowledge-is-power"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Cognition by Happy Cog"
 author: "Mark Huot"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132fdf45200:320b31:9e04b0a9"

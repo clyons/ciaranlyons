@@ -6,6 +6,8 @@ savedAt: "2014-02-19T04:54:44.231Z"
 dateSource: saved
 publishedAt: "2014-02-18T23:58:02.000Z"
 targetUrl: "http://taint.org/2014/02/18/235802a.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "taint.org: Justin Mason's Weblog"
 author: "dailylinks"
 feedlyId: "a9zHexj+hMibuNjkllIb+lIAludY0E80OyFQxP9r1kA=_14447802bee:9082f3b:5e7efe62"

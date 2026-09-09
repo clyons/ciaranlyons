@@ -6,6 +6,8 @@ savedAt: "2020-08-09T23:58:08.630Z"
 dateSource: saved
 publishedAt: "2020-08-05T20:04:27.000Z"
 targetUrl: "https://m.signalvnoise.com/were-hiring-rails-programmers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal v. Noise"
 author: "Jeffrey Hardy"
 feedlyId: "7Za/zqY5+X7fYgcQFIcOrkUBr06oZlqE1S903nI1Du8=_173c0507e57:3150fc:ddfe3be3"

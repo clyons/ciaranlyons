@@ -6,6 +6,8 @@ savedAt: "2017-07-18T15:36:57.560Z"
 dateSource: saved
 publishedAt: "2017-07-10T13:06:59.000Z"
 targetUrl: "https://stratechery.com/2017/publishers-seek-antitrust-exemption-news-versus-advertising-a-better-solution-for-publishers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_15d3c1d9688:28f4c7e:4825a421"

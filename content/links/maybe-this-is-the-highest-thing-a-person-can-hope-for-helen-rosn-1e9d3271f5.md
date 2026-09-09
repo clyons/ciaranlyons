@@ -6,6 +6,8 @@ savedAt: "2020-01-25T21:28:50.006Z"
 dateSource: saved
 publishedAt: "2020-01-17T15:11:00.000Z"
 targetUrl: "http://feeds.themorningnews.org/~r/tmn/rss/~3/05cme_V5JD0/the-many-lives-of-roberto-a-soup"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Morning News"
 feedlyId: "hjQrZBpBsFo4Gp0JjiGbmZGbMm880GmFVt7Or1iA7mA=_16fb4174c4a:280fc:6a0d8c37"
 tags: ["Saved For Later"]

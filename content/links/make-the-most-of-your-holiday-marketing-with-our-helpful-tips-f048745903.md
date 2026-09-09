@@ -6,6 +6,8 @@ savedAt: "2016-10-02T04:41:10.627Z"
 dateSource: saved
 publishedAt: "2016-09-27T13:32:09.000Z"
 targetUrl: "http://blog.mailchimp.com/make-the-most-of-your-holiday-marketing-with-our-helpful-tips/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MailChimp Email Marketing BlogMailChimp Email Marketing Blog"
 author: "Brandon"
 feedlyId: "4F1ALvtWHwzGAPEDIpkj66Og5ekrPZRtiJ2D605V9yM=_1576bde0ccf:94a7c18:eede4bae"

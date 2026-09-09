@@ -6,6 +6,8 @@ savedAt: "2018-08-17T01:49:08.620Z"
 dateSource: saved
 publishedAt: "2018-08-07T05:00:51.000Z"
 targetUrl: "https://stackoverflow.blog/2018/08/07/get-to-know-our-new-code-of-conduct/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stack Overflow Blog"
 author: "Tim Post"
 feedlyId: "fdSvbmYIjOVGz0JFgoTCYCW2BJyS+5FX4ysMKB7eRtc=_16512c8453d:2c8184c:4db7ac35"

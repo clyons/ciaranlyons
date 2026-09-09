@@ -5,7 +5,9 @@ date: 2022-11-05
 savedAt: "2022-11-05T04:20:40.483Z"
 dateSource: saved
 publishedAt: "2022-11-02T18:05:15.000Z"
-targetUrl: "https://a.wholelottanothing.org/2022/11/02/stable-diffusion-and-ai-generated-art-is-absolutely-wild-in-every-way/comment-page-1/"
+targetUrl: "https://web.archive.org/web/20221214030041/https://a.wholelottanothing.org/2022/11/02/stable-diffusion-and-ai-generated-art-is-absolutely-wild-in-every-way/comment-page-1/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_18439d408df:10094e0:d8b4f5e5"

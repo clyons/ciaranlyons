@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.850Z"
 dateSource: saved
 publishedAt: "2013-05-04T16:15:00.000Z"
 targetUrl: "http://interconnected.org/home/2013/05/04/berg_cloud_press"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e70532fa0:32079a:9e04b0a9"

@@ -5,7 +5,9 @@ date: 2015-08-21
 savedAt: "2015-08-21T12:40:18.473Z"
 dateSource: saved
 publishedAt: "2015-08-11T12:00:45.000Z"
-targetUrl: "http://feedproxy.google.com/~r/bufferapp/~3/4pSuyn4P1As/blog-strategies"
+targetUrl: "https://buffer.com/resources/blog-strategies/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Social"
 author: "Kevan Lee"
 feedlyId: "nw6t1kD4z8/zGdaRug06lzT6Y3MpeXIF8sOX4qBTTvs=_14f1cc6928b:c5b48:bd5cf56b"

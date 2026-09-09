@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.203Z"
 dateSource: saved
 publishedAt: "2011-12-16T23:53:01.000Z"
 targetUrl: "http://www.ethanzuckerman.com/blog/2011/12/16/my-new-quest-replacing-qr-codes-with-tartan/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "... My heart’s in Accra"
 author: "Ethan"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134494b0748:320a3e:9e04b0a9"

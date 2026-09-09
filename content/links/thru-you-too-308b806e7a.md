@@ -6,6 +6,8 @@ savedAt: "2014-10-07T14:32:50.755Z"
 dateSource: saved
 publishedAt: "2014-10-01T16:05:57.000Z"
 targetUrl: "http://thru-you-too.com/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_148cc45528e:86e290d:7762fa0c"
 tags: ["Saved For Later"]

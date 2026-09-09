@@ -6,6 +6,8 @@ savedAt: "2015-04-13T12:35:23.110Z"
 dateSource: saved
 publishedAt: "2015-03-31T13:18:59.000Z"
 targetUrl: "https://medium.com/message/my-failed-experiment-in-time-travel-3aa2240a6bc0?source=rss----81c7d351c056---4"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Message — Medium"
 author: "Paul Ford"
 feedlyId: "joO5RD4GQd+uVvUXO0GCkohNvbxE4UL+d+SLXAEAlDs=_14c6ffc3582:1312d67:60b25514"

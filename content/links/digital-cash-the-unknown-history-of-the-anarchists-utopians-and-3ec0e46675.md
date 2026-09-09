@@ -6,6 +6,8 @@ savedAt: "2019-06-18T07:48:31.557Z"
 dateSource: saved
 publishedAt: "2019-06-16T16:57:24.000Z"
 targetUrl: "http://we-make-money-not-art.com/digital-cash-the-unknown-history-of-the-anarchists-utopians-and-technologists-who-created-cryptocurrency/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "We Make Money Not Art"
 author: "Regine"
 feedlyId: "IltLjrTdH09Yznj7ub6o4WvZwDxoYKufx8DVodH1lOc=_16b657c3562:6b1a4a6:d02fd57c"

@@ -6,6 +6,8 @@ savedAt: "2017-06-04T10:53:05.469Z"
 dateSource: saved
 publishedAt: "2017-06-01T15:59:43.000Z"
 targetUrl: "https://www.schneier.com/blog/archives/2017/06/passwords_at_th.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "Bruce Schneier"
 feedlyId: "FcF+jG/fcWtyez+xCh3KiSbsF1qkB3k9yaFAvT1QJWM=_15c6468f2ef:596918b:bb404dd5"

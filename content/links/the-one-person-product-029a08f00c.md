@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.877Z"
 dateSource: saved
 publishedAt: "2013-05-20T21:18:35.000Z"
 targetUrl: "http://www.marco.org/2013/05/20/one-person-product"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13ec3cedff8:32077f:9e04b0a9"
 tags: ["Saved For Later"]

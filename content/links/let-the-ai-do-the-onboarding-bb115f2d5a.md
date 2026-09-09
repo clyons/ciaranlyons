@@ -6,6 +6,8 @@ savedAt: "2025-11-05T04:03:30.710Z"
 dateSource: saved
 publishedAt: "2025-10-09T21:00:00.000Z"
 targetUrl: "https://www.lukew.com/ff/entry.asp?2130"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "LukeW | Digital Product Design + Strategy"
 author: "info@lukew.com"
 feedlyId: "yeG7U6UlgnxgaVnNsmIwolcmtTnvuA1yz3f994SLKyA=_199caed6cb9:1197e8f:f595628f"

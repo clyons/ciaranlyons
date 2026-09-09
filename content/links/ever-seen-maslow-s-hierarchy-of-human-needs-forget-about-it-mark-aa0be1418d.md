@@ -5,7 +5,9 @@ date: 2014-08-28
 savedAt: "2014-08-28T06:11:00.043Z"
 dateSource: saved
 publishedAt: "2014-08-28T04:22:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/tCb4HT-duAc/95974056353"
+targetUrl: "https://blog.timoni.org/post/95974056353/ever-seen-maslows-hierarchy-of-human-needs"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_1481adfef5e:16256f:cfefd9f7"
 tags: ["Saved For Later"]

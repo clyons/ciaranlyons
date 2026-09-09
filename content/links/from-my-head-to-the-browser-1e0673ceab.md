@@ -6,6 +6,8 @@ savedAt: "2013-12-01T15:04:33.487Z"
 dateSource: saved
 publishedAt: "2013-10-31T00:00:00.000Z"
 targetUrl: "http://cognition.happycog.com/article/from-my-head-to-the-browser"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Cognition by Happy Cog"
 author: "Aura Seltzer"
 feedlyId: "xCzq08rQ2tM2DZYULbAHAp005yitTvFWYAN+i8M4AIA=_1420f4af5ae:10e8741:eaba9ba7"

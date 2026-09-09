@@ -6,6 +6,8 @@ savedAt: "2014-01-07T15:45:25.682Z"
 dateSource: saved
 publishedAt: "2014-01-07T09:48:36.000Z"
 targetUrl: "http://ourlittlegreendot.com/5438/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Little Green Dot"
 author: "militza"
 feedlyId: "ny92KV6ihu1Yn005P/jfbXWJWTitd1IwZlboY7SyPI4=_1436c206f62:111c2b28:d7247628"

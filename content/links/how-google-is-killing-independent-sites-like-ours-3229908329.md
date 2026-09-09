@@ -6,6 +6,8 @@ savedAt: "2024-02-27T01:22:30.110Z"
 dateSource: saved
 publishedAt: "2024-02-22T14:59:01.000Z"
 targetUrl: "https://jmason.ie/2024/02/22/145901a.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Justin Mason's Weblog"
 author: "dailylinks"
 feedlyId: "a9zHexj+hMibuNjkllIb+lIAludY0E80OyFQxP9r1kA=_18dd6bda3c4:9ac37a:694fbeda"

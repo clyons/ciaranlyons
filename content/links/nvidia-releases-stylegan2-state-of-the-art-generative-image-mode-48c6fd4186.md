@@ -6,6 +6,8 @@ savedAt: "2019-12-12T19:51:26.181Z"
 dateSource: saved
 publishedAt: "2019-12-12T17:45:16.000Z"
 targetUrl: "https://github.com/NVlabs/stylegan2"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_16efb3c1f48:13b045b:49b12733"

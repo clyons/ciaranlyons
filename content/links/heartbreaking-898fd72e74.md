@@ -6,6 +6,8 @@ savedAt: "2017-04-24T05:25:38.399Z"
 dateSource: saved
 publishedAt: "2017-04-24T01:55:03.000Z"
 targetUrl: "http://blog.unroll.me/we-can-do-better/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_15b9daf6c37:1ad0ebb:afcb5334"

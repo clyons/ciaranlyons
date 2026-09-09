@@ -5,7 +5,9 @@ date: 2013-07-19
 savedAt: "2013-07-19T11:56:34.655Z"
 dateSource: saved
 publishedAt: "2013-07-15T10:42:09.000Z"
-targetUrl: "http://feedproxy.google.com/~r/white_african/~3/9UXJHJgLiaU/"
+targetUrl: "https://web.archive.org/web/20130723002815/http://whiteafrican.com:80/2013/07/15/how-i-instagram/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "White African"
 author: "HASH"
 feedlyId: "ab1jICibR+7r6kBsURYHgGKHF2VfSG8ZMaUtd4UJw64=_13fe1f1b643:9411b3:c159ab3d"

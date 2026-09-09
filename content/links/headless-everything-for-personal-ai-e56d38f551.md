@@ -6,6 +6,8 @@ savedAt: "2026-05-04T16:52:26.398Z"
 dateSource: saved
 publishedAt: "2026-04-18T17:00:00.000Z"
 targetUrl: "https://interconnected.org/home/2026/04/18/headless"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_19da152b62a:365877c:81f6512"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2016-02-08T08:15:27.122Z"
 dateSource: saved
 publishedAt: "2016-02-02T14:38:42.000Z"
 targetUrl: "http://okdork.com/every-tool-i-use-to-run-a-7-figure-business/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "OkDork.com"
 author: "Noah Kagan"
 feedlyId: "SUgi+2Dm9c3jiifHY0m19EDS0Ghy9iA4v9Q/gS4USao=_152a318734b:55fcc7f:bc27e115"

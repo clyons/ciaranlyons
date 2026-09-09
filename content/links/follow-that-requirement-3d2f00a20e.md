@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.007Z"
 dateSource: saved
 publishedAt: "2011-10-06T15:44:00.000Z"
 targetUrl: "http://cognition.happycog.com/article/follow-that-requirement"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Cognition by Happy Cog"
 author: "Dave DeRuchie"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132d9e7ce00:320b3b:9e04b0a9"

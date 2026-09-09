@@ -6,6 +6,8 @@ savedAt: "2014-02-04T08:37:15.977Z"
 dateSource: saved
 publishedAt: "2014-02-03T21:21:33.000Z"
 targetUrl: "http://www.marco.org/2014/02/03/headphones-and-coffee"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_143f9a5fbe5:72260ec:5e7efe62"
 tags: ["Saved For Later"]

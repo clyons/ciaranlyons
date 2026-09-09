@@ -6,6 +6,8 @@ savedAt: "2019-08-25T12:57:52.980Z"
 dateSource: saved
 publishedAt: "2019-08-23T14:09:06.000Z"
 targetUrl: "https://www.profgalloway.com/hq2-midlife-crises/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Prof Galloway"
 author: "Scott Galloway"
 feedlyId: "IuRiY+3NTfAYV5XMJkbDAH8y/yFAWMESHbOYlpzKUqA=_16cc00e0208:3cb369f:340e5e89"

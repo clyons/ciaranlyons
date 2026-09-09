@@ -6,6 +6,8 @@ savedAt: "2013-10-27T14:55:50.640Z"
 dateSource: saved
 publishedAt: "2013-10-23T03:36:52.000Z"
 targetUrl: "http://feedproxy.google.com/~r/grinding/~3/5kBtNwVTCaU/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "grinding.be"
 author: "m1k3y"
 feedlyId: "m/CBvOBJRcZLhnjP2NHpelC4xW+bEw4F4ddFUCkqA04=_141e3646d81:1b8a422:c4131ee"

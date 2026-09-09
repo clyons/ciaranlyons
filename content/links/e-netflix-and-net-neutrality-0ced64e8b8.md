@@ -6,6 +6,8 @@ savedAt: "2014-02-27T13:11:39.338Z"
 dateSource: saved
 publishedAt: "2014-02-27T11:06:18.000Z"
 targetUrl: "http://stratechery.com/2014/netflix-net-neutrality/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: stratēchery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_144730776b2:a7aaffb:d82d74a8"

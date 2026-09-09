@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 import { assertUnique, optionalBoolean, optionalHttpUrl, optionalUniqueSubstring, requiredString, validateDate, validateSegment, validateTimestamp, validateTopic, webUrl } from './content-validation'
 import { renderMarkdown } from './markdown'
 import { sortFoundQuotesByPublicationAndSourceDate } from './found-quotes'
+import { destinationAuditMetadata, type LinkDestinationStatus } from './link-destinations'
 import type { RichTextFacet, RichTextFacetFeature } from './rich-text'
 
 export { foundQuoteDescription, foundQuoteTitle, resolveFoundQuotes, sortFoundQuotesByPublicationAndSourceDate } from './found-quotes'
@@ -73,6 +74,8 @@ export interface LinkEntry {
   dateSource: 'saved' | 'published' | 'imported'
   publishedAt?: string
   targetUrl: string
+  destinationStatus?: LinkDestinationStatus
+  destinationLastCheckedAt?: string
   sourceTitle?: string
   author?: string
   feedlyId: string
@@ -393,6 +396,7 @@ async function loadLinks(): Promise<LinkEntry[]> {
     if (!feedlyId) throw new Error(`${source}: feedlyId is required`)
     const targetUrl = optionalHttpUrl(data.targetUrl, source, 'targetUrl')
     if (!targetUrl) throw new Error(`${source}: targetUrl is required`)
+    const destinationAudit = destinationAuditMetadata(data.destinationStatus, data.destinationLastCheckedAt, source)
     const { year, month, day } = dateParts(date)
     return {
       entry: {
@@ -404,6 +408,7 @@ async function loadLinks(): Promise<LinkEntry[]> {
         dateSource: rawDateSource as LinkEntry['dateSource'],
         publishedAt,
         targetUrl,
+        ...destinationAudit,
         sourceTitle: asString(data.sourceTitle) || undefined,
         author: asString(data.author) || undefined,
         feedlyId,

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.491Z"
 dateSource: saved
 publishedAt: "2012-03-27T12:00:39.000Z"
 targetUrl: "http://www.alistapart.com/articles/style-tiles-and-how-they-work/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A List Apart: The Full Feed"
 author: "Samantha Warren"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13654077e58:32090a:9e04b0a9"

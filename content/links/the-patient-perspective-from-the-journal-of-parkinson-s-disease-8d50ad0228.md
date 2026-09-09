@@ -6,6 +6,8 @@ savedAt: "2014-04-20T12:27:39.472Z"
 dateSource: saved
 publishedAt: "2014-04-05T06:13:15.000Z"
 targetUrl: "http://www.riggare.se/2014/04/05/the-patient-perspective-from-the-journal-of-parkinsons-disease-20th-march-2014/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Sara"
 author: "SaraRiggare"
 feedlyId: "23l7vF4yxRYL4rFjKE9msGWca/MKgEtxLenK305lM4A=_1453093041f:ade3ff:d8de667f"

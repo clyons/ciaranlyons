@@ -6,6 +6,8 @@ savedAt: "2017-09-26T19:59:12.236Z"
 dateSource: saved
 publishedAt: "2017-09-26T19:21:50.000Z"
 targetUrl: "https://kottke.org/17/09/trump-is-terrorizing-america-and-should-be-removed-from-office"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "kottke.org"
 author: "Jason Kottke"
 feedlyId: "Ks7ygQeckyuYvQjUAmcQ+t9yNvb90TQlD+xXxy0txMc=_15ebfa8525a:176c278:feeb522d"

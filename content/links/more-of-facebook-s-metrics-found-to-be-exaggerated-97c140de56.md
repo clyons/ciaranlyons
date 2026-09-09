@@ -6,6 +6,8 @@ savedAt: "2016-11-17T10:22:05.196Z"
 dateSource: saved
 publishedAt: "2016-11-16T22:09:29.000Z"
 targetUrl: "http://www.wsj.com/articles/facebook-says-it-found-more-miscalculated-metrics-1479303984"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_1586f4050f9:1c12150:e9cc4246"

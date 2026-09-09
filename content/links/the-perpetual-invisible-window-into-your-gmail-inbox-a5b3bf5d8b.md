@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.323Z"
 dateSource: saved
 publishedAt: "2012-02-11T19:28:35.000Z"
 targetUrl: "http://waxy.org/2012/02/the_perpetual_invisible_window_into_your_gmail_inbox/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1356de36ab8:3209b2:9e04b0a9"
 tags: ["Saved For Later"]

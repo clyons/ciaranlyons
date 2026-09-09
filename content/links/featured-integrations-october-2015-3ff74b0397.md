@@ -6,6 +6,8 @@ savedAt: "2015-10-13T08:00:01.477Z"
 dateSource: saved
 publishedAt: "2015-10-06T15:23:39.000Z"
 targetUrl: "http://blog.mailchimp.com/featured-integrations-october-2015/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MailChimp Email Marketing Blog"
 author: "Nate"
 feedlyId: "4F1ALvtWHwzGAPEDIpkj66Og5ekrPZRtiJ2D605V9yM=_1503dd5b48e:1020666:b18dfa55"

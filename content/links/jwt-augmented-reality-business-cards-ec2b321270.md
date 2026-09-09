@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.266Z"
 dateSource: saved
 publishedAt: "2011-12-18T03:20:27.000Z"
 targetUrl: "http://feedproxy.google.com/~r/DigitalBuzzBlog/~3/ZB5g7pf33hI/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Digital Buzz Blog"
 author: "Aden Hepburn"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1344f2f4c78:3209eb:9e04b0a9"

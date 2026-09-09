@@ -6,6 +6,8 @@ savedAt: "2016-01-21T12:24:52.607Z"
 dateSource: saved
 publishedAt: "2016-01-06T20:57:37.000Z"
 targetUrl: "http://www.theawl.com/2016/01/about-nine-thousand-characters-in-case-you-were-wondering"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Awl » John Herrman"
 author: "John Herrman"
 feedlyId: "FzUbYMXAyfhm+tHadF7W2wQYGAaLve5rBfokj0JhjME=_15218c78d29:163cccc:1ba91209"

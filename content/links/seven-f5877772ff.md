@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.140Z"
 dateSource: saved
 publishedAt: "2011-11-28T09:05:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/parislemon/~3/afdysSpYU8E/13447764923"
+targetUrl: "https://parislemon.com/post/13447764923/seven"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ParisLemon"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_133e96b8e60:320ab5:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2015-01-09T02:35:11.454Z"
 dateSource: saved
 publishedAt: "2015-01-09T00:29:31.000Z"
 targetUrl: "http://sixcolors.com/post/2015/01/the-macbook-air-returning-to-its-roots/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_14acc198863:1b50a84e:8340a896"

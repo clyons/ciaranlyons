@@ -5,7 +5,9 @@ date: 2013-11-16
 savedAt: "2013-11-16T07:17:51.730Z"
 dateSource: saved
 publishedAt: "2013-11-14T19:30:12.000Z"
-targetUrl: "http://feedproxy.google.com/~r/InsideFacebook/~3/dCpmyPjFPY8/"
+targetUrl: "https://web.archive.org/web/20131115055530/http://www.insidefacebook.com/2013/11/14/class-credit-for-hacking-facebook-expands-open-academy/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Inside Facebook"
 author: "Justin Lafferty"
 feedlyId: "lEVTgbYhl8ate7dz07ngkzcJYlu2THIQfxrelib55aA=_1425817caec:129a743:e8087588"

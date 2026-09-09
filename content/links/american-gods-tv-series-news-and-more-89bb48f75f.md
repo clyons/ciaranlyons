@@ -6,6 +6,8 @@ savedAt: "2014-02-17T01:00:39.526Z"
 dateSource: saved
 publishedAt: "2014-02-04T05:37:00.000Z"
 targetUrl: "http://journal.neilgaiman.com/2014/02/american-gods-tv-series-news-and-more.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Neil Gaiman's Journal"
 author: "noreply@blogger.com (Neil Gaiman)"
 feedlyId: "a9kN2m4df/h4YHtVAmKL+Y8OZcKVFJCDFRt8suQ9EcQ=_143fb6da644:744fe3e:df1a6388"

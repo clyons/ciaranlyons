@@ -6,6 +6,8 @@ savedAt: "2016-09-02T08:53:21.735Z"
 dateSource: saved
 publishedAt: "2016-09-02T05:11:18.000Z"
 targetUrl: "http://www.reuters.com/article/us-google-smartphone-idUSKCN11806C"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_156e9659bb4:3597aba:e3157ec0"

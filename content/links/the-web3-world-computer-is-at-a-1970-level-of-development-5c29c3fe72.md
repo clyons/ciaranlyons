@@ -6,6 +6,8 @@ savedAt: "2022-05-24T10:36:29.768Z"
 dateSource: saved
 publishedAt: "2022-05-20T13:12:00.000Z"
 targetUrl: "https://interconnected.org/home/2022/05/20/fermi"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_180e169b35e:19ce028:6459d2ee"
 tags: ["Saved For Later"]

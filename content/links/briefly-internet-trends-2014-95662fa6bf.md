@@ -6,6 +6,8 @@ savedAt: "2014-06-02T11:30:42.818Z"
 dateSource: saved
 publishedAt: "2014-05-29T14:48:46.000Z"
 targetUrl: "http://www.kpcb.com/insights/2014-internet-trends?_ga=1.56621480.2032477543.1392911856"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_1464876d63c:e4330d:fc6b336a"

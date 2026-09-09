@@ -6,6 +6,8 @@ savedAt: "2014-01-24T04:49:01.437Z"
 dateSource: saved
 publishedAt: "2014-01-23T15:11:00.000Z"
 targetUrl: "http://nedroidcomics.tumblr.com/post/74280597594"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Nedroid Fun Times"
 feedlyId: "dcoXJF5BgABIXsI6hAepWZqmL8vOX/d3ybVQnIrHTVk=_143bfe227c1:22f0760:242b6c1b"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2020-05-16
 savedAt: "2020-05-16T12:51:06.992Z"
 dateSource: saved
 publishedAt: "2020-04-25T02:28:47.000Z"
-targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/0Zd9x2p2yXE/can-i-go-sg.html"
+targetUrl: "https://dullneon.com/randomnotes/2020/04/can-i-go-sg.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "dullneon.com - random notes, links and pixels"
 author: "Jaffry Jalal"
 feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_171af56b947:706c7:de522f83"

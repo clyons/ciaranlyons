@@ -6,6 +6,8 @@ savedAt: "2025-05-10T00:23:06.703Z"
 dateSource: saved
 publishedAt: "2025-04-29T16:54:08.000Z"
 targetUrl: "https://a.wholelottanothing.org/the-slate-ev-truck/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "Matthew Haughey"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_196828f6126:1862cfd:1522db"

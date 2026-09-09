@@ -6,6 +6,8 @@ savedAt: "2021-10-27T00:17:24.019Z"
 dateSource: saved
 publishedAt: "2021-10-25T23:41:47.000Z"
 targetUrl: "https://cleanup.pictures/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_17cb9da87b0:19fd85c:241dd190"

@@ -6,6 +6,8 @@ savedAt: "2014-02-13T10:40:03.814Z"
 dateSource: saved
 publishedAt: "2014-02-12T16:00:00.000Z"
 targetUrl: "https://chrishateswriting.com/post/76431353368"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Chris Hates Writing"
 feedlyId: "Mia0Bo1sntDOyBEyGyxtTJxaZZIBVlA5dOvnPyETpRs=_1442708681b:1012e41:5e7efe62"
 tags: ["Saved For Later"]

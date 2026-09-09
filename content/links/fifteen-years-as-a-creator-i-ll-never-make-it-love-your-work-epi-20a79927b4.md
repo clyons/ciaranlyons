@@ -6,6 +6,8 @@ savedAt: "2022-07-15T21:28:04.274Z"
 dateSource: saved
 publishedAt: "2022-07-14T12:30:08.000Z"
 targetUrl: "https://kadavy.net/blog/posts/fifteen-years/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "kadavy.net"
 author: "David Kadavy"
 feedlyId: "Wyb6NAz3xh8ZYt0tfI4BljTRmfxGzxcIL58eeY11PTA=_181fcb71afa:1591f45:e089c21e"

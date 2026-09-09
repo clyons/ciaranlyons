@@ -6,6 +6,8 @@ savedAt: "2014-07-09T01:25:21.225Z"
 dateSource: saved
 publishedAt: "2014-06-18T12:06:04.000Z"
 targetUrl: "https://yoast.com/considerations-online-shop/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast"
 author: "Michiel Heijmans"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_146b16c70cf:17c85d4:d3f0a5c0"

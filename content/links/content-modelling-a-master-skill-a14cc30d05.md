@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.509Z"
 dateSource: saved
 publishedAt: "2012-04-24T13:00:39.000Z"
 targetUrl: "http://www.alistapart.com/articles/content-modelling-a-master-skill/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A List Apart: The Full Feed"
 author: "Rachel Lovinger"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_136e4707cd8:3208f8:9e04b0a9"

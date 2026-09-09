@@ -6,6 +6,8 @@ savedAt: "2015-10-29T05:03:54.582Z"
 dateSource: saved
 publishedAt: "2015-10-28T06:01:09.000Z"
 targetUrl: "http://communities-dominate.blogs.com/brands/2015/10/debate-judging-criteria-for-3rd-republican-debate-tonight-on-cnbc-each-candidate-has-a-different-mis.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Communities Dominate Brands"
 author: "Tomi T Ahonen"
 feedlyId: "HPotzTVYhXNzCSu3gQpFqbXTeYuvmgAkokM4D88JknI=_150ad1a0484:beea970:48f117c4"

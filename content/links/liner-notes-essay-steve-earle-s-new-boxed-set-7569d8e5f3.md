@@ -6,6 +6,8 @@ savedAt: "2013-08-17T07:07:34.770Z"
 dateSource: saved
 publishedAt: "2013-08-13T23:27:08.000Z"
 targetUrl: "http://davidsimon.com/liner-notes-essay-steve-earles-new-boxed-set/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "David Simon"
 author: "David Simon"
 feedlyId: "IzqRhX3DHe9C8XvGXBRM+gD0YTOBLLYb+aAnScgvykk=_1407a0184bd:c4a74:50479669"

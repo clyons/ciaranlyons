@@ -5,7 +5,9 @@ date: 2014-03-20
 savedAt: "2014-03-20T14:20:29.177Z"
 dateSource: saved
 publishedAt: "2014-02-24T13:29:33.000Z"
-targetUrl: "http://feedproxy.google.com/~r/alistapart/main/~3/k5wN3ooyhqk/read-the-docs-faster"
+targetUrl: "https://alistapart.com/blog/post/read-the-docs-faster/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A List Apart: The Full Feed"
 author: "Anthony Colangelo"
 feedlyId: "FNsmsXpIJZ73nL/61kkUaZNBc6L7aqs6H9tYn28GLQg=_144641a4386:257e38:4d98e6f1"

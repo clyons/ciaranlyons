@@ -6,6 +6,8 @@ savedAt: "2014-07-03T02:06:32.179Z"
 dateSource: saved
 publishedAt: "2014-07-02T13:30:44.000Z"
 targetUrl: "http://blog.mailchimp.com/social-cards-segmentation-options-new-currencies-and-more-in-v9-4/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MailChimp Email Marketing Blog"
 author: "Eric"
 feedlyId: "4F1ALvtWHwzGAPEDIpkj66Og5ekrPZRtiJ2D605V9yM=_146f7576acd:e64bff:d89185ed"

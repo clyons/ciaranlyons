@@ -6,6 +6,8 @@ savedAt: "2015-08-20T18:13:43.535Z"
 dateSource: saved
 publishedAt: "2015-08-20T15:45:05.000Z"
 targetUrl: "http://lefsetz.com/wordpress/index.php/archives/2015/08/20/the-new-normal/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Lefsetz Letter"
 author: "bob"
 feedlyId: "kGCfy85Po0PejZ1NKN+vr5vmFKVqFoB8+p0pg0HW0QI=_14f4bcccbe4:13d44f82:46f3bb90"

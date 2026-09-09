@@ -5,7 +5,9 @@ date: 2014-02-15
 savedAt: "2014-02-15T07:09:31.669Z"
 dateSource: saved
 publishedAt: "2014-02-12T18:00:37.000Z"
-targetUrl: "http://feedproxy.google.com/~r/alistapart/main/~3/Wc-Jeslw_NE/protecting-against-link-rot-while-embracing-the-future"
+targetUrl: "https://alistapart.com/blog/post/protecting-against-link-rot-while-embracing-the-future/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A List Apart: The Full Feed"
 feedlyId: "FNsmsXpIJZ73nL/61kkUaZNBc6L7aqs6H9tYn28GLQg=_144274208d4:b336e:db6054d5"
 tags: ["Saved For Later"]

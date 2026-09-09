@@ -6,6 +6,8 @@ savedAt: "2024-10-10T01:50:13.883Z"
 dateSource: saved
 publishedAt: "2024-10-09T17:04:50.000Z"
 targetUrl: "https://ethanzuckerman.com/2024/10/09/what-if-our-nation-is-not-built-for-climate-change/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog - Ethan Zuckerman"
 author: "Ethan"
 feedlyId: "fGKWg8+hvF+SV8nib5K+Buxfw5yKiwwjwQ+PVdU+JW4=_19272761f36:2443d2:fb7678f4"

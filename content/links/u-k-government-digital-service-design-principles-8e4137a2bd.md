@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.438Z"
 dateSource: saved
 publishedAt: "2012-04-09T14:21:09.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/85I5Czwp3qQ/uk-government-digital-service-design-principles"
+targetUrl: "https://www.subtraction.com/2012/04/09/u-k-government-digital-service-design-principles/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Subtraction.com"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_136977acc08:32093f:9e04b0a9"
 tags: ["Saved For Later"]

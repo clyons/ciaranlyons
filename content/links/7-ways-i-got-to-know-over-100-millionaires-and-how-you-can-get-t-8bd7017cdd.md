@@ -5,7 +5,9 @@ date: 2013-12-02
 savedAt: "2013-12-02T00:17:24.070Z"
 dateSource: saved
 publishedAt: "2013-11-04T15:46:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/Quicksprout/~3/wXbpp70wvVU/"
+targetUrl: "https://web.archive.org/web/20140122155101/http://www.quicksprout.com/2013/11/04/7-ways-i-got-to-know-over-100-millionaires-and-how-you-can-get-to-know-them-too/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Quick Sprout"
 author: "Guest Author"
 feedlyId: "avQJ/GGZFDdEiJSMXXttN5+cXckxWIUEIgqfDqiGZI8=_14223cb08c6:2ea1c0e:854c7745"

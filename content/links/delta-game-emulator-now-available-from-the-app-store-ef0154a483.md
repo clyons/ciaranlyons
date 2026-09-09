@@ -6,6 +6,8 @@ savedAt: "2024-04-22T11:45:21.536Z"
 dateSource: saved
 publishedAt: "2024-04-17T19:04:46.000Z"
 targetUrl: "https://www.macrumors.com/2024/04/17/delta-game-emulator-iphone/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_18eed75d817:7419a3:5edf391c"

@@ -5,7 +5,9 @@ date: 2015-05-11
 savedAt: "2015-05-11T03:49:48.418Z"
 dateSource: saved
 publishedAt: "2015-04-13T12:00:57.000Z"
-targetUrl: "http://feedproxy.google.com/~r/bufferapp/~3/2BnB__bxyHQ/content-promotion"
+targetUrl: "https://buffer.com/resources/content-promotion/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Social"
 author: "Kevan Lee"
 feedlyId: "nw6t1kD4z8/zGdaRug06lzT6Y3MpeXIF8sOX4qBTTvs=_14cb2e13eac:193de8f:2a2cd263"

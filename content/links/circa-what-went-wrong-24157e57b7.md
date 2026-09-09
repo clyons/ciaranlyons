@@ -6,6 +6,8 @@ savedAt: "2015-05-04T09:54:05.993Z"
 dateSource: saved
 publishedAt: "2015-05-04T07:23:06.000Z"
 targetUrl: "http://feedproxy.google.com/~r/monday-note/~3/WL8BAlni5VY/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Monday Note"
 author: "Frédéric Filloux"
 feedlyId: "K2yEyJkJAlTYIjP5i2D9ccp/wbMYzpHnabsacInQgcs=_14d1ddaeac7:2049ba5:18dec700"

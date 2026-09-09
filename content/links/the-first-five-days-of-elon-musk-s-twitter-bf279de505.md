@@ -6,6 +6,8 @@ savedAt: "2022-11-04T02:38:27.725Z"
 dateSource: saved
 publishedAt: "2022-11-02T11:09:11.000Z"
 targetUrl: "https://popular.info/p/the-first-five-days-of-elon-musks"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Popular Information"
 author: "Judd Legum"
 feedlyId: "dFqchjIq4ZHUxT6KSkENWR+LgJ1GS54dIURCfQmpmE4=_184380e50cb:d4810e:4fb599db"

@@ -6,6 +6,8 @@ savedAt: "2014-07-21T17:41:43.991Z"
 dateSource: saved
 publishedAt: "2014-07-17T20:27:21.000Z"
 targetUrl: "http://feeds.frogdesign.com/~r/frog-design-blog/~3/l51w-dVEGH4/google-s-material-design-video-recreated-in-keynote.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blogs | design mind"
 author: "Andrew Haskin"
 feedlyId: "SVa36iGdfpCbaH6l7bx3Tx0bYLtJZQA68jL69NM9xqw=_14759c98d7e:17b5dc4:31ceb6ef"

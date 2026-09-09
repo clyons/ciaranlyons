@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.734Z"
 dateSource: saved
 publishedAt: "2012-11-19T22:45:23.000Z"
-targetUrl: "http://feedproxy.google.com/~r/kklifestream/~3/X1Iv_UzUFYQ/new-rules-for-the-new-economy.php"
+targetUrl: "https://kk.org/newrules/new_rules_for_the_new_economy/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "KK Lifestream"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13b1ad8efb8:320817:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2015-09-07T03:37:38.009Z"
 dateSource: saved
 publishedAt: "2015-09-06T20:01:49.000Z"
 targetUrl: "http://parislemon.com/post/128502834342"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ParisLemon"
 feedlyId: "XuGkfVtH1JHDKgZf1vhb7zelfguU8CF20pa/YdVrf4g=_14fa444267d:1986e46e:1cbd0d70"
 tags: ["Saved For Later"]

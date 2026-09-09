@@ -6,6 +6,8 @@ savedAt: "2013-08-21T12:04:46.630Z"
 dateSource: saved
 publishedAt: "2013-08-20T08:14:07.000Z"
 targetUrl: "http://davetrott.campaignlive.co.uk/2013/08/20/simple-basic-logic/"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "davetrott"
 author: "Dave Trott"
 feedlyId: "uAzGnH1qm5hwyoSZRIDtWQk06wYhD4MnLQo+wrXqf38=_1409acf1fe9:3680183:87abc148"

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.367Z"
 dateSource: saved
 publishedAt: "2012-02-29T07:00:15.000Z"
 targetUrl: "http://feltron.tumblr.com/post/18485977985"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "feltron"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_135c7e8c418:320986:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2019-12-06T22:40:41.930Z"
 dateSource: saved
 publishedAt: "2019-12-03T13:41:00.000Z"
 targetUrl: "https://micromobility.io/blog/2019/12/3/the-5-outcomes-people-really-want-from-transportation"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog - Micromobility Industries"
 author: "Horace Dediu"
 feedlyId: "JOfOk5ZVvLpIzc2OlmMyEONvtw5KrUs12j96uOqAi+Y=_16ecc7d1bb0:2a90364:69b9f616"

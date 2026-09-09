@@ -6,6 +6,8 @@ savedAt: "2018-10-12T03:09:50.553Z"
 dateSource: saved
 publishedAt: "2018-09-24T08:24:51.000Z"
 targetUrl: "http://davetrott.co.uk/2018/09/projecting-ourselves/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dave Trott's Blog"
 author: "trottdave"
 feedlyId: "AiGE+5K3cCPM2aeJjk9Ma0GxixEx+sqAPIxVYlEqNXU=_1660ab3734b:cd6ab2:4c71e4fe"

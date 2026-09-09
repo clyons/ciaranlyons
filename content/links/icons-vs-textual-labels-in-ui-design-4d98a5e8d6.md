@@ -6,6 +6,8 @@ savedAt: "2016-06-18T13:46:42.717Z"
 dateSource: saved
 publishedAt: "2016-06-06T20:18:03.000Z"
 targetUrl: "https://ia.net/topics/on-icons"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_155275e244f:177cf768:97af7a9a"

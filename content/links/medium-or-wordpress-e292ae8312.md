@@ -6,6 +6,8 @@ savedAt: "2016-05-04T08:05:15.431Z"
 dateSource: saved
 publishedAt: "2016-05-03T17:43:16.000Z"
 targetUrl: "https://medium.com/m/signin"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Rands in Repose"
 author: "rands"
 feedlyId: "xoPmejgsoSEqDaFR4LV9EjzHAN8HPWA8MceMFxcQR3k=_15477bc7422:3eda8aa:7bd7a919"

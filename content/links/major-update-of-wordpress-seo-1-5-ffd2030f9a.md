@@ -6,6 +6,8 @@ savedAt: "2014-03-17T01:38:26.700Z"
 dateSource: saved
 publishedAt: "2014-03-11T14:02:47.000Z"
 targetUrl: "https://yoast.com/major-update-wordpress-seo-1-5/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast"
 author: "Joost de Valk"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_144b179078c:32ad17:5775aa28"

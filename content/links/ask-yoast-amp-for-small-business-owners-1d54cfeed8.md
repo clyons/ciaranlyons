@@ -6,6 +6,8 @@ savedAt: "2017-01-14T03:11:44.727Z"
 dateSource: saved
 publishedAt: "2017-01-11T14:33:11.000Z"
 targetUrl: "https://yoast.com/ask-yoast-amp-for-small-business-owners/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast • SEO for everyone"
 author: "Joost de Valk"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_1598dfe3cda:61c94b1:36ad7c89"

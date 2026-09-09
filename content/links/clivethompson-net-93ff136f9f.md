@@ -5,7 +5,9 @@ date: 2017-06-27
 savedAt: "2017-06-27T09:21:42.765Z"
 dateSource: saved
 publishedAt: "2017-06-17T18:36:50.000Z"
-targetUrl: "http://clivethompson.net/2017/06/17/908/"
+targetUrl: "https://web.archive.org/web/20170831101345/http://clivethompson.net/2017/06/17/908/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Clive Thompson"
 author: "Clive"
 feedlyId: "P0cVNfUmurmd49lPclNmkckDUasQMj8Iy8nJ8bDvmiM=_15cb7708c18:4e8dfd:3aab93c7"

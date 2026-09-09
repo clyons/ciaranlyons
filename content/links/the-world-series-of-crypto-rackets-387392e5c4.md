@@ -6,6 +6,8 @@ savedAt: "2022-11-14T13:04:59.425Z"
 dateSource: saved
 publishedAt: "2022-11-14T11:31:30.000Z"
 targetUrl: "https://popular.info/p/the-world-series-of-crypto-rackets"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Popular Information"
 author: "Judd Legum"
 feedlyId: "dFqchjIq4ZHUxT6KSkENWR+LgJ1GS54dIURCfQmpmE4=_18475edda92:25c6b62:d8b4f5e5"

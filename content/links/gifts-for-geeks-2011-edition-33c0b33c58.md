@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.220Z"
 dateSource: saved
 publishedAt: "2011-12-13T08:12:55.000Z"
-targetUrl: "http://www.codinghorror.com/blog/2011/12/gifts-for-geeks-2011-edition.html"
+targetUrl: "https://web.archive.org/web/20111214033915/http://www.codinghorror.com/blog/2011/12/gifts-for-geeks-2011-edition.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Coding Horror"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134367b4358:320a1d:9e04b0a9"
 tags: ["Saved For Later"]

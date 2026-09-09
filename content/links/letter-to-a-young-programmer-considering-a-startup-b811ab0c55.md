@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.888Z"
 dateSource: saved
 publishedAt: "2013-06-02T23:19:16.000Z"
-targetUrl: "http://al3x.net/2013/05/23/letter-to-a-young-programmer.html"
+targetUrl: "https://web.archive.org/web/20130603213133/http://al3x.net/2013/05/23/letter-to-a-young-programmer.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13f07300920:320774:9e04b0a9"
 tags: ["Saved For Later"]

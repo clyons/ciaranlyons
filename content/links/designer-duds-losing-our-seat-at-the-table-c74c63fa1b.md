@@ -6,6 +6,8 @@ savedAt: "2014-04-26T06:54:33.225Z"
 dateSource: saved
 publishedAt: "2014-04-24T17:16:34.000Z"
 targetUrl: "http://stevenf.com/2014/04/24/designer-duds-losing-our-seat-at-the-table/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "stevenf.com"
 author: "stevenf"
 feedlyId: "i8brZ/flS0owCpYmPwDAjcFjFa5zvEVnXzpiituCq6Q=_14594ca8934:29f69fc:d920e6b"

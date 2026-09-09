@@ -6,6 +6,8 @@ savedAt: "2013-09-16T05:17:14.036Z"
 dateSource: saved
 publishedAt: "2013-09-12T15:11:41.000Z"
 targetUrl: "http://feedproxy.google.com/~r/FogCreekBlog/~3/kCOkHJCiNqg/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Fog Creek Blog"
 author: "Rich Armstrong"
 feedlyId: "DRHiNkdlqYjXgmclRLU/8c5VwXkUvfc3z70LzxGcoOk=_14112cba54f:aaa97:95b384f7"

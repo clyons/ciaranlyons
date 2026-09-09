@@ -6,6 +6,8 @@ savedAt: "2014-07-10T05:39:38.520Z"
 dateSource: saved
 publishedAt: "2014-07-09T18:21:23.000Z"
 targetUrl: "http://www.zephoria.org/thoughts/archives/2014/07/09/alice-goffman-on-the-run.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "danah boyd | apophenia"
 author: "zephoria"
 feedlyId: "smQuvkTAn+VD5ft8Q1fJeA7MfVb5pT/wDf7b37cKDGU=_1471c5e2966:173464c:d89185ed"

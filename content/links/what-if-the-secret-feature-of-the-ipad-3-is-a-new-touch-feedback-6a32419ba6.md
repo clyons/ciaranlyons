@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.369Z"
 dateSource: saved
 publishedAt: "2012-03-07T02:54:18.000Z"
 targetUrl: "http://thenextweb.com/apple/2012/03/07/what-if-the-secret-feature-of-the-ipad-3-is-a-new-touch-feedback-technology/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_135eb141b90:320984:9e04b0a9"
 tags: ["Saved For Later"]

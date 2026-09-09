@@ -6,6 +6,8 @@ savedAt: "2024-07-20T19:46:06.045Z"
 dateSource: saved
 publishedAt: "2024-07-01T10:31:10.000Z"
 targetUrl: "https://popular.info/p/supreme-power-grab"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Popular Information"
 author: "Judd Legum"
 feedlyId: "dFqchjIq4ZHUxT6KSkENWR+LgJ1GS54dIURCfQmpmE4=_1906ddfad0d:e1ec64:9b7668c4"

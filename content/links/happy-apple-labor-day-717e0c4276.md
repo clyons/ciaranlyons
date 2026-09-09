@@ -6,6 +6,8 @@ savedAt: "2024-09-08T20:25:46.271Z"
 dateSource: saved
 publishedAt: "2024-09-01T22:00:54.000Z"
 targetUrl: "https://www.asymco.com/2024/09/02/happy-apple-labor-day/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_191bb8cdb54:182b51e:56d2ce32"

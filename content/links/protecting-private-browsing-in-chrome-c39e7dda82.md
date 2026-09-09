@@ -6,6 +6,8 @@ savedAt: "2019-07-23T00:57:16.233Z"
 dateSource: saved
 publishedAt: "2019-07-18T17:00:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/blogspot/MKuf/~3/4LOz2-haspc/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Official Google Blog"
 feedlyId: "SzCknK5yCfKi0NrRCLzY3clkPWypMPSgdsVAzzPiIEk=_16c0613921e:4c0138:310c681b"
 tags: ["Saved For Later"]

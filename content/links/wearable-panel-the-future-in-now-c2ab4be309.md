@@ -5,7 +5,9 @@ date: 2013-07-24
 savedAt: "2013-07-24T06:13:18.537Z"
 dateSource: saved
 publishedAt: "2013-07-01T17:04:27.000Z"
-targetUrl: "http://www.electricfoxy.com/2013/07/wearable-panel-the-future-in-now/"
+targetUrl: "https://web.archive.org/web/20130918053119/http://www.electricfoxy.com:80/2013/07/wearable-panel-the-future-in-now/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "electricfoxy"
 author: "jennifer"
 feedlyId: "SR8IS1LW8aWr9imwIl2Cbt6Yu7FXkMn1Fp121kIv+GM=_13f9b54a8cc:940e1b:594f3bcd"

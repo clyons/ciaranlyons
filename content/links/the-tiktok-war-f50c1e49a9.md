@@ -6,6 +6,8 @@ savedAt: "2020-07-15T05:29:54.610Z"
 dateSource: saved
 publishedAt: "2020-07-14T14:05:27.000Z"
 targetUrl: "https://stratechery.com/2020/the-tiktok-war/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_1734da53e1a:11c4c22:8973f4"

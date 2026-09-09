@@ -5,7 +5,9 @@ date: 2013-12-23
 savedAt: "2013-12-23T11:29:19.709Z"
 dateSource: saved
 publishedAt: "2013-12-02T19:49:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/W-P1Fz6zw8o/3692-evaluating-a-redesign"
+targetUrl: "https://signalvnoise.com/posts/3692-evaluating-a-redesign"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal vs. Noise"
 author: "Jason Fried"
 feedlyId: "7Za/zqY5+X7fYgcQFIcOrkUBr06oZlqE1S903nI1Du8=_142b4eb7c7b:48644:3092395a"

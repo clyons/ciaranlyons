@@ -6,6 +6,8 @@ savedAt: "2014-05-14T17:38:53.943Z"
 dateSource: saved
 publishedAt: "2014-05-01T14:53:10.000Z"
 targetUrl: "http://www.bernardleong.com/2014/05/01/trouble-two-sided-marketplaces-deal/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bernard Leong"
 author: "Bernard Leong"
 feedlyId: "q/KplyaKps+d9MLJXd2qMMsFa1jjTIIcdbQ+GRCzUsk=_145b84f15c5:3d8d787:85969355"

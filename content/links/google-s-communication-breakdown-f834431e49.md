@@ -6,6 +6,8 @@ savedAt: "2017-01-24T00:27:52.359Z"
 dateSource: saved
 publishedAt: "2017-01-23T21:30:56.000Z"
 targetUrl: "https://blog.google/products/google-voice/ringing-2017-updates-our-google-voice-apps/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_159cd41de18:1bfb6f0:93371e27"

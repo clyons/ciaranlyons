@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.339Z"
 dateSource: saved
 publishedAt: "2012-02-15T14:30:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/lessdoing/~3/5ccq_TB7Naw/101793342"
+targetUrl: "https://web.archive.org/web/20120725012754/http://www.lessdoing.com:80/2012/02/15/the-evolution-of-the-virtual-assistant-how-to-get-dedicated-support-for-25-per-month/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Art of Less Doing"
 author: "ari@lessdoing.com (Ari Meisel)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_135816b7e40:3209a2:9e04b0a9"

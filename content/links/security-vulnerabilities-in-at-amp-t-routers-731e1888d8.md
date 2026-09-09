@@ -6,6 +6,8 @@ savedAt: "2017-09-19T16:49:42.905Z"
 dateSource: saved
 publishedAt: "2017-09-06T11:55:31.000Z"
 targetUrl: "https://www.schneier.com/blog/archives/2017/09/security_vulner_9.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "Bruce Schneier"
 feedlyId: "FcF+jG/fcWtyez+xCh3KiSbsF1qkB3k9yaFAvT1QJWM=_15e57121555:69b4cc2:feeb522d"

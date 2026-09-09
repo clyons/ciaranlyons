@@ -6,6 +6,8 @@ savedAt: "2014-11-20T04:48:09.313Z"
 dateSource: saved
 publishedAt: "2014-11-19T18:54:43.000Z"
 targetUrl: "http://stratechery.com/2014/differentiation-value-creation-internet-age/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Feed: » stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_149c97d47f1:1484aff:113fbbc6"

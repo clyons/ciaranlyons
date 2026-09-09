@@ -6,6 +6,8 @@ savedAt: "2014-06-10T08:02:35.917Z"
 dateSource: saved
 publishedAt: "2014-06-09T19:30:12.000Z"
 targetUrl: "https://www.mattcutts.com/blog/summer-book-reading-suggestions/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Matt Cutts: Gadgets, Google, and SEO"
 author: "Matt Cutts"
 feedlyId: "wSHxvfj9nomQQXQrn1CogfsGue4xeA0fIeKN+QVyrZw=_146821c628b:217f82:3e1dd69b"

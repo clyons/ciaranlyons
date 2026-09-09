@@ -6,6 +6,8 @@ savedAt: "2019-10-13T03:17:16.162Z"
 dateSource: saved
 publishedAt: "2019-10-10T20:07:56.000Z"
 targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/tB-VAiluk5M/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal v. Noise"
 author: "Jason Fried"
 feedlyId: "7Za/zqY5+X7fYgcQFIcOrkUBr06oZlqE1S903nI1Du8=_16db74ed9d5:70b81a:27d622fb"

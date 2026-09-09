@@ -6,6 +6,8 @@ savedAt: "2020-05-03T06:18:33.724Z"
 dateSource: saved
 publishedAt: "2020-04-22T03:34:47.000Z"
 targetUrl: "https://pxlnv.com/linklog/net-neutrality-covid-19/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_1719ff7c30b:bd8cf8:f050c342"

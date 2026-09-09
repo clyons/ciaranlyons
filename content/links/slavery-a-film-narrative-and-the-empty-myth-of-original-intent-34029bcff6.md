@@ -6,6 +6,8 @@ savedAt: "2013-11-05T08:42:06.594Z"
 dateSource: saved
 publishedAt: "2013-10-30T02:45:10.000Z"
 targetUrl: "http://davidsimon.com/slavery-a-film-narrative-and-the-myth-of-original-intent/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "David Simon"
 author: "David Simon"
 feedlyId: "IzqRhX3DHe9C8XvGXBRM+gD0YTOBLLYb+aAnScgvykk=_14207408283:24d3ed:ca5a277b"

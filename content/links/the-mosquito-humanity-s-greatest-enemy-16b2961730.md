@@ -6,6 +6,8 @@ savedAt: "2019-08-13T17:34:11.665Z"
 dateSource: saved
 publishedAt: "2019-08-13T13:51:45.000Z"
 targetUrl: "https://kottke.org/19/08/the-mosquito-humanitys-greatest-enemy"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "kottke.org"
 author: "Jason Kottke"
 feedlyId: "Ks7ygQeckyuYvQjUAmcQ+t9yNvb90TQlD+xXxy0txMc=_16c8b4574b9:14093cc:561e4df6"

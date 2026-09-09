@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.446Z"
 dateSource: saved
 publishedAt: "2012-04-03T15:01:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/AComputerScientistInABusinessSchool/~3/rJ6cmReJDzo/when-is-world-working-odesk-edition-or.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Computer Scientist in a Business School"
 author: "Panos Ipeirotis"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13678b91fe0:320937:9e04b0a9"

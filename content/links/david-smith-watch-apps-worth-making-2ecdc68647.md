@@ -6,6 +6,8 @@ savedAt: "2016-02-20T07:42:22.092Z"
 dateSource: saved
 publishedAt: "2016-02-19T19:39:17.000Z"
 targetUrl: "http://david-smith.org/blog/2016/02/12/watch-apps-worth-making"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_152fb1da496:4d78c1d:ae8aca10"
 tags: ["Saved For Later"]

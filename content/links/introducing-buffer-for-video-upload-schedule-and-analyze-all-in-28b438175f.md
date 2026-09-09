@@ -5,7 +5,9 @@ date: 2015-08-24
 savedAt: "2015-08-24T17:24:14.196Z"
 dateSource: saved
 publishedAt: "2015-08-13T13:00:45.000Z"
-targetUrl: "http://feedproxy.google.com/~r/bufferapp/~3/L7QSSpsRTjA/buffer-for-video"
+targetUrl: "https://buffer.com/resources/buffer-for-video/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Social"
 author: "Courtney Seiter"
 feedlyId: "nw6t1kD4z8/zGdaRug06lzT6Y3MpeXIF8sOX4qBTTvs=_14f272a2a8c:84126:1065ee75"

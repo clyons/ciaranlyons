@@ -6,6 +6,8 @@ savedAt: "2013-11-11T14:03:12.621Z"
 dateSource: saved
 publishedAt: "2013-10-19T18:07:27.000Z"
 targetUrl: "http://tomkelshaw.com/post/64494778997"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "TOMBLG"
 feedlyId: "03pBXLb/uvM1TZpQHNHW31ztni3SDQst0tEvhjjazO0=_141d34de814:3bec2c:311b0cd6"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2014-09-01T05:25:24.583Z"
 dateSource: saved
 publishedAt: "2014-08-28T12:10:36.000Z"
 targetUrl: "https://yoast.com/wordpress-seo-tutorial-videos/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast"
 author: "Joost de Valk"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_1481f0f02be:dbcec:f03a03bf"

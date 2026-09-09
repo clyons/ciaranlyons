@@ -6,6 +6,8 @@ savedAt: "2017-10-19T03:09:07.643Z"
 dateSource: saved
 publishedAt: "2017-10-18T18:12:00.000Z"
 targetUrl: "http://feeds.themorningnews.org/~r/tmn/rss/~3/S8cTFVuAhMg/these-americans-were-tricked-into-working-for-russia-they"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Morning News"
 feedlyId: "hjQrZBpBsFo4Gp0JjiGbmZGbMm880GmFVt7Or1iA7mA=_15f30b756b5:de607:8cbd7d4f"
 tags: ["Saved For Later"]

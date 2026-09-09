@@ -6,6 +6,8 @@ savedAt: "2023-04-07T23:34:57.643Z"
 dateSource: saved
 publishedAt: "2023-04-07T21:31:22.000Z"
 targetUrl: "https://www.tiktok.com/@reinaofthecid/video/7218360917774355754"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_1875daaa933:8668442:3c16e4a2"

@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.996Z"
 dateSource: saved
 publishedAt: "2011-09-26T19:55:18.000Z"
-targetUrl: "http://joehewitt.com/post/what-the-web-is-and-is-not/"
+targetUrl: "https://web.archive.org/web/20110928215255/http://joehewitt.com:80/post/what-the-web-is-and-is-not/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Joe Hewitt"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132a74e4870:320b46:9e04b0a9"
 tags: ["Saved For Later"]

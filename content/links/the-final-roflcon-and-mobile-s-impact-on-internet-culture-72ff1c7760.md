@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.530Z"
 dateSource: saved
 publishedAt: "2012-05-14T18:28:32.000Z"
 targetUrl: "http://waxy.org/2012/05/the_final_roflcon_and_mobiles_impact_on_internet_culture/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1374c9bdc80:3208e3:9e04b0a9"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2014-02-18
 savedAt: "2014-02-18T00:51:01.093Z"
 dateSource: saved
 publishedAt: "2014-02-17T20:26:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/OdBGdh2WClI/76987583894"
+targetUrl: "https://blog.timoni.org/post/76987583894/just-as-much-as-our-job-is-to-build-something"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_14441b33f76:2c0660:b272711d"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2024-01-01T20:54:01.773Z"
 dateSource: saved
 publishedAt: "2023-12-02T02:30:21.000Z"
 targetUrl: "https://www.youtube.com/watch?v=KlRfXo3SC_k"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_18c285e2087:90d537:947237d6"

@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.679Z"
 dateSource: saved
 publishedAt: "2012-09-02T20:08:11.000Z"
 targetUrl: "http://blog.habitlabs.com/post/30746149132"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Habit Labs"
 author: "bustr"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1398898fbf8:32084e:9e04b0a9"

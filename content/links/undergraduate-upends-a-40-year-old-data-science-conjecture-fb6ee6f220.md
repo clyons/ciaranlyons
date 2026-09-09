@@ -6,6 +6,8 @@ savedAt: "2025-02-17T01:31:44.227Z"
 dateSource: saved
 publishedAt: "2025-02-11T14:30:03.000Z"
 targetUrl: "https://jmason.ie/2025/02/11/153003a.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Justin's Linklog"
 author: "Links"
 feedlyId: "a9zHexj+hMibuNjkllIb+lIAludY0E80OyFQxP9r1kA=_194f5717e6a:10c8cf:d4d0980a"

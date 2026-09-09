@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.503Z"
 dateSource: saved
 publishedAt: "2012-04-26T13:25:13.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/4jJb5ASMC30/battleground-america"
+targetUrl: "https://www.subtraction.com/2012/04/26/the-new-yorker-battleground-america/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Subtraction.com"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_136eed3b2a8:3208fe:9e04b0a9"
 tags: ["Saved For Later"]

@@ -6,6 +6,8 @@ savedAt: "2015-01-26T06:09:18.213Z"
 dateSource: saved
 publishedAt: "2015-01-25T21:20:00.000Z"
 targetUrl: "http://scriptogr.am/ameliagreenhall/post/start-your-own-brand-everything-i-know-about-starting-collaborative-feminist-publications"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Amelia Greenhall on scriptogr.am"
 feedlyId: "9/FzYvaBKT3Oe5UGFGTHk/MedKsOulkyKhPJcPKkGCw=_14b23ae9ff6:46255ad:d38cab4a"
 tags: ["Saved For Later"]

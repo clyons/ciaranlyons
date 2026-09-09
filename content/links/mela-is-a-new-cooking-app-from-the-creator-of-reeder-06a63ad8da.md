@@ -6,6 +6,8 @@ savedAt: "2021-08-17T19:06:41.191Z"
 dateSource: saved
 publishedAt: "2021-08-16T22:48:23.000Z"
 targetUrl: "https://pxlnv.com/linklog/mela-cooking-app/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_17b512947c7:1f8e425:a49f3185"

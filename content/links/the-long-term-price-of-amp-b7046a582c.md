@@ -6,6 +6,8 @@ savedAt: "2017-09-30T14:30:47.130Z"
 dateSource: saved
 publishedAt: "2017-09-07T20:23:52.000Z"
 targetUrl: "https://ethanmarcotte.com/wrote/ampersand/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_15e5e1c4595:454da8c:ed57ae85"

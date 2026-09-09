@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.836Z"
 dateSource: saved
 publishedAt: "2013-04-17T01:04:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/jBtvVq_rLSA/48163031237"
+targetUrl: "https://blog.timoni.org/post/48163031237/the-interior-of-behavior-change-and-building"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e15850800:3207a8:9e04b0a9"
 tags: ["Saved For Later"]

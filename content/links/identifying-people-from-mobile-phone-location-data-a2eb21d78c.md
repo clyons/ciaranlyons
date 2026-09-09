@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.804Z"
 dateSource: saved
 publishedAt: "2013-03-26T11:38:14.000Z"
 targetUrl: "http://www.schneier.com/blog/archives/2013/03/identifying_peo_5.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "schneier"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13da67dc870:3207cb:9e04b0a9"

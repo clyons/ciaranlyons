@@ -5,7 +5,9 @@ date: 2021-10-31
 savedAt: "2021-10-31T19:11:03.689Z"
 dateSource: saved
 publishedAt: "2021-10-03T21:00:50.000Z"
-targetUrl: "https://chrisguillebeau.com/the-latest-in-travel-hacking-2021/"
+targetUrl: "https://web.archive.org/web/20211003233135/https://chrisguillebeau.com/the-latest-in-travel-hacking-2021/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Art of Non-Conformity"
 feedlyId: "ac3jqf95X94fyEmpPOf4kyUwy7Dy+yFcVGMWg4SKPXg=_17c47fa3ec3:22d7943:76fedaec"
 tags: ["Saved For Later"]

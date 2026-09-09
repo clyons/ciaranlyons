@@ -6,6 +6,8 @@ savedAt: "2015-09-22T01:43:33.790Z"
 dateSource: saved
 publishedAt: "2015-09-21T15:43:12.000Z"
 targetUrl: "http://bitsplitting.org/2015/09/21/familiar-spell-checking/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bitsplitting.org"
 author: "Daniel Jalkut"
 feedlyId: "iArFEJN54i980lkIXIWQkqsVjbh5DWI3egkJLHhu9v0=_14ff0914ca6:115fc646:fccac72e"

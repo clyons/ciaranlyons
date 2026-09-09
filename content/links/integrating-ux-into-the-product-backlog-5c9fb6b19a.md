@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.321Z"
 dateSource: saved
 publishedAt: "2012-02-03T08:48:50.000Z"
 targetUrl: "http://www.boxesandarrows.com/view/integrating-ux-into"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Boxes and Arrows"
 author: "Jon Innes"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1354266d550:3209b4:9e04b0a9"

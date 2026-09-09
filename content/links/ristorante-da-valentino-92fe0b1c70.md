@@ -5,7 +5,9 @@ date: 2014-02-17
 savedAt: "2014-02-17T11:50:02.934Z"
 dateSource: saved
 publishedAt: "2014-02-15T09:27:49.000Z"
-targetUrl: "http://www.bernardleong.com/2014/02/15/ristorante-da-valentino/"
+targetUrl: "https://web.archive.org/web/20190825110116/https://www.bernardleong.com/2014/02/15/ristorante-da-valentino/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bernard Leong"
 author: "Bernard Leong"
 feedlyId: "q/KplyaKps+d9MLJXd2qMMsFa1jjTIIcdbQ+GRCzUsk=_14434ef8637:45ac3dd:2da7bc3c"

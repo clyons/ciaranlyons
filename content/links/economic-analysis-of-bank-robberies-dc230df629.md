@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.588Z"
 dateSource: saved
 publishedAt: "2012-06-22T12:20:20.000Z"
 targetUrl: "http://www.schneier.com/blog/archives/2012/06/economic_analys.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "schneier"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1381422c7a0:3208a9:9e04b0a9"

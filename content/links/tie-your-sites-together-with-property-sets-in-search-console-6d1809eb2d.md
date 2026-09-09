@@ -5,7 +5,9 @@ date: 2016-05-29
 savedAt: "2016-05-29T04:04:20.505Z"
 dateSource: saved
 publishedAt: "2016-05-23T08:20:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/blogspot/amDG/~3/0reann6KOzE/tie-your-sites-together-with-property.html"
+targetUrl: "https://developers.google.com/search/blog/2016/05/tie-your-sites-together-with-property?hl=en"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Google Webmaster Central Blog"
 author: "Google Webmaster Central"
 feedlyId: "1xSdJLYliFyyTJ4ZFvJWsdtRSkVMsecZUQlMzibhZGw=_154dcb490c7:16f02cd:52d292dd"

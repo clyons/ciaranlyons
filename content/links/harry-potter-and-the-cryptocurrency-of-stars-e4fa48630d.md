@@ -6,6 +6,8 @@ savedAt: "2014-08-07T05:05:19.266Z"
 dateSource: saved
 publishedAt: "2014-08-05T17:35:52.000Z"
 targetUrl: "http://www.kalzumeus.com/2014/08/05/harry-potter-and-the-cryptocurrency-of-stars/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Kalzumeus Software"
 author: "Patrick"
 feedlyId: "v33Dovp0SDnkiUJmQahWNbfSa7fMvFu7sCa+1rRNobs=_147a744ba58:14cf956:d9f119ac"

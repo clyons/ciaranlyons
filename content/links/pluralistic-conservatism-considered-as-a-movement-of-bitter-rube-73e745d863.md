@@ -6,6 +6,8 @@ savedAt: "2025-08-20T23:35:05.650Z"
 dateSource: saved
 publishedAt: "2025-07-22T18:01:54.000Z"
 targetUrl: "https://pluralistic.net/2025/07/22/all-day-suckers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pluralistic: Daily links from Cory Doctorow"
 author: "Cory Doctorow"
 feedlyId: "g6Ngl0v6+a6lryp1OFsHIzI9rOhBxlGuxU8rVAC6Pr0=_19833569ea8:9a6a7da:f9ba9465"

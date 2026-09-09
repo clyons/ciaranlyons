@@ -6,6 +6,8 @@ savedAt: "2024-07-10T00:32:32.184Z"
 dateSource: saved
 publishedAt: "2024-07-09T15:09:22.000Z"
 targetUrl: "https://kottke.org/24/07/0044926-biden-is-the-candidate-ga"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "kottke.org"
 author: "Jason Kottke"
 feedlyId: "Ks7ygQeckyuYvQjUAmcQ+t9yNvb90TQlD+xXxy0txMc=_1909812ab51:daf03:c09d7b8a"

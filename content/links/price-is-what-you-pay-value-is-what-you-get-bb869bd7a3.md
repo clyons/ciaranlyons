@@ -6,6 +6,8 @@ savedAt: "2014-02-25T23:53:56.495Z"
 dateSource: saved
 publishedAt: "2014-02-25T21:48:33.000Z"
 targetUrl: "http://finance.fortune.cnn.com/2014/02/24/warren-buffett-berkshire-letter/"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_1446b097d20:8c8b502:57158c7e"

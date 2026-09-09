@@ -5,7 +5,9 @@ date: 2013-10-15
 savedAt: "2013-10-15T11:17:40.302Z"
 dateSource: saved
 publishedAt: "2013-10-15T06:24:40.000Z"
-targetUrl: "http://feedproxy.google.com/~r/wondermark/~3/GDrD6qxEotU/"
+targetUrl: "https://wondermark.com/xoxo-max/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Wondermark"
 author: "David Malki !"
 feedlyId: "nBpSCfLmaUzYVGKaIeiLAtujg/CMLlVfwh4qkrBz9EE=_141bb05abb7:5cfe2:811f995"

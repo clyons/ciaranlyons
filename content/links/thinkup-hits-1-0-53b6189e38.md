@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.111Z"
 dateSource: saved
 publishedAt: "2011-11-15T21:17:46.000Z"
-targetUrl: "http://expertlabs.org/2011/11/thinkup-hits-10.html"
+targetUrl: "https://web.archive.org/web/20111117222243/http://expertlabs.org:80/2011/11/thinkup-hits-10.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Expert Labs"
 author: "Andy Baio"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_133a917c090:320ad2:9e04b0a9"

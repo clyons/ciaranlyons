@@ -6,6 +6,8 @@ savedAt: "2015-06-08T04:56:14.709Z"
 dateSource: saved
 publishedAt: "2015-05-12T08:51:00.000Z"
 targetUrl: "http://feeds.feedblitz.com/~/91774486/0/sethsblog~A-new-way-to-move-forward.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Seth Godin's Blog on marketing, tribes and respect"
 author: "Seth Godin"
 feedlyId: "6GV/GbWOJ6VnCKxInEF8KnvUbqZzRLHHRNcmgK9rnUk=_14d475a3f10:11f62a72:69c6e04e"

@@ -6,6 +6,8 @@ savedAt: "2016-03-30T01:42:42.204Z"
 dateSource: saved
 publishedAt: "2016-03-28T21:02:06.000Z"
 targetUrl: "http://www.asymco.com/2016/03/28/the-next-40/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_153bf0c9acf:189bf2f6:70e34146"

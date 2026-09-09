@@ -5,7 +5,9 @@ date: 2015-04-20
 savedAt: "2015-04-20T13:06:34.226Z"
 dateSource: saved
 publishedAt: "2015-03-15T22:52:17.000Z"
-targetUrl: "http://feedproxy.google.com/~r/kklifestream/~3/tEW0CtoIiVA/sourced-quotes-21"
+targetUrl: "https://kk.org/thetechnium/sourced-quotes-21/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "KK Lifestream"
 author: "Kevin Kelly"
 feedlyId: "YbpTUPVmlrNlW+Jw8Awdl03e7Pqm9ocNHnTaelcTiBA=_14cc590c86b:f703fe3:be345dbb"

@@ -6,6 +6,8 @@ savedAt: "2017-06-03T12:53:05.816Z"
 dateSource: saved
 publishedAt: "2017-05-29T11:26:47.000Z"
 targetUrl: "http://www.stephenfry.com/2017/05/the-way-ahead/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog – Official site of Stephen Fry"
 author: "Stephen Fry"
 feedlyId: "x5BTS70TYjC48JMPtJLuMMQmGz+/fFTQLp6xQNCdmYw=_15c5792ad4c:4f14431:cfb784e9"

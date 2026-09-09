@@ -5,7 +5,9 @@ date: 2014-02-20
 savedAt: "2014-02-20T07:43:33.443Z"
 dateSource: saved
 publishedAt: "2014-02-17T15:58:44.000Z"
-targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/ga0RUZaEX90/sounds-from-space.html"
+targetUrl: "https://dullneon.com/randomnotes/2014/02/sounds-from-space.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "dullneon.com - random notes, links and pixels"
 author: "Jaffry Jalal"
 feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_1444092c844:25494f7:150a65e1"

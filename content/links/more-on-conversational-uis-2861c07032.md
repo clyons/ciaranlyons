@@ -6,6 +6,8 @@ savedAt: "2015-06-29T04:18:49.263Z"
 dateSource: saved
 publishedAt: "2015-06-28T17:51:00.000Z"
 targetUrl: "http://interconnected.org/home/2015/06/28/more_on_conversational_uis"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "1/Bx79f77tYtWy+kXl9aVKnNCVTxUSSB0069nS0yyjM=_14e3b23d2d5:16cdc0:3db23cd0"

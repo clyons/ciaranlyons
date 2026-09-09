@@ -5,7 +5,9 @@ date: 2018-12-31
 savedAt: "2018-12-31T03:23:59.586Z"
 dateSource: saved
 publishedAt: "2018-12-30T10:50:23.000Z"
-targetUrl: "https://pjmedia.com/richardfernandez/a-hazardous-form-of-peace/"
+targetUrl: "https://web.archive.org/web/20181231112858/https://pjmedia.com/richardfernandez/a-hazardous-form-of-peace/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Belmont Club"
 author: "Richard Fernandez"
 feedlyId: "UMFoq0k+vbI7ziDkExJxKEnFLvZgUuEmcZ207VX7IVs=_167fec28e10:4ed541e:c2ce2e2e"

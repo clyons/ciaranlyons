@@ -6,6 +6,8 @@ savedAt: "2014-09-05T15:24:44.012Z"
 dateSource: saved
 publishedAt: "2014-09-04T10:30:23.000Z"
 targetUrl: "https://yoast.com/google-analytics-5/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast"
 author: "Joost de Valk"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_14840b4edcd:2466aed:40a25680"

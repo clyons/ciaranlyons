@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.561Z"
 dateSource: saved
 publishedAt: "2012-05-29T21:06:00.000Z"
 targetUrl: "http://blog.assembla.com/assemblablog/tabid/12618/bid/84665/Introducing-Simple-Planner-for-lightweight-Agile-Scrum-and-Kanban.aspx"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Assembla Blog"
 author: "Andy Singleton"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1379a6b6ac0:3208c4:9e04b0a9"

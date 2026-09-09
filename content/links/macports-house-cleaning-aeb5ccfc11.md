@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.971Z"
 dateSource: saved
 publishedAt: "2011-10-02T09:46:42.000Z"
-targetUrl: "http://www.od-eon.com/blogs/calvin/macports-house-cleaning/"
+targetUrl: "https://web.archive.org/web/20111012201714/http://od-eon.com/blogs/calvin/macports-house-cleaning/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Calvin Cheng at Odeon"
 author: "Calvin Cheng"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132c4073fd0:320b60:9e04b0a9"

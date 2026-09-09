@@ -6,6 +6,8 @@ savedAt: "2025-08-26T14:27:18.821Z"
 dateSource: saved
 publishedAt: "2025-08-25T23:59:43.000Z"
 targetUrl: "https://inessential.com/2025/08/25/tough-season.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "inessential.com"
 feedlyId: "ITR2bp1hhxjNSFKlSuZR7gUTTcxmHRq2TwhCgV9CifI=_198e3b519c2:2d45907:3e313674"
 tags: ["Saved For Later"]

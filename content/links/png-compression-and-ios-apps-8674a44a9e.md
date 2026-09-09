@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.172Z"
 dateSource: saved
 publishedAt: "2011-12-06T12:11:26.000Z"
 targetUrl: "http://bjango.com/articles/pngcompression/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bjango Articles"
 author: "Marc Edwards"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13413491db0:320a69:9e04b0a9"

@@ -6,6 +6,8 @@ savedAt: "2017-01-26T22:38:27.193Z"
 dateSource: saved
 publishedAt: "2017-01-26T10:11:46.000Z"
 targetUrl: "http://morning.computer/2017/01/sensible-requirements-for-future-office-equipment/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MORNING, COMPUTER"
 author: "Warren Ellis"
 feedlyId: "4zGTQE9/hT3I1yk9ZKrYrUdFhPOlT6hNyyLDpBjWz7w=_159da44fb88:2a17369:e843be78"

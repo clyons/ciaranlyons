@@ -6,6 +6,8 @@ savedAt: "2019-10-02T18:20:00.320Z"
 dateSource: saved
 publishedAt: "2019-10-02T14:41:51.000Z"
 targetUrl: "https://anildash.com/2019/10/02/every-day-a-little-better/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Anil Dash"
 author: "Anil Dash"
 feedlyId: "VEZolJADVxKKVdOBghxvNgLuJ8mgZ9LRDwtSwBj3EUI=_16d8cf50927:37fe1b:889dc38f"

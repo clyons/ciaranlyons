@@ -6,6 +6,8 @@ savedAt: "2015-02-10T15:45:16.646Z"
 dateSource: saved
 publishedAt: "2015-02-10T12:23:04.000Z"
 targetUrl: "http://www.asymco.com/2015/02/10/how-many-ios-devices-didwill-apple-ship/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_14b737ae12e:1404c8c3:69c6e04e"

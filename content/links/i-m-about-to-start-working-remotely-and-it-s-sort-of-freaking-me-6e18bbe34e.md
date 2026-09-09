@@ -5,7 +5,9 @@ date: 2013-12-23
 savedAt: "2013-12-23T05:01:26.648Z"
 dateSource: saved
 publishedAt: "2013-11-22T06:54:23.000Z"
-targetUrl: "http://blog.rescuetime.com/2013/11/21/im-about-to-start-working-remotely-and-its-sort-of-freaking-me-out/"
+targetUrl: "https://web.archive.org/web/20131125184045/http://blog.rescuetime.com:80/2013/11/21/im-about-to-start-working-remotely-and-its-sort-of-freaking-me-out/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "RescueTime Blog"
 author: "Robby Macdonell"
 feedlyId: "j2J3rmzldm02OQdrbwmWReUcWU3ctcCWBbI5QyGTRuw=_1427e969d28:23d5a:6f6566d1"

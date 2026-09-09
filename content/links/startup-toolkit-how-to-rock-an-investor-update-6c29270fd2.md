@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.078Z"
 dateSource: saved
 publishedAt: "2011-11-04T23:33:30.000Z"
 targetUrl: "http://blog.habitlabs.com/post/12344790438"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Habit Labs"
 author: "centraldogma"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13370ee1110:320af4:9e04b0a9"

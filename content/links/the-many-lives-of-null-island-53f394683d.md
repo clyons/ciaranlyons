@@ -6,6 +6,8 @@ savedAt: "2024-07-28T05:36:51.887Z"
 dateSource: saved
 publishedAt: "2024-07-27T17:49:35.000Z"
 targetUrl: "https://stamen.com/the-many-lives-of-null-island/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_190f55346d5:efd27a:9b7668c4"

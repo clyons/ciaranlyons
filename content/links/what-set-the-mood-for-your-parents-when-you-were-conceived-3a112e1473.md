@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:21.965Z"
 dateSource: saved
 publishedAt: "2011-09-23T09:04:12.000Z"
 targetUrl: "http://feeds.infosthetics.com/~r/infosthetics/~3/B2Hg5TYfJ60/what_set_the_mood_for_your_parents_when_you_were_conceived.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "information aesthetics"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13295871ae0:320b66:9e04b0a9"
 tags: ["Saved For Later"]

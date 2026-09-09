@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.840Z"
 dateSource: saved
 publishedAt: "2013-04-18T08:32:39.000Z"
-targetUrl: "http://feedproxy.google.com/~r/DavidSimon/~3/F0ApQfE5uQ8/"
+targetUrl: "https://davidsimon.com/dead-children-and-monied-politicians/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "David Simon"
 author: "David Simon"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e1c462458:3207a4:9e04b0a9"

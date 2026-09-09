@@ -6,6 +6,8 @@ savedAt: "2015-01-21T04:16:43.478Z"
 dateSource: saved
 publishedAt: "2015-01-20T19:36:32.000Z"
 targetUrl: "http://www.paulgraham.com/work.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_14b08ebd8d2:11fff4bd:d38cab4a"
 tags: ["Saved For Later"]

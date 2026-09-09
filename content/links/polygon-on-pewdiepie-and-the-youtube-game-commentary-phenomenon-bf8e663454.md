@@ -6,6 +6,8 @@ savedAt: "2013-09-09T13:47:18.333Z"
 dateSource: saved
 publishedAt: "2013-09-09T01:10:10.000Z"
 targetUrl: "http://www.polygon.com/features/2013/9/6/4641320/pewdiepie-youtube-commentary"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_14100113f48:7b36b0e:4a4785db"
 tags: ["Saved For Later"]

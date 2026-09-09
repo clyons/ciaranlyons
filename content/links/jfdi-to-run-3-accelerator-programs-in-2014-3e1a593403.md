@@ -6,6 +6,8 @@ savedAt: "2014-01-24T02:00:17.588Z"
 dateSource: saved
 publishedAt: "2014-01-23T07:00:33.000Z"
 targetUrl: "http://jfdi.asia/2014/01/23/jfdi-asia-announces-3-startup-accelerator-programs-for-2014/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "JFDI.Asia"
 author: "jfdiasia"
 feedlyId: "g1mD3DEsZEtHLQwk3srSJtpcaWLtwtpsekDbt3ccUdw=_143be4d9df5:1c07f22:242b6c1b"

@@ -6,6 +6,8 @@ savedAt: "2022-08-26T01:50:06.224Z"
 dateSource: saved
 publishedAt: "2022-08-25T20:56:43.000Z"
 targetUrl: "https://a.wholelottanothing.org/2022/08/25/a-less-exhausting-guide-to-podcasting-in-2022/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_182d746fe69:101de84:2a28f813"

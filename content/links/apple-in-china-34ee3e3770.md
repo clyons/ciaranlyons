@@ -6,6 +6,8 @@ savedAt: "2025-08-19T00:56:11.295Z"
 dateSource: saved
 publishedAt: "2025-08-19T00:18:21.000Z"
 targetUrl: "https://pxlnv.com/blog/mcgee-apple-in-china/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_198bfb6709a:24f4432:bef4d56c"

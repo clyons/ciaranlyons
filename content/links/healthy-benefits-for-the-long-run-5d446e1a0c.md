@@ -5,7 +5,9 @@ date: 2014-01-08
 savedAt: "2014-01-08T10:28:07.569Z"
 dateSource: saved
 publishedAt: "2014-01-06T17:43:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/75yWfdRBGIQ/3703-healthy-benefits-for-the-long-run"
+targetUrl: "https://signalvnoise.com/posts/3703-healthy-benefits-for-the-long-run"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal vs. Noise"
 author: "David"
 feedlyId: "7Za/zqY5+X7fYgcQFIcOrkUBr06oZlqE1S903nI1Du8=_14368aad07f:30d5da3:1336b31e"

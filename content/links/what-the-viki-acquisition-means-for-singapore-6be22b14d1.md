@@ -6,6 +6,8 @@ savedAt: "2013-09-12T05:23:45.581Z"
 dateSource: saved
 publishedAt: "2013-09-03T11:41:32.000Z"
 targetUrl: "http://jfdi.asia/2013/09/03/what-the-viki-acquisition-means-for-singapore"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "JFDI.Asia"
 author: "mengwong"
 feedlyId: "g1mD3DEsZEtHLQwk3srSJtpcaWLtwtpsekDbt3ccUdw=_140e3a0f3ab:1e9116:f811924e"

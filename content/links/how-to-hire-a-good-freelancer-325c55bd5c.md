@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:21.974Z"
 dateSource: saved
 publishedAt: "2011-10-05T00:53:07.000Z"
 targetUrl: "http://feedproxy.google.com/~r/ElectronPlumber/~3/eXWh3ujooXY/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "ElectronPlumber"
 author: "El Plumber (admin)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_132d191d138:320b5d:9e04b0a9"

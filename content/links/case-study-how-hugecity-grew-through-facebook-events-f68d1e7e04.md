@@ -5,7 +5,9 @@ date: 2013-12-27
 savedAt: "2013-12-27T17:31:14.786Z"
 dateSource: saved
 publishedAt: "2013-12-27T17:09:45.000Z"
-targetUrl: "http://feedproxy.google.com/~r/InsideFacebook/~3/cNksP12ZmNw/"
+targetUrl: "http://www.insidefacebook.com/2013/12/27/case-study-how-hugecity-grew-through-facebook-events/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Inside Facebook"
 author: "Guest Post"
 feedlyId: "lEVTgbYhl8ate7dz07ngkzcJYlu2THIQfxrelib55aA=_1433509ad38:776a29c:9d0cd311"

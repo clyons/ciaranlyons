@@ -6,6 +6,8 @@ savedAt: "2025-10-09T11:26:14.114Z"
 dateSource: saved
 publishedAt: "2025-10-06T07:51:46.000Z"
 targetUrl: "http://davetrott.co.uk/2025/10/whats-in-it-for-me-5/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dave Trott's Blog"
 author: "Dave Trott"
 feedlyId: "AiGE+5K3cCPM2aeJjk9Ma0GxixEx+sqAPIxVYlEqNXU=_199b885713f:39cf2e9:fbc9494b"

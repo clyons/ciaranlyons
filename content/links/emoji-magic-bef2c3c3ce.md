@@ -6,6 +6,8 @@ savedAt: "2019-02-07T23:26:49.592Z"
 dateSource: saved
 publishedAt: "2019-02-07T18:56:53.000Z"
 targetUrl: "https://a.wholelottanothing.org/2019/02/07/emoji-magic/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_168c95cf549:2453590:b77f238b"

@@ -5,7 +5,9 @@ date: 2014-04-10
 savedAt: "2014-04-10T00:52:56.401Z"
 dateSource: saved
 publishedAt: "2014-03-13T20:01:33.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/m9j4GgdME8o/79482958440"
+targetUrl: "https://blog.timoni.org/post/79482958440/peter-maintains-that-telling-lies-is-the-no-1"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_144bd2a0785:1675729:5775aa28"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2017-10-04
 savedAt: "2017-10-04T23:45:17.608Z"
 dateSource: saved
 publishedAt: "2017-10-04T20:09:45.000Z"
-targetUrl: "http://blog.maxrudberg.com/post/166045445103/ui-design-for-iphone-x-top-elements-and-the-notch"
+targetUrl: "https://web.archive.org/web/20171004235903/http://blog.maxrudberg.com/post/166045445103/ui-design-for-iphone-x-top-elements-and-the-notch"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_15ee914ceac:740065:86e95007"

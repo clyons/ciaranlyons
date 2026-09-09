@@ -6,6 +6,8 @@ savedAt: "2019-03-06T00:59:34.467Z"
 dateSource: saved
 publishedAt: "2019-03-02T11:00:00.000Z"
 targetUrl: "https://www.nytimes.com/2019/03/02/style/momo-mania-hoax.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "John Herrman"
 author: "By JOHN HERRMAN"
 feedlyId: "jouMaW+JpMBwAexoCZ8O03QZ3EMpg8Miaj3GtTk7aRs=_1693e3c1561:25d54de:ad2b6584"

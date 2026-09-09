@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.827Z"
 dateSource: saved
 publishedAt: "2013-04-16T02:24:33.000Z"
 targetUrl: "http://blog.jayparkinsonmd.com/post/48091153007"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Dr. Jay Parkinson"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e10a86ae8:3207b3:9e04b0a9"
 tags: ["Saved For Later"]

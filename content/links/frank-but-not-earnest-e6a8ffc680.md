@@ -6,6 +6,8 @@ savedAt: "2023-01-13T03:46:40.476Z"
 dateSource: saved
 publishedAt: "2023-01-12T21:18:18.000Z"
 targetUrl: "https://www.todayintabs.com/p/frank-ly-my-dear"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Today in Tabs"
 author: "Rusty Foster"
 feedlyId: "gctfS5pz8/lh6r0ghE6lbmYBgBOrhLh/RVwhEIhtTVQ=_185a7e3d93d:b18f39:53488cc6"

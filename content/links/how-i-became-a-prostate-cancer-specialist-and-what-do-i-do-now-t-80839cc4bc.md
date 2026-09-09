@@ -6,6 +6,8 @@ savedAt: "2014-01-24T02:28:25.100Z"
 dateSource: saved
 publishedAt: "2014-01-22T04:00:00.000Z"
 targetUrl: "http://www.tuckermedical.com/2014/01/22/became-prostate-cancer-specialist-now-one/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Tucker Medical"
 author: "admin"
 feedlyId: "GGRqxFXxDa2YK0qNO1gn6NFSQAcbFmVKYfBcooic4/E=_143b87b347a:4e4f28:242b6c1b"

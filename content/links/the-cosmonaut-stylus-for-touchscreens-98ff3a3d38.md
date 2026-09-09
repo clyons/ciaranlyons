@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.187Z"
 dateSource: saved
 publishedAt: "2011-12-12T13:54:37.000Z"
 targetUrl: "http://www.marco.org/2011/12/12/the-cosmonaut-stylus-review"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_134328dbd48:320a54:9e04b0a9"
 tags: ["Saved For Later"]

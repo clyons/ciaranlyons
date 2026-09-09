@@ -6,6 +6,8 @@ savedAt: "2018-09-13T19:51:07.050Z"
 dateSource: saved
 publishedAt: "2018-09-13T15:54:06.000Z"
 targetUrl: "http://www.asymco.com/2018/09/13/lasts-longer/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_165d3a7bbc2:c9c225:4c71e4fe"

@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.345Z"
 dateSource: saved
 publishedAt: "2012-02-24T10:50:41.000Z"
-targetUrl: "http://feedproxy.google.com/~r/ajfisher/~3/Exjs49EbiWk/"
+targetUrl: "https://ajfisher.me/2012/02/24/humanising-the-internet-of-things/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Technology Treason"
 author: "ajfisher"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_135aefbefe8:32099c:9e04b0a9"

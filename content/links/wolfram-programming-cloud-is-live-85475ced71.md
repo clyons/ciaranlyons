@@ -6,6 +6,8 @@ savedAt: "2014-06-29T12:43:36.987Z"
 dateSource: saved
 publishedAt: "2014-06-23T18:38:52.000Z"
 targetUrl: "http://blog.stephenwolfram.com/2014/06/wolfram-programming-cloud-is-live/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stephen Wolfram Blog"
 author: "Stephen Wolfram"
 feedlyId: "n50MNP+NWJLVGXWR4YXL/pRdmEDgO2alTkcs+a4sQ0s=_146ca16643a:66c434f:1fb9b1e9"

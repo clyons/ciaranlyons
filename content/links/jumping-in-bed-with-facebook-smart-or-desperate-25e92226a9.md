@@ -5,7 +5,9 @@ date: 2015-04-07
 savedAt: "2015-04-07T04:55:03.338Z"
 dateSource: saved
 publishedAt: "2015-04-06T15:35:46.000Z"
-targetUrl: "http://www.mondaynote.com/2015/04/06/jumping-in-bed-with-facebook-smart-or-desperate/"
+targetUrl: "https://web.archive.org/web/20150407030236/http://www.mondaynote.com/2015/04/06/jumping-in-bed-with-facebook-smart-or-desperate/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Monday Note"
 author: "Frédéric Filloux"
 feedlyId: "K2yEyJkJAlTYIjP5i2D9ccp/wbMYzpHnabsacInQgcs=_14c8f605d7c:1924122:e89fc738"

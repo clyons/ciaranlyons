@@ -6,6 +6,8 @@ savedAt: "2013-09-06T12:25:01.594Z"
 dateSource: saved
 publishedAt: "2013-08-31T16:34:29.000Z"
 targetUrl: "http://scriptogr.am/ameliagreenhall/post/looks-harder-from-far-away"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Amelia Greenhall on scriptogr.am"
 feedlyId: "9/FzYvaBKT3Oe5UGFGTHk/MedKsOulkyKhPJcPKkGCw=_140d56a37d6:1c7cb94:c42a106c"
 tags: ["Saved For Later"]

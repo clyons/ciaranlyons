@@ -6,6 +6,8 @@ savedAt: "2016-01-26T01:46:01.825Z"
 dateSource: saved
 publishedAt: "2015-12-30T19:04:30.000Z"
 targetUrl: "http://blog.gethopscotch.com/post/136271198751"
+destinationStatus: unavailable
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Hopscotch Blog"
 author: "ricebeansandkeens"
 feedlyId: "jpctUo7Bpao+yu0sewYDYXutMZPzPL4QKX5T1ymTL+c=_151f669385d:19ac632:1ba91209"

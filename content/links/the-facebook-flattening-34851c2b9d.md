@@ -5,7 +5,9 @@ date: 2018-02-08
 savedAt: "2018-02-08T01:33:18.329Z"
 dateSource: saved
 publishedAt: "2018-02-07T22:15:41.000Z"
-targetUrl: "http://splitsider.com/2018/02/how-facebook-is-killing-comedy/"
+targetUrl: "https://web.archive.org/web/20180207234226/http://splitsider.com/2018/02/how-facebook-is-killing-comedy/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_1617258e7dc:3e847d7:3c0bb656"

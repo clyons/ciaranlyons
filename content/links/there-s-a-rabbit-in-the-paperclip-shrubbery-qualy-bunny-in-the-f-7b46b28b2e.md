@@ -6,6 +6,8 @@ savedAt: "2013-10-11T11:21:27.586Z"
 dateSource: saved
 publishedAt: "2013-10-07T22:00:00.000Z"
 targetUrl: "http://matomeno.com/10170.html"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Matomeno"
 author: "まとめのさん"
 feedlyId: "m8YchHeoSPPwdFwuUVicWsCZaQd318EBl0hAsXFUf+s=_141950da6dc:641bc0:f07a5aec"

@@ -6,6 +6,8 @@ savedAt: "2014-09-08T04:11:46.573Z"
 dateSource: saved
 publishedAt: "2017-03-29T13:10:36.000Z"
 targetUrl: "https://yoast.com/tracking-seo-google-analytics/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast • SEO for everyone"
 author: "Annelieke van den Berg"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_148460b1870:d56cb0:40a25680"

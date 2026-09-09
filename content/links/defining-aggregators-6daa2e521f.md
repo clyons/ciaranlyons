@@ -6,6 +6,8 @@ savedAt: "2017-09-26T19:43:42.795Z"
 dateSource: saved
 publishedAt: "2017-09-26T14:27:17.000Z"
 targetUrl: "https://stratechery.com/2017/defining-aggregators/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_15ebe9a5277:257c6d4:e05f56c8"

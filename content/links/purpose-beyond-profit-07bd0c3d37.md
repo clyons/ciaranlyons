@@ -6,6 +6,8 @@ savedAt: "2014-08-20T06:24:30.931Z"
 dateSource: saved
 publishedAt: "2014-08-19T07:53:58.000Z"
 targetUrl: "http://davetrott.campaignlive.co.uk/2014/08/19/purpose-beyond-profit/"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "davetrott"
 author: "Dave Trott"
 feedlyId: "H/Aw2U9fxApDOgG22yjRDoCxCoDBdxyMvLJVkufDyY8=_147ed5caa2f:8ce456:d9f119ac"

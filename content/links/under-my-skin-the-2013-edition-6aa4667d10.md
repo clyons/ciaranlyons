@@ -5,7 +5,9 @@ date: 2014-01-02
 savedAt: "2014-01-02T00:41:43.089Z"
 dateSource: saved
 publishedAt: "2013-12-31T14:35:47.000Z"
-targetUrl: "http://bbh-labs.com/under-my-skin-the-2013-edition/"
+targetUrl: "https://web.archive.org/web/20140104044436/http://bbh-labs.com:80/under-my-skin-the-2013-edition/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "BBH Labs"
 author: "Mel Exon"
 feedlyId: "orMAJ3wj2GjN2XSx2vOpa9l0ufuWmIAAlOqc5Ynn7Qc=_14349ae7552:a93bb79:d5082bca"

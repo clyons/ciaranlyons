@@ -6,6 +6,8 @@ savedAt: "2019-01-17T19:19:04.991Z"
 dateSource: saved
 publishedAt: "2019-01-17T04:24:35.000Z"
 targetUrl: "http://cdevroe.com/2019/01/16/rss-subscribing/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_1685a101e6b:ee79c:3a104d3b"

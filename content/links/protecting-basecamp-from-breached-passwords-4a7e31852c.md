@@ -6,6 +6,8 @@ savedAt: "2019-02-20T14:04:42.560Z"
 dateSource: saved
 publishedAt: "2019-02-19T23:22:03.000Z"
 targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/8n0m2-kSCZ8/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal v. Noise"
 author: "Jeremy Daer"
 feedlyId: "7Za/zqY5+X7fYgcQFIcOrkUBr06oZlqE1S903nI1Du8=_1690819c110:11307c:5280bd28"

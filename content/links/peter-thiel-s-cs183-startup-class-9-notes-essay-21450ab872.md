@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.747Z"
 dateSource: saved
 publishedAt: "2012-12-31T05:42:40.000Z"
 targetUrl: "http://ameliaatwork.tumblr.com/post/39283752517"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Amelia at work"
 author: "ameliagreenhall"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13bef7bb480:32080a:9e04b0a9"

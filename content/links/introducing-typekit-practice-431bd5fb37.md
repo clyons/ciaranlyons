@@ -6,6 +6,8 @@ savedAt: "2014-04-19T05:46:41.329Z"
 dateSource: saved
 publishedAt: "2014-04-16T19:22:34.000Z"
 targetUrl: "http://blog.typekit.com/2014/04/16/introducing-typekit-practice/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Typekit Blog"
 author: "Tim Brown"
 feedlyId: "BAAZ3MaORungJY+gBlIAXg3qFiqnzcjJkfiGmRrqiFo=_1456bfdb285:15d6678:f7e88c33"

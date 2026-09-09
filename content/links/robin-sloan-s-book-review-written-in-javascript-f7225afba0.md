@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.650Z"
 dateSource: saved
 publishedAt: "2012-07-24T01:58:30.000Z"
 targetUrl: "http://www.robinsloan.com/summer-reading/and-programming/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org Links"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_138b6b4f970:32086b:9e04b0a9"
 tags: ["Saved For Later"]

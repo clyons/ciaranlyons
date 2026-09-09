@@ -6,6 +6,8 @@ savedAt: "2016-09-26T02:02:56.489Z"
 dateSource: saved
 publishedAt: "2016-09-07T19:01:25.000Z"
 targetUrl: "http://blog.stephenwolfram.com/2016/09/how-to-teach-computational-thinking/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stephen Wolfram Blog"
 author: "Stephen Wolfram"
 feedlyId: "n50MNP+NWJLVGXWR4YXL/pRdmEDgO2alTkcs+a4sQ0s=_15706acb198:972046c:e6b2a59c"

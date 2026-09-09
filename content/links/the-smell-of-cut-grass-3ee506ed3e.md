@@ -5,7 +5,9 @@ date: 2015-08-14
 savedAt: "2015-08-14T01:36:49.195Z"
 dateSource: saved
 publishedAt: "2015-08-14T01:25:59.000Z"
-targetUrl: "http://feedproxy.google.com/~r/random_dullneon/~3/C7QA8HfF4pA/smell-of-cut-grass.html"
+targetUrl: "https://dullneon.com/randomnotes/2015/08/smell-of-cut-grass.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "dullneon.com - random notes, links and pixels"
 author: "Jaffry Jalal"
 feedlyId: "DqDA/GAmvAB5rchvo5f7ZrCdCNPzV0Jsl7VMM7Ncxw8=_14f29d06cd1:817f02:1065ee75"

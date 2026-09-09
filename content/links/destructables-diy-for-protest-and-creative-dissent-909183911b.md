@@ -6,6 +6,8 @@ savedAt: "2016-03-30T17:23:19.703Z"
 dateSource: saved
 publishedAt: "2016-03-29T12:56:38.000Z"
 targetUrl: "http://we-make-money-not-art.com/destructables-diy-for-protest-and-creative-dissent/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "We Make Money Not Art"
 author: "Regine"
 feedlyId: "IltLjrTdH09Yznj7ub6o4WvZwDxoYKufx8DVodH1lOc=_153c2954d77:de3fa2:6cb85528"

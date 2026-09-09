@@ -6,6 +6,8 @@ savedAt: "2014-02-17T12:09:12.220Z"
 dateSource: saved
 publishedAt: "2014-02-05T17:33:22.000Z"
 targetUrl: "https://medium.com/the-year-of-the-looking-glass/9ce2441beea8"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Year of the Looking Glass - Medium"
 author: "Julie Zhuo"
 feedlyId: "XAW0NY2xpGO2MCmnqdiHSdWrqRPzI/UyN9ZIVsnIPYI=_14403e60fa7:97abd94:df1a6388"

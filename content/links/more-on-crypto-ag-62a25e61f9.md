@@ -6,6 +6,8 @@ savedAt: "2020-03-09T23:08:09.751Z"
 dateSource: saved
 publishedAt: "2020-03-06T13:48:21.000Z"
 targetUrl: "https://www.schneier.com/blog/archives/2020/03/more_on_crypto_.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Schneier on Security"
 author: "Bruce Schneier"
 feedlyId: "FcF+jG/fcWtyez+xCh3KiSbsF1qkB3k9yaFAvT1QJWM=_170b022cb2b:989d1a:6717d43a"

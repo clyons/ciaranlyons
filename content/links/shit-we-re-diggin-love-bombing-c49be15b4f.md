@@ -6,6 +6,8 @@ savedAt: "2013-09-13T10:49:23.490Z"
 dateSource: saved
 publishedAt: "2013-09-05T13:02:49.000Z"
 targetUrl: "http://feedproxy.google.com/~r/wooster/~3/_AviEzL5uAY/shit-were-diggin-love-bombing"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Wooster Collective"
 feedlyId: "2zONrsoQhbZwvRTQm/4SXDiXatuC65/esJAOmAjLLHg=_140ee4dfeba:3ecd82e:abe81ab4"
 tags: ["Saved For Later"]

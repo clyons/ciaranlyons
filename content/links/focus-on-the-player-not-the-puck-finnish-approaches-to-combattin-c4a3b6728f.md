@@ -6,6 +6,8 @@ savedAt: "2025-03-15T18:05:48.343Z"
 dateSource: saved
 publishedAt: "2025-03-13T20:41:22.000Z"
 targetUrl: "https://ethanzuckerman.com/2025/03/13/focus-on-the-player-not-the-puck-finnish-approaches-to-combatting-electoral-interference/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Blog - Ethan Zuckerman"
 author: "Ethan"
 feedlyId: "fGKWg8+hvF+SV8nib5K+Buxfw5yKiwwjwQ+PVdU+JW4=_195913fc56a:12aed7b:d4d0980a"

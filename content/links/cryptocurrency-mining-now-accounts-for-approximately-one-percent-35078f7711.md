@@ -6,6 +6,8 @@ savedAt: "2018-08-28T03:09:54.862Z"
 dateSource: saved
 publishedAt: "2018-08-27T19:38:44.000Z"
 targetUrl: "https://theoutline.com/post/6047/bitcoin-mining-accounts-for-almost-one-percent-of-the-worlds-energy-consumption"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_1657ce5b245:553a51:4db7ac35"

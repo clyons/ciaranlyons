@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.036Z"
 dateSource: saved
 publishedAt: "2011-10-21T10:12:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/TheSingaporeIphoneGuide/~3/XWvOqFN_7ns/apple-now-taking-pre-orders-for-iphone.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "iMerlion: The Singapore iPhone/iPad Guide"
 author: "noreply@blogger.com (Jimmy Yap)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13325f73d80:320b1e:9e04b0a9"

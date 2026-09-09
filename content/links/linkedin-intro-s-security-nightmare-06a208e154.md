@@ -5,7 +5,9 @@ date: 2013-10-26
 savedAt: "2013-10-26T03:32:10.061Z"
 dateSource: saved
 publishedAt: "2013-10-25T14:40:57.000Z"
-targetUrl: "http://www.bishopfox.com/blog/2013/10/linkedin-intro/"
+targetUrl: "https://web.archive.org/web/20131027195257/http://www.bishopfox.com:80/blog/2013/10/linkedin-intro/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_141f01fd749:a59550:cec3ce2f"
 tags: ["Saved For Later"]

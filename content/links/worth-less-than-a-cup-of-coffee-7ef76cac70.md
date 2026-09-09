@@ -5,7 +5,9 @@ date: 2013-10-03
 savedAt: "2013-10-03T08:51:12.920Z"
 dateSource: saved
 publishedAt: "2013-09-30T20:55:51.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/rC-QyaifeMY/62745241176"
+targetUrl: "https://blog.timoni.org/post/62745241176/worth-less-than-a-cup-of-coffee"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_14170ac09f2:2a72f9:7465d82f"
 tags: ["Saved For Later"]

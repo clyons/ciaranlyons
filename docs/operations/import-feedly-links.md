@@ -51,6 +51,69 @@ npm run links:sync -- --dry-run
 
 The second command should report zero new writes. Existing files are never overwritten, so manual commentary and `standardUri` metadata are preserved. To retry a single bad pre-publication import, remove only its named `content/links/<slug>.md` file after confirming it has no manual changes, correct the source/transformation, and rerun.
 
+## Repair legacy Feedproxy destinations
+
+Some historical Feedly records contain a Google Feedproxy redirect rather than the publisher URL. First generate a review report; the command is dry-run by default and never changes content unless `--apply` is supplied:
+
+```bash
+npm run links:recover-feedproxy -- --report .context/feedproxy-recovery.json
+```
+
+The recovery tool uses exact-title FeedBurner items and known publisher-owned identifiers, URL schemes, APIs, and archive indexes. It proposes a replacement only after the destination responds successfully and its rendered title or text agrees with the saved Link metadata. Review every proposed `oldTargetUrl`, `targetUrl`, evidence, and validation result before applying a batch:
+
+```bash
+npm run links:recover-feedproxy -- --apply --report .context/feedproxy-recovery-applied.json
+```
+
+Use `--slug <slug>` or `--limit <N>` for a narrow, reviewable batch. An unresolved record is intentionally left unchanged. The JSON reports belong under gitignored `.context/` and should not be committed.
+
+For a complete destination audit, including non-Feedproxy Links, run:
+
+```bash
+npm run links:audit -- \
+  --report .context/link-destination-audit.json
+```
+
+The audit follows redirects, bounds response size and request duration, and checks successful pages against the saved title and description. It distinguishes verified pages, semantic mismatches, access restrictions, definitive failures, and transient unavailability. A `200` response is not sufficient by itself.
+
+After reviewing a complete audit, persist its non-visual status and check timestamp into every Link. The command is a dry run unless `--apply` is explicit, and refuses to annotate any destination that has changed since the audit:
+
+```bash
+npm run links:annotate -- \
+  --audit .context/link-destination-audit.json
+npm run links:annotate -- \
+  --apply \
+  --audit .context/link-destination-audit.json
+```
+
+This writes `destinationStatus` and `destinationLastCheckedAt` frontmatter. The current UI does not display either field. Outbound anchors for anything other than `verified` use `rel="nofollow"`; the metadata can later support a warning or visibility policy without another crawl.
+
+Internet Archive recovery consumes that audit and remains a dry run unless `--apply` is supplied. Prefer applying a saved, reviewed report so the exact candidate set is preserved:
+
+```bash
+npm run links:recover-archive -- \
+  --audit .context/link-destination-audit.json \
+  --report .context/link-archive-recovery.json
+npm run links:recover-archive -- \
+  --apply-reviewed .context/link-archive-recovery.json
+```
+
+Each proposed snapshot is fetched and semantically checked; the availability API alone is not enough. The tool leaves a destination unchanged when no snapshot exists, the snapshot is unavailable, or its content does not agree with the saved metadata.
+
+Strict web search is a last recovery pass over the archive report's unresolved records. It queries the exact saved title plus source, checks only a title-agreeing top result, fetches that page, and requires title and content agreement. Search results are never applied from a live run; review the report and apply it explicitly:
+
+```bash
+npm run links:recover-search -- \
+  --input .context/link-archive-recovery.json \
+  --report .context/link-search-recovery.json
+npm run links:recover-search -- \
+  --apply-reviewed .context/link-search-recovery.json
+```
+
+Use `--offset`, `--limit`, and low `--concurrency` values to make the externally rate-limited archive and search passes resumable. Keep unresolved original destinations rather than substituting a merely similar page.
+
+The durable unresolved recovery history is stored in `.agent/execplans/2026-09-08-recover-feedproxy-link-destinations-ledger.json`. Consult it before repeating Archive or web-search work. Raw crawl reports remain gitignored under `.context/`; do not commit them because redirect details may contain short-lived credentials even though the audit tools sanitize recorded URLs.
+
 If API access is unavailable, provide a supported Feedly JSON export instead:
 
 ```bash

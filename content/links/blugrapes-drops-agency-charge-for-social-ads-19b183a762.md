@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.030Z"
 dateSource: saved
 publishedAt: "2011-10-20T00:41:38.000Z"
 targetUrl: "http://feedproxy.google.com/~r/MarketingInteractiveNewsFeed/~3/ghvzt77z40I/29065"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marketing Interactive News Feed"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1331ec6b1d0:320b24:9e04b0a9"
 tags: ["Saved For Later"]

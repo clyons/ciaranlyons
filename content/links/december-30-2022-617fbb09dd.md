@@ -6,6 +6,8 @@ savedAt: "2022-12-31T15:33:24.370Z"
 dateSource: saved
 publishedAt: "2022-12-31T08:30:03.000Z"
 targetUrl: "https://heathercoxrichardson.substack.com/p/december-30-2022"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Letters from an American"
 author: "Heather Cox Richardson"
 feedlyId: "9G0x3dHpxd8YmcMQagHXiUzltl3HBIRW9xbQLSJ3bsM=_185675ac127:359764a:53488cc6"

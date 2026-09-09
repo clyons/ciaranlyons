@@ -5,7 +5,9 @@ date: 2016-02-25
 savedAt: "2016-02-25T09:29:18.304Z"
 dateSource: saved
 publishedAt: "2016-02-22T12:56:15.000Z"
-targetUrl: "https://overflow.buffer.com/2016/02/22/timezones/"
+targetUrl: "https://web.archive.org/web/20190721144156/https://overflow.buffer.com/2016/02/22/timezones/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Overflow"
 author: "Niel de la Rouviere"
 feedlyId: "0fQYGU3emj9keVbrFCd5Ij0ZZ2m0BDqM1tFXJcvG+qE=_153090e1b5e:89fb57b:ae8aca10"

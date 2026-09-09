@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.557Z"
 dateSource: saved
 publishedAt: "2012-05-29T10:07:03.000Z"
 targetUrl: "http://feedproxy.google.com/~r/TheMorningNews/headlines/~3/LHNIMB4gUvE/29"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Morning News - Headlines"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13798102158:3208c8:9e04b0a9"
 tags: ["Saved For Later"]

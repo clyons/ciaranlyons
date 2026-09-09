@@ -5,7 +5,9 @@ date: 2013-11-14
 savedAt: "2013-11-14T10:24:16.193Z"
 dateSource: saved
 publishedAt: "2013-10-31T02:35:11.000Z"
-targetUrl: "http://www.bernardleong.com/2013/10/31/why-i-chose-a-corporate-career-after-a-failed-startup/"
+targetUrl: "https://web.archive.org/web/20131102202110/http://www.bernardleong.com:80/2013/10/31/why-i-chose-a-corporate-career-after-a-failed-startup/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bernard LeongBernard Leong | Bernard Leong"
 author: "Bernard Leong"
 feedlyId: "q/KplyaKps+d9MLJXd2qMMsFa1jjTIIcdbQ+GRCzUsk=_1420c6e073d:473c4b:9e4623b6"

@@ -6,6 +6,8 @@ savedAt: "2016-03-01T11:47:12.091Z"
 dateSource: saved
 publishedAt: "2019-06-06T13:25:52.000Z"
 targetUrl: "https://yoast.com/setting-up-wordpress-for-amp-accelerated-mobile-pages/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Yoast • SEO for everyone"
 author: "Jono Alderson"
 feedlyId: "M/aXHAkVBV/DuwlBZ4QHN5LpnEd4ZKpOfu6QtlU+wBE=_15318ec1a23:dd94266:ae8aca10"

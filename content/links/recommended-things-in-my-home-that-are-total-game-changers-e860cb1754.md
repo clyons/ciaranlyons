@@ -6,6 +6,8 @@ savedAt: "2024-11-03T22:44:26.507Z"
 dateSource: saved
 publishedAt: "2024-11-01T21:41:32.000Z"
 targetUrl: "https://a.wholelottanothing.org/recommended-things-in-my-home-that-are-total-game-changers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "Matthew Haughey"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_192e9b34cfc:5eb481:fb7678f4"

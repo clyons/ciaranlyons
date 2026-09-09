@@ -6,6 +6,8 @@ savedAt: "2015-01-09T05:43:16.657Z"
 dateSource: saved
 publishedAt: "2014-12-10T18:26:04.000Z"
 targetUrl: "http://bitsplitting.org/2014/12/10/push-notification-traps/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bitsplitting.org"
 author: "Daniel Jalkut"
 feedlyId: "iArFEJN54i980lkIXIWQkqsVjbh5DWI3egkJLHhu9v0=_14a3574373e:13d3c90:b669a9fb"

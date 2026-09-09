@@ -6,6 +6,8 @@ savedAt: "2016-07-31T09:51:55.967Z"
 dateSource: saved
 publishedAt: "2016-07-20T11:51:52.000Z"
 targetUrl: "http://feeds.feedblitz.com/~/166899240/0/lessdoing~The-Art-of-Less-Doing-Chapter"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Art of Less Doing"
 author: "Florence Bout"
 feedlyId: "NftbM6TDtXms7nFNgRC6VPX/jhFagiDBI6Ti4q5DSB8=_1560838b587:8764469:85ca5f35"

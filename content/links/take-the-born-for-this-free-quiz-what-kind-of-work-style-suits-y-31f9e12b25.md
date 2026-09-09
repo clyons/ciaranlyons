@@ -5,7 +5,9 @@ date: 2016-02-09
 savedAt: "2016-02-09T19:52:24.340Z"
 dateSource: saved
 publishedAt: "2016-01-30T15:54:28.000Z"
-targetUrl: "http://chrisguillebeau.com/born-for-this-free-quiz/"
+targetUrl: "https://web.archive.org/web/20160203213842/http://chrisguillebeau.com:80/born-for-this-free-quiz"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "The Art of Non-Conformity"
 author: "Chris Guillebeau"
 feedlyId: "ac3jqf95X94fyEmpPOf4kyUwy7Dy+yFcVGMWg4SKPXg=_1529341878e:a9a890:ae8aca10"

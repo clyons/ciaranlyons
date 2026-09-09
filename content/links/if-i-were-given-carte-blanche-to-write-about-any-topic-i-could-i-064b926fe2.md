@@ -5,7 +5,9 @@ date: 2013-07-23
 savedAt: "2013-07-23T05:53:02.805Z"
 dateSource: saved
 publishedAt: "2013-07-22T20:11:16.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/Ffdi1lUm5MU/56170970176"
+targetUrl: "https://blog.timoni.org/post/56170970176/if-i-were-given-carte-blanche-to-write-about-any"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_140080799a1:4ed6ff:b3c388e3"
 tags: ["Saved For Later"]

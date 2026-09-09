@@ -6,6 +6,8 @@ savedAt: "2019-05-25T17:51:46.722Z"
 dateSource: saved
 publishedAt: "2019-05-22T13:30:14.000Z"
 targetUrl: "http://www.zeldman.com/2019/05/22/you-got-this/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Zeldman on Web &amp; Interaction Design"
 author: "Jeffrey Zeldman"
 feedlyId: "kHwrMU8yulRKCbTpBAsxBlTQkaCJKX19HbOb0XzPi18=_16adfbc7f05:1ccbea6:5de7e37"

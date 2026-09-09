@@ -6,6 +6,8 @@ savedAt: "2014-09-03T13:38:29.265Z"
 dateSource: saved
 publishedAt: "2014-08-31T17:50:26.000Z"
 targetUrl: "https://a.wholelottanothing.org/2014/08/31/the-eye-fi-mobi-card-is-the-real-deal/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "A Whole Lotta Nothing"
 author: "mathowie"
 feedlyId: "i9sDuXIuRTvmEmejt8TDfCtoXgmHayw8qaC574aOiH0=_1482d386071:7a6d2a:fd488bbc"

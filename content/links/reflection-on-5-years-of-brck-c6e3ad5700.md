@@ -6,6 +6,8 @@ savedAt: "2018-10-25T15:44:52.000Z"
 dateSource: saved
 publishedAt: "2018-10-17T09:52:57.000Z"
 targetUrl: "http://whiteafrican.com/2018/10/17/reflection-on-5-years-of-brck/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "White African"
 author: "hash"
 feedlyId: "ab1jICibR+7r6kBsURYHgGKHF2VfSG8ZMaUtd4UJw64=_166817aa41f:2f7113:9dda0303"

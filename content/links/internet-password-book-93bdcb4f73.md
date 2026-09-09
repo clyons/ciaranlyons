@@ -6,6 +6,8 @@ savedAt: "2016-09-26T02:02:56.034Z"
 dateSource: saved
 publishedAt: "2016-09-20T17:01:00.000Z"
 targetUrl: "http://jane.dallaway.com/jane.dallaway.com/jane.dallaway.com/internet-password-book/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Jane Dallaway"
 feedlyId: "qUgyot0kwbRU9FcU68RvMrey0xu95zSTJKlTZkc9LX8=_1574904fb9f:199950:297c8405"
 tags: ["Saved For Later"]

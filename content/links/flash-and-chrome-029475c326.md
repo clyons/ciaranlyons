@@ -6,6 +6,8 @@ savedAt: "2016-08-15T08:16:07.262Z"
 dateSource: saved
 publishedAt: "2016-08-09T15:00:00.000Z"
 targetUrl: "http://feedproxy.google.com/~r/blogspot/Egta/~3/3y-HnZH0PdY/flash-and-chrome.html"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Google Chrome Blog"
 author: "Chrome Blog"
 feedlyId: "V8u91sLn5RUivryG9JDpR1mpGht6dNLJWIuBtpCbtIg=_1567051a2cd:8e8a77:338734fa"

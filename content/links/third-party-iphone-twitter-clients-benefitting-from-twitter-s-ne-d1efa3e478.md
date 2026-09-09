@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.192Z"
 dateSource: saved
 publishedAt: "2011-12-13T23:52:46.000Z"
 targetUrl: "http://www.splatf.com/2011/12/tweetbot-newnewtwitter/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13439d7b8b0:320a4f:9e04b0a9"

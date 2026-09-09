@@ -6,6 +6,8 @@ savedAt: "2016-12-22T06:05:45.877Z"
 dateSource: saved
 publishedAt: "2016-12-19T20:36:49.000Z"
 targetUrl: "https://prostheticknowledge.tumblr.com/post/154689407091/motion-mural-rogue-one-german-company-chromatics"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "prosthetic knowledge"
 feedlyId: "QRvOTfJ2w090nuwVvdoLEBV4IDWA5J3Y14E3K06DYSo=_15918cf56f3:2b3f385:e9cc4246"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2014-08-16
 savedAt: "2014-08-16T10:12:23.119Z"
 dateSource: saved
 publishedAt: "2014-08-15T22:38:38.000Z"
-targetUrl: "http://feedproxy.google.com/~r/InsideFacebook/~3/IGoRtaMcHHI/"
+targetUrl: "http://www.insidefacebook.com/2014/08/15/why-are-passion-pages-so-popular-on-facebook/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Inside Facebook"
 author: "Justin Lafferty"
 feedlyId: "lEVTgbYhl8ate7dz07ngkzcJYlu2THIQfxrelib55aA=_147dbd2d216:158ce1f:593f8e82"

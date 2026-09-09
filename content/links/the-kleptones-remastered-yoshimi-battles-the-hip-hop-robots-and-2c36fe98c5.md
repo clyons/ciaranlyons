@@ -6,6 +6,8 @@ savedAt: "2024-05-24T01:32:50.265Z"
 dateSource: saved
 publishedAt: "2024-05-23T20:35:38.000Z"
 targetUrl: "https://mastodon.social/@kleptones/112485555413827649"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_18fa72ecdb6:507cc:f299f571"

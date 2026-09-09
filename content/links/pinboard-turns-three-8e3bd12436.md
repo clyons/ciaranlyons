@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.599Z"
 dateSource: saved
 publishedAt: "2012-07-10T00:06:22.000Z"
 targetUrl: "http://blog.pinboard.in/2012/07/pinboard_turns_three/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pinboard - bookmarking for introverts"
 author: "maciej@pinboard.in (Maciej Ceglowski)"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1386e354830:32089e:9e04b0a9"

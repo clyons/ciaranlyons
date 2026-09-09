@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.428Z"
 dateSource: saved
 publishedAt: "2012-04-03T18:08:00.000Z"
 targetUrl: "http://interconnected.org/home/2012/04/03/peak_attention_and_the_dupont_equation"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Interconnected"
 author: "Matt Webb"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13679645400:320949:9e04b0a9"

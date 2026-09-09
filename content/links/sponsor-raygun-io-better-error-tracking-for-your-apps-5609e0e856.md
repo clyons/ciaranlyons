@@ -6,6 +6,8 @@ savedAt: "2013-10-02T02:53:13.987Z"
 dateSource: saved
 publishedAt: "2013-10-01T17:44:17.000Z"
 targetUrl: "http://raygun.io/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "0Tup+MRrtaIcN1HMvRC/nm2vRKWcTzIzTgBJKC6bJPA=_141752f9391:b0b54a:2301b8be"
 tags: ["Saved For Later"]

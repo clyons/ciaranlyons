@@ -5,7 +5,9 @@ date: 2014-01-01
 savedAt: "2014-01-01T03:37:17.974Z"
 dateSource: saved
 publishedAt: "2013-12-31T04:20:12.000Z"
-targetUrl: "http://feedproxy.google.com/~r/subtraction/~3/reQWDern6bA/sonos-vs-airplay-vs-our-house"
+targetUrl: "https://www.subtraction.com/2013/12/31/sonos-vs-airplay-vs-our-house/"
+destinationStatus: broken
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "Subtraction.com"
 feedlyId: "W6x/zjhbqhEccmIKZsU/x3Fadiq+SIpAJ7IXNcnq+9k=_14346fb4a87:b365317:9d0cd311"
 tags: ["Saved For Later"]

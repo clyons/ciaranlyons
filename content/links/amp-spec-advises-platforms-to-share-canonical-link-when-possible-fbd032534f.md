@@ -6,6 +6,8 @@ savedAt: "2017-08-29T12:58:23.762Z"
 dateSource: saved
 publishedAt: "2017-08-28T20:47:34.000Z"
 targetUrl: "https://news.ycombinator.com/item?id=15085159"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_15e2a9ca229:5d0d67d:bd5def64"

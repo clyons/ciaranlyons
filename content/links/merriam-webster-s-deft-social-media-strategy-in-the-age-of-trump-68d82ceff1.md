@@ -6,6 +6,8 @@ savedAt: "2017-02-08T01:12:03.773Z"
 dateSource: saved
 publishedAt: "2017-02-07T22:59:47.000Z"
 targetUrl: "https://www.buzzfeed.com/davidmack/defining-merriam-webster"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_15a1ad3474b:9470e3a:93371e27"

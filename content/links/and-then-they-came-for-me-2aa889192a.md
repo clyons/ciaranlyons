@@ -6,6 +6,8 @@ savedAt: "2016-11-03T03:39:17.679Z"
 dateSource: saved
 publishedAt: "2016-11-01T12:28:56.000Z"
 targetUrl: "https://bothsidesofthetable.com/and-then-they-came-for-me-ee970a6112c1"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Both Sides of the Table - Medium"
 author: "Mark Suster"
 feedlyId: "7saDh+AX3ShYtqFzfI8VZaySaMTMA3qr8Z9bcohTi6I=_1581fe49c4f:77c990:a4fcc218"

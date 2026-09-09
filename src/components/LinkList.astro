@@ -1,6 +1,7 @@
 ---
 import type { LinkEntry } from '../lib/content'
 import { formatDate } from '../lib/dates'
+import { destinationLinkRel } from '../lib/link-destinations'
 
 interface Props {
   links: LinkEntry[]
@@ -24,7 +25,7 @@ const { links } = Astro.props
           {entry.description && <p class="link-summary">{entry.description}</p>}
           <div class="link-actions">
             <a href={entry.url}>Notes &amp; details</a>
-            <a href={entry.targetUrl} rel="external">Read at {hostname} <span aria-hidden="true">↗</span></a>
+            <a href={entry.targetUrl} rel={destinationLinkRel(entry.destinationStatus)}>Read at {hostname} <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </article>

@@ -6,6 +6,8 @@ savedAt: "2018-12-22T04:21:11.898Z"
 dateSource: saved
 publishedAt: "2018-12-21T23:47:56.000Z"
 targetUrl: "https://slackhq.com/an-apology-and-an-update"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Several People Are Typing"
 author: "trobinson"
 feedlyId: "vEcKeCnMq0y7HfFwLABR+m1bycptftgpHuNlvqZaXl0=_167d32b45a9:1de353a:c2ce2e2e"

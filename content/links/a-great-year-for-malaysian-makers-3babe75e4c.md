@@ -5,7 +5,9 @@ date: 2014-01-05
 savedAt: "2014-01-05T14:58:41.711Z"
 dateSource: saved
 publishedAt: "2014-01-05T08:36:20.000Z"
-targetUrl: "http://makeweekend.com/look-back-2013-great-year-malaysian-makers/"
+targetUrl: "https://web.archive.org/web/20190823230015/http://www.makeweekend.com/look-back-2013-great-year-malaysian-makers/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "MakeweekendMakeweekend"
 author: "kal"
 feedlyId: "qGZE+mRYFWgsgVfi09ryUZq8E0aiGtWDsWXOtVQe8b0=_14361af7af8:faa5fce:d5082bca"

@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.898Z"
 dateSource: saved
 publishedAt: "2011-09-06T19:41:45.000Z"
-targetUrl: "http://feedproxy.google.com/~r/kklifestream/~3/Z7eYzZXi3z8/the_paperback_o.php"
+targetUrl: "https://kk.org/thetechnium/the-paperback-o/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "KK Lifestream"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_1324042b0a8:320ba9:9e04b0a9"
 tags: ["Saved For Later"]

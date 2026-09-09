@@ -6,6 +6,8 @@ savedAt: "2013-08-11T10:49:25.395Z"
 dateSource: saved
 publishedAt: "2013-08-08T20:32:46.000Z"
 targetUrl: "http://jordanmechner.com/blog/2013/08/why-i-write-longhand/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "jordanmechner.com"
 author: "jordan"
 feedlyId: "joDRmfUH2r4DPkUUJ8ltS9scJW0tBpErPPmvqSoqnYU=_1405fa5a1d1:11cecd5:19888444"

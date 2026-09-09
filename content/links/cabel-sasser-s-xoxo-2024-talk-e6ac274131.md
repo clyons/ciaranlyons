@@ -6,6 +6,8 @@ savedAt: "2024-10-17T19:32:30.114Z"
 dateSource: saved
 publishedAt: "2024-10-11T18:57:42.000Z"
 targetUrl: "https://xoxofest.com/2024/videos/cabel-sasser/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Waxy.org"
 author: "Andy Baio"
 feedlyId: "dFFRZgXmp5fB2ppEQOUkHjGWuTERbc3qHVcmeh8sb5Q=_1927cf4bd01:87df15:d7121dc8"

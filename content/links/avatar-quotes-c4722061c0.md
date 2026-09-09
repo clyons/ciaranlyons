@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:21.945Z"
 dateSource: saved
 publishedAt: "2010-01-16T15:25:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/white_african/~3/pZ06uZX3oNQ/"
+targetUrl: "http://whiteafrican.com/2010/01/16/avatar-quotes/"
+destinationStatus: semantic-mismatch
+destinationLastCheckedAt: "2026-09-09T10:05:18.135Z"
 sourceTitle: "White African"
 author: "admin"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_12637bcb8e0:320b7a:9e04b0a9"

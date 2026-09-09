@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.704Z"
 dateSource: saved
 publishedAt: "2012-10-11T14:59:50.000Z"
 targetUrl: "http://www.marco.org/2012/10/11/the-magazine"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Marco.org"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13a5056b270:320835:9e04b0a9"
 tags: ["Saved For Later"]

@@ -5,7 +5,9 @@ date: 2017-06-16
 savedAt: "2017-06-16T09:32:00.448Z"
 dateSource: saved
 publishedAt: "2017-06-16T06:08:00.000Z"
-targetUrl: "http://www.minimallyminimal.com/blog/apple-ipod-hi-fi"
+targetUrl: "https://web.archive.org/web/20170608161319/http://www.minimallyminimal.com:80/blog/apple-ipod-hi-fi"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_15caf9dca9c:1ea8ee:60392a0b"

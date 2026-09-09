@@ -6,6 +6,8 @@ savedAt: "2015-07-02T03:49:27.860Z"
 dateSource: saved
 publishedAt: "2015-07-01T14:24:19.000Z"
 targetUrl: "https://stratechery.com/2015/airbnb-and-the-internet-revolution/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Stratechery by Ben Thompson"
 author: "Ben Thompson"
 feedlyId: "IO2zuaapKQips7nY9h1s4RGyk4HVVT953cfQ3dx7bH0=_14e4a1350cb:57f7a57:46f3bb90"

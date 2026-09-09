@@ -6,6 +6,8 @@ savedAt: "2019-01-07T20:18:53.280Z"
 dateSource: saved
 publishedAt: "2019-01-07T16:26:57.000Z"
 targetUrl: "http://www.asymco.com/2019/01/07/apples-unit-economics/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Asymco"
 author: "Horace Dediu"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_16829982837:1709364:ad2b6584"

@@ -6,6 +6,8 @@ savedAt: "2018-01-08T03:01:01.425Z"
 dateSource: saved
 publishedAt: "2018-01-07T09:36:00.000Z"
 targetUrl: "http://feeds.feedblitz.com/~/515626680/0/sethsblog~Hiding-from-the-mission.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Seth Godin's Blog on marketing, tribes and respect"
 author: "Seth Godin"
 feedlyId: "6GV/GbWOJ6VnCKxInEF8KnvUbqZzRLHHRNcmgK9rnUk=_160cfffa2c6:2221190:3c0bb656"

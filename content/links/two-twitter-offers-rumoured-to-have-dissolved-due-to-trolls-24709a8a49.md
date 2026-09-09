@@ -6,6 +6,8 @@ savedAt: "2016-10-20T05:20:38.323Z"
 dateSource: saved
 publishedAt: "2016-10-19T05:49:17.000Z"
 targetUrl: "https://www.bloomberg.com/news/articles/2016-10-17/disney-said-to-have-dropped-twitter-pursuit-partly-over-image"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_157db7e34a8:47b1789:844af92a"

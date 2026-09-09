@@ -6,6 +6,8 @@ savedAt: "2016-08-04T06:23:13.653Z"
 dateSource: saved
 publishedAt: "2016-08-02T05:30:48.000Z"
 targetUrl: "http://www.apple.com/newsroom/2016/08/apple-adds-more-gender-diverse-emoji-in-ios-10.html"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Pixel Envy"
 author: "Nick Heer"
 feedlyId: "ZSMEz01owljq+NUo/FtkNpb3x5V0Q7F1yi2rCKb6sOk=_15649ce3928:4ac6162:36858854"

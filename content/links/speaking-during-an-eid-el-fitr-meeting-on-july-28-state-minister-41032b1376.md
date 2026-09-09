@@ -5,7 +5,9 @@ date: 2014-08-08
 savedAt: "2014-08-08T01:17:10.619Z"
 dateSource: saved
 publishedAt: "2014-08-04T18:54:06.000Z"
-targetUrl: "http://feedproxy.google.com/~r/timoni/~3/Zuzt5v9r03s/93797521098"
+targetUrl: "https://blog.timoni.org/post/93797521098/speaking-during-an-eid-el-fitr-meeting-on-july-28"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "timoni.org"
 feedlyId: "iSWfD5oAbzXt1hpicJdeZ0XTuPdxSk6/ibopVSlKjjM=_147a25f48bc:1907e5c:31ceb6ef"
 tags: ["Saved For Later"]

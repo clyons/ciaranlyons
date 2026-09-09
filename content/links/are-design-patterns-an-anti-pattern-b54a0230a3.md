@@ -6,6 +6,8 @@ savedAt: "2013-06-04T01:47:22.300Z"
 dateSource: saved
 publishedAt: "2012-01-26T08:17:49.000Z"
 targetUrl: "http://www.boxesandarrows.com/view/are-design-patterns"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Boxes and Arrows"
 author: "Stephen Turbek"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13519178fc8:3209c9:9e04b0a9"

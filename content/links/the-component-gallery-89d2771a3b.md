@@ -6,6 +6,8 @@ savedAt: "2022-10-29T20:52:15.412Z"
 dateSource: saved
 publishedAt: "2022-10-24T16:29:58.000Z"
 targetUrl: "https://bradfrost.com/blog/link/the-component-gallery/"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Brad Frost"
 author: "Brad Frost"
 feedlyId: "8dsAZcQTX6oFR9Jl55jopaRCFM0xVOu1cexFpOCjHfk=_1840b2ea525:7850afc:d8b4f5e5"

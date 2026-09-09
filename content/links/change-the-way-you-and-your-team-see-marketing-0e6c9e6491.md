@@ -6,6 +6,8 @@ savedAt: "2014-03-30T01:14:36.934Z"
 dateSource: saved
 publishedAt: "2014-03-11T16:01:00.000Z"
 targetUrl: "http://feeds.feedblitz.com/~/58694527/0/sethsblog~Change-the-way-you-and-your-team-see-marketing.html"
+destinationStatus: access-restricted
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Seth Godin's Blog on marketing, tribes and respect"
 author: "Seth Godin"
 feedlyId: "6GV/GbWOJ6VnCKxInEF8KnvUbqZzRLHHRNcmgK9rnUk=_144b205abb2:eff336:73d1fb37"

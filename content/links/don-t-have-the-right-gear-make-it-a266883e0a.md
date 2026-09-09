@@ -5,7 +5,9 @@ date: 2013-06-04
 savedAt: "2013-06-04T01:47:22.869Z"
 dateSource: saved
 publishedAt: "2013-05-13T21:04:00.000Z"
-targetUrl: "http://feedproxy.google.com/~r/37signals/beMH/~3/_6qCZX2-WVk/3521-donrsquot-have-the-right-gear-make-it"
+targetUrl: "https://signalvnoise.com/posts/3521-donrsquot-have-the-right-gear-make-it"
+destinationStatus: verified
+destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Signal vs. Noise"
 author: "Shaun"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13e9fb50200:320787:9e04b0a9"
