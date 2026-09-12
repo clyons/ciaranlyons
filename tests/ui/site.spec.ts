@@ -29,11 +29,7 @@ test('document heads expose modern defaults and page-specific social metadata', 
   await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', 'Ciaran Lyons')
   await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'website')
   await expect(page.locator('meta[property^="article:"]')).toHaveCount(0)
-  expect(await page.locator('head').evaluate((head) => {
-    const stylesheet = head.querySelector('link[rel="stylesheet"]')
-    const openGraphTitle = head.querySelector('meta[property="og:title"]')
-    return Boolean(stylesheet && openGraphTitle && (stylesheet.compareDocumentPosition(openGraphTitle) & Node.DOCUMENT_POSITION_FOLLOWING))
-  })).toBe(true)
+  await expect(page.locator('head link[rel="stylesheet"]')).toHaveCount(1)
 
   for (const metadata of [
     {

@@ -1,5 +1,5 @@
 ---
-import globalStylesUrl from '../styles/global.css?url'
+import '../styles/global.css'
 import { ogImagePath } from '../lib/og-image'
 
 interface Props {
@@ -96,7 +96,6 @@ const structuredData = {
         }
       })()
     </script>
-    <link rel="stylesheet" href={globalStylesUrl} />
     <meta name="description" content={description} data-pagefind-meta={pagefind ? 'description[content]' : undefined} />
     {pagefind && <meta content={pagefind.type} data-pagefind-meta="type[content]" data-pagefind-filter="type[content]" />}
     {pagefind?.year && <meta content={pagefind.year} data-pagefind-filter="year[content]" />}
