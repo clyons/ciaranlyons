@@ -152,7 +152,7 @@ function homeCard(spec: OgImageSpec): string {
 
 function noteCard(spec: OgImageSpec): string {
   const titleSize = plainText(spec.title).length > 120 ? 47 : plainText(spec.title).length > 80 ? 54 : 62
-  const lines = wrapText(spec.title, 1010, titleSize, 4)
+  const lines = wrapText(spec.title, 850, titleSize, 4)
   const top = lines.length <= 2 ? 245 : 194
   return `
     <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">

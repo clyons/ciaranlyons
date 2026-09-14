@@ -54,3 +54,21 @@ test('Dragon TIL text stays clear of the accent sidebar', async () => {
   }
   assert.equal(darkPixels, 0, 'Black title/description pixels must not enter the orange sidebar')
 })
+
+test('Dragon announcement title stays within the Note card margin', async () => {
+  const spec = {
+    path: 'notes/2026/09/14/3mvh3jefg3jbu',
+    kind: 'note',
+    title: 'New TIL: Teaching a printed dragon to fly',
+  }
+  const svg = buildOgSvg(spec)
+  const title = [...svg.matchAll(/class="serif title light-title">([^<]+)<\/text>/g)].map(match => match[1]).join(' ')
+  assert.equal(title, spec.title)
+  const png = await buildOgPng(spec)
+  const { data, info } = await sharp(png).extract({ left: 1128, top: 150, width: 72, height: 330 }).removeAlpha().raw().toBuffer({ resolveWithObject: true })
+  let lightPixels = 0
+  for (let i = 0; i < data.length; i += info.channels) {
+    if (data[i] > 200 && data[i + 1] > 200 && data[i + 2] > 200) lightPixels++
+  }
+  assert.equal(lightPixels, 0, 'Title pixels must not enter the right margin')
+})
