@@ -12,12 +12,13 @@ export function renderMarkdown(markdown: string): string {
     allowedTags: [
       'a', 'blockquote', 'br', 'code', 'del', 'em', 'h1', 'h2', 'h3', 'h4',
       'h5', 'h6', 'hr', 'img', 'li', 'ol', 'p', 'pre', 'strong', 'table',
-      'tbody', 'td', 'th', 'thead', 'tr', 'ul',
+      'tbody', 'td', 'th', 'thead', 'tr', 'ul', 'video',
     ],
     allowedAttributes: {
       a: ['href', 'title'],
       code: ['class'],
       img: ['src', 'alt', 'title'],
+      video: ['src', 'poster', 'controls', 'playsinline', 'preload', 'width', 'height', 'aria-label'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
     allowProtocolRelative: false,

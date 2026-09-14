@@ -1226,6 +1226,9 @@ img {
 }
 
 .prose video {
+  height: auto;
+  max-height: 85svh;
+  object-fit: contain;
   margin-bottom: 1.35em;
 }
 
