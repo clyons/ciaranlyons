@@ -22,7 +22,7 @@ Working with GPT-6 Astra, I turned it into a flight playground. The head leads t
 
 <video src="https://clyons.github.io/dragon-flight-til/outputs/dragon-feature-tour.mp4?v=motion" controls playsinline preload="metadata" width="540" height="675" poster="https://clyons.github.io/dragon-flight-til/outputs/dragon-poster.jpg?v=opening" aria-label="Portrait demo of Dragon: Flight Playground showing flight, steering, grabbing, throwing, and material changes"><a href="https://clyons.github.io/dragon-flight-til/">Watch the portrait demo.</a></video>
 
-Astra chose jade, copper, and obsidian as the starting finishes. I just asked for a little more shine here, a little less there. Those properties live in [the material presets](https://github.com/clyons/dragon-flight-til/blob/ba3630bc73c4c1b7c40b13a5d73c968a54955163/src/main.js#L104-L145). Colour, roughness, metalness, and transmission are Three.js settings, separate from the STL geometry. Changing the finish doesn’t automatically change the dragon’s weight or bounce.
+Astra chose jade, copper, and obsidian as the starting finishes. I just asked for a little more shine here, a little less there. Those properties live in [the material presets](https://github.com/clyons/dragon-flight-til/blob/ba3630bc73c4c1b7c40b13a5d73c968a54955163/src/main.js#L104-L145). Colour, roughness, metalness, and transmission are Three.js settings, separate from the STL geometry.
 
 The model isn’t included in the repository; download it separately from its creator.
 
