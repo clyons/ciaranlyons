@@ -173,8 +173,9 @@ function noteCard(spec: OgImageSpec): string {
 
 function tilCard(spec: OgImageSpec): string {
   const titleSize = plainText(spec.title).length > 90 ? 53 : plainText(spec.title).length > 60 ? 61 : 70
-  const titleLines = wrapText(spec.title, 810, titleSize, 3)
-  const descriptionLines = spec.description ? wrapText(spec.description, 760, 22, 2) : []
+  // Leave room for the wider serif fallback used by Linux builds.
+  const titleLines = wrapText(spec.title, 650, titleSize, 3)
+  const descriptionLines = spec.description ? wrapText(spec.description, 650, 22, 2) : []
   const titleTop = titleLines.length === 1 ? 290 : titleLines.length === 2 ? 250 : 235
   const lineHeight = Math.round(titleSize * 1.05)
   const descriptionTop = Math.min(504, titleTop + titleLines.length * lineHeight + 31)
