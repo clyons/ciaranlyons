@@ -1219,17 +1219,14 @@ img {
 
 .prose video {
   display: block;
-  width: 100%;
-  margin: 0;
-  border-radius: 2px;
-  background: var(--bg-deep);
-}
-
-.prose video {
+  width: auto;
+  max-width: 100%;
   height: auto;
   max-height: 85svh;
+  margin: 0 auto 1.35em;
+  border-radius: 2px;
+  background: var(--bg-deep);
   object-fit: contain;
-  margin-bottom: 1.35em;
 }
 
 .prose code {

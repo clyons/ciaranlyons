@@ -35,3 +35,22 @@ test('OG SVG escapes content and renders as a 1200 by 630 PNG', async () => {
   assert.equal(metadata.width, 1200)
   assert.equal(metadata.height, 630)
 })
+
+test('Dragon TIL text stays clear of the accent sidebar', async () => {
+  const spec = {
+    path: 'til/2026/09/13/teaching-a-printed-dragon-to-fly',
+    kind: 'til',
+    title: 'Teaching a printed dragon to fly',
+    description: 'A 3D print becomes a Three.js flight playground, with Box3D joints and a little help from GPT-6 Astra.',
+  }
+  const svg = buildOgSvg(spec)
+  const title = [...svg.matchAll(/class="serif title">([^<]+)<\/text>/g)].map(match => match[1]).join(' ')
+  assert.equal(title, spec.title, 'The full title remains visible without truncation')
+  const png = await buildOgPng(spec)
+  const { data, info } = await sharp(png).extract({ left: 940, top: 150, width: 260, height: 380 }).removeAlpha().raw().toBuffer({ resolveWithObject: true })
+  let darkPixels = 0
+  for (let i = 0; i < data.length; i += info.channels) {
+    if (data[i] < 60 && data[i + 1] < 60 && data[i + 2] < 60) darkPixels++
+  }
+  assert.equal(darkPixels, 0, 'Black title/description pixels must not enter the orange sidebar')
+})
