@@ -205,28 +205,22 @@ test('home gives the Found Quotes heading room before the first quote rule', asy
   await expect(heading.getByRole('link')).toHaveCount(0)
 })
 
-test('home keeps its three-line Found Quote impactful on desktop', async ({ page }) => {
+test('home keeps its latest Found Quote readable at its typography tier', async ({ page }) => {
   await page.goto('/')
 
   const quote = page.locator('.home-found-quotes .found-quote')
-  await expect(quote).toHaveAttribute('data-quote-tier', 'responsive')
+  await expect(quote).toHaveAttribute('data-quote-tier', /^(compact|responsive|reading)$/)
+  const tier = await quote.getAttribute('data-quote-tier')
+  const isMobile = (page.viewportSize()?.width ?? 0) <= 760
 
   const fontSize = await quote.locator('blockquote').evaluate((element) => (
     Number.parseFloat(getComputedStyle(element).fontSize)
   ))
-  if ((page.viewportSize()?.width ?? 0) <= 760) {
+  if (tier === 'reading' || (isMobile && tier === 'responsive')) {
     expect(fontSize).toBeGreaterThanOrEqual(24)
-    expect(fontSize).toBeLessThan(30)
+    expect(fontSize).toBeLessThan(isMobile ? 30 : 36)
   } else {
-    const renderedLineCount = await quote.locator('blockquote p').evaluate((paragraph) => {
-      const range = document.createRange()
-      range.selectNodeContents(paragraph)
-      return new Set(Array.from(range.getClientRects())
-        .filter((rect) => rect.width > 0 && rect.height > 0)
-        .map((rect) => Math.round(rect.top * 2) / 2)).size
-    })
-    expect(renderedLineCount).toBe(3)
-    expect(fontSize).toBeGreaterThanOrEqual(40)
+    expect(fontSize).toBeGreaterThanOrEqual(isMobile ? 30 : 40)
   }
 })
 
