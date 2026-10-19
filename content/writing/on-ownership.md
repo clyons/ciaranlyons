@@ -10,9 +10,9 @@ What does it mean to own something? Most leaders answer that question incorrectl
 
 To own something is to be responsible for the outcome, not control every turn. The outcome is yours, but the method belongs to the team. The owner listens, integrates, adapts and removes obstacles to keep the outcome on track.
 
-That's why ownership is better understood as stewardship.
+That's why ownership is better understood as **stewardship**.
 
-Stewardship is the responsibility to care for something entrusted to you - not as personal property, but on behalf of the wider system it belongs to.
+Stewardship is the responsibility to care for something entrusted to you — not as personal property, but on behalf of the wider system it belongs to.
 
 You can own a beehive, but you cannot own a bee. You care for the hive, protect it, and are responsible for its health. You can't tell a bee which flower to pollinate or restrict it to just the fields that you own. Your responsibility is to create the conditions for the hive to thrive.
 
@@ -24,4 +24,4 @@ That is the work of stewardship: staying responsible for the outcome while worki
 
 The point is not to give up the idea of ownership or sidestep responsibility. It is to understand ownership differently.
 
-Nothing works as well as everything working together. Stewardship brings a broader obligation - not possession or control, but to create the conditions for success, and to make the whole ecosystem better for our involvement.
+Nothing works as well as everything working together. Stewardship brings a broader obligation — not possession or control, but to create the conditions for success, and to make the whole ecosystem better for our involvement.
