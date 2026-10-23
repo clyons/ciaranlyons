@@ -3,7 +3,7 @@ standardUri: "at://did:plc:bi2irbzgh2fzqvuuewkju2xf/site.standard.document/3mut4
 title: On Ownership
 description: Own the outcome, not the method.
 date: 2026-08-08
-featured: true
+featured: false
 ---
 
 What does it mean to own something? Most leaders answer that question incorrectly. We hear ownership and think control. "I own it, so I decide." I choose the method. I set the path. But that's not how teams work.

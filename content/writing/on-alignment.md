@@ -2,7 +2,7 @@
 title: On Alignment
 description: Agreement is not alignment. Alignment means knowing four things.
 date: 2026-10-23
-featured: false
+featured: true
 ---
 
 What does it mean to be aligned? We say “we’re aligned” as though everyone means the same thing. But depending on who is speaking, it can mean any of these things.
@@ -41,8 +41,8 @@ None of this means the plan is fixed. New evidence may show us a better way. Whe
 
 To check our understanding, ask each person separately to explain those four things.
 
-- Different answers give us something specific to *resolve*.
-- Matching answers give us a plan we can *act on*.
+- Different answers give us something specific to resolve.
+- Matching answers give us a plan we can act on.
 
 Then hold each other accountable. Are we doing what we agreed? When something changes, does everyone hear about it?
 
