@@ -5,6 +5,7 @@ const port = Number(process.env.PLAYWRIGHT_PORT ?? (Number.isInteger(conductorPo
 
 export default defineConfig({
   testDir: './tests/ui',
+  testIgnore: 'note-media.spec.ts',
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,

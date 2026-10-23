@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro'
 import ArchiveBreadcrumb from '../../../../../components/ArchiveBreadcrumb.astro'
+import NoteMedia from '../../../../../components/NoteMedia.astro'
 import { getAllNotes, originalPostUrl } from '../../../../../lib/atproto'
 import { foundQuoteDescription, foundQuoteTitle, getFoundQuotes, getProjects, getTilEntries, getWriting, noteTitle } from '../../../../../lib/content'
 import { formatDate } from '../../../../../lib/dates'
@@ -76,37 +77,7 @@ const paragraphs = renderRichText(note.text, note.facets)
           <p class:list={[paragraph.isStandaloneLink && 'note-standalone-link']} set:html={paragraph.html} />
         ))}
       </div>
-      {note.media.length > 0 && (
-        <div class="note-media">
-          {note.media.map((media) => (
-            <figure class="note-media-item">
-              {media.type === 'video' ? (
-                <video
-                  controls
-                  muted
-                  playsinline
-                  autoplay
-                  loop
-                  preload="metadata"
-                  aria-label={media.alt || 'Bluesky video'}
-                  style={media.width && media.height ? `aspect-ratio: ${media.width} / ${media.height};` : undefined}
-                >
-                  <source src={media.src} type={media.mimeType || 'video/mp4'} />
-                </video>
-              ) : (
-                <img
-                  src={media.src}
-                  alt={media.alt || ''}
-                  width={media.width}
-                  height={media.height}
-                  loading="lazy"
-                  decoding="async"
-                />
-              )}
-            </figure>
-          ))}
-        </div>
-      )}
+      <NoteMedia media={note.media} context="detail" originalUrl={originalPostUrl(note)} />
       {linkedContent.length > 0 && (
         <div class="note-content-references">
           {linkedContent.map((entry) => (

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../../../../src/layouts/BaseLayout.astro'
+import NoteMedia from '../../../../../../src/components/NoteMedia.astro'
+import { noteParagraphs } from '../../../../../../src/lib/note-preview'
+import { cases } from '../../fixtures'
+
+export function getStaticPaths() {
+  return Object.entries(cases).map(([key, note]) => ({ params: { case: key }, props: { note } }))
+}
+const { note } = Astro.props
+---
+<BaseLayout title="Note">
+  <article class="article-shell note-detail"><h1 class="visually-hidden">Note</h1><div class="note-post">
+    <div class="note-rich-text">{noteParagraphs(note.text).map((html) => <p set:html={html} />)}</div>
+    <NoteMedia media={note.media} context="detail" originalUrl={note.originalUrl!} />
+    <footer class="note-post-footer"><a href={note.originalUrl}>Also on Bluesky</a></footer>
+  </div></article>
+</BaseLayout>

@@ -149,7 +149,7 @@ function blobCid(blob) {
 }
 
 function mediaFromEmbed(embed) {
-  if (!embed) return []
+  if (!embed || typeof embed !== 'object') return []
   if (embed.$type === 'app.bsky.embed.recordWithMedia') return mediaFromEmbed(embed.media)
 
   if (embed.$type === 'app.bsky.embed.video') {
@@ -162,11 +162,16 @@ function mediaFromEmbed(embed) {
       alt: embed.alt ?? '',
       width: embed.aspectRatio?.width,
       height: embed.aspectRatio?.height,
+      presentation: typeof embed.presentation === 'string' ? embed.presentation : undefined,
     }]
   }
 
-  if (embed.$type === 'app.bsky.embed.images') {
-    return (embed.images ?? []).map((image) => {
+  if (embed.$type === 'app.bsky.embed.images' || embed.$type === 'app.bsky.embed.gallery') {
+    const gallery = embed.$type === 'app.bsky.embed.gallery'
+    const images = gallery ? embed.items : embed.images
+    if (!Array.isArray(images)) return []
+    return images.map((image) => {
+      if (!image || (gallery && image.$type !== 'app.bsky.embed.gallery#image')) return null
       const cid = blobCid(image.image)
       if (!cid) return null
       return {
@@ -217,12 +222,12 @@ async function existingNoteIds() {
 }
 
 export function noteFromFeedItem(item) {
-  if (item.reason || !item.post) return null
+  if (!item || item.reason || !item.post) return null
 
   const { post } = item
   const record = post.record ?? {}
   if (record.reply) return null
-  if (typeof post.cid !== 'string' || !cidPattern.test(post.cid) || typeof record.text !== 'string' || !record.text) return null
+  if (typeof post.cid !== 'string' || !cidPattern.test(post.cid) || typeof record.text !== 'string') return null
 
   const parsedUri = parsePostUri(post.uri)
   const parsedDate = datePathParts(record.createdAt)
@@ -244,6 +249,8 @@ export function noteFromFeedItem(item) {
       file: safeDestination(mediaDir, filename),
     }
   }).filter(Boolean)
+  const hasEmbed = typeof record.embed?.$type === 'string' && record.embed.$type.startsWith('app.bsky.embed.')
+  if (!record.text.trim() && media.length === 0 && !hasEmbed) return null
 
   return {
     id,

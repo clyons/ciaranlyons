@@ -1,0 +1,22 @@
+---
+import { noteTitle, type NoteEntry } from '../lib/content'
+import { originalPostUrl } from '../lib/atproto'
+import { formatDate } from '../lib/dates'
+import { noteParagraphs } from '../lib/note-preview'
+import NoteMedia from './NoteMedia.astro'
+
+interface Props { note: NoteEntry }
+const { note } = Astro.props
+const sourceUrl = originalPostUrl(note)
+---
+
+<article class="note-row" aria-label={noteTitle(note)}>
+  <div class="note-row-body">
+    {noteParagraphs(note.text, note.facets).map((html) => <p set:html={html} />)}
+    <NoteMedia media={note.media} context="compact" originalUrl={sourceUrl} />
+    {note.source === 'bluesky' && <a class="note-source-link" href={sourceUrl}>On Bluesky <span aria-hidden="true">↗</span></a>}
+  </div>
+  <a class="date" href={note.url} aria-label={`Read note from ${formatDate(note.date, { month: 'long', day: 'numeric' })}`}>
+    <time datetime={note.date}>{formatDate(note.date, { month: 'long', day: 'numeric' })}</time>
+  </a>
+</article>

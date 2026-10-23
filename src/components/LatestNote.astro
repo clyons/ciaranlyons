@@ -1,0 +1,23 @@
+---
+import type { NoteEntry } from '../lib/content'
+import { originalPostUrl } from '../lib/atproto'
+import { formatDate } from '../lib/dates'
+import { noteParagraphs } from '../lib/note-preview'
+import NoteMedia from './NoteMedia.astro'
+
+interface Props { note: NoteEntry }
+const { note } = Astro.props
+const paragraphs = noteParagraphs(note.text, note.facets, true)
+const sourceUrl = originalPostUrl(note)
+---
+
+<aside class="latest-note" aria-labelledby="latest-note-title">
+  <p class="section-kicker" id="latest-note-title">Latest note</p>
+  {paragraphs.length > 0 && <div class="latest-note-copy">{paragraphs.map((html) => <p set:html={html} />)}</div>}
+  <NoteMedia media={note.media} context="compact" originalUrl={sourceUrl} limit={4} allMediaUrl={note.url} />
+  <div class="latest-note-footer">
+    <a class="text-link" href={note.url}>Read note</a>
+    <time class="date" datetime={note.date}>{formatDate(note.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time>
+  </div>
+  {note.source === 'bluesky' && <a class="note-source-link" href={sourceUrl}>On Bluesky <span aria-hidden="true">↗</span></a>}
+</aside>
