@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "lint": "astro check",
     "test": "node --experimental-strip-types --test scripts/*.test.mjs src/lib/*.test.mjs",
-    "build": "node scripts/clean-dist.mjs && astro check && astro build && node scripts/verify-og-images.mjs && pagefind --site dist && node scripts/write-well-known.mjs",
+    "build": "npm run lint && npm run build:artifact",
     "preview": "astro preview",
     "check": "astro check",
     "test:ui": "playwright test",
@@ -28,7 +28,10 @@
     "smoke:production": "node scripts/smoke-production.mjs",
     "standard:publish": "node scripts/publish-standard-site.mjs",
     "secrets:publish": "tsx scripts/publish-1password-secrets.ts",
-    "secrets:refresh": "tsx scripts/refresh-1password-secrets.ts"
+    "secrets:refresh": "tsx scripts/refresh-1password-secrets.ts",
+    "build:artifact": "node scripts/clean-dist.mjs && astro build && node scripts/verify-og-images.mjs && pagefind --site dist && node scripts/write-well-known.mjs",
+    "pr:validate": "node scripts/validate-pr-body.mjs",
+    "publication:verify": "node scripts/verify-publication.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -47,7 +50,9 @@
     "@playwright/test": "^1.63.0",
     "@types/node": "^22.15.3",
     "@types/sanitize-html": "2.16.1",
+    "htmlparser2": "12.0.0",
     "pagefind": "1.5.2",
-    "tsx": "4.23.13"
+    "tsx": "4.23.13",
+    "wrangler": "4.152.0"
   }
 }

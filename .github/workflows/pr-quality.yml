@@ -22,55 +22,8 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_REPO: ${{ github.repository }}
         run: |
-          BODY="$(gh pr view "$PR_NUMBER" --repo "$PR_REPO" --json body -q .body)"
-
-          has_execplan=0
-          has_na_reason=0
-
-          if printf '%s' "$BODY" | grep -Eq '\.agent/execplans/[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9._-]+\.md'; then
-            has_execplan=1
-            PLAN_PATH=$(printf '%s' "$BODY" | grep -Eo '\.agent/execplans/[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9._-]+\.md' | head -n 1)
-            if [ ! -f "$PLAN_PATH" ]; then
-              echo "::error::Referenced ExecPlan does not exist in this PR: $PLAN_PATH"
-              exit 1
-            fi
-          fi
-
-          if printf '%s' "$BODY" | grep -Eq 'N/A reason:[[:space:]]*[[:alnum:]][[:print:]]{14,}'; then
-            has_na_reason=1
-          fi
-
-          recovery_hint() {
-            echo
-            echo "::notice::How to recover after editing the PR body:"
-            echo "::notice::  This workflow now re-runs automatically on body edits."
-            echo "::notice::  If it does not re-fire, push any commit, for example:"
-            echo "::notice::  git commit --allow-empty -m rerun"
-          }
-
-          if [ "$has_execplan" -eq 0 ] && [ "$has_na_reason" -eq 0 ]; then
-            echo "::error::PR body must include an ExecPlan path (for example, .agent/execplans/YYYY-MM-DD-slug.md) or a populated 'N/A reason: <text>' line."
-            recovery_hint
-            exit 1
-          fi
-
-          if ! printf '%s' "$BODY" | grep -q "Validation Evidence"; then
-            echo "::error::PR body must include the Validation Evidence section."
-            recovery_hint
-            exit 1
-          fi
-
-          VALIDATION=$(printf '%s\n' "$BODY" | awk '
-            /^## Validation Evidence/ { capture=1; next }
-            /^## / && capture { exit }
-            capture { print }
-          ')
-          VALIDATION_TEXT=$(printf '%s' "$VALIDATION" | tr -d '`<>[:space:]')
-          if [ "${#VALIDATION_TEXT}" -lt 20 ] || printf '%s' "$VALIDATION" | grep -Fq '<command output excerpts>'; then
-            echo "::error::Validation Evidence must contain substantive command results or an explicit N/A explanation."
-            recovery_hint
-            exit 1
-          fi
+          gh pr view "$PR_NUMBER" --repo "$PR_REPO" --json body -q .body > "$RUNNER_TEMP/pr-body.md"
+          node scripts/validate-pr-body.mjs --body-file "$RUNNER_TEMP/pr-body.md"
 
   quality-checks:
     needs: pr-metadata
@@ -97,15 +50,11 @@ jobs:
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: "22"
+          cache: npm
 
       - name: Install dependencies
         if: steps.node-project.outputs.present == 'true'
-        run: |
-          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
-            npm ci --ignore-scripts
-          else
-            npm install --ignore-scripts
-          fi
+        run: npm ci --ignore-scripts
 
       - name: Lint
         if: steps.node-project.outputs.present == 'true'
@@ -121,4 +70,4 @@ jobs:
 
       - name: Build
         if: steps.node-project.outputs.present == 'true'
-        run: npm run build
+        run: npm run build:artifact
