@@ -20,7 +20,10 @@ const latestNotePreview = latestNoteParagraphs.join('\n\n')
 const featuredParagraphs = featuredWriting?.body
   .split(/\n\s*\n/)
   .filter((paragraph) => paragraph.trim())
-const featuredExcerpt = (featuredParagraphs?.[1] ?? featuredParagraphs?.[0])
+const secondParagraph = featuredParagraphs?.[1]
+const featuredExcerpt = (secondParagraph && !/^\s*(?:[-*+]|\d+[.)])\s/u.test(secondParagraph)
+  ? secondParagraph
+  : featuredParagraphs?.[0])
   ?.split(/(?<=\.)\s+/)[0] ?? featuredWriting?.description
 ---
 

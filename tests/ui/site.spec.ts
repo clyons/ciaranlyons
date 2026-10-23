@@ -229,9 +229,9 @@ test('home foregrounds the pinned Writing entry', async ({ page }) => {
 
   const featuredWriting = page.locator('.featured-essay')
   await expect(featuredWriting.getByText('Featured writing', { exact: true })).toBeVisible()
-  await expect(featuredWriting.getByRole('heading', { level: 2 })).toHaveText('On Ownership')
-  await expect(featuredWriting.locator('.featured-essay-summary')).toContainText('To own something is to be responsible for the outcome, not control every turn.')
-  await expect(featuredWriting.getByRole('link', { name: 'Read the essay' })).toHaveAttribute('href', '/writing/2026/08/08/on-ownership/')
+  await expect(featuredWriting.getByRole('heading', { level: 2 })).toHaveText('On Alignment')
+  await expect(featuredWriting.locator('.featured-essay-summary')).toContainText('What does it mean to be aligned?')
+  await expect(featuredWriting.getByRole('link', { name: 'Read the essay' })).toHaveAttribute('href', '/writing/2026/10/23/on-alignment/')
 })
 
 test('Writing collections flow directly into their Found Quotes', async ({ page }) => {
