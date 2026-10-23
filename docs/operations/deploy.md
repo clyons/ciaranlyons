@@ -2,7 +2,7 @@
 
 This repository owns the build, deployment, and verification of CiaranLyons.com. Cloudflare Pages is the hosting target; no generated artifact is copied to another repository.
 
-For the contributor and agent guardrails that enforce this workflow, see [Deployments in the repository guide](../../AGENTS.md#deployments-inviolate). For the complete TIL lifecycle—including optional demo and Bluesky Note publishing—see [Publish a TIL](./publish-til.md). For the curated Links workflow, see [Import Feedly saved articles](./import-feedly-links.md).
+For the reusable Writing validation and PR procedure, see [Publish content](./publish-content.md). For the contributor and agent guardrails that enforce this workflow, see [Deployments in the repository guide](../../AGENTS.md#deployments-inviolate). For the complete TIL lifecycle—including optional demo and Bluesky Note publishing—see [Publish a TIL](./publish-til.md). For the curated Links workflow, see [Import Feedly saved articles](./import-feedly-links.md).
 
 The checked-in workflows are the executable contract: [production](../../.github/workflows/deploy-production.yml) deploys every `main` push, while [preview](../../.github/workflows/deploy-preview.yml) is manually dispatched for a requested non-`main` branch.
 
@@ -12,7 +12,7 @@ Every canonical page has a generated 1200×630 PNG social preview under `/og/`. 
 
 Before publishing new content:
 
-1. Run `npm run build`. The build must finish with `Verified <count> page-specific social preview images.` This gate confirms that every rendered `og:image` and `twitter:image` agrees, points to an existing generated PNG, and declares a 1200×630 image.
+1. Run `npm run build` (or `npm run build:artifact` after successful lint in the same validation pass). The build must finish with `Verified <count> page-specific social preview images.` This gate confirms that every rendered `og:image` and `twitter:image` agrees, points to an existing generated PNG, and declares a 1200×630 image.
 2. Open the new content's exact file under `dist/og/<canonical-path-without-trailing-slash>.png`. Confirm that its title or quotation, content label, attribution or description, and date remain readable with no unintended truncation or overlap. A passing dimension check is not a substitute for this visual review.
 3. Inspect the built page's `og:image`, `og:image:alt`, `twitter:image`, and `twitter:image:alt` metadata and confirm that it describes and links to that exact preview.
 4. Include the build result and the preview path in the PR's validation evidence. Correct the generator or content metadata before merge if the card is misleading or visually broken.
@@ -42,15 +42,24 @@ The production build deliberately fails unless both identity values are present.
 
 Every push to `main` runs **Deploy production site**. A normal pull-request merge creates such a push, so every merge is deployed automatically. The workflow:
 
-1. installs the locked dependencies;
+1. installs the locked dependencies, including the exact Wrangler development dependency, using `npm ci --ignore-scripts`;
 2. runs lint and the repository test suite;
-3. builds a clean `dist/` artifact with production identity records required;
+3. runs `npm run build:artifact` after lint, building a clean `dist/` with production identity records required;
 4. uploads that artifact to the production environment of the `ciaranlyons` Cloudflare Pages project; and
 5. runs `npm run smoke:production` against `https://ciaranlyons.com`.
 
 Production uploads are serialized rather than cancelled: each completed merge gets its own deploy attempt. Treat a failed smoke test as a failed production release. Fix the issue and merge a new commit; do not manually copy `dist/` anywhere.
 
 The workflow writes an elapsed checkout-to-result duration to every job summary, including failures. The first successful run after the Cloudflare cutover is the production baseline. Record its run URL, commit SHA, and elapsed seconds in the release notes; compare later successful runs against it. Investigate a material regression, but do not remove lint, tests, the clean build, or the production smoke test merely to reduce time. Optimize setup, caching, or the upload path only after preserving those correctness gates.
+
+
+### Validation and deployment tooling
+
+PR checks, production, and requested previews use Node 22 with setup-node's npm download cache and the repository lockfile. A cache miss runs the same `npm ci --ignore-scripts`; no installed dependency tree, `dist/`, identity files, environment files, or credentials are cached. The PR retains its separate `npx tsc --noEmit` gate. Each artifact job runs `npm run lint` once, then tests and `build:artifact`. Standalone `npm run build` composes lint and the complete artifact pipeline.
+
+Wrangler is pinned to `4.152.0` in `package.json` and `package-lock.json` (compatible with Node 22). Both SHA-pinned upload actions select that exact version. A pre-upload step checks the installed binary matches the dependency; an always-run post-upload step rejects changes to either dependency file. The action should report `Using Wrangler 4.152.0` and skip installation. Keep its `wranglerVersion` inputs aligned when deliberately upgrading the locked dependency.
+
+The choice follows [Cloudflare's local-install guidance](https://developers.cloudflare.com/workers/wrangler/install-and-update/) and the [pinned action's version-selection implementation](https://github.com/cloudflare/wrangler-action/blob/ebbaa1584979971c8614a24965b4405ff95890e0/dist/index.mjs). The install cost now belongs to `npm ci`; measure **install plus upload**, including cold-cache behavior, before attributing a speed improvement. Production always rebuilds its own merged revision; PR artifacts are never promoted.
 
 ## Preview deployments on request
 

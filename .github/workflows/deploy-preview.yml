@@ -59,16 +59,28 @@ jobs:
       - name: Build preview artifact
         env:
           REQUIRE_WELL_KNOWN: "false"
-        run: npm run build
+        run: npm run build:artifact
+
+      - name: Verify locked deployment tooling
+        run: |
+          expected="$(node -p 'require("./package.json").devDependencies.wrangler')"
+          actual="$(node_modules/.bin/wrangler --version)"
+          test "$actual" = "$expected"
+          echo "Using locked Wrangler $actual"
 
       - name: Upload preview artifact to Cloudflare Pages
         id: deploy
         uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4
         with:
+          wranglerVersion: "4.152.0"
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=ciaranlyons --branch=${{ steps.preview-ref.outputs.branch }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify deployment left dependencies unchanged
+        if: always()
+        run: git diff --exit-code -- package.json package-lock.json
 
       - name: Publish preview links
         env:

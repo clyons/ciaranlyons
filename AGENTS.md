@@ -73,6 +73,10 @@ Read the [deployment runbook](docs/operations/deploy.md) before changing deploym
 4. Keep `ATPROTO_DID` and `STANDARD_SITE_PUBLICATION_AT_URI` scoped to GitHub's `production` environment. Keep `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as GitHub Actions secrets. Never print, commit, or place deployment credentials in local `.env` files or 1Password developer-env sync.
 5. Deployment workflow or secret-boundary changes require an ExecPlan. Update the [deployment runbook](docs/operations/deploy.md) and retain or extend the workflow-contract tests in `scripts/deploy-workflows.test.mjs`; run the relevant validation before requesting review.
 
+## Content Publishing
+
+Follow the [content publishing procedure](docs/operations/publish-content.md) for Writing and the common validation/PR/deployment sequence. Retain the content-specific checks below.
+
 ## TIL Publishing
 
 When Ciaran says "TIL this", treat it as a publishing operation for `content/til`.
