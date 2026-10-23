@@ -1,0 +1,24 @@
+---
+import type { NoteMedia as Media } from '../lib/content'
+import { positiveDimension } from '../lib/note-media'
+import NoteVideo from './NoteVideo.astro'
+
+interface Props { media: Media[]; context: 'compact' | 'detail'; originalUrl: string; limit?: number; allMediaUrl?: string }
+const { media, context, originalUrl, limit = media.length, allMediaUrl } = Astro.props
+const visibleMedia = media.slice(0, limit)
+---
+
+{media.length > 0 && (
+  <div class:list={['note-media', `note-media--${context}`, { 'note-media--gallery': media.length > 1 }]}>
+    {visibleMedia.map((item) => (
+      <figure class="note-media-item">
+        {item.type === 'video' ? <NoteVideo media={item} context={context} originalUrl={originalUrl} /> : (
+          <a class="note-image-link" href={item.src} aria-label={`View full image: ${item.alt || 'Attached image'}`}>
+            <img src={item.src} alt={item.alt || ''} width={positiveDimension(item.width)} height={positiveDimension(item.height)} loading="lazy" decoding="async" />
+          </a>
+        )}
+      </figure>
+    ))}
+    {visibleMedia.length < media.length && allMediaUrl && <a class="note-gallery-more" href={allMediaUrl}>View all {media.length} attachments <span aria-hidden="true">→</span></a>}
+  </div>
+)}

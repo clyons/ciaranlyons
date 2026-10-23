@@ -522,6 +522,16 @@ test('note permalinks render as native posts rather than quotations', async ({ p
   await expect(page.locator('.note-post-footer')).toHaveCSS('border-top-width', '1px')
 })
 
+test('Notes archive renders attachments with independent controls and permalinks', async ({ page }) => {
+  await page.goto('/notes/')
+  const localVideo = page.locator('.note-row').filter({ has: page.locator('source[src*="3musjyx5omc2i"]') })
+  await expect(localVideo).toHaveCount(1)
+  await expect(localVideo.locator('video')).toHaveAttribute('preload', 'none')
+  await expect(localVideo.locator('video')).not.toHaveAttribute('autoplay')
+  await expect(localVideo.locator('a.date')).toHaveAttribute('href', '/notes/2026/09/05/3musjyx5omc2i/')
+  await expect(localVideo.getByRole('link', { name: 'On Bluesky' })).toBeVisible()
+})
+
 test('note detail matches its approved visual baseline', async ({ page }) => {
   await page.goto('/notes/2026/09/07/3mux7jv5ze52c/')
   await expect(page).toHaveScreenshot('note-detail.png', {

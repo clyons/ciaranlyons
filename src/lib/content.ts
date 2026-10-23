@@ -7,6 +7,7 @@ import { renderMarkdown } from './markdown'
 import { sortFoundQuotesByPublicationAndSourceDate } from './found-quotes'
 import { destinationAuditMetadata, type LinkDestinationStatus } from './link-destinations'
 import type { RichTextFacet, RichTextFacetFeature } from './rich-text'
+import { parseLocalNoteMedia } from './note-media'
 
 export { foundQuoteDescription, foundQuoteTitle, resolveFoundQuotes, sortFoundQuotesByPublicationAndSourceDate } from './found-quotes'
 
@@ -115,6 +116,8 @@ export interface NoteMedia {
   width?: number
   height?: number
   cid?: string
+  poster?: string
+  presentation?: string
 }
 
 export interface ProjectEntry {
@@ -154,30 +157,6 @@ function asNumber(value: unknown): number | undefined {
 
 function asRecord(value: unknown): Record<string, unknown> {
   return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {}
-}
-
-function asNoteMedia(value: unknown, source: string): NoteMedia[] {
-  if (!Array.isArray(value)) return []
-
-  const parsed: NoteMedia[] = []
-  for (const item of value) {
-    const media = asRecord(item)
-    const type = media.type === 'video' ? 'video' : media.type === 'image' ? 'image' : undefined
-    const src = asString(media.src)
-    if (!type || !src) continue
-
-    parsed.push({
-      type,
-      src: webUrl(src, source, 'media.src'),
-      mimeType: asString(media.mimeType) || undefined,
-      alt: asString(media.alt) || undefined,
-      width: asNumber(media.width),
-      height: asNumber(media.height),
-      cid: asString(media.cid) || undefined,
-    })
-  }
-
-  return parsed
 }
 
 function asRichTextFeature(value: unknown): RichTextFacetFeature | undefined {
@@ -516,7 +495,7 @@ async function loadLocalNotes(): Promise<NoteEntry[]> {
         source,
         originalUrl: optionalHttpUrl(data.originalUrl, sourceFile, 'originalUrl'),
         facets: asRichTextFacets(data.facets),
-        media: asNoteMedia(data.media, sourceFile),
+        media: parseLocalNoteMedia(data.media, sourceFile),
         url: datedPath('/notes', date, id),
       }
     }),

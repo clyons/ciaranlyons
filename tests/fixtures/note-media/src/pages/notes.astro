@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../../../../src/layouts/BaseLayout.astro'
+import NoteRow from '../../../../../src/components/NoteRow.astro'
+import { archiveNotes } from '../fixtures'
+---
+<BaseLayout title="Notes">
+  <section class="section"><h1 class="page-title">Notes</h1><p class="lede">Short notes and observations.</p></section>
+  <section class="section"><div class="archive-list">{archiveNotes.map((note) => <NoteRow note={note} />)}</div></section>
+</BaseLayout>

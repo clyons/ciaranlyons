@@ -1,0 +1,26 @@
+---
+import type { NoteMedia } from '../lib/content'
+import { positiveDimension } from '../lib/note-media'
+
+interface Props { media: NoteMedia; context: 'compact' | 'detail'; originalUrl: string }
+const { media, originalUrl } = Astro.props
+const hls = /(?:mpegurl)/i.test(media.mimeType ?? '') || /\.m3u8(?:[?#]|$)/i.test(media.src)
+const width = positiveDimension(media.width)
+const height = positiveDimension(media.height)
+---
+
+<div class="note-video" data-note-video>
+  <video controls playsinline preload="none" poster={media.poster} width={width} height={height}
+    aria-label={media.alt || 'Attached video'} data-hls-src={hls ? media.src : undefined}
+    style={`--video-ratio: ${width && height ? `${width} / ${height}` : '16 / 9'};`}>
+    {!hls && <source src={media.src} type={media.mimeType || 'video/mp4'} />}
+    Your browser cannot play this video.
+  </video>
+  <button class="note-video-play" type="button" aria-label={`Play video: ${media.alt || 'Attached video'}`} data-note-play hidden><span aria-hidden="true">▶</span></button>
+  <p class="note-video-status" role="status" data-note-video-status hidden>Video unavailable. <a href={originalUrl}>Open the original post to watch it.</a></p>
+  <noscript>{hls && <p class="note-video-status">Open the original post to watch this video.</p>}</noscript>
+</div>
+
+<script>
+  import '../scripts/note-video'
+</script>

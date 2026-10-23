@@ -1,22 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import FoundQuote from '../components/FoundQuote.astro'
+import LatestNote from '../components/LatestNote.astro'
 import { getNotes } from '../lib/atproto'
 import { getFoundQuotes, getProjects, getWriting } from '../lib/content'
 import { formatDate } from '../lib/dates'
-import { renderRichText } from '../lib/rich-text'
 
 const [writing, notes, projects, foundQuotes] = await Promise.all([getWriting(), getNotes(1), getProjects(), getFoundQuotes()])
 const featuredWriting = writing.find((entry) => entry.featured) ?? writing[0]
 const latestNote = notes[0]
 const latestFoundQuote = foundQuotes[0]
 const showLatestFoundQuote = latestFoundQuote && !featuredWriting?.foundQuoteSlugs.includes(latestFoundQuote.slug)
-const standaloneUrl = /^(?:https?:\/\/)?[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9-]+)+(?:\/\S*)?$/iu
-const latestNoteParagraphs = latestNote?.text.trim().split(/\r?\n\s*\r?\n/) ?? []
-
-if (standaloneUrl.test(latestNoteParagraphs.at(-1)?.trim() ?? '')) latestNoteParagraphs.pop()
-
-const latestNotePreview = latestNoteParagraphs.join('\n\n')
 const featuredParagraphs = featuredWriting?.body
   .split(/\n\s*\n/)
   .filter((paragraph) => paragraph.trim())
@@ -33,16 +27,7 @@ const featuredExcerpt = (secondParagraph && !/^\s*(?:[-*+]|\d+[.)])\s/u.test(sec
       <h1 id="home-title">I build things that last <em>and</em> grow.</h1>
       <p>In the past, websites and communities; lately, teams and companies. Every day, mental fitness.</p>
     </div>
-    {latestNote && (
-      <aside class="latest-note" aria-labelledby="latest-note-title">
-        <p class="section-kicker" id="latest-note-title">Latest note</p>
-        <div class="latest-note-copy" set:html={renderRichText(latestNotePreview, latestNote.facets)} />
-        <div class="latest-note-footer">
-          <a class="text-link" href={latestNote.url}>Read note</a>
-          <time class="date" datetime={latestNote.date}>{formatDate(latestNote.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time>
-        </div>
-      </aside>
-    )}
+    {latestNote && <LatestNote note={latestNote} />}
   </section>
 
   {featuredWriting && (

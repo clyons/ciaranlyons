@@ -61,6 +61,35 @@ test('note ingestion drops media with unsafe CIDs', () => {
   assert.match(note.file, /content\/notes\/2026-09-06-3example\.md$/)
 })
 
+test('gallery records including media-only posts serialize supported images in source order', () => {
+  const item = feedItem()
+  item.post.record.text = ''
+  item.post.record.embed = { $type: 'app.bsky.embed.recordWithMedia', media: {
+    $type: 'app.bsky.embed.gallery', items: [
+      { $type: 'app.bsky.embed.gallery#image', image: { ref: { $link: 'bafyfirst' }, mimeType: 'image/png' }, alt: 'First image' },
+      { $type: 'app.bsky.embed.gallery#futureVideo' },
+      { $type: 'app.bsky.embed.gallery#image', image: { ref: { $link: 'bafysecond' }, mimeType: 'image/jpeg' }, alt: 'Second image' },
+    ],
+  } }
+  const note = noteFromFeedItem(item)
+  assert.ok(note)
+  assert.equal(note.text, '')
+  assert.deepEqual(note.media.map((m) => m.alt), ['First image', 'Second image'])
+  assert.match(note.media[0].src, /image-1-bafyfirst.png$/)
+  assert.match(note.media[1].src, /image-2-bafysecond.jpg$/)
+  assert.match(noteMarkdown(note), /Second image/)
+  assert.equal(noteMarkdown(note).includes('"file"'), false)
+})
+
+test('raw video records retain presentation without treating blobs as playlist URLs', () => {
+  const item = feedItem()
+  item.post.record.embed = { $type: 'app.bsky.embed.video', video: { ref: { $link: 'bafyvideo' }, mimeType: 'video/mp4' }, presentation: 'gif', aspectRatio: { width: 640, height: 360 } }
+  const note = noteFromFeedItem(item)
+  assert.equal(note.media[0].presentation, 'gif')
+  assert.equal(note.media[0].mimeType, 'video/mp4')
+  assert.match(note.media[0].src, /\.mp4$/)
+})
+
 test('download integrity validation rejects bytes that do not match the advertised CID', async () => {
   const expectedBytes = new TextEncoder().encode('expected')
   const digest = await sha256.digest(expectedBytes)

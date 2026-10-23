@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../../../../../src/layouts/BaseLayout.astro'
+import LatestNote from '../../../../../../src/components/LatestNote.astro'
+import { cases } from '../../fixtures'
+
+export function getStaticPaths() {
+  return Object.entries(cases).map(([key, note]) => ({ params: { case: key }, props: { note } }))
+}
+const { note } = Astro.props
+---
+<BaseLayout>
+  <section class="home-intro" aria-labelledby="home-title">
+    <div class="home-proposition">
+      <h1 id="home-title">I build things that last <em>and</em> grow.</h1>
+      <p>In the past, websites and communities; lately, teams and companies. Every day, mental fitness.</p>
+    </div>
+    <LatestNote note={note} />
+  </section>
+  <section class="featured-essay" aria-labelledby="featured-essay-title">
+    <div class="featured-essay-heading">
+      <p class="section-kicker">Featured writing</p>
+      <time class="date" datetime="2026-08-08">August 8, 2026</time>
+      <h2 id="featured-essay-title">On Ownership</h2>
+      <p class="featured-dek">Own the outcome, not the method.</p>
+    </div>
+    <div class="featured-essay-summary"><p>To own something is to be responsible for the outcome, not control every turn.</p><a class="text-link" href="/writing/">Read the essay</a></div>
+  </section>
+</BaseLayout>
