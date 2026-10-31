@@ -49,7 +49,7 @@ From this repository root run `npm run lint`, `npx tsc --noEmit`, `npm test`, an
 
 ## Validation and Acceptance
 
-Both `/postscript` and `/postscript/` return HTTP 302 with Location `https://stealmysms.com/?ref=postscript`. The destination renders a dismissible application banner and LinkedIn link. GA4 receives a real tagged browser visit and engagement events. Production smoke tests pass.
+Both `/postscript` and `/postscript/` return HTTP 302 with Location `https://stealmysms.com/?ref=postscript`. The destination renders a dismissible application banner and About page link. GA4 receives a real tagged browser visit and engagement events. Production smoke tests pass.
 
 ## Idempotence and Recovery
 
@@ -66,3 +66,5 @@ Cloudflare Pages `_redirects` syntax; existing Astro public asset copying; indep
 ## Change Log
 
 - 2026-10-31: Created plan and recorded inspected infrastructure and permission limits.
+
+- 2026-10-31: Updated acceptance to link to the About page at Ciaran’s request.
