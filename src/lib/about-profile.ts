@@ -47,7 +47,7 @@ export const aboutCaseStudies: readonly AboutCaseStudy[] = [
   },
   {
     title: 'How a Content Company Uses Zapier to Learn From Its Email Data',
-    href: 'https://zapier.com/blog/content-management-data-automation/',
+    href: 'https://web.archive.org/web/20171219160051/https://zapier.com/blog/content-management-data-automation/',
     discipline: 'Data Analysis / CRM',
     description: 'An automated analysis workflow that turned email-marketing data into a useful operating system—without writing code.',
   },
