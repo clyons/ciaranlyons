@@ -11,14 +11,6 @@ const featuredWriting = writing.find((entry) => entry.featured) ?? writing[0]
 const latestNote = notes[0]
 const latestFoundQuote = foundQuotes[0]
 const showLatestFoundQuote = latestFoundQuote && !featuredWriting?.foundQuoteSlugs.includes(latestFoundQuote.slug)
-const featuredParagraphs = featuredWriting?.body
-  .split(/\n\s*\n/)
-  .filter((paragraph) => paragraph.trim())
-const secondParagraph = featuredParagraphs?.[1]
-const featuredExcerpt = (secondParagraph && !/^\s*(?:[-*+]|\d+[.)])\s/u.test(secondParagraph)
-  ? secondParagraph
-  : featuredParagraphs?.[0])
-  ?.split(/(?<=\.)\s+/)[0] ?? featuredWriting?.description
 ---
 
 <BaseLayout description="Ciaran Lyons writes about operations, growth, teams, companies, and mental fitness.">
@@ -32,16 +24,13 @@ const featuredExcerpt = (secondParagraph && !/^\s*(?:[-*+]|\d+[.)])\s/u.test(sec
 
   {featuredWriting && (
     <section class="featured-essay" aria-labelledby="featured-essay-title">
-      <div class="featured-essay-heading">
+      <div class="featured-essay-meta">
         <p class="section-kicker">Featured writing</p>
         <time class="date" datetime={featuredWriting.date}>{formatDate(featuredWriting.date, { month: 'long', day: 'numeric', year: 'numeric' })}</time>
-        <h2 id="featured-essay-title">{featuredWriting.title}</h2>
-        <p class="featured-dek">{featuredWriting.description}</p>
       </div>
-      <div class="featured-essay-summary">
-        <p>{featuredExcerpt}</p>
-        <a class="text-link" href={featuredWriting.url}>Read the essay</a>
-      </div>
+      <h2 id="featured-essay-title">{featuredWriting.title}</h2>
+      <p class="featured-dek">{featuredWriting.description}</p>
+      <a class="text-link" href={featuredWriting.url}>Read the essay</a>
     </section>
   )}
 

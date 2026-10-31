@@ -230,7 +230,9 @@ test('home foregrounds the pinned Writing entry', async ({ page }) => {
   const featuredWriting = page.locator('.featured-essay')
   await expect(featuredWriting.getByText('Featured writing', { exact: true })).toBeVisible()
   await expect(featuredWriting.getByRole('heading', { level: 2 })).toHaveText('On Alignment')
-  await expect(featuredWriting.locator('.featured-essay-summary')).toContainText('What does it mean to be aligned?')
+  await expect(featuredWriting.locator('.featured-dek')).toHaveText('Agreement is not alignment. Alignment means knowing four things.')
+  await expect(featuredWriting.locator('time')).toHaveText('October 23, 2026')
+  await expect(featuredWriting).not.toContainText('What does it mean to be aligned?')
   await expect(featuredWriting.getByRole('link', { name: 'Read the essay' })).toHaveAttribute('href', '/writing/2026/10/23/on-alignment/')
 })
 
