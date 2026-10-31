@@ -319,11 +319,7 @@ img {
 .featured-essay {
   width: min(var(--max), calc(100% - (2 * var(--gutter))));
   margin-inline: auto;
-  min-height: 342px;
-  padding: clamp(36px, 3.5vw, 44px) clamp(32px, 3.8vw, 44px) clamp(44px, 5vw, 58px);
-  display: grid;
-  grid-template-columns: minmax(0, 1.28fr) minmax(270px, 0.86fr);
-  gap: clamp(38px, 5vw, 60px);
+  padding: 32px clamp(28px, 3.8vw, 44px) 40px;
   color: var(--paper-ink);
   background: var(--paper);
 }
@@ -333,42 +329,35 @@ img {
   color: var(--paper-ink);
 }
 
-.featured-essay .date {
-  display: block;
-  margin-top: 26px;
+.featured-essay-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
 }
 
 .featured-essay h2 {
-  margin: clamp(30px, 4vw, 46px) 0 10px;
+  margin: 44px 0 34px;
   font-family: var(--serif);
-  font-size: clamp(3.45rem, 6.1vw, 6rem);
+  font-size: clamp(3rem, 6.53vw, 5.875rem);
   line-height: 0.92;
-  letter-spacing: -0.04em;
+  letter-spacing: normal;
   text-wrap: balance;
 }
 
 .featured-dek {
+  max-width: 920px;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(1.45rem, 2.5vw, 2.15rem);
+  font-size: clamp(1.625rem, 2.5vw, 2.1875rem);
   line-height: 1.2;
 }
 
 .featured-essay .text-link {
+  display: inline-block;
+  margin-top: 32px;
   color: var(--paper-ink);
-}
-
-.featured-essay-summary {
-  align-self: end;
-  padding: clamp(18px, 3vw, 36px) 0 clamp(2px, 1vw, 12px) clamp(28px, 4vw, 48px);
-  border-left: 1px solid var(--paper-ink);
-}
-
-.featured-essay-summary > p {
-  margin: 0 0 30px;
-  font-family: var(--serif);
-  font-size: clamp(1.25rem, 2vw, 1.72rem);
-  line-height: 1.25;
 }
 
 .featured-essay a:hover {
@@ -1543,7 +1532,6 @@ img {
   }
 
   .home-intro,
-  .featured-essay,
   .hero {
     grid-template-columns: 1fr;
   }
@@ -1575,19 +1563,28 @@ img {
   }
 
   .featured-essay {
-    width: calc(100% - (2 * var(--gutter)));
-    padding: 34px 24px 38px;
-    gap: 34px;
+    width: calc(100% - 40px);
+    padding: 32px 28px 40px;
+  }
+
+  .featured-essay-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .featured-essay .section-kicker,
+  .featured-essay .date {
+    font-size: 0.6875rem;
   }
 
   .featured-essay h2 {
-    font-size: clamp(2.4rem, 10.8vw, 3rem);
+    margin: 36px 0 26px;
+    font-size: clamp(2rem, 11.03vw, 3rem);
   }
 
-  .featured-essay-summary {
-    padding: 28px 0 0;
-    border-top: 1px solid var(--paper-ink);
-    border-left: 0;
+  .featured-essay .text-link {
+    margin-top: 28px;
   }
 
   .section-heading,
