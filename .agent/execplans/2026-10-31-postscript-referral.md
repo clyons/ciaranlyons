@@ -10,7 +10,7 @@ Make `https://ciaranlyons.com/postscript` redirect immediately to `https://steal
 
 - [x] (2026-10-31 23:27Z) Inspected both repositories, deployment contracts, Cloudflare project and DNS, and available analytics.
 - [x] (2026-10-31 23:33Z) Added both redirect forms; lint/typecheck, 122 tests and artifact build passed, and dist/_redirects matches source.
-- [ ] Publish the separately owned destination changes and verify them.
+- [x] (2026-10-31 23:35Z) Destination PR clyons/steal-my-sms#1 merged; Pages deployment 75200c54-d673-4f6c-8260-a710c771babb succeeded from 2722b370b5214ab1fdbb6f6c40be71e0fa361dc1. Public HTTP smoke passed with both referral modules and nine images.
 - [ ] Merge the redirect PR and verify production.
 
 ## Surprises & Discoveries
@@ -33,7 +33,7 @@ Make `https://ciaranlyons.com/postscript` redirect immediately to `https://steal
 
 ## Outcomes & Retrospective
 
-In progress. Publication must be verified at both exact public URLs before claiming completion.
+Destination published and publicly smoke-tested. Its separate GA4 property is configured and the production measurement module is served. Main-site redirect deployment and public verification remain.
 
 ## Context and Orientation
 
