@@ -1,8 +1,8 @@
 ---
 title: Steal My SMS
-description: "A field guide to SMS retention: seven lifecycle flows explained through real brand examples."
+description: "A field guide to SMS retention.."
 url: https://stealmysms.com/
-meta: 2026 · Live
+meta: Google Voice, Brevo, HTML+CSS+JS
 order: 0
 image:
   src: /images/projects/steal-my-sms-1200.avif
