@@ -11,7 +11,7 @@ Visitors will find Steal My SMS first on the homepage and Projects listing. The 
 - [x] (2026-11-01 17:04Z) Inspected content, both listings, image conventions, tests, publishing instructions, and PR metadata contract. Captured the live site hero successfully.
 - [x] (2026-11-01 17:05Z) Added the content, real AVIF screenshot, optional project details, and shared row component on both listings.
 - [x] (2026-11-01 17:08Z) Passed lint, TypeScript, 122 tests, full artifact build, targeted browser checks, and desktop/mobile/light/dark visual review. Updated the four intentionally affected snapshots.
-- [ ] Open a focused PR with validated metadata and read back its checks.
+- [x] (2026-11-01 17:09Z) Opened [PR #99](https://github.com/clyons/ciaranlyons/pull/99), read back and locally validated its saved body, and confirmed the PR metadata gate passed before downstream quality checks started.
 
 ## Surprises & Discoveries
 
@@ -36,7 +36,7 @@ Visitors will find Steal My SMS first on the homepage and Projects listing. The 
 
 ## Outcomes & Retrospective
 
-Steal My SMS is first on both listings. The Projects entry includes the actual live hero, supplied first-person copy, role, development approach, year/status, and exact small-print attribution. A real browser click opens the public site in a new tab. The existing internal projects preserve their copy, ordering, destinations, and arrow treatment. No new page route was introduced because projects do not have detail pages. Production remains unchanged pending PR review and merge.
+Steal My SMS is first on both listings. The Projects entry includes the actual live hero, supplied first-person copy, role, development approach, year/status, and exact small-print attribution. A real browser click opens the public site in a new tab. The existing internal projects preserve their copy, ordering, destinations, and arrow treatment. No new page route was introduced because projects do not have detail pages. [PR #99](https://github.com/clyons/ciaranlyons/pull/99) is ready for review; production remains unchanged pending review and merge. All 122 unit tests and 20 targeted UI cases passed locally. At PR submission, the metadata gate passed and quality checks started; current CI results remain visible on the PR.
 
 ## Context and Orientation
 
@@ -80,6 +80,8 @@ All edits are additive or scoped and can be reverted individually. Capture the e
 - Original hero capture was cropped to the real header/hero (1440 × 833) and converted with installed Sharp to `public/images/projects/steal-my-sms-1200.avif` (1200 × 694, 28,891 bytes). No image was generated.
 - Visually inspected `.context/steal-my-sms-projects-{desktop,mobile}.png`, `.context/steal-my-sms-home-{desktop,mobile}.png`, `.context/steal-my-sms-projects-dark.png`, and exact generated `dist/og/projects.png` and `dist/og/home.png`.
 - `.context/steal-my-sms-browser-qa.json` records no overflow at 320/390/1440 pixels, the actual external popup destination/title, and `/projects/` as the sole project sitemap route. The complete artifact manifest contains 6,969 hashes in `.context/steal-my-sms-artifact.sha256`.
+- Implementation commit: `76260180852ce071409de0b2eb4bd1fb37f0a503`. The final follow-up commit only records completed review preparation in this plan. Both commits belong to this single feature, and the original branch remains checked out.
+- PR saved-body validation: `PR metadata valid: ExecPlan and Validation Evidence populated.` Initial GitHub run `41330000618` passed `pr-metadata` and started `quality-checks` successfully. No preview or production deployment was requested.
 
 ## Interfaces and Dependencies
 
@@ -89,3 +91,4 @@ All edits are additive or scoped and can be reverted individually. Capture the e
 
 - 2026-11-01: Created the plan from `.agent/execplans/TEMPLATE.md` after inspecting repository patterns.
 - 2026-11-01: Completed implementation and local validation; recorded screenshot provenance and browser evidence.
+- 2026-11-01: Recorded PR #99, final 20-case UI comparison pass, saved-body validation, and successful metadata-gate startup.
