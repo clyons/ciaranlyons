@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import FoundQuote from '../components/FoundQuote.astro'
 import LatestNote from '../components/LatestNote.astro'
+import ProjectRow from '../components/ProjectRow.astro'
 import { getNotes } from '../lib/atproto'
 import { getFoundQuotes, getProjects, getWriting } from '../lib/content'
 import { formatDate } from '../lib/dates'
@@ -48,20 +49,7 @@ const showLatestFoundQuote = latestFoundQuote && !featuredWriting?.foundQuoteSlu
       <p class="section-kicker" id="projects-title">Projects</p>
     </div>
     <div class="archive-list">
-      {projects.map((project) => (
-        <a class="project-row" href={project.url}>
-          <div>
-            <h3>{project.title}</h3>
-            {
-              project.emphasis && project.description.includes(project.emphasis)
-                ? <p>{project.description.slice(0, project.description.indexOf(project.emphasis))}<em>{project.emphasis}</em>{project.description.slice(project.description.indexOf(project.emphasis) + project.emphasis.length)}</p>
-                : <p>{project.description}</p>
-            }
-            {project.meta && <p class="meta">{project.meta}</p>}
-          </div>
-          <span class="row-action" aria-hidden="true">→</span>
-        </a>
-      ))}
+      {projects.map((project) => <ProjectRow {project} heading="h3" />)}
     </div>
   </section>
 </BaseLayout>
