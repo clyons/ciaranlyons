@@ -229,11 +229,11 @@ test('home foregrounds the pinned Writing entry', async ({ page }) => {
 
   const featuredWriting = page.locator('.featured-essay')
   await expect(featuredWriting.getByText('Featured writing', { exact: true })).toBeVisible()
-  await expect(featuredWriting.getByRole('heading', { level: 2 })).toHaveText('On Alignment')
-  await expect(featuredWriting.locator('.featured-dek')).toHaveText('Agreement is not alignment. Alignment means knowing four things.')
-  await expect(featuredWriting.locator('time')).toHaveText('October 23, 2026')
-  await expect(featuredWriting).not.toContainText('What does it mean to be aligned?')
-  await expect(featuredWriting.getByRole('link', { name: 'Read the essay' })).toHaveAttribute('href', '/writing/2026/10/23/on-alignment/')
+  await expect(featuredWriting.getByRole('heading', { level: 2 })).toHaveText('Becoming the Robot Default')
+  await expect(featuredWriting.locator('.featured-dek')).toHaveText("The next great distribution advantage is becoming an AI's default choice.")
+  await expect(featuredWriting.locator('time')).toHaveText('November 1, 2026')
+  await expect(featuredWriting).not.toContainText('Ever notice how AI-built websites all look the same?')
+  await expect(featuredWriting.getByRole('link', { name: 'Read the essay' })).toHaveAttribute('href', '/writing/2026/11/01/becoming-the-robot-default/')
 })
 
 test('Writing collections flow directly into their Found Quotes', async ({ page }) => {
