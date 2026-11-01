@@ -128,6 +128,9 @@ export interface ProjectEntry {
   url: string
   meta?: string
   order?: number
+  html: string
+  image?: { src: string; alt: string; width: number; height: number }
+  attribution?: string
 }
 
 function asString(value: unknown, fallback = ''): string {
@@ -430,10 +433,25 @@ async function loadProjects(): Promise<ProjectEntry[]> {
   ])
   const entries = await Promise.all(
     files.map(async (file) => {
-      const { data } = await readMarkdownFile(file)
+      const { data, html } = await readMarkdownFile(file)
       const source = path.relative(process.cwd(), file)
       const slug = validateSegment(path.basename(file, '.md'), source, 'slug')
       const rawUrl = asString(data.url, `/projects/#${slug}`)
+      let image: ProjectEntry['image']
+      if (data.image !== undefined) {
+        const rawImage = asRecord(data.image)
+        const width = asNumber(rawImage.width)
+        const height = asNumber(rawImage.height)
+        if (!width || !height || !Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1) {
+          throw new Error(`${source}: image width and height must be positive integers`)
+        }
+        image = {
+          src: webUrl(requiredString(rawImage.src, source, 'image.src'), source, 'image.src'),
+          alt: requiredString(rawImage.alt, source, 'image.alt'),
+          width,
+          height,
+        }
+      }
       const metaCount = asString(data.metaCount)
       if (metaCount && metaCount !== 'found-quotes' && metaCount !== 'til') {
         throw new Error(`${source}: metaCount must be found-quotes or til`)
@@ -453,6 +471,9 @@ async function loadProjects(): Promise<ProjectEntry[]> {
           ? `${collectionMeta.count} ${collectionMeta.count === 1 ? collectionMeta.singular : collectionMeta.plural}`
           : asString(data.meta) || undefined,
         order: asNumber(data.order),
+        html,
+        image,
+        attribution: data.attribution === undefined ? undefined : requiredString(data.attribution, source, 'attribution'),
       }
     }),
   )
