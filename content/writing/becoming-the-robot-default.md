@@ -15,9 +15,10 @@ The results:
 - Tailwind CSS: 68% of styling selections.
 - Stripe: 91% of payment selections.
 - Resend: 63% of email selections.
+- Zustand: 65% of state management selections.
 - Vitest: 59% of testing selections.
 
-Meanwhile, Jest was selected in just 4% of testing decisions.
+Meanwhile, Redux received zero selections in 88 state-management decisions. Jest was selected in just 4% of testing decisions.
 
 The robots knew the incumbents. They preferred something else.
 
