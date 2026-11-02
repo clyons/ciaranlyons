@@ -72,3 +72,24 @@ test('Dragon announcement title stays within the Note card margin', async () => 
   }
   assert.equal(lightPixels, 0, 'Title pixels must not enter the right margin')
 })
+
+test('Drucker quote stays inside the social card right margin', async () => {
+  const spec = {
+    path: 'found-quotes/2026/11/02/everyone-is-a-volunteer',
+    kind: 'quote',
+    title: 'In the Knowledge Economy everyone is a volunteer, but we have trained our managers to manage conscripts.',
+    description: '— Peter Drucker, Delphi IKMS conference, San Diego, 1998, as quoted by Dave Snowden',
+  }
+  const svg = buildOgSvg(spec)
+  const title = [...svg.matchAll(/class="serif title">([^<]+)<\/text>/g)].map(match => match[1]).join(' ')
+  assert.equal(title, spec.title, 'The entire quotation remains visible without truncation')
+  // Reproduce the wider serif fallback used by the Ubuntu production builder.
+  const fallbackSvg = svg.replace(/\.serif \{[^}]*\}/, '.serif { font-family: "DejaVu Serif", serif; }')
+  const png = await sharp(Buffer.from(fallbackSvg)).png().toBuffer()
+  const { data, info } = await sharp(png).extract({ left: 1128, top: 150, width: 72, height: 340 }).removeAlpha().raw().toBuffer({ resolveWithObject: true })
+  let darkPixels = 0
+  for (let i = 0; i < data.length; i += info.channels) {
+    if (data[i] < 60 && data[i + 1] < 60 && data[i + 2] < 60) darkPixels++
+  }
+  assert.equal(darkPixels, 0, 'Quote text must not enter the right margin')
+})
