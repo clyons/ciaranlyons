@@ -1,6 +1,6 @@
 ---
 title: Steal My SMS
-description: "A field guide to SMS retention.."
+description: "A field guide to SMS retention."
 url: https://stealmysms.com/
 meta: Google Voice, Brevo, HTML+CSS+JS
 order: 0
