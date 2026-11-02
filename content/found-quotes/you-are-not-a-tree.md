@@ -1,8 +1,9 @@
 ---
 attribution: Og Mandino
-source: "The Greatest Miracle in the World, 1975, p. 93"
-sourceUrl: "https://barrypopik.com/blog/if_you_dont_like_where_you_are_move"
+source: "The Greatest Miracle in the World, 1975, p. 104"
+sourceUrl: "https://archive.org/details/greatestmiracle00mand/page/104/mode/1up"
 date: 2026-10-26
+updated: 2026-11-02
 tags:
   - autonomy
   - change
