@@ -42,14 +42,14 @@ And that changes distribution. Google handed you a visitor. **A robot can hand y
 
 I suspect the underlying mechanism is *machine confidence*: how certain a robot can be that choosing a product will lead to a working result.
 
-It isn't popularity. [Jest leads Vitest in reported usage in the 2025 State of JavaScript survey](https://2025.stateofjs.com/en-US/libraries/testing/), yet the robots overwhelmingly preferred Vitest. Incumbency doesn't protect you. Fit does.
+It isn't popularity. Jest leads Vitest in [reported usage](https://2025.stateofjs.com/en-US/libraries/testing/), yet the robots overwhelmingly preferred Vitest. Incumbency doesn't protect you. Fit does.
 
 Every working implementation adds another example for future models, so what the robot picks becomes what the robot learns from.
 
 The strategy isn't radically different from SEO. What's good for humans and good for Google is generally good for robots.
 
-But the tactics change when the ambition becomes: Get *this robot* to choose my product for *this class* of problem.
+But the tactics change when the ambition becomes: get *this robot* to choose my product for *this class* of problem.
 
 As robots take on more of the work, their preferences increasingly determine which products get used.
 
-Next: the 8 steps to **become the thing the robot reaches for first.**
+Next: the 8 steps to **become what the robot reaches for first.**
