@@ -1,6 +1,6 @@
 ---
 title: "Found Quotes: Room to Move"
-description: "a handful of quotes on freedom and opportunity."
+description: "A handful of quotes on freedom and opportunity."
 date: 2026-11-02
 updated: 2026-11-02
 featured: false
@@ -13,4 +13,4 @@ foundQuotes:
   - make-it-rain
 ---
 
-Six decrees of freedom.
+Six decrees of freedom:
