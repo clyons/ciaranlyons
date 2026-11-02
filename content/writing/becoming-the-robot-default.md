@@ -15,9 +15,9 @@ The results:
 - Tailwind CSS: 68% of styling selections.
 - Stripe: 91% of payment selections.
 - Resend: 63% of email selections.
-- Zustand: 65% of state management selections.
+- Vitest: 59% of testing selections.
 
-Meanwhile, Redux received zero selections in 88 state-management decisions. Jest was selected in just 4% of testing decisions.
+Meanwhile, Jest was selected in just 4% of testing decisions.
 
 The robots knew the incumbents. They preferred something else.
 
@@ -41,7 +41,7 @@ And that changes distribution. Google handed you a visitor. **A robot can hand y
 
 I suspect the underlying mechanism is *machine confidence*: how certain a robot can be that choosing a product will lead to a working result.
 
-It isn't popularity. Redux has more code in the wild than Zustand, and the robots skipped it anyway. Incumbency doesn't protect you. Fit does.
+It isn't popularity. [Jest leads Vitest in reported usage in the 2025 State of JavaScript survey](https://2025.stateofjs.com/en-US/libraries/testing/), yet the robots overwhelmingly preferred Vitest. Incumbency doesn't protect you. Fit does.
 
 Every working implementation adds another example for future models, so what the robot picks becomes what the robot learns from.
 
