@@ -472,6 +472,10 @@ test('Steal My SMS project includes its real hero, details, attribution, and ext
   await expect(project).toHaveAttribute('rel', 'noopener noreferrer')
   await expect(project).toContainText('Visit site')
   await expect(project).toContainText('(opens in a new tab)')
+  const visitIcon = project.locator('.project-visit svg')
+  await expect(visitIcon).toHaveCount(1)
+  await expect(visitIcon).toHaveAttribute('aria-hidden', 'true')
+  await expect(project.locator('.project-visit')).not.toContainText('↗')
 
   const details = page.getByRole('region', { name: 'Steal My SMS details' })
   const hero = details.getByRole('img', { name: "Steal My SMS homepage: the headline 'Steal the texts that bring them back' beside two phone mockups showing brand SMS examples." })
@@ -491,6 +495,9 @@ test('Steal My SMS project includes its real hero, details, attribution, and ext
     expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
     const imageBounds = await hero.boundingBox()
     expect(imageBounds!.width).toBeLessThanOrEqual(width)
+    const iconBounds = await visitIcon.boundingBox()
+    expect(iconBounds!.width).toBe(16)
+    expect(iconBounds!.height).toBe(16)
   }
 })
 
