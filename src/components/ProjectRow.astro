@@ -1,0 +1,73 @@
+---
+import type { ProjectEntry } from '../lib/content'
+
+interface Props {
+  project: ProjectEntry
+  heading?: 'h2' | 'h3'
+  showDetails?: boolean
+}
+
+const { project, heading: Heading = 'h2', showDetails = false } = Astro.props
+const external = /^https?:\/\//.test(project.url)
+---
+
+<a class="project-row" href={project.url} id={project.slug} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>
+  <div>
+    <Heading>{project.title}</Heading>
+    {
+      project.emphasis && project.description.includes(project.emphasis)
+        ? <p>{project.description.slice(0, project.description.indexOf(project.emphasis))}<em>{project.emphasis}</em>{project.description.slice(project.description.indexOf(project.emphasis) + project.emphasis.length)}</p>
+        : <p>{project.description}</p>
+    }
+    {project.meta && <p class="meta">{project.meta}</p>}
+  </div>
+  {external ? (
+    <span class="row-action project-visit">
+      <span class="text-link">Visit site</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M3.5 12.5 12.5 3.5M6 3.5h6.5V10" />
+      </svg>
+      <span class="visually-hidden">(opens in a new tab)</span>
+    </span>
+  ) : <span class="row-action" aria-hidden="true">→</span>}
+</a>
+{showDetails && (project.image || project.html || project.attribution) && (
+  <div class="project-details" role="region" aria-label={`${project.title} details`}>
+    {project.image && <img {...project.image} loading="lazy" decoding="async" />}
+    {project.html && <div class="prose" set:html={project.html} />}
+    {project.attribution && <p class="project-attribution"><small>{project.attribution}</small></p>}
+  </div>
+)}
+
+<style>
+  .project-visit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .project-visit svg {
+    display: block;
+    flex: none;
+  }
+
+  .project-visit .text-link {
+    color: inherit;
+  }
+
+  .project-details {
+    max-width: 46rem;
+    padding-bottom: 28px;
+  }
+
+  .project-details img {
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .project-attribution {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+</style>

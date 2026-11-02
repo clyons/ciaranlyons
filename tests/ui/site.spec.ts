@@ -229,9 +229,11 @@ test('home foregrounds the pinned Writing entry', async ({ page }) => {
 
   const featuredWriting = page.locator('.featured-essay')
   await expect(featuredWriting.getByText('Featured writing', { exact: true })).toBeVisible()
-  await expect(featuredWriting.getByRole('heading', { level: 2 })).toHaveText('On Alignment')
-  await expect(featuredWriting.locator('.featured-essay-summary')).toContainText('What does it mean to be aligned?')
-  await expect(featuredWriting.getByRole('link', { name: 'Read the essay' })).toHaveAttribute('href', '/writing/2026/10/23/on-alignment/')
+  await expect(featuredWriting.getByRole('heading', { level: 2 })).toHaveText('Becoming the Robot Default')
+  await expect(featuredWriting.locator('.featured-dek')).toHaveText("The next great distribution advantage is becoming an AI's default choice.")
+  await expect(featuredWriting.locator('time')).toHaveText('November 1, 2026')
+  await expect(featuredWriting).not.toContainText('Ever notice how AI-built websites all look the same?')
+  await expect(featuredWriting.getByRole('link', { name: 'Read the essay' })).toHaveAttribute('href', '/writing/2026/11/01/becoming-the-robot-default/')
 })
 
 test('Writing collections flow directly into their Found Quotes', async ({ page }) => {
@@ -449,13 +451,54 @@ test('projects are ordered and use the approved site card copy', async ({ page }
   await page.goto('/projects/')
 
   const projects = page.locator('.project-row')
-  await expect(projects.nth(0).getByRole('heading')).toHaveText('TIL')
-  await expect(projects.nth(0)).toContainText(`${tilEntryCount} entries`)
-  await expect(projects.nth(1).getByRole('heading')).toHaveText('ciaranlyons.com')
-  await expect(projects.nth(1)).toContainText('This site: writing, notes & various projects.')
+  await expect(projects.nth(0).getByRole('heading')).toHaveText('Steal My SMS')
+  await expect(projects.nth(0)).toContainText('A field guide to SMS retention..')
+  await expect(projects.nth(0)).toContainText('Google Voice, Brevo, HTML+CSS+JS')
+  await expect(projects.nth(1).getByRole('heading')).toHaveText('TIL')
+  await expect(projects.nth(1)).toContainText(`${tilEntryCount} entries`)
   await expect(projects.nth(2).getByRole('heading')).toHaveText('Found Quotes')
   await expect(projects.nth(2)).toContainText('Things that smarter folks than I have said.')
   await expect(projects.nth(2)).toContainText(`${foundQuoteCount} quotations`)
+  await expect(projects.nth(3).getByRole('heading')).toHaveText('ciaranlyons.com')
+  await expect(projects.nth(3)).toContainText('This site: writing, notes & various projects.')
+})
+
+test('Steal My SMS project includes its real hero, details, attribution, and external visit link', async ({ page }) => {
+  await page.goto('/projects/#steal-my-sms')
+
+  const project = page.locator('#steal-my-sms')
+  await expect(project).toHaveAttribute('href', 'https://stealmysms.com/')
+  await expect(project).toHaveAttribute('target', '_blank')
+  await expect(project).toHaveAttribute('rel', 'noopener noreferrer')
+  await expect(project).toContainText('Visit site')
+  await expect(project).toContainText('(opens in a new tab)')
+  const visitIcon = project.locator('.project-visit svg')
+  await expect(visitIcon).toHaveCount(1)
+  await expect(visitIcon).toHaveAttribute('aria-hidden', 'true')
+  await expect(project.locator('.project-visit')).not.toContainText('↗')
+
+  const details = page.getByRole('region', { name: 'Steal My SMS details' })
+  const hero = details.getByRole('img', { name: "Steal My SMS homepage: the headline 'Steal the texts that bring them back' beside two phone mockups showing brand SMS examples." })
+  await hero.scrollIntoViewIfNeeded()
+  await expect(hero).toBeVisible()
+  await expect.poll(() => hero.evaluate((image) => (image as HTMLImageElement).naturalWidth)).toBe(1200)
+  await expect(details).toContainText('I built Steal My SMS as a free, interactive field guide')
+  await expect(details).toContainText('Black Friday / Cyber Monday edition')
+  await expect(details).toContainText('prioritized action list')
+  await expect(details).toContainText('email teardown of all seven flows')
+  await expect(details).toContainText('Role: Concept, editorial, design direction, build, email and analytics setup.')
+  await expect(details).toContainText('Built with: AI-assisted development.')
+  await expect(details.locator('small')).toHaveText("Independent project. Not affiliated with Postscript. Examples are drawn from Postscript's published educational content and belong to their respective brands.")
+
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({ width, height: 900 })
+    expect(await page.evaluate(() => document.documentElement.scrollWidth === document.documentElement.clientWidth)).toBe(true)
+    const imageBounds = await hero.boundingBox()
+    expect(imageBounds!.width).toBeLessThanOrEqual(width)
+    const iconBounds = await visitIcon.boundingBox()
+    expect(iconBounds!.width).toBe(16)
+    expect(iconBounds!.height).toBe(16)
+  }
 })
 
 test('home lists every project', async ({ page }) => {
@@ -465,6 +508,10 @@ test('home lists every project', async ({ page }) => {
   await page.goto('/')
   const projects = page.locator('.home-projects .project-row')
   await expect(projects).toHaveCount(projectCount)
+  await expect(projects.getByRole('heading')).toHaveText(['Steal My SMS', 'TIL', 'Found Quotes', 'ciaranlyons.com'])
+  await expect(projects.first()).toHaveAttribute('href', 'https://stealmysms.com/')
+  await expect(projects.first()).toHaveAttribute('target', '_blank')
+  await expect(projects.first()).toHaveAttribute('rel', 'noopener noreferrer')
   await expect(projects.filter({ hasText: 'TIL' })).toContainText(`${tilEntryCount} entries`)
   const foundQuotesProject = projects.filter({ hasText: 'Found Quotes' })
   await expect(foundQuotesProject).toHaveCount(1)
@@ -473,7 +520,7 @@ test('home lists every project', async ({ page }) => {
 
 test('internal archive row arrows share the home treatment', async ({ page }) => {
   await page.goto('/')
-  const homeArrow = page.locator('.home-projects .row-action').first()
+  const homeArrow = page.locator('.home-projects .row-action[aria-hidden="true"]').first()
   await expect(homeArrow).toHaveText('→')
   const homeStyle = await homeArrow.evaluate((element) => {
     const style = getComputedStyle(element)
@@ -482,7 +529,7 @@ test('internal archive row arrows share the home treatment', async ({ page }) =>
 
   for (const path of ['/projects/', '/til/', '/til/2026/09/07/', '/writing/2026/09/07/']) {
     await page.goto(path)
-    const arrow = page.locator('.row-action').first()
+    const arrow = page.locator('.row-action[aria-hidden="true"]').first()
     await expect(arrow).toHaveText('→')
     await expect(arrow).toHaveAttribute('aria-hidden', 'true')
     expect(await arrow.evaluate((element) => {
