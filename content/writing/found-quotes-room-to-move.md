@@ -1,6 +1,6 @@
 ---
 title: "Found Quotes: Room to Move"
-description: "Great work needs room to happen."
+description: "a handful of quotes on freedom and opportunity."
 date: 2026-11-02
 updated: 2026-11-02
 featured: false
@@ -12,3 +12,5 @@ foundQuotes:
   - responsible-people-thrive-on-freedom
   - make-it-rain
 ---
+
+Six decrees of freedom.
