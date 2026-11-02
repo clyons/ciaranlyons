@@ -83,7 +83,9 @@ test('Drucker quote stays inside the social card right margin', async () => {
   const svg = buildOgSvg(spec)
   const title = [...svg.matchAll(/class="serif title">([^<]+)<\/text>/g)].map(match => match[1]).join(' ')
   assert.equal(title, spec.title, 'The entire quotation remains visible without truncation')
-  const png = await buildOgPng(spec)
+  // Reproduce the wider serif fallback used by the Ubuntu production builder.
+  const fallbackSvg = svg.replace(/\.serif \{[^}]*\}/, '.serif { font-family: "DejaVu Serif", serif; }')
+  const png = await sharp(Buffer.from(fallbackSvg)).png().toBuffer()
   const { data, info } = await sharp(png).extract({ left: 1128, top: 150, width: 72, height: 340 }).removeAlpha().raw().toBuffer({ resolveWithObject: true })
   let darkPixels = 0
   for (let i = 0; i < data.length; i += info.channels) {
