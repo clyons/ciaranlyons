@@ -10,5 +10,3 @@ foundQuotes:
   - you-are-not-a-tree
   - hire-smart-people-who-get-things-done
 ---
-
-Great work needs room to happen.
