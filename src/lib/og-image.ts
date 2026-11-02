@@ -198,7 +198,8 @@ function tilCard(spec: OgImageSpec): string {
 function quoteCard(spec: OgImageSpec): string {
   const quoteLength = plainText(spec.title).length
   const titleSize = quoteLength > 210 ? 40 : quoteLength > 145 ? 45 : quoteLength > 90 ? 51 : 59
-  const titleLines = wrapText(spec.title, 930, titleSize, 5)
+  // Leave room for the wider serif fallback used by Linux builds.
+  const titleLines = wrapText(spec.title, 790, titleSize, 5)
   const lineHeight = Math.round(titleSize * 1.11)
   const top = titleLines.length <= 2 ? 280 : titleLines.length === 3 ? 240 : 205
   const metaLines = spec.description ? wrapText(spec.description, 790, 21, 2) : []
