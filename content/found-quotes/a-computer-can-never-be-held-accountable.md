@@ -1,6 +1,6 @@
 ---
 attribution: IBM
-source: "training manual, 1979"
+source: "IBM Training Manual, 1979"
 sourceUrl: https://www.ibm.com/think/insights/ai-decision-making-where-do-businesses-draw-the-line
 date: 2026-11-02
 updated: 2026-11-02
