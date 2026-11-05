@@ -52,4 +52,4 @@ But the tactics change when the ambition becomes: get *this robot* to choose my 
 
 As robots take on more of the work, their preferences increasingly determine which products get used.
 
-Next: the 8 steps to **become what the robot reaches for first.**
+Next: the 8 steps to **[become what the robot reaches for first.](/writing/2026/11/04/how-to-become-the-robot-default/)**
