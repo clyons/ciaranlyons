@@ -5,8 +5,6 @@ date: 2026-11-04
 featured: false
 ---
 
-*Eight steps to make your product the obvious choice for an AI agent.*
-
 A store owner tells an AI: text anyone who leaves my store with something in their cart.
 
 The agent compares SMS providers, picks one, and sets up an abandoned-cart flow for customers who've opted in.
