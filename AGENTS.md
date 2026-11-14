@@ -99,6 +99,10 @@ The topic is source-file taxonomy, not part of the canonical URL. Follow the com
 
 Do not move existing TIL files or change slugs unless Ciaran explicitly asks for a URL migration.
 
+## Link Enrichment
+
+Descriptions, tags, and page metadata for `content/links` come from `npm run links:enrich`; follow the [Link enrichment runbook](docs/operations/enrich-links.md). Commands are dry runs unless `--apply` is given. Never hand-edit an `enrichment:` front-matter block, and never remove one to force regeneration: use `--re-enrich`, which respects human edits. Tag merges go through `merge-tags` after review, never by search-and-replace. Keep model API keys in the shell environment only.
+
 ## Found Quote Publishing
 
 When Ciaran says "Found quote this" or asks to save a found quote, create exactly one Markdown file under `content/found-quotes/<slug>.md` and follow [the Found Quote publishing runbook](docs/operations/publish-found-quote.md). Preserve the supplied wording, require attribution and a human-readable source, and never invent missing provenance. A deliberate collection of Found Quotes is a Writing entry whose ordered `foundQuotes` front-matter list references existing quote slugs; do not copy the quote bodies into the Writing file. Open a focused diff or PR for review.

@@ -1,8 +1,10 @@
 import { createHash, randomUUID } from 'node:crypto'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import { mkdir, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
+import { spawnSync } from 'node:child_process'
 import matter from 'gray-matter'
 import sanitizeHtml from 'sanitize-html'
 
@@ -14,11 +16,11 @@ const maxPages = 1_000
 const excerptLength = 320
 
 function usage() {
-  console.log('Usage: node scripts/sync-feedly-links.mjs [--dry-run] [--input FILE] [--stream-id ID] [--limit N] [--report FILE] [--csv FILE]')
+  console.log('Usage: node scripts/sync-feedly-links.mjs [--dry-run] [--input FILE] [--stream-id ID] [--limit N] [--report FILE] [--csv FILE] [--no-enrich]')
 }
 
 export function parseFeedlyArgs(argv) {
-  const options = { dryRun: false, input: undefined, streamId: process.env.FEEDLY_STREAM_ID?.trim() || undefined, limit: undefined, report: undefined, csv: undefined }
+  const options = { dryRun: false, input: undefined, streamId: process.env.FEEDLY_STREAM_ID?.trim() || undefined, limit: undefined, report: undefined, csv: undefined, enrich: true }
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index]
     if (arg === '--dry-run') options.dryRun = true
@@ -27,6 +29,7 @@ export function parseFeedlyArgs(argv) {
     else if (arg === '--limit') options.limit = Number(argv[++index])
     else if (arg === '--report') options.report = argv[++index]
     else if (arg === '--csv') options.csv = argv[++index]
+    else if (arg === '--no-enrich') options.enrich = false
     else if (arg === '--help' || arg === '-h') {
       usage()
       process.exit(0)
@@ -345,6 +348,11 @@ async function writeFileAtomically(destination, contents) {
   }
 }
 
+function writeFileSyncAtomic(destination, contents) {
+  mkdirSync(path.dirname(destination), { recursive: true })
+  writeFileSync(destination, contents, { encoding: 'utf8', mode: 0o600 })
+}
+
 async function writeReport(file, report) {
   const destination = path.resolve(file)
   await writeFileAtomically(destination, `${JSON.stringify(report, null, 2)}\n`)
@@ -385,6 +393,26 @@ async function main() {
   if (options.report) await writeReport(options.report, summary)
   if (options.csv) await writeReviewCsv(options.csv, feedlyReviewCsv(source.items, actions, { streamId: source.streamId, importedAt }))
   console.log(`${options.dryRun ? 'dry-run' : 'done'}: ${summary.writes} ${options.dryRun ? 'would write' : 'written'}, ${summary.skips} skipped, ${summary.rejects} rejected, ${summary.total} total`)
+
+  const written = actions.filter((item) => item.action === 'write').map((item) => item.link.slug)
+  if (!options.dryRun && written.length) enrichNewLinks(written, options)
+}
+
+// New Links are saved first; enrichment runs afterwards as a separate process, so a slow or
+// failing model never blocks or undoes an import. Anything it misses is picked up later by
+// `npm run links:enrich -- --missing --apply`.
+export function enrichNewLinks(slugs, options, { spawn = spawnSync, writeList = writeFileSyncAtomic } = {}) {
+  const listFile = path.join(process.cwd(), '.context', 'link-enrichment', 'new-links.txt')
+  const retry = `npm run links:enrich -- --slugs-file ${path.relative(process.cwd(), listFile)} --apply`
+  writeList(listFile, `${slugs.join('\n')}\n`)
+  if (!options.enrich) {
+    console.log(`Enrichment skipped (--no-enrich). Later: ${retry}`)
+    return { ran: false }
+  }
+  console.log(`Enriching ${slugs.length} new Link${slugs.length === 1 ? '' : 's'}…`)
+  const result = spawn(process.execPath, [path.join('scripts', 'enrich-links.mjs'), 'run', '--slugs-file', listFile, '--apply'], { stdio: 'inherit' })
+  if (result.status !== 0) console.warn(`Enrichment did not finish; the imported Links are saved. Retry with: ${retry}`)
+  return { ran: true, status: result.status }
 }
 
 const entrypoint = process.argv[1] ? pathToFileURL(path.resolve(process.argv[1])).href : ''
