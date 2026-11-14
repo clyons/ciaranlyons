@@ -10,5 +10,18 @@ destinationStatus: verified
 destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "stevenf.com"
 feedlyId: "i8brZ/flS0owCpYmPwDAjcFjFa5zvEVnXzpiituCq6Q=_144f52316cc:212a3fb:85969355"
-tags: ["Saved For Later"]
+tags: ["Saved For Later","computing-history","user-interfaces","hypertext","human-computer-interaction"]
+enrichment:
+  status: "enriched"
+  basis: "page"
+  model: "file:sample-responses.json"
+  promptVersion: 1
+  generatedAt: "2026-11-14T20:40:56.600Z"
+  lastAttemptAt: "2026-11-14T20:40:56.600Z"
+  lastFetchedAt: "2026-11-14T20:37:19.057Z"
+  httpStatus: 200
+  finalUrl: "https://worrydream.com/refs/Vannevar_Bush_Symposium_1995_-_Closing_Panel.html"
+  contentHash: "sha256:ba1d363857505392"
+  contentType: "talk"
+  fields: {"tags":{"by":"ai","added":["computing-history","user-interfaces","hypertext","human-computer-interaction"]}}
 ---
