@@ -9,16 +9,16 @@ targetUrl: "https://asymco.com/2026/09/28/the-best-selling-product-of-all-time/"
 sourceTitle: "Asymco"
 author: "asymco-admin"
 feedlyId: "6OChJDtKFt9stLcuLfxrpFBZv6gOShuibnbnqdX35UY=_1a0e82bb232:72376f9:ccdee654"
-tags: ["Saved For Later","iphone","product-strategy","consumer-electronics"]
+tags: ["Saved For Later","iphone","consumer-electronics"]
 enrichment:
   status: "enriched"
   attemptedFields: ["description","author","sourceTitle","tags"]
   basis: "metadata"
-  model: "file:feedly-2026-11-16-responses.json"
+  model: "openai:gpt-6-astra"
   promptVersion: 2
-  generatedAt: "2026-11-17T00:50:31.396Z"
-  generations: {"tags":{"model":"file:feedly-2026-11-16-responses.json","promptVersion":2,"generatedAt":"2026-11-17T00:50:31.396Z"}}
-  lastAttemptAt: "2026-11-17T00:50:31.396Z"
+  generatedAt: "2026-11-17T01:15:02.249Z"
+  generations: {"tags":{"model":"openai:gpt-6-astra","promptVersion":2,"generatedAt":"2026-11-17T01:15:02.249Z"}}
+  lastAttemptAt: "2026-11-17T01:15:02.249Z"
   lastFetchedAt: "2026-11-17T00:48:24.262Z"
   httpStatus: 200
   fetchIssue: "limited-content"
@@ -27,5 +27,5 @@ enrichment:
   publisher: "Asymco"
   pagePublishedAt: "2026-09-28T13:17:52+00:00"
   language: "en-US"
-  fields: {"tags":{"by":"ai","added":["iphone","product-strategy","consumer-electronics"]}}
+  fields: {"tags":{"by":"ai","added":["iphone","consumer-electronics"]}}
 ---

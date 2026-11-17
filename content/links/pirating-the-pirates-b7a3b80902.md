@@ -14,15 +14,15 @@ enrichment:
   status: "enriched"
   attemptedFields: ["description","author","sourceTitle","tags"]
   basis: "page"
-  model: "file:feedly-2026-11-16-responses.json"
+  model: "openai:gpt-6-astra"
   promptVersion: 2
-  generatedAt: "2026-11-17T00:50:31.400Z"
-  generations: {"tags":{"model":"file:feedly-2026-11-16-responses.json","promptVersion":2,"generatedAt":"2026-11-17T00:50:31.400Z"}}
-  lastAttemptAt: "2026-11-17T00:50:31.400Z"
+  generatedAt: "2026-11-17T01:15:02.253Z"
+  generations: {"tags":{"model":"openai:gpt-6-astra","promptVersion":2,"generatedAt":"2026-11-17T01:15:02.253Z"}}
+  lastAttemptAt: "2026-11-17T01:15:02.253Z"
   lastFetchedAt: "2026-11-17T00:48:58.085Z"
   httpStatus: 200
   contentHash: "sha256:a55d5b13456c0508"
   contentType: "blog-post"
   language: "en-US"
-  fields: {"tags":{"by":"ai","added":["film-preservation","copyright","fan-culture"]}}
+  fields: {"tags":{"by":"ai","added":["fan-culture","film-preservation","copyright"]}}
 ---
