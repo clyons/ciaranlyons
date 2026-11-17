@@ -14,15 +14,15 @@ enrichment:
   status: "enriched"
   attemptedFields: ["description","author","sourceTitle","tags"]
   basis: "metadata"
-  model: "file:feedly-2026-11-16-responses.json"
+  model: "openai:gpt-6-astra"
   promptVersion: 2
-  generatedAt: "2026-11-17T00:50:31.400Z"
-  generations: {"tags":{"model":"file:feedly-2026-11-16-responses.json","promptVersion":2,"generatedAt":"2026-11-17T00:50:31.400Z"}}
-  lastAttemptAt: "2026-11-17T00:50:31.400Z"
+  generatedAt: "2026-11-17T01:15:02.254Z"
+  generations: {"tags":{"model":"openai:gpt-6-astra","promptVersion":2,"generatedAt":"2026-11-17T01:15:02.254Z"}}
+  lastAttemptAt: "2026-11-17T01:15:02.254Z"
   lastFetchedAt: "2026-11-17T00:49:00.187Z"
   httpStatus: 200
   fetchIssue: "limited-content"
   contentHash: "sha256:89523d7186b3f86e"
-  contentType: "blog-post"
+  contentType: "other"
   fields: {"tags":{"by":"ai","added":["humor","incident-postmortems","cybersecurity"]}}
 ---

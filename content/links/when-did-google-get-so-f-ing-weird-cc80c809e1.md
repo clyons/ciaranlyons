@@ -1,6 +1,6 @@
 ---
 title: "‘When Did Google Get So F-Ing Weird?’"
-description: "A search for an old basketball joke prompts Google's AI to offer relationship advice, illustrating how conversational answers can obstruct ordinary web searches."
+description: "A search for an old basketball meme prompts unwanted emotional advice from Google’s AI Overview, illustrating a mismatch between search intent and chatbot behavior."
 date: 2026-10-02
 savedAt: "2026-10-02T13:29:54.131Z"
 dateSource: saved
@@ -14,16 +14,16 @@ enrichment:
   status: "enriched"
   attemptedFields: ["description","author","sourceTitle","tags"]
   basis: "page"
-  model: "file:feedly-2026-11-16-responses.json"
+  model: "openai:gpt-6-astra"
   promptVersion: 2
-  generatedAt: "2026-11-17T00:50:31.396Z"
-  generations: {"description":{"model":"file:feedly-2026-11-16-responses.json","promptVersion":2,"generatedAt":"2026-11-17T00:50:31.396Z"},"tags":{"model":"file:feedly-2026-11-16-responses.json","promptVersion":2,"generatedAt":"2026-11-17T00:50:31.396Z"}}
-  lastAttemptAt: "2026-11-17T00:50:31.396Z"
+  generatedAt: "2026-11-17T01:15:02.243Z"
+  generations: {"description":{"model":"openai:gpt-6-astra","promptVersion":2,"generatedAt":"2026-11-17T01:15:02.243Z"},"tags":{"model":"openai:gpt-6-astra","promptVersion":2,"generatedAt":"2026-11-17T01:15:02.243Z"}}
+  lastAttemptAt: "2026-11-17T01:15:02.243Z"
   lastFetchedAt: "2026-11-17T00:48:24.276Z"
   httpStatus: 200
   contentHash: "sha256:7c3c6de89f56d5b8"
   contentType: "blog-post"
   publisher: "Sancho Panza's Thoughts"
   language: "en"
-  fields: {"description":{"by":"ai","hash":"b3153db13ad1"},"tags":{"by":"ai","added":["web-search","artificial-intelligence","human-computer-interaction"]}}
+  fields: {"description":{"by":"ai","hash":"60f76c254d4b"},"tags":{"by":"ai","added":["web-search","artificial-intelligence","human-computer-interaction"]}}
 ---

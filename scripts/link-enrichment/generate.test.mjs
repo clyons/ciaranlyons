@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { buildRequest, descriptionProblems, generateMetadata, normalizeDescription, normalizeTags, outputSchema, ProviderError } from './generate.mjs'
-import { anthropicProvider, chatCompletionsProvider, fakeProvider, parseModelSpec, resolveProvider } from './providers.mjs'
+import { anthropicProvider, chatCompletionsProvider, fakeProvider, openaiProvider, parseModelSpec, resolveProvider } from './providers.mjs'
 import { validateTaxonomy } from './vocabulary.mjs'
 
 const taxonomy = validateTaxonomy({ ignored: ['Saved For Later'], aliases: { 'ai-agent': 'ai-agents', llm: 'large-language-models' }, distinct: [], interests: ['software distribution'] })
@@ -152,6 +152,89 @@ test('the Chat Completions adapter sends a JSON-schema response format and stops
   assert.equal(result.output.description, good)
   const failing = chatCompletionsProvider({ id: 'x:m', model: 'm', baseUrl: 'https://router.example/v1', fetchImpl: async () => Response.json({ error: { message: 'nope' } }, { status: 401 }) })
   await assert.rejects(failing.generate({ system: 's', user: 'u', schema: outputSchema }), (error) => error.fatal && /401/.test(error.message))
+})
+
+const openaiReply = {
+  status: 'completed', model: 'gpt-6-astra',
+  output: [{ type: 'reasoning' }, { type: 'message', content: [{ type: 'output_text', text: JSON.stringify({ sufficientContent: true, description: good, tags: ['coding-agents'], contentType: 'essay' }) }] }],
+  usage: { input_tokens: 120, output_tokens: 30 },
+}
+
+test('OpenAI uses Responses structured output and reports the served model and usage', async () => {
+  let request
+  const provider = openaiProvider({ model: 'gpt-6-astra', apiKey: 'test-openai-key', effort: 'low', fetchImpl: async (url, init) => {
+    request = { url, ...init, body: JSON.parse(init.body) }
+    return Response.json(openaiReply)
+  } })
+  const result = await provider.generate({ system: 'system prompt', user: 'page material', schema: outputSchema })
+  assert.equal(request.url, 'https://api.openai.com/v1/responses')
+  assert.equal(request.headers.authorization, 'Bearer test-openai-key')
+  assert.equal(request.body.instructions, 'system prompt')
+  assert.equal(request.body.input, 'page material')
+  assert.equal(request.body.store, false)
+  assert.deepEqual(request.body.reasoning, { effort: 'low' })
+  assert.deepEqual(request.body.text.format, { type: 'json_schema', name: 'link_metadata', strict: true, schema: outputSchema })
+  assert.equal(result.output.description, good)
+  assert.equal(result.servedModel, 'gpt-6-astra')
+  assert.deepEqual(result.usage, { inputTokens: 120, outputTokens: 30 })
+})
+
+test('the default OpenAI provider uses the supplied Conductor endpoint and session credential', async () => {
+  let request
+  const provider = resolveProvider(undefined, { env: { OPENAI_BASE_URL: 'https://api.conductor.build/supplied/v1/', CONDUCTOR_INTERNAL_CODEX_CHATGPT_PROXY_TOKEN: 'session-token' }, fetchImpl: async (url, init) => {
+    request = { url, auth: init.headers.authorization, body: JSON.parse(init.body) }
+    return Response.json(openaiReply)
+  } })
+  await provider.generate({ system: 's', user: 'u', schema: outputSchema })
+  assert.equal(provider.id, 'openai:gpt-6-astra')
+  assert.equal(request.url, 'https://api.conductor.build/supplied/v1/responses')
+  assert.equal(request.auth, 'Bearer session-token')
+  assert.equal(request.body.model, 'gpt-6-astra')
+  assert.deepEqual(request.body.reasoning, { effort: 'low' })
+})
+
+test('OpenAI honors explicit endpoint, key, and effort overrides', async () => {
+  let request
+  const provider = resolveProvider('openai:gpt-6-astra', { env: {
+    LINK_ENRICH_BASE_URL: 'https://custom.example/v1', OPENAI_BASE_URL: 'https://api.conductor.build/supplied/v1',
+    OPENAI_API_KEY: 'explicit-key', CONDUCTOR_INTERNAL_CODEX_CHATGPT_PROXY_TOKEN: 'session-token', LINK_ENRICH_EFFORT: 'high',
+  }, effort: 'medium', fetchImpl: async (url, init) => {
+    request = { url, auth: init.headers.authorization, body: JSON.parse(init.body) }
+    return Response.json(openaiReply)
+  } })
+  await provider.generate({ system: 's', user: 'u', schema: outputSchema })
+  assert.equal(request.url, 'https://custom.example/v1/responses')
+  assert.equal(request.auth, 'Bearer explicit-key')
+  assert.deepEqual(request.body.reasoning, { effort: 'medium' })
+})
+
+test('Conductor session credentials never go to another origin or an insecure endpoint', async () => {
+  for (const endpoint of ['https://api.openai.com/v1', 'https://custom.example/v1', 'https://api.conductor.build.attacker.example/v1', 'http://api.conductor.build/v1']) {
+    let auth
+    const provider = resolveProvider('openai:gpt-6-astra', { env: { LINK_ENRICH_BASE_URL: endpoint, OPENAI_BASE_URL: 'https://api.conductor.build/supplied/v1', CONDUCTOR_INTERNAL_CODEX_CHATGPT_PROXY_TOKEN: 'private-session-token' }, fetchImpl: async (_url, init) => {
+      auth = init.headers.authorization
+      return Response.json(openaiReply)
+    } })
+    await provider.generate({ system: 's', user: 'u', schema: outputSchema })
+    assert.equal(auth, undefined, endpoint)
+  }
+})
+
+test('OpenAI refuses partial or refused output and redacts credentials from API errors', async () => {
+  const generate = (body, status = 200) => openaiProvider({ model: 'gpt-6-astra', apiKey: 'private-key', fetchImpl: async () => Response.json(body, { status }) }).generate({ system: 's', user: 'u', schema: outputSchema })
+  await assert.rejects(generate({ status: 'completed', output: [{ type: 'message', content: [{ type: 'refusal', refusal: 'declined' }] }] }), error => error.category === 'refusal' && !error.fatal)
+  await assert.rejects(generate({ status: 'incomplete', incomplete_details: { reason: 'max_output_tokens' }, output: openaiReply.output }), error => error.category === 'truncated' && error.retryable)
+  await assert.rejects(generate({ status: 'incomplete', output: openaiReply.output }), error => error.category === 'invalid-output' && error.retryable)
+  await assert.rejects(generate({ error: { message: 'Bad credential private-key' } }, 401), error => error.fatal && /401/.test(error.message) && !error.message.includes('private-key'))
+})
+
+test('OpenAI cache identities distinguish reasoning, token limits, endpoint, and API protocol', () => {
+  const settings = { model: 'gpt-6-astra', baseUrl: 'https://api.openai.com/v1', effort: 'low' }
+  const original = openaiProvider(settings).getCacheIdentity()
+  assert.equal(original, openaiProvider({ ...settings, baseUrl: `${settings.baseUrl}/` }).getCacheIdentity())
+  for (const override of [{ effort: 'high' }, { maxTokens: 1000 }, { baseUrl: 'https://other.example/v1' }]) assert.notEqual(original, openaiProvider({ ...settings, ...override }).getCacheIdentity())
+  assert.notEqual(original, chatCompletionsProvider({ id: 'openai:gpt-6-astra', ...settings }).getCacheIdentity())
+  assert.doesNotMatch(original, /api.openai.com/)
 })
 
 test('provider cache identities include generation settings without exposing endpoint credentials', () => {

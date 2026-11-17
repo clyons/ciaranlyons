@@ -9,21 +9,21 @@ targetUrl: "https://simonwillison.net/2026/Oct/1/matthew-green/"
 sourceTitle: "Simon Willison's Weblog"
 author: "Simon Willison"
 feedlyId: "whTM8b26sAPCys5OawIrTyzZpmlq0vpcGaO/O0oQ4kw=_1a0f62ee7d3:8bdfa0f:6ee051f6"
-tags: ["Saved For Later","ai-assistants","prompt-injection","cybersecurity","sandboxing"]
+tags: ["Saved For Later","ai-assistants","cybersecurity","sandboxing","prompt-injection","self-replicating-code"]
 enrichment:
   status: "enriched"
   attemptedFields: ["description","author","sourceTitle","tags"]
   basis: "page"
-  model: "file:feedly-2026-11-16-responses.json"
+  model: "openai:gpt-6-astra"
   promptVersion: 2
-  generatedAt: "2026-11-17T00:50:31.390Z"
-  generations: {"tags":{"model":"file:feedly-2026-11-16-responses.json","promptVersion":2,"generatedAt":"2026-11-17T00:50:31.390Z"}}
-  lastAttemptAt: "2026-11-17T00:50:31.390Z"
+  generatedAt: "2026-11-17T01:15:02.250Z"
+  generations: {"tags":{"model":"openai:gpt-6-astra","promptVersion":2,"generatedAt":"2026-11-17T01:15:02.250Z"}}
+  lastAttemptAt: "2026-11-17T01:15:02.250Z"
   lastFetchedAt: "2026-11-17T00:48:24.276Z"
   httpStatus: 200
   contentHash: "sha256:5fa7a89a94baa569"
   contentType: "blog-post"
   publisher: "Simon Willison’s Weblog"
   language: "en-gb"
-  fields: {"author":{"by":"extracted","hash":"adffa71cc725"},"tags":{"by":"ai","added":["ai-assistants","prompt-injection","cybersecurity","sandboxing"]}}
+  fields: {"author":{"by":"extracted","hash":"adffa71cc725"},"tags":{"by":"ai","added":["ai-assistants","cybersecurity","sandboxing","prompt-injection","self-replicating-code"]}}
 ---

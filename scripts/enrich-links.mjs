@@ -35,7 +35,7 @@ Behaviour
   --fields a,b       Limit to description, tags, author, sourceTitle.
   --replace-excerpts Treat imported Feedly excerpts (ending in "…") as replaceable.
   --model P:M        Provider and model (default $LINK_ENRICH_MODEL or ${defaultModelSpec}).
-  --effort LEVEL     Anthropic effort (default low).
+  --effort LEVEL     Reasoning effort for OpenAI or Anthropic (default low for the default model).
   --refetch          Ignore cached page content.  --regenerate  Ignore cached model output.
   --concurrency N    Links in flight (default 4; one request per host at a time).
   --report FILE      Write a JSON report (keep it under .context/).

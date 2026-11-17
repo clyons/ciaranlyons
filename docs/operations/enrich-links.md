@@ -50,8 +50,8 @@ The model is configuration, written as `<provider>:<model>`. Set `LINK_ENRICH_MO
 
 | Provider | Example | Credentials and endpoint |
 |---|---|---|
-| `anthropic` (default) | `anthropic:claude-opus-5-5` | `ANTHROPIC_API_KEY`, or an `ant auth login` profile. `LINK_ENRICH_EFFORT` sets effort (default `low`). |
-| `openai` | `openai:<model>` | `OPENAI_API_KEY`; `LINK_ENRICH_BASE_URL` overrides the endpoint. |
+| `openai` (default) | `openai:gpt-6-astra` | Uses the supplied OpenAI endpoint and session credentials in Conductor. Outside Conductor, set `OPENAI_API_KEY`; `OPENAI_BASE_URL` optionally selects another Responses endpoint. `LINK_ENRICH_BASE_URL` takes precedence. |
+| `anthropic` | `anthropic:claude-opus-5-5` | `ANTHROPIC_API_KEY`, or an `ant auth login` profile. `LINK_ENRICH_EFFORT` sets effort (default `low`). |
 | `ollama` | `ollama:llama3.1:8b` | A local Ollama server at `http://localhost:11434/v1`, or `LINK_ENRICH_BASE_URL`. |
 | `openai-compatible` | `openai-compatible:<model>` | Any Chat Completions server with JSON-schema output (OpenRouter, LM Studio, vLLM). Requires `LINK_ENRICH_BASE_URL`; `LINK_ENRICH_API_KEY` is optional. |
 | `file` | `file:.context/responses.json` | Reads answers keyed by slug from a JSON file. Pairs with `--export-requests`, below. |
@@ -59,11 +59,13 @@ The model is configuration, written as `<provider>:<model>`. Set `LINK_ENRICH_MO
 
 Keep keys in the shell environment. Do not add them to `.env.local` with a whole-file write (see `AGENTS.md`), to command arguments, or to reports.
 
-All providers receive the same system prompt and the same JSON schema (`scripts/link-enrichment/generate.mjs`), and every answer passes through the same validation. The Anthropic adapter uses structured outputs (`output_config.format`). For models that support it, it also opts into Anthropic's server-side refusal fallback (`fallbacks: "default"`), so a misplaced safety decline on an ordinary page is retried on another model instead of failing the Link.
+The OpenAI adapter uses the Responses API with strict JSON-schema output (`text.format`), records the served model and input/output token counts, and handles refusals and truncated output. The default model uses low reasoning effort; override it with `--effort` or `LINK_ENRICH_EFFORT`. Conductor's supplied session credential is used only for its exact HTTPS proxy origin and is never written to content, configuration, caches, or reports. No separate Anthropic credential is needed for the default workflow.
+
+All providers receive the same system prompt and the same JSON schema (`scripts/link-enrichment/generate.mjs`), and every answer passes through the same validation. The optional Anthropic adapter uses structured outputs (`output_config.format`). For models that support it, it also opts into Anthropic's server-side refusal fallback (`fallbacks: "default"`), so a misplaced safety decline on an ordinary page is retried on another model instead of failing the Link.
 
 Responses must be objects containing a boolean `sufficientContent`, a string `description`, an array of string `tags`, and a supported `contentType`, with no extra properties. Missing or mistyped values, empty objects, and arrays fail as retryable `invalid-output`; they leave requested fields open. Correct the response and use `--failed --apply` to retry. A valid `sufficientContent: false` response still records `insufficient-content`.
 
-The default is Claude Opus 5.5 at low effort. Cost has not been measured on a live run yet. The sample prompts averaged about 7,000 characters (very roughly 2,000 input tokens), and the prompt grows as the tag vocabulary grows, up to a cap of 200 tags. On that basis, a full pass over 2,625 Links is an estimate of tens of dollars on `anthropic:claude-opus-5-5` and one or two dollars on `anthropic:claude-haiku-5-5`. Run a `--limit 20` batch with `--report` first; the summary prints actual token counts and an estimated cost for Anthropic models.
+The default is `openai:gpt-6-astra`. Start with a small batch and `--report` before a collection-wide run; the summary records actual token usage. Dollar estimates appear only for providers with a configured price table, so OpenAI usage should be checked against the supplied account's billing. Existing file-provider or Anthropic output can be upgraded selectively with `--slug <slug> --re-enrich --apply`; imported values and human edits remain protected.
 
 To generate somewhere else, such as a batch job or another tool, export the prompts and import the answers:
 

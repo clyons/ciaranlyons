@@ -13,16 +13,16 @@ enrichment:
   status: "enriched"
   attemptedFields: ["description","author","sourceTitle","tags"]
   basis: "page"
-  model: "file:feedly-2026-11-16-responses.json"
+  model: "openai:gpt-6-astra"
   promptVersion: 2
-  generatedAt: "2026-11-17T00:50:31.401Z"
-  generations: {"tags":{"model":"file:feedly-2026-11-16-responses.json","promptVersion":2,"generatedAt":"2026-11-17T00:50:31.401Z"}}
-  lastAttemptAt: "2026-11-17T00:50:31.401Z"
+  generatedAt: "2026-11-17T01:15:02.255Z"
+  generations: {"tags":{"model":"openai:gpt-6-astra","promptVersion":2,"generatedAt":"2026-11-17T01:15:02.255Z"}}
+  lastAttemptAt: "2026-11-17T01:15:02.255Z"
   lastFetchedAt: "2026-11-17T00:48:58.097Z"
   httpStatus: 200
   contentHash: "sha256:119abc7fd2dc04de"
   contentType: "talk"
   pagePublishedAt: "2026-09-14"
   language: "en"
-  fields: {"tags":{"by":"ai","added":["coding-agents","human-computer-interaction","user-interfaces","collaborative-planning"]}}
+  fields: {"tags":{"by":"ai","added":["collaborative-planning","coding-agents","human-computer-interaction","user-interfaces"]}}
 ---

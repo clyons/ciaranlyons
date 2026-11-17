@@ -6,7 +6,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { ProviderError } from './generate.mjs'
 
-export const defaultModelSpec = 'anthropic:claude-opus-5-5'
+export const defaultModelSpec = 'openai:gpt-6-astra'
 
 // Approximate first-party prices in US dollars per million tokens, for the cost line in run
 // summaries only. Check current pricing before budgeting a large run.
@@ -109,8 +109,54 @@ export function anthropicProvider({ model, effort = 'low', maxTokens = 16_000, c
   }
 }
 
-// Any server that speaks the OpenAI Chat Completions API with JSON-schema response formats:
-// OpenAI itself, OpenRouter, Ollama, LM Studio, vLLM, and similar.
+export function openaiProvider({ model, baseUrl = 'https://api.openai.com/v1', apiKey, effort, maxTokens = 16_000, fetchImpl = fetch, timeoutMs = 120_000 }) {
+  const endpoint = `${baseUrl.replace(/\/+$/, '')}/responses`
+  return {
+    id: `openai:${model}`,
+    getCacheIdentity: () => cacheIdentity({ provider: 'openai-responses', model, endpoint, effort, maxTokens }),
+    async generate({ system, user, schema }) {
+      let response
+      try {
+        response = await fetchImpl(endpoint, {
+          method: 'POST',
+          signal: AbortSignal.timeout(timeoutMs),
+          headers: { 'content-type': 'application/json', ...(apiKey ? { authorization: `Bearer ${apiKey}` } : {}) },
+          body: JSON.stringify({
+            model,
+            instructions: system,
+            input: user,
+            store: false,
+            max_output_tokens: maxTokens,
+            ...(effort ? { reasoning: { effort } } : {}),
+            text: { format: { type: 'json_schema', name: 'link_metadata', strict: true, schema } },
+          }),
+        })
+      } catch (error) {
+        throw new ProviderError(`Could not reach ${new URL(endpoint).host}`, { fatal: true, cause: error })
+      }
+      const body = await response.json().catch(() => ({}))
+      if (!response.ok || body.status === 'failed' || body.error) {
+        const message = typeof body.error?.message === 'string' ? body.error.message : ''
+        const detail = apiKey ? message.split(apiKey).join('[redacted]') : message
+        throw new ProviderError(`OpenAI request failed (${response.status})${detail ? `: ${detail}` : ''}`, { fatal: true })
+      }
+      const content = (Array.isArray(body.output) ? body.output : []).flatMap((item) => item.type === 'message' && Array.isArray(item.content) ? item.content : [])
+      if (content.some((item) => item.type === 'refusal')) throw new ProviderError('OpenAI declined this page', { category: 'refusal' })
+      if (body.status === 'incomplete' && body.incomplete_details?.reason === 'max_output_tokens') {
+        throw new ProviderError('OpenAI output was cut off at max_output_tokens', { category: 'truncated', retryable: true })
+      }
+      if (body.status !== 'completed') throw new ProviderError('OpenAI returned an unfinished response', { category: 'invalid-output', retryable: true })
+      const text = content.filter((item) => item.type === 'output_text').map((item) => item.text).join('')
+      return {
+        output: parseJsonText(text, 'OpenAI'),
+        servedModel: body.model,
+        usage: { inputTokens: body.usage?.input_tokens ?? 0, outputTokens: body.usage?.output_tokens ?? 0 },
+      }
+    },
+  }
+}
+
+// Servers that speak Chat Completions, including OpenRouter, Ollama, LM Studio, and vLLM.
 export function chatCompletionsProvider({ id, model, baseUrl, apiKey, fetchImpl = fetch, timeoutMs = 120_000 }) {
   if (!baseUrl) throw new Error(`${id} needs a base URL; set LINK_ENRICH_BASE_URL`)
   const endpoint = `${baseUrl.replace(/\/+$/, '')}/chat/completions`
@@ -196,10 +242,15 @@ export function fakeProvider({ respond } = {}) {
   }
 }
 
-export function resolveProvider(spec = defaultModelSpec, { env = process.env, effort } = {}) {
+export function resolveProvider(spec = defaultModelSpec, { env = process.env, effort, fetchImpl } = {}) {
   const { provider, model } = parseModelSpec(spec)
   if (provider === 'anthropic') return anthropicProvider({ model, effort: effort ?? env.LINK_ENRICH_EFFORT ?? 'low' })
-  if (provider === 'openai') return chatCompletionsProvider({ id: `openai:${model}`, model, baseUrl: env.LINK_ENRICH_BASE_URL || 'https://api.openai.com/v1', apiKey: env.OPENAI_API_KEY })
+  if (provider === 'openai') {
+    const baseUrl = env.LINK_ENRICH_BASE_URL || env.OPENAI_BASE_URL || 'https://api.openai.com/v1'
+    // Conductor supplies a session credential for its own proxy, never for another host.
+    const apiKey = env.OPENAI_API_KEY || (new URL(baseUrl).origin === 'https://api.conductor.build' ? env.CONDUCTOR_INTERNAL_CODEX_CHATGPT_PROXY_TOKEN : undefined)
+    return openaiProvider({ model, baseUrl, apiKey, effort: effort ?? env.LINK_ENRICH_EFFORT ?? (model === 'gpt-6-astra' ? 'low' : undefined), fetchImpl })
+  }
   if (provider === 'ollama') return chatCompletionsProvider({ id: `ollama:${model}`, model, baseUrl: env.LINK_ENRICH_BASE_URL || 'http://localhost:11434/v1', apiKey: undefined })
   if (provider === 'openai-compatible') return chatCompletionsProvider({ id: `openai-compatible:${model}`, model, baseUrl: env.LINK_ENRICH_BASE_URL, apiKey: env.LINK_ENRICH_API_KEY })
   if (provider === 'file') return fileProvider({ file: model })

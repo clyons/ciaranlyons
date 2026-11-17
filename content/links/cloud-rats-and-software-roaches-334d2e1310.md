@@ -13,14 +13,14 @@ enrichment:
   status: "enriched"
   attemptedFields: ["description","author","sourceTitle","tags"]
   basis: "page"
-  model: "file:feedly-2026-11-16-responses.json"
+  model: "openai:gpt-6-astra"
   promptVersion: 2
-  generatedAt: "2026-11-17T00:50:31.396Z"
-  generations: {"tags":{"model":"file:feedly-2026-11-16-responses.json","promptVersion":2,"generatedAt":"2026-11-17T00:50:31.396Z"}}
-  lastAttemptAt: "2026-11-17T00:50:31.396Z"
+  generatedAt: "2026-11-17T01:15:02.249Z"
+  generations: {"tags":{"model":"openai:gpt-6-astra","promptVersion":2,"generatedAt":"2026-11-17T01:15:02.249Z"}}
+  lastAttemptAt: "2026-11-17T01:15:02.249Z"
   lastFetchedAt: "2026-11-17T00:48:24.275Z"
   httpStatus: 200
   contentHash: "sha256:67cc5774d8477a81"
   contentType: "essay"
-  fields: {"tags":{"by":"ai","added":["artificial-intelligence","cybersecurity","self-replicating-code"]}}
+  fields: {"tags":{"by":"ai","added":["cybersecurity","self-replicating-code","artificial-intelligence"]}}
 ---
