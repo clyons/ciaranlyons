@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { fieldState, fillableFields, fingerprint, isImportedExcerpt, parseLinkMarkdown, planEnrichment, readEnrichment, rewriteLinkMarkdown, tagState } from './persist.mjs'
+import { fieldState, fillableFields, fingerprint, isImportedExcerpt, parseLinkMarkdown, planEnrichment, readEnrichment, rewriteLinkMarkdown, sameOutcome, tagState } from './persist.mjs'
 import { validateTaxonomy } from './vocabulary.mjs'
 
 const taxonomy = validateTaxonomy({ ignored: ['Saved For Later'] })
@@ -103,8 +103,18 @@ test('tags a person removes are remembered as rejected; tags a person adds are k
   assert.equal(unchanged.plan.updates.tags, undefined, 'the same tag set in a new order is not a change')
 })
 
+test('persistence protects rejected aliases even when proposals have not been canonicalized', () => {
+  const aliased = validateTaxonomy({ aliases: { 'ai-agent': 'ai-agents' } })
+  for (const rejected of [['ai-agent'], ['ai-agents']]) {
+    const raw = markdown(base.concat(`enrichment: ${JSON.stringify({ status: 'enriched', fields: { tags: { by: 'ai', added: [], rejected } } })}`))
+    const { next } = apply(raw, { description, tags: ['ai-agent', 'ai-agents', 'distribution'] }, {}, { taxonomy: aliased, reEnrich: true })
+    assert.deepEqual(parseLinkMarkdown(next).data.tags, ['Saved For Later', 'distribution'])
+  }
+})
+
 test('populated fields are never replaced with empty values, and failures keep earlier provenance', () => {
   const first = apply(markdown(base), { description, tags: ['ai-agents'] }).next
+  const previous = parseLinkMarkdown(first).data.enrichment
   const failed = apply(first, undefined, {}, { reEnrich: true }, { status: 'failed', error: { category: 'timeout', retryable: true }, basis: undefined, contentHash: undefined, httpStatus: undefined, fetchedAt: undefined })
   const data = parseLinkMarkdown(failed.next).data
   assert.equal(data.description, description)
@@ -112,14 +122,23 @@ test('populated fields are never replaced with empty values, and failures keep e
   assert.equal(data.enrichment.status, 'failed')
   assert.equal(data.enrichment.attempts, 1)
   assert.equal(data.enrichment.generatedAt, attempt.at)
+  assert.deepEqual(data.enrichment.generations, previous.generations)
   assert.deepEqual(data.enrichment.fields.tags.added, ['ai-agents'])
   assert.deepEqual(failed.plan.updates, {})
+  const empty = apply(first, { description: '', tags: [] }, {}, { reEnrich: true }, { model: 'test:new', promptVersion: 2, at: '2026-11-15T12:00:00.000Z' })
+  assert.deepEqual(empty.plan.updates, {})
+  assert.equal(empty.plan.enrichment.model, 'test:new')
+  assert.deepEqual(empty.plan.enrichment.generations, previous.generations, 'retained values must keep their original generation identity')
 })
 
 test('rewriting is idempotent and refuses changes to anything else', () => {
   const once = apply(markdown(base), { description, tags: ['ai-agents'] })
   const twice = rewriteLinkMarkdown(once.next, {}, parseLinkMarkdown(once.next).data.enrichment)
   assert.equal(twice, once.next)
+  const later = apply(once.next, { description, tags: ['ai-agents'] }, {}, { reEnrich: true }, { at: '2026-11-15T12:00:00.000Z' })
+  assert.equal(sameOutcome(once.plan.enrichment, later.plan.enrichment), true, 'per-field timestamps alone must not cause a rewrite')
+  later.plan.enrichment.generations.tags.model = 'test:new'
+  assert.equal(sameOutcome(once.plan.enrichment, later.plan.enrichment), false, 'per-field model changes must still be recorded')
   assert.throws(() => rewriteLinkMarkdown('no front-matter', {}, undefined), /front-matter/)
 })
 
@@ -128,4 +147,41 @@ test('fillable fields reflect state, so complete Links are skipped before any re
   const { data } = parseLinkMarkdown(first)
   assert.deepEqual(fillableFields(data, readEnrichment(data), { taxonomy }), [])
   assert.deepEqual(fillableFields(data, readEnrichment(data), { taxonomy, reEnrich: true }), ['description', 'tags'])
+})
+
+test('partial completion closes only requested fields, including fields left empty', () => {
+  const first = apply(markdown(base), { description, tags: [] }, {}, { fields: ['tags', 'author'] }).next
+  const { data } = parseLinkMarkdown(first)
+  assert.deepEqual(new Set(data.enrichment.attemptedFields), new Set(['tags', 'author']))
+  assert.deepEqual(fillableFields(data, readEnrichment(data), { taxonomy }), ['description', 'sourceTitle'])
+  const second = apply(first, { description, tags: ['ai-agents'] }, { author: 'Ada Example', publisher: 'Example Journal' }, { fields: ['description', 'sourceTitle'] }).next
+  const completed = parseLinkMarkdown(second).data
+  assert.equal(completed.description, description)
+  assert.equal(completed.sourceTitle, 'Example Journal')
+  assert.equal(completed.author, undefined)
+  assert.deepEqual(completed.tags, ['Saved For Later'])
+  assert.deepEqual(fillableFields(completed, readEnrichment(completed), { taxonomy }), [])
+})
+
+test('failed partial attempts do not close fields that were never completed', () => {
+  const first = apply(markdown(base), { tags: ['ai-agents'] }, {}, { fields: ['tags'] }).next
+  const failed = apply(first, undefined, {}, { fields: ['description'] }, { status: 'failed', error: { category: 'timeout', retryable: true } }).next
+  const failedData = parseLinkMarkdown(failed).data
+  assert.deepEqual(failedData.enrichment.attemptedFields, ['tags'])
+  const recovered = apply(failed, undefined, { publisher: 'Example Journal' }, { fields: ['sourceTitle'] }).next
+  const data = parseLinkMarkdown(recovered).data
+  assert.deepEqual(new Set(data.enrichment.attemptedFields), new Set(['tags', 'sourceTitle']))
+  assert.deepEqual(fillableFields(data, readEnrichment(data), { taxonomy }), ['description', 'author'])
+})
+
+test('records predating per-field completion remain closed unless explicitly reopened', () => {
+  for (const status of ['enriched', 'insufficient-content']) {
+    const { data } = parseLinkMarkdown(markdown(base))
+    data.enrichment = { status }
+    assert.deepEqual(fillableFields(data, readEnrichment(data), { taxonomy }), [])
+    assert.deepEqual(fillableFields(data, readEnrichment(data), { taxonomy, fields: ['description'] }), [])
+    const plan = planEnrichment({ data, generated: { tags: ['ai-agents'] }, attempt, options: { taxonomy, fields: ['tags'], reEnrich: true } })
+    const after = { ...data, ...plan.updates, enrichment: plan.enrichment }
+    assert.deepEqual(fillableFields(after, readEnrichment(after), { taxonomy }), [], 'a partial rerun does not reopen legacy fields')
+  }
 })

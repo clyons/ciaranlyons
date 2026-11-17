@@ -1,11 +1,11 @@
 // Stage 2: turn extracted content into proposed metadata. This module builds the prompt,
 // owns the output schema, and validates whatever a provider returns. It knows nothing
 // about HTTP fetching or Markdown files, and nothing about any one model vendor.
-import { canonicalTag, isIgnoredTag, normalizeTag, vocabularyEntries } from './vocabulary.mjs'
+import { canonicalTag, isIgnoredTag, vocabularyEntries } from './vocabulary.mjs'
 
 // Bump when the prompt or validation rules change in a way that should make earlier
 // generations eligible for `--stale` re-enrichment.
-export const promptVersion = 1
+export const promptVersion = 2
 
 export const contentTypes = [
   'article', 'essay', 'news', 'blog-post', 'interview', 'tutorial', 'documentation', 'reference',
@@ -127,7 +127,7 @@ export function descriptionProblems(description) {
 // generic or rejected tags and ones the owner already applied, and cap the count.
 export function normalizeTags(proposed, { taxonomy, humanTags = [], rejected = [], maximum = 5 }) {
   const taken = new Set(humanTags.map((tag) => canonicalTag(tag, taxonomy)))
-  const blocked = new Set(rejected.map(normalizeTag))
+  const blocked = new Set(rejected.map((tag) => canonicalTag(tag, taxonomy)))
   const result = []
   for (const raw of Array.isArray(proposed) ? proposed : []) {
     const tag = canonicalTag(raw, taxonomy)
@@ -149,14 +149,18 @@ export class ProviderError extends Error {
   }
 }
 
-function coerceOutput(raw) {
-  if (!raw || typeof raw !== 'object') throw new ProviderError('Model returned no JSON object', { category: 'invalid-output', retryable: true })
-  return {
-    sufficientContent: raw.sufficientContent !== false,
-    description: typeof raw.description === 'string' ? raw.description : '',
-    tags: Array.isArray(raw.tags) ? raw.tags.filter((tag) => typeof tag === 'string') : [],
-    contentType: contentTypes.includes(raw.contentType) ? raw.contentType : 'other',
+function validateOutput(raw) {
+  const invalid = (message) => { throw new ProviderError(message, { category: 'invalid-output', retryable: true }) }
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) invalid('Model returned no JSON object')
+  for (const field of outputSchema.required) {
+    if (!Object.hasOwn(raw, field)) invalid(`Model output is missing ${field}`)
   }
+  if (Object.keys(raw).some((field) => !Object.hasOwn(outputSchema.properties, field))) invalid('Model output contains unexpected properties')
+  if (typeof raw.sufficientContent !== 'boolean') invalid('Model output sufficientContent must be a boolean')
+  if (typeof raw.description !== 'string') invalid('Model output description must be a string')
+  if (!Array.isArray(raw.tags) || !raw.tags.every((tag) => typeof tag === 'string')) invalid('Model output tags must be an array of strings')
+  if (!contentTypes.includes(raw.contentType)) invalid('Model output contentType must be a supported type')
+  return raw
 }
 
 // Calls the provider, validates, and retries once with specific feedback when the
@@ -168,7 +172,7 @@ export async function generateMetadata(provider, request, { tagOptions }) {
     usage.calls += 1
     usage.inputTokens += response.usage?.inputTokens ?? 0
     usage.outputTokens += response.usage?.outputTokens ?? 0
-    return { output: coerceOutput(response.output), servedModel: response.servedModel }
+    return { output: validateOutput(response.output), servedModel: response.servedModel }
   }
 
   let { output, servedModel } = await attempt()

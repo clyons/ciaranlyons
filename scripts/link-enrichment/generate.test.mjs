@@ -25,6 +25,12 @@ test('proposed tags are normalised, aliased, deduplicated, filtered, and capped'
   assert.deepEqual(tags, ['ai-agents', 'large-language-models', 'distribution', 'pricing'])
 })
 
+test('rejected tags block both spellings of a reviewed alias', () => {
+  for (const rejected of [['ai-agent'], ['ai-agents']]) {
+    assert.deepEqual(normalizeTags(['AI Agent', 'ai-agents', 'distribution'], { taxonomy, rejected }), ['distribution'])
+  }
+})
+
 test('the request carries vocabulary, owner tags, metadata, and page text, and declares the schema', () => {
   const request = buildRequest({
     link: { title: 'Agents', targetUrl: 'https://example.com/a', sourceTitle: 'Feed', author: 'Ada', excerpt: 'Saved excerpt.' },
@@ -68,6 +74,28 @@ test('an honest "not enough content" answer produces no description or tags', as
   assert.equal(result.sufficientContent, false)
   assert.equal(result.description, '')
   assert.deepEqual(result.tags, [])
+})
+
+test('malformed model output fails with a retryable per-Link error', async () => {
+  const valid = { sufficientContent: true, description: good, tags: ['ai-agents'], contentType: 'article' }
+  const malformed = [
+    null, [], {}, 'plain text',
+    ...Object.keys(valid).map((missing) => Object.fromEntries(Object.entries(valid).filter(([key]) => key !== missing))),
+    { ...valid, sufficientContent: 'true' },
+    { ...valid, description: 42 },
+    { ...valid, tags: 'ai-agents' },
+    { ...valid, tags: ['ai-agents', 42] },
+    { ...valid, contentType: 'made-up-type' },
+    { ...valid, unexpected: true },
+  ]
+  for (const output of malformed) {
+    const provider = fakeProvider({ respond: async () => ({ output }) })
+    await assert.rejects(
+      generateMetadata(provider, { system: 's', user: 'u', schema: outputSchema }, { tagOptions: { taxonomy } }),
+      (error) => error instanceof ProviderError && error.category === 'invalid-output' && error.retryable && !error.fatal,
+      JSON.stringify(output),
+    )
+  }
 })
 
 test('model specs name a provider and a model, including models that contain colons', () => {
@@ -124,4 +152,21 @@ test('the Chat Completions adapter sends a JSON-schema response format and stops
   assert.equal(result.output.description, good)
   const failing = chatCompletionsProvider({ id: 'x:m', model: 'm', baseUrl: 'https://router.example/v1', fetchImpl: async () => Response.json({ error: { message: 'nope' } }, { status: 401 }) })
   await assert.rejects(failing.generate({ system: 's', user: 'u', schema: outputSchema }), (error) => error.fatal && /401/.test(error.message))
+})
+
+test('provider cache identities include generation settings without exposing endpoint credentials', () => {
+  const low = anthropicProvider({ model: 'claude-opus-5-5', effort: 'low' })
+  const high = anthropicProvider({ model: 'claude-opus-5-5', effort: 'high' })
+  const short = anthropicProvider({ model: 'claude-opus-5-5', maxTokens: 1000 })
+  assert.notEqual(low.getCacheIdentity(), high.getCacheIdentity())
+  assert.notEqual(low.getCacheIdentity(), short.getCacheIdentity())
+  assert.equal(low.getCacheIdentity(), anthropicProvider({ model: 'claude-opus-5-5' }).getCacheIdentity())
+  const settings = { id: 'compatible:m', model: 'm', baseUrl: 'https://router.example/v1', apiKey: 'secret-key' }
+  const first = chatCompletionsProvider(settings)
+  const equivalent = chatCompletionsProvider({ ...settings, baseUrl: `${settings.baseUrl}/` })
+  const second = chatCompletionsProvider({ ...settings, baseUrl: 'https://other.example/v1?token=private-value' })
+  assert.equal(first.getCacheIdentity(), equivalent.getCacheIdentity())
+  assert.notEqual(first.getCacheIdentity(), second.getCacheIdentity())
+  assert.doesNotMatch(first.getCacheIdentity(), /secret-key|router\.example/)
+  assert.doesNotMatch(second.getCacheIdentity(), /private-value|other\.example/)
 })

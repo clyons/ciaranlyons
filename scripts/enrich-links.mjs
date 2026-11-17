@@ -8,7 +8,7 @@ import { pathToFileURL } from 'node:url'
 import { defaultContentDirectory, collectionStatus, loadLinks, runEnrichment } from './link-enrichment/pipeline.mjs'
 import { fieldState, readEnrichment, rewriteLinkMarkdown, tagState } from './link-enrichment/persist.mjs'
 import { defaultModelSpec, resolveProvider } from './link-enrichment/providers.mjs'
-import { buildVocabulary, defaultTaxonomyFile, isIgnoredTag, loadTaxonomy, normalizeTag, suggestDuplicateTags, validateTaxonomy, vocabularyEntries } from './link-enrichment/vocabulary.mjs'
+import { buildVocabulary, canonicalTag, defaultTaxonomyFile, isIgnoredTag, loadTaxonomy, normalizeTag, suggestDuplicateTags, validateTaxonomy, vocabularyEntries } from './link-enrichment/vocabulary.mjs'
 
 const usage = `Usage: node scripts/enrich-links.mjs <command> [options]
 
@@ -19,7 +19,7 @@ Commands
   failures         List failed enrichments with their error category.
   tags             Show the tag vocabulary and possible duplicate tags.
   merge-tags       Rename a tag across every Link (--from A --to B), dry run unless --apply.
-  keep-distinct    Record two tags as reviewed and not duplicates (A B).
+  keep-distinct    Record two tags as reviewed and not duplicates (A B), dry run unless --apply.
 
 Selecting Links for run (default: --missing, Links never enriched)
   --slug SLUG        One Link by file slug; repeatable.
@@ -196,26 +196,35 @@ async function commandTags(options) {
   console.log(suggestions.length ? '\nPossible duplicates (review, then merge or keep distinct):' : '\nNo likely duplicate tags.')
   for (const suggestion of suggestions) {
     console.log(`  ${suggestion.from} (${suggestion.counts[suggestion.from]}) -> ${suggestion.to} (${suggestion.counts[suggestion.to]})  [${suggestion.reason}]`)
-    console.log(`      npm run links:enrich -- merge-tags --from ${suggestion.from} --to ${suggestion.to} --apply   |   npm run links:enrich -- keep-distinct ${suggestion.from} ${suggestion.to}`)
+    console.log(`      npm run links:enrich -- merge-tags --from ${suggestion.from} --to ${suggestion.to} --apply   |   npm run links:enrich -- keep-distinct ${suggestion.from} ${suggestion.to} --apply`)
   }
 }
 
 export function renameTagInLink(link, from, to) {
-  const tags = link.tags
-  if (!tags.some((tag) => normalizeTag(tag) === from)) return undefined
+  const enrichment = readEnrichment(link.data)
+  const state = tagState(link.data, enrichment)
+  const tags = state.current
+  const hasCurrent = tags.some((tag) => normalizeTag(tag) === from)
+  if (!hasCurrent && ![...state.machine, ...state.rejected].includes(from)) return undefined
   const next = []
   for (const tag of tags) {
     const replacement = normalizeTag(tag) === from ? to : tag
     if (!next.some((existing) => normalizeTag(existing) === normalizeTag(replacement))) next.push(replacement)
   }
-  const enrichment = readEnrichment(link.data)
   let nextEnrichment = link.data.enrichment
   if (enrichment?.fields?.tags) {
     const record = enrichment.fields.tags
     const rename = (list) => Array.isArray(list) ? [...new Set(list.map((tag) => (normalizeTag(tag) === from ? to : tag)))] : list
-    nextEnrichment = { ...link.data.enrichment, fields: { ...enrichment.fields, tags: { ...record, added: rename(record.added), ...(record.rejected ? { rejected: rename(record.rejected) } : {}) } } }
+    // Resolve ownership before deduplication: a merged human tag stays human even
+    // when its synonym was generated (regardless of which direction the merge goes).
+    const human = new Set(rename(state.human).map(normalizeTag))
+    const added = rename(state.machine).filter((tag) => !human.has(normalizeTag(tag)))
+    // Capture inferred removals before renaming so an old generated spelling can
+    // never become a fresh proposal after the taxonomy alias is recorded.
+    const rejected = rename(state.rejected)
+    nextEnrichment = { ...link.data.enrichment, fields: { ...enrichment.fields, tags: { ...record, added, ...(rejected.length ? { rejected } : {}) } } }
   }
-  return rewriteLinkMarkdown(link.raw, { tags: next }, nextEnrichment)
+  return rewriteLinkMarkdown(link.raw, hasCurrent ? { tags: next } : {}, nextEnrichment)
 }
 
 async function writeTaxonomy(file, taxonomy) {
@@ -225,11 +234,20 @@ async function writeTaxonomy(file, taxonomy) {
 
 async function commandMergeTags(options) {
   const from = normalizeTag(options.from)
-  const to = normalizeTag(options.to)
-  if (!from || !to || from === to) throw new Error('merge-tags needs --from and --to naming two different tags')
+  const requestedTo = normalizeTag(options.to)
+  if (!from || !requestedTo || from === requestedTo) throw new Error('merge-tags needs --from and --to naming two different tags')
   const taxonomyFile = options.taxonomyFile ?? defaultTaxonomyFile
   const taxonomy = await loadTaxonomy(taxonomyFile)
+  const to = canonicalTag(requestedTo, taxonomy)
+  if (from === to) {
+    console.log(`${requestedTo} already resolves to ${from}; no changes needed`)
+    return
+  }
   if (isIgnoredTag(to, taxonomy)) throw new Error(`${to} is an ignored tag and cannot be a merge target`)
+  // Resolve and validate the final mappings before rewriting any Link.
+  const aliases = Object.fromEntries(Object.entries(taxonomy.aliases).map(([alias, target]) => [alias, target === from ? to : target]))
+  aliases[from] = to
+  const nextTaxonomy = validateTaxonomy({ ...taxonomy, aliases: Object.fromEntries(Object.entries(aliases).sort()) }, taxonomyFile)
   const links = await loadLinks(options.contentDirectory ?? defaultContentDirectory)
   let changed = 0
   for (const link of links) {
@@ -240,10 +258,7 @@ async function commandMergeTags(options) {
     if (options.apply) await writeAtomically(link.file, next)
   }
   // Future generations normalise the merged tag automatically.
-  const aliases = Object.fromEntries(Object.entries(taxonomy.aliases).map(([alias, target]) => [alias, target === from ? to : target]))
-  aliases[from] = to
-  delete aliases[to]
-  if (options.apply) await writeTaxonomy(taxonomyFile, { ...taxonomy, aliases: Object.fromEntries(Object.entries(aliases).sort()) })
+  if (options.apply) await writeTaxonomy(taxonomyFile, nextTaxonomy)
   console.log(`${options.apply ? 'Merged' : 'Dry run: would merge'} ${from} into ${to} on ${changed} Links${options.apply ? ` and recorded the alias in ${taxonomyFile}` : '; add --apply to write'}`)
 }
 
@@ -254,8 +269,8 @@ async function commandKeepDistinct(options) {
   const taxonomy = await loadTaxonomy(taxonomyFile)
   const pair = [a, b].sort()
   if (!taxonomy.distinct.some((existing) => existing.map(normalizeTag).sort().join('|') === pair.join('|'))) taxonomy.distinct.push(pair)
-  await writeTaxonomy(taxonomyFile, taxonomy)
-  console.log(`Recorded ${pair.join(' and ')} as distinct in ${taxonomyFile}`)
+  if (options.apply) await writeTaxonomy(taxonomyFile, taxonomy)
+  console.log(`${options.apply ? 'Recorded' : 'Dry run: would record'} ${pair.join(' and ')} as distinct in ${taxonomyFile}${options.apply ? '' : '; add --apply to write'}`)
 }
 
 export async function main(argv = process.argv.slice(2)) {

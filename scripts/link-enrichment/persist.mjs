@@ -10,6 +10,8 @@ import { canonicalTag, isIgnoredTag, normalizeTag } from './vocabulary.mjs'
 
 export const scalarFields = ['description', 'author', 'sourceTitle']
 export const maximumTags = 5
+const enrichmentFields = [...scalarFields, 'tags']
+const modelFields = ['description', 'tags']
 
 export function fingerprint(value) {
   return createHash('sha256').update(JSON.stringify(value ?? '')).digest('hex').slice(0, 12)
@@ -80,21 +82,42 @@ export function topicalCount(tags, taxonomy) {
   return tags.filter((tag) => !isIgnoredTag(tag, taxonomy)).length
 }
 
+function attemptedFields(enrichment) {
+  if (!enrichment) return []
+  // Older records closed every field after a completed attempt. Preserve that
+  // behavior rather than reopening their empty bylines on the next ordinary run.
+  return Array.isArray(enrichment.attemptedFields) ? enrichment.attemptedFields : enrichmentFields
+}
+
+// Older records have only the shared model identity. Snapshot it per field before
+// a partial upgrade replaces that identity with the latest successful generation.
+export function generationForField(enrichment, field) {
+  const generation = enrichment?.generations?.[field] ?? enrichment
+  if (!generation?.model) return undefined
+  return pruneEmpty({
+    model: generation.model,
+    servedModel: generation.servedModel,
+    promptVersion: generation.promptVersion,
+    generatedAt: generation.generatedAt,
+  })
+}
+
 // Which fields could this run change? Used to skip Links before any network request.
 // A field left empty by a completed attempt (the page had no byline, say) is not retried on
-// every run; only a failed attempt, --re-enrich, or --replace-excerpts reopens it.
+// every run; unattempted fields remain open even after another field's attempt completes.
 export function fillableFields(data, enrichment, { taxonomy, reEnrich = false, fields, replaceExcerpts = false }) {
   const wanted = (field) => !fields || fields.includes(field)
-  const open = !enrichment || enrichment.status === 'failed' || reEnrich
+  const completed = attemptedFields(enrichment)
+  const open = (field) => !completed.includes(field) || enrichment?.status === 'failed' || reEnrich
   const result = []
   for (const field of scalarFields) {
     if (!wanted(field)) continue
     const state = fieldState(data, enrichment, field)
-    if ((state === 'empty' && open) || (state === 'machine' && reEnrich) || (field === 'description' && state === 'legacy' && replaceExcerpts && isImportedExcerpt(data.description))) result.push(field)
+    if ((state === 'empty' && open(field)) || (state === 'machine' && reEnrich) || (field === 'description' && state === 'legacy' && replaceExcerpts && isImportedExcerpt(data.description))) result.push(field)
   }
   if (wanted('tags')) {
     const tags = tagState(data, enrichment)
-    if (((tags.machine.length === 0 && open) || reEnrich) && topicalCount(tags.human, taxonomy) < maximumTags) result.push('tags')
+    if (((tags.machine.length === 0 && open('tags')) || reEnrich) && topicalCount(tags.human, taxonomy) < maximumTags) result.push('tags')
   }
   return result
 }
@@ -105,7 +128,14 @@ const volatileKeys = new Set(['lastAttemptAt', 'generatedAt', 'lastFetchedAt', '
 // repeated run that learns nothing new leaves the file untouched.
 export function sameOutcome(previous, next) {
   if (!previous || next.status === 'failed') return false
-  const strip = (record) => JSON.stringify(Object.fromEntries(Object.entries(record).filter(([key]) => !volatileKeys.has(key))))
+  const stableFields = (record) => Object.fromEntries(Object.entries(record).filter(([key]) => !volatileKeys.has(key)))
+  const strip = (record) => {
+    const stable = stableFields(record)
+    if (stable.generations) {
+      stable.generations = Object.fromEntries(Object.entries(stable.generations).map(([field, generation]) => [field, stableFields(generation)]))
+    }
+    return JSON.stringify(stable)
+  }
   return strip(previous) === strip(next)
 }
 
@@ -123,6 +153,19 @@ export function planEnrichment({ data, generated, extracted = {}, attempt, optio
   const updates = {}
   const nextFields = { ...(previous?.fields ?? {}) }
   const changes = []
+  const completed = attemptedFields(previous)
+  const tags = tagState(data, previous)
+  const generations = {}
+  for (const field of modelFields) {
+    const generation = generationForField(previous, field)
+    const owned = field === 'description'
+      ? fieldState(data, previous, field) === 'machine' && previous?.fields?.[field]?.by === 'ai'
+      : tags.machine.length > 0
+    const emptyAttempted = completed.includes(field) && (field === 'description'
+      ? fieldState(data, previous, field) === 'empty'
+      : !tags.machine.length && topicalCount(tags.human, taxonomy) < maximumTags)
+    if (generation && (owned || emptyAttempted)) generations[field] = generation
+  }
 
   for (const field of scalarFields) {
     const state = fieldState(data, previous, field)
@@ -145,14 +188,16 @@ export function planEnrichment({ data, generated, extracted = {}, attempt, optio
     nextFields[field] = { by: proposal.by, hash: fingerprint(proposal.value) }
   }
 
-  const tags = tagState(data, previous)
+  let adoptedTags = false
   let nextTagRecord = previous?.fields?.tags ? { by: 'ai', added: tags.machine, ...(tags.rejected.length ? { rejected: tags.rejected } : {}) } : undefined
   const proposedTags = Array.isArray(generated?.tags) ? generated.tags : []
   if (fillable.has('tags') && proposedTags.length) {
     const room = Math.max(0, maximumTags - topicalCount(tags.human, taxonomy))
     const humanCanonical = new Set(tags.human.map((tag) => canonicalTag(tag, taxonomy)))
-    const added = proposedTags.filter((tag) => !humanCanonical.has(tag) && !tags.rejected.includes(tag)).slice(0, room)
+    const rejectedCanonical = new Set(tags.rejected.map((tag) => canonicalTag(tag, taxonomy)))
+    const added = proposedTags.filter((tag) => !humanCanonical.has(canonicalTag(tag, taxonomy)) && !rejectedCanonical.has(canonicalTag(tag, taxonomy))).slice(0, room)
     if (added.length) {
+      adoptedTags = true
       const nextTags = [...tags.human, ...added]
       const sameSet = nextTags.length === tags.current.length && nextTags.every((tag) => tags.current.includes(tag))
       if (!sameSet) {
@@ -166,14 +211,22 @@ export function planEnrichment({ data, generated, extracted = {}, attempt, optio
   else delete nextFields.tags
 
   const succeeded = attempt.status === 'enriched'
+  const generatedMetadata = succeeded && attempt.model !== undefined
+  if (generatedMetadata && generated) {
+    const generation = generationForField({ ...attempt, generatedAt: attempt.at })
+    if (fillable.has('description') && (proposals.description || fieldState(data, previous, 'description') === 'empty')) generations.description = generation
+    if (fillable.has('tags') && (adoptedTags || !tags.machine.length)) generations.tags = generation
+  }
   const enrichment = pruneEmpty({
     status: attempt.status,
+    attemptedFields: enrichmentFields.filter((field) => completed.includes(field) || (attempt.status !== 'failed' && (!fields || fields.includes(field)))),
     // The basis of the metadata on file: this attempt's, or the earlier success it left in place.
     basis: attempt.basis ?? (previous?.status === 'enriched' && attempt.status === 'failed' ? previous.basis : undefined),
-    model: succeeded ? attempt.model : previous?.model,
-    servedModel: succeeded ? attempt.servedModel : previous?.servedModel,
-    promptVersion: succeeded ? attempt.promptVersion : previous?.promptVersion,
-    generatedAt: succeeded ? attempt.at : previous?.generatedAt,
+    model: generatedMetadata ? attempt.model : previous?.model,
+    servedModel: generatedMetadata ? attempt.servedModel : previous?.servedModel,
+    promptVersion: generatedMetadata ? attempt.promptVersion : previous?.promptVersion,
+    generatedAt: generatedMetadata ? attempt.at : previous?.generatedAt,
+    generations: Object.keys(generations).length ? generations : undefined,
     lastAttemptAt: attempt.at,
     attempts: succeeded ? undefined : (previous?.status === 'enriched' ? 1 : (previous?.attempts ?? 0) + 1),
     lastFetchedAt: attempt.fetchedAt ?? previous?.lastFetchedAt,

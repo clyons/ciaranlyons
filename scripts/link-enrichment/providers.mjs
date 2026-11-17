@@ -1,6 +1,7 @@
 // Model adapters. Each provider takes { system, user, schema, slug } and returns
 // { output, usage, servedModel }. Choosing a provider is configuration, not code: set
 // LINK_ENRICH_MODEL (or pass --model) to `<provider>:<model>`.
+import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { ProviderError } from './generate.mjs'
@@ -31,6 +32,11 @@ function parseJsonText(text, label) {
   }
 }
 
+// Keep endpoint configuration and reviewed responses out of persisted cache key parts.
+function cacheIdentity(settings) {
+  return createHash('sha256').update(JSON.stringify(settings)).digest('hex')
+}
+
 // Server-side refusal fallback is available for these Anthropic models; the request opts in
 // so a misplaced safety decline on an innocuous page is retried on Anthropic's recommended
 // fallback model instead of failing the Link.
@@ -59,6 +65,7 @@ export function anthropicProvider({ model, effort = 'low', maxTokens = 16_000, c
 
   return {
     id: `anthropic:${model}`,
+    getCacheIdentity: () => cacheIdentity({ provider: 'anthropic', model, effort: !effortUnsupported.test(model) && effort !== 'none' ? effort : undefined, maxTokens, baseUrl: process.env.ANTHROPIC_BASE_URL }),
     prices: anthropicPrices[model],
     async generate({ system, user, schema }) {
       const Anthropic = client ? undefined : await loadSdk()
@@ -109,6 +116,7 @@ export function chatCompletionsProvider({ id, model, baseUrl, apiKey, fetchImpl 
   const endpoint = `${baseUrl.replace(/\/+$/, '')}/chat/completions`
   return {
     id,
+    getCacheIdentity: () => cacheIdentity({ id, model, endpoint }),
     async generate({ system, user, schema }) {
       let response
       try {
@@ -146,11 +154,17 @@ export function chatCompletionsProvider({ id, model, baseUrl, apiKey, fetchImpl 
 // outside this process (another tool, a batch job, or a person). Pairs with
 // `--export-requests`, which writes the matching prompts.
 export function fileProvider({ file }) {
-  let responses
+  const resolvedFile = path.resolve(file)
+  let snapshot
+  const load = () => (snapshot ??= readFile(resolvedFile, 'utf8').then((contents) => ({
+    responses: JSON.parse(contents),
+    identity: cacheIdentity({ provider: 'file', file: resolvedFile, contents }),
+  })))
   return {
     id: `file:${path.basename(file)}`,
+    getCacheIdentity: async () => (await load()).identity,
     async generate({ slug }) {
-      responses ??= JSON.parse(await readFile(file, 'utf8'))
+      const { responses } = await load()
       const entry = responses?.[slug]
       if (!entry) throw new ProviderError(`No response for ${slug} in ${file}`, { category: 'no-response', retryable: true })
       return { output: entry, servedModel: undefined, usage: {} }

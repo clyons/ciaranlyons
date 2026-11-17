@@ -1,6 +1,6 @@
 // Orchestration: load Links, choose which to process, and run each through
 // fetch -> generate -> persist. The stages stay independent; this file only wires them.
-import { randomUUID } from 'node:crypto'
+import { createHash, randomUUID } from 'node:crypto'
 import { mkdir, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { semanticMatch } from '../recover-feedproxy-links.mjs'
@@ -8,10 +8,10 @@ import { createCache } from './cache.mjs'
 import { contentHash } from './extract.mjs'
 import { createHostPacer, fetchDestination } from './fetch.mjs'
 import { ProviderError, buildRequest, generateMetadata, normalizeTags, promptVersion, wordCount } from './generate.mjs'
-import { fieldState, fillableFields, maximumTags, parseLinkMarkdown, planEnrichment, readEnrichment, rewriteLinkMarkdown, sameOutcome, tagState, topicalCount } from './persist.mjs'
+import { fieldState, fillableFields, generationForField, maximumTags, parseLinkMarkdown, planEnrichment, readEnrichment, rewriteLinkMarkdown, sameOutcome, tagState, topicalCount } from './persist.mjs'
 import { estimateCost } from './providers.mjs'
 import { comparableUrl, canonicalizeUrl } from './url.mjs'
-import { addToVocabulary, buildVocabulary, isIgnoredTag, normalizeTag } from './vocabulary.mjs'
+import { addToVocabulary, buildVocabulary, emptyTaxonomy, isIgnoredTag, normalizeTag } from './vocabulary.mjs'
 
 export const defaultContentDirectory = path.join('content', 'links')
 const minimumPageWords = 80
@@ -27,13 +27,19 @@ export async function loadLinks(directory = defaultContentDirectory) {
   }))
 }
 
-function stale(link, providerId) {
-  return link.enrichment?.status === 'enriched' && (link.enrichment.model !== providerId || (link.enrichment.promptVersion ?? 0) < promptVersion)
+function stale(link, providerId, { fields, taxonomy }) {
+  if (link.enrichment?.status !== 'enriched') return false
+  return fillableFields(link.data, link.enrichment, { taxonomy, fields, reEnrich: true })
+    .filter((field) => field === 'description' || field === 'tags')
+    .some((field) => {
+      const generation = generationForField(link.enrichment, field)
+      return generation?.model !== providerId || (generation?.promptVersion ?? 0) < promptVersion
+    })
 }
 
 // Returns the Links a run should look at, plus whether existing machine-written fields may
 // be regenerated. Explicit slugs and URLs always win over the selection flags.
-export function selectLinks(links, options, providerId) {
+export function selectLinks(links, options, providerId, taxonomy = emptyTaxonomy()) {
   let selected
   if (options.slugs?.length || options.urls?.length) {
     const bySlug = new Map(links.map((link) => [link.slug, link]))
@@ -52,7 +58,7 @@ export function selectLinks(links, options, providerId) {
     selected = [...new Set(selected)]
   } else if (options.selection === 'all') selected = links
   else if (options.selection === 'failed') selected = links.filter((link) => link.enrichment?.status === 'failed' && (options.includePermanent || link.enrichment.error?.retryable !== false))
-  else if (options.selection === 'stale') selected = links.filter((link) => stale(link, providerId))
+  else if (options.selection === 'stale') selected = links.filter((link) => stale(link, providerId, { fields: options.fields, taxonomy }))
   else if (options.selection === 'changed') selected = links.filter((link) => link.enrichment?.status === 'enriched')
   else selected = links.filter((link) => !link.enrichment)
   const offset = options.offset ?? 0
@@ -61,8 +67,15 @@ export function selectLinks(links, options, providerId) {
 
 function urlIndex(links) {
   const index = new Map()
+  // Saved targets outrank aliases regardless of collection sort order.
   for (const link of links) {
-    for (const value of [link.data.targetUrl, link.enrichment?.canonicalUrl, link.enrichment?.finalUrl]) {
+    const key = comparableUrl(link.data.targetUrl)
+    if (key && !index.has(key)) index.set(key, link.slug)
+  }
+  for (const link of links) {
+    // Older records with fetch issues may contain redirects to unrelated pages.
+    if (link.enrichment?.fetchIssue) continue
+    for (const value of [link.enrichment?.canonicalUrl, link.enrichment?.finalUrl]) {
       const key = value && comparableUrl(value)
       if (key && !index.has(key)) index.set(key, link.slug)
     }
@@ -98,6 +111,7 @@ export async function enrichLink(link, context) {
   const previous = link.enrichment
   const fillOptions = { taxonomy, reEnrich: options.reEnrich, fields: options.fields, replaceExcerpts: options.replaceExcerpts }
   const fillable = fillableFields(link.data, previous, fillOptions)
+  const needsGeneration = fillable.some((field) => field === 'description' || field === 'tags')
   if (!fillable.length && options.selection !== 'changed') {
     return { slug: link.slug, outcome: 'skipped', reason: previous ? 'nothing to fill; use --re-enrich to regenerate machine-written fields' : 'every field already has a value' }
   }
@@ -127,12 +141,14 @@ export async function enrichLink(link, context) {
   // Use the page's description only when its title is recognisably this Link's.
   const metadataMatches = Boolean(metadata.title) && semanticMatch({ title: link.data.title, description: '' }, metadata.title).matched
   const fallbackText = [fetchIssue === 'semantic-mismatch' || (!pageUsable && !metadataMatches) ? '' : metadata.description, saved].filter(Boolean).join(' ')
-  const basis = pageUsable ? 'page' : wordCount(fallbackText) >= minimumFallbackWords ? (content.ok ? 'metadata' : 'excerpt') : undefined
+  let basis = pageUsable ? 'page' : wordCount(fallbackText) >= minimumFallbackWords ? (content.ok ? 'metadata' : 'excerpt') : undefined
 
   // URLs from a page that is not this Link's resource would only mislead duplicate checks.
   const trustworthyPage = fetchIssue !== 'semantic-mismatch' && (pageUsable || metadataMatches)
+  // Extracting a declared byline/publisher does not require enough prose for a summary.
+  if (!needsGeneration && trustworthyPage) basis ??= 'metadata'
   const canonicalUrl = trustworthyPage ? differentUrl(metadata.canonicalUrl, targetUrl) : undefined
-  const finalUrl = differentUrl(content.finalUrl, targetUrl)
+  const finalUrl = trustworthyPage ? differentUrl(content.finalUrl, targetUrl) : undefined
   const duplicateOf = [canonicalUrl, finalUrl].map((value) => value && index.get(comparableUrl(value))).find((slug) => slug && slug !== link.slug)
   const attempt = {
     at: now().toISOString(),
@@ -146,31 +162,39 @@ export async function enrichLink(link, context) {
     contentHash: basis === 'page' ? content.contentHash : basis ? contentHash(fallbackText) : undefined,
     basis,
   }
-  const extracted = fetchIssue === 'semantic-mismatch' || (!pageUsable && !metadataMatches) ? {} : metadata
+  const extracted = trustworthyPage ? metadata : {}
   const tags = tagState(link.data, previous)
   const humanTopical = tags.human.filter((tag) => !isIgnoredTag(tag, taxonomy))
 
   let generated
   let usage
-  if (!basis) {
+  if (!needsGeneration && trustworthyPage && !options.exportRequests) {
+    attempt.status = 'enriched'
+  } else if (!basis || (!needsGeneration && !options.exportRequests)) {
     attempt.status = content.ok ? 'insufficient-content' : 'failed'
     if (!content.ok) attempt.error = { category: content.category, retryable: content.retryable, ...(content.detail ? { detail: String(content.detail).slice(0, 200) } : {}), ...(content.retryAfterSeconds !== undefined ? { retryAfterSeconds: content.retryAfterSeconds } : {}) }
   } else {
-    const request = buildRequest({
+    const requestInputs = {
       link: { ...link.data, excerpt: saved },
       content: basis === 'page' ? content : { metadata: extracted },
       vocabulary,
       taxonomy,
       humanTags: humanTopical,
       basis,
-    })
+    }
+    const request = buildRequest(requestInputs)
     if (options.exportRequests) {
       context.exported.push({ slug: link.slug, targetUrl, basis, ...request })
       return { slug: link.slug, outcome: 'exported', basis }
     }
     const room = Math.max(0, maximumTags - topicalCount(tags.human, taxonomy))
     const tagOptions = { taxonomy, humanTags: tags.human, rejected: tags.rejected, maximum: room }
-    const cacheKey = [provider.id, String(promptVersion), attempt.contentHash, link.slug, basis, humanTopical.map(normalizeTag).join(',')]
+    const providerIdentity = await provider.getCacheIdentity?.() ?? provider.id
+    // Vocabulary counts evolve during a batch; every other prompt input must
+    // match, including metadata and saved context even when body text is unchanged.
+    const stableRequest = buildRequest({ ...requestInputs, vocabulary: new Map() })
+    const requestHash = createHash('sha256').update(JSON.stringify(stableRequest)).digest('hex')
+    const cacheKey = ['generation-v3', providerIdentity, String(promptVersion), link.slug, requestHash]
     generated = options.regenerate ? undefined : await cache.getGeneration(cacheKey)
     if (generated) generated = { ...generated, tags: normalizeTags(generated.tags, tagOptions), usage: { inputTokens: 0, outputTokens: 0, calls: 0 }, fromCache: true }
     else {
@@ -193,7 +217,7 @@ export async function enrichLink(link, context) {
     }
   }
 
-  const plan = planEnrichment({ data: link.data, generated: attempt.status === 'enriched' ? generated : undefined, extracted: attempt.status === 'enriched' ? extracted : {}, attempt, options: fillOptions })
+  const plan = planEnrichment({ data: link.data, generated: attempt.status === 'enriched' ? generated : undefined, extracted, attempt, options: fillOptions })
   const unchangedOutcome = !Object.keys(plan.updates).length && sameOutcome(link.data.enrichment, plan.enrichment)
   const next = unchangedOutcome ? link.raw : rewriteLinkMarkdown(link.raw, plan.updates, plan.enrichment)
   const changed = next !== link.raw
@@ -244,9 +268,9 @@ export async function runEnrichment(options, { provider, taxonomy, fetchImpl = f
   const started = Date.now()
   const links = await loadLinks(options.contentDirectory ?? defaultContentDirectory)
   const vocabulary = buildVocabulary(links, taxonomy)
-  const selected = selectLinks(links, options, provider.id)
+  const selected = selectLinks(links, options, provider.id, taxonomy)
   const context = {
-    options: { ...options, reEnrich: options.reEnrich || ['stale', 'changed'].includes(options.selection) },
+    options: { ...options, reEnrich: options.reEnrich || ['stale', 'changed', 'failed'].includes(options.selection) },
     provider,
     cache: createCache(options.cacheDirectory, { disabled: options.noCache }),
     pacer,
@@ -317,7 +341,7 @@ export function collectionStatus(links, { taxonomy, providerId }) {
     failures,
     missingDescription: count((link) => !String(link.data.description ?? '').trim()),
     withoutTopicalTags: count((link) => topicalCount(link.tags, taxonomy) === 0),
-    staleForCurrentModel: providerId ? count((link) => stale(link, providerId)) : undefined,
+    staleForCurrentModel: providerId ? count((link) => stale(link, providerId, { taxonomy })) : undefined,
     humanEditedFields: humanFields,
     possibleDuplicates: links.filter((link) => link.enrichment?.duplicateOf).map((link) => ({ slug: link.slug, duplicateOf: link.enrichment.duplicateOf })),
     topicalTags: buildVocabulary(links, taxonomy).size,
