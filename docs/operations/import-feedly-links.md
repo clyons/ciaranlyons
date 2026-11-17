@@ -49,7 +49,7 @@ npm run links:sync
 npm run links:sync -- --dry-run
 ```
 
-The second command should report zero new writes. Existing files are never overwritten, so manual commentary and `standardUri` metadata are preserved. To retry a single bad pre-publication import, remove only its named `content/links/<slug>.md` file after confirming it has no manual changes, correct the source/transformation, and rerun.
+The first command also enriches the new Links with descriptions and tags in a separate step after they are written; see [Enrich Link metadata](enrich-links.md), or pass `--no-enrich` to skip it. The second command should report zero new writes. Existing files are never overwritten, so manual commentary and `standardUri` metadata are preserved. To retry a single bad pre-publication import, remove only its named `content/links/<slug>.md` file after confirming it has no manual changes, correct the source/transformation, and rerun.
 
 ## Repair legacy Feedproxy destinations
 

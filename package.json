@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "lint": "astro check",
-    "test": "node --experimental-strip-types --test scripts/*.test.mjs src/lib/*.test.mjs",
+    "test": "node --experimental-strip-types --test scripts/*.test.mjs scripts/link-enrichment/*.test.mjs src/lib/*.test.mjs",
     "build": "npm run lint && npm run build:artifact",
     "preview": "astro preview",
     "check": "astro check",
@@ -21,6 +21,8 @@
     "links:sync": "node scripts/sync-feedly-links.mjs",
     "links:audit": "node scripts/audit-link-destinations.mjs",
     "links:annotate": "node scripts/annotate-link-destinations.mjs",
+    "links:enrich": "node scripts/enrich-links.mjs",
+    "links:tags": "node scripts/enrich-links.mjs tags",
     "links:recover-archive": "node scripts/recover-archived-links.mjs",
     "links:recover-feedproxy": "node scripts/recover-feedproxy-links.mjs",
     "links:recover-search": "node scripts/recover-web-search-links.mjs",
@@ -47,6 +49,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "1.3.0",
     "@playwright/test": "^1.63.0",
     "@types/node": "^22.15.3",
     "@types/sanitize-html": "2.16.1",

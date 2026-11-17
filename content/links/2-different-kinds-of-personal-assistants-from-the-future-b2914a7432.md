@@ -10,5 +10,16 @@ destinationStatus: broken
 destinationLastCheckedAt: "2026-09-09T05:08:28.279Z"
 sourceTitle: "Bustr Bensn"
 feedlyId: "Tlrz9kuwQ+jYT7h0ikCzGi+Mb0NjB5FECh33ClhK7Iw=_13678ddbee0:32094a:9e04b0a9"
-tags: ["Saved For Later"]
+tags: ["Saved For Later","personal-assistants","artificial-intelligence","serendipity"]
+enrichment:
+  status: "enriched"
+  basis: "excerpt"
+  model: "file:sample-responses.json"
+  promptVersion: 1
+  generatedAt: "2026-11-14T20:40:56.692Z"
+  lastAttemptAt: "2026-11-14T20:40:56.692Z"
+  fetchIssue: "unreachable"
+  contentHash: "sha256:408f0ccfd896e104"
+  contentType: "blog-post"
+  fields: {"tags":{"by":"ai","added":["personal-assistants","artificial-intelligence","serendipity"]}}
 ---

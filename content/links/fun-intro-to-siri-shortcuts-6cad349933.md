@@ -12,4 +12,11 @@ sourceTitle: "Daring Fireball"
 author: "John Gruber"
 feedlyId: "ZTHt7g74IlVC5A2IgEvcn/aop5teo99gzFaGU2TCGxs=_166171bab1c:342d1e:19b4cc1a"
 tags: ["Saved For Later"]
+enrichment:
+  status: "insufficient-content"
+  lastAttemptAt: "2026-11-14T20:53:06.816Z"
+  attempts: 1
+  lastFetchedAt: "2026-11-14T20:39:50.730Z"
+  httpStatus: 200
+  fetchIssue: "limited-content"
 ---

@@ -120,3 +120,26 @@ test('Feedly auth errors do not include credentials', async () => {
     return true
   })
 })
+
+test('new Links are enriched in a separate process after import, unless --no-enrich', async () => {
+  const { enrichNewLinks, parseFeedlyArgs } = await import('./sync-feedly-links.mjs')
+  assert.equal(parseFeedlyArgs([]).enrich, true)
+  assert.equal(parseFeedlyArgs(['--no-enrich']).enrich, false)
+  const lists = []
+  const spawns = []
+  const log = console.log
+  const warn = console.warn
+  console.log = () => {}
+  console.warn = () => {}
+  try {
+    const ran = enrichNewLinks(['one', 'two'], { enrich: true }, { spawn: (...args) => { spawns.push(args); return { status: 1 } }, writeList: (file, text) => lists.push([file, text]) })
+    assert.deepEqual(ran, { ran: true, status: 1 })
+    assert.deepEqual(spawns[0][1].slice(0, 2), ['scripts/enrich-links.mjs', 'run'])
+    assert.ok(spawns[0][1].includes('--apply'))
+    assert.equal(lists[0][1], 'one\ntwo\n')
+    assert.deepEqual(enrichNewLinks(['three'], { enrich: false }, { spawn: () => assert.fail('must not spawn'), writeList: (file, text) => lists.push([file, text]) }), { ran: false })
+  } finally {
+    console.log = log
+    console.warn = warn
+  }
+})
