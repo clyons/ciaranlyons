@@ -1,0 +1,3 @@
+# Direct-link application material: keep the letter and downloadable PDF out of search.
+/abc-fitness*
+  X-Robots-Tag: noindex, nofollow
